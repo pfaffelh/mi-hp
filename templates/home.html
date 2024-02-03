@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    {% for file in files %}
+    <div><br></div>
+    {% include file %}
+    {% endfor %}
+{% endblock %}
+

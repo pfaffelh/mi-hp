@@ -1,0 +1,32 @@
+{% if future|length > 0 %}
+<div class="container">
+  {% for k in future %}
+    <div class="card mt-3">
+      <div class="card-header">
+        <h3>{% if show_calendar_name %} {{ k["calendar"]|safe }}: {% endif %} {{ k["summary"]|safe }}</h3>
+      </div>
+      <div class="card-body mx-1 px-1 my-1 py-1">
+        <h5>{{ k["time"]|safe }}{% if k["location"] %}; {{ k["location"]|safe }} {% endif %}</h5>
+        {% if k["description"] %} <p> {{ k["description"]|replace('\n', '<br>')|replace('\\n', '<br>')|safe }} </p> {% endif %}  
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if past|length > 0 %}
+<div class="container">
+<h2> Vergangene Veranstaltungen talks</h3>
+{% for k in past %}
+<h2>{% if show_calendar_name %} {{ k["calendar"]|safe }}: {% endif %} {{ k["summary"]|safe }}</h2>
+<h4>{{ k["time"]|safe }}{% if k["location"] %}; {{ k["location"]|safe }} {% endif %} </h3>
+{% if k["description"] %} <p> {{ k["description"]|safe }} </p> {% endif %}  
+<br><br>
+{% endfor %}
+</div>
+{% endif %}
+
+
+
+
+
