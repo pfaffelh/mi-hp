@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    {% for file in files %}
+    {% for filename in filenames %}
     <div><br></div>
-    {% include file %}
+    {% include filename %}
     {% endfor %}
 {% endblock %}
 

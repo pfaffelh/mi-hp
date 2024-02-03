@@ -26,6 +26,26 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
+              {% if lang == "de" %}Mathematik studieren in Freiburg!?{% else
+              %}Studying Mathematics in Freiburg!?{% endif %}</a
+            >
+            <ul class="dropdown-menu" data-bs-theme="light">
+              <li>
+                <a class="dropdown-item text-black" href=""
+                  >Informationen für Studieninteressierte</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown px-3">
+            <a
+              class="nav-link dropdown-toggle active"
+              href=""
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Studiengänge</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
@@ -47,15 +67,12 @@
                   >Master of Science Mathematik</a
                 >
               </li>
-
               <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showmscdata') }}"
+                <a class="dropdown-item text-black"
+                  href='{{ url_for('showmscdata', lang = lang) }}'</a> 
                   >Master of Science Mathematics in Data and Technology</a
                 >
               </li>
-
               <li>
                 <a class="dropdown-item text-black" href=""
                   >Dualer Masterstudiengang Lehramt</a
@@ -118,17 +135,7 @@
             <a class="nav-link text-white" href="#">Studienberatung</a>
           </li>
           <li class="nav-item px-3">
-            <a class="nav-link text-white" href="#">Interesse an Mathematik?</a>
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link text-white" href="#"
-              >Informationen für Studieninteressierte</a
-            >
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link text-white" href="#"
-              >Wegweiser für den Studienanfang</a
-            >
+            <a class="nav-link text-white" href="#">Mediathek</a>
           </li>
         </ul>
       </div>
