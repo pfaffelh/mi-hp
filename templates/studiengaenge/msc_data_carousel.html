@@ -1,0 +1,71 @@
+<div
+  id="carouselExampleDark"
+  class="carousel carousel-dark slide"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="5000">
+      <img
+        class="carousel-image"
+        src="/static/Bilder/data.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+      <div class="container-sm">
+        <div
+          class="carousel-caption d-none d-md-block"
+          style="left: 60%; right: 20%; bottom: 10; background-color: white"
+        >
+          <h5>
+            {% if lang == "de" %}Daten und Technologie sind überall!{% else %}Data and technology is everywhere{% endif %}
+          </h5>
+          <p>
+            {% if lang == "de" %}{% else %}{% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="5000">
+      <img
+        class="carousel-image"
+        src="/static/Bilder/5.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+      <div class="container-sm">
+        <div
+          class="carousel-caption d-none d-md-block"
+          style="left: 70%; right: 10%; bottom: 10; background-color: white"
+        >
+          <h5>
+            {% if lang == "de" %}Mathematik ist die Grundlage{% else %}Mathematics is the foundation{% endif %}
+          </h5>
+          <p>
+            {% if lang == "de" %}{% else %}{% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="5000">
+      <img
+        class="carousel-image"
+        src="/static/Bilder/1.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+      <div class="container-sm">
+        <div
+          class="carousel-caption d-none d-md-block"
+          style="left: 10%; right: 70%; bottom: 10; background-color: white"
+        >
+          <h5>
+            {% if lang == "de" %}Das Mathematische Institut{% else %}The Mathematical Institute{% endif %}
+          </h5>
+          <p>
+            {% if lang == "de" %}{% else %}{% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

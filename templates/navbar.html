@@ -31,8 +31,13 @@
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
-                <a class="dropdown-item text-black" href=""
-                  >Informationen für Studieninteressierte</a
+                <a class="dropdown-item text-black" href="{{ url_for('showinterestprospective', lang = lang) }}"
+                  >{% if lang == "de" %}Informationen für Studieninteressierte{% else %} Information for prospective students{% endif %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showintereststart', lang = lang) }}"
+                  >{% if lang == "de" %}Wegweiser für den Studienanfang{% else %}Guide to starting your studies{% endif %} </a
                 >
               </li>
             </ul>
@@ -46,36 +51,41 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Studiengänge</a
+              {% if lang == "de" %}Studiengänge{% else %}Study programs{% endif %}</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
-                <a class="dropdown-item text-black" href="">BSc Mathematik</a>
+                <a class="dropdown-item text-black" href="{{ url_for('showbscm', lang = lang) }}">Bachelor of Science {% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
               </li>
               <li>
-                <a class="dropdown-item text-black" href=""
-                  >2-Hauptfächer Bachelor</a
+                <a class="dropdown-item text-black" href="{{ url_for('showmsc', lang = lang) }}"
+                  >Master of Science {% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href=""
+                <a class="dropdown-item text-black" href="{{ url_for('showmscdata', lang = lang) }}"</a> 
+                  Master of Science Mathematics in Data and Technology</a
+                >
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item text-black" href="{{ url_for('show2hfb', lang = lang) }}"
+                  >{% if lang == "de" %}Polyvalenter Zwei-Hauptfächer Bachelor{% else %}Polyvalent Two-Major Bachelor{% endif %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showmed', lang = lang) }}"
                   >Master of Education</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href=""
-                  >Master of Science Mathematik</a
+                <a class="dropdown-item text-black" href="{{ url_for('showmederw', lang = lang) }}"
+                  >Master of Education Erweiterungsfach</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black"
-                  href='{{ url_for('showmscdata', lang = lang) }}'</a> 
-                  >Master of Science Mathematics in Data and Technology</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-black" href=""
-                  >Dualer Masterstudiengang Lehramt</a
+                <a class="dropdown-item text-black" href="{{ url_for('showmeddual', lang = lang) }}"
+                  >Master of Education gymnasiales Lehramt -- dual</a
                 >
               </li>
             </ul>
