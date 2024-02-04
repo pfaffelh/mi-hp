@@ -53,5 +53,3 @@ def showallgemeines(lang):
     return render_template(f"{lang}/home.html", filenames = filenames)
 
 
-if __name__ == 'main__':
-    app.run(debug = True)
