@@ -80,17 +80,17 @@ def showmederw(lang):
     filenames = ["studiengaenge/med_erw.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmederw")
 
-@app.route("/<lang>/studiengaenge/msc/")
+@app.route("/<lang>/studiengaenge/msc_m/")
 def showmsc(lang):
     filenames = ["studiengaenge/msc_mathe.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmsc")
 
-@app.route("/<lang>/studiengaenge/mscdata/")
+@app.route("/<lang>/studiengaenge/msc_data/")
 def showmscdata(lang):
     filenames = ["studiengaenge/msc_data_carousel.html", "studiengaenge/msc_data_info.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmscdata")
 
-@app.route("/<lang>/studiengaenge/meddual/")
+@app.route("/<lang>/studiengaenge/med_dual/")
 def showmeddual(lang):
     filenames = ["studiengaenge/med_dual.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmeddual")
