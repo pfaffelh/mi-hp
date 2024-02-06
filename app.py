@@ -39,50 +39,50 @@ def files_with_lang(filenames, lang):
 
 @app.route("/<lang>/")
 def showbase(lang):
-    filenames = files_with_lang(["quicklinks.html", "news.html"], lang)
-    return render_template(f"{lang}/home.html", filenames = filenames, lang=lang)
+    filenames = ["index.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showbase")
 
 @app.route("/<lang>/allgemeines")
 def showallgemeines(lang):
     filenames = files_with_lang(["allgemeines"], lang)
-    return render_template(f"{lang}/home.html", filenames = filenames)
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showallgemeines")
 
-@app.route("/<lang>/interest/prospective/")
+@app.route("/<lang>/interesse/prospective/")
 def showinterestprospective(lang):
     filenames = []
-    filenames = ["interest/prospective.html"]
+    filenames = ["interesse/prospective.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestprospective")
 
-@app.route("/<lang>/interest/start/")
+@app.route("/<lang>/interesse/start/")
 def showintereststart(lang):
     filenames = []
-    filenames = ["interest/start.html"]
+    filenames = ["interesse/studienanfang.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showintereststart")
 
 @app.route("/<lang>/studiengaenge/bsc_m/")
 def showbscm(lang):
     filenames = []
-    filenames = ["studiengaenge/bsc_mathe.html"]
+    filenames = ["studiengaenge/bsc-2021.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showbscm")
 
 @app.route("/<lang>/studiengaenge/2hfb/")
 def show2hfb(lang):
-    filenames = ["studiengaenge/2-hf-b.html"]
+    filenames = ["studiengaenge/2hfb-2021.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "show2hfb")
 
 @app.route("/<lang>/studiengaenge/med/")
 def showmed(lang):
-    filenames = ["studiengaenge/med.html"]
+    filenames = ["studiengaenge/med-2018.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmed")
 
 @app.route("/<lang>/studiengaenge/med_erw/")
 def showmederw(lang):
-    filenames = ["studiengaenge/med_erw.html"]
+    filenames = ["studiengaenge/med-erweiterung-2021.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmederw")
 
 @app.route("/<lang>/studiengaenge/msc_m/")
 def showmsc(lang):
-    filenames = ["studiengaenge/msc_mathe.html"]
+    filenames = ["studiengaenge/msc-2014.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmsc")
 
 @app.route("/<lang>/studiengaenge/msc_data/")
@@ -94,4 +94,9 @@ def showmscdata(lang):
 def showmeddual(lang):
     filenames = ["studiengaenge/med_dual.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmeddual")
+
+@app.route("/<lang>/studiengaenge/promotion/")
+def showpromotion(lang):
+    filenames = ["studiengaenge/promotion.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showpromotion")
 

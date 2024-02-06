@@ -20,7 +20,7 @@
           <li class="nav-item dropdown px-3">
             <a
               class="nav-link dropdown-toggle active"
-              href=""
+              href="{{ url_for('showinterestprospective', lang = lang) }}"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
@@ -45,7 +45,7 @@
           <li class="nav-item dropdown px-3">
             <a
               class="nav-link dropdown-toggle active"
-              href=""
+              href="{{url_for('showbase', lang = lang)}}"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
@@ -88,6 +88,13 @@
                   >Master of Education gymnasiales Lehramt -- dual</a
                 >
               </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showpromotion', lang = lang) }}"
+                  >{% if lang == "de" %}Promotion{% else %}PhD{% endif %}</a
+                >
+              </li>
+              
             </ul>
           </li>
           <li class="nav-item dropdown px-3">
@@ -152,3 +159,24 @@
     </div>
   </nav>
 </header>
+<div class="container">
+  <div class="d-lg-none justify-content-end">
+  {% if lang == "de" %}
+    <div class="ms-2 me-2">
+      <strong>deutsch</strong> 
+      <a class="text-black" href='{{ url_for(site, lang = "en") }}'>
+        english
+      </a>
+    </div>
+    {% else %}
+    <div class="ms-2 me-2">
+      <a class="text-black" href='{{ url_for(site, lang = "de") }}'>
+        deutsch 
+      </a>
+      <strong>english</strong>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+
