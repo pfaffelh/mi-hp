@@ -36,6 +36,16 @@
                 >
               </li>
               <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showinterestwarum', lang = lang) }}"
+                  >{% if lang == "de" %}Warum Mathematik?{% else %} Why mathematics?{% endif %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showinterestmatheinfreiburg', lang = lang) }}"
+                  >{% if lang == "de" %}Mathestudium in Freiburg{% else %}Studying mathematics in Freiburg{% endif %}</a
+                >
+              </li>
+              <li>
                 <a class="dropdown-item text-black" href="{{ url_for('showintereststart', lang = lang) }}"
                   >{% if lang == "de" %}Wegweiser für den Studienanfang{% else %}Guide to starting your studies{% endif %} </a
                 >
@@ -132,27 +142,42 @@
           <li class="nav-item dropdown px-3">
             <a
               class="nav-link dropdown-toggle active"
-              href=""
+              href="{{ url_for('showpruefungsamt', lang = lang) }}"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Prüfungsamt</a
+              {% if lang == "de" %}Prüfungsamt{% else %}Examination office{% endif %}</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
-                <a class="dropdown-item text-black" href=""
-                  >Fristen und Termine</a
+                <a class="dropdown-item text-black" href="{{ url_for('showtermine', lang = lang) }}"
+                  >{% if lang == "de" %}Fristen und Termine{% else %}Deadlines and dates{% endif %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showpruefungen', lang = lang) }}"
+                  >{% if lang == "de" %}Prüfungsanmeldung{% else %}Exam registration{% endif %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showabschlussarbeiten', lang = lang) }}"
+                  >{% if lang == "de" %}Abschlussarbeiten{% else %}Final theses{% endif %}</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showmodulhandbuecher', lang = lang) }}"
+                  >{% if lang == "de" %}Modulhandbücher{% else %}Module manuals{% endif %}</a
                 >
               </li>
             </ul>
           </li>
           <li class="nav-item px-3">
-            <a class="nav-link text-white" href="#">Studienberatung</a>
+            <a class="nav-link text-white" href="{{ url_for('showstudienberatung', lang = lang) }}">Studienberatung</a>
           </li>
           <li class="nav-item px-3">
-            <a class="nav-link text-white" href="#">Mediathek</a>
+            <a class="nav-link text-white" href="{{ url_for('showmediathek', lang = lang) }}">Mediathek</a>
           </li>
         </ul>
       </div>

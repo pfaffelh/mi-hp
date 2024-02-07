@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="alternate" hreflang="de" href="?l=de" />
+    <link rel="alternate" hreflang="en" href="?l=en" />
+    <title>Informationen für Studieninteressierte</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/cd2009/base.css" rel="stylesheet" type="text/css" />
+    <link href="/cd2009/mobile.css" rel="stylesheet" type="text/css" />
+    <link
+      title="accordion"
+      rel="stylesheet"
+      href="/css/accordion.css"
+      type="text/css"
+    />
+    <style>
+      #startseite {
+        color: #363534;
+      }
+      #startseite-top {
+        width: 100%;
+        overflow: hidden;
+        text-align: right;
+      }
+      #startseite-top img {
+        width: 100%;
+        clear: both;
+      }
+      #startseite-quicklinks {
+        display: grid;
+        width: 100%;
+        grid-row-gap: 8px;
+        grid-template-columns: 32.5% 32.5% 32.5%;
+        grid-template-rows: 49% 49%;
+        justify-content: space-between;
+        margin-top: 1em;
+      }
+      #startseite-quicklinks a {
+        text-decoration: none;
+        display: block;
+        background-color: #dddddd;
+        overflow: visible;
+        transition: transform 0.2s;
+        padding-bottom: 3px;
+      }
+      #startseite-quicklinks a:hover {
+        transform: scale(1.02);
+        transition: transform 0.2s;
+      }
+      #startseite-quicklinks a img {
+        width: 100%;
+        clear: both;
+      }
+      #startseite-quicklinks a div {
+        color: #363534;
+        padding: 2px 4px;
+      }
+      #news {
+        display: grid;
+        justify-content: space-between;
+      }
+      #news.twocol {
+        grid-template-columns: 49% 49%;
+      }
+      #news.onecol {
+        grid-template-columns: 100%;
+      }
+      div.event {
+        background: #f5f5f5;
+        border: 1px solid #cfcfcf;
+        padding: 5px;
+        margin-top: 5px;
+      }
+      div.event h3 {
+        margin-top: 0;
+        font-family: Arial, sans-serif;
+        font-size: 100%;
+      }
+      div.event h3 span.speaker {
+        font-size: 80%;
+      }
+      div.event p {
+        font-size: 90%;
+        margin-bottom: 0;
+      }
+      @media screen and (max-width: 480px) {
+        #startseite-quicklinks {
+          grid-template-columns: 49% 49%;
+          grid-template-rows: 32.5% 32.5% 32.5%;
+        }
+        #news {
+          display: grid;
+          grid-template-columns: 100%;
+        }
+        /* only one col in mobile */
+        #news.twocol {
+          grid-template-columns: 100%;
+        }
+        #talks p {
+          margin-bottom: 0;
+        }
+      }
+    </style>
+    <script src="/js/menu.js" type="text/javascript"></script>
+    <script src="/js/accordion.js" type="text/javascript"></script>
+    <script></script>
+  </head>
+  <body>
+    <div id="linkebox">
+      <div id="grauerbalken"></div>
+      <label id="navigation-label" for="navigation">Navigation</label
+      ><input type="checkbox" id="navigation" />
+      <div id="navigation-menu">
+        <div id="navigation-oberesmenu" class="menu">
+          <ul>
+            <li class="startseite">
+              <a href="http://www.math.uni-freiburg.de">Startseite</a>
+            </li>
+            <li class="elternseite">
+              <a href="http://www.mathphys.uni-freiburg.de/index.de.html"
+                >Fakultät</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div id="navigation-unteresmenu" class="menu statischesmenu">
+          <div class="toplevel">
+            <ul>
+              <li>
+                <a
+                  href="https://www.math.uni-freiburg.de/institut/index.html"
+                  class="haschilds"
+                  >Institut<label
+                    id="menu_label_5b6bdcee"
+                    for="menu_cb_5b6bdcee"
+                  ></label></a
+                ><input type="checkbox" class="menu_cb" id="menu_cb_5b6bdcee" />
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/institut/index.html"
+                      >Allgemeines &amp; Organisation</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/institut/anfahrt.html"
+                      >Anfahrt</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/institut/berufung/berufung2.html"
+                      class="haschilds"
+                      >Berufungsverfahren<label
+                        id="menu_label_5b6be1ee"
+                        for="menu_cb_5b6be1ee"
+                      ></label></a
+                    ><input
+                      type="checkbox"
+                      class="menu_cb"
+                      id="menu_cb_5b6be1ee"
+                    />
+                    <ul>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/institut/berufung/berufung2.html"
+                          >W3-Professur für Reine Mathematik</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/institut/berufung/berufung5.html"
+                          >W1-Professur für Reine Mathematik</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/institut/geschichte.html"
+                      >Geschichte</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  href="https://www.math.uni-freiburg.de/lehre/index.html"
+                  class="current"
+                  >Studium &amp; Lehre<label
+                    id="menu_label_5b6be702"
+                    for="menu_cb_5b6be702"
+                  ></label></a
+                ><input
+                  type="checkbox"
+                  class="menu_cb"
+                  id="menu_cb_5b6be702"
+                  checked
+                />
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/lehre/index.html"
+                      class="haschilds"
+                      >Studiengänge<label
+                        id="menu_label_5b6be888"
+                        for="menu_cb_5b6be888"
+                      ></label></a
+                    ><input
+                      type="checkbox"
+                      class="menu_cb"
+                      id="menu_cb_5b6be888"
+                    />
+                    <ul>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html"
+                          >2-Hauptfächer-Bachelor</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html"
+                          >Bachelor of Science</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-2018.html"
+                          >Master of Education</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html"
+                          >Master of Education Erweiterungsfach</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html"
+                          >Master of Science</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/promotion.html"
+                          >Promotion</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/lehre/v/index.html"
+                      class="haschilds"
+                      >Lehrveranstaltungen<label
+                        id="menu_label_5b6bf0b2"
+                        for="menu_cb_5b6bf0b2"
+                      ></label></a
+                    ><input
+                      type="checkbox"
+                      class="menu_cb"
+                      id="menu_cb_5b6bf0b2"
+                    />
+                    <ul>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/v/ws2324.html"
+                          >Wintersemester 2023/24</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/v/ss23.html"
+                          >Sommersemester 2023</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/v/ws2223.html"
+                          >Wintersemester 2022/23</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/v/ss22.html"
+                          >Sommersemester 2022</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/v/ws2122.html"
+                          >Wintersemester 2021/22</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/v/ss21.html"
+                          >Sommersemester 2021</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html"
+                      class="haschilds"
+                      >Prüfungsamt<label
+                        id="menu_label_5b6bf7e2"
+                        for="menu_cb_5b6bf7e2"
+                      ></label></a
+                    ><input
+                      type="checkbox"
+                      class="menu_cb"
+                      id="menu_cb_5b6bf7e2"
+                    />
+                    <ul>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+                          >Fristen &amp; Termine</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html"
+                          >Prüfungsanmeldung</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/modulhandbuecher.html"
+                          >Modulhandbücher</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/lehre/studienberatung.html"
+                      >Studienberatung</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/lehre/mathematikinteresse.html"
+                      >Interesse an Mathematik?</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/lehre/studieninteresse.html"
+                      class="current"
+                      >Informationen für Studieninteressierte</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/lehre/studienanfang.html"
+                      >Wegweiser für den Studienanfang</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  href="https://www.math.uni-freiburg.de/forschung/index.html"
+                  class="haschilds"
+                  >Dozenten &amp; Forschung<label
+                    id="menu_label_5b6c00f2"
+                    for="menu_cb_5b6c00f2"
+                  ></label></a
+                ><input type="checkbox" class="menu_cb" id="menu_cb_5b6c00f2" />
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/forschung/arbeitsgruppen.html"
+                      >Arbeitsgruppen</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="http://home.mathematik.uni-freiburg.de/personen/list"
+                  >Personen</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.math.uni-freiburg.de/auszeichnungen/ferdinand-von-lindemann.html"
+                  class="haschilds"
+                  >Preise &amp; Auszeichnungen<label
+                    id="menu_label_5b6c048a"
+                    for="menu_cb_5b6c048a"
+                  ></label></a
+                ><input type="checkbox" class="menu_cb" id="menu_cb_5b6c048a" />
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/auszeichnungen/ferdinand-von-lindemann.html"
+                      >Ferdinand-von-Lindemann-Preise</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/auszeichnungen/alumni.html"
+                      >Alumni-Preise</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/auszeichnungen/lehrpreis.html"
+                      >Lehrpreise der Fachschaft Mathematik</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/auszeichnungen/goldene_promotionen.html"
+                      >Goldene Promotion</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/auszeichnungen/ehrenpromotionen.html"
+                      >Ehrenpromotion</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  href="https://www.math.uni-freiburg.de/information/studinfo/index.html"
+                  class="haschilds"
+                  >Aktuelles<label
+                    id="menu_label_5b6c0b74"
+                    for="menu_cb_5b6c0b74"
+                  ></label></a
+                ><input type="checkbox" class="menu_cb" id="menu_cb_5b6c0b74" />
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/information/studinfo/"
+                      >Informationen für Studierende</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://wochenprogramm.mathematik.uni-freiburg.de/index.html"
+                      class="haschilds"
+                      >Veranstaltungskalender<label
+                        id="menu_label_5b6c0dd6"
+                        for="menu_cb_5b6c0dd6"
+                      ></label></a
+                    ><input
+                      type="checkbox"
+                      class="menu_cb"
+                      id="menu_cb_5b6c0dd6"
+                    />
+                    <ul>
+                      <li>
+                        <a
+                          href="https://wochenprogramm.mathematik.uni-freiburg.de/kolloquium.html"
+                          >Kolloquium</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://wochenprogramm.mathematik.uni-freiburg.de/woche.html"
+                          >nach Woche</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://wochenprogramm.mathematik.uni-freiburg.de/v.html"
+                          >nach Veranstaltung</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.math.uni-freiburg.de/information/stellen.html"
+                      >Stellenangebote</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="mittlerebox">
+      <a href="http://www.uni-freiburg.de"
+        ><img src="/cd2009/unilogo-200x66.gif" width="66" height="200" alt=""
+      /></a>
+    </div>
+    <div id="rechtebox">
+      <div id="oberebox">
+        <div id="logo"></div>
+        <div id="sprachwahl">
+          <ul>
+            <li><a href="?l=en">English</a></li>
+            <li><a href="?l=de">Deutsch</a></li>
+          </ul>
+        </div>
+        <div id="institution">
+          <div id="abteilung"></div>
+          <div id="institut">
+            <a href="https://www.math.uni-freiburg.de"
+              >Mathematisches Institut</a
+            >
+          </div>
+          <div id="universitaet">
+            <a href="http://www.uni-freiburg.de"
+              >Albert-Ludwigs-Universität Freiburg</a
+            >
+          </div>
+        </div>
+      </div>
+      <div id="schlitz"></div>
+      <div id="brotkrumen">
+        <ul>
+          <li><strong>Sie sind hier: </strong></li>
+          <li>
+            &gt;
+            <a href="https://www.math.uni-freiburg.de/lehre/"
+              >Studium &amp; Lehre</a
+            >
+          </li>
+          <li>
+            &gt;
+            <a
+              href="https://www.math.uni-freiburg.de/lehre/studieninteresse.html"
+              >Informationen für Studieninteressierte</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div id="grossebox">
+        <div id="inhaltwrap">
+          <div id="inhalt">
+            <h1>Informationen für Studieninteressierte</h1>
+
+            <h1 style="visibility: hidden"></h1>
+
+            <div id="startseite">
+              <h2 style="font-family: sans-serif">Videos und Multimedia</h2>
+
+              <div id="startseite-quicklinks">
+                <a
+                  href="https://www.osa.uni-freiburg.de/mathematik/gesichter/studierende/"
+                >
+                  <img
+                    src="bilder/Barbara-Hanser.jpg"
+                    title="Studierende gefragt; Videos aus dem OSA Mathematik"
+                    alt="Studierende gefragt; Videos aus dem OSA Mathematik"
+                  />
+                  <div><b>Studierende gefragt</b></div>
+                </a>
+                <a
+                  href="https://www.osa.uni-freiburg.de/mathematik/gesichter/lehrende/"
+                >
+                  <img
+                    src="bilder/Peter-Pfaffelhuber.jpg"
+                    title="Lehrende gefragt; Videos aus dem OSA Mathematik"
+                    alt="Lehrende gefragt; Videos aus dem OSA Mathematik"
+                  />
+                  <div><b>Lehrende gefragt</b></div>
+                </a>
+                <a
+                  href="https://www.osa.uni-freiburg.de/mathematik/gesichter/beratende/"
+                >
+                  <img
+                    src="bilder/Markus-Junker.jpg"
+                    title="Beratende gefragt; Videos aus dem OSA Mathematik"
+                    alt="Beratende gefragt; Videos aus dem OSA Mathematik"
+                  />
+                  <div><b>Beratende gefragt</b></div>
+                </a>
+
+                <a
+                  href=" https://www.videoportal.uni-freiburg.de/video/Mathematik-Marius-stellt-seinen-Studiengang-vor/49f286bea9e1a34a0380900b5bab8938"
+                >
+                  <img
+                    src="bilder/studint-marius.jpg"
+                    title="Marius stellt seinen Studiengang vor; Standbild aus dem Video"
+                    alt="Marius stellt seinen Studiengang vor"
+                  />
+                  <!--<video src="https://osa.uni-freiburg.de/8c047e7c-5c49-49cb-bc0e-3ad4a17bab27"></video>-->
+                  <div><b>Marius stellt seinen Studiengang vor</b></div>
+                </a>
+                <a
+                  href="https://www.osa.uni-freiburg.de/campustour/institutsviertel/"
+                >
+                  <img
+                    src="bilder/studint-rundbau-kramer.jpg"
+                    title="Campustour Institutsviertel; Hörsaal Rundbau, Foto: Martin Kramer (© Math. Institut Freiburg)"
+                    alt="Hörsaal Rundbau"
+                  />
+                  <div><b>Campustour Institutsviertel</b></div>
+                </a>
+                <a href="https://www.osa.uni-freiburg.de/mathematik">
+                  <img
+                    src="bilder/MAT_kachel_OSA-Stempel_546.jpg"
+                    title="Startseite OSA; Foto: Martin Kramer (© Math. Institut Freiburg)"
+                    alt="Startseite OSA"
+                  />
+                  <div><b>OSA (Online Studienwahl-Assistent)</b></div>
+                </a>
+
+                <a
+                  href="https://www.youtube.com/watch?v=kufHlX4WEPg&list=PL0KNNSWJHMYS7SMT8BYNEgD5pGuWISHUP"
+                >
+                  <img
+                    src="bilder/studint-oben.jpg"
+                    title="Die Uni von oben; Standbild aus dem Video, "
+                    alt="Standbild aus dem Video 'Die Uni von Oben'"
+                  />
+                  <div><b>Die Uni von oben</b></div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=M6iHIjYe69E">
+                  <img
+                    src="bilder/studint-song.jpg"
+                    title="Mathesong 'Funktionentheorie'; Standbild aus dem Video"
+                    alt="Standbild aus dem Video zum Mathesong 'Funktionentheorie'"
+                  />
+                  <div><b>Mathesong: Funktionentheorie</b></div>
+                </a>
+              </div>
+
+              <h2 style="font-family: sans-serif">Informationsseiten</h2>
+
+              <div id="startseite-quicklinks">
+                <a
+                  href="https://www.math.uni-freiburg.de/lehre/studieninteresse/warum_mathematik.html"
+                >
+                  <img
+                    src="bilder/studint-warum-kramer.jpg"
+                    title="Warum Mathematik studieren? Foto: Martin Kramer (© Math. Institut Freiburg)"
+                    alt="Symbolbild: Warum Mathematik studieren?"
+                  />
+                  <div><b>Warum Mathematik studieren?</b></div>
+                </a>
+                <a
+                  href="https://www.math.uni-freiburg.de/lehre/mathematikinteresse.html#angebote"
+                >
+                  <img
+                    src="bilder/studint-angebote-kramer.jpg"
+                    title="Angebote für Studieninteressierte; Foto: Martin Kramer (© Math. Institut Freiburg)"
+                    alt="Bild Laptop"
+                  />
+                  <div><b>Angebote für Studieninteressierte </b></div>
+                </a>
+                <a
+                  href="https://www.math.uni-freiburg.de/lehre/studieninteresse/mathestudium_in_freiburg.html#studiengaenge"
+                >
+                  <img
+                    src="bilder/studint-max2-ghasemi_weismann.jpg"
+                    title="Mathematikstudium in Freiburg; Foto: Jaro Ghasemi und Wolfgang Weismann (© Universität Freiburg)"
+                    alt="Mathematikstudium in Freiburg"
+                  />
+                  <div><b>Mathematikstudium in Freiburg</b></div>
+                </a>
+                <a
+                  href="https://www.math.uni-freiburg.de/lehre/studieninteresse/bewerbung.html"
+                >
+                  <img
+                    src="bilder/studint-eingang-meyndt-freikon784230.jpg"
+                    title="Bewerbung und Einschreibung; Foto: Sandra Meyndt (© Universität Freiburg, Freikon #784230)"
+                    alt="Studierende vorm KG I"
+                  />
+                  <div><b>Bewerbung und Einschreibung</b></div>
+                </a>
+                <a
+                  href="https://www.math.uni-freiburg.de/lehre/studienanfang.html#vorbereitung"
+                >
+                  <img
+                    src="bilder/studint-vorbereitung-kramer.jpg"
+                    title="Vorbereitung auf das Studium; Foto: Martin Kramer (© Math. Institut Freiburg)"
+                    alt="Symbolbild"
+                  />
+                  <div><b>Vorbereitung auf das Studium</b></div>
+                </a>
+                <a
+                  href="https://www.math.uni-freiburg.de/lehre/studienanfang.html"
+                >
+                  <img
+                    src="bilder/studint-schild_rundbau-junker.jpg"
+                    title="Beginn des Studiums; Foto: Markus Junker (© Math. Institut Freiburg)"
+                    alt="Hörsaal Rundbau"
+                  />
+                  <div><b>Beginn des Studiums</b></div>
+                </a>
+              </div>
+
+              <h2 style="font-family: sans-serif">
+                Anlaufstellen, Beratung, etc.
+              </h2>
+
+              <div id="startseite-quicklinks">
+                <a href="https://fachschaft-mathe-freiburg.de">
+                  <img
+                    src="bilder/studint-fachschaft.jpg"
+                    title="Fachschaft Mathematik; Foto: Jaro Ghasemi und Wolfgang Weismann (© Universität Freiburg)"
+                    alt="Fachschaft Mathematik"
+                  />
+                  <div><b>Fachschaft </b></div>
+                </a>
+                <a
+                  href="https://www.math.uni-freiburg.de/lehre/studieninteresse/freizeit.html"
+                >
+                  <img
+                    src="bilder/studint-mensa2-junker.jpg"
+                    title="Freizeit, Wohnen, Finanzierung; Foto: Markus Junker (© Math. Institut Freiburg)"
+                    alt="Park im Institutsviertel"
+                  />
+                  <div><b>Freizeit, Wohnen, Finanzierung</b></div>
+                </a>
+                <a
+                  href="https://www.math.uni-freiburg.de/lehre/studienberatung.html"
+                >
+                  <img
+                    src="bilder/studint-studienberatung-neumann.jpg"
+                    title="Studienberatung; Foto: Harald Neumann (© Universität Freiburg, Freikon #783135)"
+                    alt="Studienberatung"
+                  />
+                  <div><b>Studium</b></div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="fusszeile">
+          <ul>
+            <li>
+              <a href="https://www.math.uni-freiburg.de/impressum.html"
+                >Impressum</a
+              >
+            </li>
+            <li>
+              <a href="https://www.math.uni-freiburg.de/datenschutz.html"
+                >Datenschutz</a
+              >
+            </li>
+            <li>
+              <a href="https://www.math.uni-freiburg.de/suchen.html">Suche</a>
+            </li>
+          </ul>
+        </div>
+        <div id="lastwords">
+          <span style="float: right">
+            <a rel="nofollow" href="https://validator.w3.org/check?uri=referer"
+              >Validate</a
+            >
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

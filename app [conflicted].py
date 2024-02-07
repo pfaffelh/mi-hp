@@ -59,18 +59,6 @@ def showintereststart(lang):
     filenames = ["interesse/studienanfang.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showintereststart")
 
-@app.route("/<lang>/interesse/warum_mathematik/")
-def showinterestwarum(lang):
-    filenames = []
-    filenames = ["interesse/warum_mathematik.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestwarum")
-
-@app.route("/<lang>/interesse/matheinfreiburg/")
-def showinterestmatheinfreiburg(lang):
-    filenames = []
-    filenames = ["interesse/mathestudium_in_freiburg.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestmatheinfreiburg")
-
 @app.route("/<lang>/studiengaenge/bsc_m/")
 def showbscm(lang):
     filenames = []
@@ -111,40 +99,4 @@ def showmeddual(lang):
 def showpromotion(lang):
     filenames = ["studiengaenge/promotion.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showpromotion")
-
-@app.route("/<lang>/pruefungsamt/")
-def showpruefungsamt(lang):
-    filenames = ["pruefungsamt/index.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showpruefungsamt")
-
-@app.route("/<lang>/pruefungsamt/termine/")
-def showtermine(lang):
-    filenames = ["pruefungsamt/termine.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showtermine")
-
-@app.route("/<lang>/pruefungsamt/pruefungen/")
-def showpruefungen(lang):
-    filenames = ["pruefungsamt/pruefungen.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showpruefungen")
-
-@app.route("/<lang>/pruefungsamt/abschlussarbeiten/")
-def showabschlussarbeiten(lang):
-    filenames = ["pruefungsamt/abschlussarbeiten.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showabschlussarbeiten")
-
-@app.route("/<lang>/pruefungsamt/modulhandbuecher/")
-def showmodulhandbuecher(lang):
-    filenames = ["pruefungsamt/modulhandbuecher.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showmodulhandbuecher")
-
-@app.route("/<lang>/studienberatung/")
-def showstudienberatung(lang):
-    filenames = ["studienberatung.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienberatung")
-
-@app.route("/<lang>/mediathek/")
-def showmediathek(lang):
-    filenames = ["mediathek.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showmediathek")
-
 

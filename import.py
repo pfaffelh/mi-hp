@@ -1,46 +1,78 @@
 from bs4 import BeautifulSoup
 import requests
+import os
 
 # import studiengaenge
 files = [
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html",
+    #     "target": "templates/studiengaenge/bsc-2021.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html",
+    #     "target": "templates/studiengaenge/2hfb-2021.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/med-2018.html",
+    #     "target": "templates/studiengaenge/med-2018.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html",
+    #     "target": "templates/studiengaenge/med-erweiterung-2021.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html",
+    #     "target": "templates/studiengaenge/msc-2014.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/index.html",
+    #     "target": "templates/index.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/promotion.html",
+    #     "target": "templates/studiengaenge/promotion.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/mathematikinteresse.html",
+    #     "target": "templates/interesse/prospective.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studienanfang.html",
+    #     "target": "templates/interesse/studienanfang.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html",
+    #     "target": "templates/pruefungsamt/index.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html",
+    #     "target": "templates/pruefungsamt/termine.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html",
+    #     "target": "templates/pruefungsamt/pruefungen.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/abschlussarbeiten.html",
+    #     "target": "templates/pruefungsamt/abschlussarbeiten.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/modulhandbuecher.html",
+    #     "target": "templates/pruefungsamt/modulhandbuecher.html"
+    # },
     {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html",
-        "target": "templates/studiengaenge/bsc-2021.html"
+        "source": "https://www.math.uni-freiburg.de/lehre/studienberatung.html",
+        "target": "templates/studienberatung.html"
     },
     {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html",
-        "target": "templates/studiengaenge/2hfb-2021.html"
+        "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/warum_mathematik.html",
+        "target": "templates/interesse/warum_mathematik.html"
     },
     {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/med-2018.html",
-        "target": "templates/studiengaenge/med-2018.html"
-    },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html",
-        "target": "templates/studiengaenge/med-erweiterung-2021.html"
-    },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html",
-        "target": "templates/studiengaenge/msc-2014.html"
-    },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/index.html",
-        "target": "templates/index.html"
-    },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/promotion.html",
-        "target": "templates/studiengaenge/promotion.html"
-    },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/mathematikinteresse.html",
-        "target": "templates/interesse/prospective.html"
-    },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/studienanfang.html",
-        "target": "templates/interesse/studienanfang.html"
+        "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/mathestudium_in_freiburg.html",
+        "target": "templates/interesse/mathestudium_in_freiburg.html"
     }
 ]
-
 
 html="<html><div id='aussen'> 1 <div id='innen'> 2 </div> 3</div></html>"
 soup = BeautifulSoup(html, 'lxml')
@@ -110,13 +142,20 @@ for file in files:
             element_content.wrap(b)
 
 
-#        new_element = element_content.extract()
-#        element.insert_after(new_element)
-
-
-
-#        element.nextSibling = element_content
 
     with open(file["target"], "w") as file:
         file.write(content.prettify())
+
+
+
+# import mediathek, a local copy is in test
+
+with open("test/mediathek.html", "r") as file:
+    soup = BeautifulSoup(file.read(), 'lxml')
+    images = soup.find_all('img')
+    del images[0]
+    for image in images:
+        os.system(f"wget --no-check-certificate www.math.uni-freiburg.de/lehre/{image['src']}")
+        x = image["src"].replace("bilder/", "")
+        os.system(f"mv {x} static/Bilder")
 
