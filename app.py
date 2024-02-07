@@ -1,7 +1,8 @@
 from flask import Flask, url_for, render_template
-import markdown
+# import markdown
 import locale
 import logging
+import json
 import os
 
 app = Flask(__name__)
@@ -147,4 +148,39 @@ def showmediathek(lang):
     filenames = ["mediathek.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmediathek")
 
+@app.route("/<lang>/calendardemo/")
+def showcalendardemo(lang):
+    event = {
+        "start": '2024-02-14 10:00:00',
+        "end": '2024-02-14 11:00:00',
+        "title": 'Dualer Master',
+        "description": 'Online-Besprechung',
+        "responsible": 'Anna Rosen',
+        "backgroundColor": '#ccffcc',
+        "striped": True, 
+    }
+    return render_template("calendar_demo.html", event = event, lang=lang, site = "showcalendardemo")
+
+@app.route("/<lang>/calendar/")
+def showcalendar(lang):
+    events = [
+    {
+        "start": '2024-02-14 10:00:00',
+        "end": '2024-02-14 11:00:00',
+        "title": 'Dualer Master',
+        "description": 'Online-Besprechung',
+        "responsible": 'Anna Rosen',
+        "backgroundColor": '#ccffcc',
+        "striped": True, 
+    },
+    {
+        "start": '2024-02-08 13:00:00',
+        "end": '2024-02-08 14:00:00',
+        "title": 'Tutoratsvergabe',
+        "description": 'n!',
+        "responsible": 'Studiendekan',
+        "backgroundColor": '#ccffcc'
+    },    
+    ]
+    return render_template("calendar.html", events = events, lang=lang, site = "showcalendar")
 

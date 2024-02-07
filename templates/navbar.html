@@ -152,6 +152,11 @@
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showcalendar', lang = lang) }}"
+                  >{% if lang == "de" %}Kalender{% else %}Calendar{% endif %}</a
+                >
+              </li>
+              <li>
                 <a class="dropdown-item text-black" href="{{ url_for('showtermine', lang = lang) }}"
                   >{% if lang == "de" %}Fristen und Termine{% else %}Deadlines and dates{% endif %}</a
                 >
