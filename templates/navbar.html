@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand-xl" style="background-color: #004a99">
+<header class="navbar navbar-expand-xl bg-ufr-blue">
   <nav class="navbar navbar-expand-xl navbar-dark">
     <div class="container-fluid">
       <button
@@ -68,9 +68,15 @@
                 <a class="dropdown-item text-black" href="{{ url_for('showbscm', lang = lang) }}">Bachelor of Science {% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
               </li>
               <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showstudienverlaufbsc', lang = lang) }}">Bachelor of Science Studienverlauf{% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
+              </li>
+              <li>
                 <a class="dropdown-item text-black" href="{{ url_for('showmsc', lang = lang) }}"
                   >Master of Science {% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a
                 >
+              </li>
+              <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showstudienverlaufmsc', lang = lang) }}">MSc Studienverlauf{% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
               </li>
               <li>
                 <a class="dropdown-item text-black" href="{{ url_for('showmscdata', lang = lang) }}"</a> 
@@ -84,9 +90,15 @@
                 >
               </li>
               <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showstudienverlauf2hfb', lang = lang) }}">2-Hf-B Studienverlauf{% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
+              </li>
+              <li>
                 <a class="dropdown-item text-black" href="{{ url_for('showmed', lang = lang) }}"
                   >Master of Education</a
                 >
+              </li>
+              <li>
+                <a class="dropdown-item text-black" href="{{ url_for('showstudienverlaufmed', lang = lang) }}">MEd Studienverlauf{% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
               </li>
               <li>
                 <a class="dropdown-item text-black" href="{{ url_for('showmederw', lang = lang) }}"

@@ -78,6 +78,24 @@ def showbscm(lang):
     filenames = ["studiengaenge/bsc-2021.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showbscm")
 
+@app.route("/<lang>/studiengaenge/studienverlauf-bsc-2021/")
+def showstudienverlaufbsc(lang):
+    filenames = []
+    filenames = ["studiengaenge/studienverlauf-bsc-2021.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienverlaufbsc")
+
+@app.route("/<lang>/studiengaenge/studienverlauf-msc-2014/")
+def showstudienverlaufmsc(lang):
+    filenames = []
+    filenames = ["studiengaenge/studienverlauf-msc-2014.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienverlaufmsc")
+
+@app.route("/<lang>/studiengaenge/studienverlauf-2hf-b/")
+def showstudienverlauf2hfb(lang):
+    filenames = ["studiengaenge/studienverlauf-2hfb-2021.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienverlauf2hfb")
+
+
 @app.route("/<lang>/studiengaenge/2hfb/")
 def show2hfb(lang):
     filenames = ["studiengaenge/2hfb-2021.html"]
@@ -87,6 +105,13 @@ def show2hfb(lang):
 def showmed(lang):
     filenames = ["studiengaenge/med-2018.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmed")
+
+@app.route("/<lang>/studiengaenge/studienverlauf-med/")
+def showstudienverlaufmed(lang):
+    filenames = ["studiengaenge/studienverlauf-med-2018.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienverlaufmed")
+
+
 
 @app.route("/<lang>/studiengaenge/med_erw/")
 def showmederw(lang):
@@ -148,18 +173,7 @@ def showmediathek(lang):
     filenames = ["mediathek.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmediathek")
 
-@app.route("/<lang>/calendardemo/")
-def showcalendardemo(lang):
-    event = {
-        "start": '2024-02-14 10:00:00',
-        "end": '2024-02-14 11:00:00',
-        "title": 'Dualer Master',
-        "description": 'Online-Besprechung',
-        "responsible": 'Anna Rosen',
-        "backgroundColor": '#ccffcc',
-        "striped": True, 
-    }
-    return render_template("calendar_demo.html", event = event, lang=lang, site = "showcalendardemo")
+
 
 @app.route("/<lang>/calendar/")
 def showcalendar(lang):

@@ -60,17 +60,33 @@ files = [
     #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/modulhandbuecher.html",
     #     "target": "templates/pruefungsamt/modulhandbuecher.html"
     # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studienberatung.html",
+    #     "target": "templates/studienberatung.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/warum_mathematik.html",
+    #     "target": "templates/interesse/warum_mathematik.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/mathestudium_in_freiburg.html",
+    #     "target": "templates/interesse/mathestudium_in_freiburg.html"
+    # },
     {
-        "source": "https://www.math.uni-freiburg.de/lehre/studienberatung.html",
-        "target": "templates/studienberatung.html"
+        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-bsc-2021.html",
+        "target": "templates/studiengaenge/studienverlauf-bsc-2021.html"
     },
     {
-        "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/warum_mathematik.html",
-        "target": "templates/interesse/warum_mathematik.html"
+        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-2hfb-2021.html",
+        "target": "templates/studiengaenge/studienverlauf-2hfb-2021.html"
     },
     {
-        "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/mathestudium_in_freiburg.html",
-        "target": "templates/interesse/mathestudium_in_freiburg.html"
+        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-msc-2014.html",
+        "target": "templates/studiengaenge/studienverlauf-msc-2014.html"
+    },
+    {
+        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-med-2018.html",
+        "target": "templates/studiengaenge/studienverlauf-med-2018.html"
     }
 ]
 
@@ -150,12 +166,53 @@ for file in files:
 
 # import mediathek, a local copy is in test
 
-with open("test/mediathek.html", "r") as file:
-    soup = BeautifulSoup(file.read(), 'lxml')
-    images = soup.find_all('img')
-    del images[0]
-    for image in images:
-        os.system(f"wget --no-check-certificate www.math.uni-freiburg.de/lehre/{image['src']}")
-        x = image["src"].replace("bilder/", "")
-        os.system(f"mv {x} static/Bilder")
+# with open("test/mediathek.html", "r") as file:
+#     soup = BeautifulSoup(file.read(), 'lxml')
+#     images = soup.find_all('img')
+#     del images[0]
+#     for image in images:
+#         os.system(f"wget --no-check-certificate www.math.uni-freiburg.de/lehre/{image['src']}")
+#         x = image["src"].replace("bilder/", "")
+#         os.system(f"mv {x} static/Bilder")
+
+
+# change colors
+# This is the color translation
+trans = {
+    "#ffff66": "bg-ufr-yellow",
+    "#ffffb3": "bg-ufr-yellow-80",
+    "#af8daa": "bg-ufr-pink",
+    "#e6e666": "bg-ufr-yellow-60",
+    "#6e99d4": "bg-ufr-blue-60",
+    "#cce666": "bg-ufr-yellow-40",
+    "#ffd058": "bg-ufr-sand",
+    "#d7d7e7": "bg-ufr-blue-20",
+    "#e7e7e7": "bg-ufr-blue-40",  
+    "#da9292": "bg-ufr-green",  
+    "#cfd096": "bg-ufr-green-60",
+    "#dae3ea": "bg-ufr-green-20",
+    "#dddddd": "bg-white"
+}
+
+filenames = ["templates/studiengaenge/studienverlauf-bsc-2021.html",
+             "templates/studiengaenge/studienverlauf-2hfb-2021.html",
+             "templates/studiengaenge/msc-2014.html",
+             "templates/studiengaenge/studienverlauf-msc-2014.html",
+             "templates/studiengaenge/studienverlauf-med-2018.html"]
+for filename in filenames:
+    with open(filename, "r") as file:
+        soup = BeautifulSoup(file.read(), 'lxml')
+        print(soup)
+        colored_fields = soup.find_all(True, {'bgcolor': True})
+        for field in colored_fields:
+            col = field["bgcolor"] 
+            field["bgcolor"] = None
+            try:
+                field["class"] = trans[col]
+            except:
+                print("not workin")
+        html = soup.prettify()
+        print(soup)
+    with open(filename, "w") as file:
+        file.write(html)
 
