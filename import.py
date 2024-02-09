@@ -22,7 +22,7 @@ files = [
     # },
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html",
-    #     "target": "templates/studiengaenge/msc-2014.html"
+    #     "target": "templates/studiengaenge/msc-2014-alt.html"
     # },
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/index.html",
@@ -179,34 +179,35 @@ for file in files:
 # change colors
 # This is the color translation
 trans = {
-    "#ffff66": "bg-ufr-yellow",
-    "#ffffb3": "bg-ufr-yellow-80",
-    "#af8daa": "bg-ufr-pink",
-    "#e6e666": "bg-ufr-yellow-60",
-    "#6e99d4": "bg-ufr-blue-60",
-    "#cce666": "bg-ufr-yellow-40",
-    "#ffd058": "bg-ufr-sand",
-    "#d7d7e7": "bg-ufr-blue-20",
-    "#e7e7e7": "bg-ufr-blue-40",  
-    "#da9292": "bg-ufr-green",  
-    "#cfd096": "bg-ufr-green-60",
-    "#dae3ea": "bg-ufr-green-20",
+    "#ffd058": "abschlussarbeit",
+    "#f0db5f": "praesentation-abschlussarbeit",
+    "#d7d7e7": "bg-ufr-blue-20", # Zeilen der Tabelle
+    "#ffff66": "mathematik",
+    "#e6e666": "seminar",
+    "#af8daa": "wahlmodul", 
+    "#cce666": "bok",
+    "#ffffb3": "mathematik-weitere",
+    "#6e99d4": "anwendungsfach",
+    "#e7e7e7": "bg-white",  
+    "#da9292": "fachdidaktik",  
+    "#cfd096": "bildungswissenschaft",
     "#dddddd": "bg-white"
 }
 
 filenames = ["templates/studiengaenge/studienverlauf-bsc-2021.html",
              "templates/studiengaenge/studienverlauf-2hfb-2021.html",
              "templates/studiengaenge/msc-2014.html",
-             "templates/studiengaenge/studienverlauf-msc-2014.html",
+             "templates/studiengaenge/studienverlauf-msc-2014-alt.html",
              "templates/studiengaenge/studienverlauf-med-2018.html"]
 for filename in filenames:
     with open(filename, "r") as file:
         soup = BeautifulSoup(file.read(), 'lxml')
         print(soup)
         colored_fields = soup.find_all(True, {'bgcolor': True})
+        colored_fields.extend(soup.find_all(True, {'background-color': True}))        
         for field in colored_fields:
             col = field["bgcolor"] 
-            field["bgcolor"] = None
+            del field["bgcolor"]
             try:
                 field["class"] = trans[col]
             except:
