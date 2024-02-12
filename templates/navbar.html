@@ -26,29 +26,59 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {% if lang == "de" %}Mathematik studieren in Freiburg!?{% else
-              %}Studying Mathematics in Freiburg!?{% endif %}</a
+              {% if lang == "de" %}Mathematik in Freiburg{% else %}Mathematics
+              in Freiburg{% endif %}</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showinterestprospective', lang = lang) }}"
-                  >{% if lang == "de" %}Informationen für Studieninteressierte{% else %} Information for prospective students{% endif %}</a
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showinterestprospective', lang = lang) }}"
+                  >{% if lang == "de" %}Angebote für Schüler:innen{% else %}
+                  Information for prospective students{% endif %}</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showinterestwarum', lang = lang) }}"
-                  >{% if lang == "de" %}Warum Mathematik?{% else %} Why mathematics?{% endif %}</a
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showinterestprospective', lang = lang) }}"
+                  >{% if lang == "de" %}Angebote für alle{% else %} Information
+                  for everybody{% endif %}</a
+                >
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showinterestwarum', lang = lang) }}"
+                  >{% if lang == "de" %}Warum Mathematik?{% else %} Why
+                  mathematics?{% endif %}</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showinterestmatheinfreiburg', lang = lang) }}"
-                  >{% if lang == "de" %}Mathestudium in Freiburg{% else %}Studying mathematics in Freiburg{% endif %}</a
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showinterestmatheinfreiburg', lang = lang) }}"
+                  >{% if lang == "de" %}Mathestudium in Freiburg{% else
+                  %}Studying mathematics in Freiburg{% endif %}</a
                 >
               </li>
+              <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showintereststart', lang = lang) }}"
-                  >{% if lang == "de" %}Wegweiser für den Studienanfang{% else %}Guide to starting your studies{% endif %} </a
-                >
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showintereststart', lang = lang) }}"
+                  >{% if lang == "de" %}Schwerpunktgebiete{% else %}Focus
+                  areas{% endif %}
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showintereststart', lang = lang) }}"
+                  >{% if lang == "de" %}Wegweiser für den Studienanfang{% else
+                  %}Guide to starting your studies{% endif %}
+                </a>
               </li>
             </ul>
           </li>
@@ -61,62 +91,72 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {% if lang == "de" %}Studiengänge{% else %}Study programs{% endif %}</a
+              {% if lang == "de" %}Studiengänge{% else %}Study programs{% endif
+              %}</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showbscm', lang = lang) }}">Bachelor of Science {% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showstudienverlaufbsc', lang = lang) }}">Bachelor of Science Studienverlauf{% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showmsc', lang = lang) }}"
-                  >Master of Science {% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showbsc', lang = lang) }}"
+                  >Bachelor of Science {% if lang == "de" %}Mathematik{% else
+                  %}Mathematics{% endif %}</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showstudienverlaufmsc', lang = lang) }}">MSc Studienverlauf{% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showmsc', lang = lang) }}"
+                  >Master of Science {% if lang == "de" %}Mathematik{% else
+                  %}Mathematics{% endif %}</a
+                >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showmscdata', lang = lang) }}"</a> 
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showmscdata', lang = lang) }}"
+                >
                   Master of Science Mathematics in Data and Technology</a
                 >
               </li>
-              <li><hr class="dropdown-divider"></li>
+              <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('show2hfb', lang = lang) }}"
-                  >{% if lang == "de" %}Polyvalenter Zwei-Hauptfächer Bachelor{% else %}Polyvalent Two-Major Bachelor{% endif %}</a
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('show2hfb', lang = lang) }}"
+                  >{% if lang == "de" %}Polyvalenter Zwei-Hauptfächer Bachelor{%
+                  else %}Polyvalent Two-Major Bachelor{% endif %}</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showstudienverlauf2hfb', lang = lang) }}">2-Hf-B Studienverlauf{% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showmed', lang = lang) }}"
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showmed', lang = lang) }}"
                   >Master of Education</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showstudienverlaufmed', lang = lang) }}">MEd Studienverlauf{% if lang == "de" %}Mathematik{% else %}Mathematics{% endif %}</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showmederw', lang = lang) }}"
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showmederw', lang = lang) }}"
                   >Master of Education Erweiterungsfach</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showmeddual', lang = lang) }}"
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showmeddual', lang = lang) }}"
                   >Master of Education gymnasiales Lehramt -- dual</a
                 >
               </li>
-              <li><hr class="dropdown-divider"></li>
+              <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showpromotion', lang = lang) }}"
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showpromotion', lang = lang) }}"
                   >{% if lang == "de" %}Promotion{% else %}PhD{% endif %}</a
                 >
               </li>
-              
             </ul>
           </li>
           <li class="nav-item dropdown px-3">
@@ -160,41 +200,64 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {% if lang == "de" %}Prüfungsamt{% else %}Examination office{% endif %}</a
+              {% if lang == "de" %}Prüfungsamt{% else %}Examination office{%
+              endif %}</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showcalendar', lang = lang) }}"
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showcalendar', lang = lang) }}"
                   >{% if lang == "de" %}Kalender{% else %}Calendar{% endif %}</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showtermine', lang = lang) }}"
-                  >{% if lang == "de" %}Fristen und Termine{% else %}Deadlines and dates{% endif %}</a
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showtermine', lang = lang) }}"
+                  >{% if lang == "de" %}Fristen und Termine{% else %}Deadlines
+                  and dates{% endif %}</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showpruefungen', lang = lang) }}"
-                  >{% if lang == "de" %}Prüfungsanmeldung{% else %}Exam registration{% endif %}</a
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showpruefungen', lang = lang) }}"
+                  >{% if lang == "de" %}Prüfungsanmeldung{% else %}Exam
+                  registration{% endif %}</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showabschlussarbeiten', lang = lang) }}"
-                  >{% if lang == "de" %}Abschlussarbeiten{% else %}Final theses{% endif %}</a
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showabschlussarbeiten', lang = lang) }}"
+                  >{% if lang == "de" %}Abschlussarbeiten{% else %}Final
+                  theses{% endif %}</a
                 >
               </li>
               <li>
-                <a class="dropdown-item text-black" href="{{ url_for('showmodulhandbuecher', lang = lang) }}"
-                  >{% if lang == "de" %}Modulhandbücher{% else %}Module manuals{% endif %}</a
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showmodulhandbuecher', lang = lang) }}"
+                  >{% if lang == "de" %}Modulhandbücher{% else %}Module
+                  manuals{% endif %}</a
                 >
               </li>
             </ul>
           </li>
           <li class="nav-item px-3">
-            <a class="nav-link text-white" href="{{ url_for('showstudienberatung', lang = lang) }}">Studienberatung</a>
+            <a
+              class="nav-link text-white"
+              href="{{ url_for('showstudienberatung', lang = lang) }}"
+              >Studienberatung</a
+            >
           </li>
           <li class="nav-item px-3">
-            <a class="nav-link text-white" href="{{ url_for('showmediathek', lang = lang) }}">Mediathek</a>
+            <a
+              class="nav-link text-white"
+              href="{{ url_for('showmediathek', lang = lang) }}"
+              >Mediathek</a
+            >
           </li>
         </ul>
       </div>

@@ -56,7 +56,9 @@
             </tr>
             <tr>
               <td>{% if lang == "de" %}Dauer{% else %}Duration{% endif %}</td>
-              <td>{% if lang == "de" %}4 Semester{% else %}4 semesters{% endif %}</td>
+              <td>
+                {% if lang == "de" %}4 Semester{% else %}4 semesters{% endif %}
+              </td>
             </tr>
             <tr>
               <td>ECTS</td>
@@ -64,11 +66,19 @@
             </tr>
             <tr>
               <td>Start</td>
-              <td>{% if lang == "de" %}Wintersemester{% else %}Winter term{% endif %}</td>
+              <td>
+                {% if lang == "de" %}Wintersemester{% else %}Winter term{% endif
+                %}
+              </td>
             </tr>
             <tr>
-              <td>{% if lang == "de" %}Zulassung{% else %}Admission{% endif %}</td>
-              <td>{% if lang == "de" %}keine Beschränkung{% else %}without restriction{% endif %}</td>
+              <td>
+                {% if lang == "de" %}Zulassung{% else %}Admission{% endif %}
+              </td>
+              <td>
+                {% if lang == "de" %}keine Beschränkung{% else %}without
+                restriction{% endif %}
+              </td>
             </tr>
             <tr>
               <td>{% if lang == "de" %}Sprache{% else %}language{% endif %}</td>

@@ -1,0 +1,125 @@
+<div class="container" id="inhalt">
+  <h1>Master of Science Mathematics in Data and Technology (PO 2024)</h1>
+  <p>
+    {% if lang == "de" %} Bei Fragen können Sie sich gerne an die
+    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+      Studienberatung des Mathematischen Instituts
+    </a>
+    <a href="mailto:studienberatung@math.uni-freiburg.de"></a> wenden. {% else
+    %} If you have any questions, please contact
+    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+      Student Advisory Service of the Institute of Mathematics
+    </a>
+    <a href="mailto:studienberatung@math.uni-freiburg.de"></a>.{% endif %}
+  </p>
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item" id="kurz">
+      <h3 class="accordion-header" id="headerkurz">
+        <button
+          type="button"
+          class="accordion-button"
+          style="background-color: #f6f1e3"
+          data-bs-target="#kurzContent"
+          aria-controls="kurzContent"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == "de" %} Kurzbeschreibung {% else %} Short profile {%
+            endif %}
+          </h3>
+        </button>
+      </h3>
+      <div aria-labelledby="kurzContent" class="accordion-collapse collapse {%
+      if anchor == "kurzbeschreibung" %}show{% endif %}"
+      data-bs-parent="#accordionExample" id="kurzContent">
+      <div class="accordion-body">
+        {% include "/studiengaenge/msc_data/kurzbeschreibung.html" %}
+      </div>
+    </div>
+    <div class="accordion-item" id="bewerbung">
+      <h4 class="accordion-header" id="headerbewerbung">
+        <button
+          aria-controls="bewerbungContent"
+          aria-expanded="false"
+          class="accordion-button"
+          style="background-color: #f6f1e3"
+          data-bs-target="#bewerbungContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">{% if lang == "de" %}Bewerbung{% else %}Application {% endif %}</h3>
+        </button>
+      </h4>
+      <div aria-labelledby="bewerbungContent" class="accordion-collapse collapse
+      {% if anchor == "bewerbung" %}show{% endif %}"
+      data-bs-parent="#accordionExample" id="bewerbungContent" >
+      <div class="accordion-body">
+        {% include "/studiengaenge/msc/bewerbung.html" %}
+      </div>
+    </div>
+    <div class="accordion-item" id="dokumente">
+      <h4 class="accordion-header" id="headerdokumente">
+        <button
+          aria-controls="dokumenteContent"
+          aria-expanded="false"
+          class="accordion-button"
+          style="background-color: #f6f1e3"
+          data-bs-target="#dokumenteContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">{% if lang == "de" %}Dokumente{% else %}Documents {% endif %}</h3>
+        </button>
+      </h4>
+      <div aria-labelledby="dokumenteContent" class="accordion-collapse collapse
+      {% if anchor == "dokumente" %}show{% endif %}"
+      data-bs-parent="#accordionExample" id="dokumenteContent" >
+      <div class="accordion-body">
+        {% include "studiengaenge/msc_data/dokumente.html" %}
+      </div>
+    </div>
+    <div class="accordion-item" id="verlauf">
+      <h3 class="accordion-header" id="headerverlauf">
+        <button
+          aria-controls="verlaufContent"
+          aria-expanded="false"
+          class="accordion-button"
+          style="background-color: #f6f1e3"
+          data-bs-target="#verlaufContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">{% if lang == "de" %}Studienverlauf{% else %}Study program {% endif %}</h3>
+        </button>
+      </h3>
+      <div aria-labelledby="verlaufContent" class="accordion-collapse collapse
+      {% if anchor == "studienverlauf" %}show{% endif %}"
+      data-bs-parent="#accordionExample" id="verlaufContent" >
+      <div class="accordion-body">
+        {% include "/studiengaenge/msc_data/studienverlauf.html" %}
+      </div>
+    </div>
+    <div class="accordion-item" id="studienplan">
+      <h3 class="accordion-header" id="headerstudienplan">
+        <button
+          aria-controls="studienplanContent"
+          aria-expanded="false"
+          class="accordion-button"
+          style="background-color: #f6f1e3"
+          data-bs-target="#studienplanContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">{% if lang == "de" %}Studienorganisation{% else %}Organisation of studies {% endif %}</h3>
+        </button>
+      </h3>
+      <div aria-labelledby="studienplanContent" class="accordion-collapse
+      collapse {% if anchor == "studienorganisation" %}show{% endif %}"
+      data-bs-parent="#accordionExample" id="studienplanContent" >
+      <div class="accordion-body">
+        {% include "/studiengaenge/msc_data/studienorganisation.html" %}
+      </div>
+    </div>
+  </div>
+</div>

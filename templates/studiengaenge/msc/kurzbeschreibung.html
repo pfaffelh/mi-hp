@@ -1,0 +1,75 @@
+<div class="row align-items-center g-4 py-5 row-cols-1 row-cols-lg-2">
+  <div class="feature col">
+    <p>
+      Der Studiengang vermittelt vertiefte Kenntnisse im Bereich der Mathematik
+      mit dem Ziel des selsbtständigen wissenschaftlichen Arbeitens. Die
+      Studierenden können, bis auf Minimalanforderungen an die Breite des
+      Studiums, frei aus dem Vorlesungsangebot wählen und können sich nach
+      eigenem Interesse in einem unserer Schwerpunktgebiete (xxx Link zu den
+      Studienverläufen) vertiefen:
+    </p>
+    <ul>
+      <li>Algebra und Zahlentheorie,</li>
+      <li>Analysis,</li>
+      <li>Angewandte Analysis und Numerik,</li>
+
+      <li>Geometrie und Topologie,</li>
+      <li>Mathematische Logik,</li>
+      <li>Mathematische Stochastik.</li>
+    </ul>
+    <p>
+      Die
+      <b> Spezialisierung Finanzmathematik </b>
+      wird auf dem Zeugnis besonders ausgewiesen. Sie ergänzt die mathematische
+      Vertiefung durch wirtschaftswissenschaftliche Spezialisierungsmodule.
+    </p>
+  </div>
+  <div class="feature col">
+    <h2></h2>
+    <div>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td>{% if lang == "de" %}Abschluss{% else %}Degree{% endif %}</td>
+            <td>Master of Science</td>
+          </tr>
+          <tr>
+            <td>{% if lang == "de" %}Dauer{% else %}Duration{% endif %}</td>
+            <td>
+              {% if lang == "de" %}4 Semester{% else %}4 semesters{% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>ECTS</td>
+            <td>120</td>
+          </tr>
+          <tr>
+            <td>Start</td>
+            <td>
+              {% if lang == "de" %}Winter- und Sommersemester{% else %}Winter
+              and summer term{% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {% if lang == "de" %}Voraussetzung{% else %}Prerequisites{% endif
+              %}
+            </td>
+            <td>
+              {% if lang == "de" %}BSc mit mindestens
+              <u data-bs-toggle="tooltip" title="Details siehe Bewerbung"
+                >103 ECTS</u
+              >
+              Mathematik{% else %}BSc with at least 103 ECTS of mathematics{%
+              endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>{% if lang == "de" %}Sprache{% else %}language{% endif %}</td>
+            <td>{% if lang == "de" %}Deutsch{% else %}German{% endif %}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
