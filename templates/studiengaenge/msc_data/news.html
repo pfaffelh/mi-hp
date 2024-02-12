@@ -1,6 +1,6 @@
 <div class="container" id="featured-3">
-  <h2>MSc Mathematics in Data and Technology</h2>
-  <div class="row align-items-center g-4 py-5 row-cols-1 row-cols-lg-2">
+  <h1>MSc Mathematics in Data and Technology</h1>
+  <div class="row align-items-center g-4 py-2 row-cols-1 row-cols-lg-2">
     <div class="feature col">
       <h2>Short profile</h2>
       <p>
@@ -84,6 +84,17 @@
               <td>{% if lang == "de" %}Sprache{% else %}language{% endif %}</td>
               <td>{% if lang == "de" %}Englisch{% else %}english{% endif %}</td>
             </tr>
+            <tr>
+              <td>
+                {% if lang == "de" %}mehr Informationen{% else %}more
+                information{% endif %}
+              </td>
+              <td>
+                <a href="{{url_for('showmscdata', anchor='none', lang=lang)}}"
+                  >{% if lang == "de" %}hier{% else %}here{% endif %}</a
+                >
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -100,22 +111,32 @@
       </div>
       <div>
         <p>
-          Paragraph of text beneath the heading to explain the heading. We'll
-          add onto it with another sentence and probably just keep going until
-          we run out of words.
+          You need a Bachelor's degree with a minimum of 30 credits in
+          Mathematics, including 12 credits in foundations of calculus and
+          linear algebra. In english, you must have B2. More information is
+          <a href="{{url_for('showmscdata', lang=lang, anchor='bewerbung')}}"
+            >here.</a
+          >
         </p>
       </div>
     </div>
     <div class="feature col">
       <div class="feature-icon bg-gradient text-center">
-        <h2><i class="fa fa-calendar fa-4" aria-hidden="true"></i></h2>
+        <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
         <h2>Curriculum</h2>
       </div>
       <div>
         <p>
-          Paragraph of text beneath the heading to explain the heading. We'll
-          add onto it with another sentence and probably just keep going until
-          we run out of words.
+          You will obtain solid foundation in mathematics in a basic course, and
+          an additional advanced course in applied mathematics. In the
+          electives, you can choose from modules such as numerical optimization,
+          numerics for partial differential equations, neural nets, financial
+          mathematics, dynamical systems in biology, econometrics, computer
+          vision, automated machine learning, etc. More information can be found
+          <a
+            href="{{url_for('showmscdata', anchor='studienverlauf', lang=lang)}}"
+            >here</a
+          >
         </p>
       </div>
     </div>
@@ -126,9 +147,10 @@
       </div>
       <div>
         <p>
-          Paragraph of text beneath the heading to explain the heading. We'll
-          add onto it with another sentence and probably just keep going until
-          we run out of words.
+          We strongly believe that Mathemtics is the foundation of data science
+          and technology. In order to provide the necessary skills areas such as
+          numerical mathematics, optimization, and probability theory, you take
+          part in various courses from the study program in the MSc Mathematics.
         </p>
       </div>
     </div>
@@ -139,24 +161,11 @@
       </div>
       <div>
         <p>
-          Paragraph of text beneath the heading to explain the heading. We'll
-          add onto it with another sentence and probably just keep going until
-          we run out of words.
-        </p>
-      </div>
-    </div>
-    <div class="feature col">
-      <div class="feature-icon bg-gradient text-center">
-        <h2>
-          <i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i>
-        </h2>
-        <h2>Modules</h2>
-      </div>
-      <div>
-        <p>
-          Paragraph of text beneath the heading to explain the heading. We'll
-          add onto it with another sentence and probably just keep going until
-          we run out of words.
+          Transforming the fundamentals to applications mostly required the
+          knowledge to showcase your project using an implementation. Although
+          programming skills are not required upon admission, coding will be an
+          important part of the basic module, and will be strengthened in a
+          specific coding module.
         </p>
       </div>
     </div>
@@ -167,44 +176,29 @@
       </div>
       <div>
         <p>
-          Paragraph of text beneath the heading to explain the heading. We'll
-          add onto it with another sentence and probably just keep going until
-          we run out of words.
+          The programming project can be exchanged by an industrial placement
+          (interneship) of at least six weeks. As examples, we have connections
+          to various local companies, including Sick, Baloise, LBBW, Allianz,
+          Fraunhofer, Bosch.
         </p>
       </div>
     </div>
     <div class="feature col">
       <div class="feature-icon bg-gradient text-center">
         <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
-        <h2>Perspecitves</h2>
+        <h2>Freiburg</h2>
       </div>
       <div>
         <p>
-          Paragraph of text beneath the heading to explain the heading. We'll
-          add onto it with another sentence and probably just keep going until
-          we run out of words.
+          Freiburg is a lovely town at the foot of the black forest. It is a
+          green city with many bicycles and opportunities to spend your free
+          time. The University of Freiburg not only has a long tradition
+          covering all areas from science and the humanities, but is also very
+          active in research, as shown by its success in the excellence
+          initiative. The mathematical institute, which hosts most of this study
+          program, covers a wide range of topics, from mathematical logic to
+          machine learning.
         </p>
-      </div>
-    </div>
-    <div class="feature col">
-      <div class="feature-icon bg-gradient text-center">
-        <h2>
-          <i class="fa fa-download fa-4" aria-hidden="true"></i>
-        </h2>
-        <h2>Downloads</h2>
-      </div>
-      <div>
-        <p>
-          Paragraph of text beneath the heading to explain the heading. We'll
-          add onto it with another sentence and probably just keep going until
-          we run out of words.
-        </p>
-        <a href="#" class="icon-link">
-          Download 1
-          <svg class="bi" width="1em" height="1em">
-            <use xlink:href="#chevron-right" />
-          </svg>
-        </a>
       </div>
     </div>
   </div>

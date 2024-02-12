@@ -89,57 +89,55 @@ def showstudienverlaufmsc(lang):
     filenames = ["studiengaenge/studienverlauf-msc-2014.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienverlaufmsc")
 
-@app.route("/<lang>/studiengaenge/studienverlauf-2hf-b/")
-def showstudienverlauf2hfb(lang):
-    filenames = ["studiengaenge/studienverlauf-2hfb-2021.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienverlauf2hfb")
-
-
 ## Studiengaenge
 
 @app.route("/<lang>/studiengaenge/2hfb/")
 @app.route("/<lang>/studiengaenge/2hfb/<anchor>")
-def show2hfb(lang, anchor="kurzContent"):
-    filenames = ["studiengaenge/2hfb/2hfb-2021.html"]
+def show2hfb(lang, anchor="kurzbeschreibung"):
+    filenames = ["studiengaenge/2hfb/index-2021.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "show2hfb")
 
 @app.route("/<lang>/studiengaenge/med/")
 @app.route("/<lang>/studiengaenge/med/<anchor>")
-def showmed(lang, anchor="kurzContent"):
-    filenames = ["studiengaenge/med/med-2018.html"]
+def showmed(lang, anchor="kurzbeschreibung"):
+    filenames = ["studiengaenge/med/index-2018.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showmed")
 
 @app.route("/<lang>/studiengaenge/med_erw/")
 @app.route("/<lang>/studiengaenge/med_erw/<anchor>")
-def showmederw(lang, anchor="kurzContent"):
-    filenames = ["studiengaenge/med_erw/med-erweiterung-2021.html"]
+def showmederw(lang, anchor="kurzbeschreibung"):
+    filenames = ["studiengaenge/med_erw/index-2021.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showmederw")
 
 @app.route("/<lang>/studiengaenge/msc/")
 @app.route("/<lang>/studiengaenge/msc/<anchor>")
-def showmsc(lang, anchor = "kurzContent"):
+def showmsc(lang, anchor = "kurzbeschreibung"):
     filenames = ["studiengaenge/msc/index-2014.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showmsc")
 
 @app.route("/<lang>/studiengaenge/msc_data/")
 @app.route("/<lang>/studiengaenge/msc_data/<anchor>")
-def showmscdata(lang, anchor = "kurzContent"):
+def showmscdata(lang, anchor = "kurzbeschreibung"):
 #    filenames = ["studiengaenge/msc_data_carousel.html","studiengaenge/mscdata-2024.html"]
     filenames = ["studiengaenge/msc_data/index-2024.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showmscdata")
 
+@app.route("/<lang>/studiengaenge/msc_data/news/")
+def showmscdatanews(lang):
+    filenames = ["studiengaenge/msc_data/carousel.html", "studiengaenge/msc_data/news.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showmscdatanews")
+
 @app.route("/<lang>/studiengaenge/med_dual/")
 @app.route("/<lang>/studiengaenge/med_dual/<anchor>")
-def showmeddual(lang, anchor="kurzContent"):
+def showmeddual(lang, anchor="kurzbeschreibung"):
     filenames = ["studiengaenge/med_dual/index-2024.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showmeddual")
 
 @app.route("/<lang>/studiengaenge/promotion/")
 @app.route("/<lang>/studiengaenge/promotion/<anchor>")
-def showpromotion(lang, anchor="kurzContent"):
+def showpromotion(lang, anchor="kurzbeschreibung"):
     filenames = ["studiengaenge/promotion/index.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showpromotion")
-
 
 ## Prüfungsamt
 

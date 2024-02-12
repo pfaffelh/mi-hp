@@ -56,21 +56,21 @@
     <div class="accordion-body" id="aktuellContent">
      <ul>
       <li>
-       <a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html">
+       <a href="{{url_for('showbsc', lang=lang)}}">
         Bachelor of Science
        </a>
        (PO 2021)
     – 1-Hauptfach-Studiengang
       </li>
       <li>
-       <a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html">
+       <a href="{{url_for('show2hfb', lang=lang)}}">
         Zwei-Hauptfächer-Bachelor
        </a>
        (PO 2021)
     – mit Lehramtsoption
       </li>
       <li>
-       <a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html">
+       <a href="{{url_for('showmsc', lang=lang)}}">
         Master of Science
        </a>
        (PO 2014)
@@ -81,13 +81,13 @@
       <li><a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.bewerbung.html">Bewerbung und Zulassung</a></li>
     </ul>-->
       <li>
-       <a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-2018.html">
+       <a href="{{url_for('showmed', lang=lang)}}">
         Master of Education
        </a>
        (PO 2018)
       </li>
       <li>
-       <a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/ewm-2021.html">
+       <a href="{{url_for('showmederw', lang=lang)}}">
         Master of Education, Mathematik als Erweiterungsfach
        </a>
        (PO 2021)
@@ -106,7 +106,9 @@
     <div class="accordion-body" id="geplantContent">
      <ul>
       <li>
-       Das Mathematische Institut möchte zum Wintersemester 2024/25 einen neuen M.Sc.-Studiengang „Mathematics in Data and Technology“ einrichten.
+       Das Mathematische Institut möchte zum Wintersemester 2024/25 einen neuen 
+       <a href="{{url_for('showmscdata', lang=lang)}}">    
+       M.Sc.-Studiengang „Mathematics in Data and Technology“</a> einrichten.
       Der Studiengang wird eine anwendungsoriertierte Vertiefung in den Bereichen Data Science, Numerik, Stochastik ermöglichen
       und auch für Absolvent:inn:en mathematiknaher Bachelor-Studiengänge (Informatik, Ingenieurstudiengänge, Physik) zugänglich sein.
       </li>
