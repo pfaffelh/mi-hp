@@ -91,12 +91,17 @@ def showstudienverlaufmsc(lang):
 
 ## Studiengaenge
 
+@app.route("/<lang>/studiengaenge/")
+@app.route("/<lang>/studiengaenge/<anchor>")
+def showstudiengaenge(lang, anchor="aktuell"):
+    filenames = ["studiengaenge/index.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showstudiengaenge")
+
 @app.route("/<lang>/studiengaenge/2hfb/")
 @app.route("/<lang>/studiengaenge/2hfb/<anchor>")
 def show2hfb(lang, anchor="kurzbeschreibung"):
     filenames = ["studiengaenge/2hfb/index-2021.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "show2hfb")
-
 @app.route("/<lang>/studiengaenge/med/")
 @app.route("/<lang>/studiengaenge/med/<anchor>")
 def showmed(lang, anchor="kurzbeschreibung"):

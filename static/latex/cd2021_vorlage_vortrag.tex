@@ -1,0 +1,69 @@
+\documentclass{beamer}
+\usepackage{background}
+
+\usepackage{tikz, rotating}
+\usetikzlibrary{automata, arrows}
+\usetikzlibrary{shapes.geometric}
+\usepackage{tikzsymbols}
+
+\usepackage{amsmath, amsfonts, rotating, wasysym}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+\usepackage{bbm}
+\newcommand{\dickm}[1]{\text{\boldmath ${#1}$}}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{middlegray}{rgb}{0.75,0.75,0.75}
+\definecolor{lightgray}{rgb}{0.8,0.8,0.8}
+\definecolor{lightblue}{rgb}{0.5,0.6,1}
+\definecolor{green4}{rgb}{.1,.5,.1}
+\newcommand{\changefont}[3]{
+\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+%% ------------------------- document -------------------------------%
+
+\title{Titel des Vortrags}
+\author{Sprecher}
+\date{\today}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\definecolor{darkgreen}{rgb}{0.0,0.4,0.0}
+\definecolor{darkblue}{rgb}{0.1,0.1,0.5}
+\definecolor{darkred}{rgb}{0.5,0.0,0.0}
+\definecolor{middle_magenta}{rgb}{0.8,0.0,0.8}
+\definecolor{middle_blue}{rgb}{0.0,0.0,0.8}
+\definecolor{middle_red}{rgb}{0.8,0.0,0.0}
+\definecolor{middle_green}{rgb}{0.0,0.6,0.0}
+\definecolor{olive}{rgb}{0.44,0.4,0.05}
+\definecolor{gray}{rgb}{0.35,0.35,0.35}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{author}{fg=white}
+\setbeamercolor{date}{fg=white}
+
+\begin{document}
+
+\backgroundsetup{scale=1, color=black, opacity=1, angle=0, contents={\vspace*{3cm}\hspace*{-10cm}\includegraphics[width=1.80\paperwidth,height=1.33\paperheight]{hintergrund_vortrag1.pdf}}}
+
+\setbeamertemplate{background}{\BgMaterial}
+\begin{frame}
+\titlepage
+
+\end{frame}
+
+\backgroundsetup{scale=1, color=black, opacity=1, angle=0, contents={\hspace*{3.5cm}\includegraphics[width=1.33\paperwidth,height=\paperheight]{hintergrund_vortrag2.pdf}}}
+
+\setbeamertemplate{background}{\BgMaterial}
+\begin{frame}
+  \frametitle{Erste Folie}
+  \begin{itemize}
+  \item Test
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zweite Folie}
+  \begin{itemize}
+  \item Test
+  \end{itemize}
+\end{frame}
+
+\end{document}
