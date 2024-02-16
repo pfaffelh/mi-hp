@@ -95,6 +95,27 @@
         {% include "/studiengaenge/msc/studienverlauf.html" %}
       </div>
     </div>
+    <div class="accordion-item" id="FAQ">
+      <h3 class="accordion-header" id="headerFAQ">
+        <button
+          aria-controls="FAQContent"
+          aria-expanded="false"
+          class="accordion-button"
+          style="background-color: #f6f1e3"
+          data-bs-target="#FAQContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">{% if lang == "de" %}FAQ{% else %}FAQ {% endif %}</h3>
+        </button>
+      </h3>
+      <div aria-labelledby="studienplanContent" class="accordion-collapse
+      collapse {% if anchor == "FAQ" %}show{% endif %}"
+      data-bs-parent="#accordionExample" id="FAQContent" >
+      <div class="accordion-body">
+        {% include "/studiengaenge/msc/faq.html" %}
+      </div>
+    </div>
     <div class="accordion-item" id="studienplan">
       <h3 class="accordion-header" id="headerstudienplan">
         <button

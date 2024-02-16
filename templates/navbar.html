@@ -20,20 +20,19 @@
           <li class="nav-item dropdown px-3">
             <a
               class="nav-link dropdown-toggle active"
-              href="{{ url_for('showinterestprospective', lang = lang) }}"
+              href="{{ url_for('showinterestschuelerinnen', lang = lang) }}"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {% if lang == "de" %}Mathematik in Freiburg{% else %}Mathematics
-              in Freiburg{% endif %}</a
+              {% if lang == "de" %}Für Studieninteressierte{% else %}Interested in studying?{% endif %}</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showinterestprospective', lang = lang) }}"
+                  href="{{ url_for('showinterestschuelerinnen', lang = lang) }}"
                   >{% if lang == "de" %}Angebote für Schüler:innen{% else %}
                   Information for prospective students{% endif %}</a
                 >
@@ -41,13 +40,13 @@
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showinterestprospective', lang = lang) }}"
+                  href="{{ url_for('showinterestalle', lang = lang) }}"
                   >{% if lang == "de" %}Angebote für alle{% else %} Information
                   for everybody{% endif %}</a
                 >
               </li>
 
-              <li>
+<!--              <li>
                 <a
                   class="dropdown-item text-black"
                   href="{{ url_for('showinterestwarum', lang = lang) }}"
@@ -62,12 +61,12 @@
                   >{% if lang == "de" %}Mathestudium in Freiburg{% else
                   %}Studying mathematics in Freiburg{% endif %}</a
                 >
-              </li>
+              </li> -->
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showintereststart', lang = lang) }}"
+                  href="{{ url_for('showinterestschwerpunktgebiete', lang = lang) }}"
                   >{% if lang == "de" %}Schwerpunktgebiete{% else %}Focus
                   areas{% endif %}
                 </a>
@@ -250,6 +249,13 @@
               class="nav-link text-white"
               href="{{ url_for('showstudienberatung', lang = lang) }}"
               >Studienberatung</a
+            >
+          </li>
+          <li class="nav-item px-3">
+            <a
+              class="nav-link text-white"
+              href="{{ url_for('showfaq', lang = lang) }}"
+              >FAQ</a
             >
           </li>
           <li class="nav-item px-3">

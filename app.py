@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template, redirect
+from flask import Flask, url_for, render_template, redirect, request
 # import markdown
 import locale
 import logging
@@ -47,11 +47,24 @@ def showallgemeines(lang):
     filenames = files_with_lang(["allgemeines"], lang)
     return render_template("home.html", filenames = filenames, lang=lang, site = "showallgemeines")
 
-@app.route("/<lang>/interesse/prospective/")
-def showinterestprospective(lang):
+@app.route("/<lang>/interesse/schuelerinnen/")
+def showinterestschuelerinnen(lang):
     filenames = []
-    filenames = ["interesse/prospective.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestprospective")
+    filenames = ["interesse/schuelerinnen.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestschuelerinnen")
+
+@app.route("/<lang>/interesse/alle/")
+def showinterestalle(lang):
+    filenames = []
+    filenames = ["interesse/alle.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestalle")
+
+
+@app.route("/<lang>/interesse/schwerpunktgebiete/")
+def showinterestschwerpunktgebiete(lang):
+    filenames = []
+    filenames = ["interesse/schwerpunktgebiete.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestschwerpunktgebiete")
 
 @app.route("/<lang>/interesse/start/")
 def showintereststart(lang):
@@ -175,6 +188,41 @@ def showmodulhandbuecher(lang):
 def showstudienberatung(lang):
     filenames = ["studienberatung.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienberatung")
+
+import glob
+
+# which can Werte 'all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw', 'meddual' annehmen
+# show ist entweder "" oder "alleantworten"
+@app.route("/<lang>/faq/")
+@app.route("/<lang>/faq/<which>/")
+@app.route("/<lang>/faq/<which>/<show>/")
+def showfaq(lang, which = "all", show = ""):
+    studiengaenge = {"all": "alle Studiengänge",
+                     "bsc": "Bachelor of Science Mathematik",
+                     "2hfb": "Zwei-Hauptfächer-Bachelor",
+                     "msc": "Master of Science Mathematik",
+                     "mscdata": "Master of Science Mathematics in Data and Technology", 
+                     "med": "Master of Education Mathematik",
+                     "mederw": "Master of Education Mathematik Erweiterungsfach",
+                     "meddual": "Master of Education Mathematik - dual"
+                     }
+    def getid(item):
+        return item.replace("faq/","").replace(".html","").replace("/", "_")
+    faq_tags = {"allgemeines": "Allgemeines",
+            "verwendung": "Belegung und Verwendung von Veranstaltungen",
+            "pruefungen": "Prüfungen und deren Anmeldungen",
+             "abschlussarbeit": "Abschlussarbeit", 
+             "sonstiges": "Sonstiges"
+             }
+    faq_dicts = {}
+    for tag in faq_tags.keys():
+        faq_dicts[tag] = {}
+        faq_items = glob.glob(f"templates/faq/{tag}/faq*.html")
+        faq_items = [item.replace("templates/", "") for item in faq_items]
+        for item in faq_items:
+            faq_dicts[tag][getid(item)] = item
+
+    return render_template("faq.html", lang=lang, faq_tags=faq_tags, faq_dicts=faq_dicts, which=which, getid = getid, show = show, studiengaenge = studiengaenge, site = "showfaq")
 
 @app.route("/<lang>/mediathek/")
 def showmediathek(lang):

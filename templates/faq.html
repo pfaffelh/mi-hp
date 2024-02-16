@@ -1,0 +1,137 @@
+{% extends 'base.html' %} {% block navbar %} {% include 'navbar.html' %} {%
+endblock %} {% block content %}
+
+<div class="container" id="inhalt">
+  <h1>FAQ ({{studiengaenge[which]}})</h1>
+  <p>
+    Das FAQ besteht aus Fragen, die immer wieder in der Beratung der
+    Studiengänge des Mathematischen Instituts gestellt werden. Sollten weitere
+    Fragen auftauchen, können Sie sich gerne an die
+    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+      Studienberatung des Mathematischen Instituts
+    </a>
+    <a href="mailto:studienberatung@math.uni-freiburg.de"></a> wenden.
+  </p>
+  <div class="container">
+    <div class="row g-0 py-1 row-cols-4 row-cols-lg-6">
+      <div class="dropdown">
+        <button
+          class="btn btn-primary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style="background-color: #344a9a"
+        >
+          Studiengang
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ url_for('showfaq', lang = lang, which = 'all', show = show) }}"
+              >alle Studiengänge</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ url_for('showfaq', lang = lang, which = 'bsc', show = show) }}"
+              >BSc Mathematik</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ url_for('showfaq', lang = lang, which = '2hfb', show = show) }}"
+              >Zwei-Hauptfach Bachelor</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ url_for('showfaq', lang = lang, which = 'msc', show = show) }}"
+              >MSc Mathematik</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ url_for('showfaq', lang = lang, which = 'mscdata', show = show) }}"
+              >MSc Mathematics in Data and Technology</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ url_for('showfaq', lang = lang, which = 'med', show = show) }}"
+              >MEd Mathematik</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ url_for('showfaq', lang = lang, which = 'mederw', show = show) }}"
+              >MEd Mathematik Erweiterungsfach</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              href="{{ url_for('showfaq', lang = lang, which = 'meddual', show = show) }}"
+              >MEd Mathematik - dual</a
+            >
+          </li>
+        </ul>
+      </div>
+      {% if show != "alleantworten" %}
+      <a
+        class="action"
+        href="{{ url_for('showfaq', lang = lang, which = which, show = 'alleantworten') }}"
+      >
+        <button class="btn btn-primary" style="background-color: #344a9a">
+          Alles ausklappen
+        </button></a
+      >
+      {% else %}
+      <a
+        class="action"
+        href="{{ url_for('showfaq', lang = lang, which = which, show = '') }}"
+      >
+        <button class="btn btn-primary">Alles einklappen</button></a
+      >
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="accordion" id="accordionFAQtags">
+    {% for tag in faq_tags.keys() %}
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button"
+          style="background-color: white"
+          data-bs-target="#{{tag}}"
+          aria-controls="{{tag}}"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">{{faq_tags[tag]}}</h3>
+        </button>
+      </h3>
+      <div aria-labelledby="{{tag}}" class="accordion-collapse collapse {% if
+      show == "alleantworten" %}show{% endif %}"
+      data-bs-parent="#accordionFAQtags" id="{{tag}}" >
+      <div class="accordion-body">
+        <div class="accordion" id="accordion{{tag}}">
+          {% for key, value in faq_dicts[tag].items() %} {% include value %} {%
+          endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

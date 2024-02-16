@@ -8591,7 +8591,7 @@ input[type=submit] {
   border:#c1002a solid 1px;
   border-radius:0;
   box-sizing:border-box;
-  text-transform:uppercase;
+/*  text-transform:uppercase; */
   color:#c1002a;
   font-weight:700;
   outline:0;

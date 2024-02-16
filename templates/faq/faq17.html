@@ -1,0 +1,36 @@
+<!-- Hier alle Fälle aus ('all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw') auflisten, falls diese Frage in dem entsprechenden FAQ auftauchen soll. -->
+{% if which in ('all', 'med', 'mederw','meddual') %}
+<div class="accordion-item">
+  <h3 class="accordion-header">
+    <button
+      type="button"
+      class="accordion-button"
+      style="background-color: white"
+      data-bs-target="#{{key}}"
+      aria-controls="{{key}}"
+      aria-expanded="true"
+      data-bs-toggle="collapse"
+    >
+      <h3 class="h5">
+        Wer ist für die Prüfungsverwaltung der Bildungswissenschaften und des
+        Praxissemesters zuständig?
+      </h3>
+    </button>
+  </h3>
+  <div aria-labelledby="{{key}}" class="accordion-collapse collapse {% if show
+  == "alleantworten" %}show{% endif %}" data-bs-parent="#accordionFAQ"
+  id="{{key}}" >
+  <div class="accordion-body">
+    Der
+    <a href="https://ezw.uni-freiburg.de/studiengaenge/master-studiengang-2/"
+      >Studienplan Bildungswissenschaften im M.Ed.</a
+    >
+    liegt beim Institut für Erziehungswissenschaft Für das Anmeldeverfahren und
+    die Verbuchung des Schulpraxissemesters zuständig ist das
+    <a
+      href="https://www.face-freiburg.de/studium-lehre/zentrales-pruefungsamt-m-ed-uni/"
+      >Zentrale Prüfungsamt Master of Education</a
+    >.
+  </div>
+</div>
+{% endif %}
