@@ -20,64 +20,76 @@
           data-bs-toggle="collapse"
         >
           <h3 class="h5">
-            {% if lang == "de" %}Aktuelle Studiengänge {% else %} Current study
+            {% if lang == 'de' %}Aktuelle Studiengänge {% else %} Current study
             programs {% endif %}
           </h3>
         </button>
       </h3>
-      <div aria-labelledby="aktuell" class="accordion-collapse collapse {% if
-      anchor == "aktuell" %}show{% endif %}" data-bs-parent="#accordionExample"
-      id="aktuell">
-      <div class="accordion-body">
-        {% include "/studiengaenge/aktuelle_studiengaenge.html" %}
+      <div
+        aria-labelledby="aktuell"
+        class="accordion-collapse collapse {% if anchor == 'aktuell' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="aktuell"
+      >
+        <div class="accordion-body">
+          {% include "/studiengaenge/aktuelle_studiengaenge.html" %}
+        </div>
       </div>
-    </div>
-    <div class="accordion-item">
-      <h4 class="accordion-header">
-        <button
-          aria-controls="geplant"
-          aria-expanded="false"
-          class="accordion-button"
-          style="background-color: #f6f1e3"
-          data-bs-target="#geplant"
-          data-bs-toggle="collapse"
-          type="button"
+      <div class="accordion-item">
+        <h4 class="accordion-header">
+          <button
+            aria-controls="geplant"
+            aria-expanded="false"
+            class="accordion-button"
+            style="background-color: #f6f1e3"
+            data-bs-target="#geplant"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">
+              {% if lang == 'de' %}Geplante Studiengänge{% else %}Planned study
+              programs {% endif %}
+            </h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="geplant"
+          class="accordion-collapse collapse {% if anchor == 'geplant' %}show{% endif %}"
+          data-bs-parent="#accordionExample"
+          id="geplant"
         >
-          <h3 class="h5">
-            {% if lang == "de" %}Geplante Studiengänge{% else %}Planned study
-            programs {% endif %}
-          </h3>
-        </button>
-      </h4>
-      <div aria-labelledby="geplant" class="accordion-collapse collapse {% if
-      anchor == "geplant" %}show{% endif %}" data-bs-parent="#accordionExample"
-      id="geplant" >
-      <div class="accordion-body">
-        {% include "studiengaenge/geplante_studiengaenge.html" %}
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h4 class="accordion-header">
-        <button
-          aria-controls="auslaufend"
-          aria-expanded="false"
-          class="accordion-button"
-          style="background-color: #f6f1e3"
-          data-bs-target="#auslaufend"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <h3 class="h5">
-            {% if lang == "de" %}Auslaufende Studiengänge{% else %}Ending study
-            programs {% endif %}
-          </h3>
-        </button>
-      </h4>
-      <div aria-labelledby="auslaufend" class="accordion-collapse collapse {% if
-      anchor == "auslaufend" %}show{% endif %}"
-      data-bs-parent="#accordionExample" id="auslaufend" >
-      <div class="accordion-body">
-        {% include "/studiengaenge/auslaufende_studiengaenge.html" %}
+          <div class="accordion-body">
+            {% include "studiengaenge/geplante_studiengaenge.html" %}
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button
+              aria-controls="auslaufend"
+              aria-expanded="false"
+              class="accordion-button"
+              style="background-color: #f6f1e3"
+              data-bs-target="#auslaufend"
+              data-bs-toggle="collapse"
+              type="button"
+            >
+              <h3 class="h5">
+                {% if lang == 'de' %}Auslaufende Studiengänge{% else %}Ending
+                study programs {% endif %}
+              </h3>
+            </button>
+          </h4>
+          <div
+            aria-labelledby="auslaufend"
+            class="accordion-collapse collapse {% if anchor == 'auslaufend' %}show{% endif %}"
+            data-bs-parent="#accordionExample"
+            id="auslaufend"
+          >
+            <div class="accordion-body">
+              {% include "/studiengaenge/auslaufende_studiengaenge.html" %}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

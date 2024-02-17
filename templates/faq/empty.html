@@ -12,15 +12,16 @@
       aria-expanded="true"
       data-bs-toggle="collapse"
     >
-      <h3 class="h5">
-        Ich habe vergessen, X zu tun und jetzt ist die Frist verstrichen. Was
-        kann ich tun?
-      </h3>
+      <h3 class="h5"></h3>
     </button>
   </h3>
-  <div aria-labelledby="{{key}}" class="accordion-collapse collapse {% if show
-  == "alleantworten" %}show{% endif %}" data-bs-parent="#accordionFAQ"
-  id="{{key}}" >
-  <div class="accordion-body">Kontaktieren Sie das Prüfungsamt.</div>
+  <div
+    aria-labelledby="{{key}}"
+    class="accordion-collapse collapse {% if show == 'alleantworten' %}show{% endif %}"
+    data-bs-parent="#accordion{{tag}}"
+    id="{{key}}"
+  >
+    <div class="accordion-body"></div>
+  </div>
 </div>
 {% endif %}

@@ -18,15 +18,19 @@
       </h3>
     </button>
   </h3>
-  <div aria-labelledby="{{key}}" class="accordion-collapse collapse {% if show
-  == "alleantworten" %}show{% endif %}" data-bs-parent="#accordionFAQ"
-  id="{{key}}" >
-  <div class="accordion-body">
-    Kontaktieren Sie den Dozenten bzw. die Dozentin. Mit ihm/ihr besprechen Sie
-    das Thema der Arbeit. Als Prüfungsleistung wird auch die Master-Arbeit beim
-    Prüfungsamt angemeldet. Verwenden Sie hierfür das Formular xxx. Nach
-    Anmeldung der Arbeit ist die Bearbeitungszeit 6 Monate. Eine Verlängerung
-    ist nur mit Angaben wichtiger Gründe um maximal xxx möglich.
+  <div
+    aria-labelledby="{{key}}"
+    class="accordion-collapse collapse {% if show == 'alleantworten' %}show{% endif %}"
+    data-bs-parent="#accordion{{tag}}"
+    id="{{key}}"
+  >
+    <div class="accordion-body">
+      Kontaktieren Sie den Dozenten bzw. die Dozentin. Mit ihm/ihr besprechen
+      Sie das Thema der Arbeit. Als Prüfungsleistung wird auch die Master-Arbeit
+      beim Prüfungsamt angemeldet. Verwenden Sie hierfür das Formular xxx. Nach
+      Anmeldung der Arbeit ist die Bearbeitungszeit 6 Monate. Eine Verlängerung
+      ist nur mit Angaben wichtiger Gründe um maximal xxx möglich.
+    </div>
   </div>
 </div>
 {% endif %}

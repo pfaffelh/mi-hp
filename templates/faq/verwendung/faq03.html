@@ -1,0 +1,54 @@
+<!-- Hier alle Fälle aus ('all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw') auflisten, falls diese Frage in dem entsprechenden FAQ auftauchen soll. -->
+{% if which in ('all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw',
+'meddual') %}
+<div class="accordion-item">
+  <h3 class="accordion-header">
+    <button
+      type="button"
+      class="accordion-button"
+      style="background-color: white"
+      data-bs-target="#{{key}}"
+      aria-controls="{{key}}"
+      aria-expanded="true"
+      data-bs-toggle="collapse"
+    >
+      <h3 class="h5">
+        Ich will die Vorlesung X hören. Was muss ich dabei beachten?
+      </h3>
+    </button>
+  </h3>
+  <div
+    aria-labelledby="{{key}}"
+    class="accordion-collapse collapse {% if show == 'alleantworten' %}show{% endif %}"
+    data-bs-parent="#accordion{{tag}}"
+    id="{{key}}"
+  >
+    <div class="accordion-body">
+      <ul>
+        <li>
+          Überprüfen Sie im Kommentierten Vorlesungsverzeichnis, ob Sie alle
+          notwendigen Vorkenntnisse haben, um die Vorlesung zu hören.
+        </li>
+        <li>
+          Generell müssen Sie Vorlesungen belegen, d.h. einen Teilnahmewunsch
+          abgeben. (Im Vorlesungsverzeichnis in HisInOne, Menüpunkt
+          'Veranstaltungen suchen'). Dies ist ab September bzw. März möglich.
+        </li>
+        <li>
+          Die Anmeldung zu Übungsgruppen/Tutoraten erfolgt nach dem in der
+          Vorlesung bekanntgegebenen Verfahren in der ersten Vorlesungswoche.
+          Meist ist hier ebenfall in HisInOne eine Belegung nötig.
+        </li>
+        <li>
+          Vermutlich wollen Sie Studien- und eventuell Prüfungsleistungen (SL
+          bzw. PL) für diese Vorlesung erbringen. Diese finden Sie in den
+          aktuellen Ergänzungen zum Modulhandbuch, die semesterweise aktuell
+          sind. Jede dieser Leistungen muss separat angemeldet (PL) bzw.
+          registriert (SL) werden. Bis auf wenige Ausnahmen geht dies über den
+          Studienplaner in HISinOne.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endif %}

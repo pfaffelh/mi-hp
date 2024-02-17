@@ -16,21 +16,26 @@
       </h3>
     </button>
   </h3>
-  <div aria-labelledby="{{key}}" class="accordion-collapse collapse {% if show
-  == "alleantworten" %}show{% endif %}" data-bs-parent="#accordionFAQ" id="{{key}}" >
-  <div class="accordion-body">
-    Im Studienverlaufsplan sehen Sie, welche Module Sie am Ende des MSc
-    Mathematik absolviert haben müssen. Um all diese Module zu absolvieren, gibt
-    es verschiedene Wege der Planung. Eine gewisse Sonderrolle kommt dabei der
-    Masterarbeit zu, weil die Betreuung der Arbeit individuell von einem
-    Dozenten durchgeführt wird. Wenn Sie schon wissen, in welchem Bereich Sie
-    diese Arbeit schreiben wollen, legt das das Thema des Vertiefungsmoduls
-    nahe. Eventuell werden auch Seminare in diesem Bereich angeboten, die Sie
-    besuchen können.
-    <br />
-    Die weiteren Module Reine und Angewandte Mathematik ergeben sich eventuell
-    ebenfalls aus dem Vertiefungsgebiet, weil dieses noch Vorkenntnisse
-    erfordert, die Sie noch nicht haben.
+  <div
+    aria-labelledby="{{key}}"
+    class="accordion-collapse collapse {% if show == 'alleantworten' or show == key %}show{% endif %}"
+    data-bs-parent="#accordion{{tag}}"
+    id="{{key}}"
+  >
+    <div class="accordion-body">
+      Im Studienverlaufsplan sehen Sie, welche Module Sie am Ende des MSc
+      Mathematik absolviert haben müssen. Um all diese Module zu absolvieren,
+      gibt es verschiedene Wege der Planung. Eine gewisse Sonderrolle kommt
+      dabei der Masterarbeit zu, weil die Betreuung der Arbeit individuell von
+      einem Dozenten durchgeführt wird. Wenn Sie schon wissen, in welchem
+      Bereich Sie diese Arbeit schreiben wollen, legt das das Thema des
+      Vertiefungsmoduls nahe. Eventuell werden auch Seminare in diesem Bereich
+      angeboten, die Sie besuchen können.
+      <br />
+      Die weiteren Module Reine und Angewandte Mathematik ergeben sich eventuell
+      ebenfalls aus dem Vertiefungsgebiet, weil dieses noch Vorkenntnisse
+      erfordert, die Sie noch nicht haben.
+    </div>
   </div>
 </div>
 {% endif %}

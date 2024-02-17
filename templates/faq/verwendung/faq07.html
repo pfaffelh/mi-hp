@@ -1,5 +1,6 @@
 <!-- Hier alle Fälle aus ('all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw') auflisten, falls diese Frage in dem entsprechenden FAQ auftauchen soll. -->
-{% if which in ('all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw', 'meddual') %}
+{% if which in ('all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw',
+'meddual') %}
 <div class="accordion-item">
   <h3 class="accordion-header">
     <button
@@ -12,15 +13,17 @@
       data-bs-toggle="collapse"
     >
       <h3 class="h5">
-
+        Welche Veranstaltungen kann ich im Wahlmodul verwenden?
       </h3>
     </button>
   </h3>
-  <div aria-labelledby="{{key}}" class="accordion-collapse collapse {% if show
-  == "alleantworten" %}show{% endif %}" data-bs-parent="#accordionFAQ"
-  id="{{key}}" >
-  <div class="accordion-body">
-
+  <div
+    aria-labelledby="{{key}}"
+    class="accordion-collapse collapse {% if show == 'alleantworten' %}show{% endif %}"
+    data-bs-parent="#accordion{{tag}}"
+    id="{{key}}"
+  >
+    <div class="accordion-body">Am besten ...</div>
   </div>
 </div>
 {% endif %}

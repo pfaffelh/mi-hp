@@ -84,7 +84,7 @@ endblock %} {% block content %}
           </li>
         </ul>
       </div>
-      {% if show != "alleantworten" %}
+      {% if show != 'alleantworten' %}
       <a
         class="action"
         href="{{ url_for('showfaq', lang = lang, which = which, show = 'alleantworten') }}"
@@ -120,18 +120,21 @@ endblock %} {% block content %}
           <h3 class="h5">{{faq_tags[tag]}}</h3>
         </button>
       </h3>
-      <div aria-labelledby="{{tag}}" class="accordion-collapse collapse {% if
-      show == "alleantworten" %}show{% endif %}"
-      data-bs-parent="#accordionFAQtags" id="{{tag}}" >
-      <div class="accordion-body">
-        <div class="accordion" id="accordion{{tag}}">
-          {% for key, value in faq_dicts[tag].items() %} {% include value %} {%
-          endfor %}
+      <div
+        aria-labelledby="{{tag}}"
+        class="accordion-collapse collapse {% if show == 'alleantworten' or showtag == tag %}show{% endif %}"
+        data-bs-parent="#accordionFAQtags"
+        id="{{tag}}"
+      >
+        <div class="accordion-body">
+          <div class="accordion" id="accordion{{tag}}">
+            {% for key, value in faq_dicts[tag].items() %} {% include value %}
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
-
 {% endblock %}

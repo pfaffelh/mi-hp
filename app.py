@@ -204,7 +204,7 @@ def showfaq(lang, which = "all", show = ""):
                      "mscdata": "Master of Science Mathematics in Data and Technology", 
                      "med": "Master of Education Mathematik",
                      "mederw": "Master of Education Mathematik Erweiterungsfach",
-                     "meddual": "Master of Education Mathematik - dual"
+                     "meddual": "Masterstudiengang Lehramt Gymnasium – dual"
                      }
     def getid(item):
         return item.replace("faq/","").replace(".html","").replace("/", "_")
@@ -219,10 +219,11 @@ def showfaq(lang, which = "all", show = ""):
         faq_dicts[tag] = {}
         faq_items = glob.glob(f"templates/faq/{tag}/faq*.html")
         faq_items = [item.replace("templates/", "") for item in faq_items]
+        faq_items.sort()
         for item in faq_items:
             faq_dicts[tag][getid(item)] = item
-
-    return render_template("faq.html", lang=lang, faq_tags=faq_tags, faq_dicts=faq_dicts, which=which, getid = getid, show = show, studiengaenge = studiengaenge, site = "showfaq")
+    showtag = show.split("_")[0]    
+    return render_template("faq.html", lang=lang, faq_tags=faq_tags, faq_dicts=faq_dicts, which=which, getid = getid, show = show, showtag = showtag, studiengaenge = studiengaenge, site = "showfaq")
 
 @app.route("/<lang>/mediathek/")
 def showmediathek(lang):

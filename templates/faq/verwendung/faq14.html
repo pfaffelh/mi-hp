@@ -13,17 +13,18 @@
       data-bs-toggle="collapse"
     >
       <h3 class="h5">
-        Ich habe bereits Leistungen im BSc erbracht, und möchte diese nun im MSc
-        verwenden.
+        Ich habe Veranstaltung X im Modul Y verwendet, möchte sie aber in Modul
+        Z verwenden.
       </h3>
     </button>
   </h3>
-  <div aria-labelledby="{{key}}" class="accordion-collapse collapse {% if show
-  == "alleantworten" %}show{% endif %}" data-bs-parent="#accordionFAQ"
-  id="{{key}}" >
-  <div class="accordion-body">
-    Bitte kontaktieren Sie das Prüfungsamt. Verwenden Sie das Formular
-    Anrechnungen.
+  <div
+    aria-labelledby="{{key}}"
+    class="accordion-collapse collapse {% if show == 'alleantworten' %}show{% endif %}"
+    data-bs-parent="#accordion{{tag}}"
+    id="{{key}}"
+  >
+    <div class="accordion-body">Bitte kontaktieren Sie das Prüfungsamt.</div>
   </div>
 </div>
 {% endif %}

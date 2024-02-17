@@ -12,15 +12,20 @@
       aria-expanded="true"
       data-bs-toggle="collapse"
     >
-      <h3 class="h5">
-        Ich will die Veranstaltung X in Fakultät Y belegen. Welche Fristen zur
-        Prüfungsanmeldung gelten dann?
-      </h3>
+      <h3 class="h5">Kann ich Veranstaltung X im Modul Y verwenden?</h3>
     </button>
   </h3>
-  <div aria-labelledby="{{key}}" class="accordion-collapse collapse {% if show
-  == "alleantworten" %}show{% endif %}" data-bs-parent="#accordionFAQ"
-  id="{{key}}" >
-  <div class="accordion-body">Am besten...</div>
+  <div
+    aria-labelledby="{{key}}"
+    class="accordion-collapse collapse {% if show == 'alleantworten' %}show{% endif %}"
+    data-bs-parent="#accordion{{tag}}"
+    id="{{key}}"
+  >
+    <div class="accordion-body">
+      Diese Information entnehmen Sie bitte den Aktuellen Ergänzungen des
+      Modulhandbuchs. Die Verwendbarkeitstabelle fasst alle Informationen
+      zusammen.
+    </div>
+  </div>
 </div>
 {% endif %}
