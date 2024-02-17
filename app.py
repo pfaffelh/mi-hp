@@ -4,6 +4,7 @@ import locale
 import logging
 import json
 import os
+import glob
 
 app = Flask(__name__)
 
@@ -17,6 +18,7 @@ file_handler = logging.FileHandler(log_file_path, mode='a')
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
+logging.warning('Watch out!')
 
 # check if the template is available in the correct language
 def files_with_lang(filenames, lang):
@@ -188,8 +190,6 @@ def showmodulhandbuecher(lang):
 def showstudienberatung(lang):
     filenames = ["studienberatung.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienberatung")
-
-import glob
 
 # which can Werte 'all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw', 'meddual' annehmen
 # show ist entweder "" oder "alleantworten"
