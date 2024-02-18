@@ -20,70 +20,6 @@
           <li class="nav-item dropdown px-3">
             <a
               class="nav-link dropdown-toggle active"
-              href="{{ url_for('showinterestschuelerinnen', lang = lang) }}"
-              id="navbarDropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {% if lang == "de" %}Studieninteressierte<br>und Studienbeginn{% else %}Interested in studying?{% endif %}</a
-            >
-            <ul class="dropdown-menu" data-bs-theme="light">
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showinterestschuelerinnen', lang = lang) }}"
-                  >{% if lang == "de" %}Angebote für Schüler:innen{% else %}
-                  Information for prospective students{% endif %}</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showinterestalle', lang = lang) }}"
-                  >{% if lang == "de" %}Angebote für alle{% else %} Information
-                  for everybody{% endif %}</a
-                >
-              </li>
-
-<!--              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showinterestwarum', lang = lang) }}"
-                  >{% if lang == "de" %}Warum Mathematik?{% else %} Why
-                  mathematics?{% endif %}</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showinterestmatheinfreiburg', lang = lang) }}"
-                  >{% if lang == "de" %}Mathestudium in Freiburg{% else
-                  %}Studying mathematics in Freiburg{% endif %}</a
-                >
-              </li> -->
-              <li><hr class="dropdown-divider" /></li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showinterestschwerpunktgebiete', lang = lang) }}"
-                  >{% if lang == "de" %}Schwerpunktgebiete{% else %}Focus
-                  areas{% endif %}
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showintereststart', lang = lang) }}"
-                  >{% if lang == "de" %}Wegweiser für den Studienanfang{% else
-                  %}Guide to starting your studies{% endif %}
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown px-3">
-            <a
-              class="nav-link dropdown-toggle active"
               href="{{url_for('showstudiengaenge', lang = lang, anchor='aktuell')}}"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
@@ -193,13 +129,56 @@
           <li class="nav-item dropdown px-3">
             <a
               class="nav-link dropdown-toggle active"
+              href="{{ url_for('showstudienberatung', lang = lang) }}"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {% if lang == "de" %}Studienberatung{% else %}Student counseling{%
+              endif %}</a
+            >
+            <ul class="dropdown-menu" data-bs-theme="light">
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatungstudienanfang', lang = lang) }}"
+                  >{% if lang == "de" %}Wegweiser für den Studienanfang{% else %}Guide for starting your studies{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatungschwerpunktgebiete', lang = lang) }}"
+                  >{% if lang == "de" %}Schwerpunktgebiete{% else %}Focus areas{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showinterestwarum', lang = lang) }}"
+                  >{% if lang == "de" %}Warum Mathematik?{% else %}Why mathematics?{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showinterestmatheinfreiburg', lang = lang) }}"
+                  >{% if lang == "de" %}Mathematikstudium in Freiburg{% else %}Studying Mathematics in Freiburg{% endif %}</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown px-3">
+            <a
+              class="nav-link dropdown-toggle active"
               href="{{ url_for('showpruefungsamt', lang = lang) }}"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {% if lang == "de" %}Studienberatung <br> und Prüfungsamt{% else %}Examination office{%
+              {% if lang == "de" %}Prüfungsamt{% else %}Examination office{%
               endif %}</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
@@ -243,13 +222,6 @@
                 >
               </li>
             </ul>
-          </li>
-          <li class="nav-item px-3">
-            <a
-              class="nav-link text-white"
-              href="{{ url_for('showstudienberatung', lang = lang) }}"
-              >Studienberatung</a
-            >
           </li>
           <li class="nav-item px-3">
             <a

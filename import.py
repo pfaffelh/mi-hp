@@ -72,23 +72,30 @@ files = [
     #     "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/mathestudium_in_freiburg.html",
     #     "target": "templates/interesse/mathestudium_in_freiburg.html"
     # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-bsc-2021.html",
+    #     "target": "templates/studiengaenge/studienverlauf-bsc-2021.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-2hfb-2021.html",
+    #     "target": "templates/studiengaenge/studienverlauf-2hfb-2021.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-msc-2014.html",
+    #     "target": "templates/studiengaenge/studienverlauf-msc-2014.html"
+    # },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-med-2018.html",
+    #     "target": "templates/studiengaenge/studienverlauf-med-2018.html"
+    # },
     {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-bsc-2021.html",
-        "target": "templates/studiengaenge/studienverlauf-bsc-2021.html"
-    },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-2hfb-2021.html",
-        "target": "templates/studiengaenge/studienverlauf-2hfb-2021.html"
-    },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-msc-2014.html",
-        "target": "templates/studiengaenge/studienverlauf-msc-2014.html"
-    },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-med-2018.html",
-        "target": "templates/studiengaenge/studienverlauf-med-2018.html"
+        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/schwerpunkte.html",
+        "target": "templates/studienberatung/studienverlaufschwerpunktgebiete.html"
     }
 ]
+
+
+
 
 html="<html><div id='aussen'> 1 <div id='innen'> 2 </div> 3</div></html>"
 soup = BeautifulSoup(html, 'lxml')
@@ -194,26 +201,26 @@ trans = {
     "#dddddd": "bg-white"
 }
 
-filenames = ["templates/studiengaenge/studienverlauf-bsc-2021.html",
-             "templates/studiengaenge/studienverlauf-2hfb-2021.html",
-             "templates/studiengaenge/msc-2014.html",
-             "templates/studiengaenge/studienverlauf-msc-2014-alt.html",
-             "templates/studiengaenge/studienverlauf-med-2018.html"]
-for filename in filenames:
-    with open(filename, "r") as file:
-        soup = BeautifulSoup(file.read(), 'lxml')
-        print(soup)
-        colored_fields = soup.find_all(True, {'bgcolor': True})
-        colored_fields.extend(soup.find_all(True, {'background-color': True}))        
-        for field in colored_fields:
-            col = field["bgcolor"] 
-            del field["bgcolor"]
-            try:
-                field["class"] = trans[col]
-            except:
-                print("not workin")
-        html = soup.prettify()
-        print(soup)
-    with open(filename, "w") as file:
-        file.write(html)
+# filenames = ["templates/studiengaenge/studienverlauf-bsc-2021.html",
+#              "templates/studiengaenge/studienverlauf-2hfb-2021.html",
+#              "templates/studiengaenge/msc-2014.html",
+#              "templates/studiengaenge/studienverlauf-msc-2014-alt.html",
+#              "templates/studiengaenge/studienverlauf-med-2018.html"]
+# for filename in filenames:
+#     with open(filename, "r") as file:
+#         soup = BeautifulSoup(file.read(), 'lxml')
+#         print(soup)
+#         colored_fields = soup.find_all(True, {'bgcolor': True})
+#         colored_fields.extend(soup.find_all(True, {'background-color': True}))        
+#         for field in colored_fields:
+#             col = field["bgcolor"] 
+#             del field["bgcolor"]
+#             try:
+#                 field["class"] = trans[col]
+#             except:
+#                 print("not workin")
+#         html = soup.prettify()
+#         print(soup)
+#     with open(filename, "w") as file:
+#         file.write(html)
 

@@ -1,0 +1,391 @@
+<br />
+<div class="container" id="inhalt">
+  <h2>Interesse am Mathematik-Studium in Freiburg?</h2>
+  <p>
+    Es gibt einige Gelegenheiten, zu denen Sie uns persönlich kennenlernen
+    können. Für Schülerinnen und Schüler organisieren wir eigene Workshops.
+  </p>
+
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item" id="kurz">
+      <h3 class="accordion-header" id="headerkurz">
+        <button
+          type="button"
+          class="accordion-button"
+          style="background-color: #f6f1e3"
+          data-bs-target="#schueler"
+          aria-controls="schueler"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}Für Schülerinnen und Schüler {% else %} For
+            pupils {% endif %}
+          </h3>
+        </button>
+      </h3>
+      <p></p>
+      <div
+        aria-labelledby="schueler"
+        class="accordion-collapse collapse {% if anchor == 'schueler' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="schueler"
+      >
+        <div class="accordion-body">
+          <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-3">
+            <div class="col">
+              <a
+                href="https://www.ihk.de/freiburg/bildung/wirtschaft-schule/faszination-mint/girlsday-1330856"
+                class="link-dark"
+              >
+                <div class="card h-100">
+                  <center>
+                    <img
+                      src="/static/Bilder/girlsday.png"
+                      class="card-img-fluid"
+                      alt="..."
+                      style="height: 15vw; object-fit: contain"
+                    />
+                  </center>
+                  <div class="card-body">
+                    <h3 class="h5">Girls Day</h3>
+                    <div class="card-text">
+                      <p>Angebot am Girls Day am 25. April 2024!</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col">
+              <a
+                href="http://home.mathematik.uni-freiburg.de/didaktik/veranstaltungen.html#mathetage"
+                class="link-dark"
+              >
+                <div class="card h-100">
+                  <center>
+                    <img
+                      src="/static/Bilder/HN17058826.jpg"
+                      class="card-img-fluid"
+                      alt="..."
+                      style="height: 15vw; object-fit: cover"
+                    />
+                  </center>
+                  <div class="card-body">
+                    <h3 class="h5">
+                      Freiburger Mathematik-Tag für Schülerinnen und Schüler
+                    </h3>
+                    <div class="card-text">
+                      <p>
+                        Das Mathematische Institut veranstaltet einmal pro Jahr,
+                        in der Regel im September oder Oktober, den „Freiburger
+                        Mathematik-Tag“ ein ein - bis zweitägiges Programm für
+                        Schüler:innen der Klassen 10 bis 13, die Freude am
+                        Knobeln und am Lösen von Aufgaben haben, sich gern mit
+                        Mathematik beschäftigen oder vielleicht einmal
+                        Mathematik oder eine Naturwissenschaft studieren wollen.
+                      </p>
+                    </div>
+                  </div>
+                </div></a
+              >
+            </div>
+            <div class="col">
+              <a
+                href="https://www.studium.uni-freiburg.de/de/beratung"
+                class="link-dark"
+              >
+                <div class="card h-100">
+                  <center>
+                    <img
+                      src="/static/Bilder/S1_mit Sonne-naeher-web.jpg"
+                      class="card-img-fluid"
+                      alt="..."
+                      style="height: 15vw; object-fit: cover"
+                    />
+                  </center>
+                  <div class="card-body">
+                    <h3 class="h5">Tag der offenen Tür</h3>
+                    <div class="card-text">
+                      <p>
+                        Jährlich im November (in der Regel am Buß-und-Bettag)
+                        findet der Tag der offenen Tür der Universität statt mit
+                        einer Vorstellung des Studienangebots, Vorträgen, dem
+                        Angebot, in eine Erstsemestervorlesung
+                        hineinzuschnuppern, und der Möglichkeit zum Gespräch mit
+                        Studierenden. Das Programm aller Fächer und der
+                        zentralen Informationsveranstaltungen finden Sie jeweils
+                        aktuell auf den Seiten der Zentralen Studienberatung der
+                        Universität.
+                      </p>
+                    </div>
+                  </div>
+                </div></a
+              >
+            </div>
+            <!--    <div class="col">
+              <div class="card h-100">
+                <center>
+                  <img
+                    src="/static/Bilder/Logo_Freiburg_Seminar.png"
+                    class="card-img-fluid"
+                    alt="..."
+                    style="height: 15vw; object-fit: contain"
+                  />
+                </center>
+                <div class="card-body">
+                  <h3 class="h5">Freiburg Seminar</h3>
+                  <div class="card-text">
+                    <p>
+                      Das
+                      <a href="https://freiburg-seminar.de/"> Freiburg-Seminar </a>
+                      fördert besonders befähigte und interessierte Schüler:innen im
+                      Regierungsbezirk Freiburg und ermöglicht in besonderen Fällen ein
+                      Schülerstudium.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" id="kurz">
+      <h3 class="accordion-header" id="headerkurz">
+        <button
+          type="button"
+          class="accordion-button"
+          style="background-color: #f6f1e3"
+          data-bs-target="#alle"
+          aria-controls="alle"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}Für alle {% else %} For all{% endif %}
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="alle"
+        class="accordion-collapse collapse {% if anchor == 'alle' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="alle"
+      >
+        <div class="accordion-body">
+          <p>Folgende Angebote sind für die gesamte Öffentlichkeit.</p>
+          <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-3">
+            <div class="col">
+              <a
+                href="https://www.wb.uni-freiburg.de/faqs/gasthoerer"
+                class="link-dark"
+              >
+                <div class="card h-100">
+                  <center>
+                    <img
+                      src="/static/Bilder/gasthoerer.jpeg"
+                      class="card-img-fluid"
+                      alt="..."
+                      style="height: 15vw; object-fit: fill"
+                    />
+                  </center>
+                  <div class="card-body">
+                    <h3 class="h5">Gaststudierende</h3>
+                    <div class="card-text">
+                      <p>
+                        Interessenten können sich gegen eine geringe Gebühr als
+                        Gasthörer:in einschreiben und an Mathematikvorlesungen
+                        und Übungen und u.U. auch Seminaren teilnehmen. Welche
+                        Veranstaltungen in Frage kommen, hängt sehr von der
+                        mathematischen Vorbildung ab. Bitte nehmen Sie bei
+                        Interesse daher Kontakt mit der allgemeinen
+                        Studienberatung.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col">
+              <a
+                href="https://www.science-und-technologie.de/science-days"
+                class="link-dark"
+              >
+                <div class="card h-100">
+                  <center>
+                    <img
+                      src="/static/Bilder/sciencedays.jpeg"
+                      class="card-img-fluid"
+                      alt="..."
+                      style="height: 15vw; object-fit: contain"
+                    />
+                  </center>
+                  <div class="card-body">
+                    <h3 class="h5">Science Days, Europa-Park Rust</h3>
+                    <div class="card-text">
+                      <p>
+                        Im Oktober gibt es die Science Days im Europa-Park Rust.
+                      </p>
+                    </div>
+                  </div>
+                </div></a
+              >
+            </div>
+            <div class="col">
+              <a
+                href="https://www.fachschaft.physik.uni-freiburg.de/veranstaltungen/sommerfest/"
+                class="link-dark"
+              >
+                <div class="card h-100">
+                  <center>
+                    <img
+                      src="/static/Bilder/AdobeStock_240499586_web.jpg"
+                      class="card-img-fluid"
+                      alt="..."
+                      style="height: 15vw; object-fit: cover"
+                    />
+                  </center>
+                  <div class="card-body">
+                    <h3 class="h5">Alumni-/Alumnae-Tag und Sommerfest</h3>
+                    <div class="card-text">
+                      <p>
+                        Jedes Jahr findet im Juli das fakultätsweiter Sommerfest
+                        Anfang Juli im Hörsaal Rundbau und im Innenhof des
+                        Physikalischen Instituts statt. Neben einem Festvortrag
+                        und der Verabschiedung aller Absolventen ist für das
+                        leibliche Wohl gesorgt.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" id="kurz">
+      <h3 class="accordion-header" id="headerkurz">
+        <button
+          type="button"
+          class="accordion-button"
+          style="background-color: #f6f1e3"
+          data-bs-target="#online"
+          aria-controls="online"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">Online</h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="online"
+        class="accordion-collapse collapse {% if anchor == 'online' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="online"
+      >
+        <div class="accordion-body">
+          <p>
+            Neben dem OSA Mathematik, der die Studienwahl erleichtern soll, gibt
+            es zahlreiche weitere Materialien, die wir online zur Verfügung
+            stellen.
+          </p>
+          <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-3">
+            <div class="col">
+              <a
+                href="https://www.osa.uni-freiburg.de/mathematik/"
+                class="link-dark"
+              >
+                <div class="card h-100">
+                  <center>
+                    <img
+                      src="/static/Bilder/MAT_kachel_OSA-Stempel_546.jpg"
+                      class="card-img-fluid"
+                      alt="..."
+                      style="height: 15vw; object-fit: cover"
+                    />
+                  </center>
+                  <div class="card-body">
+                    <h3 class="h5">Online Studienwahl-Assistent</h3>
+                    <div class="card-text">
+                      <p>
+                        <br style="margin-bottom: 10px" />
+                        Der Online Studienwahl-Assistent (OSA) bietet
+                      </p>
+                      <ul>
+                        <li>Informationen zu den Mathematik-Studiengängen,</li>
+                        <li>
+                          Videos mit Studierenden, Dozent:inn:en und
+                          Studienberater:inne:n,
+                        </li>
+                        <li>einen Erwartungsabgleich</li>
+                        <li>
+                          und ein paar Aufgaben, die man nicht lösen können
+                          muss, aber an denen man testen kann, ob es einem
+                          Freude machen würde, sich damit auseinanderzusetzen
+                          und die Lösung zu verstehen.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col">
+              <div class="card h-100">
+                <a href="https://kosmic.uni-freiburg.de/" class="link-dark">
+                  <center>
+                    <img
+                      src="/static/Bilder/kosmicxn.png"
+                      class="card-img-fluid"
+                      alt="..."
+                      style="height: 15vw; object-fit: cover"
+                    />
+                  </center>
+                  <div class="card-body">
+                    <h3 class="h5">Kosmic Online-Lernmaterialien</h3>
+                    <div class="card-text">
+                      <p>
+                        Unter Kosmic können sich auch nicht Eingeschriebene ein
+                        Login selbst (und kostenfrei) erstellen. Hier gibt es
+                        Materialien zu Vorkursen und Selbstlernmaterialien, etwa
+                        zur Wiederholung von Schulmathematik.
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <a
+                href="{{url_for('showmediathek', lang=lang)}}"
+                class="link-dark"
+              >
+                <div class="card h-100">
+                  <center>
+                    <img
+                      src="/static/Bilder/studint-song.jpg"
+                      class="card-img-fluid"
+                      alt="..."
+                      style="height: 15vw; object-fit: cover"
+                    />
+                  </center>
+                  <div class="card-body">
+                    <h3 class="h5">Mediathek</h3>
+                    <div class="card-text">
+                      <p>
+                        In unserer Mediathek sind Videos mit Studierenden,
+                        Beratenden, Dozent:innen und noch viel mehr Material
+                        über die Freiburger Mathematik..
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

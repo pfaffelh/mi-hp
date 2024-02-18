@@ -1,141 +1,146 @@
 <div class="container" id="inhalt">
-  <h1>Neuigkeiten</h1>
+  <br />
   <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-3">
     <div class="col">
-      <div class="card h-100">
-        <a
-          href="{{url_for('showbsc', lang = lang, anchor = 'kurzzusammenfassung')}}"
-        >
+      <div class="card h-100 bg-ufr-yellow-60">
+        <a href="{{url_for('showinteresse', lang = lang)}}" class="link-dark">
           <center>
             <img
-              src="/static/Bilder/alte_Buecher.jpg"
+              src="/static/Bilder/Penrose-Mosaik-2021.jpeg"
               class="card-img-fluid"
               alt="..."
-              style="height: 5vw; object-fit: cover"
+              style="height: 15vw; object-fit: cover"
             />
           </center>
-        </a>
-        <div class="card-body">
-          <h3 class="h5">Klausurenkalender</h3>
-          <div class="card-text">
-            <p>Jetzt gibt es einen Klausurenkalender!</p>
-          </div>
-        </div>
+
+          <div class="card-body">
+            <h3 class="h5">Für Studieninteressierte</h3>
+            <div class="card-text">
+              <p>
+                Hier gibt es Informationen des Mathematischen Instituts für
+                Schülerinnen, Schüler, und andere, die sich für die Freiburger
+                Mathematik interessieren.
+              </p>
+            </div>
+          </div></a
+        >
       </div>
     </div>
     <div class="col">
       <div class="card h-100">
         <a
-          href="{{url_for('show2hfb', lang = lang, anchor = 'kurzzusammenfassung')}}"
+          href="{{url_for('showstudienberatungschwerpunktgebiete', lang = lang)}}"
+          class="link-dark"
         >
           <center>
             <img
-              src="/static/Bilder/alte_Buecher.jpg"
+              src="/static/Bilder/startseite_dozenten_2023.jpg"
               class="card-img-fluid"
               alt="..."
-              style="height: 5vw; object-fit: cover"
+              style="height: 15vw; object-fit: cover"
             />
           </center>
-        </a>
-        <div class="card-body">
-          <h3 class="h5">Sommersemester startet nach Ostern</h3>
-          <div class="card-text">
-            <p>Wie jedes Jahr startet das Sommersemester nach Ostern.</p>
-          </div>
-        </div>
+          <div class="card-body">
+            <h3 class="h5">Schwerpunktgebiete</h3>
+            <div class="card-text">
+              <p>
+                Die Schwerpunktgebiete Mathematische Logik, Algebra und
+                Zahlentheorie, Geometrie und Topologie, Analysis, Numerik, und
+                Stochastik und Statistik bieten einführende und vertiefende
+                Veranstaltungen zu ihren Themen an.
+              </p>
+            </div>
+          </div></a
+        >
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <a href="{{url_for('showmscdatanews', lang = lang)}}" class="link-dark">
+          <center>
+            <img
+              src="/static/Bilder/freiburg-dalle.jpg"
+              class="card-img-fluid"
+              alt="..."
+              style="height: 15vw; object-fit: cover"
+            />
+          </center>
+          <div class="card-body">
+            <h3 class="h5">
+              Neuer Studiengang MSC Mathematics in Data and Technology
+            </h3>
+            <div class="card-text">
+              <p>
+                Voraussichtlich im WS 2024 startet der neue Studiengang MSc
+                Mathematics in Data and Technology. Der englisch-sprachige
+                Master hat ist anwendungsorienterter ausgerichtet als der MSc
+                Mathematik, und bietet die Gelegenheit, sich in Themen wie
+                maschinelles Lernen, Optimierung, Numerische Mathematik und
+                Statistik auseinanderzusetzen.
+              </p>
+            </div>
+          </div></a
+        >
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <a href="#" class="link-dark">
+          <center>
+            <img
+              src="/static/Bilder/Uni_Freiburg_Okt_2021_4.jpg"
+              class="card-img-fluid"
+              alt="..."
+              style="height: 15vw; object-fit: cover"
+            />
+          </center>
+          <div class="card-body">
+            <h3 class="h5">Lehrveranstaltungen des laufenden Semesters</h3>
+            <div class="card-text">
+              <p></p>
+            </div></div
+        ></a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <a href="#" class="link-dark">
+          <center>
+            <img
+              src="/static/Bilder/Uni_Freiburg_Okt_2021_23.jpg"
+              class="card-img-fluid"
+              alt="..."
+              style="height: 15vw; object-fit: cover"
+            />
+          </center>
+          <div class="card-body">
+            <h3 class="h5">Lehrveranstaltungen des kommenden Semesters</h3>
+            <div class="card-text">
+              <p></p>
+            </div></div
+        ></a>
       </div>
     </div>
     <div class="col">
       <div class="card h-100">
         <a
           href="{{url_for('showmsc', lang = lang, anchor = 'kurzzusammenfassung')}}"
+          class="link-dark"
         >
           <center>
             <img
-              src="/static/Bilder/alte_Buecher.jpg"
-              class="card-img-fluid"
-              alt="..."
-              style="height: 5vw; object-fit: cover"
-            />
-          </center>
-        </a>
-        <div class="card-body">
-          <h3 class="h5">MSc Mathematics in Data and Technology</h3>
-          <div class="card-text">
-            <p>...wird vom Senat beraten.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container" id="inhalt">
-  <h1>Quicklinks</h1>
-  <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-3">
-    <div class="col">
-      <div class="card h-100">
-        <a
-          href="{{url_for('showbsc', lang = lang, anchor = 'kurzzusammenfassung')}}"
-        >
-          <center>
-            <img
-              src="/static/Bilder/Studierende_im_Hoersaal.jpg"
+              src="/static/Bilder/ALU_Rektorat_116.jpg"
               class="card-img-fluid"
               alt="..."
               style="height: 15vw; object-fit: cover"
             />
           </center>
-        </a>
-        <div class="card-body">
-          <h3 class="h5">Lehrveranstaltungen des laufenden Semesters</h3>
-          <div class="card-text">
-            <p></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <a
-          href="{{url_for('show2hfb', lang = lang, anchor = 'kurzzusammenfassung')}}"
-        >
-          <center>
-            <img
-              src="/static/Bilder/Studierende_im_Hoersaal.jpg"
-              class="card-img-fluid"
-              alt="..."
-              style="height: 15vw; object-fit: cover"
-            />
-          </center>
-        </a>
-        <div class="card-body">
-          <h3 class="h5">Lehrveranstaltungen des kommenden Semesters</h3>
-          <div class="card-text">
-            <p></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <a
-          href="{{url_for('showmsc', lang = lang, anchor = 'kurzzusammenfassung')}}"
-        >
-          <center>
-            <img
-              src="/static/Bilder/Studierende_im_Hoersaal.jpg"
-              class="card-img-fluid"
-              alt="..."
-              style="height: 15vw; object-fit: cover"
-            />
-          </center>
-        </a>
-        <div class="card-body">
-          <h3 class="h5">FAQ des Prüfungsamts</h3>
-          <div class="card-text">
-            <p></p>
-          </div>
-        </div>
+          <div class="card-body">
+            <h3 class="h5">Formulare</h3>
+            <div class="card-text">
+              <p></p>
+            </div></div
+        ></a>
       </div>
     </div>
   </div>

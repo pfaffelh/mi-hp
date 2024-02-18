@@ -13,7 +13,7 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8") # Deutsche Namen für Tage und Mon
 # Configure the logger
 log_file_path = 'hp.log'
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.ERROR)
+logger.setLevel(logging.INFO)
 file_handler = logging.FileHandler(log_file_path, mode='a')
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(formatter)
@@ -44,47 +44,63 @@ def showbase(lang):
     filenames = ["index.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showbase")
 
-@app.route("/<lang>/allgemeines")
-def showallgemeines(lang):
-    filenames = files_with_lang(["allgemeines"], lang)
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showallgemeines")
+############
+## footer ##
+############
 
-@app.route("/<lang>/interesse/schuelerinnen/")
-def showinterestschuelerinnen(lang):
+@app.route("/<lang>/impressum")
+def showimpressum(lang):
+    filenames = ["footer/impressum.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showimpressum")
+
+@app.route("/<lang>/datenschutz")
+def showdatenschutz(lang):
+    filenames = ["footer/datenschutz.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showdatenschutz")
+
+
+#####################
+## Studienberatung ##
+#####################
+
+@app.route("/<lang>/studienberatung/")
+def showstudienberatung(lang):
+    filenames = ["studienberatung/index.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienberatung")
+
+@app.route("/<lang>/studienberatung/schwerpunktgebiete/")
+def showstudienberatungschwerpunktgebiete(lang):
     filenames = []
-    filenames = ["interesse/schuelerinnen.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestschuelerinnen")
+    filenames = ["studienberatung/schwerpunktgebiete.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienberatungschwerpunktgebiete")
 
-@app.route("/<lang>/interesse/alle/")
-def showinterestalle(lang):
+@app.route("/<lang>/studienberatung/studienanfang/")
+def showstudienberatungstudienanfang(lang):
     filenames = []
-    filenames = ["interesse/alle.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestalle")
+    filenames = ["studienberatung/studienanfang.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienberatungstudienanfang")
 
-
-@app.route("/<lang>/interesse/schwerpunktgebiete/")
-def showinterestschwerpunktgebiete(lang):
-    filenames = []
-    filenames = ["interesse/schwerpunktgebiete.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestschwerpunktgebiete")
-
-@app.route("/<lang>/interesse/start/")
-def showintereststart(lang):
-    filenames = []
-    filenames = ["interesse/studienanfang.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showintereststart")
-
-@app.route("/<lang>/interesse/warum_mathematik/")
+@app.route("/<lang>/studienberatung/warum_mathematik/")
 def showinterestwarum(lang):
     filenames = []
-    filenames = ["interesse/warum_mathematik.html"]
+    filenames = ["studienberatung/warum_mathematik.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestwarum")
 
-@app.route("/<lang>/interesse/matheinfreiburg/")
+@app.route("/<lang>/studienberatung/matheinfreiburg/")
 def showinterestmatheinfreiburg(lang):
     filenames = []
-    filenames = ["interesse/mathestudium_in_freiburg.html"]
+    filenames = ["studienberatung/mathestudium_in_freiburg.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestmatheinfreiburg")
+
+##########################
+## Studieninteressierte ## 
+##########################
+
+@app.route("/<lang>/interesse/")
+@app.route("/<lang>/interesse/<anchor>")
+def showinteresse(lang, anchor="schueler"):
+    filenames = ["interesse.html"]
+    return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang, site = "showinteresse")
 
 @app.route("/<lang>/studiengaenge/bsc/")
 def showbsc(lang):
@@ -159,7 +175,9 @@ def showpromotion(lang, anchor="kurzbeschreibung"):
     filenames = ["studiengaenge/promotion/index.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showpromotion")
 
-## Prüfungsamt
+#################
+## Prüfungsamt ##
+#################
 
 @app.route("/<lang>/pruefungsamt/")
 def showpruefungsamt(lang):
@@ -186,10 +204,12 @@ def showmodulhandbuecher(lang):
     filenames = ["pruefungsamt/modulhandbuecher.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showmodulhandbuecher")
 
-@app.route("/<lang>/studienberatung/")
-def showstudienberatung(lang):
-    filenames = ["studienberatung.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienberatung")
+
+#########
+## faq ##
+#########
+
+
 
 # which can Werte 'all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw', 'meddual' annehmen
 # show ist entweder "" oder "alleantworten"
@@ -217,13 +237,19 @@ def showfaq(lang, which = "all", show = ""):
     faq_dicts = {}
     for tag in faq_tags.keys():
         faq_dicts[tag] = {}
-        faq_items = glob.glob(f"templates/faq/{tag}/faq*.html")
-        faq_items = [item.replace("templates/", "") for item in faq_items]
+        faq_items = glob.glob("mi-hp/templates/faq/" + tag + "/faq*.html")
+        logging.warning(faq_items)
+        faq_items = [item.replace("mi-hp/templates/", "") for item in faq_items]
         faq_items.sort()
         for item in faq_items:
             faq_dicts[tag][getid(item)] = item
     showtag = show.split("_")[0]    
     return render_template("faq.html", lang=lang, faq_tags=faq_tags, faq_dicts=faq_dicts, which=which, getid = getid, show = show, showtag = showtag, studiengaenge = studiengaenge, site = "showfaq")
+
+###############
+## Mediathek ##
+###############
+
 
 @app.route("/<lang>/mediathek/")
 def showmediathek(lang):
