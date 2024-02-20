@@ -113,7 +113,13 @@
       .accordion .btn {
         white-space: normal;
       }
-    </style>
+      .accordion-button::after {
+        background-image: url("/static/Bilder/plus-svgrepo-com.svg");
+      }
+      .accordion-button:not(.collapsed)::after {
+        background-image: url("/static/Bilder/close-cross-svgrepo-com.svg");
+      }
+      </style>
     {% block styles %}
     <!-- Add additional styles here -->
     {% endblock %}
