@@ -110,15 +110,19 @@
         border-width: 0 0.15em 0.15em 0;
         transform: rotateZ(45deg);
       }
-      .accordion .btn {
-        white-space: normal;
+      .accordion-title {
+        background-color: #004a99;
       }
       .accordion-button::after {
         background-image: url("/static/Bilder/plus-svgrepo-com.svg");
       }
       .accordion-button:not(.collapsed)::after {
-        background-image: url("/static/Bilder/close-cross-svgrepo-com.svg");
+        background-image: url("/static/Bilder/cross-svgrepo-com.svg");
       }
+      /* .accordion-button:not(.collapsed) {
+        background-color: #fffae5;
+        color-scheme: #fffae5;
+      } */
       </style>
     {% block styles %}
     <!-- Add additional styles here -->

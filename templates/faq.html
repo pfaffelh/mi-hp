@@ -110,7 +110,7 @@ endblock %} {% block content %}
       <h3 class="accordion-header">
         <button
           type="button"
-          class="accordion-button"
+          class="accordion-button {% if show != 'alleantworten' and showtag != tag %}collapsed{% endif %}"
           style="background-color: white"
           data-bs-target="#{{tag}}"
           aria-controls="{{tag}}"
