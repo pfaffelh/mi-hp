@@ -5,6 +5,10 @@ import logging
 import json
 import os
 import glob
+from bs4 import BeautifulSoup
+import requests
+from flask import send_file
+from flask import make_response
 
 app = Flask(__name__)
 
@@ -19,6 +23,22 @@ formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 logging.warning('Watch out!')
+
+
+kommendes = ("ss24", "Sommersemester 2024")
+aktuelles = ("ws2324", "Wintersemester 2023/24")
+vergangene = {
+    "ss23": "Sommersemester 2023",
+    "ws2223": "Wintersemester 2022/23",
+    "ss22": "Sommersemester 2023",
+    "ws2121": "Wintersemester 2022/23",
+    "ss21": "Sommersemester 2023",
+    "ws2021": "Wintersemester 2022/23",
+    "ss20": "Sommersemester 2023",
+    "ws1920": "Wintersemester 2022/23",
+    "ss19": "Sommersemester 2023",
+    "ws1819": "Wintersemester 2022/23"
+}
 
 # check if the template is available in the correct language
 def files_with_lang(filenames, lang):
@@ -245,6 +265,50 @@ def showfaq(lang, which = "all", show = ""):
             faq_dicts[tag][getid(item)] = item
     showtag = show.split("_")[0]    
     return render_template("faq.html", lang=lang, faq_tags=faq_tags, faq_dicts=faq_dicts, which=which, getid = getid, show = show, showtag = showtag, studiengaenge = studiengaenge, site = "showfaq")
+
+#########################
+## Lehrveranstaltungen ##
+#########################
+
+@app.route("/<lang>/lehrveranstaltungen/")
+def showlehrveranstaltungenbase(lang):
+    filenames = ["lehrveranstaltungen/index.html"]    
+    return render_template("home.html", filenames = filenames, lang=lang, kommendes = kommendes, aktuelles = aktuelles, vergangene = vergangene, site = "showlehrveranstaltungenbase")
+
+@app.route("/<lang>/lehrveranstaltungen/pdf/<semester>/")
+def sendlehrveranstaltungen(semester, lang="de"):
+    response = None
+    path = os.path.relpath(f"mi-hp/templates/lehrveranstaltungen/pdf/{lang}/{semester}.pdf")    
+    path = os.path.abspath(path)
+    print(path)
+    print(os.path.exists(path))
+    if os.path.exists(path):        
+        response = send_file(path)
+        print(path)
+        return response
+    return make_response("not found", 404)
+
+@app.route("/<lang>/lehrveranstaltungen/<semester>/")
+def showlehrveranstaltungen(lang, semester):
+    print(semester)
+    url = f"https://www.math.uni-freiburg.de/lehre/v/{semester}.html"
+    result = requests.get(url, verify=False)
+    soup = BeautifulSoup(result.text, 'lxml')
+    content = soup.find('div', id="inhalt")
+    content['class'] = "container"
+    filenames = [f"lehrveranstaltungen/{semester}.html"]    
+    with open("mi-hp/templates/"+filenames[0], "w") as file:
+        file.write(content.prettify())
+    return render_template("home.html", filenames = filenames, lang=lang, semester=semester, site = "showlehrveranstaltungen")
+
+@app.route("/<lang>/lehrveranstaltungen/aktuelles/")
+def showlehrveranstaltungenaktuelles(lang):
+    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester = aktuelles[0]))
+
+@app.route("/<lang>/lehrveranstaltungen/kommendes/")
+def showlehrveranstaltungenkommendes(lang):
+    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester = kommendes[0]))
+
 
 ###############
 ## Mediathek ##

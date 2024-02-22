@@ -1,0 +1,82 @@
+<div class="container" id="inhalt">
+  <h1>Lehrveranstaltungen</h1>
+
+  <h2>Kommendes Semester</h2>
+  <table class="vvtab" summary="">
+    <tr>
+      <th>{{kommendes[1]}}</th>
+      <td>
+        <a
+          href="{{url_for('showlehrveranstaltungen', lang = lang, semester = kommendes[0])}}"
+          >Veranstaltungsverzeichnis</a
+        >
+      </td>
+      <td>&ndash;</td>
+      <td>
+        <a
+          href="{{url_for('sendlehrveranstaltungen', lang = lang, semester = key)}}"
+          >Kommentare</a
+        >
+      </td>
+    </tr>
+  </table>
+  <h2>Aktuelles Semester</h2>
+  <table class="vvtab" summary="">
+    <tr>
+      <th>{{aktuelles[1]}}</th>
+      <td>
+        <a
+          href="{{url_for('showlehrveranstaltungen', lang = lang, semester = aktuelles[0])}}"
+          >Veranstaltungsverzeichnis</a
+        >
+      </td>
+      <td>&ndash;</td>
+      <td>
+        <a
+          href="{{url_for('sendlehrveranstaltungen', lang = lang, semester = key)}}"
+          >Kommentare</a
+        >
+      </td>
+    </tr>
+  </table>
+  <h2>Vergangene Semester</h2>
+  <table class="vvtab" summary="">
+    {% for key, value in vergangene.items() %}
+    <tr>
+      <th>{{value}}</th>
+      <td>
+        <a
+          href="{{url_for('showlehrveranstaltungen', lang = lang, semester = key)}}"
+          >Veranstaltungsverzeichnis</a
+        >
+      </td>
+      <td>&ndash;</td>
+      <td>
+        <a
+          href="{{url_for('sendlehrveranstaltungen', lang = lang, semester = key)}}"
+          >Kommentare</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <h2>Intern</h2>
+  <table summary="">
+    <tr>
+      <td>
+        <a
+          href="http://home.mathematik.uni-freiburg.de/intern/raumplan/index.html"
+          >Raumpläne</a
+        >
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a
+          href="http://home.mathematik.uni-freiburg.de/intern/fuer_dozenten/lehrveranstaltungsplanung.html"
+          >längerfristige Lehrveranstaltungsplanung</a
+        >
+      </td>
+    </tr>
+  </table>
+</div>

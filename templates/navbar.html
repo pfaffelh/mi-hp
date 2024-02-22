@@ -85,19 +85,19 @@
                 >
               </li>
               <li><hr class="dropdown-divider" /></li>
-              <li>
+              <!-- <li>
                 <a
                   class="dropdown-item text-black"
                   href="{{ url_for('showpromotion', lang = lang) }}"
                   >{% if lang == "de" %}Promotion{% else %}PhD{% endif %}</a
                 >
-              </li>
+              </li>-->
             </ul>
           </li>
           <li class="nav-item dropdown px-3">
             <a
               class="nav-link dropdown-toggle active"
-              href=""
+              href="{{url_for('showlehrveranstaltungenbase', lang = lang)}}"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
@@ -107,22 +107,22 @@
             >
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li class="dropdown-submenu">
-                <a class="dropdown-item text-black" href="">SS 2024</a>
+                <a class="dropdown-item text-black" href="{{url_for('showlehrveranstaltungen', lang = lang, semester = 'ss24')}}">SS 2024</a>
               </li>
               <li class="dropdown-submenu">
-                <a class="dropdown-item text-black" href="">WS 2023</a>
+                <a class="dropdown-item text-black" href="{{url_for('showlehrveranstaltungen', lang = lang, semester = 'ws2324')}}">WS 2023</a>
               </li>
               <li class="dropdown-submenu">
-                <a class="dropdown-item text-black" href="">SS 2023</a>
+                <a class="dropdown-item text-black" href="{{url_for('showlehrveranstaltungen', lang = lang, semester = 'ss23')}}">SS 2023</a>
               </li>
               <li class="dropdown-submenu">
-                <a class="dropdown-item text-black" href="">WS 2022</a>
+                <a class="dropdown-item text-black" href="{{url_for('showlehrveranstaltungen', lang = lang, semester = 'ws2223')}}">WS 2022</a>
               </li>
               <li class="dropdown-submenu">
-                <a class="dropdown-item text-black" href="">SS 2022</a>
+                <a class="dropdown-item text-black" href="{{url_for('showlehrveranstaltungen', lang = lang, semester = 'ss22')}}">SS 2022</a>
               </li>
               <li class="dropdown-submenu">
-                <a class="dropdown-item text-black" href="">WS 2021</a>
+                <a class="dropdown-item text-black" href="{{url_for('showlehrveranstaltungen', lang = lang, semester = 'ws2122')}}">WS 2021</a>
               </li>
             </ul>
           </li>

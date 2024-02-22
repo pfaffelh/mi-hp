@@ -1,0 +1,23 @@
+table.vlverz td { border: none; }
+table.vlverz td { vertical-align: top; }
+table.vlverz td { padding-top: 0.2em; padding-bottom: 0; }
+table.vlverz tr.note td { padding-top: 0.25em; font-style: italic; }
+table.vlverz td:nth-child(2) { padding-right: 3ex; }
+table.vlverz col:nth-child(1) { width: 50pt; }
+table.vlverz col:nth-child(3) { width: 30%; }
+dd { vertical-align: top; position: relative; }
+dt { vertical-align: top; float: left; width: 5em; }
+dl { vertical-align:top; }
+.sembox { border: 1px solid #cacac8; padding: 0 10px; margin-bottom: 20px; }
+table.vvtab {
+    border: none;
+    border-spacing: 5px;
+    text-align: left;
+}
+table.vvtab th {
+    min-width: 170px;
+}
+table.vvtab th,
+table.vvtab td {
+    vertical-align: top;
+}

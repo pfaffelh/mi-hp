@@ -17,6 +17,13 @@
     <link
       rel="stylesheet"
       id="unitheme-style-css"
+      href="/static/vorlesungsverzeichnis.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="unitheme-style-css"
       href="/static/unitheme.css?ver=2.0.02"
       type="text/css"
       media="all"
@@ -98,7 +105,9 @@
         text-decoration: underline;
         transform: rotate(-45deg);
       }
-
+      .dropdown-submenu.btn:focus-within {
+        background-color: white;
+      }
       .dropdown-toggle::after {
         display: inline-block;
         width: 0.5em;
@@ -110,20 +119,21 @@
         border-width: 0 0.15em 0.15em 0;
         transform: rotateZ(45deg);
       }
-      .accordion-title {
-        background-color: #004a99;
-      }
       .accordion-button::after {
         background-image: url("/static/Bilder/plus-svgrepo-com.svg");
       }
       .accordion-button:not(.collapsed)::after {
         background-image: url("/static/Bilder/cross-svgrepo-com.svg");
       }
-      /* .accordion-button:not(.collapsed) {
+      .accordion-button:not(.collapsed) {
         background-color: #fffae5;
         color-scheme: #fffae5;
-      } */
-      </style>
+      } 
+      .accordion-button:hover {
+        background-color: #fffae5;
+        outline: none;
+      } 
+    </style>
     {% block styles %}
     <!-- Add additional styles here -->
     {% endblock %}
@@ -196,7 +206,7 @@
                   <div class="text-white fw-bold ms-2 me-2">deutsch</div>
                   {% else %}<a
                     class="text-white ms-2 me-2"
-                    href='{{ url_for(site, lang = "de") }}'
+                    href='{{ url_for(site, semester = semester, anchor = anchor, lang = "de") }}'
                     >deutsch</a
                   >
                   {% endif %}
@@ -206,7 +216,7 @@
                   <div class="text-white fw-bold ms-2 me-2">englisch</div>
                   {% else %}<a
                     class="text-white ms-2 me-2"
-                    href='{{ url_for(site, lang = "en") }}'
+                    href='{{ url_for(site, semester = semester, anchor = anchor, lang = "en") }}'
                     >englisch</a
                   >
                   {% endif %}
