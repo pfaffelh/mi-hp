@@ -1,6 +1,6 @@
 <div class="container" id="inhalt">
   <br />
-  <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-3">
+  <div class="row row-cols-1 row-cols-md-3 g-3">
     <div class="col">
       <div class="card h-100 bg-ufr-yellow-60">
         <a href="{{url_for('showinteresse', lang = lang)}}" class="link-dark">
@@ -16,11 +16,9 @@
           <div class="card-body">
             <h3 class="h5">Für Studieninteressierte</h3>
             <div class="card-text">
-              <p>
-              </p>
-            </div>
-          </div></a
-        >
+              <p></p>
+            </div></div
+        ></a>
       </div>
     </div>
     <div class="col">
@@ -40,11 +38,9 @@
           <div class="card-body">
             <h3 class="h5">Schwerpunktgebiete</h3>
             <div class="card-text">
-              <p>
-              </p>
-            </div>
-          </div></a
-        >
+              <p></p>
+            </div></div
+        ></a>
       </div>
     </div>
     <div class="col">
@@ -60,20 +56,24 @@
           </center>
           <div class="card-body">
             <h3 class="h5">
-              Neuer Studiengang MSC Mathematics in Data and Technology
+              Neuer Studiengang MSc Mathematics in Data and Technology
             </h3>
             <div class="card-text">
-              <p>
-                Start voraussichtlich WS 2024!
-              </p>
+              <p>Start voraussichtlich WS 2024!</p>
             </div>
           </div></a
         >
       </div>
     </div>
+  </div>
+  <br>
+  <div class="row row-cols-1 row-cols-md-3 g-3">
     <div class="col">
       <div class="card h-100">
-        <a href="{{url_for('showlehrveranstaltungenaktuelles', lang=lang)}}" class="link-dark">
+        <a
+          href="{{url_for('showlehrveranstaltungenaktuelles', lang=lang)}}"
+          class="link-dark"
+        >
           <center>
             <img
               src="/static/Bilder/Uni_Freiburg_Okt_2021_4.jpg"
@@ -92,7 +92,10 @@
     </div>
     <div class="col">
       <div class="card h-100">
-        <a href="{{url_for('showlehrveranstaltungenkommendes', lang=lang)}}" class="link-dark">
+        <a
+          href="{{url_for('showlehrveranstaltungenkommendes', lang=lang)}}"
+          class="link-dark"
+        >
           <center>
             <img
               src="/static/Bilder/Uni_Freiburg_Okt_2021_23.jpg"

@@ -27,7 +27,9 @@ logging.warning('Watch out!')
 
 kommendes = ("ss24", "Sommersemester 2024")
 aktuelles = ("ws2324", "Wintersemester 2023/24")
-vergangene = {
+semester = {
+    "ss24": "Sommersemester 2024",
+    "ws2324": "Wintersemester 2023/24",
     "ss23": "Sommersemester 2023",
     "ws2223": "Wintersemester 2022/23",
     "ss22": "Sommersemester 2023",
@@ -273,12 +275,12 @@ def showfaq(lang, which = "all", show = ""):
 @app.route("/<lang>/lehrveranstaltungen/")
 def showlehrveranstaltungenbase(lang):
     filenames = ["lehrveranstaltungen/index.html"]    
-    return render_template("home.html", filenames = filenames, lang=lang, kommendes = kommendes, aktuelles = aktuelles, vergangene = vergangene, site = "showlehrveranstaltungenbase")
+    return render_template("home.html", filenames = filenames, lang=lang, semester = semester, site = "showlehrveranstaltungenbase")
 
 @app.route("/<lang>/lehrveranstaltungen/pdf/<semester>/")
 def sendlehrveranstaltungen(semester, lang="de"):
     response = None
-    path = os.path.relpath(f"mi-hp/templates/lehrveranstaltungen/pdf/{lang}/{semester}.pdf")    
+    path = os.path.relpath(f"mi-hp/templates/lehrveranstaltungen/pdf/{semester}.pdf")    
     path = os.path.abspath(path)
     print(path)
     print(os.path.exists(path))
