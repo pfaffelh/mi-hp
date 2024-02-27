@@ -1,51 +1,33 @@
 <div class="container" id="featured-3">
   <h1>MSc Mathematics in Data and Technology</h1>
-  <div class="row align-items-center g-4 py-2 row-cols-1 row-cols-lg-2">
-    <div class="feature col">
-      <h2>Short profile</h2>
-      <p>
-        {% if lang == "de" %} Der Masterstudiengang Mathematics in Data and
-        Technology vermittelt vertiefte Kenntnisse in Teilbereichen der
-        Angewandten Mathematik und angrenzender wissenschaftlicher Disziplinen,
-        die für die mathematische Datenanalyse in Anwendungen wie Künstliche
-        Intelligenz, Maschinelles Lernenoder der Simulation realer Vorgänge
-        relevant sind. Die Absolventinnen/Absolventen sind in der Lage, die
-        mathematischen Methoden dieser Gebiete zu analysieren, zu beurteilen und
-        weiterzuentwickeln. <br />
-        Es wird ein Überblick über die Gebiete Numerik, Stochastik und
-        Optimierung gegeben, und ein Vertiefungsmodul wahlweise aus der Numerik
-        oder ausder Stochastik angeboten. Weiter bietet der Studiengang die
-        Möglichkeit der individuellen Schwerpunktsetzung in Gebieten wie
-        beispielsweise Deep Learning, Künstliche Intelligenz, Maschinelles
-        Lernen, Optimierung, Statistik. <br />
-        Der Studiengang richtet sich an Absolventinnen/Absolventen eines
-        Bachelor-Studiengangs der Mathematik, Informatik oder eines natur- oder
-        ingenieurwissenschaftlichen Studienfachs. Er qualifiziert für
-        Tätigkeiten in Berufsfeldern wie Datenanalyse, Digital Engineering,
-        Anwendung und Methodenbildung im Bereich Deep Learning und KI,
-        Risikomodellierung, Softwareentwicklung. {% else %}The Master's
-        programme Mathematics in Data and Technology imparts in-depth knowledge
-        in sub-areas of applied mathematics and related scientific disciplines,
-        for mathematical data analysis in applications such as artificial
-        intelligence intelligence, machine learning or the simulation of real
-        processes. are relevant. Graduates will be able to analyse the
-        mathematical methods analyse, assess and further develop the
-        mathematical methods of these fields. further develop them. <br />
-        An overview of the fields of numerics, stochastics and optimisation is
-        optimisation, and a specialisation module is offered in either numerics
-        or from stochastics is offered. The degree programme also offers the the
-        possibility of individual specialisation in areas such as such as deep
-        learning, artificial intelligence, machine learning, optimisation
-        learning, optimisation and statistics. <br />
-        The degree programme is aimed at graduates from a Bachelor's degree
-        programme in mathematics, computer science or a natural or engineering
-        engineering subject. It qualifies for Activities in professional fields
-        such as data analysis, digital engineering, application and method
-        development in the field of deep learning and AI, risk modelling,
-        software development. {% endif %}
-      </p>
-    </div>
-    <div class="feature col">
+  <div class="container px-4 py-1" id="featured-3">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <!--               <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
+          <h2>Geplanter Start</h2>
+        </div>
+        <div class="text-center">
+          <p>Wintersemester 2024/25</p>
+        </div>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <!--               <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
+          <a
+            href="#"
+            class="btn btn-primary disabled"
+            role="button"
+            aria-disabled="true"
+          >
+            <h2>Zur Bewerbung</h2></a
+          >
+        </div>
+        <div class="py-3 text-center">
+          <p>Coming soon...</p>
+        </div>
+      </div>
+      <!-- <div class="feature col">
       <h2></h2>
       <div>
         <table class="table table-striped">
@@ -98,107 +80,138 @@
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
-</div>
+    </div> -->
 
-<div class="container px-4 py-5" id="featured-3">
-  <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-    <div class="feature col">
-      <div class="feature-icon bg-gradient text-center">
-        <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>
-        <h2>Admission</h2>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>
+          <h2>Short profile</h2>
+        </div>
+        {% if lang == "de" %}
+        <ul>
+          <li>
+            Für BSc-Absolventen in Mathematik, Informatik,
+            Ingenieurwissenschaft, Physik,...
+          </li>
+          <li>Module in Numerik, Stochastik, Programmierung.</li>
+          <li>Möglichkeit zu einem Industrie-Praktikum</li>
+          <li>Vertiefung in Machine Learning, Optimierung, Statistik, etc.</li>
+          <li>Sprache: englisch</li>
+          <li>Studienstart: nur zum Wintersemester</li>
+        </ul>
+        {% endif %}
       </div>
-      <div>
-        <p>
-          You need a Bachelor's degree with a minimum of 30 credits in
-          Mathematics, including 12 credits in foundations of calculus and
-          linear algebra. In english, you must have B2. More information is
-          <a href="{{url_for('showmscdata', lang=lang, anchor='bewerbung')}}"
-            >here.</a
-          >
-        </p>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>
+          <h2>Admission</h2>
+        </div>
+        <div>
+          <p>
+            You need a Bachelor's degree with a minimum of 30 credits in
+            Mathematics, including 12 credits in foundations of calculus and
+            linear algebra. In english, you must have B2. You can only start
+            this program in the winter term (October 1st).
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="feature col">
-      <div class="feature-icon bg-gradient text-center">
-        <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
-        <h2>Curriculum</h2>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
+          <h2>Curriculum</h2>
+        </div>
+        <div>
+          <p>
+            You will obtain solid foundation in mathematics in a basic course,
+            and an additional advanced course in applied mathematics. In the
+            electives, you can choose from modules such as numerical
+            optimization, numerics for partial differential equations, neural
+            nets, financial mathematics, dynamical systems in biology,
+            econometrics, computer vision, automated machine learning, etc. More
+            information can be found
+            <a
+              href="{{url_for('showmscdata', anchor='studienverlauf', lang=lang)}}"
+              >here</a
+            >
+          </p>
+        </div>
       </div>
-      <div>
-        <p>
-          You will obtain solid foundation in mathematics in a basic course, and
-          an additional advanced course in applied mathematics. In the
-          electives, you can choose from modules such as numerical optimization,
-          numerics for partial differential equations, neural nets, financial
-          mathematics, dynamical systems in biology, econometrics, computer
-          vision, automated machine learning, etc. More information can be found
-          <a
-            href="{{url_for('showmscdata', anchor='studienverlauf', lang=lang)}}"
-            >here</a
-          >
-        </p>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-infinity fa-4" aria-hidden="true"></i></h2>
+          <h2>Mathematics</h2>
+        </div>
+        <div>
+          <p>
+            We strongly believe that Mathemtics is the foundation of data
+            science and technology. In order to provide the necessary skills
+            areas such as numerical mathematics, optimization, and probability
+            theory, you take part in various courses from the study program in
+            the MSc Mathematics.
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="feature col">
-      <div class="feature-icon bg-gradient text-center">
-        <h2><i class="fa fa-infinity fa-4" aria-hidden="true"></i></h2>
-        <h2>Mathematics</h2>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-keyboard fa-4" aria-hidden="true"></i></h2>
+          <h2>Coding</h2>
+        </div>
+        <div>
+          <p>
+            Transforming the fundamentals to applications mostly required the
+            knowledge to showcase your project using an implementation. Although
+            programming skills are not required upon admission, coding will be
+            an important part of the basic module, and will be strengthened in a
+            specific coding module.
+          </p>
+        </div>
       </div>
-      <div>
-        <p>
-          We strongly believe that Mathemtics is the foundation of data science
-          and technology. In order to provide the necessary skills areas such as
-          numerical mathematics, optimization, and probability theory, you take
-          part in various courses from the study program in the MSc Mathematics.
-        </p>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-handshake fa-4" aria-hidden="true"></i></h2>
+          <h2>Internship</h2>
+        </div>
+        <div>
+          <p>
+            The programming project can be exchanged by an industrial placement
+            (interneship) of at least six weeks. As examples, we have
+            connections to various local companies, including Sick, Baloise,
+            LBBW, Allianz, Fraunhofer, Bosch.
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="feature col">
-      <div class="feature-icon bg-gradient text-center">
-        <h2><i class="fa fa-keyboard fa-4" aria-hidden="true"></i></h2>
-        <h2>Coding</h2>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
+          <h2>Freiburg</h2>
+        </div>
+        <div>
+          <p>
+            Freiburg is a lovely town at the foot of the black forest. It is a
+            green city with many bicycles and opportunities to spend your free
+            time. The University of Freiburg not only has a long tradition
+            covering all areas from science and the humanities, but is also very
+            active in research, as shown by its success in the excellence
+            initiative. The mathematical institute, which hosts most of this
+            study program, covers a wide range of topics, from mathematical
+            logic to machine learning.
+          </p>
+        </div>
       </div>
-      <div>
-        <p>
-          Transforming the fundamentals to applications mostly required the
-          knowledge to showcase your project using an implementation. Although
-          programming skills are not required upon admission, coding will be an
-          important part of the basic module, and will be strengthened in a
-          specific coding module.
-        </p>
-      </div>
-    </div>
-    <div class="feature col">
-      <div class="feature-icon bg-gradient text-center">
-        <h2><i class="fa fa-handshake fa-4" aria-hidden="true"></i></h2>
-        <h2>Internship</h2>
-      </div>
-      <div>
-        <p>
-          The programming project can be exchanged by an industrial placement
-          (interneship) of at least six weeks. As examples, we have connections
-          to various local companies, including Sick, Baloise, LBBW, Allianz,
-          Fraunhofer, Bosch.
-        </p>
-      </div>
-    </div>
-    <div class="feature col">
-      <div class="feature-icon bg-gradient text-center">
-        <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
-        <h2>Freiburg</h2>
-      </div>
-      <div>
-        <p>
-          Freiburg is a lovely town at the foot of the black forest. It is a
-          green city with many bicycles and opportunities to spend your free
-          time. The University of Freiburg not only has a long tradition
-          covering all areas from science and the humanities, but is also very
-          active in research, as shown by its success in the excellence
-          initiative. The mathematical institute, which hosts most of this study
-          program, covers a wide range of topics, from mathematical logic to
-          machine learning.
-        </p>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
+          <h2>More information</h2>
+        </div>
+        <div>
+          <p>
+            Detailed description is
+            <a href="{{url_for('showmscdata', anchor='none', lang=lang)}}"
+              >{% if lang == "de" %}hier{% else %}here{% endif %}</a
+            >
+          </p>
+        </div>
       </div>
     </div>
   </div>

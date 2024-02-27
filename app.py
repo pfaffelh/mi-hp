@@ -32,14 +32,14 @@ semester = {
     "ws2324": "Wintersemester 2023/24",
     "ss23": "Sommersemester 2023",
     "ws2223": "Wintersemester 2022/23",
-    "ss22": "Sommersemester 2023",
-    "ws2121": "Wintersemester 2022/23",
-    "ss21": "Sommersemester 2023",
-    "ws2021": "Wintersemester 2022/23",
-    "ss20": "Sommersemester 2023",
-    "ws1920": "Wintersemester 2022/23",
-    "ss19": "Sommersemester 2023",
-    "ws1819": "Wintersemester 2022/23"
+    "ss22": "Sommersemester 2022",
+    "ws2122": "Wintersemester 2021/22",
+    "ss21": "Sommersemester 2021",
+    "ws2021": "Wintersemester 2020/21",
+    "ss20": "Sommersemester 2020",
+    "ws1920": "Wintersemester 2019/20",
+    "ss19": "Sommersemester 2019",
+    "ws1819": "Wintersemester 2018/19"
 }
 
 # check if the template is available in the correct language
@@ -281,6 +281,34 @@ def showlehrveranstaltungenbase(lang):
 def sendlehrveranstaltungen(semester, lang="de"):
     response = None
     path = os.path.relpath(f"mi-hp/templates/lehrveranstaltungen/pdf/{semester}.pdf")    
+    path = os.path.abspath(path)
+    print(path)
+    print(os.path.exists(path))
+    if os.path.exists(path):        
+        response = send_file(path)
+        print(path)
+        return response
+    return make_response("not found", 404)
+
+# Ergänzungen zu den Modulhandbüchern
+@app.route("/<lang>/lehrveranstaltungen/pdf/mh/<semester>/")
+def sendlehrveranstaltungen_mh(semester, lang="de"):
+    response = None
+    path = os.path.relpath(f"mi-hp/templates/lehrveranstaltungen/pdf/{semester}mh.pdf")    
+    path = os.path.abspath(path)
+    print(path)
+    print(os.path.exists(path))
+    if os.path.exists(path):        
+        response = send_file(path)
+        print(path)
+        return response
+    return make_response("not found", 404)
+
+# Verwendbarkeitstabellen
+@app.route("/<lang>/lehrveranstaltungen/pdf/verw/<semester>/")
+def sendlehrveranstaltungen_verw(semester, lang="de"):
+    response = None
+    path = os.path.relpath(f"mi-hp/templates/lehrveranstaltungen/pdf/{semester}verw.pdf")    
     path = os.path.abspath(path)
     print(path)
     print(os.path.exists(path))

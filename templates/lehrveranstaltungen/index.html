@@ -3,28 +3,57 @@
   <div class="row">
     <div class="col-auto">
       <h1>Lehrveranstaltungen</h1>
-      <table class="table table-borderless">
+      <table class="table table-lg table-striped table-hover table-borderless">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"><center><div>Veranstaltungs-</div><div>verzeichnis</div></center></th>
+            <th scope="col">Kommentare</th>
+            <th scope="col"><center><div>Ergänzungen zu den</div> <div>Modulhandbüchern</div></center></th>
+            <th scope="col"><center><div>Verwendbarkeits-</div><div>tabelle</div></center></th>
+          </tr>
+        </thead>
         <tbody>
           {% for key, value in semester.items() %}
           <tr>
             <th scope="row">{{value}}</th>
             <td>
-              <a
-                href="{{url_for('showlehrveranstaltungen', lang = lang, semester = key)}}"
-                >Veranstaltungsverzeichnis</a
-              >
+              <center>
+                <a
+                  href="{{url_for('showlehrveranstaltungen', lang = lang, semester = key)}}"
+                  ><i class="fa-solid fa-link"></i></a
+                >
+              </center>
             </td>
             <td>
-              <a
-                href="{{url_for('sendlehrveranstaltungen', lang = lang, semester = key)}}"
-                >Kommentare</a
-              >
+              <center>
+                <a
+                  href="{{url_for('sendlehrveranstaltungen', lang = lang, semester = key)}}"
+                  ><i class="fa-solid fa-file-pdf"></i></a
+                >
+              </center>
+            </td>
+            <td>
+              <center>
+                <a
+                  href="{{url_for('sendlehrveranstaltungen_mh', lang = lang, semester = key)}}"
+                  ><i class="fa-solid fa-file-pdf"></i></a
+                >
+              </center>
+            </td>
+            <td>
+              <center>
+                <a
+                  href="{{url_for('sendlehrveranstaltungen_verw', lang = lang, semester = key)}}"
+                  ><i class="fa-solid fa-file-pdf"></i></a
+                >
+              </center>
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
-      <br>
+      <br />
       <h2>Intern</h2>
       <ul>
         <li>

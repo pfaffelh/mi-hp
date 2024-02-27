@@ -12,8 +12,7 @@
       <h3 class="accordion-header" id="headerkurz">
         <button
           type="button"
-          class="accordion-button"
-          style="background-color: #f6f1e3"
+          class="accordion-button {% if anchor != 'aktuell' %}collapsed{% endif %}"
           data-bs-target="#aktuell"
           aria-controls="aktuell"
           aria-expanded="true"
@@ -40,8 +39,7 @@
           <button
             aria-controls="geplant"
             aria-expanded="false"
-            class="accordion-button"
-            style="background-color: #f6f1e3"
+            class="accordion-button {% if anchor != 'geplant' %}collapsed{% endif %}"
             data-bs-target="#geplant"
             data-bs-toggle="collapse"
             type="button"
@@ -67,8 +65,7 @@
             <button
               aria-controls="auslaufend"
               aria-expanded="false"
-              class="accordion-button"
-              style="background-color: #f6f1e3"
+              class="accordion-button {% if anchor != 'auslaufend' %}collapsed{% endif %}"
               data-bs-target="#auslaufend"
               data-bs-toggle="collapse"
               type="button"
