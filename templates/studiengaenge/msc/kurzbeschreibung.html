@@ -1,75 +1,97 @@
-<div class="row align-items-center g-4 py-5 row-cols-1 row-cols-lg-2">
-  <div class="feature col">
-    <p>
-      Der Studiengang vermittelt vertiefte Kenntnisse im Bereich der Mathematik
-      mit dem Ziel des selbstständigen wissenschaftlichen Arbeitens. Die
-      Studierenden können, bis auf Minimalanforderungen an die Breite des
-      Studiums, frei aus dem Vorlesungsangebot wählen und können sich nach
-      eigenem Interesse in einem unserer Schwerpunktgebiete (xxx Link zu den
-      Studienverläufen) vertiefen:
-    </p>
-    <ul>
-      <li>Algebra und Zahlentheorie,</li>
-      <li>Analysis,</li>
-      <li>Angewandte Analysis und Numerik,</li>
+<div class="container px-4 py-1" id="featured-3">
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+    <div class="feature col">
+      <div class="feature-icon bg-gradient text-center">
+        <h2><i class="fa fa-person fa-4" aria-hidden="true"></i></h2>
+        <h2>Zielgruppe</h2>
+      </div>
+      <div>
+        <p>
+          Die meisten Studierenden des MSc Mathematik haben einen BSc in
+          Mathematik. Der Studiengang vermittelt vertiefte Kenntnisse im Bereich
+          der Mathematik mit dem Ziel des selbstständigen wissenschaftlichen
+          Arbeitens.
+          <br />
+          Das Studium beinhaltet Vorlesungen, mindestens zwei Seminare, drei
+          studienbegleitende mündliche Modulprüfungen und eine Master-Arbeit.
+        </p>
+      </div>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon bg-gradient text-center">
+        <h2><i class="fa fa-book fa-4" aria-hidden="true"></i></h2>
+        <h2>Studienschwerpunkte</h2>
+      </div>
+      <div>
+        <p>
+          Je nach eigenem Interesse können sich Studierende in einem unserer
+          <a
+            href="{{url_for('showstudienberatungschwerpunktgebiete', lang=lang)}}"
+            >Schwerpunktgebiete</a
+          >
+          vertiefen:
+        </p>
+        <div class="row row-cols-1 row-cols-lg-2">
+          <div class="feature col">
+            <ul>
+              <li>Algebra und Zahlentheorie,</li>
+              <li>Analysis,</li>
+              <li>Angewandte Analysis und Numerik,</li>
+            </ul>
+          </div>
+          <div class="feature col">
+            <ul>
+              <li>Geometrie und Topologie,</li>
+              <li>Mathematische Logik,</li>
+              <li>Mathematische Stochastik.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon bg-gradient text-center">
+        <h2><i class="fa fa-language fa-4" aria-hidden="true"></i></h2>
+        <h2>Sprache</h2>
+      </div>
+      <div>
+        <p>
+          Unterrichtssprachen sind deutsch und englisch. Zur Einschreibung
+          werden die
 
-      <li>Geometrie und Topologie,</li>
-      <li>Mathematische Logik,</li>
-      <li>Mathematische Stochastik.</li>
-    </ul>
-    <p>
-      Die
-      <b> Spezialisierung Finanzmathematik </b>
-      wird auf dem Zeugnis besonders ausgewiesen. Sie ergänzt die mathematische
-      Vertiefung durch wirtschaftswissenschaftliche Spezialisierungsmodule.
-    </p>
-  </div>
-  <div class="feature col">
-    <h2></h2>
-    <div>
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <td>{% if lang == "de" %}Abschluss{% else %}Degree{% endif %}</td>
-            <td>Master of Science</td>
-          </tr>
-          <tr>
-            <td>{% if lang == "de" %}Dauer{% else %}Duration{% endif %}</td>
-            <td>
-              {% if lang == "de" %}4 Semester{% else %}4 semesters{% endif %}
-            </td>
-          </tr>
-          <tr>
-            <td>ECTS</td>
-            <td>120</td>
-          </tr>
-          <tr>
-            <td>Start</td>
-            <td>
-              {% if lang == "de" %}Winter- und Sommersemester{% else %}Winter
-              and summer term{% endif %}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              {% if lang == "de" %}Voraussetzung{% else %}Prerequisites{% endif
-              %}
-            </td>
-            <td>
-              {% if lang == "de" %}BSc mit mindestens
-              <u data-bs-toggle="tooltip" title="Details siehe Bewerbung"
-                >103 ECTS</u
-              >
-              Mathematik{% else %}BSc with at least 103 ECTS of mathematics{%
-              endif %}
-            </td>
-          </tr>
-          <tr>
-            <td>{% if lang == "de" %}Sprache{% else %}language{% endif %}</td>
-            <td>{% if lang == "de" %}Deutsch{% else %}German{% endif %}</td>
-          </tr>
-        </tbody>
-      </table>
+          <u
+            data-bs-toggle="tooltip"
+            title="Eine dieser Voraussetzungen kann im ersten Studienjahr nachgeholt werden."
+            >Niveaus B2 (deutsch) und B1 (englisch) gefordert</u
+          >
+        </p>
+      </div>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon bg-gradient text-center">
+        <h2><i class="fa fa-play fa-4" aria-hidden="true"></i></h2>
+        <h2>Start</h2>
+      </div>
+      <div>
+        <p>
+          Der Studienstart ist in jedem Semester möglich. Die Bewerbungsfrist
+          für das Wintersemester endet am 15.9., die für das Sommersemester am
+          15.3.
+        </p>
+      </div>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon bg-gradient text-center">
+        <h2></h2>
+        <a
+          href="#"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          <h2><i class="fa fa-circle-right fa-4" aria-hidden="true"></i> Bewerbung</h2></a
+        >
+      </div>
     </div>
   </div>
 </div>

@@ -1,25 +1,32 @@
+<div class="py-3 g-4">
+  Noch mehr relevante Dokumente findet man
+  <a
+    href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/363#collapseSatzungen"
+    >hier</a
+  >.
+</div>
 <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
   <div class="col">
     <div class="card h-100">
-      <a
-        href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/363#collapse-Satzungen"
-      >
-        <center>
-          <img
-            src="/static/Bilder/zulassungsordnung.jpg"
-            class="card-img-fluid"
-            alt="..."
-            style="height: 15vw; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/Bilder/zulassungsordnung.jpg"
+          class="card-img-fluid"
+          alt="..."
+          style="height: 15vw; object-fit: cover"
+        />
+      </center>
+
       <div class="card-body">
-        <h3 class="h5">Zulassungsordnung</h3>
+        <a
+          href="http://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/zulassungsordnungen/zulassungsordnung_m_sc__mathematik_05_03_2012.pdf"
+        >
+          <h3 class="h5">Zulassungsordnung</h3></a
+        >
         <div class="card-text">
           <p>
             Diese Ordnung regelt das Bewerbungsverfahren, wie
-            <a
-              href="{{url_for('showmsc', lang = lang, anchor = 'bewerbung')}}"
+            <a href="{{url_for('showmsc', lang = lang, anchor = 'bewerbung')}}"
               >oben</a
             >
             beschrieben.
@@ -30,29 +37,36 @@
   </div>
   <div class="col">
     <div class="card h-100">
-      <a
-        href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/363#collapse-Satzungen"
-      >
-        <center>
-          <img
-            src="/static/Bilder/ordnung.jpg"
-            class="card-img-fluid"
-            alt="..."
-            style="height: 15vw; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/Bilder/ordnung.jpg"
+          class="card-img-fluid"
+          alt="..."
+          style="height: 15vw; object-fit: cover"
+        />
+      </center>
+
       <div class="card-body">
         <h3 class="h5">Prüfungsordnung</h3>
         <div class="card-text">
           <ul>
             <li>
-              In der <i>Rahmenprüfungsordnung</i> sind Regeln festgehalten, die
-              für alle MSc-Studiengänge gelten.
+              In der
+              <a
+                href="http://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/pruefungsordnungen/master_of_science/m_sc__pruefungsordnung_aktuell_rahmenordnung.pdf"
+              >
+                <i>Rahmenprüfungsordnung</i></a
+              >
+              sind Regeln festgehalten, die für alle MSc-Studiengänge gelten.
             </li>
             <li>
-              Der <i>fachspezifischen Teil</i>regelt die oben aufgeführten
-              speziellen Regelungen.
+              Der
+              <a
+                href="http://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/pruefungsordnungen/master_of_science/m_sc__prufungsordnung_03_06_2014_mathematik.pdf"
+              >
+                <i>fachspezifischen Teil</i></a
+              >
+              regelt die oben aufgeführten speziellen Regelungen.
             </li>
           </ul>
         </div>
@@ -61,24 +75,28 @@
   </div>
   <div class="col">
     <div class="card h-100">
-      <a
-        href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-      >
-        <center>
-          <img
-            src="/static/Bilder/modulhandbuch.jpg"
-            class="card-img-fluid"
-            alt="..."
-            style="height: 15vw; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/Bilder/modulhandbuch.jpg"
+          class="card-img-fluid"
+          alt="..."
+          style="height: 15vw; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
-        <h3 class="h5">Modulhandbuch</h3>
+        <a
+          href="{{url_for('static', filename='studiengaenge/msc/Modulhandbuch-Mathematik-MSc14-2022.05.21.pdf')}}"
+        >
+          <h3 class="h5">Modulhandbuch</h3></a
+        >
         <p class="card-text">
-          Welche Wahlmöglichkeiten Sie in den Modulen haben, ist semesterweise
-          in den aktuellen Ergänzungen der Modulhandbücher beschrieben. Kompakt
-          findet sich die Information in den Verwendungstabellen
+          Hier werden die einzelnen Module beschrieben. Darüber hinaus werden
+          semesterweise aktuell Wahlmöglichkeiten in den
+          <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
+            Ergänzungen der Modulhandbücher
+          </a>
+          beschrieben. Kompakt findet sich die Information in den
+          Verwendungstabellen
         </p>
       </div>
     </div>
