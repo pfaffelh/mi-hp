@@ -233,19 +233,26 @@
               <li>
                 <a
                   class="dropdown-item text-black"
+                  href="{{ url_for('showformulare', lang = lang) }}"
+                  >{% if lang == "de" %}Formulare und Anträge{% else %}Forms and applications{% endif %}</a
+                >
+              </li>
+              <!-- <li>
+                <a
+                  class="dropdown-item text-black"
                   href="{{ url_for('showpruefungen', lang = lang) }}"
                   >{% if lang == "de" %}Prüfungsanmeldung{% else %}Exam
                   registration{% endif %}</a
                 >
-              </li>
-              <li>
+              </li> -->
+              <!-- <li>
                 <a
                   class="dropdown-item text-black"
                   href="{{ url_for('showabschlussarbeiten', lang = lang) }}"
                   >{% if lang == "de" %}Abschlussarbeiten{% else %}Final
                   theses{% endif %}</a
                 >
-              </li>
+              </li> -->
               <li>
                 <a
                   class="dropdown-item text-black"

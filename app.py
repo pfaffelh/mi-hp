@@ -221,6 +221,11 @@ def showabschlussarbeiten(lang):
     filenames = ["pruefungsamt/abschlussarbeiten.html"]
     return render_template("home.html", filenames = filenames, lang=lang, site = "showabschlussarbeiten")
 
+@app.route("/<lang>/pruefungsamt/formulare/")
+def showformulare(lang):
+    filenames = ["pruefungsamt/formulare.html"]
+    return render_template("home.html", filenames = filenames, lang=lang, site = "showformulare")
+
 @app.route("/<lang>/pruefungsamt/modulhandbuecher/")
 def showmodulhandbuecher(lang):
     filenames = ["pruefungsamt/modulhandbuecher.html"]
