@@ -377,6 +377,30 @@ def showcalendar(lang):
         "responsible": 'Studiendekan',
         "backgroundColor": '#ccffcc'
     },    
+    {
+        "start": '2024-02-08 13:00:00',
+        "end": '2024-02-08 14:00:00',
+        "title": 'Tutoratsvergabe',
+        "description": 'n!',
+        "responsible": 'Studiendekan',
+        "backgroundColor": '#ccffcc'
+    },    
+    {
+        "start": '2024-02-08 13:00:00',
+        "end": '2024-02-08 14:00:00',
+        "title": 'Tutoratsvergabe',
+        "description": 'n!',
+        "responsible": 'Studiendekan',
+        "backgroundColor": '#ccffcc'
+    },    
+    {
+        "start": '2024-02-08 13:00:00',
+        "end": '2024-02-08 14:00:00',
+        "title": 'Tutoratsvergabe',
+        "description": 'n!',
+        "responsible": 'Studiendekan',
+        "backgroundColor": '#ccffcc'
+    },    
     ]
-    return render_template("calendar.html", events = events, lang=lang, site = "showcalendar")
+    return render_template("calendar2.html", events = events, lang=lang, site = "showcalendar")
 
