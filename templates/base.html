@@ -213,7 +213,7 @@
                   <div class="text-white fw-bold ms-2 me-2">deutsch</div>
                   {% else %}<a
                     class="text-white ms-2 me-2"
-                    href='{{ url_for(site, semester = semester, anchor = anchor, lang = "de") }}'
+                    href='{{ url_for(site, lang = "de") }}'
                     >deutsch</a
                   >
                   {% endif %}
@@ -223,7 +223,7 @@
                   <div class="text-white fw-bold ms-2 me-2">englisch</div>
                   {% else %}<a
                     class="text-white ms-2 me-2"
-                    href='{{ url_for(site, semester = semester, anchor = anchor, lang = "en") }}'
+                    href='{{ url_for(site, lang = "en") }}'
                     >englisch</a
                   >
                   {% endif %}
