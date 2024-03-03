@@ -72,7 +72,7 @@
                 information{% endif %}
               </td>
               <td>
-                <a href="{{url_for('showmscdata', anchor='none', lang=lang)}}"
+                <a href="{{url_for('showstudiengang', studiengang='msc_data', anchor='none', lang=lang)}}"
                   >{% if lang == "de" %}hier{% else %}here{% endif %}</a
                 >
               </td>
@@ -131,7 +131,7 @@
             econometrics, computer vision, automated machine learning, etc. More
             information can be found
             <a
-              href="{{url_for('showmscdata', anchor='studienverlauf', lang=lang)}}"
+              href="{{url_for('showstudiengang', studiengang='msc_data', anchor='studienverlauf', lang=lang)}}"
               >here</a
             >
           </p>
@@ -207,7 +207,7 @@
         <div>
           <p>
             Detailed description is
-            <a href="{{url_for('showmscdata', anchor='none', lang=lang)}}"
+            <a href="{{url_for('showstudiengang', studiengang='msc_data', anchor='none', lang=lang)}}"
               >{% if lang == "de" %}hier{% else %}here{% endif %}</a
             >
           </p>

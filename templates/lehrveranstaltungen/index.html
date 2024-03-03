@@ -14,13 +14,13 @@
           </tr>
         </thead>
         <tbody>
-          {% for key, value in semester.items() %}
+          {% for key, value in semester_dict.items() %}
           <tr>
             <th scope="row">{{value}}</th>
             <td>
               <center>
                 <a
-                  href="{{url_for('showlehrveranstaltungen', lang = lang, semester = key)}}"
+                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"
                   ><i class="fa-solid fa-link"></i></a
                 >
               </center>
@@ -28,24 +28,24 @@
             <td>
               <center>
                 <a
-                  href="{{url_for('sendlehrveranstaltungen', lang = lang, semester = key)}}"
-                  ><i class="fa-solid fa-file-pdf"></i></a
+                  href="{{url_for('static', filename='lehrveranstaltungen/'+key+'.pdf')}}"
+                  ></a
                 >
               </center>
             </td>
             <td>
               <center>
                 <a
-                  href="{{url_for('sendlehrveranstaltungen_mh', lang = lang, semester = key)}}"
-                  ><i class="fa-solid fa-file-pdf"></i></a
+                href="{{url_for('static', filename='lehrveranstaltungen/'+key+'mh.pdf')}}"
+                ></a
                 >
               </center>
             </td>
             <td>
               <center>
                 <a
-                  href="{{url_for('sendlehrveranstaltungen_verw', lang = lang, semester = key)}}"
-                  ><i class="fa-solid fa-file-pdf"></i></a
+                href="{{url_for('static', filename='lehrveranstaltungen/'+key+'verw.pdf')}}"
+                ></a
                 >
               </center>
             </td>

@@ -8,14 +8,23 @@ from bs4 import BeautifulSoup
 import requests
 from flask import send_file
 from flask import make_response
-from utils.data import *
+from utils.config import *
 # from utils.util_logging import logger
 from utils.util_calendar import calendar, get_caldav_calendar_events
 from utils.util_faq import get_faq
 
 app = Flask(__name__)
 
-locale.setlocale(locale.LC_ALL, "de_DE.UTF8") # Deutsche Namen für Tage und Monate
+# This function is important for changing languages; see base.html. Within a template, we can use its own endpoint, i.e. all parameters it was given. 
+# For changin languages, we are then able to only change the lang-parameter.
+def url_for_self(**args):
+    return url_for(request.endpoint, **dict(request.view_args, **args))
+
+# This is for using the last function within a jinja2 template. 
+app.jinja_env.globals['url_for_self'] = url_for_self
+
+# Deutsche Namen für Tage und Monate
+locale.setlocale(locale.LC_ALL, "de_DE.UTF8") 
 
 ###############
 ## Home page ##
@@ -25,21 +34,21 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8") # Deutsche Namen für Tage und Mon
 @app.route("/<lang>/")
 def showbase(lang="de"):
     filenames = ["index.html"]
-    return render_template("home.html", filenames=filenames, lang=lang, site="showbase")
+    return render_template("home.html", filenames=filenames, lang=lang)
 
 ############
 ## footer ##
 ############
 
-@app.route("/<lang>/impressum")
+@app.route("/<lang>/impressum/")
 def showimpressum(lang):
     filenames = ["footer/impressum.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showimpressum")
+    return render_template("home.html", filenames = filenames, lang=lang)
 
-@app.route("/<lang>/datenschutz")
+@app.route("/<lang>/datenschutz/")
 def showdatenschutz(lang):
     filenames = ["footer/datenschutz.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showdatenschutz")
+    return render_template("home.html", filenames = filenames, lang=lang)
 
 ###################
 ## Studiengaenge ##
@@ -49,87 +58,69 @@ def showdatenschutz(lang):
 @app.route("/<lang>/studiengaenge/<anchor>")
 def showstudiengaenge(lang, anchor="aktuell"):
     filenames = ["studiengaenge/index.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showstudiengaenge")
+    return render_template("home.html", filenames = filenames, lang=lang, anchor=anchor)
 
-@app.route("/<lang>/studiengaenge/2hfb/")
-@app.route("/<lang>/studiengaenge/2hfb/<anchor>")
-def show2hfb(lang, anchor="kurzbeschreibung"):
-    filenames = ["studiengaenge/2hfb/index-2021.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "show2hfb")
-@app.route("/<lang>/studiengaenge/med/")
-@app.route("/<lang>/studiengaenge/med/<anchor>")
-def showmed(lang, anchor="kurzbeschreibung"):
-    filenames = ["studiengaenge/med/index-2018.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showmed")
+@app.route("/<lang>/studiengaenge/<studiengang>/")
+@app.route("/<lang>/studiengaenge/<studiengang>/<anchor>")
+def showstudiengang(lang, studiengang, anchor="kurzbeschreibung"):
+    if studiengang == "bsc":
+        filenames = ["studiengaenge/bsc/index-2021.html"]
+    if studiengang == "msc":
+        filenames = ["studiengaenge/msc/index-2014.html"]
+    if studiengang == "msc_data":
+        filenames = ["studiengaenge/msc_data/index-2024.html"]
+    if studiengang == "2hfb":
+        filenames = ["studiengaenge/2hfb/index-2021.html"]
+    if studiengang == "med":
+        filenames = ["studiengaenge/med/index-2018.html"]
+    if studiengang == "med_erw":
+        filenames = ["studiengaenge/med_erw/index-2021.html"]
+    if studiengang == "promotion":
+        filenames = ["studiengaenge/promotion/index.html"]
+    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
 
-@app.route("/<lang>/studiengaenge/med_erw/")
-@app.route("/<lang>/studiengaenge/med_erw/<anchor>")
-def showmederw(lang, anchor="kurzbeschreibung"):
-    filenames = ["studiengaenge/med_erw/index-2021.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showmederw")
+@app.route("/<lang>/studiengaenge/<studiengang>/news/")
+def showstudiengangnews(lang, studiengang):
+    if studiengang == "msc_data":
+        filenames = ["studiengaenge/msc_data/carousel.html", "studiengaenge/msc_data/news.html"]
+    if studiengang == "med_dual":
+        filenames = ["studiengaenge/med_dual/index-2024.html"]
+    return render_template("home.html", filenames=filenames, lang=lang)
 
-@app.route("/<lang>/studiengaenge/msc/")
-@app.route("/<lang>/studiengaenge/msc/<anchor>")
-def showmsc(lang, anchor = "kurzbeschreibung"):
-    filenames = ["studiengaenge/msc/index-2014.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showmsc")
-
-@app.route("/<lang>/studiengaenge/msc_data/")
-@app.route("/<lang>/studiengaenge/msc_data/<anchor>")
-def showmscdata(lang, anchor = "kurzbeschreibung"):
-#    filenames = ["studiengaenge/msc_data_carousel.html","studiengaenge/mscdata-2024.html"]
-    filenames = ["studiengaenge/msc_data/index-2024.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showmscdata")
-
-@app.route("/<lang>/studiengaenge/msc_data/news/")
-def showmscdatanews(lang):
-    filenames = ["studiengaenge/msc_data/carousel.html", "studiengaenge/msc_data/news.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showmscdatanews")
-
-@app.route("/<lang>/studiengaenge/med_dual/")
-@app.route("/<lang>/studiengaenge/med_dual/<anchor>")
-def showmeddual(lang, anchor="kurzbeschreibung"):
-    filenames = ["studiengaenge/med_dual/index-2024.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showmeddual")
-
-@app.route("/<lang>/studiengaenge/promotion/")
-@app.route("/<lang>/studiengaenge/promotion/<anchor>")
-def showpromotion(lang, anchor="kurzbeschreibung"):
-    filenames = ["studiengaenge/promotion/index.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, anchor = anchor, site = "showpromotion")
+@app.route("/<lang>/studiengaenge/<studiengang>/verlauf/")
+def showstudienverlauf(lang, studiengang):
+    if studiengang == "bsc":
+        filenames = ["studiengaenge/studienverlauf-bsc-2021.html"]
+    if studiengang == "bscb":
+        filenames = ["studiengaenge/studienverlauf-bsc-2021b.html"]
+    if studiengang == "msc":
+        filenames = ["studiengaenge/studienverlauf-msc-2014.html"]       
+    if studiengang == "2hfb":
+        filenames = ["studiengaenge/studienverlauf-2hfb-2021.html"]       
+    if studiengang == "med":
+        filenames = ["studiengaenge/studienverlauf-med-2018.html"]       
+    return render_template("home.html", filenames = filenames, studiengang=studiengang, lang=lang)
 
 #####################
 ## Studienberatung ##
 #####################
 
 @app.route("/<lang>/studienberatung/")
-def showstudienberatung(lang):
+def showstudienberatungbase(lang):
     filenames = ["studienberatung/index.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienberatung")
+    return render_template("home.html", filenames = filenames, lang=lang)
 
-@app.route("/<lang>/studienberatung/schwerpunktgebiete/")
-def showstudienberatungschwerpunktgebiete(lang):
-    filenames = []
-    filenames = ["studienberatung/schwerpunktgebiete.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienberatungschwerpunktgebiete")
-
-@app.route("/<lang>/studienberatung/studienanfang/")
-def showstudienberatungstudienanfang(lang):
-    filenames = []
-    filenames = ["studienberatung/studienanfang.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienberatungstudienanfang")
-
-@app.route("/<lang>/studienberatung/warum_mathematik/")
-def showinterestwarum(lang):
-    filenames = []
-    filenames = ["studienberatung/warum_mathematik.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestwarum")
-
-@app.route("/<lang>/studienberatung/matheinfreiburg/")
-def showinterestmatheinfreiburg(lang):
-    filenames = []
-    filenames = ["studienberatung/mathestudium_in_freiburg.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showinterestmatheinfreiburg")
+@app.route("/<lang>/studienberatung/<unterseite>/")
+def showstudienberatung(lang, unterseite):
+    if unterseite == "studienanfang":
+        filenames = ["studienberatung/studienanfang.html"]
+    if unterseite == "schwerpunktgebiete":
+        filenames = ["studienberatung/schwerpunktgebiete.html"]
+    if unterseite == "warum_mathematik":
+        filenames = ["studienberatung/warum_mathematik.html"]
+    if unterseite == "matheinfreiburg":
+        filenames = ["studienberatung/mathestudium_in_freiburg.html"]
+    return render_template("home.html", filenames = filenames, lang=lang)
 
 ##########################
 ## Studieninteressierte ## 
@@ -139,59 +130,29 @@ def showinterestmatheinfreiburg(lang):
 @app.route("/<lang>/interesse/<anchor>")
 def showinteresse(lang, anchor="schueler"):
     filenames = ["interesse.html"]
-    return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang, site = "showinteresse")
-
-@app.route("/<lang>/studiengaenge/bsc/")
-def showbsc(lang):
-    filenames = []
-    filenames = ["studiengaenge/bsc/index-2021.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showbsc")
-
-@app.route("/<lang>/studiengaenge/studienverlauf-bsc-2021/")
-def showstudienverlaufbsc(lang):
-    filenames = []
-    filenames = ["studiengaenge/studienverlauf-bsc-2021.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienverlaufbsc")
-
-@app.route("/<lang>/studiengaenge/studienverlauf-msc-2014/")
-def showstudienverlaufmsc(lang):
-    filenames = []
-    filenames = ["studiengaenge/studienverlauf-msc-2014.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showstudienverlaufmsc")
+    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
 #################
 ## Prüfungsamt ##
 #################
 
 @app.route("/<lang>/pruefungsamt/")
-def showpruefungsamt(lang):
+def showpruefungsamtbase(lang):
     filenames = ["pruefungsamt/index.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showpruefungsamt")
+    return render_template("home.html", filenames=filenames, lang=lang)
 
-@app.route("/<lang>/pruefungsamt/termine/")
-def showtermine(lang):
-    filenames = ["pruefungsamt/termine.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showtermine")
-
-@app.route("/<lang>/pruefungsamt/pruefungen/")
-def showpruefungen(lang):
-    filenames = ["pruefungsamt/pruefungen.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showpruefungen")
-
-@app.route("/<lang>/pruefungsamt/abschlussarbeiten/")
-def showabschlussarbeiten(lang):
-    filenames = ["pruefungsamt/abschlussarbeiten.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showabschlussarbeiten")
-
-@app.route("/<lang>/pruefungsamt/formulare/")
-def showformulare(lang):
-    filenames = ["pruefungsamt/formulare.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showformulare")
-
-@app.route("/<lang>/pruefungsamt/modulhandbuecher/")
-def showmodulhandbuecher(lang):
-    filenames = ["pruefungsamt/modulhandbuecher.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showmodulhandbuecher")
+@app.route("/<lang>/pruefungsamt/<unterseite>")
+def showpruefungsamt(lang, unterseite):
+    if unterseite == "calendar":
+        events = get_caldav_calendar_events(calendar)    
+        return render_template("pruefungsamt/calendar.html", events=events, lang=lang)
+    if unterseite == "termine":
+        filenames = ["pruefungsamt/index.html"]
+    if unterseite == "formulare":
+        filenames = ["pruefungsamt/formulare.html"]
+    if unterseite == "modulhandbuecher":
+        filenames = ["pruefungsamt/modulhandbuecher.html"]    
+    return render_template("home.html", filenames=filenames, lang=lang)
 
 #########
 ## faq ##
@@ -204,7 +165,7 @@ def showmodulhandbuecher(lang):
 @app.route("/<lang>/faq/<which>/<show>/")
 def showfaq(lang, which = "all", show = ""):
     cats_kurzname, names_dict, qa_pairs = get_faq(lang)
-    return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, which=which, show = show, studiengaenge = studiengaenge, site = "showfaq")
+    return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, which=which, show = show, studiengaenge = studiengaenge)
 
 #########################
 ## Lehrveranstaltungen ##
@@ -213,8 +174,20 @@ def showfaq(lang, which = "all", show = ""):
 @app.route("/<lang>/lehrveranstaltungen/")
 def showlehrveranstaltungenbase(lang="de"):
     filenames = ["lehrveranstaltungen/index.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, semester = semester, site = "showlehrveranstaltungenbase")
+    return render_template("home.html", filenames=filenames, lang=lang, semester_dict=semester_dict)
 
+@app.route("/<lang>/lehrveranstaltungen/<semester>/")
+def showlehrveranstaltungen(lang, semester):
+    print(semester)
+    url = f"https://www.math.uni-freiburg.de/lehre/v/{semester}.html"
+    result = requests.get(url, verify=False)
+    soup = BeautifulSoup(result.text, 'lxml')
+    content = soup.find('div', id="inhalt")
+    content['class'] = "container"
+    filenames = [f"lehrveranstaltungen/{semester}.html"]    
+    with open("mi-hp/templates/"+filenames[0], "w") as file:
+        file.write(content.prettify())
+    return render_template("home.html", filenames = filenames, lang=lang, semester=semester)
 
 @app.route("/<lang>/lehrveranstaltungen/pdf/<semester>/")
 def sendlehrveranstaltungen(semester, lang="de"):
@@ -257,27 +230,13 @@ def sendlehrveranstaltungen_verw(semester, lang="de"):
         return response
     return make_response("not found", 404)
 
-@app.route("/<lang>/lehrveranstaltungen/<semester>/")
-def showlehrveranstaltungen(lang, semester):
-    print(semester)
-    url = f"https://www.math.uni-freiburg.de/lehre/v/{semester}.html"
-    result = requests.get(url, verify=False)
-    soup = BeautifulSoup(result.text, 'lxml')
-    content = soup.find('div', id="inhalt")
-    content['class'] = "container"
-    filenames = [f"lehrveranstaltungen/{semester}.html"]    
-    with open("mi-hp/templates/"+filenames[0], "w") as file:
-        file.write(content.prettify())
-        return render_template("home.html", filenames = filenames, lang=lang, semester=semester, site = "showlehrveranstaltungen")
-
 @app.route("/<lang>/lehrveranstaltungen/aktuelles/")
 def showlehrveranstaltungenaktuelles(lang):
-    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester = aktuelles[0]))
+    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester=aktuelles[0]))
 
 @app.route("/<lang>/lehrveranstaltungen/kommendes/")
 def showlehrveranstaltungenkommendes(lang):
-    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester = kommendes[0]))
-
+    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester=kommendes[0]))
 
 ###############
 ## Mediathek ##
@@ -286,15 +245,7 @@ def showlehrveranstaltungenkommendes(lang):
 @app.route("/<lang>/mediathek/")
 def showmediathek(lang):
     filenames = ["mediathek.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, site = "showmediathek")
+    return render_template("home.html", filenames=filenames, lang=lang)
 
-##############
-## Kalender ##
-##############
 
-@app.route("/<lang>/pruefungsamt/calendar/")
-def showcalendar(lang):
-    events = get_caldav_calendar_events(calendar)    
-    print(events)
-    return render_template("pruefungsamt/calendar.html", events = events, lang=lang, site = "showcalendar")
 

@@ -24,7 +24,7 @@
     <div class="col">
       <div class="card h-100">
         <a
-          href="{{url_for('showstudienberatungschwerpunktgebiete', lang = lang)}}"
+          href="{{url_for('showstudienberatung', unterseite='schwerpunktgebiete', lang=lang)}}"
           class="link-dark"
         >
           <center>
@@ -45,7 +45,7 @@
     </div>
     <div class="col">
       <div class="card h-100">
-        <a href="{{url_for('showmscdatanews', lang = lang)}}" class="link-dark">
+        <a href="{{url_for('showstudiengangnews', studiengang='msc_data', lang=lang)}}" class="link-dark">
           <center>
             <img
               src="/static/Bilder/aad8d969-9619-455b-a8f4-e9f2da2b7200_klein.jpg"
@@ -115,7 +115,7 @@
     <div class="col">
       <div class="card h-100">
         <a
-          href="{{url_for('showmsc', lang = lang, anchor = 'kurzzusammenfassung')}}"
+          href="{{url_for('showpruefungsamt', unterseite='formulare', lang=lang )}}"
           class="link-dark"
         >
           <center>

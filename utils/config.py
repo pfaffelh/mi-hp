@@ -1,6 +1,6 @@
 kommendes = ("ss24", "Sommersemester 2024")
 aktuelles = ("ws2324", "Wintersemester 2023/24")
-semester = {
+semester_dict = {
     "ss24": "Sommersemester 2024",
     "ws2324": "Wintersemester 2023/24",
     "ss23": "Sommersemester 2023",

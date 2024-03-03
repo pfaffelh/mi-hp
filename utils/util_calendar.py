@@ -2,7 +2,7 @@ import caldav
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import netrc
-from .data import sondertermine_lehre_calendar_url, calendar_host
+from .config import sondertermine_lehre_calendar_url, calendar_host
 from .util_logging import logger
 
 # obtain login credentials for caldav-server from ~/.netrc
