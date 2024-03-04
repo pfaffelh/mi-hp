@@ -16,7 +16,7 @@ semester_dict = {
 }
 
 calendar_host = "cal.mathematik.privat/davical/caldav.php/"
-sondertermine_lehre_calendar_url = "http://cal.mathematik.privat/davical/caldav.php/flask/Sondertermine_Lehre/"
+sondertermine_lehre_calendar_url = "http://cal.mathematik.privat/davical/caldav.php/pruefungsamt/pramt/"
 
 studiengaenge = {"all": "alle Studiengänge",
                     "bsc": "Bachelor of Science Mathematik",
