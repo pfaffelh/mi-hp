@@ -49,7 +49,7 @@ endblock %} {% block content %}
         href="{{ url_for('showfaq', lang = lang, which = which, show = 'alleantworten') }}"
       >
         <button class="btn btn-primary" style="background-color: #344a9a">
-          {% if lang == de %}Alles ausklappen{% else %} Expand all {% endif %}
+          {% if lang == "de" %}Alles ausklappen{% else %} Expand all {% endif %}
         </button></a
       >
       {% else %}
@@ -58,7 +58,7 @@ endblock %} {% block content %}
         href="{{ url_for('showfaq', lang = lang, which = which, show = '') }}"
       >
         <button class="btn btn-primary">
-          {% if lang == de %}Alles einklappen{% else %} Collapse all {% endif %}
+          {% if lang == "de" %}Alles einklappen{% else %} Collapse all {% endif %}
         </button></a
       >
       {% endif %}
@@ -100,7 +100,7 @@ endblock %} {% block content %}
                   aria-expanded="true"
                   data-bs-toggle="collapse"
                 >
-                  <h3 class="h5">{{ qa[1] }}</h3>
+                  <h3 class="h5">{{ qa[1]|markdown }}</h3>
                 </button>
               </h3>
               <div
@@ -109,7 +109,7 @@ endblock %} {% block content %}
                 data-bs-parent="#accordion{{cat_kurzname}}"
                 id="{{qa[0]}}"
               >
-                <div class="accordion-body">{{ qa[2] }}</div>
+                <div class="accordion-body">{{ qa[2]|markdown }}</div>
               </div>
             </div>
             {% endfor %}

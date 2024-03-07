@@ -12,8 +12,11 @@ from utils.config import *
 # from utils.util_logging import logger
 from utils.util_calendar import calendar, get_caldav_calendar_events
 from utils.util_faq import get_faq
+from flask_misaka import markdown
+from flask_misaka import Misaka
 
 app = Flask(__name__)
+Misaka(app)
 
 # This function is important for changing languages; see base.html. Within a template, we can use its own endpoint, i.e. all parameters it was given. 
 # For changin languages, we are then able to only change the lang-parameter.
