@@ -2,10 +2,13 @@ import pymongo
 from .util_logging import logger
 
 # Connect to MongoDB
-cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
-mongo_db = cluster["faq"]
-category = mongo_db["category"]
-qa = mongo_db["qa"]
+try:
+    cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
+    mongo_db = cluster["faq"]
+    category = mongo_db["category"]
+    qa = mongo_db["qa"]
+except:
+    logger.warning("No connection to Database")
 
 logger.info("Connected to MongoDB")
 logger.info("Database contains collections: ")
@@ -16,6 +19,7 @@ logger.info(str(mongo_db.list_collection_names()))
 # a dictionary how to translate them into full names (names_dict), 
 # a dict with the shortnames as keys, where each value is a list of triples (id, q, a), which contains the information for each question in each category (qa_pairs). 
 # recall that category and qa come with a variable rang: int, which serves to order the categories and qa-pairs. 
+
 def get_faq(lang):
     # Alle Kategorien zeigen außer "unsichtbar"
     cats = list(category.find({"kurzname": {"$ne": "unsichtbar"}}, sort=[("rang", pymongo.ASCENDING)]))
