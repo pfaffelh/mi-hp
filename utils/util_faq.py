@@ -5,14 +5,11 @@ from .util_logging import logger
 try:
     cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
     mongo_db = cluster["faq"]
-    category = mongo_db["category"]
+    category = mongo_db["category"] 
     qa = mongo_db["qa"]
 except:
-    logger.warning("No connection to Database")
+    logger.warning("No connection to Database 1")
 
-logger.info("Connected to MongoDB")
-logger.info("Database contains collections: ")
-logger.info(str(mongo_db.list_collection_names()))
 
 # returns 
 # a list of category shortnames (cats_kurzname), 
