@@ -170,7 +170,7 @@ def showfaq(lang, which = "all", show = ""):
     try:
         cats_kurzname, names_dict, qa_pairs = get_faq(lang)
     except:
-        logger.WANRING("No connection to database")
+        logger.warning("No connection to database")
         cats_kurzname, names_dict, qa_pairs  = ["unsichtbar"], {"unsichtbar": "Unsichtbar"}, {"unsichtbar": []}
 
     return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, which=which, show = show, studiengaenge = studiengaenge)
