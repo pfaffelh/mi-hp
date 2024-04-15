@@ -1,3 +1,4 @@
+<!-- {% if lang == "de" %} {% else %} {% endif %} -->
 <div class="container" id="featured-3">
   <h1>MSc Mathematics in Data and Technology</h1>
   <div class="container px-4 py-1" id="featured-3">
@@ -5,10 +6,17 @@
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
           <!--               <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
-          <h2>Geplanter Start</h2>
+          <h2>
+            {% if lang == "de" %} Geplanter Start {% else %} Preliminary
+            starting date {% endif %}
+          </h2>
         </div>
         <div class="text-center">
+          {% if lang == "de" %}
           <p>Wintersemester 2024/25</p>
+          {% else %}
+          <p>Winter term 2024/25</p>
+          {% endif %}
         </div>
       </div>
       <div class="feature col">
@@ -20,72 +28,22 @@
             role="button"
             aria-disabled="true"
           >
-            <h2>Zur Bewerbung</h2></a
+            <h2>
+              {% if lang == "de" %} Zur Bewerbung {% else %} Apply now {% endif
+              %}
+            </h2></a
           >
         </div>
         <div class="py-3 text-center">
           <p>Coming soon...</p>
         </div>
       </div>
-      <!-- <div class="feature col">
-      <h2></h2>
-      <div>
-        <table class="table table-striped">
-          <tbody>
-            <tr>
-              <td>{% if lang == "de" %}Abschluss{% else %}Degree{% endif %}</td>
-              <td>Master of Science</td>
-            </tr>
-            <tr>
-              <td>{% if lang == "de" %}Dauer{% else %}Duration{% endif %}</td>
-              <td>
-                {% if lang == "de" %}4 Semester{% else %}4 semesters{% endif %}
-              </td>
-            </tr>
-            <tr>
-              <td>ECTS</td>
-              <td>120</td>
-            </tr>
-            <tr>
-              <td>Start</td>
-              <td>
-                {% if lang == "de" %}Wintersemester{% else %}Winter term{% endif
-                %}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                {% if lang == "de" %}Zulassung{% else %}Admission{% endif %}
-              </td>
-              <td>
-                {% if lang == "de" %}keine Beschränkung{% else %}without
-                restriction{% endif %}
-              </td>
-            </tr>
-            <tr>
-              <td>{% if lang == "de" %}Sprache{% else %}language{% endif %}</td>
-              <td>{% if lang == "de" %}Englisch{% else %}english{% endif %}</td>
-            </tr>
-            <tr>
-              <td>
-                {% if lang == "de" %}mehr Informationen{% else %}more
-                information{% endif %}
-              </td>
-              <td>
-                <a href="{{url_for('showstudiengang', studiengang='msc_data', anchor='none', lang=lang)}}"
-                  >{% if lang == "de" %}hier{% else %}here{% endif %}</a
-                >
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div> -->
-
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
           <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>
-          <h2>Short profile</h2>
+          <h2>
+            {% if lang == "de" %} Kurzprofil{% else %} Short profile {% endif %}
+          </h2>
         </div>
         {% if lang == "de" %}
         <ul>
@@ -99,21 +57,47 @@
           <li>Sprache: englisch</li>
           <li>Studienstart: nur zum Wintersemester</li>
         </ul>
+        {% else %}
+        <ul>
+          <li>
+            For BSc in Mathematics, Computer Science, Physics, engineering,...
+          </li>
+          <li>
+            Lectures in Numerical Mathematics, Probability Theory, Programming.
+          </li>
+          <li>Chance to take an industrial internship.</li>
+          <li>
+            Advanced modules in Machine Learning, Optimization, Statistics, etc.
+          </li>
+          <li>Language: english</li>
+          <li>Start: only winter term (October 1st)</li>
+        </ul>
         {% endif %}
       </div>
 
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
           <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>
-          <h2>Admission</h2>
+          <h2>
+            {% if lang == "de" %}Zulassung {% else %}Admission {% endif %}
+          </h2>
         </div>
         <div>
+          <p>
+            {% if lang == "de" %} Sie benötigen einen Bachelor-Abschluss mit
+            mindestens 30 ECTS in Mathematik, darunter 12 ECTS in Grundlagen der
+            Infinitesimalrechnung und Linearen Algebra. In Englisch müssen Sie
+            B2 haben. Sie können nur zum dieses Programm nur zum Wintersemester
+            (1. Oktober) beginnen.
+          </p>
+          {% else %}
           <p>
             You need a Bachelor's degree with a minimum of 30 credits in
             Mathematics, including 12 credits in foundations of calculus and
             linear algebra. In english, you must have B2. You can only start
             this program in the winter term (October 1st).
           </p>
+          {% endif %}
         </div>
       </div>
       <div class="feature col">
@@ -122,6 +106,21 @@
           <h2>Curriculum</h2>
         </div>
         <div>
+          {% if lang == "de" %}
+          <p>
+            Sie erhalten eine solide Grundlage in Mathematik in einem Basiskurs,
+            und einen zusätzlichen Aufbaukurs in angewandter Mathematik. Im
+            Wahlfächern können Sie aus Modulen wie Numerische Optimierung,
+            Numerik für partielle Differentialgleichungen, neuronale Netze,
+            Finanzmathematik, Dynamische Systeme in der Biologie, Ökonometrie,
+            Computer Vision, automatisiertes maschinelles Lernen, etc. wählen.
+            Mehr Informationen finden Sie
+            <a
+              href="{{url_for('showstudiengang', studiengang='msc_data', anchor='studienverlauf', lang=lang)}}"
+              >hier</a
+            >
+          </p>
+          {% else %}
           <p>
             You will obtain solid foundation in mathematics in a basic course,
             and an additional advanced course in applied mathematics. In the
@@ -135,14 +134,26 @@
               >here</a
             >
           </p>
+          {% endif %}
         </div>
       </div>
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
           <h2><i class="fa fa-infinity fa-4" aria-hidden="true"></i></h2>
-          <h2>Mathematics</h2>
+          <h2>
+            {% if lang == "de" %} Mathematik {% else %} Mathematics {% endif %}
+          </h2>
         </div>
         <div>
+          <p>
+            {% if lang == "de" %} Wir sind der festen Überzeugung, dass die
+            Mathematik die Grundlage von Datenwissenschaft und Technologie ist.
+            Um die notwendigen Fähigkeiten in Bereichen wie numerische
+            Mathematik, Optimierung und Wahrscheinlichkeitsrechnung zu erwerben,
+            nehmen Sie an verschiedenen Kursen aus dem Studienprogramm MSc
+            Mathematik teil.
+          </p>
+          {% else %}
           <p>
             We strongly believe that Mathemtics is the foundation of data
             science and technology. In order to provide the necessary skills
@@ -150,35 +161,59 @@
             theory, you take part in various courses from the study program in
             the MSc Mathematics.
           </p>
+          {% endif %}
         </div>
       </div>
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
           <h2><i class="fa fa-keyboard fa-4" aria-hidden="true"></i></h2>
-          <h2>Coding</h2>
+          <h2>
+            {% if lang == "de" %}Programmierung {% else %}Coding {% endif %}
+          </h2>
         </div>
         <div>
+          {% if lang == "de" %}
           <p>
-            Transforming the fundamentals to applications mostly required the
-            knowledge to showcase your project using an implementation. Although
-            programming skills are not required upon admission, coding will be
-            an important part of the basic module, and will be strengthened in a
-            specific coding module.
+            Anwendungen von Mathematik erfordern oftmals das Wissen, die
+            Erkenntnisse eines Projektes in anwendbare Software umzuwandeln.
+            Obwohl Programmierkenntnisse bei der Zulassung nicht erforderlich
+            sind, wird das Programmieren ein wichtiger Teil des Basismoduls sein
+            und wird in einem speziellen spezifischen Kodierungsmodul vertieft.
           </p>
+          {% else %}
+          <p>
+            Applications of mathematics often require the knowledge to convert
+            project results into applicable software. Although programming
+            skills are not required upon admission, coding will be an important
+            part of the basic module, and will be strengthened in a specific
+            coding module.
+          </p>
+          {% endif %}
         </div>
       </div>
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
           <h2><i class="fa fa-handshake fa-4" aria-hidden="true"></i></h2>
-          <h2>Internship</h2>
+          <h2>
+            {% if lang == "de" %}Praktikum {% else %}Internship {% endif %}
+          </h2>
         </div>
         <div>
+          {% if lang == "de" %}
+          <p>
+            Das Programmierprojekt kann durch ein Industriepraktikum von
+            mindestens sechs Wochen Dauer ersetzt werden. Beispielsweise haben
+            wir Verbindungen zu lokalen Unternehmen wie Sick, Baloise, LBBW,
+            Allianz, Fraunhofer, Bosch.
+          </p>
+          {% else %}
           <p>
             The programming project can be exchanged by an industrial placement
             (interneship) of at least six weeks. As examples, we have
             connections to various local companies, including Sick, Baloise,
             LBBW, Allianz, Fraunhofer, Bosch.
           </p>
+          {% endif %}
         </div>
       </div>
       <div class="feature col">
@@ -187,30 +222,56 @@
           <h2>Freiburg</h2>
         </div>
         <div>
+          {% if lang == "de" %}
           <p>
-            Freiburg is a lovely town at the foot of the black forest. It is a
-            green city with many bicycles and opportunities to spend your free
-            time. The University of Freiburg not only has a long tradition
-            covering all areas from science and the humanities, but is also very
-            active in research, as shown by its success in the excellence
-            initiative. The mathematical institute, which hosts most of this
-            study program, covers a wide range of topics, from mathematical
+            Freiburg ist eine grüne Stadt am Fuße des Schwarzwaldes mit vielen
+            Möglichkeiten zur Freizeitgestaltung. Die Universität Freiburg hat
+            nicht nur eine lange Tradition in allen Bereichen der Natur- und
+            Geisteswissenschaften, sondern ist auch in der Forschung sehr aktiv,
+            wie ihr Forschungsranking zeigt. Das mathematische Institut, an dem
+            der größte Teil dieses Studiengangs beherbergt, deckt ein breites
+            Spektrum an Themen ab, von der mathematischen Logik bis zum
+            maschinellen Lernen.
+          </p>
+          {% else %}
+          <p>
+            Freiburg is a green city close to the Black Forest with many
+            opportunities for outdoor activities. The University of Freiburg has
+            not only has a long tradition in all areas of the natural sciences
+            and humanities, but is also very active in research, as its rankings
+            show. The mathematical institute, which hosts the largest part of
+            this program, covers a broad spectrum of topics, from mathematical
             logic to machine learning.
           </p>
+          {% endif %}
         </div>
       </div>
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
           <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
-          <h2>More information</h2>
+          <h2>
+            {% if lang == "de" %}Mehr Informationen {% else %}More information
+            {% endif %}
+          </h2>
         </div>
         <div>
+          {% if lang == "de" %}
           <p>
-            Detailed description is
-            <a href="{{url_for('showstudiengang', studiengang='msc_data', anchor='none', lang=lang)}}"
-              >{% if lang == "de" %}hier{% else %}here{% endif %}</a
+            Mehr Details gibt es
+            <a
+              href="{{url_for('showstudiengang', studiengang='msc_data', anchor='none', lang=lang)}}"
+              >hier</a
             >
           </p>
+          {% else %}
+          <p>
+            A detailed description is
+            <a
+              href="{{url_for('showstudiengang', studiengang='msc_data', anchor='none', lang=lang)}}"
+              >here</a
+            >
+          </p>
+          {% endif %}
         </div>
       </div>
     </div>
