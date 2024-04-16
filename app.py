@@ -66,11 +66,13 @@ def showstudiengaenge(lang, anchor="aktuell"):
 @app.route("/<lang>/studiengaenge/<studiengang>/")
 @app.route("/<lang>/studiengaenge/<studiengang>/<anchor>")
 def showstudiengang(lang, studiengang, anchor="kurzbeschreibung"):
+    navbar = True
     if studiengang == "bsc":
         filenames = ["studiengaenge/bsc/index-2021.html"]
     if studiengang == "msc":
         filenames = ["studiengaenge/msc/index-2014.html"]
     if studiengang == "msc_data":
+        navbar = False
         filenames = ["studiengaenge/msc_data/index-2024.html"]
     if studiengang == "2hfb":
         filenames = ["studiengaenge/2hfb/index-2021.html"]
@@ -80,7 +82,7 @@ def showstudiengang(lang, studiengang, anchor="kurzbeschreibung"):
         filenames = ["studiengaenge/med_erw/index-2021.html"]
     if studiengang == "promotion":
         filenames = ["studiengaenge/promotion/index.html"]
-    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
+    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor, navbar = navbar)
 
 @app.route("/<lang>/studiengaenge/<studiengang>/news/")
 def showstudiengangnews(lang, studiengang):

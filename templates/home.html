@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
+
 {% block navbar %}
-    {% include 'navbar.html' %}
+{% if navbar %}    {% include 'navbar.html' %} {% endif %}
 {% endblock %}
 
 {% block content %}
