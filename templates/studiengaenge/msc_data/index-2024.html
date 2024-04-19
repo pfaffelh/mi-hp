@@ -1,3 +1,5 @@
+{% if lang == "de" %}{% else %}{% endif %}
+
 <div class="container" id="inhalt">
   <h1>Master of Science Mathematics in Data and Technology (PO 2024)</h1>
   <div class="container py-1" id="featured-3">
@@ -8,10 +10,11 @@
     >
       <h2>
         <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
-        Studienberatung
+        {% if lang == "de" %} Studienberatung {% else %}Study counseling{% endif
+        %}
       </h2>
     </a>
-<!--   <a
+    <!--   <a
       class="btn btn-primary mr-1 px-4 mx-5"
       href="{{url_for('showfaq', lang=lang)}}"
       role="button"

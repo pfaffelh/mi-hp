@@ -43,6 +43,11 @@ def showbase(lang="de"):
 ## footer ##
 ############
 
+@app.route("/<lang>/bildnachweis/")
+def showbildnachweis(lang):
+    filenames = ["footer/bildnachweis.html"]
+    return render_template("home.html", filenames = filenames, lang=lang)
+
 @app.route("/<lang>/impressum/")
 def showimpressum(lang):
     filenames = ["footer/impressum.html"]
