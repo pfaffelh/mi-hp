@@ -1,57 +1,158 @@
 <div class="container" id="inhalt">
   <br />
-  <div class="row row-cols-1 row-cols-md-3 g-3">
-    <div class="col">
-      <div class="card h-100 bg-ufr-yellow-60">
-        <a href="{{url_for('showinteresse', lang = lang)}}" class="link-dark">
-          <center>
-            <img
-              src="/static/Bilder/Penrose-Mosaik-2021_klein.jpg"
-              class="card-img-fluid"
-              alt="© Mathematisches Institut"
-              style="height: 100%; width: 100%; object-fit: cover"
-            />
-          </center>
+  <div
+    id="carouselExampleControls"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/static/Bilder/Viazovska.jpeg"
+                class="d-block w-100"
+                alt="..."
+                style="height: 20vw; object-fit: cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Mathematisches Kolloquium am 30.2.2024
+                </h5>
+                <p>
+                  Marina Viazovska berichtet über "The magic of dimensions 8 and
+                  24".
+                </p>
+                <p>
+                  In ihrem Vortrag präsentierte Viazovska ihre bahnbrechenden
+                  Arbeiten zur Lösung des sogenannten "Kugelpackungsproblems" in
+                  den Dimensionen 8 und 24. Dieses Problem beschäftigt
+                  Mathematiker seit Jahrhunderten und fragt nach der dichtesten
+                  Anordnung von gleich großen Kugeln im mehrdimensionalen Raum.
+                </p>
+                <p>
+                  Viazovska konnte zeigen, dass die sogenannten "E8-Gitter" in 8
+                  Dimensionen und die "Leech-Gitter" in 24 Dimensionen die
+                  dichtesten bekannten Kugelpackungen in diesen Räumen
+                  darstellen. Ihre Lösung nutzt dabei hochkomplexe Konzepte aus
+                  der Zahlentheorie, Funktionalanalysis und Geometrie.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-          <div class="card-body">
-            <h3 class="h5">Für Studieninteressierte</h3>
-            <div class="card-text">
-              <p></p>
-            </div></div
-        ></a>
+      <div class="carousel-item" data-bs-interval="10000">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/static/Bilder/scholze.jpeg"
+                class="d-block w-100"
+                alt="..."
+                style="height: 20vw; object-fit: cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Mathematisches Kolloquium am 30.2.2024
+                </h5>
+                <p>
+                  Peter Scholze berichtet über die Einführung des Konzepts der
+                  "perfektoiden Räume", das eine natürliche Umgebung für
+                  Faltings' "fast Reinheits-Theorem" schafft und eine
+                  Tilting-Operation zwischen Charakteristik 0 und Charakteristik
+                  p ermöglicht. Dies erlaubte ihm den Beweis der
+                  Gewichts-Monodromie-Vermutung in bestimmten Fällen.
+                </p>
+                <p>
+                  Darüber hinaus gibt er grundlegende Resultate der p-adischen
+                  Hodge-Theorie in neue Kontexte, was bereits von Tate 1966
+                  vermutet worden war. Mit Kollaborateuren entwickelte er auch
+                  eine integrale Version der p-adischen Hodge-Theorie, die die
+                  Kohomologie der charakteristischen p-Faser mit der Kohomologie
+                  der p-adischen Faser in Beziehung setzt.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="10000">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/static/Bilder/tao.jpeg"
+                class="d-block w-100"
+                alt="..."
+                style="height: 20vw; object-fit: cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Mathematisches Kolloquium am 30.2.2024
+                </h5>
+                <p>
+                  Terence Tao, einer der renommiertesten Mathematiker unserer
+                  Zeit, berichtet über die berüchtigte Collatz-Vermutung.
+                </p>
+                <p>
+                  Die Collatz-Vermutung ist ein scheinbar einfaches
+                  mathematisches Problem, das Experten seit Jahrzehnten
+                  beschäftigt. Ausgehend von einer beliebigen natürlichen Zahl,
+                  wird diese entweder halbiert, wenn sie gerade ist, oder mit 3
+                  multipliziert und 1 addiert, wenn sie ungerade ist. Dieses
+                  Verfahren wird solange wiederholt, bis man schließlich bei der
+                  Zahl 1 angelangt. Die Vermutung besagt, dass dieser Prozess
+                  für jede Startzahl zwangsläufig zur 1 führt, obwohl dies
+                  bisher nicht mathematisch bewiesen werden konnte.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-3">
     <div class="col">
       <div class="card h-100">
         <a
-          href="{{url_for('showstudienberatung', unterseite='schwerpunktgebiete', lang=lang)}}"
+          href="{{url_for('showstudiengangnews', studiengang='msc_data', lang=lang)}}"
           class="link-dark"
         >
-          <center>
-            <img
-              src="/static/Bilder/startseite_dozenten_2023_klein.jpg"
-              class="card-img-fluid"
-              alt="© Mathematisches Institut"
-              style="height: 100%; width: 100%; object-fit: cover"
-            />
-          </center>
-          <div class="card-body">
-            <h3 class="h5">Schwerpunktgebiete</h3>
-            <div class="card-text">
-              <p></p>
-            </div></div
-        ></a>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <a href="{{url_for('showstudiengangnews', studiengang='msc_data', lang=lang)}}" class="link-dark">
           <center>
             <img
               src="/static/Bilder/aad8d969-9619-455b-a8f4-e9f2da2b7200_klein.jpg"
               class="card-img-fluid"
               alt="mit Dall-E produziert"
-              style="height: 100%; width: 100%; object-fit: cover"
+              style="height: 15vw; width: 100%; object-fit: cover"
             />
           </center>
           <div class="card-body">
@@ -65,27 +166,37 @@
         >
       </div>
     </div>
-  </div>
-  <br>
-  <div class="row row-cols-1 row-cols-md-3 g-3">
     <div class="col">
       <div class="card h-100">
         <a
-          href="{{url_for('showlehrveranstaltungenaktuelles', lang=lang)}}"
+          href="#"
           class="link-dark"
+          data-bs-toggle="popover"
+          data-bs-trigger="focus"
+          data-bs-html="true"
+          title="Recent developments in dependence modeling"
+          data-bs-content="Diese Vortragsreihe bietet eine Einführung in aktuelle Forschungsthemen der Abhängigkeitsmodellierung. Zunächst werden grundlegende Konzepte wie Copulas und stochastische Ordnungen studiert. Im weiteren Verlauf werden verschiedenen Modellklassen wie *-Produkte und Vine-Copulas diskutiert. Schließlich liegt der Fokus auf Abhängigkeitsmaßen, die die grundlegenden Axiome erfüllen, dass sie Unabhängigkeit und gerichtete Abhängigkeit zwischen Zufallsvektoren charakterisieren. Besondere Beachtung findet die neulich von Chatterjee entwickelte Rangkorrelation, die in fast linearer Zeit geschätzt werden kann und eine modellfreie Variablenselektion erlaubt. Anwendungen finden diese Konzepte beispielsweise in der Modellbildung. Allgemeiner ist die Abhängigkeitsmodellierung im Risikomanagement der Finanz- und Versicherungsbranche von zentraler Bedeutung, wo Copulas fester Bestandteil der Aktuarsausbildung sind."
         >
           <center>
             <img
-              src="/static/Bilder/Uni_Freiburg_Okt_2021_4.jpg"
+              src="/static/Bilder/ansari.jpg"
               class="card-img-fluid"
               alt="..."
-              style="height: 100%; width: 100%; object-fit: cover"
+              style="height: 15vw; width: 100%; object-fit: cover"
             />
           </center>
           <div class="card-body">
-            <h3 class="h5">Lehrveranstaltungen des laufenden Semesters</h3>
+            <h3 class="h5">
+              Vorlesungsreihe von Jonathan Ansari: Recent developments in
+              dependence modeling
+            </h3>
             <div class="card-text">
-              <p></p>
+              <p>
+                <a
+                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"
+                  ><i class="fa-solid fa-link"></i
+                ></a>
+              </p>
             </div></div
         ></a>
       </div>
@@ -93,41 +204,24 @@
     <div class="col">
       <div class="card h-100">
         <a
-          href="{{url_for('showlehrveranstaltungenkommendes', lang=lang)}}"
+          href="#"
           class="link-dark"
-        >
-          <center>
-            <img
-              src="/static/Bilder/Uni_Freiburg_Okt_2021_23.jpg"
-              class="card-img-fluid"
-              alt="..."
-              style="height: 100%; width: 100%; object-fit: cover"
-            />
-          </center>
-          <div class="card-body">
-            <h3 class="h5">Lehrveranstaltungen des kommenden Semesters</h3>
-            <div class="card-text">
-              <p></p>
-            </div></div
-        ></a>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <a
-          href="{{url_for('showpruefungsamt', unterseite='formulare', lang=lang )}}"
-          class="link-dark"
+          data-bs-toggle="popover"
+          data-bs-trigger="focus"
+          data-bs-html="true"
+          title="Neue Formulare"
+          data-bs-content="Diese sind an das neue <a href='https://www.uni-freiburg.de'>CD</a> der Uni angepasst."
         >
           <center>
             <img
               src="/static/Bilder/ALU_Rektorat_116.jpg"
               class="card-img-fluid"
               alt="..."
-              style="height: 100%; width: 100%; object-fit: cover"
+              style="height: 15vw; width: 100%; object-fit: cover"
             />
           </center>
           <div class="card-body">
-            <h3 class="h5">Formulare</h3>
+            <h3 class="h5">Das Prüfungsamt hat jetzt neue Formulare</h3>
             <div class="card-text">
               <p></p>
             </div></div

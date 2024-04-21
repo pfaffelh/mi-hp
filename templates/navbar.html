@@ -17,163 +17,154 @@
           <li class="nav-item">
             <a class="nav-link text-white me-4" href="#"></a>
           </li>
+          <li class="nav-item">
+            <div>
+              <a class="nav-link text-white me-4" role="button" href="#">
+                <button class="text-black" style="background-color:#fff1a9; border-color: #344A9A; border-radius: 12px">
+                  <i
+                    class="fa fa-circle-right fa-4 text-black"
+                    aria-hidden="true"
+                  ></i>
+                  {% if lang=="de" %}Studieninteressierte{% else %} Study with us {% endif %}
+                </button></a
+              >
+            </div>
+          </li>
           <li class="nav-item dropdown px-3">
             <a
               class="nav-link dropdown-toggle active"
-              href="{{url_for('showstudiengaenge', lang = lang, anchor='aktuell')}}"
+              href="{{url_for('showbase', lang = lang, anchor='dekanat')}}"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {% if lang == "de" %}Studiengänge{% else %}Study programs{% endif
-              %}</a
+              {% if lang == "de" %}Institut{% else %}Institute{% endif %}</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
-                  >Bachelor of Science {% if lang == "de" %}Mathematik{% else
-                  %}Mathematics{% endif %}</a
+                  href="https://aam.uni-freiburg.de/"
+                  >{% if lang == "de" %}Abteilung für Angewandte Mathematik{%
+                  else %}Department for Applied Mathematics{% endif %}</a
                 >
               </li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudiengang', studiengang='msc', lang = lang) }}"
-                  >Master of Science {% if lang == "de" %}Mathematik{% else
-                  %}Mathematics{% endif %}</a
+                  href="https://home.mathematik.uni-freiburg.de/didaktik"
+                  >{% if lang == "de" %}Abteilung für Didaktik der Mathematik{%
+                  else %}Department of Mathematics teaching{% endif %}</a
                 >
               </li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudiengangnews', studiengang='msc_data', lang = lang) }}"
-                  ><button type="button" class="btn btn-primary btn-sm">
-                    NEU
-                  </button>
-                  Master of Science Mathematics in Data and Technology</a
+                  href="https://home.mathematik.uni-freiburg.de/didaktik"
+                  >{% if lang == "de" %}Abteilung für Mathematische Logik{% else
+                  %}Department of Mathematical Logic{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="https://www.stochastik.uni-freiburg.de/"
+                  >{% if lang == "de" %}Abteilung für Mathematische Stochastik{%
+                  else %}Department of Probability Theory{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="https://www.math.uni-freiburg.de/allgemein/abteilungen/rein.html"
+                  >{% if lang == "de" %}Abteilung für Reine Mathematik{% else
+                  %}Department of Pure Mathematics{% endif %}</a
                 >
               </li>
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
-                  >{% if lang == "de" %}Zwei-Hauptfächer Bachelor{% else
-                  %}Two-Major Bachelor{% endif %}</a
+                  href="http://home.mathematik.uni-freiburg.de/personen/"
+                  >{% if lang == "de" %}Personenverzeichnis{% else %}Staff{%
+                  endif %}</a
                 >
               </li>
+              <li><hr class="dropdown-divider" /></li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}"
-                  >Master of Education</a
+                  href="https://www.math.uni-freiburg.de/auszeichnungen/ferdinand-von-lindemann.html"
+                  >{% if lang == "de" %}Preise und Auszeichnungen{% else
+                  %}Honors and Awards{% endif %}</a
                 >
               </li>
+              <li><hr class="dropdown-divider" /></li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
-                  >Master of Education Erweiterungsfach</a
+                  href="{{ url_for('showmediathek', lang=lang) }}"
+                  >{% if lang == "de" %}Mediathek{% else %}Media{% endif %}</a
                 >
               </li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showstudiengangnews', studiengang='med_dual', lang = lang) }}"
-                  ><button type="button" class="btn btn-primary btn-sm">
-                    NEU
-                  </button>
-                  Masterstudiengang Lehramt Gymnasium – dual</a
-                >
-              </li>
-              <!--<li><hr class="dropdown-divider" /></li>
-               <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showstudiengang', studiengang='promotion', lang = lang) }}"
-                  >{% if lang == "de" %}Promotion{% else %}PhD{% endif %}</a
-                >
-              </li>-->
             </ul>
           </li>
           <li class="nav-item dropdown px-3">
             <a
               class="nav-link dropdown-toggle active"
-              href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
+              href="https://www.math.uni-freiburg.de/forschung/index.html"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Lehrveranstaltungen</a
+              {% if lang == "de" %}Forschung{% else %}Research{% endif %}</a
             >
+            <ul class="dropdown-menu" data-bs-theme="light">
+              <li class="dropdown-submenu">
+                <a class="dropdown-item text-black" href="">
+                  {% if lang == "de" %}Verbundforschung{% else %}Collaborative
+                  research{% endif %}</a
+                >
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item text-black" href="">
+                  {% if lang == "de" %}Kooperierende Forschungszentren{% else
+                  %}Cooperating research centers{% endif %}</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown px-3">
+            <a
+              class="nav-link dropdown-toggle active"
+              href="{{url_for('showstudienberatungbase', lang=lang)}}"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {% if lang == "de" %}Studium und Lehre{% else %}Teaching{% endif
+              %}
+            </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li class="dropdown-submenu">
                 <a
                   class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ss24')}}"
-                  >SS 2024</a
+                  href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
                 >
+                  {% if lang == "de" %}Lehrveranstaltungen{% else %}Study
+                  courses{% endif %}
+                </a>
               </li>
-              <li class="dropdown-submenu">
-                <a
-                  class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ws2324')}}"
-                  >WS 2023</a
-                >
-              </li>
-              <li class="dropdown-submenu">
-                <a
-                  class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ss23')}}"
-                  >SS 2023</a
-                >
-              </li>
-              <li class="dropdown-submenu">
-                <a
-                  class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ws2223')}}"
-                  >WS 2022</a
-                >
-              </li>
-              <li class="dropdown-submenu">
-                <a
-                  class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ss22')}}"
-                  >SS 2022</a
-                >
-              </li>
-              <li class="dropdown-submenu">
-                <a
-                  class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ws2122')}}"
-                  >WS 2021</a
-                >
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown px-3">
-            <a
-              class="nav-link dropdown-toggle active"
-              href="{{ url_for('showstudienberatungbase', lang=lang) }}"
-              id="navbarDropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              {% if lang == "de" %}Studienberatung{% else %}Student counseling{%
-              endif %}</a
-            >
-            <ul class="dropdown-menu" data-bs-theme="light">
+
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatung', unterseite='studienanfang', lang=lang) }}"
-                  >{% if lang == "de" %}Wegweiser für den Studienanfang{% else
-                  %}Guide for starting your studies{% endif %}</a
+                  href="{{ url_for('showstudiengaenge', lang = lang) }}"
+                  >{% if lang == "de" %}Studiengänge{% else %}Study Programs{%
+                  endif %}</a
                 >
               </li>
               <li>
@@ -182,22 +173,6 @@
                   href="{{ url_for('showstudienberatung', unterseite='schwerpunktgebiete', lang=lang) }}"
                   >{% if lang == "de" %}Schwerpunktgebiete{% else %}Focus
                   areas{% endif %}</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatung', unterseite='warum_mathematik', lang=lang) }}"
-                  >{% if lang == "de" %}Warum Mathematik?{% else %}Why
-                  mathematics?{% endif %}</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatung', unterseite='matheinfreiburg', lang=lang) }}"
-                  >{% if lang == "de" %}Mathematikstudium in Freiburg{% else
-                  %}Studying Mathematics in Freiburg{% endif %}</a
                 >
               </li>
             </ul>
@@ -256,19 +231,75 @@
               </li>-->
             </ul>
           </li>
-          <li class="nav-item px-3">
-            <a
-              class="nav-link text-white"
-              href="{{ url_for('showfaq', lang=lang) }}"
-              >FAQ</a
-            >
-          </li>
-          <li class="nav-item px-3">
-            <a
-              class="nav-link text-white"
-              href="{{ url_for('showmediathek', lang=lang) }}"
-              >Mediathek</a
-            >
+          <li class="nav-item px-3 text-white">
+            {% if lang == "de" %}FAQs für...{% else %}FAQs if you...{% endif %}
+            <ul class="dropdown-menu" data-bs-theme="light">
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatung', unterseite='studienanfang', lang=lang) }}"
+                  >{% if lang == "de" %}Studierende{% else %}are studying here{%
+                  endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatung', unterseite='studienanfang', lang=lang) }}"
+                  >{% if lang == "de" %}Studieninteressierte{% else %}want to
+                  study mathematics{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatung', unterseite='studienanfang', lang=lang) }}"
+                  >{% if lang == "de" %}Studienanfänger{% else %}start your
+                  studies here{% endif %}</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatung', unterseite='studienanfang', lang=lang) }}"
+                  >{% if lang == "de" %}Tutor*innen{% else %}are a tutor{% endif
+                  %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatung', unterseite='studienanfang', lang=lang) }}"
+                  >{% if lang == "de" %}Promovierende{% else %}are a PhD
+                  student{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatung', unterseite='studienanfang', lang=lang) }}"
+                  >{% if lang == "de" %}Postdocs{% else %}are a Postdoc{% endif
+                  %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatung', unterseite='studienanfang', lang=lang) }}"
+                  >{% if lang == "de" %}Mitarbeiter{% else %}are staff{% endif
+                  %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatung', unterseite='studienanfang', lang=lang) }}"
+                  >{% if lang == "de" %}Dozent*innen{% else %}are teaching
+                  here{% endif %}</a
+                >
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
