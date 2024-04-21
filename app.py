@@ -10,7 +10,7 @@ from flask import send_file
 from flask import make_response
 from utils.config import *
 from utils.util_logging import logger
-from utils.util_calendar import calendar, get_caldav_calendar_events
+# from utils.util_calendar import calendar, get_caldav_calendar_events
 from utils.util_faq import get_faq
 from flask_misaka import markdown
 from flask_misaka import Misaka
@@ -148,7 +148,7 @@ def showpruefungsamtbase(lang):
 @app.route("/<lang>/pruefungsamt/<unterseite>")
 def showpruefungsamt(lang, unterseite):
     if unterseite == "calendar":
-        events = get_caldav_calendar_events(calendar)
+        events = "" # get_caldav_calendar_events(calendar)
         return render_template("pruefungsamt/calendar.html", events=events, lang=lang)
     if unterseite == "termine":
         filenames = ["pruefungsamt/index.html"]
