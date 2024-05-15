@@ -1,7 +1,52 @@
-.btn:focus {
-  outline: none;
-  box-shadow: none;
+.btn-outline-primary:focus {
+  outline: none!important;
+  box-shadow: none!important;
+  background-color:none!important;
 }
+
+.btn.btn-success {
+  color: #fff!important;
+  background-color: #5cb85c!important;
+  border-color: #5cb85c!important;
+}
+.btn.btn-success.focus,
+.btn.btn-success:focus {
+  color: #fff!important;
+  background-color: #5cb85c!important;
+  border-color: #5cb85c!important;
+  outline: none!important;
+  box-shadow: none!important;
+}
+.btn.btn-success:hover {
+  color: #fff!important;
+  background-color: #5cb85c!important;
+  border-color: #5cb85c!important;
+  outline: none!important;
+  box-shadow: none!important;
+}
+.btn:active:focus {
+  background-color:none!important;
+}
+.btn.btn-success.active,
+.btn.btn-success:active {
+  color: #fff!important;
+  background-color: #5cb85c!important;
+  border-color: #5cb85c!important;
+  outline: none!important;
+}
+.btn.btn-success.active.focus,
+.btn.btn-success.active:focus,
+.btn.btn-success.active:hover,
+.btn.btn-success:active.focus,
+.btn.btn-success:active:focus,
+.btn.btn-success:active:hover {
+  color: #fff!important;
+  background-color: #5cb85c!important;
+  border-color: #5cb85c!important;
+  outline: none!important;
+  box-shadow: none!important;
+}
+
 
 .accordion-button::after {
   order: -1;

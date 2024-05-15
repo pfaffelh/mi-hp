@@ -14,6 +14,7 @@ from utils.util_calendar import calendar, get_caldav_calendar_events
 from utils.util_faq import get_faq
 from flask_misaka import markdown
 from flask_misaka import Misaka
+import json
 
 app = Flask(__name__)
 Misaka(app)
@@ -36,8 +37,9 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 @app.route("/")
 @app.route("/<lang>/")
 def showbase(lang="de"):
+    data = json.load(open('home.json'))
     filenames = ["index.html"]
-    return render_template("home.html", filenames=filenames, lang=lang)
+    return render_template("home.html", filenames=filenames, data = data, lang=lang)
 
 ############
 ## footer ##
@@ -68,16 +70,15 @@ def showstudiengaenge(lang, anchor="aktuell"):
     filenames = ["studiengaenge/index.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor=anchor)
 
+@app.route("/<lang>/studiengaenge/<anchor>")
 @app.route("/<lang>/studiengaenge/<studiengang>/")
 @app.route("/<lang>/studiengaenge/<studiengang>/<anchor>")
 def showstudiengang(lang, studiengang, anchor="kurzbeschreibung"):
-    navbar = True
     if studiengang == "bsc":
         filenames = ["studiengaenge/bsc/index-2021.html"]
     if studiengang == "msc":
         filenames = ["studiengaenge/msc/index-2014.html"]
     if studiengang == "msc_data":
-        navbar = False
         filenames = ["studiengaenge/msc_data/index-2024.html"]
     if studiengang == "2hfb":
         filenames = ["studiengaenge/2hfb/index-2021.html"]
@@ -87,7 +88,7 @@ def showstudiengang(lang, studiengang, anchor="kurzbeschreibung"):
         filenames = ["studiengaenge/med_erw/index-2021.html"]
     if studiengang == "promotion":
         filenames = ["studiengaenge/promotion/index.html"]
-    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor, navbar = navbar)
+    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
 
 @app.route("/<lang>/studiengaenge/<studiengang>/news/")
 def showstudiengangnews(lang, studiengang):
@@ -111,9 +112,46 @@ def showstudienverlauf(lang, studiengang):
         filenames = ["studiengaenge/studienverlauf-med-2018.html"]       
     return render_template("home.html", filenames = filenames, studiengang=studiengang, lang=lang)
 
-#####################
-## Studienberatung ##
-#####################
+
+##########################
+## Studieninteressierte ## 
+##########################
+
+@app.route("/<lang>/interesse/")
+@app.route("/<lang>/interesse/<anchor>")
+def showinteresse(lang, anchor="schueler"):
+#    filenames = ["interesse.html"]
+    data = json.load(open('interesse.json'))
+    filenames = ["interesse_prefix.html", "accordion_with_cards.html"]
+    return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
+
+#    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
+
+##########################
+## Studienanfänger      ## 
+##########################
+
+@app.route("/<lang>/anfang/")
+@app.route("/<lang>/anfang/<anchor>")
+def showanfang(lang, anchor=""):
+    filenames = ["studienanfang.html"]
+    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
+
+#    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
+
+
+
+
+
+#####################################
+## Prüfungsamt und Studienberatung ##
+#####################################
+
+@app.route("/<lang>/studiendekanat/")
+def showstudiendekanatbase(lang):
+    data = json.load(open('studiendekanat.json'))
+    filenames = ["studiendekanat/index.html"]
+    return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
 @app.route("/<lang>/studienberatung/")
 def showstudienberatungbase(lang):
@@ -131,21 +169,6 @@ def showstudienberatung(lang, unterseite):
     if unterseite == "matheinfreiburg":
         filenames = ["studienberatung/mathestudium_in_freiburg.html"]
     return render_template("home.html", filenames = filenames, lang=lang)
-
-##########################
-## Studieninteressierte ## 
-##########################
-
-@app.route("/<lang>/interesse/")
-@app.route("/<lang>/interesse/<anchor>")
-def showinteresse(lang, anchor="schueler"):
-    filenames = ["interesse.html"]
-    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
-
-#################
-## Prüfungsamt ##
-#################
-
 @app.route("/<lang>/pruefungsamt/")
 def showpruefungsamtbase(lang):
     filenames = ["pruefungsamt/index.html"]

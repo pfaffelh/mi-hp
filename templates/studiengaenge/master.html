@@ -1,0 +1,57 @@
+<div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
+  <div class="col">
+    <div class="col">
+      <div class="card h-100">
+        <a
+          href="{{url_for('showstudiengang', studiengang='msc', lang = lang, anchor = 'kurzbeschreibung')}}"
+        >
+          <center>
+            <img
+              src="/static/latex/MSc.jpg"
+              class="card-img-fluid"
+              alt="..."
+              style="height: 100%; width: 100%; object-fit: cover"
+            />
+          </center>
+        </a>
+        <div class="card-body">
+          <h3 class="h5">Master of Science Mathematik</h3>
+          <div class="card-text">
+            <p>
+              Für Studierende mit BSc, die sich weiter in Mathematik vertiefen
+              wollen. Mit dem Berufsziel Mathematiker:in und einem bereits
+              absolvierten BSc Mathematik wird man hier weiter zum Master
+              ausgebildet. Ein Quereinstieg vom Zwei-Hauptfach-Bachelor ist
+              ebenfalls möglich.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <a
+        href="{{url_for('showstudiengangnews', studiengang='msc_data', lang = lang, anchor = 'kurzzusammenfassung')}}"
+      >
+        <center>
+          <img
+            src="/static/latex/MScdata.jpg"
+            class="card-img-fluid"
+            alt="..."
+            style="height: 100%; width: 100%; object-fit: cover"
+          />
+        </center>
+      </a>
+      <div class="card-body">
+        <h3 class="h5">Master of Science Mathematics in Data and Technology</h3>
+        <div class="card-text">
+          <p>
+            Unser neuer, anwendungsorientierter, englisch-sprachiger Master.
+            <br /><b> Geplanter Start: WS 2024</b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

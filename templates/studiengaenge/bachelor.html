@@ -1,0 +1,57 @@
+<div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
+  <div class="col">
+    <div class="card h-100">
+      <a
+        href="{{url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'kurzbeschreibung')}}"
+      >
+        <center>
+          <img
+            src="/static/latex/BSc.jpg"
+            class="card-img-fluid"
+            alt="..."
+            style="height: 100%; width: 100%; object-fit: cover"
+          />
+        </center>
+      </a>
+      <div class="card-body">
+        <h3 class="h5">Bachelor of Science Mathematik</h3>
+        <div class="card-text">
+          <p>
+            Für Studienanfänger, die Mathematiker*in werden wollen.
+            <!-- In den ersten zwei Semestern ist ein Wechsel zum Zwei-Hauptfach-Bachelor relativ problemlos möglich. -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <a
+        href="{{url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'kurzbeschreibung')}}"
+      >
+        <center>
+          <img
+            src="/static/latex/2HfB.jpg"
+            class="card-img-fluid"
+            alt="..."
+            style="height: 100%; width: 100%; object-fit: cover"
+          />
+        </center>
+      </a>
+      <div class="card-body">
+        <h3 class="h5">
+          Zwei-Hauptfächer-Bachelor mit individueller Studiengestaltung
+        </h3>
+        <div class="card-text">
+          <p>
+            Beim Zwei-Hauptfächer-Bachelor haben Sie zwei Hauptfächer (genau wie
+            im Studium des gymnasialen Lehramtes). Die individuelle
+            Studiengestaltung zielt nicht auf eine Ausbildung als Lehrer*in ab.
+            In den ersten zwei Semestern ist ein Wechsel zum BSc Mathematik
+            relativ problemlos möglich.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

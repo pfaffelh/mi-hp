@@ -1,138 +1,105 @@
 <div class="container" id="inhalt">
   <br />
-  <div class="row row-cols-1 row-cols-md-3 g-3">
-    <div class="col">
-      <div class="card h-100 bg-ufr-yellow-60">
-        <a href="{{url_for('showinteresse', lang = lang)}}" class="link-dark">
-          <center>
-            <img
-              src="/static/Bilder/Penrose-Mosaik-2021_klein.jpg"
-              class="card-img-fluid"
-              alt="© Mathematisches Institut"
-              style="height: 100%; width: 100%; object-fit: cover"
-            />
-          </center>
 
-          <div class="card-body">
-            <h3 class="h5">Für Studieninteressierte</h3>
-            <div class="card-text">
-              <p></p>
-            </div></div
-        ></a>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <a
-          href="{{url_for('showstudienberatung', unterseite='schwerpunktgebiete', lang=lang)}}"
-          class="link-dark"
-        >
-          <center>
-            <img
-              src="/static/Bilder/startseite_dozenten_2023_klein.jpg"
-              class="card-img-fluid"
-              alt="© Mathematisches Institut"
-              style="height: 100%; width: 100%; object-fit: cover"
-            />
-          </center>
-          <div class="card-body">
-            <h3 class="h5">Schwerpunktgebiete</h3>
-            <div class="card-text">
-              <p></p>
-            </div></div
-        ></a>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <a href="{{url_for('showstudiengangnews', studiengang='msc_data', lang=lang)}}" class="link-dark">
-          <center>
-            <img
-              src="/static/Bilder/aad8d969-9619-455b-a8f4-e9f2da2b7200_klein.jpg"
-              class="card-img-fluid"
-              alt="mit Dall-E produziert"
-              style="height: 100%; width: 100%; object-fit: cover"
-            />
-          </center>
-          <div class="card-body">
-            <h3 class="h5">
-              Neuer Studiengang MSc Mathematics in Data and Technology
-            </h3>
-            <div class="card-text">
-              <p>Start voraussichtlich WS 2024!</p>
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      {% for item in data["carousel"]|selectattr("show") %}
+      <div
+        class="carousel-item {% if data['carousel'].index(item) == 0 %}active{% endif %}"
+        data-bs-interval="5000"
+      >
+        <div class="card mb-3" class="d-block w-100">
+          <div class="row g-0 bg-ufr-blue-20">
+            <div class="col-md-4">
+              <img
+                src="{{ item['image'] }}"
+                alt="..."
+                style="height: 20vw; {{ item['style'] }}"
+              />
             </div>
-          </div></a
-        >
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  {% if lang == "de" %} {{ item['title_de'] | safe}} {% else %}
+                  {{ item['title_en'] | safe }} {% endif %}
+                </h5>
+                {% if lang == "de" %} {{ item['text_de'] | safe }} {% else %} {{
+                item['text_en'] | safe }} {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      {% endfor %}
+    </div>
+    <div class="carousel-indicators">
+      {% for item in data["carousel"]|selectattr("show") %}
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="{{data['carousel'].index(item)}}"
+        aria-current="true"
+        class="{% if data['carousel'].index(item) == 0 %}active{% endif %}"
+        aria-label="Slide {{data['carousel'].index(item)}}"
+      ></button>
+      {% endfor %}
     </div>
   </div>
-  <br>
   <div class="row row-cols-1 row-cols-md-3 g-3">
+    {% for item in data["news"] %} {% if item['show'] %}
     <div class="col">
       <div class="card h-100">
-        <a
-          href="{{url_for('showlehrveranstaltungenaktuelles', lang=lang)}}"
-          class="link-dark"
-        >
-          <center>
-            <img
-              src="/static/Bilder/Uni_Freiburg_Okt_2021_4.jpg"
-              class="card-img-fluid"
-              alt="..."
-              style="height: 100%; width: 100%; object-fit: cover"
-            />
-          </center>
-          <div class="card-body">
-            <h3 class="h5">Lehrveranstaltungen des laufenden Semesters</h3>
-            <div class="card-text">
-              <p></p>
-            </div></div
-        ></a>
+        <center>
+          <img
+            src="{{ item['image'] }}"
+            class="card-img-fluid"
+            alt="..."
+            style="height: 15vw; width: 100%; {{ item['style'] }}"
+          />
+        </center>
+        <div class="card-body">
+          <h3 class="h5">
+            {% if lang == 'de' %}{{ item['title_de'] | safe }}{% else %}{{
+            item['title_en'] | safe}} {% endif %}
+          </h3>
+          <div class="card-text">
+            {% if lang == 'de' %}{{ item['text_de'] | safe}}{% else %}{{
+            item['text_en'] | safe }} {% endif %}
+            <p align="right">
+              {% if item['popover_title_de']!= '' or item['popover_text_de']!=
+              '' %}
+              <button
+                type="button"
+                class="btn btn-outline-primary active bg-white"
+                data-bs-trigger="focus"
+                data-bs-toggle="popover"
+                data-bs-html="true"
+                style="color: #004a99"
+                title="{% if lang == 'de' %}{{ item['popover_title_de'] | safe }}{% else %}{{ item['popover_title_en'] | safe }}{% endif %}"
+                data-bs-content="{% if lang == 'de' %}{{ item['popover_text_de'] | safe }}{% else %}{{ item['popover_text_en'] | safe }}{% endif %}"
+              >
+                <i class="fa-solid fa-info" style="color: #004a99"></i>
+              </button>
+              {% endif %} {% if item['link']!= '' %}
+              <a
+                class="btn btn-outline-primary active bg-white"
+                style="border-color: #004a99"
+                href="{{ item['link'] }}"
+                role="button"
+              >
+                <i class="fa-solid fa-link" style="color: #004a99"></i>
+              </a>
+
+              {% endif %}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col">
-      <div class="card h-100">
-        <a
-          href="{{url_for('showlehrveranstaltungenkommendes', lang=lang)}}"
-          class="link-dark"
-        >
-          <center>
-            <img
-              src="/static/Bilder/Uni_Freiburg_Okt_2021_23.jpg"
-              class="card-img-fluid"
-              alt="..."
-              style="height: 100%; width: 100%; object-fit: cover"
-            />
-          </center>
-          <div class="card-body">
-            <h3 class="h5">Lehrveranstaltungen des kommenden Semesters</h3>
-            <div class="card-text">
-              <p></p>
-            </div></div
-        ></a>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <a
-          href="{{url_for('showpruefungsamt', unterseite='formulare', lang=lang )}}"
-          class="link-dark"
-        >
-          <center>
-            <img
-              src="/static/Bilder/ALU_Rektorat_116.jpg"
-              class="card-img-fluid"
-              alt="..."
-              style="height: 100%; width: 100%; object-fit: cover"
-            />
-          </center>
-          <div class="card-body">
-            <h3 class="h5">Formulare</h3>
-            <div class="card-text">
-              <p></p>
-            </div></div
-        ></a>
-      </div>
-    </div>
+    {% endif %} {% endfor %}
   </div>
 </div>

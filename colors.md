@@ -11,4 +11,3 @@
 * "#ffff66" Mathematik, Reine Mathematik, Angewandte Mathematik
 * #e6e666" Seminar
 * af8daa Wahlmodul
-* 
