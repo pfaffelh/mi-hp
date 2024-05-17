@@ -49,8 +49,9 @@ def showbase(lang="de"):
 
 @app.route("/<lang>/bildnachweis/")
 def showbildnachweis(lang):
+    data = json.load(open(os.path.abspath(bildnachweis)))
     filenames = ["footer/bildnachweis.html"]
-    return render_template("home.html", filenames = filenames, lang=lang)
+    return render_template("home.html", filenames = filenames, data = data, lang=lang)
 
 @app.route("/<lang>/impressum/")
 def showimpressum(lang):
@@ -144,19 +145,11 @@ def showstudienverlauf(lang, studiengang):
 @app.route("/<lang>/lehrveranstaltungen/")
 def showlehrveranstaltungenbase(lang="de"):
     filenames = ["lehrveranstaltungen/index.html"]
-    return render_template("home.html", filenames=filenames, lang=lang, semester_dict=semester_dict)
+    return render_template("home.html", filenames=filenames, lang=lang, semester_dict=semester_dict, semester_dict_old=semester_dict_old)
 
 @app.route("/<lang>/lehrveranstaltungen/<semester>/")
 def showlehrveranstaltungen(lang, semester):
-    print(semester)
-    url = f"https://www.math.uni-freiburg.de/lehre/v/{semester}.html"
-    result = requests.get(url, verify=False)
-    soup = BeautifulSoup(result.text, 'lxml')
-    content = soup.find('div', id="inhalt")
-    content['class'] = "container"
     filenames = [f"lehrveranstaltungen/{semester}.html"]    
-    with open("mi-hp/templates/"+filenames[0], "w") as file:
-        file.write(content.prettify())
     return render_template("home.html", filenames = filenames, lang=lang, semester=semester)
 
 @app.route("/<lang>/lehrveranstaltungen/pdf/<semester>/")

@@ -7,10 +7,25 @@
         <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col"><center><div>Veranstaltungs-</div><div>verzeichnis</div></center></th>
+            <th scope="col">
+              <center>
+                <div>Veranstaltungs-</div>
+                <div>verzeichnis</div>
+              </center>
+            </th>
             <th scope="col">Kommentare</th>
-            <th scope="col"><center><div>Ergänzungen zu den</div> <div>Modulhandbüchern</div></center></th>
-            <th scope="col"><center><div>Verwendbarkeits-</div><div>tabelle</div></center></th>
+            <th scope="col">
+              <center>
+                <div>Ergänzungen zu den</div>
+                <div>Modulhandbüchern</div>
+              </center>
+            </th>
+            <th scope="col">
+              <center>
+                <div>Verwendbarkeits-</div>
+                <div>tabelle</div>
+              </center>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -21,32 +36,29 @@
               <center>
                 <a
                   href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"
-                  ><i class="fa-solid fa-link"></i></a
-                >
+                  ><i class="fa-solid fa-link"></i
+                ></a>
               </center>
             </td>
             <td>
               <center>
                 <a
-                  href="{{url_for('static', filename='lehrveranstaltungen/'+key+'.pdf')}}"
-                  ></a
-                >
+                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"
+                ></a>
               </center>
             </td>
             <td>
               <center>
                 <a
-                href="{{url_for('static', filename='lehrveranstaltungen/'+key+'mh.pdf')}}"
-                ></a
-                >
+                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
+                ></a>
               </center>
             </td>
             <td>
               <center>
                 <a
-                href="{{url_for('static', filename='lehrveranstaltungen/'+key+'verw.pdf')}}"
-                ></a
-                >
+                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'verw.pdf')}}"
+                ></a>
               </center>
             </td>
           </tr>
@@ -54,6 +66,16 @@
         </tbody>
       </table>
       <br />
+      <h2>Ältere Semester</h2>
+      {% for key, value in semester_dict_old.items() %}
+        <a
+          href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"
+          >{{ value }}</a
+        > <a
+          href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"
+        >(Kommentare)</a>
+      <br>
+      {% endfor %}
       <h2>Intern</h2>
       <ul>
         <li>

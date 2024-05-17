@@ -1,0 +1,155 @@
+#use '/webserver/templates/mathetemplate.wml'
+% use www.math ueberschrift="<de>Lehrveranstaltungen</de><en>Class Schedules</en>"
+
+<define-tag vventries>
+        <unset-var semkurz>
+        <unset-var semlang>
+        <unset-var html>
+        <unset-var htmlhref>
+        <unset-var pdfhref>
+	<unset-var nachzeiten>
+	<unset-var corona>
+
+        <set-var %attributes>
+        <set-var htmlhref=<get-var semkurz>/index.html>
+        <set-var pdfhref=<get-var semkurz>.pdf>
+        <set-var %attributes>
+
+        <tr>
+          <th><get-var semlang></th>
+          <td>
+          <ai href="<get-var semkurz>.html"><de>Veranstaltungsverzeichnis</de><en>Classes Listing</en></ai><if <get-var nachzeiten>
+          "<br>
+          <ai href="<get-var semkurz>_liste.html"><de>nach Zeiten sortiert</de><en>sorted by time</en></ai>"
+          >
+          </td>
+          <if <get-var htmlhref>
+          	"<td>&ndash;</td><td><a href="<get-var htmlhref>"><de>Kommentare</de><en>Commentary</en></a> (<de>als</de><en>as</en> <a href="<get-var pdfhref>"> PDF</a>)
+	  	<if <get-var corona> "<br><a href="<get-var semkurz>/corona.html"><de>Corona Hinweise</de><en>Corona Notices</en></a>"></td>" 
+	  >
+        </tr>
+</define-tag>
+<define-tag vventries_pdf>
+        <unset-var semkurz>
+        <unset-var semlang>
+        <unset-var html>
+        <unset-var htmlhref>
+        <unset-var pdfhref>
+	<unset-var nachzeiten>
+	<unset-var corona>
+
+        <set-var %attributes>
+        <set-var htmlhref=<get-var semkurz>/index.html>
+        <set-var pdfhref=<get-var semkurz>.pdf>
+        <set-var %attributes>
+
+        <tr>
+          <th><get-var semlang></th>
+          <td>
+          <ai href="<get-var semkurz>.html"><de>Veranstaltungsverzeichnis</de><en>Classes Listing</en></ai><if <get-var nachzeiten>
+          "<br>
+          <ai href="<get-var semkurz>_liste.html"><de>nach Zeiten sortiert</de><en>sorted by time</en></ai>"
+          >
+          </td>
+          <if <get-var htmlhref>
+          	"<td>&ndash;</td><td><a href="<get-var pdfhref>"><de>Kommentare</de><en>Commentary</en></a>
+	  	<if <get-var corona> "<br><a href="<get-var semkurz>/corona.html"><de>Corona Hinweise</de><en>Corona Notices</en></a>"></td>" 
+	  >
+        </tr>
+</define-tag>
+<define-tag vventries_ok>
+        <unset-var semkurz>
+        <unset-var semlang>
+        <unset-var html>
+        <unset-var htmlhref>
+        <unset-var pdfhref>
+	<unset-var nachzeiten>
+	<unset-var corona>
+
+        <set-var %attributes>
+        <set-var htmlhref=<get-var semkurz>/index.html>
+        <set-var pdfhref=<get-var semkurz>.pdf>
+        <set-var %attributes>
+
+        <tr>
+          <th><get-var semlang></th>
+          <td>
+          <ai href="<get-var semkurz>.html"><de>Veranstaltungsverzeichnis</de><en>Classes Listing</en></ai><if <get-var nachzeiten>
+          "<br>
+          <ai href="<get-var semkurz>_liste.html"><de>nach Zeiten sortiert</de><en>sorted by time</en></ai>"
+          >
+          </td>
+          <if <get-var htmlhref>
+          	"<td></td>" 
+	  >
+        </tr>
+</define-tag>
+
+<define-tag winter><de>Wintersemester</de><en>Winter semester</en> %0</define-tag>
+<define-tag summer><de>Sommersemester</de><en>Summer semester</en> %0</define-tag>
+
+% block css
+
+table.vvtab {
+        border: none;
+        border-spacing: 5px;
+        text-align: left;
+}
+
+table.vvtab th {
+        min-width: 170px;
+}
+table.vvtab th,
+table.vvtab td {
+        vertical-align: top;
+}
+
+% block body
+
+# vventries_ok   ohne Kommentare
+# vventries_pdf  mit Kommentaren als pdf
+# vventries      mit Kommentaren als pdf und html (obsolet)
+
+#<h2><de>Kommendes Semester</de><en>Upcoming semester</en></h2>
+#<table class="vvtab">
+#<vventries_pdf semkurz="ss24" semlang="<summer> 2024"> 
+#</table>
+
+#<h2><de>Kommendes Semester</de><en>Upcoming semester</en></h2>
+#<table class="vvtab">
+#<vventries_pdf semkurz="ws2425" semlang="<winter> 2024/2025"> 
+#</table>
+
+
+#<h2><de>Aktuelles Semester</de><en>Current Semester</en></h2>
+#<table class="vvtab">
+#<vventries_pdf semkurz="ws2324" semlang="<winter> 2023/24"> 
+#</table>
+
+<h2><de>Aktuelles Semester</de><en>Current Semester</en></h2>
+<table class="vvtab">
+<vventries_pdf semkurz="ss24" semlang="<summer> 2024"> 
+</table>
+
+
+<h2><de>Vergangene Semester</de><en>Past Semesters</en></h2>
+
+<table class="vvtab">
+<vventries_pdf semkurz="ws2324" semlang="<winter> 2023/24"> 
+<vventries_pdf semkurz="ss23" semlang="<summer> 2023"> 
+<vventries_pdf semkurz="ws2223" semlang="<winter> 2022/23"> 
+<vventries_pdf semkurz="ss22" semlang="<summer> 2022"> 
+<vventries_pdf semkurz="ws2122" semlang="<winter> 2021/22"> 
+<vventries_pdf semkurz="ss21" semlang="<summer> 2021"> 
+<vventries_pdf semkurz="ws2021" semlang="<winter> 2020/21" html="true"> 
+<vventries_pdf semkurz="ss20" semlang="<summer> 2020" html="true"/>
+<vventries_pdf semkurz="ws1920" semlang="<winter> 2019/20" html="true"/>
+<vventries_pdf semkurz="ss19" semlang="<summer> 2019" html="true"/>
+<vventries_pdf semkurz="ws1819" semlang="<winter> 2018/19" html="true"/>
+</table>
+
+<h2>Intern</h2>
+<table>
+<tr><td> <a href="http://home.mathematik.uni-freiburg.de/intern/raumplan/index.html">Raumpläne</a> </td></tr>
+<tr><td> <a href="http://home.mathematik.uni-freiburg.de/intern/fuer_dozenten/lehrveranstaltungsplanung.html">längerfristige Lehrveranstaltungsplanung</a> </td></tr>
+</table>
