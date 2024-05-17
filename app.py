@@ -9,15 +9,17 @@ import requests
 from flask import send_file
 from flask import make_response
 from utils.config import *
-from utils.util_logging import logger
+#from utils.util_logging import logger
 from utils.util_calendar import calendar, get_caldav_calendar_events
 from utils.util_faq import get_faq
 from flask_misaka import markdown
 from flask_misaka import Misaka
 import json
+import socket
 
 app = Flask(__name__)
 Misaka(app)
+
 
 # This function is important for changing languages; see base.html. Within a template, we can use its own endpoint, i.e. all parameters it was given. 
 # For changin languages, we are then able to only change the lang-parameter.
@@ -37,7 +39,7 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 @app.route("/")
 @app.route("/<lang>/")
 def showbase(lang="de"):
-    data = json.load(open('home.json'))
+    data = json.load(open(home))
     filenames = ["index.html"]
     return render_template("home.html", filenames=filenames, data = data, lang=lang)
 
@@ -68,10 +70,9 @@ def showdatenschutz(lang):
 @app.route("/<lang>/interesse/<anchor>")
 def showinteresse(lang, anchor="schueler"):
 #    filenames = ["interesse.html"]
-    data = json.load(open('interesse.json'))
+    data = json.load(open(interesse))
     filenames = ["interesse_prefix.html", "accordion_with_cards.html"]
     return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
-
 
 ##########################
 ## Studienanfänger      ## 
@@ -82,7 +83,6 @@ def showinteresse(lang, anchor="schueler"):
 def showanfang(lang, anchor=""):
     filenames = ["studienanfang.html"]
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
-
 
 ###################
 ## Studiengaenge ##
@@ -215,13 +215,13 @@ def showlehrveranstaltungenkommendes(lang):
 
 @app.route("/<lang>/studiendekanat/")
 def showstudiendekanatbase(lang):
-    data = json.load(open('studiendekanat.json'))
+    data = json.load(open(studiendekanat))
     filenames = ["studiendekanat/index.html"]
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
 @app.route("/<lang>/studienberatung/")
 def showstudienberatungbase(lang):
-    data = json.load(open('studiendekanat.json'))
+    data = json.load(open(studiendekanat))
     filenames = ["studiendekanat/studienberatung.html"]
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
@@ -239,7 +239,7 @@ def showstudienberatung(lang, unterseite):
 
 @app.route("/<lang>/pruefungsamt/")
 def showpruefungsamtbase(lang):
-    data = json.load(open('studiendekanat.json'))
+    data = json.load(open(studiendekanat))
     filenames = ["studiendekanat/pruefungsamt.html"]
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
@@ -293,7 +293,8 @@ def showmediathek(lang):
 
 @app.route("/monitor/")
 def showmonitor():
-    data = json.load(open('home.json'))
+#    data = json.load(open(os.path.abspath("/usr/local/lib/mi-hp/home.json")))
+    data = json.load(open(os.path.abspath(home)))
     data['carouselmonitor'] = [item for item in data['carouselmonitor'] if item['show']]
     data['news'] = [item for item in data['news'] if item['showmonitor']]
     filenames = ["monitor.html"]

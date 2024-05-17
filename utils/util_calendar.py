@@ -1,13 +1,10 @@
 import caldav
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import socket
 import netrc
-from .config import sondertermine_lehre_calendar_url, calendar_host
-from .util_logging import logger
-
-# obtain login credentials for caldav-server from ~/.netrc
-netrc = netrc.netrc()
-username, account, password = netrc.authenticators(calendar_host)
+from .config import *
+#from .util_logging import logger
 
 # Das ist der Prüfungsamts-Kalender
 url_prefix = "http://" + calendar_host
@@ -38,7 +35,7 @@ def get_caldav_calendar_events(cal, yearsinthepast=1):
             try:
                 start_time = e.dtstart.value
             except:
-                logger.INFO("Es kann weder Datum noch Startzeit erkannt werden. Das Event wird übersprungen.")
+#                logger.INFO("Es kann weder Datum noch Startzeit erkannt werden. Das Event wird übersprungen.")
                 continue  # Überspringe Veranstaltungen, die weder Startdatum noch Startzeit haben.
             end = start = e.dtstart.value.strftime("%Y-%m-%d %H:%M:00")
             allDay = ("true" if e.dtstart.value.strftime("%H:%M") == "00:00" else "false")
@@ -76,6 +73,6 @@ def get_caldav_calendar_events(cal, yearsinthepast=1):
     except Exception as e:
         # Log the error to a file
         error_message = f"Error accessing the calendar at {cal[3]}: {str(e)}"
-        logger.error(error_message)
+        #logger.error(error_message)
 
     return all

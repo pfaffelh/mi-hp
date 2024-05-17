@@ -1,7 +1,7 @@
-import logging
+#import logging
 
 # Configure the logger
-logger = ""
+logger = "abc"
 #log_file_path = './hp.log'
 #logger = logging.getLogger(__name__)
 #logger.setLevel(logging.INFO)

@@ -1,5 +1,5 @@
 import pymongo
-from .util_logging import logger
+#from .util_logging import logger
 
 # Connect to MongoDB
 try:
