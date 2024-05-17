@@ -9,7 +9,7 @@ import requests
 from flask import send_file
 from flask import make_response
 from utils.config import *
-from utils.util_logging import logger
+#from utils.util_logging import logger
 from utils.util_calendar import calendar, get_caldav_calendar_events
 from utils.util_faq import get_faq
 from flask_misaka import markdown
@@ -272,7 +272,7 @@ def showfaq(lang, which = "all", show = ""):
     try:
         cats_kurzname, names_dict, qa_pairs = get_faq(lang)
     except:
-        logger.warning("No connection to database")
+#        logger.warning("No connection to database")
         cats_kurzname, names_dict, qa_pairs  = ["unsichtbar"], {"unsichtbar": "Unsichtbar"}, {"unsichtbar": []}
 
     return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, which=which, show = show, studiengaenge = studiengaenge)
