@@ -16,16 +16,16 @@
       "left": "25%",
       "right": "25%",
       "bottom": "40%",
-      "text": "Es sollen demnächst auch Vortragsankündigungen zu sehen sein."
+      "text": "Es sollen demnächst auch Vortragsankündigungen <br>zu sehen sein."
     },
     {
       "show": true,
       "interval": "4000",
       "image": "/static/Bilder/sunset.jpg",
-      "left": "25%",
-      "right": "25%",
+      "left": "15%",
+      "right": "15%",
       "bottom": "40%",
-      "text": "Wenn Sie neue Nachrichten haben, schicken Sie diese bitte an news@math.uni-freiburg.de"
+      "text": "Wenn Sie neue Nachrichten haben, schicken Sie diese bitte an <br> news@math.uni-freiburg.de"
     }
   ],
   "carousel": [
@@ -110,7 +110,7 @@
       "popover_title_en": "",
       "popover_text_de": "",
       "popover_text_en": "",
-      "text_de": "Mit dem Lehrzertifikat für Postdocs weisen junge Forscherinnen und Forscher ihre Kompetenz in der Lehre aus. Es ist offen für alle nicht-habilitierten Mitarbeiter.",
+      "text_de": "Mit dem Lehrzertifikat für Postdocs weisen junge Forscherinnen und Forscher ihre Kompetenz in der Lehre aus. Es ist offen für alle Mitarbeiter*innen, die nicht habilitiert sind.",
       "text_en": ""
     },
     {

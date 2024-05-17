@@ -18,7 +18,7 @@
           class="carousel-caption d-none d-md-block"
           style="left:{{ item['left'] }}; right:{{ item['right'] }}; bottom:{{ item['bottom'] }}; background-color: white;"
         >
-          <h2>{{ item['text'] }}</h2>
+          <h2>{{ item['text'] | safe}}</h2>
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
             {% if lang == 'de' %}{{ item['text_de'] | safe}}{% else %}{{
             item['text_en'] | safe }} {% endif %}
             <p align="right">
-              {% if item['popover_title_de']!= '' or item['popover_text_de']!=
+<!--              {% if item['popover_title_de']!= '' or item['popover_text_de']!=
               '' %}
               <button
                 type="button"
@@ -63,16 +63,15 @@
               >
                 <i class="fa-solid fa-info" style="color: #004a99"></i>
               </button>
-              {% endif %} {% if item['link']!= '' %}
-              <a
-                class="btn btn-outline-primary active bg-white"
-                style="border-color: #004a99"
-                href="{{ item['link'] }}"
-                role="button"
-              >
-                <i class="fa-solid fa-link" style="color: #004a99"></i>
-              </a>
-
+              {% endif %}--> {% if item['link']!= '' %}
+              <img
+                id="barcode"
+                src="https://api.qrserver.com/v1/create-qr-code/?data={{ item['link'] }}&amp;size=100x100"
+                alt=""
+                title="HELLO"
+                width="50"
+                height="50"
+              />
               {% endif %}
             </p>
           </div>

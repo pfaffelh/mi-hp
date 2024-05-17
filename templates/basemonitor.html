@@ -178,7 +178,7 @@
               </li>
               <li class="nav-item d-none d-xl-block align-self-center">
                 <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
-<!--               </li>
+                <!--               </li>
               <li class="nav-item d-none d-xl-block mr-4">
                 <h2>
                   <a
@@ -194,6 +194,8 @@
               <li class="nav-item d-none d-xl-block align-self-center">
                 <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
               </li>-->
+              </li>
+
               <li class="nav-item d-none d-xl-block mr-4">
                 <h2>
                   <a
@@ -247,6 +249,16 @@
       var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
         return new bootstrap.Popover(popoverTriggerEl);
       });
+    </script>
+    <script>
+      function generateBarCode() {
+        var nric = $("#text").val();
+        var url =
+          "https://api.qrserver.com/v1/create-qr-code/?data=" +
+          nric +
+          "&amp;size=50x50";
+        $("#barcode").attr("src", url);
+      }
     </script>
 
     {% block js %} {% endblock %}
