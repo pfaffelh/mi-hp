@@ -1,4 +1,33 @@
 {
+  "carouselmonitor": [
+    {
+      "show": true,
+      "interval": "4000",
+      "image": "/static/Bilder/grapes-2000.jpg",
+      "left": "15%",
+      "right": "15%",
+      "bottom": "40%",
+      "text": "Auf diesem Monitor erscheinen in Zukunft aktuelle Meldungen und Hinweise."
+    },
+    {
+      "show": true,
+      "interval": "4000",
+      "image": "/static/Bilder/weide.jpg",
+      "left": "25%",
+      "right": "25%",
+      "bottom": "40%",
+      "text": "Es sollen demnächst auch Vortragsankündigungen zu sehen sein."
+    },
+    {
+      "show": true,
+      "interval": "4000",
+      "image": "/static/Bilder/sunset.jpg",
+      "left": "25%",
+      "right": "25%",
+      "bottom": "40%",
+      "text": "Wenn Sie neue Nachrichten haben, schicken Sie diese bitte an news@math.uni-freiburg.de"
+    }
+  ],
   "carousel": [
     {
       "show": true,
@@ -10,7 +39,7 @@
       "text_en": ""
     },
     {
-      "show": false,
+      "show": true,
       "title_de": "Mathematisches Kolloquium am 30.2.2024",
       "title_en": "Colloquium on February 30, 2024",
       "image": "/static/Bilder/scholze.jpeg",
@@ -39,7 +68,8 @@
   ],
   "news": [
     {
-      "show": true,
+      "showhome": true,
+      "showmonitor": true,
       "title_de": "Neuer Studiengang MSc Mathematics in Data and Technology",
       "title_en": "",
       "image": "/static/Bilder/aad8d969-9619-455b-a8f4-e9f2da2b7200_klein.jpg",
@@ -53,7 +83,8 @@
       "text_en": ""
     },
     {
-      "show": true,
+      "showhome": true,
+      "showmonitor": true,
       "title_de": "Neuer Studiengang Master of Education dual",
       "title_en": "",
       "image": "/static/Bilder/MEdDual.png",
@@ -67,7 +98,8 @@
       "text_en": ""
     },
     {
-      "show": true,
+      "showhome": true,
+      "showmonitor": true,
       "title_de": "Vorlesungsreihe von Jonathan Ansari: Recent developments in dependence modeling",
       "title_en": "",
       "image": "/static/Bilder/ansari.jpg",
@@ -81,7 +113,8 @@
       "text_en": ""
     },
     {
-      "show": true,
+      "showhome": true,
+      "showmonitor": true,
       "title_de": "Das Prüfungsamt hat jetzt neue Formulare",
       "title_en": "",
       "image": "/static/Bilder/ALU_Rektorat_116.jpg",
@@ -95,7 +128,8 @@
       "text_en": ""
     },
     {
-      "show": false,
+      "showhome": true,
+      "showmonitor": true,
       "title_de": "Hätten Sie es gewusst?",
       "title_en": "",
       "image": "/static/Bilder/modulhandbuch.jpg",
@@ -109,7 +143,8 @@
       "text_en": ""
     },
     {
-      "show": false,
+      "showhome": true,
+      "showmonitor": true,
       "title_de": "",
       "title_en": "",
       "image": "/static/Bilder/",

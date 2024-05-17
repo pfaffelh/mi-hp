@@ -230,16 +230,15 @@
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatungbase', lang=lang) }}"
-                  >{% if lang == "de" %}Anleitung HisInOne{% else %}HisInOne
-                  instructions{% endif %}</a
+                  href="{{ url_for('showstudienberatung', unterseite='warum_mathematik', lang=lang) }}"
+                  >{% if lang == "de" %}Warum Mathematik?{% else %}{% endif %}</a
                 >
               </li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatungbase', lang=lang) }}"
-                  >{% if lang == "de" %}Prüfungskalender{% else %}{% endif %}</a
+                  href="{{ url_for('showstudienberatung', unterseite='matheinfreiburg', lang=lang) }}"
+                  >{% if lang == "de" %}Mathematik in Freiburg{% else %}{% endif %}</a
                 >
               </li>
               <li>
@@ -250,22 +249,6 @@
                   areas{% endif %}</a
                 >
               </li>
-              <!--              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatung', unterseite='warum_mathematik', lang=lang) }}"
-                  >{% if lang == "de" %}Warum Mathematik?{% else %}Why
-                  mathematics?{% endif %}</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatung', unterseite='matheinfreiburg', lang=lang) }}"
-                  >{% if lang == "de" %}Mathematikstudium in Freiburg{% else
-                  %}Studying Mathematics in Freiburg{% endif %}</a
-                >
-              </li>-->
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <a
@@ -284,11 +267,11 @@
                 >
               </li>
               <li>
-                <!-- <a
+                <a
                   class="dropdown-item text-black"
                   href="{{ url_for('showpruefungsamt', unterseite='calendar', lang=lang) }}"
                   >{% if lang == "de" %}Kalender{% else %}Calendar{% endif %}</a
-                >-->
+                >
               </li>
               <li>
                 <a
@@ -298,6 +281,14 @@
                   applications{% endif %}</a
                 >
               </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showpruefungsamt', unterseite='anmeldung', lang=lang) }}"
+                  >{% if lang == "de" %}Anleitung Anmeldung zu Prüfungen{% else %}Deadlines
+                  and dates{% endif %}</a
+                >
+              </li>
 
               <li><hr class="dropdown-divider" /></li>
 
@@ -305,7 +296,8 @@
                 <a
                   class="dropdown-item text-black"
                   href="{{ url_for('showpruefungsamt', unterseite='formulare', lang=lang) }}"
-                  >{% if lang == "de" %}Auslandssemester{% else %}Study abroad{% endif %}</a
+                  >{% if lang == "de" %}Auslandssemester{% else %}Study abroad{%
+                  endif %}</a
                 >
               </li>
             </ul>

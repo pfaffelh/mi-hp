@@ -1,0 +1,98 @@
+{% extends 'basemonitor.html' %} {% block content %}
+<div
+  id="carouselExampleDark"
+  class="carousel carousel-dark slide"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    {% for item in data["carouselmonitor"] %}
+    <div class="carousel-item active" data-bs-interval="{{ item['interval'] }}">
+      <img
+        class="carousel-image"
+        src="{{ item['image']}}"
+        class="d-block w-100"
+        alt="..."
+      />
+      <div class="container-sm">
+        <div
+          class="carousel-caption d-none d-md-block"
+          style="left:{{ item['left'] }}; right:{{ item['right'] }}; bottom:{{ item['bottom'] }}; background-color: white;"
+        >
+          <h2>{{ item['text'] }}</h2>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div><br /></div>
+<div class="container" id="inhalt">
+  <br />
+  <div class="row row-cols-1 row-cols-md-3 g-3">
+    {% for item in data["news"] %}
+    <div class="col">
+      <div class="card h-100">
+        <center>
+          <img
+            src="{{ item['image'] }}"
+            class="card-img-fluid"
+            alt="..."
+            style="height: 15vw; width: 100%; {{ item['style'] }}"
+          />
+        </center>
+        <div class="card-body">
+          <h3 class="h5">
+            {% if lang == 'de' %}{{ item['title_de'] | safe }}{% else %}{{
+            item['title_en'] | safe}} {% endif %}
+          </h3>
+          <div class="card-text">
+            {% if lang == 'de' %}{{ item['text_de'] | safe}}{% else %}{{
+            item['text_en'] | safe }} {% endif %}
+            <p align="right">
+              {% if item['popover_title_de']!= '' or item['popover_text_de']!=
+              '' %}
+              <button
+                type="button"
+                class="btn btn-outline-primary active bg-white"
+                data-bs-trigger="focus"
+                data-bs-toggle="popover"
+                data-bs-html="true"
+                style="color: #004a99"
+                title="{% if lang == 'de' %}{{ item['popover_title_de'] | safe }}{% else %}{{ item['popover_title_en'] | safe }}{% endif %}"
+                data-bs-content="{% if lang == 'de' %}{{ item['popover_text_de'] | safe }}{% else %}{{ item['popover_text_en'] | safe }}{% endif %}"
+              >
+                <i class="fa-solid fa-info" style="color: #004a99"></i>
+              </button>
+              {% endif %} {% if item['link']!= '' %}
+              <a
+                class="btn btn-outline-primary active bg-white"
+                style="border-color: #004a99"
+                href="{{ item['link'] }}"
+                role="button"
+              >
+                <i class="fa-solid fa-link" style="color: #004a99"></i>
+              </a>
+
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div><br /></div>
+{% endblock %}
+
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>

@@ -1,37 +1,42 @@
 <div class="container" id="inhalt">
+<div class="container" id="inhalt">
 <div>
-    <h2>Studiendekanat</h2>
+  <h2>Studienberatung</h2>
   </div>
-  <div class="container g-3">
+<div class="container g-3">
     <div class="row">
       <div class="col-lg-9 col-md-7 row-cols-sm-1">
-        Studienberatung und Prüfungsamt arbeiten eng zusammen. Damit Sie den richtigen Ansprechpartner finden, erfahren Sie hier, wer wofür zuständig ist.
+        Die allgemeine Studienberatung der Mathematik ist offen für alle Studierenden. 
       </div>
       <div class="col">
         <div class="feature-icon bg-gradient text-end">
           <a
             class="btn text-white"
-            href="https://campus.uni-freiburg.de/"
+            href="{{ url_for('showfaq', lang=lang) }}"
             type="button"
             style="background-color: #004a99;"
           >
-            <h2><i class="fa fa-circle-right fa-4" aria-hidden="true"></i>  HisInOne</h2></a
+            <h2><i class="fa fa-circle-right fa-4" aria-hidden="true"></i>  FAQ</h2></a
           >
         </div>
       </div>
     </div>
   </div>
-<br>
-<br>
+
+
+
+  <br />
+  <p></p>
+  <br />
   <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-2">
-    {% for item in data["data"] %} {% if item['showstudiendekanat'] %}
+    {% for item in data["data"] %} {% if item['showstudienberatung'] %}
     <div class="col">
       <div class="card h-100">
         <a
           class="btn text-white"
-          {% if item['link']!= '' %} href="{{ item['link'] }}" {% endif %}"
+          {% if item['link']!= '' %} href="{{ item['link'] }}" {% endif %}
           type="button"
-          style="width: 100%; background-color: #004a99;"
+          style="width: 100%; background-color: #004a99; border-radius: 12px"
         >
           <center>
             <h4>
@@ -48,35 +53,8 @@
         </a>
         <div class="card-body">
           <div class="card-text">
-            <p>
-              {% if lang == "de" %} {% if item['prefix_de'] != "" %}
-              ({{item['prefix_de']|safe}}) {% endif %} {% else %} {% if
-              item['prefix_en'] != "" %} ({{item['prefix_en']|safe}}){% endif
-              %}{% endif %}
-            </p>
-            {% if lang == "de" and item['text_de'] != [] %}
-            <ul>
-              {% for x in item['text_de'] %}
-              <li>{{ x|safe }}</li>
-              {% endfor %}
-            </ul>
-            {% elif lang == "en" and item['text_en'] != [] %}
-            <ul>
-              {% for x in item['text_en'] %}
-              <li>{{ x|safe }}</li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-            <p align="right">
-              {% if item['mail']!= '' %} {% set mail = item['mail'] %}
-              <button
-                type="button"
-                class="btn btn-outline-primary active bg-white"
-                data-bs-toggle="popover"
-                data-bs-html="true"
-                style="color: #004a99"
-                title="{{ item['name'] | safe }}"
-                data-bs-content="{% if lang == 'de' %}
+                {% if item['mail']!= '' %} {% set mail = item['mail'] %}
+                {% if lang == 'de' %}
                 {% if item['raum_de'] !='' %} Raum: {{ item['raum_de'] | safe }} {% endif %} <br>
                 {% if item['tel_de'] !='' %} Tel.: {{ item['tel_de'] | safe }} {% endif %}<br>
                 {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
@@ -86,6 +64,28 @@
                 {% if item['tel_en'] !='' %} Tel.: {{ item['tel_en'] | safe }} {% endif %}<br>
                 {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
                 {% if item['sprechstunde_en'] !='' %} Office hours: {{ item['sprechstunde_en'] | safe }} {% endif %}<br>
+                {% endif %}
+            <p align="right">
+              <button
+                type="button"
+                class="btn btn-outline-primary active bg-white"
+                data-bs-toggle="popover"
+                data-bs-html="true"
+                style="color: #004a99"
+                title="{{ item['name'] | safe }}"
+                data-bs-content="
+                {% if lang == 'de'  and item['text_de'] != [] %}
+                <ul>
+                {% for x in item['text_de'] %}
+                <li>{{ x|safe }}</li>
+                {% endfor %}
+                </ul>
+                {% elif lang == 'en' and item['text_en'] != [] %}
+                <ul>
+                {% for x in item['text_en'] %}
+                <li>{{ x|safe }}</li>
+                {% endfor %}
+                </ul>
                 {% endif %}"
               >
                 <i class="fa-solid fa-info" style="color: #004a99"></i>

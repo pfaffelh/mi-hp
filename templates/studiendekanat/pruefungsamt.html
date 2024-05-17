@@ -1,11 +1,18 @@
+<br />
 <div class="container" id="inhalt">
-<div>
-    <h2>Studiendekanat</h2>
+  <div>
+    <h2>Prüfungsamt Mathematik</h2>
   </div>
   <div class="container g-3">
     <div class="row">
       <div class="col-lg-9 col-md-7 row-cols-sm-1">
-        Studienberatung und Prüfungsamt arbeiten eng zusammen. Damit Sie den richtigen Ansprechpartner finden, erfahren Sie hier, wer wofür zuständig ist.
+        Das Prüfungsamt ist zuständig für die Prüfungsverwaltung der
+        Mathematik-Studiengänge. Darunter fallen etwa Angelegenheiten rund um
+        die Prügungsan- und -abmeldung, Anerkennungen von Leistungen,
+        Leistungsübersichten, Bescheinigungen für das BAFöG-Amt etc. Sie können
+        uns per E-Mail, telefonisch oder während der Sprechzeiten erreichen.
+        Rechtlich verbindliche Dokumente schicken wir Ihnen typischerweise per
+        Post zu, oder sie liegen zu den Öffnungszeiten zur Abholung bereit.
       </div>
       <div class="col">
         <div class="feature-icon bg-gradient text-end">
@@ -21,10 +28,11 @@
       </div>
     </div>
   </div>
-<br>
-<br>
+
+  <br />
+
   <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-2">
-    {% for item in data["data"] %} {% if item['showstudiendekanat'] %}
+    {% for item in data["data"] %} {% if item['showpruefungsamt'] %}
     <div class="col">
       <div class="card h-100">
         <a
@@ -48,27 +56,20 @@
         </a>
         <div class="card-body">
           <div class="card-text">
-            <p>
-              {% if lang == "de" %} {% if item['prefix_de'] != "" %}
-              ({{item['prefix_de']|safe}}) {% endif %} {% else %} {% if
-              item['prefix_en'] != "" %} ({{item['prefix_en']|safe}}){% endif
-              %}{% endif %}
-            </p>
-            {% if lang == "de" and item['text_de'] != [] %}
-            <ul>
-              {% for x in item['text_de'] %}
-              <li>{{ x|safe }}</li>
-              {% endfor %}
-            </ul>
-            {% elif lang == "en" and item['text_en'] != [] %}
-            <ul>
-              {% for x in item['text_en'] %}
-              <li>{{ x|safe }}</li>
-              {% endfor %}
-            </ul>
-            {% endif %}
+                {% set mail = item['mail'] %}
+                {% if lang == 'de' %}
+                {% if item['prefix_de'] !='' %} {{ item['prefix_de'] | safe }} {% endif %} <br>
+                {% if item['raum_de'] !='' %} Raum: {{ item['raum_de'] | safe }} {% endif %} <br>
+                {% if item['tel_de'] !='' %} Tel.: {{ item['tel_de'] | safe }} {% endif %}<br>
+                {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
+                {% if item['sprechstunde_de'] !='' %} Sprechstunde: {{ item['sprechstunde_de'] | safe }} {% endif %}<br>
+                {% else %}
+                {% if item['prefix_en'] !='' %} {{ item['prefix_en'] | safe }} {% endif %} <br>
+                {% if item['raum_en'] !='' %} Room: {{ item['raum_de'] | safe }} {% endif %} <br>
+                {% if item['tel_en'] !='' %} Tel.: {{ item['tel_en'] | safe }} {% endif %}<br>
+                {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
+                {% if item['sprechstunde_en'] !='' %} Office hours: {{ item['sprechstunde_en'] | safe }} {% endif %}<br>
             <p align="right">
-              {% if item['mail']!= '' %} {% set mail = item['mail'] %}
               <button
                 type="button"
                 class="btn btn-outline-primary active bg-white"
@@ -76,16 +77,19 @@
                 data-bs-html="true"
                 style="color: #004a99"
                 title="{{ item['name'] | safe }}"
-                data-bs-content="{% if lang == 'de' %}
-                {% if item['raum_de'] !='' %} Raum: {{ item['raum_de'] | safe }} {% endif %} <br>
-                {% if item['tel_de'] !='' %} Tel.: {{ item['tel_de'] | safe }} {% endif %}<br>
-                {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
-                {% if item['sprechstunde_de'] !='' %} Sprechstunde: {{ item['sprechstunde_de'] | safe }} {% endif %}<br>
-                {% else %}
-                {% if item['raum_en'] !='' %} Room: {{ item['raum_de'] | safe }} {% endif %} <br>
-                {% if item['tel_en'] !='' %} Tel.: {{ item['tel_en'] | safe }} {% endif %}<br>
-                {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
-                {% if item['sprechstunde_en'] !='' %} Office hours: {{ item['sprechstunde_en'] | safe }} {% endif %}<br>
+                data-bs-content="
+                {% if lang == 'de'  and item['text_de'] != [] %}
+                <ul>
+                {% for x in item['text_de'] %}
+                <li>{{ x|safe }}</li>
+                {% endfor %}
+                </ul>
+                {% elif lang == "en" and item['text_en'] != [] %}
+                <ul>
+                {% for x in item['text_en'] %}
+                <li>{{ x|safe }}</li>
+                {% endfor %}
+                </ul>
                 {% endif %}"
               >
                 <i class="fa-solid fa-info" style="color: #004a99"></i>
@@ -108,4 +112,5 @@
     </div>
     {% endif %} {% endfor %}
   </div>
+
 </div>
