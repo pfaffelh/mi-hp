@@ -1,0 +1,100 @@
+<br />
+<div class="container" id="inhalt">
+  <h2>
+    {% if lang == "de" %}{{ data['title_de'] }} {% else %} {{ data['title_en']
+    }} {% endif %}
+  </h2>
+  <p>
+    {% if lang == "de" %}{{ data['prefix_de'] }} {% else %} {{ data['prefix_en']
+    }} {% endif %}
+  </p>
+
+  <div class="accordion" id="accordionExample">
+    {% for acc_item in data['content'] %}
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button  {% if anchor != acc_item['id'] %}collapsed{% endif %}"
+          data-bs-target="#{{acc_item['id']}}"
+          aria-controls="{{acc_item['id']}}"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}{{ acc_item['title_de'] }} {% else %} {{
+            acc_item['title_de'] }} {% endif %}
+          </h3>
+        </button>
+      </h3>
+      <p></p>
+      <div
+        aria-labelledby="{{acc_item['id']}}"
+        class="accordion-collapse collapse {% if anchor == acc_item['id'] %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="{{acc_item['id']}}"
+      >
+        <div class="accordion-body">
+          <p>
+            {% if lang == 'de' %}{{ acc_item['prefix_de'] }} {% else %} {{
+            acc_item['prefix_de'] }} {% endif %}
+          </p>
+          <div class="row row-cols-1 row-cols-md-4 g-3">
+            {% for item in acc_item['cards'] %} {% if item['show'] %}
+            <div class="col">
+              <div class="card h-100">
+                <center>
+                  <img
+                    src="{{ item['image'] }}"
+                    class="card-img-fluid"
+                    alt="..."
+                    style="height: 10vw; width: 100%; {{ item['style'] }};"
+                  />
+                </center>
+                <div class="card-body">
+                  <h3 class="h5">
+                    {% if lang == 'de' %}{{ item['title_de'] | safe }}{% else
+                    %}{{ item['title_en'] | safe}} {% endif %}
+                  </h3>
+                  <div class="card-text">
+                    {% if lang == 'de' %}{{ item['text_de'] | safe}}{% else %}{{
+                    item['text_en'] | safe }} {% endif %}
+                    <p align="right">
+                      {% if item['popover_title_de']!= '' or
+                      item['popover_text_de']!= '' %}
+                      <button
+                        type="button"
+                        class="btn btn-outline-primary active bg-white"
+                        data-bs-trigger="focus"
+                        data-bs-toggle="popover"
+                        data-bs-html="true"
+                        style="color: #004a99"
+                        title="{% if lang == 'de' %}{{ item['popover_title_de'] | safe }}{% else %}{{ item['popover_title_en'] | safe }}{% endif %}"
+                        data-bs-content="{% if lang == 'de' %}{{ item['popover_text_de'] | safe }}{% else %}{{ item['popover_text_en'] | safe }}{% endif %}"
+                      >
+                        <i class="fa-solid fa-info" style="color: #004a99"></i>
+                      </button>
+                      {% endif %} {% if item['link'] != '' %}
+                      <a
+                        class="btn btn-outline-primary active bg-white"
+                        style="border-color: #004a99"
+                        href="{{ item['link'] | safe }}"
+                        role="button"
+                      >
+                        <i class="fa-solid fa-link" style="color: #004a99"></i>
+                      </a>
+
+                      {% endif %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %} {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

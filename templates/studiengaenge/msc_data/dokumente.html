@@ -1,3 +1,6 @@
+<!-- Ab hier deutsch, englisch ist weiter unten -->
+
+{% if lang == "de" %}
 <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
   <div class="col">
     <div class="card h-100">
@@ -14,12 +17,16 @@
         </center>
       </a>
       <div class="card-body">
-        <h3 class="h5">Zulassungsordnung</h3>
+        <h3 class="h5">
+          <a href="/static/studiengaenge/msc_data/Zulassungsordnung.pdf"
+            >Admission regulations (Zulassungsordnung)</a
+          >
+        </h3>
         <div class="card-text">
           <p>
             Diese Ordnung regelt das Bewerbungsverfahren, wie
             <a
-              href="{{url_for('showstudiengang', studiengang='msc', lang = lang, anchor = 'bewerbung')}}"
+              href="{{url_for('showstudiengang', studiengang='msc_data', lang = lang, anchor = 'bewerbung')}}"
               >oben</a
             >
             beschrieben.
@@ -47,12 +54,20 @@
         <div class="card-text">
           <ul>
             <li>
-              In der <i>Rahmenprüfungsordnung</i> sind Regeln festgehalten, die
-              für alle MSc-Studiengänge gelten.
+              In der
+              <a
+                href="http://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/pruefungsordnungen/master_of_science/m_sc__pruefungsordnung_aktuell_rahmenordnung.pdf"
+              >
+                <i>Rahmenprüfungsordnung</i></a
+              >
+              sind Regeln festgehalten, die für alle MSc-Studiengänge gelten.
             </li>
             <li>
-              Der <i>fachspezifischen Teil</i>regelt die oben aufgeführten
-              speziellen Regelungen.
+              Der
+              <a href="/static/studiengaenge/msc_data/Pruefungsordnung.pdf"
+                >fachspezifischen Teil
+              </a>
+              regelt die hier weiter ausgeführten speziellen Regelungen.
             </li>
           </ul>
         </div>
@@ -61,9 +76,7 @@
   </div>
   <div class="col">
     <div class="card h-100">
-      <a
-        href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-      >
+      <a href="">
         <center>
           <img
             src="/static/Bilder/modulhandbuch.jpg"
@@ -78,9 +91,111 @@
         <p class="card-text">
           Welche Wahlmöglichkeiten Sie in den Modulen haben, ist semesterweise
           in den aktuellen Ergänzungen der Modulhandbücher beschrieben. Kompakt
-          findet sich die Information in den Verwendungstabellen
+          findet sich die Information in den Verwendungstabellen.
         </p>
       </div>
     </div>
   </div>
 </div>
+
+<!-- ab hier englisch -->
+{% else %}
+<div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
+  <div class="col">
+    <div class="card h-100">
+      <a
+        href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/363#collapse-Satzungen"
+      >
+        <center>
+          <img
+            src="/static/Bilder/zulassungsordnung.jpg"
+            class="card-img-fluid"
+            alt="..."
+            style="height: 15vw; object-fit: cover"
+          />
+        </center>
+      </a>
+      <div class="card-body">
+        <h3 class="h5">
+          <a href="/static/studiengaenge/msc_data/Zulassungsordnung.pdf"
+            >Admission regulations (Zulassungsordnung)</a
+          >
+        </h3>
+        <div class="card-text">
+          <p>
+            These regulations govern the application procedure, such as
+            described
+            <a
+              href="{{url_for('showstudiengang', studiengang='msc_data', lang = lang, anchor = 'bewerbung')}}"
+              >above</a
+            >.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <a
+        href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/363#collapse-Satzungen"
+      >
+        <center>
+          <img
+            src="/static/Bilder/ordnung.jpg"
+            class="card-img-fluid"
+            alt="..."
+            style="height: 15vw; object-fit: cover"
+          />
+        </center>
+      </a>
+      <div class="card-body">
+        <h3 class="h5">Examination regulations (Prüfungsordnung)</h3>
+        <div class="card-text">
+          <ul>
+            <li>
+              The
+              <a
+                href="http://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/pruefungsordnungen/master_of_science/m_sc__pruefungsordnung_aktuell_rahmenordnung.pdf"
+              >
+                <i>general examination regulations</i>
+                (Rahmenprüfungsordnung)</a
+              >
+              set out the rules that apply to all MSc degree programs.
+            </li>
+            <li>
+              The
+              <a href="/static/studiengaenge/msc_data/Pruefungsordnung.pdf"
+                >subject-specific part (fachspezifische Prüfungsordnung)
+              </a>
+              regulates the special regulations listed here.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <a href="">
+        <center>
+          <img
+            src="/static/Bilder/modulhandbuch.jpg"
+            class="card-img-fluid"
+            alt="..."
+            style="height: 15vw; object-fit: cover"
+          />
+        </center>
+      </a>
+      <div class="card-body">
+        <h3 class="h5">Module handbook (Modulhandbuch)</h3>
+        <p class="card-text">
+          The choices you have in the modules are described semester by semester
+          in the current supplements to the module handbooks. Compact
+          information can be found in the usability tables.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}

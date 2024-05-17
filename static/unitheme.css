@@ -11225,8 +11225,8 @@ i.delimiter {
 }
 @media only screen and (min-width:768px) {
   .main-menu>li:last-child>ul.sub-menu {
-    left:calc(100% +$size__space-s);
-    transform:translateX(calc(-100% +$size__space-s))
+    left:calc(100% +size__space-s);
+    transform:translateX(calc(-100% +size__space-s))
   }
 }
 @media only screen and (min-width:1598.71429px) {

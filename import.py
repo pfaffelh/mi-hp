@@ -44,10 +44,10 @@ files = [
     #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html",
     #     "target": "templates/pruefungsamt/index.html"
     # },
-    # {
-    #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html",
-    #     "target": "templates/pruefungsamt/termine.html"
-    # },
+    {
+        "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html",
+        "target": "templates/pruefungsamt/termine.html"
+    },
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html",
     #     "target": "templates/pruefungsamt/pruefungen.html"
@@ -64,14 +64,14 @@ files = [
     #     "source": "https://www.math.uni-freiburg.de/lehre/studienberatung.html",
     #     "target": "templates/studienberatung.html"
     # },
-    # {
-    #     "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/warum_mathematik.html",
-    #     "target": "templates/interesse/warum_mathematik.html"
-    # },
-    # {
-    #     "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/mathestudium_in_freiburg.html",
-    #     "target": "templates/interesse/mathestudium_in_freiburg.html"
-    # },
+     {
+         "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/warum_mathematik.html",
+         "target": "templates/studienberatung/warum_mathematik.html"
+     },
+    {
+        "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/mathestudium_in_freiburg.html",
+        "target": "templates/studienberatung/mathestudium_in_freiburg.html"
+    },
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-bsc-2021.html",
     #     "target": "templates/studiengaenge/studienverlauf-bsc-2021.html"
@@ -88,10 +88,13 @@ files = [
     #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-med-2018.html",
     #     "target": "templates/studiengaenge/studienverlauf-med-2018.html"
     # },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/schwerpunkte.html",
-        "target": "templates/studienberatung/studienverlaufschwerpunktgebiete.html"
+    { "source" : "https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html",
+      "target": "templates/studiendekanat/anmeldung.html"
     }
+    #{
+    #    "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/schwerpunkte.html",
+    #    "target": "templates/studienberatung/studienverlaufschwerpunktgebiete.html"
+    #}
 ]
 
 
@@ -131,7 +134,7 @@ for file in files:
         header["id"] = f"header{idloc}"
         
         button = soup.new_tag("button")
-        button["class"] = "accordion-button"
+        button["class"] = "accordion-button collapsed"
         button["type"]="button"
         button["data-bs-toggle"]="collapse"
         button["data-bs-target"]=f"#{idloc}Content"

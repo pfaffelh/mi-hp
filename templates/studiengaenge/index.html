@@ -1,63 +1,185 @@
 <div class="container" id="inhalt">
   <h1>Unsere Studiengänge</h1>
+  <br />
   <p>
-    Bei Fragen können Sie sich gerne an die
-    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
-      Studienberatung des Mathematischen Instituts
-    </a>
-    <a href="mailto:studienberatung@math.uni-freiburg.de"></a> wenden.
+    Wir stellen Ihnen hier unsere Bachelor- und Master-Studiengänge vor. Bei
+    Fragen, melden Sie sich gerne an die Studienberatung.
   </p>
+  <br />
+
+  <div class="row row-cols-md-4 row-cols-sm-2 row-cols-xs-1 g-2">
+    <div class="col">
+      <div class="card h-100">
+        <center>
+          <a
+            class="btn btn-primary btn-space px-3 mr-1"
+            style="width: 100%"
+            role="button"
+            href="{{url_for('showstudienberatungbase', lang=lang)}}"
+          >
+            <h2>
+              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
+              Studienberatung
+            </h2></a
+          >
+        </center>
+        <div class="card-body">
+          <div class="card-text">
+            <p>Bei Fragen wenden Sie sich gerne an unsere Studienberatung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <center>
+          <a
+            class="btn btn-primary btn-space px-3 mr-1"
+            style="width: 100%"
+            role="button"
+            href="{{url_for('showfaq', lang=lang)}}"
+          >
+            <h2>
+              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
+              FAQ
+            </h2></a
+          >
+        </center>
+        <div class="card-body">
+          <div class="card-text">
+            <p>Unser FAQ beantwortet viele, aber nicht alle Fragen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <center>
+          <a
+            class="btn btn-primary btn-space px-3 mr-1"
+            style="width: 100%"
+            role="button"
+            href=""
+          >
+            <h2>
+              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
+              Promotion
+            </h2></a
+          >
+        </center>
+        <div class="card-body">
+          <div class="card-text">
+            <p>
+              Informationen über eine Promtion der Mathematik finden Sie hier.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <center>
+          <a
+            class="btn btn-primary btn-space px-3 mr-1"
+            style="width: 100%"
+            role="button"
+            href=""
+          >
+            <h2>
+              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
+              Weiterbildung
+            </h2></a
+          >
+        </center>
+        <div class="card-body">
+          <div class="card-text">
+            <p>
+              Weiterbildungsangebote, zu denen Sie nicht an der Universität
+              Freiburg eingeschrieben sein müssen, finden Sie hier.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="accordion" id="accordionExample">
     <div class="accordion-item" id="kurz">
       <h3 class="accordion-header" id="headerkurz">
         <button
           type="button"
-          class="accordion-button {% if anchor != 'aktuell' %}collapsed{% endif %}"
-          data-bs-target="#aktuell"
-          aria-controls="aktuell"
+          class="accordion-button {% if anchor != 'bachelor' %}collapsed{% endif %}"
+          data-bs-target="#bachelor"
+          aria-controls="bachelor"
           aria-expanded="true"
           data-bs-toggle="collapse"
         >
           <h3 class="h5">
-            {% if lang == 'de' %}Aktuelle Studiengänge {% else %} Current study
-            programs {% endif %}
+            {% if lang == 'de' %}Bachelor {% else %} Bachelor{% endif %}
           </h3>
         </button>
       </h3>
       <div
-        aria-labelledby="aktuell"
-        class="accordion-collapse collapse {% if anchor == 'aktuell' %}show{% endif %}"
+        aria-labelledby="bachelor"
+        class="accordion-collapse collapse {% if anchor == 'bachelor' %}show{% endif %}"
         data-bs-parent="#accordionExample"
-        id="aktuell"
+        id="bachelor"
       >
         <div class="accordion-body">
-          {% include "/studiengaenge/aktuelle_studiengaenge.html" %}
+          {% include "/studiengaenge/bachelor.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="master"
+          aria-expanded="false"
+          class="accordion-button {% if anchor != 'master' %}collapsed{% endif %}"
+          data-bs-target="#master"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}Master of Science{% else %}Master of Science {%
+            endif %}
+          </h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="master"
+        class="accordion-collapse collapse {% if anchor == 'master' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="master"
+      >
+        <div class="accordion-body">
+          {% include "studiengaenge/master.html" %}
         </div>
       </div>
       <div class="accordion-item">
         <h4 class="accordion-header">
           <button
-            aria-controls="geplant"
+            aria-controls="lehramt"
             aria-expanded="false"
-            class="accordion-button {% if anchor != 'geplant' %}collapsed{% endif %}"
-            data-bs-target="#geplant"
+            class="accordion-button {% if anchor != 'lehramt' %}collapsed{% endif %}"
+            data-bs-target="#lehramt"
             data-bs-toggle="collapse"
             type="button"
           >
             <h3 class="h5">
-              {% if lang == 'de' %}Geplante Studiengänge{% else %}Planned study
-              programs {% endif %}
+              {% if lang == 'de' %}Gymnasiales Lehramt{% else %}Teachers'
+              education {% endif %}
             </h3>
           </button>
         </h4>
         <div
-          aria-labelledby="geplant"
-          class="accordion-collapse collapse {% if anchor == 'geplant' %}show{% endif %}"
+          aria-labelledby="lehramt"
+          class="accordion-collapse collapse {% if anchor == 'lehramt' %}show{% endif %}"
           data-bs-parent="#accordionExample"
-          id="geplant"
+          id="lehramt"
         >
           <div class="accordion-body">
-            {% include "studiengaenge/geplante_studiengaenge.html" %}
+            {% include "studiengaenge/lehramt.html" %}
           </div>
         </div>
         <div class="accordion-item">

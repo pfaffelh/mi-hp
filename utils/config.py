@@ -1,3 +1,21 @@
+import socket
+import netrc
+import os
+
+hostname = socket.gethostname()
+ip_address = socket.gethostbyname(hostname)
+
+if (ip_address == "127.0.1.1"):
+    home = 'home.json'
+    interesse = 'interesse.json'
+    studiendekanat = 'studiendekanat.json'
+    netrc = netrc.netrc()
+else:
+    home = os.path.abspath("/usr/local/lib/mi-hp/home.json")
+    interesse = os.path.abspath("/usr/local/lib/mi-hp/interesse.json")
+    studiendekanat = os.path.abspath("/usr/local/lib/mi-hp/studiendekanat.json")
+    netrc = netrc.netrc("/usr/local/lib/mi-hp/.netrc")
+
 kommendes = ("ss24", "Sommersemester 2024")
 aktuelles = ("ws2324", "Wintersemester 2023/24")
 semester_dict = {
@@ -16,6 +34,7 @@ semester_dict = {
 }
 
 calendar_host = "cal.mathematik.privat/davical/caldav.php/"
+username, account, password = netrc.authenticators(calendar_host)
 sondertermine_lehre_calendar_url = "http://cal.mathematik.privat/davical/caldav.php/pruefungsamt/pramt/"
 
 studiengaenge = {"all": "alle Studiengänge",

@@ -1,3 +1,4 @@
+{% if lang == "de" %}
 <p>
   <b style="font-size: 110%"> (A) Belegungen von Veranstaltungen: </b>
 </p>
@@ -54,3 +55,63 @@
     aus Ihrem zugrundeliegenden Bachelor-Studiengang.
   </li>
 </ul>
+
+{% else %}
+<p>
+  <b style="font-size: 110%"> (A) Booking of courses: </b>
+</p>
+<ul>
+  <li>
+    Submission of a participation request, can be made via the course catalog in
+    <a href="https://campus.uni-freiburg.de"> HISinOne </a>
+    (menu item 'Search for courses') from September or March.
+  </li>
+  <li>
+    Registration for exercise groups/tutorials takes place according to the
+    procedure announced in the lecture in the first week of courses.
+  </li>
+  <li>
+    Slots for seminars are allocated at the preliminary meeting at the end of
+    the preceeding semester. The dates for this and, if applicable, the type of
+    pre-registration are listed in the
+    <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+      course catalog </a
+    >.
+    <br />
+    For the course, there is no registration via HISinOne, but the timely
+    registration <i>of the exam</i> via HISinOne is required!
+  </li>
+</ul>
+<p>
+  <b style="font-size: 110%">
+    (B) Registration for graded examinations and registration of pass/fail
+    examinations:
+  </b>
+</p>
+<ul>
+  <li>
+    All examinations must be registered before the examination is taken and all
+    coursework must be registered. With a few exceptions, this can be done via
+    the study planner in HISinOne.
+  </li>
+  <li>
+    Please note: Registering for a course does not replace the registration for
+    the graded examinations or registration of the pass/fail examinations! In
+    particular, the assignment to an tutorial group at the beginning of the
+    lecture does not mean that you are registered for the corresponding
+    pass/fail examination!
+  </li>
+  <li>
+    Before registering for the first examination, you must apply to the
+    Examination Office an
+    <a
+      href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+    >
+      application for admission to the examinations during the Master's program
+    </a>
+    must be submitted. The Examinations Office requires a complete transcript of
+    your Bachelor's degree.
+  </li>
+</ul>
+
+{% endif %}

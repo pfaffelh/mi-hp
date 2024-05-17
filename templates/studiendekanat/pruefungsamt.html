@@ -1,0 +1,116 @@
+<br />
+<div class="container" id="inhalt">
+  <div>
+    <h2>Prüfungsamt Mathematik</h2>
+  </div>
+  <div class="container g-3">
+    <div class="row">
+      <div class="col-lg-9 col-md-7 row-cols-sm-1">
+        Das Prüfungsamt ist zuständig für die Prüfungsverwaltung der
+        Mathematik-Studiengänge. Darunter fallen etwa Angelegenheiten rund um
+        die Prügungsan- und -abmeldung, Anerkennungen von Leistungen,
+        Leistungsübersichten, Bescheinigungen für das BAFöG-Amt etc. Sie können
+        uns per E-Mail, telefonisch oder während der Sprechzeiten erreichen.
+        Rechtlich verbindliche Dokumente schicken wir Ihnen typischerweise per
+        Post zu, oder sie liegen zu den Öffnungszeiten zur Abholung bereit.
+      </div>
+      <div class="col">
+        <div class="feature-icon bg-gradient text-end">
+          <a
+            class="btn text-white"
+            href="https://campus.uni-freiburg.de/"
+            type="button"
+            style="background-color: #004a99;"
+          >
+            <h2><i class="fa fa-circle-right fa-4" aria-hidden="true"></i>  HisInOne</h2></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-2">
+    {% for item in data["data"] %} {% if item['showpruefungsamt'] %}
+    <div class="col">
+      <div class="card h-100">
+        <a
+          class="btn text-white"
+          {% if item['link']!= '' %} href="{{ item['link'] }}" {% endif %}"
+          type="button"
+          style="width: 100%; background-color: #004a99;"
+        >
+          <center>
+            <h4>
+              {% if lang == "de" %} {% if item['rolle_de'] != "" %}
+              {{item['rolle_de']|safe}} {% endif %} {% else %} {% if
+              item['rolle_en'] != "" %} {{item['rolle_en']|safe}}{% endif %}
+              {% endif %}
+            </h4>
+            <h4>
+              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
+              {{ item['name']|safe }}
+            </h4>
+            </center>
+        </a>
+        <div class="card-body">
+          <div class="card-text">
+                {% set mail = item['mail'] %}
+                {% if lang == 'de' %}
+                {% if item['prefix_de'] !='' %} {{ item['prefix_de'] | safe }} {% endif %} <br>
+                {% if item['raum_de'] !='' %} Raum: {{ item['raum_de'] | safe }} {% endif %} <br>
+                {% if item['tel_de'] !='' %} Tel.: {{ item['tel_de'] | safe }} {% endif %}<br>
+                {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
+                {% if item['sprechstunde_de'] !='' %} Sprechstunde: {{ item['sprechstunde_de'] | safe }} {% endif %}<br>
+                {% else %}
+                {% if item['prefix_en'] !='' %} {{ item['prefix_en'] | safe }} {% endif %} <br>
+                {% if item['raum_en'] !='' %} Room: {{ item['raum_de'] | safe }} {% endif %} <br>
+                {% if item['tel_en'] !='' %} Tel.: {{ item['tel_en'] | safe }} {% endif %}<br>
+                {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
+                {% if item['sprechstunde_en'] !='' %} Office hours: {{ item['sprechstunde_en'] | safe }} {% endif %}<br>
+            <p align="right">
+              <button
+                type="button"
+                class="btn btn-outline-primary active bg-white"
+                data-bs-toggle="popover"
+                data-bs-html="true"
+                style="color: #004a99"
+                title="{{ item['name'] | safe }}"
+                data-bs-content="
+                {% if lang == 'de'  and item['text_de'] != [] %}
+                <ul>
+                {% for x in item['text_de'] %}
+                <li>{{ x|safe }}</li>
+                {% endfor %}
+                </ul>
+                {% elif lang == "en" and item['text_en'] != [] %}
+                <ul>
+                {% for x in item['text_en'] %}
+                <li>{{ x|safe }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}"
+              >
+                <i class="fa-solid fa-info" style="color: #004a99"></i>
+              </button>
+              {% endif %} 
+              <!-- {% if item['link']!= '' %}
+              <a
+                class="btn btn-outline-primary active bg-white"
+                style="border-color: #004a99"
+                href="{{ item['link'] }}"
+                role="button"
+              >
+                <i class="fa-solid fa-link" style="color: #004a99"></i>
+              </a>
+              {% endif %} -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+
+</div>

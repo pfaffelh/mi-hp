@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if lang == "de" %} Mathematisches Institut, Universität Freiburg, e {%
+      else %} Mathematical Institute, University of Freiburg, Teaching {% endif
+      %}
+    </title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      id="unitheme-style-css"
+      href="/static/vorlesungsverzeichnis.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="unitheme-style-css"
+      href="/static/unitheme.css?ver=2.0.02"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="/static/ufr-colors.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script></script>
+    <link href="/static/ufr-colors.css" type="text/css" media="all" />
+    <script>
+      $('[data-toggle="tooltip"]').tooltip({
+        template:
+          '<div class="tooltip tooltip-custom"><div class="title">Test</div><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+      });
+    </script>
+    <style>
+      .no-envelope::before {
+        content: "" !important;
+      }
+      .btn:focus {
+        outline: none;
+        box-shadow: none;
+      }
+      @media (min-width: 768px) {
+        .container-small {
+          width: 300px;
+        }
+        .container-large {
+          width: 970px;
+        }
+      }
+      @media (min-width: 992px) {
+        .container-small {
+          width: 500px;
+        }
+        .container-large {
+          width: 1170px;
+        }
+      }
+      @media (min-width: 1200px) {
+        .container-small {
+          width: 700px;
+        }
+        .container-large {
+          width: 1500px;
+        }
+      }
+
+      .container-small,
+      .container-large {
+        max-width: 100%;
+      }
+      .carousel-image {
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+      }
+
+      .navbar-nav li:hover > ul.dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-submenu {
+        position: relative;
+      }
+
+      .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+      }
+
+      /* rotate caret on hover */
+      .dropdown-menu > li > a:hover:after {
+        text-decoration: underline;
+        transform: rotate(-45deg);
+      }
+      .dropdown-submenu.btn:focus-within {
+        background-color: white;
+      }
+      .dropdown-toggle::after {
+        display: inline-block;
+        width: 0.5em;
+        height: 0.5em;
+        margin: -0.3em 0 0 0.4em;
+        vertical-align: middle;
+        content: "";
+        border: 0.3em solid;
+        border-width: 0 0.15em 0.15em 0;
+        transform: rotateZ(45deg);
+      }
+      .accordion-button::after {
+        background-image: url("/static/Bilder/plus-svgrepo-com.svg");
+      }
+      .accordion-button:not(.collapsed)::after {
+        background-image: url("/static/Bilder/cross-svgrepo-com.svg");
+      }
+      .accordion-button:not(.collapsed) {
+        background-color: #fffae5;
+        color-scheme: #fffae5;
+      }
+      .accordion-button:hover {
+        background-color: #fffae5;
+        outline: none;
+      }
+      .table-borderless td,
+      .table-borderless th {
+        border: 0;
+      }
+      .btn-primary,
+      .btn-primary:hover,
+      .btn-primary:active,
+      .btn-primary:visited {
+        background-color: #344a9a !important;
+        color: white !important;
+      }
+    </style>
+    {% block styles %}
+    <!-- Add additional styles here -->
+    {% endblock %}
+  </head>
+
+  <body class="bg-white">
+    <header class="bg-ufr-darkblue">
+      <nav
+        id="site-navigation"
+        class="navbar navbar-expand-xl"
+        aria-label="Oberes Menü"
+      >
+        <div class="container-fluid">
+          <div class="d-flex flex-grow-1">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-white me-4" href="#"></a>
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <a class="navbar-brand" href="#">
+                  <img
+                    src="/static/ufr-logo-white.svg"
+                    alt="Albert-Ludwigs-Universität Freiburg"
+                    width="339"
+                    height="55"
+                  />
+                </a>
+              </li>
+              <li class="nav-item d-none d-xl-block align-self-center">
+                <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
+                <!--               </li>
+              <li class="nav-item d-none d-xl-block mr-4">
+                <h2>
+                  <a
+                    href="https://www.math.uni-freiburg.de"
+                    class="nav-link text-white"
+                    href="#"
+                  >
+                    {% if lang == "de" %}Fakultät für Mathematik und Physik{%
+                    else %}Mathematical Institute{% endif %}</a
+                  >
+                </h2>
+              </li>
+              <li class="nav-item d-none d-xl-block align-self-center">
+                <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
+              </li>-->
+              </li>
+
+              <li class="nav-item d-none d-xl-block mr-4">
+                <h2>
+                  <a
+                    href="{{url_for('showbase', lang = lang) }}"
+                    class="nav-link text-white"
+                    href="#"
+                  >
+                    {% if lang == "de" %}Mathematisches Institut{% else
+                    %}Teaching{% endif %}</a
+                  >
+                </h2>
+              </li>
+              <li class="nav-item d-none d-xl-block align-self-center">
+                <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    {% block content %}
+    <!-- {% include 'carousel.html' %} -->
+    <!-- {% include 'quicklinks.html' %} -->
+    <!-- {% include 'news.html' %} -->
+    <!-- {% include 'talks.html' %} -->
+    <!-- {% include 'geschichte.html' %} -->
+    {% endblock %}
+
+    <div><br /></div>
+    <div><br /></div>
+
+    <script>
+      if (location.hash !== null && location.hash !== "") {
+        $(location.hash + ".collapse").collapse("show");
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script>
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+      });
+    </script>
+    <script>
+      function generateBarCode() {
+        var nric = $("#text").val();
+        var url =
+          "https://api.qrserver.com/v1/create-qr-code/?data=" +
+          nric +
+          "&amp;size=50x50";
+        $("#barcode").attr("src", url);
+      }
+    </script>
+
+    {% block js %} {% endblock %}
+  </body>
+</html>

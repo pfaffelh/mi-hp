@@ -1,0 +1,175 @@
+{
+  "title_de": "Der Studienanfang Mathematik in Freiburg",
+  "title_en": "",
+  "prefix_de": "<p>Sie haben sich für ein Mathematikstudium in Freiburg entschieden und haben sich in einen der beiden Bachelor-Studiengänge in Mathematik eingeschrieben (<a href='https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html'>Bachelor of Science</a> oder <a href='https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html'>2-Hauptfächer-Bachelor</a>) oder in den <a href='https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html'>Master of Ecucation als Erweiterungsfach</a>.  Was müssen Sie vor Studienbeginn nun tun?</p> <p> Die kurze Antwort lautet:  Kommen Sie bei Bedarf zum Vorkurs und unbedingt zur Einführungswoche, vorher müssen Sie in der Regel nichts tun. Einige typische Fragen werden auch hier beantwortet; weitere Fragen beantwortet bei Bedarf die <a href='https://www.math.uni-freiburg.de/lehre/studienberatung.html'>Studienberatung</a> des Mathematischen Instituts oder die Studierenden der <a href='https://fachschaft-mathe-freiburg.de/'>Fachschaft Mathematik</a>. </p>",
+  "prefix_en": "",
+  "content": [
+    {
+      "id": "wochendavor",
+      "title_de": "Die Wochen vor Semesterbeginng",
+      "title_en": "",
+      "prefix_de": "Wann genau die Vorlesungszeit beginnt, können Sie <a href='https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten/semester-und-vorlesungszeiten-folder'>hier</a> nachlesen. In den Wochen davor können Sie bereits einiges vorbereiten.",
+      "prefix_en": "",
+      "cards": [
+        {
+          "show": true,
+          "title_de": "Vorkurs für Mathematiker",
+          "title_en": "",
+          "image": "/static/Bilder/",
+          "style": "object-fit: contain",
+          "link": "",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "<h5>Anmeldung</h5><p>Informationen zur Anmeldung finden Sie ebenfalls im <a href='https://www.math.uni-freiburg.de/lehre/v/index.html'>Veranstaltungsverzeichnis</a>.</p> <h5>Begleitprogramm der Fachschaft</h5> <p>Im Anschluss an den Vorkurs bietet die Fachschaft ein Kennenlernprogramm an.</p> <p> Für Studierende anderer Studienfächer als Mathematik gibt es die folgenden Vorkurse: <ul><li><a href='https://fachschaft.tf.uni-freiburg.de/erstsemester/mathevorkurs-1'>Informatik</a></li> <li><a href='https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&amp;unitId=116148&amp;periodId=2479'>diverse Naturwissenschaften</a> (Biologie, Geowissenschaften, Umweltnaturwissenschaften)</li> <li><a href='https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&amp;unitId=10268&amp;periodId=2479' >Physik</a></li><li><a href='https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&amp;unitId=8443&amp;periodId=2479'>Wirtschaftswissenschaften</a></li> </ul>  Studierende mit Fächerkombination Mathematik/Physik sollten vorzugsweise den Vorkurs der Physik besuchen.",
+          "popover_text_en": "",
+          "text_de": "<p> Das Mathematische Institut bietet in jedem Wintersemester (in der Regel zwei Wochen vor Vorlesungsbeginn) einen Vorkurs für die Studienanfänger:innen in Mathematik an. Dieser Vorkurs soll den Einstieg in das Mathematikstudium erleichtern, ist aber keine Voraussetzung für das Mathematikstudium.<br>Die Termine des Vorkurses entnehmen Sie bitte dem <a href='https://www.math.uni-freiburg.de/lehre/v/index.html'>Veranstaltungsverzeichnis</a>. </p>",
+          "text_en": ""
+        },
+        {
+          "show": true,
+          "title_de": "Einführungswoche der Fachschaft",
+          "title_en": "",
+          "image": "/static/Bilder/HN17058826.jpg",
+          "style": "object-fit: cover",
+          "link": "http://home.mathematik.uni-freiburg.de/didaktik/veranstaltungen.html#mathetage",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "",
+          "popover_text_en": "",
+          "text_de": "Einmal pro Jahr, in der Regel im September oder Oktober, gibt es den <i>Freiburger Mathematik-Tag</i> für Schüler*innen der Klassen 10 bis 13, die Freude am Knobeln und am Lösen von Aufgaben haben.",
+          "text_en": ""
+        },
+        {
+          "show": true,
+          "title_de": "Tag der offenen Tür",
+          "title_en": "",
+          "image": "/static/Bilder/S1_mit Sonne-naeher-web.jpg",
+          "style": "object-fit: cover",
+          "link": "https://www.studium.uni-freiburg.de/de/beratung",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "",
+          "popover_text_en": "",
+          "text_de": "Jährlich im November gibt es eine Vorstellung des Studienangebots, Vorträge, die Möglichkeit, in eine Erstsemestervorlesung hineinzuschnuppern und mit Studierenden ins Gespräch zu kommen.",
+          "text_en": ""
+        },
+        {
+          "show": true,
+          "title_de": "Freiburg Seminar",
+          "title_en": "",
+          "image": "/static/Bilder/Logo_Freiburg_Seminar.png",
+          "style": "object-fit: contain",
+          "link": "https://freiburg-seminar.de/",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "",
+          "popover_text_en": "",
+          "text_de": "Das <a href='https://freiburg-seminar.de/'></a> fördert besonders befähigte und interessierte Schüler:innen im Regierungsbezirk Freiburg und ermöglicht in besonderen Fällen ein Schülerstudium.",
+          "text_en": ""
+        }
+      ]
+    },
+    {
+      "id": "alle",
+      "title_de": "Für alle",
+      "title_en": "For all",
+      "prefix_de": "Folgende Angebote sind für die gesamte Öffentlichkeit.",
+      "prefix_en": "",
+      "cards": [
+        {
+          "show": true,
+          "title_de": "Gaststudium",
+          "title_en": "",
+          "image": "/static/Bilder/gasthoerer.jpeg",
+          "style": "object-fit: contain",
+          "link": "https://www.wb.uni-freiburg.de/faqs/gasthoerer",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "",
+          "popover_text_en": "",
+          "text_de": "Für jung und alt. Bitte nehmen Sie bei Interesse daher Kontakt mit der allgemeinen Studienberatung.",
+          "text_en": ""
+        },
+        {
+          "show": true,
+          "title_de": "Science Days, Europa-Park Rust",
+          "title_en": "",
+          "image": "/static/Bilder/sciencedays.jpeg",
+          "style": "object-fit: contain",
+          "link": "https://www.science-und-technologie.de/science-days",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "",
+          "popover_text_en": "",
+          "text_de": "Bühne frei für die Wissenschaft! Unter diesem Motto finden im Oktober die Science Days im Europa-Park Rust.",
+          "text_en": ""
+        },
+        {
+          "show": true,
+          "title_de": "Alumni-/Alumnae-Tag und Sommerfest",
+          "title_en": "",
+          "image": "/static/Bilder/AdobeStock_240499586_web.jpg",
+          "style": "object-fit: cover",
+          "link": "https://www.fachschaft.physik.uni-freiburg.de/veranstaltungen/sommerfest/",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "",
+          "popover_text_en": "",
+          "text_de": "Wir feiern Anfang Juli mit einem Festvortrag die Verabschiedung aller Absolventen. Für as leibliche Wohl ist gesorgt.",
+          "text_en": ""
+        }
+      ]
+    },
+    {
+      "id": "online",
+      "title_de": "Online",
+      "title_en": "Online",
+      "prefix_de": "Neben dem OSA Mathematik, der die Studienwahl erleichtern soll, gibt es zahlreiche weitere Materialien, die wir online zur Verfügung stellen.",
+      "prefix_en": "",
+      "cards": [
+        {
+          "show": true,
+          "title_de": "Online Studienwahl-Assistent (OSA)",
+          "title_en": "",
+          "image": "/static/Bilder/MAT_kachel_OSA-Stempel_546.jpg",
+          "style": "object-fit: contain",
+          "link": "https://www.osa.uni-freiburg.de/mathematik/",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "",
+          "popover_text_en": "",
+          "text_de": "Hier findet man, Informationen zu den Mathematik-Studiengängen, einen Erwartungsabgleich und ein paar Knobel-Aufgaben.",
+          "text_en": ""
+        },
+        {
+          "show": true,
+          "title_de": "Kosmic Online-Lernmaterialien",
+          "title_en": "",
+          "image": "/static/Bilder/kosmicxn.png",
+          "style": "object-fit: cover",
+          "link": "https://kosmic.uni-freiburg.de/",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "",
+          "popover_text_en": "",
+          "text_de": "Auch für nicht Eingeschriebene gibt es Materialien zu Vorkursen und Selbstlernmaterialien, etwa zur Wiederholung von Schulmathematik.",
+          "text_en": ""
+        },
+        {
+          "show": true,
+          "title_de": "Mediathek",
+          "title_en": "",
+          "image": "/static/Bilder/studint-song.jpg",
+          "style": "object-fit: cover",
+          "link": "{{url_for('showmediathek', lang=lang)}}",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "",
+          "popover_text_en": "",
+          "text_de": "In unserer Mediathek sind Videos mit Studierenden, Beratenden, Dozent:innen und noch viel mehr Material über die Freiburger Mathematik..",
+          "text_en": ""
+        }
+      ]
+    }
+  ]
+}
