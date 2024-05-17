@@ -9,7 +9,7 @@ import requests
 from flask import send_file
 from flask import make_response
 from utils.config import *
-#from utils.util_logging import logger
+from utils.util_logging import logger
 from utils.util_calendar import calendar, get_caldav_calendar_events
 from utils.util_faq import get_faq
 from flask_misaka import markdown

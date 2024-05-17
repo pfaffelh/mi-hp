@@ -1,6 +1,7 @@
 import logging
 
 # Configure the logger
+logger = ""
 #log_file_path = './hp.log'
 #logger = logging.getLogger(__name__)
 #logger.setLevel(logging.INFO)
