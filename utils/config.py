@@ -5,15 +5,15 @@ import os
 hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
 
+home = 'static/data/home.json'
+interesse = 'static/data/interesse.json'
+studiendekanat = 'static/data/studiendekanat.json'
 if (ip_address == "127.0.1.1"):
-    home = 'home.json'
-    interesse = 'interesse.json'
-    studiendekanat = 'studiendekanat.json'
     netrc = netrc.netrc()
 else:
-    home = os.path.abspath("/usr/local/lib/mi-hp/home.json")
-    interesse = os.path.abspath("/usr/local/lib/mi-hp/interesse.json")
-    studiendekanat = os.path.abspath("/usr/local/lib/mi-hp/studiendekanat.json")
+#    home = os.path.abspath("/usr/local/lib/mi-hp/home.json")
+#    interesse = os.path.abspath("/usr/local/lib/mi-hp/interesse.json")
+#    studiendekanat = os.path.abspath("/usr/local/lib/mi-hp/studiendekanat.json")
     netrc = netrc.netrc("/usr/local/lib/mi-hp/.netrc")
 
 kommendes = ("ss24", "Sommersemester 2024")
