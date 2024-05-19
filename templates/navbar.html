@@ -276,7 +276,7 @@
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showpruefungsamt', unterseite='formulare', lang=lang) }}"
+                  href="{{ url_for('showdownloads', anchor='formulare', lang=lang) }}"
                   >{% if lang == "de" %}Formulare und Anträge{% else %}Forms and
                   applications{% endif %}</a
                 >
@@ -295,7 +295,7 @@
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showpruefungsamt', unterseite='formulare', lang=lang) }}"
+                  href="{{ url_for('showpruefungsamt', unterseite='ausland', lang=lang) }}"
                   >{% if lang == "de" %}Auslandssemester{% else %}Study abroad{%
                   endif %}</a
                 >
@@ -320,7 +320,7 @@
           <li class="nav-item px-3">
             <a
               class="nav-link text-white"
-              href="{{ url_for('showmediathek', lang=lang) }}"
+              href="{{ url_for('showdownloads', lang=lang) }}"
               >Downloads</a
             >
           </li>

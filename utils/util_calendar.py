@@ -76,3 +76,19 @@ def get_caldav_calendar_events(cal, yearsinthepast=1):
         #logger.error(error_message)
 
     return all
+
+# This is to determine the current semester for the navbar
+def get_semester(date = datetime.now()):
+    # In 2024, the next line gives 24
+    y = int((str(date.year))[2:4])
+    m = date.month
+    if m <= 3:
+        current_semester = f"ws{y-1}{y}"
+        upcoming_semester = f"ss{y}"
+    elif m <= 9:
+        current_semester = f"ss{y}"
+        upcoming_semester = f"ws{y}{y+1}"
+    else:
+        current_semester = f"ws{y}{y+1}"
+        upcoming_semester = f"ss{y+1}"
+    return current_semester, upcoming_semester

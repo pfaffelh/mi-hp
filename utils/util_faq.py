@@ -4,9 +4,9 @@ import pymongo
 # Connect to MongoDB
 try:
     cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
-    mongo_db = cluster["faq"]
-    category = mongo_db["category"] 
-    qa = mongo_db["qa"]
+    mongo_db_faq = cluster["faq"]
+    category = mongo_db_faq["category"] 
+    qa = mongo_db_faq["qa"]
 except:
     logger.warning("No connection to Database 1")
 

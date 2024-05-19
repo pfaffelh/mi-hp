@@ -16,13 +16,18 @@ from flask_misaka import markdown
 from flask_misaka import Misaka
 import json
 import socket
+from datetime import datetime
 
 app = Flask(__name__)
 Misaka(app)
 
+# This is such that we can use os-commands in jinja2-templates.
+@app.context_processor
+def handle_context():
+    return dict(os=os)
 
 # This function is important for changing languages; see base.html. Within a template, we can use its own endpoint, i.e. all parameters it was given. 
-# For changin languages, we are then able to only change the lang-parameter.
+# For changing languages, we are then able to only change the lang-parameter.
 def url_for_self(**args):
     return url_for(request.endpoint, **dict(request.view_args, **args))
 
@@ -69,10 +74,10 @@ def showdatenschutz(lang):
 
 @app.route("/<lang>/interesse/")
 @app.route("/<lang>/interesse/<anchor>")
-def showinteresse(lang, anchor="schueler"):
+def showinteresse(lang, anchor=""):
 #    filenames = ["interesse.html"]
     data = json.load(open(interesse))
-    filenames = ["interesse_prefix.html", "accordion_with_cards.html"]
+    filenames = ["interesse_prefix.html", "interesse_content.html"]
     return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
 ##########################
@@ -246,10 +251,11 @@ def showpruefungsamt(lang, unterseite):
         filenames = ["studiendekanat/anmeldung.html"]
     if unterseite == "termine":
         filenames = ["pruefungsamt/termine.html"]
-    if unterseite == "formulare":
-        filenames = ["pruefungsamt/formulare.html"]
     if unterseite == "modulhandbuecher":
         filenames = ["pruefungsamt/modulhandbuecher.html"]    
+    if unterseite == "ausland":
+        filenames = ["pruefungsamt/modulhandbuecher.html"]    
+#    filenames = []
     return render_template("home.html", filenames=filenames, lang=lang)
 
 #########
@@ -274,11 +280,11 @@ def showfaq(lang, which = "all", show = ""):
 ## Downloads ##
 ###############
 
-@app.route("/<lang>/mediathek/")
-def showmediathek(lang):
-    filenames = ["mediathek.html"]
-    return render_template("home.html", filenames=filenames, lang=lang)
-
+@app.route("/<lang>/downloads/")
+@app.route("/<lang>/downloads/<anchor>")
+def showdownloads(lang, anchor=""):
+    filenames = ["downloads.html"]
+    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
 #################
 ## Monitor EG  ##
@@ -293,5 +299,18 @@ def showmonitor():
     filenames = ["monitor.html"]
     return render_template("monitor.html", data=data, filenames = filenames, lang="de")
 
-
+def get_semester(date):
+    # In 2024, the next line gives 24
+    y = datetime.now().year-2000
+    m = datetime.now().month
+    if m <= 3:
+        current_semester = f"ws{y-1}{y}"
+        upcoming_semester = f"ss{y}"
+    elif m <= 9:
+        current_semester = f"ss{y}"
+        upcoming_semester = f"ws{y}{y+1}"
+    else:
+        current_semester = f"ws{y}{y+1}"
+        upcoming_semester = f"ss{y+1}"
+    return current_semester, upcoming_semester
 
