@@ -130,6 +130,21 @@
     },
     {
       "showhome": false,
+      "showmonitor": true,
+      "title_de": "Vortrag am 29.5. um 16:00, Oberseminar Stochastik",
+      "title_en": "",
+      "image": "/static/images/platen.jpg",
+      "style": "object-fit: contain",
+      "link": "",
+      "popover_title_de": "",
+      "popover_title_en": "",
+      "popover_text_de": "",
+      "popover_text_en": "",
+      "text_de": "Am Mittwoch, 29.5. um 16.00 spricht im HS II (Alberstr. 23b) <strong> Prof. Eckhard Platen</strong> über <strong>Benchmark-Neutral Risk Minimization</strong>. Er ist emeritierter Professor für Quantitative Finance an der University of Technology Sydney. Eckhard Platen ist vor allem für seine Forschung zu numerischen Methoden für stochastische Differentialgleichungen und deren Anwendung in der Finanzwissenschaft zusammen mit der Verallgemeinerung der klassischen mathematischen Finanztheorie durch seinen Benchmark-Ansatz bekannt.",
+      "text_en": ""
+    },
+    {
+      "showhome": false,
       "showmonitor": false,
       "title_de": "Hätten Sie es gewusst?",
       "title_en": "",
