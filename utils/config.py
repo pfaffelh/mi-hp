@@ -11,12 +11,14 @@ if (ip_address == "127.0.1.1"):
 #    studiendekanat = 'static/data/studiendekanat.json'
     home = 'home.json'
     interesse = 'interesse.json'
+    weiterbildung = 'weiterbildung.json'
     studiendekanat = 'studiendekanat.json'
     bildnachweis = 'bildnachweis.json'
     netrc = netrc.netrc()
 else:
     home = os.path.abspath("/usr/local/lib/mi-hp/home.json")
     interesse = os.path.abspath("/usr/local/lib/mi-hp/interesse.json")
+    weiterbildung = os.path.abspath("/usr/local/lib/mi-hp/weiterbildung.json")
     studiendekanat = os.path.abspath("/usr/local/lib/mi-hp/studiendekanat.json")
     bildnachweis = os.path.abspath("/usr/local/lib/mi-hp/bildnachweis.json")
     netrc = netrc.netrc("/usr/local/lib/mi-hp/.netrc")

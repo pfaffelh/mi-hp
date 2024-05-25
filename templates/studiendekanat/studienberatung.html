@@ -1,28 +1,31 @@
 <div class="container" id="inhalt">
-<div class="container" id="inhalt">
-<div>
-  <h2>Studienberatung</h2>
+  <div>
+    <h2>Studienberatung</h2>
   </div>
-<div class="container g-3">
+  <div class="container g-3">
+    Die allgemeine Studienberatung der Mathematik ist offen für alle Studierenden der Mathematik-Studiengänge. 
+  </div>
+    <div class="container text-end">
     <div class="row">
-      <div class="col-lg-9 col-md-7 row-cols-sm-1">
-        Die allgemeine Studienberatung der Mathematik ist offen für alle Studierenden. 
-      </div>
       <div class="col">
-        <div class="feature-icon bg-gradient text-end">
-          <a
-            class="btn text-white"
-            href="{{ url_for('showfaq', lang=lang) }}"
+        <a
+          href="{{ url_for('showfaq', lang=lang) }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          FAQ
+        </a>
+      <a
+            class="btn text-white bg-ufr-blue"
+            href="{{ url_for('showstudienberatung', lang=lang, unterseite='warum_mathematik') }}"
             type="button"
-            style="background-color: #004a99;"
           >
-            <h2><i class="fa fa-circle-right fa-4" aria-hidden="true"></i>  FAQ</h2></a
-          >
-        </div>
+          Warum Mathematik?
+        </a>
       </div>
     </div>
   </div>
-
 
 
   <br />
@@ -33,10 +36,10 @@
     <div class="col">
       <div class="card h-100">
         <a
-          class="btn text-white"
+          class="btn bg-ufr-yellow-60"
           {% if item['link']!= '' %} href="{{ item['link'] }}" {% endif %}
           type="button"
-          style="width: 100%; background-color: #004a99; border-radius: 12px"
+          style="width: 100%; border-radius: 12px"
         >
           <center>
             <h4>

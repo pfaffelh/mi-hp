@@ -1,60 +1,46 @@
-<br />
 <div class="container" id="inhalt">
   <h2>Interesse am Mathematik-Studium in Freiburg?</h2>
   <div class="container g-3">
     <div class="row">
-      <div class="col-lg-9 col-md-7 row-cols-sm-1">
+      <p>
         An der Universität Freiburg können Sie mit einem Bachelor- oder
         Lehramts-Studium in die Mathematik einsteigen, aber auch unsere Angebote
         im Master-Bereich nutzen. Für Schüler*innen bieten wir zahlreiche
-        Workshops an. Weiterbildungsangebote gibt es beispielsweise für
-        Mathematik-Lehrer*innen. Unser Online-Studienwahl-Assistent (<a href=""
-          >OSA</a
-        >) soll Ihnen bei der Entscheidung für ein Mathematik-Studium helfen.
-        Sollten Sie sich mathematisch weiterbilden wollen, ohne regulär an der
-        Universität eingeschrieben zu sein, so haben wir einige
-        <a href="">Weiterbildungsangebote</a>. Bei Fragen melden Sie sich gerne
-        bei unserer
+        Workshops an.
+        <a href="{{url_for('showweiterbildung', lang = lang)}}"
+          >Weiterbildungsangebote</a
+        >, zu denen Sie auch ohne eine Einschreibung an der Universität
+        teilnehmen können, gibt es beispielsweise für Mathematik-Lehrer*innen.
+        Unser Online-Studienwahl-Assistent <a href="">(OSA)</a> soll Ihnen bei
+        der Entscheidung für ein Mathematik-Studium helfen. Bei Fragen melden
+        Sie sich gerne bei unserer
         <a href="mailto:studienberatung@math.uni-freiburg.de">Studienberatung</a
         >.
-      </div>
+      </p>
+    </div>
+  </div>
+  <div class="container text-end">
+    <div class="row">
       <div class="col">
-        <div class="row">
-          <div class="feature-icon bg-gradient text-end">
-            <a
-              href="https://www.osa.uni-freiburg.de/mathematik/"
-              class="btn btn-primary"
-              role="button"
-              aria-disabled="true"
-            >
-              Online-Studienwahl-Assistent
-            </a>
-          </div>
-        </div>
-        <div class="row">
-          <div class="feature-icon bg-gradient text-end">
-            <a
-              href=""
-              class="btn btn-primary"
-              role="button"
-              aria-disabled="true"
-            >
-              Weiterbildung
-            </a>
-          </div>
-        </div>
-        <div class="row">
-          <div class="feature-icon bg-gradient text-end">
-            <a
-              href="mailto:studienberatung@math.uni-freiburg.de"
-              class="btn btn-primary"
-              role="button"
-              aria-disabled="true"
-            >
-              Studienberatung
-            </a>
-          </div>
-        </div>
+        <a
+          href="https://www.osa.uni-freiburg.de/mathematik/"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Online-Studienwahl-Assistent
+        </a>
+        <a href="{{ url_for('showweiterbildung', lang=lang)}}" class="btn btn-primary" role="button" aria-disabled="true">
+          Weiterbildung
+        </a>
+        <a
+          href="mailto:studienberatung@math.uni-freiburg.de"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Studienberatung
+        </a>
       </div>
     </div>
   </div>

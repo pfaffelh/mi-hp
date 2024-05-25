@@ -235,6 +235,7 @@
                   >
                   {% endif %}
                 </li>
+                <li><div>" "</div></li>
               </ul>
             </div>
           </div>
@@ -243,7 +244,9 @@
     </header>
     {% block navbar %}
     <!-- {% include 'navbar.html' %} -->
-    {% endblock %} {% block content %}
+    {% endblock %} 
+    <br>
+    {% block content %}
     <!-- {% include 'carousel.html' %} -->
     <!-- {% include 'quicklinks.html' %} -->
     <!-- {% include 'news.html' %} -->

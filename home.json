@@ -68,9 +68,11 @@
   ],
   "news": [
     {
-      "showhome": true,
-      "showmonitor": true,
       "id": "mscdata",
+      "showhomestart": "01.01.2000 00:00",
+      "showhomeend": "01.11.2024 00:00",
+      "showmonitorstart": "01.01.2000 00:00",
+      "showmonitorend": "01.11.2024 00:00",
       "title_de": "Neuer Studiengang MSc Mathematics in Data and Technology",
       "title_en": "",
       "image": "/static/images/aad8d969-9619-455b-a8f4-e9f2da2b7200_klein.jpg",
@@ -84,8 +86,10 @@
       "text_en": ""
     },
     {
-      "showhome": true,
-      "showmonitor": true,
+      "showhomestart": "01.01.2000 00:00",
+      "showhomeend": "01.11.2024 00:00",
+      "showmonitorstart": "01.01.2000 00:00",
+      "showmonitorend": "01.09.2024 00:00",
       "title_de": "Neuer Studiengang Master of Education dual",
       "title_en": "",
       "image": "/static/images/MEdDual.png",
@@ -99,8 +103,10 @@
       "text_en": ""
     },
     {
-      "showhome": true,
-      "showmonitor": true,
+      "showhomestart": "01.01.2000 00:00",
+      "showhomeend": "01.11.2024 00:00",
+      "showmonitorstart": "01.01.2000 00:00",
+      "showmonitorend": "01.11.2024 00:00",
       "title_de": "Lehrzertifikat für Postdocs",
       "title_en": "",
       "image": "/static/images/ALU_Rektorat_116.jpg",
@@ -114,8 +120,10 @@
       "text_en": ""
     },
     {
-      "showhome": true,
-      "showmonitor": true,
+      "showhomestart": "01.01.2000 00:00",
+      "showhomeend": "01.07.2000 00:00",
+      "showmonitorstart": "01.01.2000 00:00",
+      "showmonitorend": "01.07.2024 00:00",
       "title_de": "Vorbegutachtung eines gemeinsamen Antrags mit Pisa",
       "title_en": "",
       "image": "/static/images/pisa.jpg",
@@ -129,8 +137,10 @@
       "text_en": ""
     },
     {
-      "showhome": false,
-      "showmonitor": true,
+      "showhomestart": "01.01.2000 00:00",
+      "showhomeend": "01.11.2024 00:00",
+      "showmonitorstart": "01.01.2000 00:00",
+      "showmonitorend": "29.05.2024 18:00",
       "title_de": "Vortrag am 29.5. um 16:00, Oberseminar Stochastik",
       "title_en": "",
       "image": "/static/images/platen.jpg",
@@ -144,8 +154,10 @@
       "text_en": ""
     },
     {
-      "showhome": false,
-      "showmonitor": false,
+      "showhomestart": "01.01.2000 00:00",
+      "showhomeend": "01.11.2000 00:00",
+      "showmonitorstart": "01.01.2000 00:00",
+      "showmonitorend": "29.05.2000 18:00",
       "title_de": "Hätten Sie es gewusst?",
       "title_en": "",
       "image": "/static/images/modulhandbuch.jpg",
@@ -159,8 +171,10 @@
       "text_en": ""
     },
     {
-      "showhome": false,
-      "showmonitor": false,
+      "showhomestart": "01.01.2000 00:00",
+      "showhomeend": "01.11.2000 00:00",
+      "showmonitorstart": "01.01.2000 00:00",
+      "showmonitorend": "29.05.2000 18:00",
       "title_de": "",
       "title_en": "",
       "image": "/static/images/",

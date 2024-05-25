@@ -1,0 +1,31 @@
+{
+  "title_de": "",
+  "title_en": "",
+  "prefix_de": "",
+  "prefix_en": "",
+  "content": [
+    {
+      "id": "studiengang",
+      "title_de": "Für Lehrer*innen",
+      "title_en": "For teachers",
+      "prefix_de": "",
+      "prefix_en": "",
+      "cards": [
+        {
+          "show": true,
+          "title_de": "Didaktisches Seminar",
+          "title_en": "",
+          "image": "/static/pdf/latex/didsem.jpg",
+          "style": "object-fit: cover",
+          "link": "didsem",
+          "popover_title_de": "",
+          "popover_title_en": "",
+          "popover_text_de": "",
+          "popover_text_en": "",
+          "text_de": "Das Didaktische Seminar ...",
+          "text_en": ""
+        }
+      ]
+    }
+  ]
+}

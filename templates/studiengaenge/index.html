@@ -1,107 +1,67 @@
 <div class="container" id="inhalt">
-  <h1>Unsere Studiengänge</h1>
+  <h2>Unsere Studiengänge</h2>
   <br />
-  <p>
-    Wir stellen Ihnen hier unsere Bachelor- und Master-Studiengänge vor. Bei
-    Fragen, melden Sie sich gerne an die Studienberatung.
-  </p>
+  <ul>
+    <li>
+      Unser <a href="{{ url_for('showfaq', lang=lang) }}">FAQ</a> beantwortet viele, aber
+      nicht alle Fragen. Sollten Sie weitere Fragen haben, melden Sie sich gerne
+      an die
+      <a href="mailto:studienberatung@math.uni-freiburg.de">Studienberatung</a>.
+    </li>
+    <li>
+      Es gibt zwar auch den Promotionsstudiengang. Sollten Sie Informationen zu
+      einer Promotion in Mathematik an der Universität Freiburg suchen, schauen
+      Sie bitte <a href="">hier</a>.
+    </li>
+    <li>
+      Wir haben auch
+      <a href="{{ url_for('showweiterbildung', lang=lang)}}"
+        >Weiterbildungsangebote</a
+      >, zu denen Sie nicht an der Universität Freiburg eingeschrieben sein
+      müssen.
+    </li>
+  </ul>
   <br />
 
-  <div class="row row-cols-md-4 row-cols-sm-2 row-cols-xs-1 g-2">
-    <div class="col">
-      <div class="card h-100">
-        <center>
-          <a
-            class="btn btn-primary btn-space px-3 mr-1"
-            style="width: 100%"
-            role="button"
-            href="{{url_for('showstudienberatungbase', lang=lang)}}"
-          >
-            <h2>
-              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
-              Studienberatung
-            </h2></a
-          >
-        </center>
-        <div class="card-body">
-          <div class="card-text">
-            <p>Bei Fragen wenden Sie sich gerne an unsere Studienberatung.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <center>
-          <a
-            class="btn btn-primary btn-space px-3 mr-1"
-            style="width: 100%"
-            role="button"
-            href="{{url_for('showfaq', lang=lang)}}"
-          >
-            <h2>
-              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
-              FAQ
-            </h2></a
-          >
-        </center>
-        <div class="card-body">
-          <div class="card-text">
-            <p>Unser FAQ beantwortet viele, aber nicht alle Fragen.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <center>
-          <a
-            class="btn btn-primary btn-space px-3 mr-1"
-            style="width: 100%"
-            role="button"
-            href=""
-          >
-            <h2>
-              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
-              Promotion
-            </h2></a
-          >
-        </center>
-        <div class="card-body">
-          <div class="card-text">
-            <p>
-              Informationen über eine Promtion der Mathematik finden Sie hier.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <center>
-          <a
-            class="btn btn-primary btn-space px-3 mr-1"
-            style="width: 100%"
-            role="button"
-            href=""
-          >
-            <h2>
-              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
-              Weiterbildung
-            </h2></a
-          >
-        </center>
-        <div class="card-body">
-          <div class="card-text">
-            <p>
-              Weiterbildungsangebote, zu denen Sie nicht an der Universität
-              Freiburg eingeschrieben sein müssen, finden Sie hier.
-            </p>
-          </div>
-        </div>
+  <div class="container text-end">
+    <div class="row">
+      <div class="col">
+        <a
+          href="{{ url_for('showfaq', lang=lang) }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          FAQ
+        </a>
+        <a
+          href="{{ url_for('showweiterbildung', lang=lang)}}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Weiterbildung
+        </a>
+        <a
+          href="promotion"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Promotion
+        </a>
+        <a
+          href="mailto:studienberatung@math.uni-freiburg.de"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Studienberatung
+        </a>
       </div>
     </div>
   </div>
+
 
   <div class="accordion" id="accordionExample">
     <div class="accordion-item" id="kurz">

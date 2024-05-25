@@ -1,6 +1,7 @@
 <div class="container" id="inhalt">
-  <h1>Wegweiser für den Studienanfang im Fach Mathematik</h1>
-  <!--  <p>
+  <div class="row">
+    <h2>Wegweiser für den Studienanfang im Fach Mathematik</h2>
+    <!--  <p>
     <img
       alt="[Straßenschild Ernst-Zermelo-Straße]"
       src="https://www.math.uni-freiburg.de/i/Webseite-oben-Strassenschild.jpg"
@@ -9,41 +10,92 @@
 											(Foto: Markus Junker, © Mathematisches Institut Freiburg)"
     />
   </p>-->
-  <p>
-    Sie haben sich für ein Mathematikstudium in Freiburg entschieden und haben
-    sich in einen der beiden Bachelor-Studiengänge in Mathematik eingeschrieben
-    (
-    <a
-      href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html"
-    >
-      Bachelor of Science
-    </a>
-    oder
-    <a
-      href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html"
-    >
-      2-Hauptfächer-Bachelor
-    </a>
-    ) oder in den
-    <a
-      href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html"
-    >
-      Master of Ecucation als Erweiterungsfach
-    </a>
-    . Was müssen Sie vor Studienbeginn nun tun?
-  </p>
-  <p>
-    Die kurze Antwort lautet: Kommen Sie bei Bedarf zum Vorkurs und unbedingt
-    zur Einführungswoche, vorher müssen Sie in der Regel nichts tun. Einige
-    typische Fragen werden auch hier beantwortet; weitere Fragen beantwortet bei
-    Bedarf die
-    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
-      Studienberatung
-    </a>
-    des Mathematischen Instituts oder die Studierenden der
-    <a href="https://fachschaft-mathe-freiburg.de/"> Fachschaft Mathematik </a>
-    .
-  </p>
+    <p>
+      Sie haben sich für ein Mathematikstudium in Freiburg entschieden und haben
+      sich in einen der beiden Bachelor-Studiengänge in Mathematik
+      eingeschrieben (
+      <a
+        href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html"
+      >
+        Bachelor of Science
+      </a>
+      oder
+      <a
+        href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html"
+      >
+        2-Hauptfächer-Bachelor
+      </a>
+      ) oder in den
+      <a
+        href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html"
+      >
+        Master of Ecucation als Erweiterungsfach
+      </a>
+      . Was müssen Sie vor Studienbeginn nun tun?
+    </p>
+    <p>
+      Die kurze Antwort lautet: Kommen Sie bei Bedarf zum Vorkurs und unbedingt
+      zur Einführungswoche, vorher müssen Sie in der Regel nichts tun. Einige
+      typische Fragen werden auch hier beantwortet; weitere Fragen beantwortet
+      bei Bedarf die
+      <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+        Studienberatung
+      </a>
+      des Mathematischen Instituts oder die Studierenden der
+      <a href="https://fachschaft-mathe-freiburg.de/">
+        Fachschaft Mathematik
+      </a>
+      .
+    </p>
+  </div>
+
+  <div class="container text-end">
+    <div class="row">
+      <div class="col">
+        <a
+          href="{{ url_for('showstudiengaenge', lang=lang, anchor = 'bachelor') }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Bachelor
+        </a>
+        <a
+          href="{{ url_for('showstudiengaenge', lang=lang, anchor = 'master') }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Master
+        </a>
+        <a
+          href="{{ url_for('showstudiengaenge', lang=lang, anchor = 'lehramt') }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Lehramt
+        </a>
+        <a
+          href="{{ url_for('showstudienberatungbase', lang=lang)}}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Studienberatung
+        </a>
+        <a
+          href="fachscahft"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Fachschaft
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div id="accordion"></div>
   <div class="accordion accordion-flush" id="accordionExample">
     <div class="accordion-item" id="_vorbereitung">

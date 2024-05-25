@@ -1,4 +1,6 @@
 import pymongo
+from datetime import datetime
+
 #from .util_logging import logger
 
 # Connect to MongoDB
@@ -8,7 +10,6 @@ try:
     semester = mongo_db_vvz["semester"] 
 except:
     logger.warning("No connection to Database 1")
-
 
 # returns 
 # a list of category shortnames (cats_kurzname), 
@@ -21,5 +22,33 @@ def get_showsemester(shortname):
     b = semester.find_one({"kurzname": shortname, "hp_sichtbar": True })
     return (b != None)
 
+def get_current_semester_kurzname():
+    if datetime.now().month < 4:
+        res = f"{datetime.now().year-1}WS"
+    elif 3 < datetime.now().month and datetime.now().month < 11:
+        res = f"{datetime.now().year}SS"
+    else:
+        res = f"{datetime.now().year}WS"
+    return res
 
+def next_semester_kurzname(kurzname):
+    a = int(kurzname[:4])
+    b = kurzname[4:]
+    return f"{a+1}SS" if b == "WS" else f"{a}WS"
+
+def semester_name_de(kurzname):
+    a = int(kurzname[:4])
+    b = kurzname[4:]
+    c = f"/{a+1}" if b == "WS" else ""
+    return f"{"Wintersemester" if b == "WS" else "Sommersemester"} {a}{c}"
+
+def semester_name_en(kurzname):
+    a = int(kurzname[:4])
+    b = kurzname[4:]
+    c = f"/{a+1}" if b == "WS" else ""
+    return f"{"Winter term" if b == "WS" else "Summer term"} {a}{c}"
+
+def get_data(kurzname):
+    data = {}
+    return data
 

@@ -1,37 +1,88 @@
 <div class="container" id="inhalt">
-<div>
+  <div>
     <h2>Studiendekanat</h2>
   </div>
-  <div class="container g-3">
+  <div class="container">
+    <a href="{{ url_for('showstudienberatungbase', lang=lang)}}"
+      >Studienberatung</a
+    >
+    und
+    <a href="{{ url_for('showpruefungsamtbase', lang=lang)}}">Prüfungsamt</a>
+    arbeiten eng zusammen. Damit Sie den richtigen Ansprechpartner finden,
+    erfahren Sie hier, wer wofür zuständig ist.
+    <p></p>
+    <ul>
+      <li>
+        Die
+        <a href="{{ url_for('showstudienberatungbase', lang=lang)}}"
+          >Studienberatung</a
+        >steht allen Studierenden bei administrativen und organisatorischen
+        Fragen offen.
+      </li>
+      <li>
+        Das
+        <a href="{{ url_for('showpruefungsamtbase', lang=lang)}}"
+          >Prüfungsamt</a
+        >
+        ist zuständig für die Prüfungsverwaltung der Mathematik-Studiengänge.
+      </li>
+    </ul>
+  </div>
+</div>
+
+  <div class="container text-end">
     <div class="row">
-      <div class="col-lg-9 col-md-7 row-cols-sm-1">
-        Studienberatung und Prüfungsamt arbeiten eng zusammen. Damit Sie den richtigen Ansprechpartner finden, erfahren Sie hier, wer wofür zuständig ist.
-      </div>
       <div class="col">
-        <div class="feature-icon bg-gradient text-end">
-          <a
-            class="btn text-white"
-            href="https://campus.uni-freiburg.de/"
+        <a
+          href="{{ url_for('showstudienberatungbase', lang=lang)}}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Studienberatung
+        </a>
+        <a
+          href="{{ url_for('showpruefungsamtbase', lang=lang)}}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Prüfungsamt
+        </a>
+        <a
+          href="{{ url_for('showfaq', lang=lang) }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          FAQ
+        </a>
+      <a
+            class="btn text-white bg-ufr-blue"
+            href="https://campus.uni-freiburg.de"
             type="button"
-            style="background-color: #004a99;"
           >
-            <h2><i class="fa fa-circle-right fa-4" aria-hidden="true"></i>  HisInOne</h2></a
-          >
-        </div>
+          HISInOne
+        </a>
       </div>
     </div>
-  </div>
+    </div>
+    
+
 <br>
 <br>
+
+
+  <div class="container">
   <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-2">
     {% for item in data["data"] %} {% if item['showstudiendekanat'] %}
     <div class="col">
       <div class="card h-100">
         <a
-          class="btn text-white"
+          class="btn bg-ufr-yellow-60"
           {% if item['link']!= '' %} href="{{ item['link'] }}" {% endif %}"
           type="button"
-          style="width: 100%; background-color: #004a99;"
+          style="width: 100%;"
         >
           <center>
             <h4>
@@ -108,4 +159,4 @@
     </div>
     {% endif %} {% endfor %}
   </div>
-</div>
+  </div>

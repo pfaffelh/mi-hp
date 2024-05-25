@@ -1,5 +1,5 @@
 <header class="navbar navbar-expand-xl bg-ufr-blue">
-  <nav class="navbar navbar-expand-xl navbar-dark">
+  <nav class="navbar navbar-dark">
     <div class="container-fluid">
       <button
         class="navbar-toggler"
@@ -25,9 +25,8 @@
                 href="{{url_for('showinteresse', lang = lang)}}"
               >
                 <button
-                  class="text-black"
+                  class="text-black bg-ufr-yellow-60"
                   style="
-                    background-color: #fff1a9;
                     border-color: #004a99;
                     border-radius: 12px;
                   "
@@ -50,9 +49,8 @@
                 href="{{url_for('showanfang', lang = lang)}}"
               >
                 <button
-                  class="text-black"
+                  class="text-black  bg-ufr-yellow-60"
                   style="
-                    background-color: #fff1a9;
                     border-color: #004a99;
                     border-radius: 12px;
                   "
@@ -162,48 +160,24 @@
               Lehrveranstaltungen</a
             >
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              {% if show_laufendes_semester %}
               <li class="dropdown-submenu">
                 <a
                   class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ss24')}}"
-                  >SS 2024</a
+                  href="/{{lang}}/lehrveranstaltungen/{{laufendes_semester}}"
+                  >{% if lang == "de" %} laufendes Semester{% else %}current semester{% endif %}</a
                 >
               </li>
+              {% endif %}
+              {% if show_kommendes_semester %}
               <li class="dropdown-submenu">
                 <a
                   class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ws2324')}}"
-                  >WS 2023</a
+                  href="/{{lang}}/lehrveranstaltungen/{{kommendes_semester}}"
+                  >{% if lang == "de" %}kommendes Semester{% else %}upcoming semester{% endif %}</a
                 >
               </li>
-              <li class="dropdown-submenu">
-                <a
-                  class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ss23')}}"
-                  >SS 2023</a
-                >
-              </li>
-              <li class="dropdown-submenu">
-                <a
-                  class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ws2223')}}"
-                  >WS 2022</a
-                >
-              </li>
-              <li class="dropdown-submenu">
-                <a
-                  class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ss22')}}"
-                  >SS 2022</a
-                >
-              </li>
-              <li class="dropdown-submenu">
-                <a
-                  class="dropdown-item text-black"
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester='ws2122')}}"
-                  >WS 2021</a
-                >
-              </li>
+              {% endif %}
             </ul>
           </li>
           <li class="nav-item dropdown px-3">
@@ -227,7 +201,7 @@
                   counceling{% endif %}</a
                 >
               </li>
-              <li>
+<!--              <li>
                 <a
                   class="dropdown-item text-black"
                   href="{{ url_for('showstudienberatung', unterseite='warum_mathematik', lang=lang) }}"
@@ -240,7 +214,7 @@
                   href="{{ url_for('showstudienberatung', unterseite='matheinfreiburg', lang=lang) }}"
                   >{% if lang == "de" %}Mathematik in Freiburg{% else %}{% endif %}</a
                 >
-              </li>
+              </li>-->
               <li>
                 <a
                   class="dropdown-item text-black"
@@ -261,16 +235,9 @@
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showpruefungsamt', unterseite='termine', lang=lang) }}"
+                  href="{{ url_for('showpruefungsamt', unterseite='calendar', lang=lang) }}"
                   >{% if lang == "de" %}Fristen und Termine{% else %}Deadlines
                   and dates{% endif %}</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showpruefungsamt', unterseite='calendar', lang=lang) }}"
-                  >{% if lang == "de" %}Kalender{% else %}Calendar{% endif %}</a
                 >
               </li>
               <li>
@@ -281,22 +248,22 @@
                   applications{% endif %}</a
                 >
               </li>
-              <li>
+<!--              <li>
                 <a
                   class="dropdown-item text-black"
                   href="{{ url_for('showpruefungsamt', unterseite='anmeldung', lang=lang) }}"
                   >{% if lang == "de" %}Anleitung Anmeldung zu Prüfungen{% else %}Deadlines
                   and dates{% endif %}</a
                 >
-              </li>
+              </li>-->
 
               <li><hr class="dropdown-divider" /></li>
 
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showpruefungsamt', unterseite='ausland', lang=lang) }}"
-                  >{% if lang == "de" %}Auslandssemester{% else %}Study abroad{%
+                  href="https://home.mathematik.uni-freiburg.de/erasmus/outgoings_de.html"
+                  >{% if lang == "de" %}Studieren im Ausland{% else %}Study abroad{%
                   endif %}</a
                 >
               </li>
