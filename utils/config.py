@@ -23,8 +23,16 @@ else:
     bildnachweis = os.path.abspath("/usr/local/lib/mi-hp/bildnachweis.json")
     netrc = netrc.netrc("/usr/local/lib/mi-hp/.netrc")
 
-kommendes = ("ss24", "Sommersemester 2024")
-aktuelles = ("ws2324", "Wintersemester 2023/24")
+
+weekday = {
+    "Montag": "Mo",
+    "Dienstag": "Di",
+    "Mittwoch": "Mi",
+    "Donnerstag": "Do",
+    "Freitag": "Fr",
+    "Samstag": "Sa",
+    "Sonntag": "So",    
+}
 semester_dict = {
     "ss24": "Sommersemester 2024",
     "ws2324": "Wintersemester 2023/24",

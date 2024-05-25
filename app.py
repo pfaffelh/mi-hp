@@ -162,7 +162,7 @@ def showstudienverlauf(lang, studiengang):
 @app.route("/<lang>/lehrveranstaltungen/")
 def showlehrveranstaltungenbase(lang="de"):
     filenames = ["lehrveranstaltungen/index.html"]
-    a = [x["kurzname"] for x in list(vvz.semester.find({"hp_sichtbar": True}))]
+    a = [x["kurzname"] for x in list(vvz.vvz_semester.find({"hp_sichtbar": True}))]
     b = ["2024WS"] + [f"20{x}{s}S" for x in range(25,100) for s in ["S", "W"]]
     acapb = [x for x in a if x in b]
     acapb.reverse()
