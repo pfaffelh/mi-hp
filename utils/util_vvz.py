@@ -86,7 +86,7 @@ def make_raumzeit(veranstaltung):
             else:
                 raum = ", ".join([r['name_de'], f"<a href = '{gurl}'>{g['name_de']}</a>"])
             # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
-            zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ""}-{str(termin['ende'].hour)}{': '+str(termin['ende'].minute) if termin['ende'].minute > 0 else ""}"
+            zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}-{str(termin['ende'].hour)}{': '+str(termin['ende'].minute) if termin['ende'].minute > 0 else ''}"
             # zB Mo, 8-10
             tag = weekday[termin['wochentag']]
             # person braucht man, wenn wir dann die Datenbank geupdated haben.
@@ -120,7 +120,7 @@ def make_raumzeit(veranstaltung):
             else:
                 datum = startdatum
             if termin['startzeit'] is not None:
-                zeit = f"{str(termin['startzeit'].hour)}{': '+str(termin['startzeit'].minute) if termin['startzeit'].minute > 0 else ""}--{str(termin['endzeit'].hour)}{': '+str(termin['endzeit'].minute) if termin['endzeit'].minute > 0 else ""}"
+                zeit = f"{str(termin['startzeit'].hour)}{': '+str(termin['startzeit'].minute) if termin['startzeit'].minute > 0 else ''}--{str(termin['endzeit'].hour)}{': '+str(termin['endzeit'].minute) if termin['endzeit'].minute > 0 else ''}"
             else:
                 zeit = ""
             # person braucht man, wenn wir dann die Datenbank geupdated haben.

@@ -5,7 +5,7 @@ import os
 hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
 
-if (ip_address == "127.0.1.1"):
+if (ip_address == "127.0.1.1") or os.getcwd() == "/home/flask-reader/mi-hp":
 #    home = 'static/data/home.json'
 #    interesse = 'static/data/interesse.json'
 #    studiendekanat = 'static/data/studiendekanat.json'
