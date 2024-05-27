@@ -3,10 +3,8 @@ endblock %} {% block content %}
 
 <div class="container" id="inhalt">
   <h2>Lehrveranstaltungen im {{data['semester']}}</h2>
-  <table class="vlverz">
-    <col />
-    <col />
-    <col />
+  <table class="table table-borderless table-sm">
+    {% set ns = namespace(i = 1) %}
     {% for r in data["rubrik"] %}
     <tr>
       <td colspan="3">
@@ -15,10 +13,10 @@ endblock %} {% block content %}
     </tr>
     {% for v in r["veranstaltung"] %}
     <tbody class="course_snip">
-      <tr>
+      <tr {% if ns.i % 2 %} class="bg-light"{% endif %}>
         <td rowspan="1">
           <div style="white-space: nowrap"></div>
-          {{ v["codes"] }}
+          {{i}}{{ v["codes"] }}
         </td>
         <td>
           <a href="{{ v['link'] | safe}}"> {{ v['titel'] }} </a>
@@ -26,26 +24,28 @@ endblock %} {% block content %}
         <td rowspan="{{ 1 + v['raumzeit'] | length }}">{{ v['dozent'] }}</td>
       </tr>
       {% for line in v["raumzeit"] %}
-      <tr>
+      <tr {% if ns.i % 2 %} class="bg-light"{% endif %}>
         <td></td>
       <td>{{ line | safe }}</td>
       </tr>
       {% endfor %} 
       {% if v["assistent"] %}
-      <tr>
+      <tr {% if ns.i % 2 %} class="bg-light"{% endif %}>
         <td></td>
         <td>Assistenz</td>
         <td>{{ v["assistent"] }}</td>
       </tr>
       {% endif %}
-      <tr>
+      <tr {% if ns.i % 2 %} class="bg-light"{% endif %}>
         <td colspan="3"></td>
       </tr>
       <tr>
         <td colspan="3"></td>
       </tr>
     </tbody>
-    {% endfor %} {% endfor %}
+    {% set ns.i = ns.i-1 %}
+    {% endfor %} 
+    {% endfor %}
   </table>
 </div>
 {% endblock %}

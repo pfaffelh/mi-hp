@@ -76,7 +76,7 @@
       "title_de": "Neuer Studiengang MSc Mathematics in Data and Technology",
       "title_en": "",
       "image": "/static/images/aad8d969-9619-455b-a8f4-e9f2da2b7200_klein.jpg",
-      "style": "object-fit: contain",
+      "style": "object-fit: cover",
       "link": "https://www.math.uni-freiburg.de/lehre/studiengaenge/mscdata/mscdata.html",
       "popover_title_de": "",
       "popover_title_en": "",

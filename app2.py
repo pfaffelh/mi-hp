@@ -17,8 +17,6 @@ from flask_misaka import Misaka
 import json
 import socket
 from datetime import datetime
-import utils.util_vvz as vvz
-from urllib.request import urlopen 
 
 app = Flask(__name__)
 Misaka(app)
@@ -26,12 +24,7 @@ Misaka(app)
 # This is such that we can use os-commands in jinja2-templates.
 @app.context_processor
 def handle_context():
-    cur = vvz.get_current_semester_kurzname()
-    return dict(os=os, 
-                laufendes_semester = cur,
-                kommendes_semester = vvz.next_semester_kurzname(cur),
-                show_laufendes_semester = vvz.get_showsemester(cur), 
-                show_kommendes_semester = vvz.get_showsemester(vvz.next_semester_kurzname(cur)))
+    return dict(os=os)
 
 # This function is important for changing languages; see base.html. Within a template, we can use its own endpoint, i.e. all parameters it was given. 
 # For changing languages, we are then able to only change the lang-parameter.
@@ -51,11 +44,7 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 @app.route("/")
 @app.route("/<lang>/")
 def showbase(lang="de"):
-    date_format = '%d.%m.%Y %H:%M'
     data = json.load(open(home))
-    data['news'] = [item for item in data['news'] if datetime.strptime(item['showhomestart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showhomeend'], date_format)]
-    for item in data['news']:
-        item['color'] = "bg-ufr-yellow" if datetime.now().date() == datetime.strptime(item['showhomeend'], date_format).date() else "" 
     filenames = ["index.html"]
     return render_template("home.html", filenames=filenames, data = data, lang=lang)
 
@@ -86,16 +75,9 @@ def showdatenschutz(lang):
 @app.route("/<lang>/interesse/")
 @app.route("/<lang>/interesse/<anchor>")
 def showinteresse(lang, anchor=""):
+#    filenames = ["interesse.html"]
     data = json.load(open(interesse))
     filenames = ["interesse_prefix.html", "interesse_content.html"]
-    return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
-
-@app.route("/<lang>/weiterbildung/")
-@app.route("/<lang>/weiterbildung/<anchor>")
-def showweiterbildung(lang, anchor=""):
-    with app.open_resource('static/data/weiterbildung.json') as f:
-        data = json.load(f)
-    filenames = ["interesse_content.html"]
     return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
 ##########################
@@ -168,25 +150,12 @@ def showstudienverlauf(lang, studiengang):
 @app.route("/<lang>/lehrveranstaltungen/")
 def showlehrveranstaltungenbase(lang="de"):
     filenames = ["lehrveranstaltungen/index.html"]
-    a = [x["kurzname"] for x in list(vvz.vvz_semester.find({"hp_sichtbar": True}))]
-    b = ["2024WS"] + [f"20{x}{s}S" for x in range(25,100) for s in ["S", "W"]]
-    acapb = [x for x in a if x in b]
-    acapb.reverse()
-    if lang == "de":
-        semester_dict_2 = { x : vvz.semester_name_de(x) for x in acapb }
-    else:
-        semester_dict_2 = { x : vvz.semester_name_en(x) for x in acapb }
-    semester_dict_2.update(semester_dict)
-    return render_template("home.html", filenames=filenames, lang=lang, semester_dict=semester_dict_2, semester_dict_old=semester_dict_old)
+    return render_template("home.html", filenames=filenames, lang=lang, semester_dict=semester_dict, semester_dict_old=semester_dict_old)
 
 @app.route("/<lang>/lehrveranstaltungen/<semester>/")
 def showlehrveranstaltungen(lang, semester):
-    if semester in [f"{s}s{i}{j}" for s in ["s", "w"] for i in range(3) for j in range(10)]:
-        filenames = [f"lehrveranstaltungen/{semester}.html"]
-        return render_template("home.html", filenames = filenames, lang=lang, semester=semester)
-    else:
-        data = vvz.get_data(semester)
-        return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data)
+    filenames = [f"lehrveranstaltungen/{semester}.html"]    
+    return render_template("home.html", filenames = filenames, lang=lang, semester=semester)
 
 @app.route("/<lang>/lehrveranstaltungen/pdf/<semester>/")
 def sendlehrveranstaltungen(semester, lang="de"):
@@ -229,6 +198,14 @@ def sendlehrveranstaltungen_verw(semester, lang="de"):
         return response
     return make_response("not found", 404)
 
+@app.route("/<lang>/lehrveranstaltungen/aktuelles/")
+def showlehrveranstaltungenaktuelles(lang):
+    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester=aktuelles[0]))
+
+@app.route("/<lang>/lehrveranstaltungen/kommendes/")
+def showlehrveranstaltungenkommendes(lang):
+    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester=kommendes[0]))
+
 
 #####################################
 ## Prüfungsamt und Studienberatung ##
@@ -263,6 +240,7 @@ def showpruefungsamtbase(lang):
     data = json.load(open(studiendekanat))
     filenames = ["studiendekanat/pruefungsamt.html"]
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
+
 
 @app.route("/<lang>/pruefungsamt/<unterseite>")
 def showpruefungsamt(lang, unterseite):
@@ -314,16 +292,28 @@ def showdownloads(lang, anchor=""):
 
 @app.route("/monitor/")
 def showmonitor():
-#    data = json.load(open(os.path.abspath("/usr/local/lib/mi-hp/home.json")))
-#    with app.open_resource('/static/data/home.json') as f:
-#        data = json.load(f)    
+#   data = json.load(open(os.path.abspath("/usr/local/lib/mi-hp/home.json")))
+#   with app.open_resource('/static/data/home.json') as f:
+#        data = json.load(f)
+
     data = json.load(open(os.path.abspath(home)))
     data['carouselmonitor'] = [item for item in data['carouselmonitor'] if item['show']]
-    date_format = '%d.%m.%Y %H:%M'
-    data['news'] = [item for item in data['news'] if datetime.strptime(item['showmonitorstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showmonitorend'], date_format)]
-    for item in data['news']:
-        item['color'] = "bg-ufr-yellow" if datetime.now().date() == datetime.strptime(item['showmonitorend'], date_format).date() else "" 
+    data['news'] = [item for item in data['news'] if item['showmonitor']]
     filenames = ["monitor.html"]
     return render_template("monitor.html", data=data, filenames = filenames, lang="de")
 
+def get_semester(date):
+    # In 2024, the next line gives 24
+    y = datetime.now().year-2000
+    m = datetime.now().month
+    if m <= 3:
+        current_semester = f"ws{y-1}{y}"
+        upcoming_semester = f"ss{y}"
+    elif m <= 9:
+        current_semester = f"ss{y}"
+        upcoming_semester = f"ws{y}{y+1}"
+    else:
+        current_semester = f"ws{y}{y+1}"
+        upcoming_semester = f"ss{y+1}"
+    return current_semester, upcoming_semester
 

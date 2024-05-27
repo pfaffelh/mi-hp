@@ -22,7 +22,6 @@ try:
     vvz_studiengang = mongo_db_vvz["studiengang"]
     vvz_terminart = mongo_db_vvz["terminart"]
     vvz_veranstaltung = mongo_db_vvz["veranstaltung"]
-
 except:
     pass
     # logger.warning("No connection to Database 1")
@@ -56,17 +55,17 @@ def semester_name_de(kurzname):
     a = int(kurzname[:4])
     b = kurzname[4:]
     c = f"/{a+1}" if b == "WS" else ""
-    return f"{"Wintersemester" if b == "WS" else "Sommersemester"} {a}{c}"
+    return f"{'Wintersemester' if b == 'WS' else 'Sommersemester'} {a}{c}"
 
 def semester_name_en(kurzname):
     a = int(kurzname[:4])
     b = kurzname[4:]
     c = f"/{a+1}" if b == "WS" else ""
-    return f"{"Winter term" if b == "WS" else "Summer term"} {a}{c}"
+    return f"{'Winter term' if b == 'WS' else 'Summer term'} {a}{c}"
 
 def vorname_name(person_id):
     p = vvz_person.find_one({"_id": person_id})
-    return f"{p["vorname"]} {p["name"]}"
+    return f"{p['vorname']} {p['name']}"
 
 # Die Funktion fasst zB Mo, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21 \n 
 # zusammen in
@@ -92,7 +91,7 @@ def make_raumzeit(veranstaltung):
             tag = weekday[termin['wochentag']]
             # person braucht man, wenn wir dann die Datenbank geupdated haben.
             #person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
-            kommentar = rf"\newline{termin["kommentar"]}" if termin["kommentar"] != "" else ""
+            kommentar = rf"\newline{termin['kommentar']}" if termin['kommentar'] != "" else ""
             new = [key, tag, zeit, raum, kommentar]
             if key in [x[0] for x in res]:
                 new.pop(0)
@@ -126,7 +125,7 @@ def make_raumzeit(veranstaltung):
                 zeit = ""
             # person braucht man, wenn wir dann die Datenbank geupdated haben.
             # person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
-            kommentar = rf"\newline{termin["kommentar"]}" if termin["kommentar"] != "" else ""
+            kommentar = rf"\newline{termin['kommentar']}" if termin['kommentar'] != "" else ""
             new = [ta, datum, zeit, raum, kommentar]
             res.append(new)
     res = [f"{x[0]}: {(', '.join([z for z in x if z !='' and x.index(z)!=0]))}" for x in res]
@@ -155,7 +154,7 @@ def get_data(sem_shortname):
         r_dict = {}
         r_dict["titel"] = rubrik["titel_de"]
         r_dict["veranstaltung"] = []
-        veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"]}))
+        veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
             v_dict = {}
             v_dict["code"] = make_codes(sem_id, veranstaltung["_id"])
