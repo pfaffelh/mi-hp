@@ -104,6 +104,7 @@ def make_raumzeit(veranstaltung):
                 res.append(new)
     for termin in veranstaltung["einmaliger_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})["name_de"]
+        print(ta)
         if ta !="-":
             # Raum und Gebäude mit Url.
             r = vvz_raum.find_one({ "_id": termin["raum"]})
@@ -153,6 +154,7 @@ def get_data(sem_shortname):
     for rubrik in rubriken:
         r_dict = {}
         r_dict["titel"] = rubrik["titel_de"]
+        print(r_dict["titel"])
         r_dict["veranstaltung"] = []
         veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
@@ -163,6 +165,7 @@ def get_data(sem_shortname):
             v_dict["dozent"] = ", ".join([vorname_name(x) for x in veranstaltung["dozent"]])
             v_dict["assistent"] = ", ".join([vorname_name(x) for x in veranstaltung["assistent"]])
             # raumzeit ist der Text, der unter der Veranstaltung steht.
+            print(v_dict["titel"])
             v_dict["raumzeit"] = make_raumzeit(veranstaltung)
             r_dict["veranstaltung"].append(v_dict)
 

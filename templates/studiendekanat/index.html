@@ -35,7 +35,7 @@
       <div class="col">
         <a
           href="{{ url_for('showstudienberatungbase', lang=lang)}}"
-          class="btn btn-primary"
+          class="btn btn-primary bg-ufr-blue"
           role="button"
           aria-disabled="true"
         >
@@ -43,7 +43,7 @@
         </a>
         <a
           href="{{ url_for('showpruefungsamtbase', lang=lang)}}"
-          class="btn btn-primary"
+          class="btn btn-primary bg-ufr-blue"
           role="button"
           aria-disabled="true"
         >
@@ -51,16 +51,17 @@
         </a>
         <a
           href="{{ url_for('showfaq', lang=lang) }}"
-          class="btn btn-primary"
+          class="btn btn-primary bg-ufr-blue"
           role="button"
           aria-disabled="true"
         >
           FAQ
         </a>
       <a
-            class="btn text-white bg-ufr-blue"
-            href="https://campus.uni-freiburg.de"
-            type="button"
+          href="https://campus.uni-freiburg.de"
+          class="btn btn-primary bg-ufr-blue"
+          role="button"
+          aria-disabled="true"
           >
           HISInOne
         </a>
@@ -74,12 +75,12 @@
 
 
   <div class="container">
-  <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-2">
+  <div class="row g-2">
     {% for item in data["data"] %} {% if item['showstudiendekanat'] %}
-    <div class="col">
+    <div class="col-md-4">
       <div class="card h-100">
         <a
-          class="btn bg-ufr-yellow-60"
+          class="btn bg-ufr-yellow-60 link-dark"
           {% if item['link']!= '' %} href="{{ item['link'] }}" {% endif %}"
           type="button"
           style="width: 100%;"

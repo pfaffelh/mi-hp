@@ -314,10 +314,9 @@ def showdownloads(lang, anchor=""):
 
 @app.route("/monitor/")
 def showmonitor():
-#    data = json.load(open(os.path.abspath("/usr/local/lib/mi-hp/home.json")))
-#    with app.open_resource('/static/data/home.json') as f:
-#        data = json.load(f)    
-    data = json.load(open(os.path.abspath(home)))
+    with app.open_resource('static/data/home.json') as f:
+        data = json.load(f)    
+#    data = json.load(open(os.path.abspath(home)))
     data['carouselmonitor'] = [item for item in data['carouselmonitor'] if item['show']]
     date_format = '%d.%m.%Y %H:%M'
     data['news'] = [item for item in data['news'] if datetime.strptime(item['showmonitorstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showmonitorend'], date_format)]

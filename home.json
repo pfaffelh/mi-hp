@@ -154,6 +154,23 @@
       "text_en": ""
     },
     {
+      "showhomestart": "01.01.2024 00:00",
+      "showhomeend": "01.11.2023 00:00",
+      "showmonitorstart": "29.06.2024 00:00",
+      "showmonitorend": "06.06.2024 16:00",
+      "title_de": "Vortrag am 6.6. um 14:15, Studierendenkolloquium",
+      "title_en": "",
+      "image": "/static/images/Dozenten/pfaffelhuber.jpg",
+      "style": "object-fit: contain",
+      "link": "",
+      "popover_title_de": "",
+      "popover_title_en": "",
+      "popover_text_de": "",
+      "popover_text_en": "",
+      "text_de": "Am Donnerstag, 6.6. um 14.15 spricht im HS II (Alberstr. 23b) <strong> Peter Pfaffelhuber</strong> über <strong>Interaktives Beweisen mit Lean4 </strong>. Im Anschluss gibt es Gelegenheit zum ...",
+      "text_en": ""
+    },
+    {
       "showhomestart": "01.01.2000 00:00",
       "showhomeend": "01.11.2000 00:00",
       "showmonitorstart": "01.01.2000 00:00",

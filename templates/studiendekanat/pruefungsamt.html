@@ -39,26 +39,26 @@
     <div class="col">
       <div class="feature-icon bg-gradient text-end">
         <a
-          class="btn text-white"
           href="{{ url_for('showpruefungsamt', lang=lang, unterseite='anmeldung')}}"
-          type="button"
-          style="background-color: #004a99;"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
         >
           Anleitung zur Prüfungsanmeldung</a
         >
         <a
-          class="btn text-white"
           href="{{ url_for('showfaq', lang=lang)}}"
-          type="button"
-          style="background-color: #004a99;"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
         >
           FAQ</a
         >
         <a
-          class="btn text-white"
           href="https://campus.uni-freiburg.de/"
-          type="button"
-          style="background-color: #004a99;"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
         >
           HISInOne</a
         >
@@ -69,12 +69,12 @@
 
 <br />
 
-<div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-2">
+<div class="row g-2">
   {% for item in data["data"] %} {% if item['showpruefungsamt'] %}
-  <div class="col">
+  <div class="col-md-4">
     <div class="card h-100">
       <a
-        class="btn bg-ufr-yellow-60"
+        class="btn bg-ufr-yellow-60 link-dark"
         {% if item['link']!= '' %} href="{{ item['link'] }}" {% endif %}"
         type="button"
         style="width: 100%;"
