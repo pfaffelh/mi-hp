@@ -28,7 +28,7 @@
 <div><br /></div>
 <div class="container" id="inhalt">
   <br />
-  <div class="row row-cols-1 row-cols-md-3 g-3">
+  <div class="row row-cols-1 row-cols-md-2 g-3">
     {% for item in data["news"] %}
     <div class="col">
       <div class="card h-100 {{ item['color'] }}">
@@ -37,7 +37,7 @@
             src="{{ item['image'] }}"
             class="card-img-fluid"
             alt="..."
-            style="height: 15vw; width: 100%; {{ item['style'] }}"
+            style="height: 20vw; width: 100%; {{ item['style'] }}"
           />
         </center>
         <div class="card-body">

@@ -1,7 +1,8 @@
 {
   "carouselmonitor": [
     {
-      "show": true,
+      "showstart": "01.01.2000 00:00",
+      "showend": "01.06.2024 00:00",
       "interval": "4000",
       "image": "/static/images/grapes-2000.jpg",
       "left": "15%",
@@ -10,7 +11,8 @@
       "text": "Auf diesem Monitor erscheinen in Zukunft aktuelle Meldungen und Hinweise."
     },
     {
-      "show": true,
+      "showstart": "01.01.2000 00:00",
+      "showend": "01.06.2024 00:00",
       "interval": "4000",
       "image": "/static/images/weide.jpg",
       "left": "25%",
@@ -19,13 +21,34 @@
       "text": "Es sollen demnächst auch Vortragsankündigungen <br>zu sehen sein."
     },
     {
-      "show": true,
+      "showstart": "01.01.2000 00:00",
+      "showend": "01.11.2024 00:00",
       "interval": "4000",
       "image": "/static/images/sunset.jpg",
       "left": "15%",
       "right": "15%",
       "bottom": "40%",
       "text": "Wenn Sie neue Nachrichten haben, schicken Sie diese bitte an <br> news@math.uni-freiburg.de"
+    },
+    {
+      "showstart": "01.06.2024 00:00",
+      "showend": "01.11.2024 00:00",
+      "interval": "4000",
+      "image": "/static/images/slider_Dies_Universitaet_Freiburg_final-1024x717.png",
+      "left": "15%",
+      "right": "15%",
+      "bottom": "40%",
+      "text": "Die Bewerbungsphase für die MSc-Studiengänge hat begonnen!"
+    },
+    {
+      "showstart": "01.06.2024 00:00",
+      "showend": "01.11.2024 00:00",
+      "interval": "4000",
+      "image": "/static/images/circle_cropped.jpg",
+      "left": "10%",
+      "right": "10%",
+      "bottom": "40%",
+      "text": "Der neue MSc-Studiengang <i>Mathematics in Data and Technology</i> startet im Wintersemester 2024/25"
     }
   ],
   "carousel": [
@@ -89,7 +112,7 @@
       "showhomestart": "01.01.2000 00:00",
       "showhomeend": "01.11.2024 00:00",
       "showmonitorstart": "01.01.2000 00:00",
-      "showmonitorend": "01.09.2024 00:00",
+      "showmonitorend": "01.06.2024 00:00",
       "title_de": "Neuer Studiengang Master of Education dual",
       "title_en": "",
       "image": "/static/images/MEdDual.png",
@@ -123,7 +146,7 @@
       "showhomestart": "01.01.2000 00:00",
       "showhomeend": "01.07.2000 00:00",
       "showmonitorstart": "01.01.2000 00:00",
-      "showmonitorend": "01.07.2024 00:00",
+      "showmonitorend": "01.06.2024 00:00",
       "title_de": "Vorbegutachtung eines gemeinsamen Antrags mit Pisa",
       "title_en": "",
       "image": "/static/images/pisa.jpg",
@@ -154,9 +177,26 @@
       "text_en": ""
     },
     {
+      "showhomestart": "01.01.2000 00:00",
+      "showhomeend": "01.11.2000 00:00",
+      "showmonitorstart": "01.01.2000 00:00",
+      "showmonitorend": "04.06.2024 20:00",
+      "title_de": "Vortrag von René Schelldorfer am 4.6. im Didaktischen Seminar",
+      "title_en": "",
+      "image": "/static/images/Schelldorfer-Rene.jpg",
+      "style": "object-fit: contain",
+      "link": "https://wochenprogramm.mathematik.uni-freiburg.de/abstract.html?LfdNr=3&Semester=SS2024",
+      "popover_title_de": "",
+      "popover_title_en": "",
+      "popover_text_de": "",
+      "popover_text_en": "",
+      "text_de": "Am Dienstag, 4. Juni 2024 um 18:30 Uhr spricht <strong>René Schelldorfer</strong> von der PH Zürich über <i> Wann regen Aufgaben Schülerinnen und Schüler zum «Mathematik betreiben» an?</i>. Gäste, insbesondere Lehramts-Studierende, sind herzlich eingeladen.",
+      "text_en": ""
+    },
+    {
       "showhomestart": "01.01.2024 00:00",
       "showhomeend": "01.11.2023 00:00",
-      "showmonitorstart": "29.06.2024 00:00",
+      "showmonitorstart": "29.05.2024 00:00",
       "showmonitorend": "06.06.2024 16:00",
       "title_de": "Vortrag am 6.6. um 14:15, Studierendenkolloquium",
       "title_en": "",
@@ -167,7 +207,7 @@
       "popover_title_en": "",
       "popover_text_de": "",
       "popover_text_en": "",
-      "text_de": "Am Donnerstag, 6.6. um 14.15 spricht im HS II (Alberstr. 23b) <strong> Peter Pfaffelhuber</strong> über <strong>Interaktives Beweisen mit Lean4 </strong>. Im Anschluss gibt es Gelegenheit zum ...",
+      "text_de": "Am Donnerstag, 6.6. um 14.15 spricht im HS II (Alberstr. 23b) <strong> Peter Pfaffelhuber</strong> im Kolloquium für Studierende über <strong>Interaktives Beweisen mit Lean4 </strong>. Der Vorträag richtet sich an fortgeschrittene Bachelor-Studierende, an Master-Studierende aller Vertiefungsrichtungen, aber auch an Doktorandinnen und Doktoranden. Bei Kaffee und Tee im Anschluss gibt es die Möglichkeit zu Fragen, Austausch und Gespräch.",
       "text_en": ""
     },
     {
@@ -185,6 +225,23 @@
       "popover_text_de": "",
       "popover_text_en": "",
       "text_de": "Die Ergänzungen der Modulhandbücher sind rechtlich bindend.",
+      "text_en": ""
+    },
+    {
+      "showhomestart": "01.01.2000 00:00",
+      "showhomeend": "01.11.2000 00:00",
+      "showmonitorstart": "01.01.2000 00:00",
+      "showmonitorend": "29.05.2000 18:00",
+      "title_de": "",
+      "title_en": "",
+      "image": "/static/images/",
+      "style": "object-fit: cover",
+      "link": "",
+      "popover_title_de": "",
+      "popover_title_en": "",
+      "popover_text_de": "",
+      "popover_text_en": "",
+      "text_de": "",
       "text_en": ""
     },
     {
