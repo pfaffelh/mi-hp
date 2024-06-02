@@ -322,7 +322,7 @@ def showmonitor():
     data['news'] = [item for item in data['news'] if datetime.strptime(item['showmonitorstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showmonitorend'], date_format)]
     for item in data['news']:
         item['color'] = "bg-ufr-yellow" if datetime.now().date() == datetime.strptime(item['showmonitorend'], date_format).date() else "" 
-    filenames = ["monitor.html"]
-    return render_template("monitor.html", data=data, filenames = filenames, lang="de")
+    filenames = ["monitor_quer.html"]
+    return render_template("monitor_quer.html", data=data, filenames = filenames, lang="de")
 
 
