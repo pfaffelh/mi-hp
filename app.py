@@ -14,7 +14,6 @@ from utils.util_calendar import calendar, get_caldav_calendar_events
 from utils.util_faq import get_faq
 from flask_misaka import markdown
 from flask_misaka import Misaka
-import json
 import socket
 from datetime import datetime
 import utils.util_vvz as vvz
@@ -52,7 +51,8 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 @app.route("/<lang>/")
 def showbase(lang="de"):
     date_format = '%d.%m.%Y %H:%M'
-    data = json.load(open(home))
+    with app.open_resource('static/data/home.json') as f:
+        data = json.load(f)    
     data['news'] = [item for item in data['news'] if datetime.strptime(item['showhomestart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showhomeend'], date_format)]
     for item in data['news']:
         item['color'] = "bg-ufr-yellow" if datetime.now().date() == datetime.strptime(item['showhomeend'], date_format).date() else "" 
@@ -65,7 +65,8 @@ def showbase(lang="de"):
 
 @app.route("/<lang>/bildnachweis/")
 def showbildnachweis(lang):
-    data = json.load(open(os.path.abspath(bildnachweis)))
+    with app.open_resource('static/data/bildnachweis.json') as f:
+        data = json.load(f)    
     filenames = ["footer/bildnachweis.html"]
     return render_template("home.html", filenames = filenames, data = data, lang=lang)
 
@@ -86,7 +87,8 @@ def showdatenschutz(lang):
 @app.route("/<lang>/interesse/")
 @app.route("/<lang>/interesse/<anchor>")
 def showinteresse(lang, anchor=""):
-    data = json.load(open(interesse))
+    with app.open_resource('static/data/interesse.json') as f:
+        data = json.load(f)    
     filenames = ["interesse_prefix.html", "interesse_content.html"]
     return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
@@ -173,10 +175,14 @@ def showlehrveranstaltungenbase(lang="de"):
     acapb = [x for x in a if x in b]
     acapb.reverse()
     if lang == "de":
-        semester_dict_2 = { x : vvz.semester_name_de(x) for x in acapb }
+        semester_dict_2 = { x : {"name": vvz.semester_name_de(x)} for x in acapb }
     else:
-        semester_dict_2 = { x : vvz.semester_name_en(x) for x in acapb }
+        semester_dict_2 = { x : {"name": vvz.semester_name_en(x)} for x in acapb }
     semester_dict_2.update(semester_dict)
+    for key, value in semester_dict_2.items():
+        semester_dict_2[key]["komm_exists"] = True if os.path.exists('./static/pdf/lehrveranstaltungen/'+key+'.pdf') else False
+        semester_dict_2[key]["mh_exists"] = True if os.path.exists('./static/pdf/lehrveranstaltungen/'+key+'mh.pdf') else False
+        semester_dict_2[key]["verw_exists"] = True if os.path.exists('./static/pdf/lehrveranstaltungen/'+key+'verw.pdf') else False
     return render_template("home.html", filenames=filenames, lang=lang, semester_dict=semester_dict_2, semester_dict_old=semester_dict_old)
 
 @app.route("/<lang>/lehrveranstaltungen/<semester>/")
@@ -236,7 +242,8 @@ def sendlehrveranstaltungen_verw(semester, lang="de"):
 
 @app.route("/<lang>/studiendekanat/")
 def showstudiendekanatbase(lang):
-    data = json.load(open(studiendekanat))
+    with app.open_resource('static/data/studiendekanat.json') as f:
+        data = json.load(f)    
     filenames = ["studiendekanat/index.html"]
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
@@ -260,7 +267,8 @@ def showstudienberatung(lang, unterseite):
 
 @app.route("/<lang>/pruefungsamt/")
 def showpruefungsamtbase(lang):
-    data = json.load(open(studiendekanat))
+    with app.open_resource('static/data/studiendekanat.json') as f:
+        data = json.load(f)    
     filenames = ["studiendekanat/pruefungsamt.html"]
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
@@ -316,7 +324,6 @@ def showdownloads(lang, anchor=""):
 def showmonitor():
     with app.open_resource('static/data/home.json') as f:
         data = json.load(f)    
-#    data = json.load(open(os.path.abspath(home)))
     date_format = '%d.%m.%Y %H:%M'
     data['carouselmonitor'] = [item for item in data['carouselmonitor'] if datetime.strptime(item['showstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showend'], date_format)]
     data['news'] = [item for item in data['news'] if datetime.strptime(item['showmonitorstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showmonitorend'], date_format)]

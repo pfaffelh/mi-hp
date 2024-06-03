@@ -34,18 +34,18 @@ weekday = {
     "Sonntag": "So",    
 }
 semester_dict = {
-    "ss24": "Sommersemester 2024",
-    "ws2324": "Wintersemester 2023/24",
-    "ss23": "Sommersemester 2023",
-    "ws2223": "Wintersemester 2022/23",
-    "ss22": "Sommersemester 2022",
-    "ws2122": "Wintersemester 2021/22",
-    "ss21": "Sommersemester 2021",
-    "ws2021": "Wintersemester 2020/21",
-    "ss20": "Sommersemester 2020",
-    "ws1920": "Wintersemester 2019/20",
-    "ss19": "Sommersemester 2019",
-    "ws1819": "Wintersemester 2018/19"
+    "ss24": {"name": "Sommersemester 2024"},
+    "ws2324": {"name": "Wintersemester 2023/24"},
+    "ss23": {"name": "Sommersemester 2023"},
+    "ws2223": {"name": "Wintersemester 2022/23"},
+    "ss22": {"name": "Sommersemester 2022"},
+    "ws2122": {"name": "Wintersemester 2021/22"},
+    "ss21": {"name": "Sommersemester 2021"},
+    "ws2021": {"name": "Wintersemester 2020/21"},
+    "ss20": {"name": "Sommersemester 2020"},
+    "ws1920": {"name": "Wintersemester 2019/20"},
+    "ss19": {"name": "Sommersemester 2019"},
+    "ws1819": {"name": "Wintersemester 2018/19"}
 }
 semester_dict_old = {
     "ss18": "Sommersemester 2018",

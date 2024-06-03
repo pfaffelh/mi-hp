@@ -31,7 +31,7 @@
         <tbody>
           {% for key, value in semester_dict.items() %}
           <tr>
-            <th scope="row">{{value}}</th>
+            <th scope="row">{{value["name"]}}</th>
             <td>
               <center>
                 <a
@@ -42,9 +42,7 @@
             </td>
             <td>
               <center>
-                {% if
-                os.path.exists('./static/pdf/lehrveranstaltungen/'+key+'.pdf')
-                %}
+                {% if value["komm_exists"] %}
                 <a
                   href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"
                 ></a>
@@ -53,9 +51,7 @@
             </td>
             <td>
               <center>
-                {% if
-                os.path.exists('./static/pdf/lehrveranstaltungen/'+key+'mh.pdf')
-                %}
+                {% if value["mh_exists"] %}
                 <a
                   href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
                 ></a>
@@ -64,9 +60,7 @@
             </td>
             <td>
               <center>
-                {% if
-                os.path.exists('./static/pdf/lehrveranstaltungen/'+key+'verw.pdf')
-                %}
+                {% if value["verw_exists"] %}
                 <a
                   href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'verw.pdf')}}"
                 ></a>
