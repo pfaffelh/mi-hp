@@ -180,12 +180,25 @@ def showlehrveranstaltungenbase(lang="de"):
         semester_dict_2 = { x : {"name": vvz.semester_name_en(x)} for x in acapb }
     semester_dict_2.update(semester_dict)
 
-#    with app.open_resource('static/data/home.json') as f:
-
     for key, value in semester_dict_2.items():
-        semester_dict_2[key]["komm_exists"] = True if os.path.exists('static/pdf/lehrveranstaltungen/'+key+'.pdf') else False
-        semester_dict_2[key]["mh_exists"] = True if os.path.exists('static/pdf/lehrveranstaltungen/'+key+'mh.pdf') else False
-        semester_dict_2[key]["verw_exists"] = True if os.path.exists('static/pdf/lehrveranstaltungen/'+key+'verw.pdf') else False
+        try:
+            app.open_resource('static/pdf/lehrveranstaltungen/'+key+'.pdf')
+            semester_dict_2[key]["komm_exists"] = True
+        except:
+            semester_dict_2[key]["komm_exists"] =False
+
+        try:
+            app.open_resource('static/pdf/lehrveranstaltungen/'+key+'mh.pdf')
+            semester_dict_2[key]["mh_exists"] = True
+        except:
+            semester_dict_2[key]["mh_exists"] =False
+
+        try:
+            app.open_resource('static/pdf/lehrveranstaltungen/'+key+'verw.pdf')
+            semester_dict_2[key]["verw_exists"] = True
+        except:
+            semester_dict_2[key]["verw_exists"] =False
+
     return render_template("home.html", filenames=filenames, lang=lang, semester_dict=semester_dict_2, semester_dict_old=semester_dict_old)
 
 @app.route("/<lang>/lehrveranstaltungen/<semester>/")
