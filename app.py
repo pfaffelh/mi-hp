@@ -316,7 +316,7 @@ def showdownloads(lang, anchor=""):
 def showmonitor():
     with app.open_resource('static/data/home.json') as f:
         data = json.load(f)    
-    data = json.load(open(os.path.abspath(home)))
+#    data = json.load(open(os.path.abspath(home)))
     date_format = '%d.%m.%Y %H:%M'
     data['carouselmonitor'] = [item for item in data['carouselmonitor'] if datetime.strptime(item['showstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showend'], date_format)]
     data['news'] = [item for item in data['news'] if datetime.strptime(item['showmonitorstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showmonitorend'], date_format)]
