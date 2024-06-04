@@ -172,6 +172,7 @@ def showlehrveranstaltungenbase(lang="de"):
     filenames = ["lehrveranstaltungen/index.html"]
     a = [x["kurzname"] for x in list(vvz.vvz_semester.find({"hp_sichtbar": True}))]
     b = ["2024WS"] + [f"20{x}{s}S" for x in range(25,100) for s in ["S", "W"]]
+#    b = ["2018WS"] + [f"20{x}{s}S" for x in range(19,100) for s in ["S", "W"]]
     acapb = [x for x in a if x in b]
     acapb.reverse()
     if lang == "de":
@@ -209,47 +210,6 @@ def showlehrveranstaltungen(lang, semester):
     else:
         data = vvz.get_data(semester)
         return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data)
-
-@app.route("/<lang>/lehrveranstaltungen/pdf/<semester>/")
-def sendlehrveranstaltungen(semester, lang="de"):
-    response = None
-    path = os.path.relpath(f"mi-hp/templates/lehrveranstaltungen/pdf/{semester}.pdf")    
-    path = os.path.abspath(path)
-    print(path)
-    print(os.path.exists(path))
-    if os.path.exists(path):        
-        response = send_file(path)
-        print(path)
-        return response
-    return make_response("not found", 404)
-
-# Ergänzungen zu den Modulhandbüchern
-@app.route("/<lang>/lehrveranstaltungen/pdf/mh/<semester>/")
-def sendlehrveranstaltungen_mh(semester, lang="de"):
-    response = None
-    path = os.path.relpath(f"mi-hp/templates/lehrveranstaltungen/pdf/{semester}mh.pdf")    
-    path = os.path.abspath(path)
-    print(path)
-    print(os.path.exists(path))
-    if os.path.exists(path):        
-        response = send_file(path)
-        print(path)
-        return response
-    return make_response("not found", 404)
-
-# Verwendbarkeitstabellen
-@app.route("/<lang>/lehrveranstaltungen/pdf/verw/<semester>/")
-def sendlehrveranstaltungen_verw(semester, lang="de"):
-    response = None
-    path = os.path.relpath(f"mi-hp/templates/lehrveranstaltungen/pdf/{semester}verw.pdf")    
-    path = os.path.abspath(path)
-    print(path)
-    print(os.path.exists(path))
-    if os.path.exists(path):        
-        response = send_file(path)
-        print(path)
-        return response
-    return make_response("not found", 404)
 
 
 #####################################

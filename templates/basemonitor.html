@@ -260,7 +260,14 @@
         $("#barcode").attr("src", url);
       }
     </script>
-
-    {% block js %} {% endblock %}
+    {% if request.remote_addr == '132.230.30.6' %}
+    <script>
+      window.onload = function () {
+        setTimeout(function () {
+          window.location.reload();
+        }, 10000);
+      };
+    </script>
+    {% endif %} {% block js %} {% endblock %}
   </body>
 </html>
