@@ -105,7 +105,7 @@
       "popover_title_en": "",
       "popover_text_de": "",
       "popover_text_en": "",
-      "text_de": "Der Master legt einen Fokus auf Angewandte Mathematik, insbesondere in Hinblick auf KI und Maschinelles Lernen. Es gibt die Möglichkeit, Veranstaltungen aus Anwendungsgebieten zu belegen. ",
+      "text_de": "<ul><li>englischsprachig</li><li>Wahlinhalte aus Informatik, Biologie, Wirtschaftswissenschaften u.v.m.</li><li>Möglichkeit zum Industriepraktikum</li></ul>",
       "text_en": ""
     },
     {
@@ -133,13 +133,13 @@
       "title_de": "Lehrzertifikat für Postdocs",
       "title_en": "",
       "image": "/static/images/ALU_Rektorat_116.jpg",
-      "style": "object-fit: contain",
+      "style": "object-fit: cover",
       "link": "",
       "popover_title_de": "",
       "popover_title_en": "",
       "popover_text_de": "",
       "popover_text_en": "",
-      "text_de": "Mit dem Lehrzertifikat für Postdocs weisen junge Forscherinnen und Forscher ihre Kompetenz in der Lehre aus. Es ist offen für alle Mitarbeiter*innen, die nicht habilitiert sind.",
+      "text_de": "<ul><li>Dient dem Nachweis der Lehrqualifikation</li><li>Hilfreich bei Bewerbungen</li><li>Ansprechperson: Annette Huber</li></ul>",
       "text_en": ""
     },
     {
@@ -190,7 +190,7 @@
       "popover_title_en": "",
       "popover_text_de": "",
       "popover_text_en": "",
-      "text_de": "Am Dienstag, 4. Juni 2024 um 18:30 Uhr spricht <strong>René Schelldorfer</strong> von der PH Zürich über <i> Wann regen Aufgaben Schülerinnen und Schüler zum «Mathematik betreiben» an?</i>. Gäste, insbesondere Lehramts-Studierende, sind herzlich eingeladen.",
+      "text_de": "<ul><li>Zeit und Ort: Dienstag, 4. Juni 2024, 18:30 Uhr, Hörsal II</li><li>Titel: Wann regen Aufgaben Schülerinnen und Schüler zum «Mathematik betreiben» an?</li></ul>",
       "text_en": ""
     },
     {
@@ -207,7 +207,7 @@
       "popover_title_en": "",
       "popover_text_de": "",
       "popover_text_en": "",
-      "text_de": "Am Donnerstag, 6.6. um 14.15 spricht im HS II (Alberstr. 23b) <strong> Peter Pfaffelhuber</strong> im Kolloquium für Studierende über <strong>Interaktives Beweisen mit Lean4 </strong>. Der Vorträag richtet sich an fortgeschrittene Bachelor-Studierende, an Master-Studierende aller Vertiefungsrichtungen, aber auch an Doktorandinnen und Doktoranden. Bei Kaffee und Tee im Anschluss gibt es die Möglichkeit zu Fragen, Austausch und Gespräch.",
+      "text_de": "<ul><li>Zeit un Ort: Donnerstag, 6.6., 14.15, Hörsal II</li><li>Sprecher: Peter Pfaffelhuber</li><li>Titel: Interaktives Beweisen mit Lean4</li></ul>",
       "text_en": ""
     },
     {

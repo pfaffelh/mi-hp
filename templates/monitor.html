@@ -41,13 +41,13 @@
           />
         </center>
         <div class="card-body">
-          <h3 class="h5">
+          <h1>
             {% if lang == 'de' %}{{ item['title_de'] | safe }}{% else %}{{
             item['title_en'] | safe}} {% endif %}
-          </h3>
-          <div class="card-text">
+          </h1>
+          <div class="card-text"><font size='+2'>
             {% if lang == 'de' %}{{ item['text_de'] | safe}}{% else %}{{
-            item['text_en'] | safe }} {% endif %}
+            item['text_en'] | safe }} {% endif %}</font>
             <p align="right">
               <!--              {% if item['popover_title_de']!= '' or item['popover_text_de']!=
               '' %}

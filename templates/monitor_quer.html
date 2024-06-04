@@ -30,20 +30,22 @@
   <br />
   <div class="row row-cols-1 g-3">
     {% for item in data["news"] %}
-    <div class="col">
-      <div class="card h-100">
-        <div class="g-0 bg-ufr-blue-20 {{ item['color'] }}">
-          <div class="d-flex d-flex-row-reverse align-top">
-            {% if loop.index0 %2 == 1 %}
-            <img
-              src="{{ item['image'] }}"
-              alt="..."
-              style=" max-height: 30vw; width: 100%; {{ item['style'] }}"
-            />
+    <div class="col row-cols-1">
+      <div class="card h-100 bg-ufr-blue-20 {{ item['color'] }}">
+        <div class="g-0 ">
+          <div class="d-inline-flex align-top">
+            {% if loop.index0 %2 == 0 %}
+            <div class="float-start">
+              <img
+                src="{{ item['image'] }}"
+                class="float-end"
+                alt="..."
+                style="height: 30vw; max-width: 40vw; {{ item['style'] }}"
+              />
+            </div>
             {% endif %}
-
             <div class="card-body">
-              <h3 class="h5">
+              <h3>
                 {% if lang == 'de' %}{{ item['title_de'] | safe }}{% else %}{{
                 item['title_en'] | safe}} {% endif %}
               </h3>
@@ -52,7 +54,7 @@
                 <img
                   src="https://api.qrserver.com/v1/create-qr-code/?data={{
                   item['link'] }}&amp;size=100x100"
-                  class="float-{% if loop.index % 2 == 1 %}start{% else %}end{% endif %} me-3"
+                  class="float-{% if loop.index % 2 == 0 %}start{% else %}end{% endif %} m{% if loop.index0 %2 == 0%}s{% else %}e{% endif %}-4"
                   style="display: table-row; vertical-align: bottom"
                   alt=""
                   title="HELLO"
@@ -61,19 +63,23 @@
                 />
                 {% endif %}
                 <p>
-                  {% if lang == 'de' %}{{ item['text_de'] | safe}}{% else %}{{
-                  item['text_en'] | safe }} {% endif %}
+                  <font size="+2"
+                    >{% if lang == 'de' %}{{ item['text_de'] | safe}}{% else
+                    %}{{ item['text_en'] | safe }} {% endif %}</font
+                  >
                 </p>
               </div>
             </div>
-            {% if loop.index0 %2 == 0 %}
+          </div>
+          {% if loop.index0 %2 == 1 %}
+          <div class="float-end">
             <img
               src="{{ item['image'] }}"
               alt="..."
-              style=" max-height: 30vw; width: 100%; {{ item['style'] }}"
+              style="height: 30vw; max-width: 40vw; {{ item['style'] }}"
             />
-            {% endif %}
           </div>
+          {% endif %}
         </div>
       </div>
     </div>
