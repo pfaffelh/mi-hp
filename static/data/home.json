@@ -1,14 +1,14 @@
 {
   "carouselmonitor": [
     {
-      "showstart": "01.01.2000 00:00",
-      "showend": "01.06.2024 00:00",
+      "showstart": "06.06.2024 16:00",
+      "showend": "14.06.2024 18:00",
       "interval": "4000",
       "image": "/static/images/grapes-2000.jpg",
-      "left": "15%",
-      "right": "15%",
+      "left": "10%",
+      "right": "10%",
       "bottom": "40%",
-      "text": "Auf diesem Monitor erscheinen in Zukunft aktuelle Meldungen und Hinweise."
+      "text": "Am 13.6. und 14.6. stellen sich Kandidat*innen für eine Professur <br>in <i>Reiner Mathematik</i> vor. Details siehe unten."
     },
     {
       "showstart": "01.01.2000 00:00",
@@ -128,8 +128,8 @@
     {
       "showhomestart": "01.01.2000 00:00",
       "showhomeend": "01.11.2024 00:00",
-      "showmonitorstart": "01.01.2000 00:00",
-      "showmonitorend": "01.11.2024 00:00",
+      "showmonitorstart": "01.06.2000 00:00",
+      "showmonitorend": "01.09.2024 00:00",
       "title_de": "Lehrzertifikat für Postdocs",
       "title_en": "",
       "image": "/static/images/ALU_Rektorat_116.jpg",
@@ -180,7 +180,7 @@
       "showhomestart": "01.01.2000 00:00",
       "showhomeend": "01.11.2000 00:00",
       "showmonitorstart": "01.01.2000 00:00",
-      "showmonitorend": "04.06.2024 20:00",
+      "showmonitorend": "04.06.2024 16:00",
       "title_de": "Vortrag von René Schelldorfer am 4.6. im Didaktischen Seminar",
       "title_en": "",
       "image": "/static/images/Schelldorfer-Rene.jpg",
@@ -207,7 +207,7 @@
       "popover_title_en": "",
       "popover_text_de": "",
       "popover_text_en": "",
-      "text_de": "<ul><li>Peter Pfaffelhuber</li><li>Donnerstag, 6.6., 14.15, Hörsal II</li><li>Interaktives Beweisen mit Lean4</li></ul>",
+      "text_de": "<ul><li>Sprecher: Peter Pfaffelhuber</li><li>Donnerstag, 6.6., 14.15, Hörsal II</li><li>Interaktives Beweisen mit Lean4</li></ul>",
       "text_en": ""
     },
     {

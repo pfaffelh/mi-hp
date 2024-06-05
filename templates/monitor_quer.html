@@ -31,12 +31,14 @@
   <div class="row row-cols-1 g-3">
     {% for item in data["news"] %}
     <div class="col row-cols-1">
-      <div class="card h-100 {% if item['today'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}">
-        <div class="g-0 ">
+      <div
+        class="card h-100 {% if item['today'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
+      >
+        <div class="g-0">
           <div class="d-inline-flex align-top">
             {% if loop.index0 %2 == 0 %}
             <div class="float-start">
-              {% if item['image'] != "" %} 
+              {% if item['image'] != "" %}
               <img
                 src="{{ item['image'] }}"
                 class="float-end"
@@ -51,7 +53,9 @@
                 {% if lang == 'de' %}{{ item['title_de'] | safe }}{% else %}{{
                 item['title_en'] | safe}} {% endif %}
               </h3>
-              <div class="card-text {% if item['today'] %} watermark {% endif %}">
+              <div
+                class="card-text {% if item['today'] %} watermark {% endif %}"
+              >
                 {% if item['link']!= '' %}
                 <img
                   src="https://api.qrserver.com/v1/create-qr-code/?data={{
@@ -64,7 +68,7 @@
                   height="100"
                 />
                 {% endif %}
-                <p">
+                <p>
                   <font size="+2"
                     >{% if lang == 'de' %}{{ item['text_de'] | safe}}{% else
                     %}{{ item['text_en'] | safe }} {% endif %}</font
@@ -75,7 +79,7 @@
           </div>
           {% if loop.index0 %2 == 1 %}
           <div class="float-end">
-         {% if item['image'] != "" %} 
+            {% if item['image'] != "" %}
             <img
               src="{{ item['image'] }}"
               alt="..."
