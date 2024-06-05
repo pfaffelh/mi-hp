@@ -36,12 +36,14 @@
           <div class="d-inline-flex align-top">
             {% if loop.index0 %2 == 0 %}
             <div class="float-start">
+              {% if item['image'] != "" %} 
               <img
                 src="{{ item['image'] }}"
                 class="float-end"
                 alt="..."
                 style="height: 30vw; max-width: 40vw; {{ item['style'] }}"
               />
+              {% endif %}
             </div>
             {% endif %}
             <div class="card-body">
@@ -73,11 +75,13 @@
           </div>
           {% if loop.index0 %2 == 1 %}
           <div class="float-end">
+         {% if item['image'] != "" %} 
             <img
               src="{{ item['image'] }}"
               alt="..."
               style="height: 30vw; max-width: 40vw; {{ item['style'] }}"
             />
+            {% endif %}
           </div>
           {% endif %}
         </div>
