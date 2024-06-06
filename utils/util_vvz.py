@@ -63,6 +63,16 @@ def semester_name_en(kurzname):
     c = f"/{a+1}" if b == "WS" else ""
     return f"{'Winter term' if b == 'WS' else 'Summer term'} {a}{c}"
 
+def get_html(raum_id):
+    r = vvz_raum.find_one({ "_id": raum_id})
+    g = vvz_gebaeude.find_one({ "_id": r["gebaeude"]})
+    gurl = g["url"]
+    if gurl == "":
+        raum = ", ".join([r["name_de"], g["name_de"]])
+    else:
+        raum = ", ".join([r['name_de'], f"<a href = '{gurl}'>{g['name_de']}</a>"])
+    return raum
+
 def vorname_name(person_id):
     p = vvz_person.find_one({"_id": person_id})
     return f"{p['vorname']} {p['name']}"
@@ -76,15 +86,10 @@ def make_raumzeit(veranstaltung):
         ta = vvz_terminart.find_one({"_id": termin['key']})["name_de"]
         if termin['wochentag'] !="":
             # key, raum, zeit, person, kommentar
-            key = ta if ta != "-" else "Raum und Zeit"
+            key = f"{ta}:" if ta != "" else ""
             # Raum und Gebäude mit Url, zB Hs II.
             r = vvz_raum.find_one({ "_id": termin["raum"]})
-            g = vvz_gebaeude.find_one({ "_id": r["gebaeude"]})
-            gurl = g["url"]
-            if gurl == "":
-                raum = ", ".join([r["name_de"], g["name_de"]])
-            else:
-                raum = ", ".join([r['name_de'], f"<a href = '{gurl}'>{g['name_de']}</a>"])
+            raum = get_html(r["_id"])
             # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
             zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}-{str(termin['ende'].hour)}{': '+str(termin['ende'].minute) if termin['ende'].minute > 0 else ''}"
             # zB Mo, 8-10
@@ -104,20 +109,15 @@ def make_raumzeit(veranstaltung):
                 res.append(new)
     for termin in veranstaltung["einmaliger_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})["name_de"]
-        print(ta)
         if ta !="-":
             # Raum und Gebäude mit Url.
-            r = vvz_raum.find_one({ "_id": termin["raum"]})
-            g = vvz_gebaeude.find_one({ "_id": r["gebaeude"]})
-            if g["url"] == "":
-                raum = ", ".join([r["name_de"], g["name_de"]])
-            else:
-                raum = ", ".join([r['name_de'], f"\href{{{g['url']}}}{{{g['name_de']}}}"])
+            raeume = list(vvz_raum.find({ "_id": { "$in": termin["raum"]}}))
+            raum = ", ".join([get_html(r["_id"]) for r in raeume])
             # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
             startdatum = termin['startdatum'].strftime("%d.%m.")
             if termin['startdatum'] != termin['enddatum']:
                 enddatum = termin['enddatum'].strftime("%d.%m.")
-                datum = " bis ".join([startdatum, enddatum])
+                datum = " bis ".join([startdatum, enddatum]) if startdatum != enddatum else startdatum
             else:
                 datum = startdatum
             if termin['startzeit'] is not None:
@@ -129,7 +129,7 @@ def make_raumzeit(veranstaltung):
             kommentar = rf"\newline{termin['kommentar']}" if termin['kommentar'] != "" else ""
             new = [ta, datum, zeit, raum, kommentar]
             res.append(new)
-    res = [f"{x[0]}: {(', '.join([z for z in x if z !='' and x.index(z)!=0]))}" for x in res]
+    res = [f"{x[0]} {(', '.join([z for z in x if z !='' and x.index(z)!=0]))}" for x in res]
     return res
 
 def make_codes(sem_id, veranstaltung_id):
