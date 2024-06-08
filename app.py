@@ -281,17 +281,18 @@ def showpruefungsamt(lang, unterseite, anchor=""):
 
 # which can Werte 'all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw', 'meddual' annehmen
 # show ist entweder "", oder "alleantworten", oder der kurzname für eine category im FAQ
+# anchor ist entweder "", oder eine id für ein qa-Paar
 @app.route("/<lang>/faq/")
 @app.route("/<lang>/faq/<which>/")
-@app.route("/<lang>/faq/<which>/<show>/")
-def showfaq(lang, which = "all", show = ""):
+@app.route("/<lang>/faq/<which>/<show>/<anchor>/")
+def showfaq(lang, which = "all", show = "", anchor =""):
     try:
         cats_kurzname, names_dict, qa_pairs = get_faq(lang)
     except:
 #        logger.warning("No connection to database")
         cats_kurzname, names_dict, qa_pairs  = ["unsichtbar"], {"unsichtbar": "Unsichtbar"}, {"unsichtbar": []}
 
-    return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, which=which, show = show, studiengaenge = studiengaenge)
+    return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, which=which, show = show, anchor=anchor, studiengaenge = studiengaenge, anchor=anchor)
 
 ###############
 ## Downloads ##
