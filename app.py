@@ -12,7 +12,7 @@ from utils.config import *
 #from utils.util_logging import logger
 from utils.util_calendar import calendar, get_caldav_calendar_events
 from utils.util_faq import get_faq
-from flask_misaka import markdown, autolink
+from flask_misaka import markdown
 from flask_misaka import Misaka
 import socket
 from datetime import datetime
@@ -20,7 +20,7 @@ import utils.util_vvz as vvz
 from urllib.request import urlopen 
 
 app = Flask(__name__)
-Misaka(app, autolink)
+Misaka(app)
 
 # This is such that we can use os-commands in jinja2-templates.
 @app.context_processor
