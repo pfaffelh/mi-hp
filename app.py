@@ -292,7 +292,7 @@ def showfaq(lang, which = "all", show = "", anchor =""):
 #        logger.warning("No connection to database")
         cats_kurzname, names_dict, qa_pairs  = ["unsichtbar"], {"unsichtbar": "Unsichtbar"}, {"unsichtbar": []}
 
-    return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, which=which, show = show, anchor=anchor, studiengaenge = studiengaenge, anchor=anchor)
+    return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, which=which, show = show, studiengaenge = studiengaenge, anchor=anchor)
 
 ###############
 ## Downloads ##
