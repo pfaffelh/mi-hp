@@ -248,15 +248,13 @@
                   applications{% endif %}</a
                 >
               </li>
-<!--              <li>
+              <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showpruefungsamt', unterseite='anmeldung', lang=lang) }}"
-                  >{% if lang == "de" %}Anleitung Anmeldung zu Prüfungen{% else %}Deadlines
-                  and dates{% endif %}</a
+                  href="{{ url_for('showpruefungsamt', unterseite='belegung', lang=lang) }}"
+                  >{% if lang == "de" %}Prüfungsanmeldung und Belegung{% else %}Exam registration and assignment{% endif %}</a
                 >
-              </li>-->
-
+              </li>
               <li><hr class="dropdown-divider" /></li>
 
               <li>

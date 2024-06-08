@@ -1,19 +1,15 @@
-<div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
+<div class="row row-cols-1 row-cols-md-4 g-3">
   <div class="col">
     <div class="col">
       <div class="card h-100">
-        <a
-          href="{{url_for('showstudiengang', studiengang='msc', lang = lang, anchor = 'kurzbeschreibung')}}"
-        >
-          <center>
-            <img
-              src="/static/pdf/latex/MSc.jpg"
-              class="card-img-fluid  d-none d-md-block"
-              alt="..."
-              style="height: 100%; width: 100%; object-fit: cover"
-            />
-          </center>
-        </a>
+        <center>
+          <img
+            src="/static/pdf/latex/MSc.jpg"
+            class="card-img-fluid d-none d-md-block"
+            alt="..."
+            style="height: 100%; width: 100%; object-fit: cover"
+          />
+        </center>
         <div class="card-body">
           <h3 class="h5">Master of Science Mathematik</h3>
           <div class="card-text">
@@ -24,6 +20,16 @@
               ausgebildet. Ein Quereinstieg vom Zwei-Hauptfach-Bachelor ist
               ebenfalls möglich.
             </p>
+            <p align="right">
+              <a
+                class="btn btn-outline-primary active bg-white"
+                style="border-color: #004a99"
+                href="{{url_for('showstudiengang', studiengang='msc', lang = lang)}}"
+                role="button"
+              >
+                <i class="fa-solid fa-link" style="color: #004a99"></i>
+              </a>
+            </p>
           </div>
         </div>
       </div>
@@ -31,24 +37,29 @@
   </div>
   <div class="col">
     <div class="card h-100">
-      <a
-        href="{{url_for('showstudiengangnews', studiengang='msc_data', lang = lang, anchor = 'kurzzusammenfassung')}}"
-      >
-        <center>
-          <img
-            src="/static/pdf/latex/MScdata.jpg"
-            class="card-img-fluid  d-none d-md-block"
-            alt="..."
-            style="height: 100%; width: 100%; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/pdf/latex/MScdata.jpg"
+          class="card-img-fluid d-none d-md-block"
+          alt="..."
+          style="height: 100%; width: 100%; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
         <h3 class="h5">Master of Science Mathematics in Data and Technology</h3>
         <div class="card-text">
           <p>
-            Unser neuer, anwendungsorientierter, englisch-sprachiger Master.
-            <br /><b> Geplanter Start: WS 2024</b>
+            Unser anwendungsorientierter, englisch-sprachiger Master. Hier sind 30 ECTS-Punkte in Mathematik zur Zulassung erforderlich. Hier können Veranstaltungen aus  Informatik, Biologie, Wirtschaft etc. als <i>Elective</i> gehört werden.
+          </p>
+          <p align="right">
+            <a
+              class="btn btn-outline-primary active bg-white"
+              style="border-color: #004a99"
+              href="{{url_for('showstudiengang', studiengang='mscdata', lang = lang)}}"
+              role="button"
+            >
+              <i class="fa-solid fa-link" style="color: #004a99"></i>
+            </a>
           </p>
         </div>
       </div>

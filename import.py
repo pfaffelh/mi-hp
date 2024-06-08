@@ -4,22 +4,22 @@ import os
 
 # import studiengaenge
 files = [
-    # {
-    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html",
-    #     "target": "templates/studiengaenge/bsc-2021.html"
-    # },
-    # {
-    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html",
-    #     "target": "templates/studiengaenge/2hfb-2021.html"
-    # },
-    # {
-    #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/med-2018.html",
-    #     "target": "templates/studiengaenge/med-2018.html"
-    # },
+    #{
+    #    "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html",
+    #    "target": "templates/studiengaenge/bsc/index-2021.html"
+    #}
+    #{
+    #    "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html",
+    #    "target": "templates/studiengaenge/2hfb/index-2021.html"
+    #}
+    #{
+    #    "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/med-2018.html",
+    #    "target": "templates/studiengaenge/med/index-2018.html"
+    #}
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html",
-    #     "target": "templates/studiengaenge/med-erweiterung-2021.html"
-    # },
+    #     "target": "templates/studiengaenge/med_erw/index-2021.html"
+    # }
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html",
     #     "target": "templates/studiengaenge/msc-2014-alt.html"
@@ -44,10 +44,10 @@ files = [
     #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html",
     #     "target": "templates/pruefungsamt/index.html"
     # },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html",
-        "target": "templates/pruefungsamt/termine.html"
-    },
+    #{
+    #    "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html",
+    #    "target": "templates/pruefungsamt/termine.html"
+    #},
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html",
     #     "target": "templates/pruefungsamt/pruefungen.html"
@@ -64,14 +64,14 @@ files = [
     #     "source": "https://www.math.uni-freiburg.de/lehre/studienberatung.html",
     #     "target": "templates/studienberatung.html"
     # },
-     {
-         "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/warum_mathematik.html",
-         "target": "templates/studienberatung/warum_mathematik.html"
-     },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/mathestudium_in_freiburg.html",
-        "target": "templates/studienberatung/mathestudium_in_freiburg.html"
-    },
+    # {
+    #     "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/warum_mathematik.html",
+    #     "target": "templates/studienberatung/warum_mathematik.html"
+    # },
+    #{
+    #    "source": "https://www.math.uni-freiburg.de/lehre/studieninteresse/#mathestudium_in_freiburg.html",
+    #    "target": "templates/studienberatung/mathestudium_in_freiburg.html"
+    #},
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-bsc-2021.html",
     #     "target": "templates/studiengaenge/studienverlauf-bsc-2021.html"
@@ -88,16 +88,14 @@ files = [
     #     "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-med-2018.html",
     #     "target": "templates/studiengaenge/studienverlauf-med-2018.html"
     # },
-    { "source" : "https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html",
-      "target": "templates/studiendekanat/anmeldung.html"
-    }
+    #{ "source" : "https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html",
+    #  "target": "templates/studiendekanat/anmeldung.html"
+    #}
     #{
     #    "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/schwerpunkte.html",
     #    "target": "templates/studienberatung/studienverlaufschwerpunktgebiete.html"
     #}
 ]
-
-
 
 
 html="<html><div id='aussen'> 1 <div id='innen'> 2 </div> 3</div></html>"
@@ -113,6 +111,8 @@ for file in files:
     soup = BeautifulSoup(result.text, 'lxml')
     content = soup.find('div', id="inhalt")
     content['class'] = "container"
+    content.find('div', id="pruefungen_meb").decompose()
+    content.find('div', id="pruefungen_meh").decompose()
 #    content.find_all(class_ = "section fold")
 
     accordion = soup.new_tag("div")

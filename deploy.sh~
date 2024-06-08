@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Server-Hostname
+SERVER="www2"
+
+# Benutzername für die SSH-Verbindung
+USERNAME="flask-reader"
+
+# Führe den Befehl "deploy" auf dem Remote-Server aus
+ssh $USERNAME@$SERVER 'cd mi-hp'
+ssh $USERNAME@$SERVER 'git pull'
+ssh $USERNAME@$SERVER 'cd ..'
+ssh $USERNAME@$SERVER 'sudo ./deploy-hp.sh'
+

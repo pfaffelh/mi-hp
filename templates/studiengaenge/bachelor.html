@@ -1,18 +1,14 @@
-<div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
+<div class="row row-cols-1 row-cols-md-4 g-3">
   <div class="col">
     <div class="card h-100">
-      <a
-        href="{{url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'kurzbeschreibung')}}"
-      >
-        <center>
-          <img
-            src="/static/pdf/latex/bachelor.jpg"
-            class="card-img-fluid d-none d-md-block"
-            alt="..."
-            style="height: 100%; width: 100%; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/pdf/latex/bachelor.jpg"
+          class="card-img-fluid d-none d-md-block"
+          alt="..."
+          style="height: 100%; width: 100%; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
         <h3 class="h5">Bachelor of Science Mathematik</h3>
         <div class="card-text">
@@ -20,24 +16,30 @@
             Für Studienanfänger, die Mathematiker*in werden wollen.
             <!-- In den ersten zwei Semestern ist ein Wechsel zum Zwei-Hauptfach-Bachelor relativ problemlos möglich. -->
           </p>
+          <p align="right">
+            <a
+              class="btn btn-outline-primary active bg-white"
+              style="border-color: #004a99"
+              href="{{url_for('showstudiengang', studiengang='bsc', lang = lang)}}"
+              role="button"
+            >
+              <i class="fa-solid fa-link" style="color: #004a99"></i>
+            </a>
+          </p>
         </div>
       </div>
     </div>
   </div>
   <div class="col">
     <div class="card h-100">
-      <a
-        href="{{url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'kurzbeschreibung')}}"
-      >
-        <center>
-          <img
-            src="/static/pdf/latex/2HfB.jpg"
-            class="card-img-fluid  d-none d-md-block"
-            alt="..."
-            style="height: 100%; width: 100%; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/pdf/latex/2HfB.jpg"
+          class="card-img-fluid d-none d-md-block"
+          alt="..."
+          style="height: 100%; width: 100%; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
         <h3 class="h5">
           Zwei-Hauptfächer-Bachelor mit individueller Studiengestaltung
@@ -49,6 +51,16 @@
             Studiengestaltung zielt nicht auf eine Ausbildung als Lehrer*in ab.
             In den ersten zwei Semestern ist ein Wechsel zum BSc Mathematik
             relativ problemlos möglich.
+          </p>
+          <p align="right">
+            <a
+              class="btn btn-outline-primary active bg-white"
+              style="border-color: #004a99"
+              href="{{url_for('showstudiengang', studiengang='2hf', lang = lang)}}"
+              role="button"
+            >
+              <i class="fa-solid fa-link" style="color: #004a99"></i>
+            </a>
           </p>
         </div>
       </div>

@@ -3,15 +3,16 @@
   <br />
   <ul>
     <li>
-      Unser <a href="{{ url_for('showfaq', lang=lang) }}">FAQ</a> beantwortet viele, aber
-      nicht alle Fragen. Sollten Sie weitere Fragen haben, melden Sie sich gerne
-      an die
+      Unser <a href="{{ url_for('showfaq', lang=lang) }}">FAQ</a> beantwortet
+      viele, aber nicht alle Fragen. Sollten Sie weitere Fragen haben, melden
+      Sie sich gerne an die
       <a href="mailto:studienberatung@math.uni-freiburg.de">Studienberatung</a>.
     </li>
     <li>
       Es gibt zwar auch den Promotionsstudiengang. Sollten Sie Informationen zu
       einer Promotion in Mathematik an der Universität Freiburg suchen, schauen
-      Sie bitte <a href="">hier</a>.
+      Sie bitte
+      <a href="https://www.math.uni-freiburg.de/lehre/promotion.html">hier</a>.
     </li>
     <li>
       Wir haben auch
@@ -34,7 +35,7 @@
         >
           FAQ
         </a>
-        <a
+        <!--        <a
           href="{{ url_for('showweiterbildung', lang=lang)}}"
           class="btn btn-primary"
           role="button"
@@ -49,7 +50,7 @@
           aria-disabled="true"
         >
           Promotion
-        </a>
+        </a>-->
         <a
           href="mailto:studienberatung@math.uni-freiburg.de"
           class="btn btn-primary"
@@ -63,9 +64,10 @@
   </div>
 
 
+
   <div class="accordion" id="accordionExample">
-    <div class="accordion-item" id="kurz">
-      <h3 class="accordion-header" id="headerkurz">
+    <div class="accordion-item">
+      <h3 class="accordion-header">
         <button
           type="button"
           class="accordion-button {% if anchor != 'bachelor' %}collapsed{% endif %}"
@@ -116,60 +118,138 @@
           {% include "studiengaenge/master.html" %}
         </div>
       </div>
-      <div class="accordion-item">
-        <h4 class="accordion-header">
-          <button
-            aria-controls="lehramt"
-            aria-expanded="false"
-            class="accordion-button {% if anchor != 'lehramt' %}collapsed{% endif %}"
-            data-bs-target="#lehramt"
-            data-bs-toggle="collapse"
-            type="button"
-          >
-            <h3 class="h5">
-              {% if lang == 'de' %}Gymnasiales Lehramt{% else %}Teachers'
-              education {% endif %}
-            </h3>
-          </button>
-        </h4>
-        <div
-          aria-labelledby="lehramt"
-          class="accordion-collapse collapse {% if anchor == 'lehramt' %}show{% endif %}"
-          data-bs-parent="#accordionExample"
-          id="lehramt"
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="lehramt"
+          aria-expanded="false"
+          class="accordion-button {% if anchor != 'lehramt' %}collapsed{% endif %}"
+          data-bs-target="#lehramt"
+          data-bs-toggle="collapse"
+          type="button"
         >
-          <div class="accordion-body">
-            {% include "studiengaenge/lehramt.html" %}
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h4 class="accordion-header">
-            <button
-              aria-controls="auslaufend"
-              aria-expanded="false"
-              class="accordion-button {% if anchor != 'auslaufend' %}collapsed{% endif %}"
-              data-bs-target="#auslaufend"
-              data-bs-toggle="collapse"
-              type="button"
-            >
-              <h3 class="h5">
-                {% if lang == 'de' %}Auslaufende Studiengänge{% else %}Ending
-                study programs {% endif %}
-              </h3>
-            </button>
-          </h4>
-          <div
-            aria-labelledby="auslaufend"
-            class="accordion-collapse collapse {% if anchor == 'auslaufend' %}show{% endif %}"
-            data-bs-parent="#accordionExample"
-            id="auslaufend"
-          >
-            <div class="accordion-body">
-              {% include "/studiengaenge/auslaufende_studiengaenge.html" %}
-            </div>
-          </div>
+          <h3 class="h5">
+            {% if lang == 'de' %}Gymnasiales Lehramt{% else %}Teachers'
+            education {% endif %}
+          </h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="lehramt"
+        class="accordion-collapse collapse {% if anchor == 'lehramt' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="lehramt"
+      >
+        <div class="accordion-body">
+          {% include "studiengaenge/lehramt.html" %}
         </div>
       </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="auslaufend"
+          aria-expanded="false"
+          class="accordion-button {% if anchor != 'auslaufend' %}collapsed{% endif %}"
+          data-bs-target="#auslaufend"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}Auslaufende Studiengänge{% else %}Ending study
+            programs {% endif %}
+          </h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="auslaufend"
+        class="accordion-collapse collapse {% if anchor == 'auslaufend' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="auslaufend"
+      >
+        <div class="accordion-body">
+          {% include "studiengaenge/auslaufende_studiengaenge.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="promotion"
+          aria-expanded="false"
+          class="accordion-button {% if anchor != 'promotion' %}collapsed{% endif %}"
+          data-bs-target="#promotion"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <a
+            href="https://www.math.uni-freiburg.de/lehre/promotion.html"
+            class="link-dark"
+            ><h3 class="h5">
+              {% if lang == 'de' %}Promotion{% else %}PnD studies {% endif %}
+            </h3></a
+          >
+        </button>
+      </h4>
+      <div
+        aria-labelledby="promotion"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="promotion"
+      ></div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="promotion"
+          aria-expanded="false"
+          class="accordion-button {% if anchor != 'schuelerstudium' %}collapsed{% endif %}"
+          data-bs-target="#schuelerstudium"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <a href="https://freiburg-seminar.de/" class="link-dark"
+            ><h3 class="h5">
+              {% if lang == 'de' %}Schülerstudium{% else %}Studies for pupils{%
+              endif %}
+            </h3></a
+          >
+        </button>
+      </h4>
+      <div
+        aria-labelledby="schuelerstudium"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="schuelerstudium"
+      ></div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="weiterbildung"
+          aria-expanded="false"
+          class="accordion-button {% if anchor != 'weiterbildung' %}collapsed{% endif %}"
+          data-bs-target="#weiterbildung"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <a
+            href="{{ url_for('showweiterbildung', lang=lang)}}"
+            class="link-dark"
+            ><h3 class="h5">
+              {% if lang == 'de' %}Weiterbildung{% else %}Continuing education
+              {% endif %}
+            </h3></a
+          >
+        </button>
+      </h4>
+      <div
+        aria-labelledby="weiterbildung"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="weiterbildung"
+      ></div>
     </div>
   </div>
 </div>

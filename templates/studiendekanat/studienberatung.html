@@ -17,6 +17,14 @@
           FAQ
         </a>
       <a
+          href="{{url_for('static', filename='pdf/studienberatung/uebersicht-vorlesungen.pdf')}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+          >
+          Regelmäßig angebotene Vorlesungen
+        </a>
+      <a
           href="{{ url_for('showstudienberatung', lang=lang, unterseite='warum_mathematik') }}"
           class="btn btn-primary bg-ufr-blue link-dark"
           role="button"

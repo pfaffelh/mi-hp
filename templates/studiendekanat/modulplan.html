@@ -1,0 +1,241 @@
+<div class="container" id="inhalt">
+  <h1>Modulpläne der einzelnen Studiengänge</h1>
+
+  Welche Veranstaltungen für Module mit Wahlmöglichkeiten in Frage kommen, ist
+  im
+  <a href="https://www.math.uni-freiburg.de/lehre/v/index.html"
+    >Kommentierten Vorlesungs&#173;verzeichnis</a
+  >
+  und in den
+  <a
+    href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
+    >aktuellen Ergänzungen der Modulhandbücher</a
+  >
+  beschrieben. Kompakt findet sich die Information in den
+  <a
+    href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
+    >Verwendungstabellen</a
+  >.
+
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button {% if anchor != 'bsc' %}collapsed{% endif %}"
+          data-bs-target="#bsc"
+          aria-controls="bsc"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}BSc Mathematik {% else %}BSc Mathematics{%
+            endif %}
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="bsc"
+        class="accordion-collapse collapse {% if anchor == 'bsc' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="bsc"
+      >
+        <div class="accordion-body">
+          {% include "/studiendekanat/belegung_bsc.html" %}
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button {% if anchor != 'hfb' %}collapsed{% endif %}"
+          data-bs-target="#hfb"
+          aria-controls="hfb"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}2-Hauptfächer-Bachelor{% else %}2-Majors
+            Bachelor{% endif %}
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="hfb"
+        class="accordion-collapse collapse {% if anchor == '2hfb' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="hfb"
+      >
+        <div class="accordion-body">
+          {% include "/studiendekanat/belegung_2hfb.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button {% if anchor != 'msc' %}collapsed{% endif %}"
+          data-bs-target="#msc"
+          aria-controls="msc"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}MSc Mathematik{% else %}MSc Mathematics{% endif
+            %}
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="msc"
+        class="accordion-collapse collapse {% if anchor == 'msc' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="msc"
+      >
+        <div class="accordion-body">
+          {% include "/studiendekanat/belegung_msc.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button {% if anchor != 'mscdata' %}collapsed{% endif %}"
+          data-bs-target="#mscdata"
+          aria-controls="mscdata"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}MSc Mathematics in Data and Technology{% else
+            %}MSc Mathematics in Data and Technology{% endif %}
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="mscdata"
+        class="accordion-collapse collapse {% if anchor == 'mscdata' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="mscdata"
+      >
+        <div class="accordion-body">
+          {% include "/studiendekanat/belegung_mscdata.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button {% if anchor != 'med' %}collapsed{% endif %}"
+          data-bs-target="#med"
+          aria-controls="med"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}Master of Education{% else %}Master of
+            Education{% endif %}
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="med"
+        class="accordion-collapse collapse {% if anchor == 'med' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="med"
+      >
+        <div class="accordion-body">
+          {% include "/studiendekanat/belegung_med.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button {% if anchor != 'mederwhf' %}collapsed{% endif %}"
+          data-bs-target="#mederwhf"
+          aria-controls="mederwhf"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}Master of Education Erweiterungsfach (Hauptfach, 120 ECTS){% else
+            %}Master of Education Erweiterungsfach (Hauptfach, 120 ECTS){% endif %}
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="mederwhf"
+        class="accordion-collapse collapse {% if anchor == 'mederwhf' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="mederwhf"
+      >
+        <div class="accordion-body">
+          {% include "/studiendekanat/belegung_mederwhf.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button {% if anchor != 'mederwbf' %}collapsed{% endif %}"
+          data-bs-target="#mederwbf"
+          aria-controls="mederwbf"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}Master of Education Erweiterungsfach (90 ECTS){% else
+            %}Master of Education Erweiterungsfach (90 ECTS){% endif %}
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="mederwbf"
+        class="accordion-collapse collapse {% if anchor == 'mederwbf' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="mederwbf"
+      >
+        <div class="accordion-body">
+          {% include "/studiendekanat/belegung_mederwbf.html" %}
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button {% if anchor != 'meddual' %}collapsed{% endif %}"
+          data-bs-target="#meddual"
+          aria-controls="meddual"
+          aria-expanded="true"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}Master of Education dual{% else %}Master of
+            Education dual{% endif %}
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="meddual"
+        class="accordion-collapse collapse {% if anchor == 'meddual' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="meddual"
+      >
+        <div class="accordion-body">
+          {% include "/studiendekanat/belegung_meddual.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

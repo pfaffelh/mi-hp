@@ -1,18 +1,14 @@
-<div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
+<div class="row row-cols-1 row-cols-md-4 g-3">
   <div class="col">
     <div class="card h-100">
-      <a
-        href="{{url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'kurzbeschreibung')}}"
-      >
-        <center>
-          <img
-            src="/static/pdf/latex/2HfB.jpg"
-            class="card-img-fluid  d-none d-md-block"
-            alt="..."
-            style="height: 100%; width: 100%; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/pdf/latex/2HfB.jpg"
+          class="card-img-fluid d-none d-md-block"
+          alt="..."
+          style="height: 100%; width: 100%; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
         <h3 class="h5">Zwei-Hauptfächer-Bachelor mit Lehramtsoption</h3>
         <div class="card-text">
@@ -21,24 +17,31 @@
             <i>gymnasiale Mathematik-Lehrer*in</i>. In den ersten zwei Semestern
             ist ein Wechsel zum BSc Mathematik relativ problemlos möglich.
           </p>
+          <p align="right">
+            <a
+              class="btn btn-outline-primary active bg-white"
+              style="border-color: #004a99"
+              href="{{url_for('showstudiengang', studiengang='2hfb', lang = lang)}}"
+              role="button"
+            >
+              <i class="fa-solid fa-link" style="color: #004a99"></i>
+            </a>
+          </p>
         </div>
       </div>
     </div>
   </div>
   <div class="col">
     <div class="card h-100">
-      <a
-        href="{{url_for('showstudiengang', studiengang='med', lang = lang, anchor = 'kurzbeschreibung')}}"
-      >
-        <center>
-          <img
-            src="/static/pdf/latex/MEd.jpg"
-            class="card-img-fluid  d-none d-md-block"
-            alt="..."
-            style="height: 100%; width: 100%; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/pdf/latex/MEd.jpg"
+          class="card-img-fluid d-none d-md-block"
+          alt="..."
+          style="height: 100%; width: 100%; object-fit: cover"
+        />
+      </center>
+
       <div class="card-body">
         <h3 class="h5">Master of Education</h3>
         <div class="card-text">
@@ -47,24 +50,30 @@
             das Studium der beiden Fächer aus dem Zwei-Hauptfächer-Bachelor
             fortgesetzt.
           </p>
+          <p align="right">
+            <a
+              class="btn btn-outline-primary active bg-white"
+              style="border-color: #004a99"
+              href="{{url_for('showstudiengang', studiengang='med', lang = lang)}}"
+              role="button"
+            >
+              <i class="fa-solid fa-link" style="color: #004a99"></i>
+            </a>
+          </p>
         </div>
       </div>
     </div>
   </div>
   <div class="col">
     <div class="card h-100">
-      <a
-        href="{{url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'kurzbeschreibung')}}"
-      >
-        <center>
-          <img
-            src="/static/pdf/latex/MEderw.jpg"
-            class="card-img-fluid  d-none d-md-block"
-            alt="..."
-            style="height: 100%; width: 100%; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/pdf/latex/MEderw.jpg"
+          class="card-img-fluid d-none d-md-block"
+          alt="..."
+          style="height: 100%; width: 100%; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
         <h3 class="h5">Master of Education</h3>
         <h5>Erweiterungsfach</h5>
@@ -77,24 +86,30 @@
             Unterricht im dritten Fach bis einschließlich Sekundarstufe I), oder
             als Hauptfach (befähigt auch für die Sekundarstufe II).
           </p>
+          <p align="right">
+            <a
+              class="btn btn-outline-primary active bg-white"
+              style="border-color: #004a99"
+              href="{{url_for('showstudiengang', studiengang='med_erw', lang = lang)}}"
+              role="button"
+            >
+              <i class="fa-solid fa-link" style="color: #004a99"></i>
+            </a>
+          </p>
         </div>
       </div>
     </div>
   </div>
   <div class="col">
     <div class="card h-100">
-      <a
-        href="{{url_for('showstudiengangnews', studiengang='med_dual', lang = lang, anchor = 'kurzzusammenfassung')}}"
-      >
-        <center>
-          <img
-            src="/static/pdf/latex/MEddual.jpg"
-            class="card-img-fluid  d-none d-md-block"
-            alt="..."
-            style="height: 100%; width: 100%; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/pdf/latex/MEddual.jpg"
+          class="card-img-fluid d-none d-md-block"
+          alt="..."
+          style="height: 100%; width: 100%; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
         <h3 class="h5">Master of Education — dual</h3>
         <div class="card-text">
@@ -102,6 +117,16 @@
             Für Quer-Einstieg als gymansialer Mathematik-Lehrer*in Studierende
             mit einem BSc Informatik oder BSc Physik.
             <br /><b> Geplanter Start: WS 2024</b>
+          </p>
+          <p align="right">
+            <a
+              class="btn btn-outline-primary active bg-white"
+              style="border-color: #004a99"
+              href="{{url_for('showstudiengang', studiengang='med_dual', lang = lang)}}"
+              role="button"
+            >
+              <i class="fa-solid fa-link" style="color: #004a99"></i>
+            </a>
           </p>
         </div>
       </div>

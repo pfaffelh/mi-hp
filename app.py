@@ -225,7 +225,8 @@ def showstudiendekanatbase(lang):
 
 @app.route("/<lang>/studienberatung/")
 def showstudienberatungbase(lang):
-    data = json.load(open(studiendekanat))
+    with app.open_resource('static/data/studiendekanat.json') as f:
+        data = json.load(f)    
     filenames = ["studiendekanat/studienberatung.html"]
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
@@ -249,12 +250,17 @@ def showpruefungsamtbase(lang):
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
 @app.route("/<lang>/pruefungsamt/<unterseite>")
-def showpruefungsamt(lang, unterseite):
+@app.route("/<lang>/pruefungsamt/<unterseite>/<anchor>")
+def showpruefungsamt(lang, unterseite, anchor=""):
     if unterseite == "calendar":
         events = get_caldav_calendar_events(calendar)
         return render_template("pruefungsamt/calendar.html", events=events, lang=lang)
     if unterseite == "anmeldung":
         filenames = ["studiendekanat/anmeldung.html"]
+    if unterseite == "modulplan":
+        filenames = ["studiendekanat/modulplan.html"]
+    if unterseite == "belegung":
+        filenames = ["studiendekanat/belegung.html"]
     if unterseite == "termine":
         filenames = ["pruefungsamt/termine.html"]
     if unterseite == "modulhandbuecher":
@@ -262,7 +268,7 @@ def showpruefungsamt(lang, unterseite):
     if unterseite == "ausland":
         filenames = ["pruefungsamt/modulhandbuecher.html"]    
 #    filenames = []
-    return render_template("home.html", filenames=filenames, lang=lang)
+    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
 #########
 ## faq ##

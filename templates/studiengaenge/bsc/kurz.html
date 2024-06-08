@@ -1,0 +1,117 @@
+<!-- {% if lang == "de" %} {% else %} {% endif %} -->
+<div class="container" id="featured-3">
+  <h1>Bachelor of Science Mathematik</h1>
+  <div class="container px-4 py-1" id="featured-3">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %} Kurzprofil{% else %} Short profile {% endif %}
+          </h2>
+        </div>
+        {% if lang == "de" %}
+        <ul>
+          <li>Dreijährig und deutschsprachig.</li>
+          <li>Für alle, die Mathematiker*in werden wollen.</li>
+          <li>Grundlegenden Vorlesungen in Analysis und Linearer Algebra</li>
+          <li>Einführungen in einige wichtige Teilgebiete der Mathematik</li>
+          <li>
+            Große Freiräume in der Wahl weiterführender Veranstaltungen und der
+            Bachelor-Arbeit, sowie eines Anwendungsfaches.
+          </li>
+          <li>Seminare und Computerübungen sind Teil des Curriculumns.</li>
+        </ul>
+        {% else %}
+        <ul></ul>
+        {% endif %}
+      </div>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-info fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %} Zulassung{% else %} Admission {% endif %}
+          </h2>
+        </div>
+        {% if lang == "de" %}
+        <ul>
+          <li>Dreijährig und deutschsprachig.</li>
+          <li>Studienbeginn nur zum Wintersemester möglich.</li>
+          <li>Nicht zulassungsbeschränkt</li>
+          <li>
+            Studiengangwechsel vom und zum (bei Hinzunahme eine Zweit-Faches)
+            2-Hauptfächer-Bachelor möglich.
+          </li>
+        </ul>
+        {% else %}
+        <ul></ul>
+        {% endif %}
+      </div>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-feather fa-4" aria-hidden="true"></i></h2>
+          <h2>{% if lang == "de" %}Anwendungsfach {% else %} {% endif %}</h2>
+        </div>
+        <div>
+          <p>
+            {% if lang == "de" %} Nicht-mathematische Inhalte werden in einem
+            Anwendungsfach vermittelt. Dies sind z.B. <i> Informatik </i>,
+            <i> Physik </i>, <i> Wirtschafts­wissenschaften </i>,
+            <i> Philosophie </i>
+            u.v.m. Soft skills lernt man in berufsorientierten Modulen am
+            Zentrum für Schlüsselqualifikationen.
+          </p>
+          {% else %}
+          <p></p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-infinity fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %} Und danach? {% else %} Mathematics {% endif %}
+          </h2>
+        </div>
+        <div>
+          <p>
+            {% if lang == "de" %} Typischerweise schließt sich der
+            <a href="msc-2014.html"> Master of Science in Mathematik </a> oder
+            der
+            <a href="mscdata-2021.html">
+              Master of Science Mathematics in Data and Technology
+            </a>
+            an.
+          </p>
+          {% else %}
+          <p></p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
+          <h2>Freiburg</h2>
+        </div>
+        <div>{% include "studiengaenge/freiburg.html" %}</div>
+      </div>
+    </div>
+
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-1">
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
+          <h2>Curriculum</h2>
+        </div>
+        <div>
+          {% if lang == "de" %} {% include
+          "studiengaenge/bsc/studienverlauf-bsc-2021.html" %} {% else %}
+          <p></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
