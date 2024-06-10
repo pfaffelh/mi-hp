@@ -5,30 +5,6 @@
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
-          <!--               <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
-          <a
-            href="https://campus.uni-freiburg.de"
-            class="btn btn-primary"
-            role="button"
-            aria-disabled="true"
-          >
-            <h2>
-              {% if lang == "de" %} Zur Bewerbung {% else %} Apply now {% endif
-              %}
-            </h2></a
-          >
-        </div>
-        <div class="py-3 text-center">
-          <div class="py-3 text-center">
-            <p>
-              A detailed description of the process can be found
-              <a href="details.html#bewerbung">here</a>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-gradient text-center">
           <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>
           <h2>
             {% if lang == "de" %} Kurzprofil{% else %} Short profile {% endif %}
@@ -63,6 +39,27 @@
         </ul>
         {% endif %}
       </div>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <!--               <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
+          <a
+            href="https://campus.uni-freiburg.de"
+            class="btn btn-primary"
+            role="button"
+            aria-disabled="true"
+          >
+            <h2>
+              {% if lang == "de" %} Zur Bewerbung {% else %} Apply now {% endif
+              %}
+            </h2></a
+          >
+        </div>
+        <div class="py-3 text-center">
+          <div class="py-3 text-center">
+            <p>A detailed description of the process can be found below.</p>
+          </div>
+        </div>
+      </div>
 
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
@@ -85,43 +82,6 @@
             Mathematics, including 12 credits in foundations of calculus and
             linear algebra. In english, you must have B2. You can only start
             this program in the winter term (October 1st).
-          </p>
-          {% endif %}
-        </div>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-gradient text-center">
-          <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
-          <h2>Curriculum</h2>
-        </div>
-        <div>
-          {% if lang == "de" %}
-          <p>
-            Sie erhalten eine solide Grundlage in Mathematik in einem Basiskurs,
-            und einen zusätzlichen Aufbaukurs in angewandter Mathematik. In
-            Wahlfächern können Sie aus Modulen wie Numerische Optimierung,
-            Numerik für partielle Differentialgleichungen, neuronale Netze,
-            Finanzmathematik, Dynamische Systeme in der Biologie, Ökonometrie,
-            Computer Vision, automatisiertes maschinelles Lernen, etc. wählen.
-            Mehr Informationen finden Sie
-            <a
-              href="{{url_for('showstudiengang', studiengang='msc_data', anchor='studienverlauf', lang=lang)}}"
-              >hier</a
-            >
-          </p>
-          {% else %}
-          <p>
-            You will obtain solid foundation in mathematics in a basic course,
-            and an additional advanced course in applied mathematics. In the
-            electives, you can choose from modules such as numerical
-            optimization, numerics for partial differential equations, neural
-            nets, financial mathematics, dynamical systems in biology,
-            econometrics, computer vision, automated machine learning, etc. More
-            information can be found
-            <a
-              href="{{url_for('showstudiengang', studiengang='msc_data', anchor='studienverlauf', lang=lang)}}"
-              >here</a
-            >
           </p>
           {% endif %}
         </div>
@@ -236,31 +196,47 @@
           {% endif %}
         </div>
       </div>
+    </div>
+
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-1">
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
-          <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
-          <h2>
-            {% if lang == "de" %}Mehr Informationen {% else %}More information
-            {% endif %}
-          </h2>
+          <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
+          <h2>Curriculum</h2>
         </div>
+        {% if lang == "de" %}
+        <p>
+          Sie erhalten eine solide Grundlage in Mathematik in einem Basiskurs,
+          und einen zusätzlichen Aufbaukurs in angewandter Mathematik. In
+          Wahlfächern können Sie aus Modulen wie Numerische Optimierung, Numerik
+          für partielle Differentialgleichungen, neuronale Netze,
+          Finanzmathematik, Dynamische Systeme in der Biologie, Ökonometrie,
+          Computer Vision, automatisiertes maschinelles Lernen, etc. wählen.
+          Mehr Informationen finden Sie
+          <a
+            href="{{url_for('showstudiengang', studiengang='msc_data', anchor='studienverlauf', lang=lang)}}"
+            >hier</a
+          >
+        </p>
+        {% else %}
+        <p>
+          You will obtain solid foundation in mathematics in a basic course, and
+          an additional advanced course in applied mathematics. In the
+          electives, you can choose from modules such as numerical optimization,
+          numerics for partial differential equations, neural nets, financial
+          mathematics, dynamical systems in biology, econometrics, computer
+          vision, automated machine learning, etc. More information can be found
+          <a
+            href="{{url_for('showstudiengang', studiengang='msc_data', anchor='studienverlauf', lang=lang)}}"
+            >here</a
+          >
+        </p>
+        {% endif %}
+
         <div>
-          {% if lang == "de" %}
-          <p>
-            Mehr Details gibt es
-            <a
-              href="{{url_for('showstudiengang', studiengang='msc_data', anchor='none', lang=lang)}}"
-              >hier</a
-            >
-          </p>
-          {% else %}
-          <p>
-            A detailed description is
-            <a
-              href="{{url_for('showstudiengang', studiengang='msc_data', anchor='none', lang=lang)}}"
-              >here</a
-            >
-          </p>
+          {% if lang == "de" %} {% include
+          "studiengaenge/msc_data/studienverlauf_tabelle.html" %} {% else %}
+          <p></p>
           {% endif %}
         </div>
       </div>

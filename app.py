@@ -20,7 +20,7 @@ import utils.util_vvz as vvz
 from urllib.request import urlopen 
 
 app = Flask(__name__)
-Misaka(app)
+Misaka(app, autolink=True, tables=True)
 
 # This is such that we can use os-commands in jinja2-templates.
 @app.context_processor

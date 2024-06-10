@@ -2,80 +2,101 @@
 
 <div class="container" id="inhalt">
   <h1>Master of Science Mathematics in Data and Technology (PO 2024)</h1>
-  <div class="container py-1" id="featured-3">
-    <a
-      class="btn btn-primary px-3 mr-1"
-      role="button"
-      href="{{url_for('showstudienberatungbase', lang=lang)}}"
-    >
-      <h2>
-        <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
-        {% if lang == "de" %} Studienberatung {% else %}Study counseling{% endif
-        %}
-      </h2>
+  <p>
+    Fragen der Studienorganisation (Belegung, Prüfungsanmeldung, detaillierter
+    Modulplan, etc) finden Sie auf den Seiten des Prüfungsamts.
+
+    <br />
+    Einige Fragen beantwortet das FAQ. Falls Fragen offen bleiben, wenden Sie
+    sich gerne an die
+    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+      Studienberatung des Mathematischen Instituts
     </a>
-    <!--   <a
-      class="btn btn-primary mr-1 px-4 mx-5"
-      href="{{url_for('showfaq', lang=lang)}}"
-      role="button"
-    >
-      <h2>
-        <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
-        FAQ
-      </h2>
-    </a> -->
+    (
+    <a href="mailto:studienberatung@math.uni-freiburg.de">
+      ✉
+      <!--studienberatung&#x40;&#x6d;&#x61;&#x74;&#x68;&#x2e;&#x75;&#x6e;&#x69;&#x2d;&#x66;&#x72;&#x65;&#x69;&#x62;&#x75;&#x72;&#x67;&#x2e;&#x64;&#x65;-->
+    </a>
+    ) wenden.
+  </p>
+
+  <div class="container text-end">
+    <div class="row">
+      <div class="col">
+        <a
+          href="{{ url_for('showfaq', lang=lang) }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          FAQ
+        </a>
+        <a
+          href="{{ url_for('showpruefungsamt', lang=lang, unterseite='modulplan', anchor='mscdata') }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Modulplan
+        </a>
+        <a
+          href="mailto:studienberatung@math.uni-freiburg.de"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Studienberatung
+        </a>
+      </div>
+    </div>
   </div>
+
   <div class="accordion accordion-flush" id="accordionExample">
-    <!-- <div class="accordion-item" id="kurz">
-      <h3 class="accordion-header" id="headerkurz">
+    <div class="accordion-item" id="kurz">
+      <h4 class="accordion-header" id="headerkurz">
         <button
-          type="button"
-          class="accordion-button collapsed"
-          data-bs-target="#kurzContent"
           aria-controls="kurzContent"
           aria-expanded="false"
-          data-bs-toggle="collapse"
-        >
-          <h3 class="h5">
-            {% if lang == "de" %} Kurzbeschreibung {% else %} Short profile {%
-            endif %}
-          </h3>
-        </button>
-      </h3>
-      <div
-        aria-labelledby="kurzContent"
-        class="accordion-collapse collapse {% if anchor == 'kurzbeschreibung' %}show{% endif %}"
-        data-bs-parent="#accordionExample"
-        id="kurzContent"
-      >
-        <div class="accordion-body">
-          {% include "/studiengaenge/msc_data/kurzbeschreibung.html" %}
-        </div>
-      </div>
-    </div> -->
-    <div class="accordion-item" id="bewerbung">
-      <h4 class="accordion-header" id="headerbewerbung">
-        <button
-          aria-controls="bewerbungContent"
-          aria-expanded="false"
           class="accordion-button collapsed"
-          data-bs-target="#bewerbungContent"
+          data-bs-target="#kurzContent"
           data-bs-toggle="collapse"
           type="button"
         >
-          <h3 class="h5">
-            {% if lang == "de" %}Bewerbung{% else %}Application {% endif %}
-          </h3>
+          <h3 class="h5">Kurzbeschreibung des Studiengangs</h3>
         </button>
       </h4>
       <div
-        aria-labelledby="bewerbungContent"
-        class="accordion-collapse collapse {% if anchor == 'bewerbung' %}show{% endif %}"
+        aria-labelledby="kurzContent"
+        class="accordion-collapse collapse"
         data-bs-parent="#accordionExample"
-        id="bewerbungContent"
+        id="kurzContent"
+      >
+        <div class="accordion-body" id="kurzContent">
+          {% include "/studiengaenge/msc_data/kurz.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" id="vor">
+      <h4 class="accordion-header" id="headervor">
+        <button
+          aria-controls="vorContent"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#vorContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Studienbeginn, Bewerbung und Zulassung</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="vorContent"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="vorContent"
       >
         <div class="accordion-body">
-          {% include "/studiengaenge/msc_data/bewerbung.html" %}
+          {% include "studiengaenge/msc_data/bewerbung.html" %}
         </div>
       </div>
     </div>
@@ -132,32 +153,33 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="studienplan">
-      <h3 class="accordion-header" id="headerstudienplan">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
-          aria-controls="studienplanContent"
+          aria-controls="modulplan"
           aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#studienplanContent"
+          class="accordion-button {% if anchor != 'modulplan' %}collapsed{% endif %}"
+          data-bs-target="#modulplan"
           data-bs-toggle="collapse"
           type="button"
         >
-          <h3 class="h5">
-            {% if lang == "de" %}Studienorganisation{% else %}Organisation of
-            studies {% endif %}
-          </h3>
+          <a
+            href="{{ url_for('showpruefungsamt', lang=lang, unterseite='modulplan', anchor='mscdata') }}"
+            class="link-dark"
+          >
+            <h3 class="h5">
+              {% if lang == 'de' %}Modulplan{% else %}Plan of modules{% endif %}
+            </h3></a
+          >
         </button>
-      </h3>
+      </h4>
       <div
-        aria-labelledby="studienplanContent"
-        class="accordion-collapse collapse {% if anchor == 'studienorganisation' %}show{% endif %}"
+        aria-labelledby="modulplan"
+        class="accordion-collapse collapse"
         data-bs-parent="#accordionExample"
-        id="studienplanContent"
-      >
-        <div class="accordion-body">
-          {% include "/studiengaenge/msc_data/studienorganisation.html" %}
-        </div>
-      </div>
+        id="modulplan"
+      ></div>
     </div>
   </div>
 </div>
+

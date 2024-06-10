@@ -1,24 +1,28 @@
 <!-- Ab hier deutsch, englisch ist weiter unten -->
 
 {% if lang == "de" %}
+<p>
+  Alle rechtlich verbindlichen Dokumente finden Sie
+  <a
+    href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/776#collapse-Satzungen"
+    >hier</a
+  >.
+</p>
 <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
   <div class="col">
     <div class="card h-100">
-      <a
-        href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/363#collapse-Satzungen"
-      >
-        <center>
-          <img
-            src="/static/Bilder/zulassungsordnung.jpg"
-            class="card-img-fluid"
-            alt="..."
-            style="height: 15vw; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/images/zulassungsordnung.jpg"
+          class="card-img-fluid"
+          alt="..."
+          style="height: 15vw; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
         <h3 class="h5">
-          <a href="/static/studiengaenge/msc_data/Zulassungsordnung.pdf"
+          <a
+            href="https://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/zulassungsordnungen/zulassungsordnung-m.sc.-mathematics-in-data-and-technology-16.05.2024.pdf"
             >Admission regulations (Zulassungsordnung)</a
           >
         </h3>
@@ -37,18 +41,14 @@
   </div>
   <div class="col">
     <div class="card h-100">
-      <a
-        href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/363#collapse-Satzungen"
-      >
-        <center>
-          <img
-            src="/static/Bilder/ordnung.jpg"
-            class="card-img-fluid"
-            alt="..."
-            style="height: 15vw; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/images/ordnung.jpg"
+          class="card-img-fluid"
+          alt="..."
+          style="height: 15vw; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
         <h3 class="h5">Prüfungsordnung</h3>
         <div class="card-text">
@@ -64,7 +64,8 @@
             </li>
             <li>
               Der
-              <a href="/static/studiengaenge/msc_data/Pruefungsordnung.pdf"
+              <a
+                href="https://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/pruefungsordnungen/master_of_science/m.sc.-pruefungsordnung-mathematics-in-data-and-technology-senatsbeschluss.pdf"
                 >fachspezifischen Teil
               </a>
               regelt die hier weiter ausgeführten speziellen Regelungen.
@@ -76,18 +77,20 @@
   </div>
   <div class="col">
     <div class="card h-100">
-      <a href="">
-        <center>
-          <img
-            src="/static/Bilder/modulhandbuch.jpg"
-            class="card-img-fluid"
-            alt="..."
-            style="height: 15vw; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="/static/images/modulhandbuch.jpg"
+          class="card-img-fluid"
+          alt="..."
+          style="height: 15vw; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
-        <h3 class="h5">Modulhandbuch</h3>
+        <a
+          href="{{url_for('static', filename='pdf/studiengaenge/msc_data/Modulhandbuch-MSc_Maths_in_Data_and_Technology.pdf')}}"
+        >
+          <h3 class="h5">Modulhandbuch</h3></a
+        >
         <p class="card-text">
           Welche Wahlmöglichkeiten Sie in den Modulen haben, ist semesterweise
           in den aktuellen Ergänzungen der Modulhandbücher beschrieben. Kompakt
@@ -100,6 +103,14 @@
 
 <!-- ab hier englisch -->
 {% else %}
+<p>
+  All documents can be found
+  <a
+    href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/303#collapse-Satzungen"
+    >here</a
+  >.
+</p>
+
 <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
   <div class="col">
     <div class="card h-100">
@@ -108,7 +119,7 @@
       >
         <center>
           <img
-            src="/static/Bilder/zulassungsordnung.jpg"
+            src="static/Bilder/zulassungsordnung.jpg"
             class="card-img-fluid"
             alt="..."
             style="height: 15vw; object-fit: cover"
@@ -117,18 +128,15 @@
       </a>
       <div class="card-body">
         <h3 class="h5">
-          <a href="/static/studiengaenge/msc_data/Zulassungsordnung.pdf"
+          <a
+            href="https://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/zulassungsordnungen/zulassungsordnung-m.sc.-mathematics-in-data-and-technology-16.05.2024.pdf"
             >Admission regulations (Zulassungsordnung)</a
           >
         </h3>
         <div class="card-text">
           <p>
             These regulations govern the application procedure, such as
-            described
-            <a
-              href="{{url_for('showstudiengang', studiengang='msc_data', lang = lang, anchor = 'bewerbung')}}"
-              >above</a
-            >.
+            described above.
           </p>
         </div>
       </div>
@@ -141,7 +149,7 @@
       >
         <center>
           <img
-            src="/static/Bilder/ordnung.jpg"
+            src="static/Bilder/ordnung.jpg"
             class="card-img-fluid"
             alt="..."
             style="height: 15vw; object-fit: cover"
@@ -164,7 +172,7 @@
             </li>
             <li>
               The
-              <a href="/static/studiengaenge/msc_data/Pruefungsordnung.pdf"
+              <a href="static/pdf/Pruefungsordnung.pdf"
                 >subject-specific part (fachspezifische Prüfungsordnung)
               </a>
               regulates the special regulations listed here.
@@ -176,18 +184,18 @@
   </div>
   <div class="col">
     <div class="card h-100">
-      <a href="">
-        <center>
-          <img
-            src="/static/Bilder/modulhandbuch.jpg"
-            class="card-img-fluid"
-            alt="..."
-            style="height: 15vw; object-fit: cover"
-          />
-        </center>
-      </a>
+      <center>
+        <img
+          src="static/Bilder/modulhandbuch.jpg"
+          class="card-img-fluid"
+          alt="..."
+          style="height: 15vw; object-fit: cover"
+        />
+      </center>
       <div class="card-body">
-        <h3 class="h5">Module handbook (Modulhandbuch)</h3>
+        <a href="static/pdf/Modulhandbuch.pdf">
+          <h3 class="h5">Module handbook (Modulhandbuch)</h3></a
+        >
         <p class="card-text">
           The choices you have in the modules are described semester by semester
           in the current supplements to the module handbooks. Compact
@@ -197,5 +205,4 @@
     </div>
   </div>
 </div>
-
 {% endif %}
