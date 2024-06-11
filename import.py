@@ -28,10 +28,10 @@ files = [
     #     "source": "https://www.math.uni-freiburg.de/lehre/index.html",
     #     "target": "templates/index.html"
     # },
-    # {
-    #     "source": "https://www.math.uni-freiburg.de/lehre/promotion.html",
-    #     "target": "templates/studiengaenge/promotion.html"
-    # },
+    {
+        "source": "https://www.math.uni-freiburg.de/lehre/promotion.html",
+        "target": "templates/studiengaenge/promotion/index.html"
+    }
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/mathematikinteresse.html",
     #     "target": "templates/interesse/prospective.html"
@@ -111,8 +111,8 @@ for file in files:
     soup = BeautifulSoup(result.text, 'lxml')
     content = soup.find('div', id="inhalt")
     content['class'] = "container"
-    content.find('div', id="pruefungen_meb").decompose()
-    content.find('div', id="pruefungen_meh").decompose()
+#    content.find('div', id="pruefungen_meb").decompose()
+#    content.find('div', id="pruefungen_meh").decompose()
 #    content.find_all(class_ = "section fold")
 
     accordion = soup.new_tag("div")
