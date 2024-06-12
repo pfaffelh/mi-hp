@@ -318,21 +318,6 @@ def showmonitor():
     data['carouselmonitor'] = [item for item in data['carouselmonitor'] if datetime.strptime(item['showstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showend'], date_format)]
 
 
-    # Fußball EM 2024
-    if datetime(2024,6,14) < datetime.now() and datetime.now() < datetime(2024,7,15):
-        url = "https://api.openligadb.de/getmatchdata/em/2024/"
-        date = datetime.now().date()
-#        date = datetime(2024, 6, 29).date()
-        data['carouselmonitor'].append(
-                {
-                "interval": "7000",
-                "image": "/static/images/fussball.jpeg",
-                "left": "5%",
-                "right": "40%",
-                "bottom": "20%",
-                "text": fb.get_openligadb_text(url, date, 0)
-                },
-        )
 
     data['news'] = [item for item in data['news'] if datetime.strptime(item['showmonitorstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showmonitorend'], date_format)]
     for item in data['news']:
