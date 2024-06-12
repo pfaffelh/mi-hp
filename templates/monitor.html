@@ -13,6 +13,7 @@
         class="d-block w-100"
         alt="..."
       />
+      {% if item['text'] != "" %}
       <div class="container-sm">
         <div
           class="carousel-caption d-none d-md-block"
@@ -21,6 +22,7 @@
           <h2>{{ item['text'] | safe}}</h2>
         </div>
       </div>
+      {% endif %}
     </div>
     {% endfor %}
   </div>
