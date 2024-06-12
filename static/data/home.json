@@ -3,6 +3,16 @@
     {
       "showstart": "06.06.2024 16:00",
       "showend": "14.06.2024 18:00",
+      "interval": "10000",
+      "image": "/static/images/fussball.jpeg",
+      "left": "5%",
+      "right": "45%",
+      "bottom": "50%",
+      "text": "<h2>Die Fußball-EM startet morgen!</h2>"
+    },
+    {
+      "showstart": "06.06.2024 16:00",
+      "showend": "14.06.2024 18:00",
       "interval": "4000",
       "image": "/static/images/grapes-2000.jpg",
       "left": "10%",
@@ -241,7 +251,7 @@
       "popover_title_en": "",
       "popover_text_de": "",
       "popover_text_en": "",
-      "text_de": "<ul><li>08:00 bis 08:40 Uhr, Alexandra Blessing, Universität Konstanz: A semigroup approach for stochastic quasilinear equations driven by rough noise</li><li>10:10 bis 10:50 Uhr, Eva Kopfer, Universität Bonn: Optimal Transport and Diffusion on varying spaces</li><li>13:30 bis 14:10 Uhr, Chiara Saffirio, Universität Basel: From microscopic to macroscopic scales: effective evolution equations of many interacting particles</li><li>15:40 bis 17:10 Uhr, Máté Gerencsér, TU Wien (BigBlueButton): Oscillatory effects in stochastic PDEs</li></ul>",
+      "text_de": "<ul><li>08:00 bis 08:40 Uhr, Alexandra Blessing, Universität Konstanz: A semigroup approach for stochastic quasilinear equations driven by rough noise</li><li>10:10 bis 10:50 Uhr, Eva Kopfer, Universität Bonn: Optimal Transport and Diffusion on varying spaces</li><li>13:30 bis 14:10 Uhr, Chiara Saffirio, Universität Basel: From microscopic to macroscopic scales: effective evolution equations of many interacting particles</li><li>15:40 bis 16:20 Uhr, Máté Gerencsér, TU Wien (BigBlueButton): Oscillatory effects in stochastic PDEs</li></ul>",
       "text_en": ""
     },
     {

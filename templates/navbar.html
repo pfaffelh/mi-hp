@@ -1,5 +1,5 @@
 <header class="navbar navbar-expand-xl bg-ufr-blue">
-  <nav class="navbar navbar-dark">
+  <nav class="navbar navbar-dark flex">
     <div class="container-fluid">
       <button
         class="navbar-toggler"
@@ -17,7 +17,7 @@
           <li class="nav-item">
             <a class="nav-link text-white me-4" href="#"></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item px-4">
             <div>
               <a
                 class="nav-link text-white me-4"
@@ -26,10 +26,7 @@
               >
                 <button
                   class="text-black bg-ufr-yellow-60"
-                  style="
-                    border-color: #004a99;
-                    border-radius: 12px;
-                  "
+                  style="border-color: #004a99; border-radius: 12px"
                 >
                   <i
                     class="fa fa-circle-right fa-4 text-black"
@@ -49,11 +46,8 @@
                 href="{{url_for('showanfang', lang = lang)}}"
               >
                 <button
-                  class="text-black  bg-ufr-yellow-60"
-                  style="
-                    border-color: #004a99;
-                    border-radius: 12px;
-                  "
+                  class="text-black bg-ufr-yellow-60"
+                  style="border-color: #004a99; border-radius: 12px"
                 >
                   <i
                     class="fa fa-circle-right fa-4 text-black"
@@ -136,10 +130,10 @@
                     NEU
                   </button>-->
                   Masterstudiengang Lehramt Gymnasium – dual</a
-                  >
+                >
               </li>
               <li><hr class="dropdown-divider" /></li>
-               <li>
+              <li>
                 <a
                   class="dropdown-item text-black"
                   href="{{ url_for('showstudiengang', studiengang='promotion', lang = lang) }}"
@@ -165,16 +159,17 @@
                 <a
                   class="dropdown-item text-black"
                   href="/{{lang}}/lehrveranstaltungen/{{laufendes_semester}}"
-                  >{% if lang == "de" %} laufendes Semester{% else %}current semester{% endif %}</a
+                  >{% if lang == "de" %} laufendes Semester{% else %}current
+                  semester{% endif %}</a
                 >
               </li>
-              {% endif %}
-              {% if show_kommendes_semester %}
+              {% endif %} {% if show_kommendes_semester %}
               <li class="dropdown-submenu">
                 <a
                   class="dropdown-item text-black"
                   href="/{{lang}}/lehrveranstaltungen/{{kommendes_semester}}"
-                  >{% if lang == "de" %}kommendes Semester{% else %}upcoming semester{% endif %}</a
+                  >{% if lang == "de" %}kommendes Semester{% else %}upcoming
+                  semester{% endif %}</a
                 >
               </li>
               {% endif %}
@@ -201,7 +196,7 @@
                   counceling{% endif %}</a
                 >
               </li>
-<!--              <li>
+              <!--              <li>
                 <a
                   class="dropdown-item text-black"
                   href="{{ url_for('showstudienberatung', unterseite='warum_mathematik', lang=lang) }}"
@@ -252,7 +247,8 @@
                 <a
                   class="dropdown-item text-black"
                   href="{{ url_for('showpruefungsamt', unterseite='belegung', lang=lang) }}"
-                  >{% if lang == "de" %}Prüfungsanmeldung und Belegung{% else %}Exam registration and assignment{% endif %}</a
+                  >{% if lang == "de" %}Prüfungsanmeldung und Belegung{% else
+                  %}Exam registration and assignment{% endif %}</a
                 >
               </li>
               <li><hr class="dropdown-divider" /></li>
@@ -261,8 +257,8 @@
                 <a
                   class="dropdown-item text-black"
                   href="https://home.mathematik.uni-freiburg.de/erasmus/outgoings_de.html"
-                  >{% if lang == "de" %}Studieren im Ausland{% else %}Study abroad{%
-                  endif %}</a
+                  >{% if lang == "de" %}Studieren im Ausland{% else %}Study
+                  abroad{% endif %}</a
                 >
               </li>
             </ul>
