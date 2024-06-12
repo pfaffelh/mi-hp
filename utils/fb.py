@@ -20,7 +20,7 @@ def get_openligadb_text(url, date, offset):
 
             for m in matches:
                 t = datetime.strptime(m["matchDateTime"], date_format) + timedelta(0, offset)
-                x = f"{t.strftime("%H:%M:")} {m["team1"]["teamName"]}-{m["team2"]["teamName"]}"
+                x = f"{t.strftime('%H:%M:')} {m['team1']['teamName']}-{m['team2']['teamName']}"
                 y = ""
                 if datetime.now() > t:
                     score1 = max([0] + [i["scoreTeam1"] for i in m["goals"]])
