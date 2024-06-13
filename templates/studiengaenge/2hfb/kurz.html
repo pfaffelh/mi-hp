@@ -1,0 +1,204 @@
+<div class="container" id="featured-3">
+  <h1>Zwei-Hauptfächer-Bachelor</h1>
+  <div class="container px-4 py-1" id="featured-3">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %} Kurzprofil{% else %} Short profile {% endif %}
+          </h2>
+        </div>
+        {% if lang == "de" %}
+        <ul>
+          <li>Dreijährig und (in Mathematik) deutschsprachig.</li>
+          <li>
+            Zwei gleichberechtigte Fächer; kann mit allen
+            <a
+              href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher?degree=19&show=s&senden=Auswahl+anzeigen/"
+              >Schulfächern</a
+            >
+            kombinert werden.
+          </li>
+          <li>Ein Wahlbereich (genannt Optionsbereich).</li>
+          <li>
+            Die Studienvariente <i>mit Lehramtsoption</i> bereitet auf den
+            Master of Education und damit das gymnasiale Lehramt vor. Der
+            Optionsbereich ist hier festgelegt.
+          </li>
+          <li>
+            Die Studienvariante <i>Individuelle Studiengestaltung</i> ist mit
+            einem freien Optionsbereich ausgestattet.
+          </li>
+        </ul>
+        {% else %}
+        <ul></ul>
+        {% endif %}
+      </div>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-info fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %} Zulassung{% else %} Admission {% endif %}
+          </h2>
+        </div>
+        {% if lang == "de" %}
+        <ul>
+          <li>Dreijährig und deutschsprachig.</li>
+          <li>Studienbeginn nur zum Wintersemester möglich.</li>
+          <li>
+            Nicht zulassungsbeschränkt (in Mathematik, kann im zweiten Fach
+            abweichen)
+          </li>
+          <li>Studiengangwechsel vom und zum BSc Mathematik möglich.</li>
+        </ul>
+        {% else %}
+        <ul></ul>
+        {% endif %}
+      </div>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-infinity fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %} Mathematik{% else %}Mathematics {% endif %}
+          </h2>
+        </div>
+        {% if lang == "de" %}
+        <p>
+          Das Mathematik-Studium beginnt mit grundlegenden Vorlesungen in
+          Analysis und Linearer Algebra und führt dann in einige wichtige
+          Teilgebiete der Mathematik ein: Algebra, Geometrie, Numerik und
+          Stochastik. Ergänzend kommen ein Proseminar und eine Praktische Übung
+          (Computerübung) hinzu. Die Bachelor-Arbeit kann in Mathematik oder dem
+          anderen Fach geschrieben werden.
+        </p>
+
+        {% else %} {% endif %}
+      </div>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-feather fa-4" aria-hidden="true"></i></h2>
+          <h2>{% if lang == "de" %}Lehramtsoption {% else %} {% endif %}</h2>
+        </div>
+        <div>
+          <p>
+            {% if lang == "de" %} Bei Wahl der Lehramtsoption besteht der
+            Optionsbereich aus Fachdidaktik und Bildungswissenschaft. Letzteres
+            beinhaltet ein drei-wöchentliches
+            <a href="https://www.zfs.uni-freiburg.de/de/osp"
+              >Orientierungspraktikum</a
+            >
+            an einer Schule. <br />Zusammen mit anschließendem
+            <a
+              href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}"
+              >Master of Education</a
+            >
+            und Referendariat ermöglicht der Studiengang dann den Zugang zum
+            Lehramt an Gymnasien. Nicht-mathematische Inhalte werden in einem
+            Anwendungsfach vermittelt.
+            <br />
+            Mathematik kann mit allen an der Universität Freiburg angebotenen
+            <a
+              href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher?degree=19&show=s&senden=Auswahl+anzeigen/"
+              >Schulfächern</a
+            >
+            kombiniert werden. Als zweites Hauptfach kann auch Musik an einer
+            Musikhochschule oder Bildende Kunst an einer Kunsthochschule
+            studiert werden. Der Studiengang ist dann vierjährig.
+            <br />
+            Mathematik kann auch als
+            <a
+              href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
+              >Erweiterungsfach</a
+            >
+            (Lehramts-Drittfach) studiert werden.
+          </p>
+          {% else %}
+          <p></p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-feather fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %}Option Individuelle Studiengestaltung {% else
+            %} {% endif %}
+          </h2>
+        </div>
+        <div>
+          {% if lang == "de" %}
+          <p>
+            Bei der Studienvariante <i>Individuelle Studiengestaltung</i> wird
+            erOptionsbereich für fachwissenschaftliche Wahlveranstaltungen und
+            Schlüsselqualifikationen genutzt.
+          </p>
+          {% else %}
+          <p></p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-infinity fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %} Und danach? {% else %} Mathematics {% endif %}
+          </h2>
+        </div>
+        <div>
+          <p>
+            {% if lang == "de" %} Bei der Lehramtsoption schließt sich
+            typischerweise der
+            <a
+              href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}"
+            >
+              Master of Education</a
+            >
+            an. Bei der Studienvariante Individuelle Studiengestaltung kann mit
+            einigen Zusatzleistungen der
+            <a
+              href="{{ url_for('showstudiengang', studiengang='msc', lang = lang) }}"
+              >Master of Science in Mathematik</a
+            >
+            angeschlossen werden. Der
+            <a
+              href="{{ url_for('showstudiengang', studiengang='msc_data', lang = lang) }}"
+              >MSc Mathematics in Data and Technology</a
+            >
+            kann ohne Zusatzleistungen angeschlossen werden.
+          </p>
+          {% else %}
+          <p></p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
+          <h2>Freiburg</h2>
+        </div>
+        <div>{% include "studiengaenge/freiburg.html" %}</div>
+      </div>
+    </div>
+
+    <!--    <div class="row g-4 py-5 row-cols-1 row-cols-lg-1">
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
+          <h2>Curriculum</h2>
+        </div>
+        <div>
+          {% if lang == "de" %} {% include
+          "studiengaenge/2hfb/studienverlauf-2hfb-2021.html" %} {% else %}
+          <p></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>-->
+  </div>
+</div>

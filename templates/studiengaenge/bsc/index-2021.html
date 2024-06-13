@@ -1,21 +1,18 @@
 <div class="container" id="inhalt">
   <h1>Bachelor of Science in Mathematik (PO 2021)</h1>
   <p>
-    Fragen der Studienorganisation (Belegung, Prüfungsanmeldung, detaillierter
-    Modulplan, etc) finden Sie auf den Seiten des Prüfungsamts.
+    Fragen der Studienorganisation (Belegung, Prüfungsanmeldung, etc) finden Sie
+    auf den Seiten des
+    <a href="{{ url_for('showpruefungsamtbase', lang=lang) }}">Prüfungsamts</a>.
 
     <br />
-    Einige Fragen beantwortet das FAQ. Falls Fragen offen bleiben, wenden Sie
-    sich gerne an die
-    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+    Einige Fragen beantwortet das
+    <a href="{{ url_for('showfaq', lang=lang) }}"> FAQ</a>. Falls Fragen offen
+    bleiben, wenden Sie sich gerne an die
+    <a href="{{ url_for('showstudienberatungbase', lang=lang) }}">
       Studienberatung des Mathematischen Instituts
     </a>
-    (
-    <a href="mailto:studienberatung@math.uni-freiburg.de">
-      ✉
-      <!--studienberatung&#x40;&#x6d;&#x61;&#x74;&#x68;&#x2e;&#x75;&#x6e;&#x69;&#x2d;&#x66;&#x72;&#x65;&#x69;&#x62;&#x75;&#x72;&#x67;&#x2e;&#x64;&#x65;-->
-    </a>
-    ) wenden.
+    wenden.
   </p>
 
   <div class="container text-end">
@@ -29,14 +26,7 @@
         >
           FAQ
         </a>
-        <a
-          href="{{ url_for('showpruefungsamt', lang=lang, unterseite='modulplan', anchor='bsc') }}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
-          Modulplan
-        </a>
+
         <!--        <a
           href="{{ url_for('showweiterbildung', lang=lang)}}"
           class="btn btn-primary"
@@ -478,7 +468,7 @@
           <center>
             <img
               alt="Studienverläufe in den Standard-Anwendungsfächern"
-              src="https://www.math.uni-freiburg.de/lehre/bilder/BSc21-AF.png"
+              src="{{ url_for('static', filename = '/images/BSc21-AF.png')}}"
               style="width: 80%"
               title="Studienverläufe in den Standard-Anwendungsfächern"
             />
@@ -496,14 +486,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          <a
-            href="{{ url_for('showpruefungsamt', lang=lang, unterseite='modulplan', anchor='bsc') }}"
-            class="link-dark"
-          >
-            <h3 class="h5">
-              {% if lang == 'de' %}Modulplan{% else %}Plan of modules{% endif %}
-            </h3></a
-          >
+          <h3 class="h5">
+            {% if lang == 'de' %}Modulplan{% else %}Plan of modules{% endif %}
+          </h3>
         </button>
       </h4>
       <div
@@ -511,7 +496,11 @@
         class="accordion-collapse collapse"
         data-bs-parent="#accordionExample"
         id="modulplan"
-      ></div>
+      >
+        <div class="accordion-body" id="afContent">
+          {% include "/studiendekanat/belegung_bsc.html" %}
+        </div>
+      </div>
     </div>
   </div>
 </div>
