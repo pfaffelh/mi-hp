@@ -251,7 +251,7 @@
       "popover_title_en": "",
       "popover_text_de": "",
       "popover_text_en": "",
-      "text_de": "<ul><li>08:00 bis 08:40 Uhr, Alexandra Blessing, Universität Konstanz: A semigroup approach for stochastic quasilinear equations driven by rough noise</li><li>10:10 bis 10:50 Uhr, Eva Kopfer, Universität Bonn: Optimal Transport and Diffusion on varying spaces</li><li>13:30 bis 14:10 Uhr, Chiara Saffirio, Universität Basel: From microscopic to macroscopic scales: effective evolution equations of many interacting particles</li><li>15:40 bis 16:20 Uhr, Máté Gerencsér, TU Wien (BigBlueButton): Oscillatory effects in stochastic PDEs</li></ul>",
+      "text_de": "<ul><li>08:00 bis 08:40 Uhr, Alexandra Blessing, Universität Konstanz: A semigroup approach for stochastic quasilinear equations driven by rough noise</li><li>10:10 bis 10:50 Uhr, Eva Kopfer, Universität Bonn: Optimal Transport and Diffusion on varying spaces</li><li class='watermark-drop bg-ufr-blue-80'>13:30 bis 14:10 Uhr, Chiara Saffirio, Universität Basel: From microscopic to macroscopic scales: effective evolution equations of many interacting particles</li><li>15:40 bis 16:20 Uhr, Máté Gerencsér, TU Wien (BigBlueButton): Oscillatory effects in stochastic PDEs</li></ul>",
       "text_en": ""
     },
     {

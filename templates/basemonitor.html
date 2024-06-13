@@ -47,11 +47,11 @@
       });
     </script>
     <style>
-        .watermark {
+        .watermark-today {
             position: relative;
         }
 
-        .watermark::after {
+        .watermark-today::after {
             content: "Heute";
             position: absolute;
             top: 30%;
@@ -61,6 +61,20 @@
             font-weight: bold;
             color: rgba(255, 255, 255, 0.5);
             pointer-events: none;
+        }
+        .watermark-drop {
+            position: relative;
+        }
+
+        .watermark-drop::after {
+            content: "ENTFÄLLT!";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            font-weight: bold;
+            color: rgba(255, 0, 0, 1);
         }
     </style>
     <style>
