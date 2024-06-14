@@ -2,7 +2,7 @@
   "carouselmonitor": [
     {
       "showstart": "06.06.2024 16:00",
-      "showend": "14.06.2024 18:00",
+      "showend": "14.06.2024 00:00",
       "interval": "10000",
       "image": "/static/images/fussball.jpeg",
       "left": "5%",
