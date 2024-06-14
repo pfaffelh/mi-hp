@@ -56,7 +56,7 @@
                 item['title_en'] | safe}} {% endif %}
               </h3>
               <div
-                class="card-text {% if item['today'] %} watermark {% endif %}"
+                class="card-text {% if item['today'] %} watermark-today {% endif %}"
               >
                 {% if item['link']!= '' %}
                 <img
@@ -78,18 +78,19 @@
                 </p>
               </div>
             </div>
-          </div>
-          {% if loop.index0 %2 == 1 %}
-          <div class="float-end">
-            {% if item['image'] != "" %}
-            <img
-              src="{{ item['image'] }}"
-              alt="..."
-              style="height: 30vw; max-width: 40vw; {{ item['style'] }}"
-            />
+
+            {% if loop.index0 %2 == 1 %}
+            <div class="float-end">
+              {% if item['image'] != "" %}
+              <img
+                src="{{ item['image'] }}"
+                alt="..."
+                style="height: 30vw; max-width: 40vw; {{ item['style'] }}"
+              />
+              {% endif %}
+            </div>
             {% endif %}
           </div>
-          {% endif %}
         </div>
       </div>
     </div>
