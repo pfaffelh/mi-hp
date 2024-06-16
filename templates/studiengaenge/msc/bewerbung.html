@@ -8,7 +8,6 @@
   >. Wir fassen die Zulassungsvoraussetzungen hier zusammen:
 </p>
 <b> (1) </b>
-{% if site == "showmsc" %}
 Ein in Deutschland anerkannter
 <u
   data-bs-toggle="tooltip"
@@ -30,31 +29,15 @@ mindestens 16 ECTS-Punkte aus
 <b>Grundvorlesungen in Linearer Algebra,</b>
 <b> weiterführenden Veranstaltungen aus der Reinen Mathematik, </b>
 <b> weiterführenden Veranstaltungen aus der Angewandten Mathematik. </b>
-{% elif site == "showmscdata" %}
-Ein in Deutschland anerkannter
-<u
-  data-bs-toggle="tooltip"
-  title="Eine Mindest-Note ist nicht erforderlich. Der Abschluss muss zum Zeitpunkt der Bewerbung noch nicht vorliegen, spätestens aber zum Zeitpunkt der Einschreibung."
-  >Bachelor-Abschluss</u>, der folgende Bedingungen erfüllt:
-<br style="margin-bottom: 5px" />
-Mindestens 30 ECTS-Punkte aus fachwissenschaftlichen Lehrveranstaltungen in
-Mathematik (ggf. inklusive mathematischer Bachelor-Arbeit), darunter 
-mindestens 12 ECTS-Punkte aus dem Bereich 
-<b>Grundlagen der Analysis und Grundlagen der Linearen Algebra</b>.
-{% endif %}
 
 
 <p>
   <b> (2) </b>
   Sprachkenntnisse: 
-  {% if site == "showmsc" %}
   Niveau B2 in Deutsch und
   <u data-bs-toggle="tooltip" title="B2 bei der Profillinie Finanzmathematik"
     >B1 in Englisch</u
   >
-  {% elif site == "showmscdata" %}
-  Niveau B2 in Englisch
-  {% endif %}
   (
   <a
     href="https://www.studium.uni-freiburg.de/de/studierendenservices/sprachnachweise"
@@ -87,7 +70,7 @@ mindestens 12 ECTS-Punkte aus dem Bereich
   <li style="margin-bottom: 5px">
     Das Zeugnis des berufsqualifizierenden Hochschulabschlusses, der Grundlage
     für den Zugang zum Master-Studium ist (
-    <i> typischerweise Bachelor {% if site == showmsc %}in Mathematik{% endif %} </i>
+    <i> typischerweise Bachelor in Mathematik </i>
     ), ggf.
     <u
       data-bs-toggle="tooltip"
@@ -105,7 +88,6 @@ mindestens 12 ECTS-Punkte aus dem Bereich
   <li style="margin-bottom: 5px">
     Für Bewerber aus China, Indien und Vietnam: die APS-Bescheinigung.
   </li>
-  {% if site == "showmsc" %}
   <li style="margin-bottom: 5px">
     Nachweis über Deutschkenntnisse: mindestens Niveau B2 (
     <a
@@ -115,9 +97,8 @@ mindestens 12 ECTS-Punkte aus dem Bereich
     </a>
     )
   </li>
-  {% endif %}
   <li style="margin-bottom: 5px">
-    Nachweis über Englischkenntnisse: mindestens Niveau B{% if site == "showmsc" %}1{% elif site == "showmscdata" %}2{% endif %} (
+    Nachweis über Englischkenntnisse: mindestens Niveau B1 (
     <a
       href="https://www.studium.uni-freiburg.de/de/studierendenservices/sprachnachweise"
     >

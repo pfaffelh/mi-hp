@@ -27,7 +27,13 @@ Misaka(app, autolink=True, tables=True)
 @app.context_processor
 def handle_context():
     cur = vvz.get_current_semester_kurzname()
+    showanmeldung = {
+        "bsc": vvz.get_showanmeldung("bsc"), 
+        "msc": vvz.get_showanmeldung("msc"),
+        "mscdata": vvz.get_showanmeldung("mscdata")
+        }
     return dict(os=os, 
+                showanmeldung = showanmeldung, 
                 laufendes_semester = cur,
                 kommendes_semester = vvz.next_semester_kurzname(cur),
                 show_laufendes_semester = vvz.get_showsemester(cur), 
@@ -129,7 +135,7 @@ def showstudiengaenge(lang, anchor="aktuell"):
 @app.route("/<lang>/studiengaenge/<anchor>")
 @app.route("/<lang>/studiengaenge/<studiengang>/")
 @app.route("/<lang>/studiengaenge/<studiengang>/<anchor>")
-def showstudiengang(lang, studiengang, anchor="kurzbeschreibung"):
+def showstudiengang(lang, studiengang, anchor=""):
     if studiengang == "bsc":
         filenames = ["studiengaenge/bsc/index-2021.html"]
     if studiengang == "msc":
@@ -139,12 +145,14 @@ def showstudiengang(lang, studiengang, anchor="kurzbeschreibung"):
     if studiengang == "2hfb":
         filenames = ["studiengaenge/2hfb/index-2021.html"]
     if studiengang == "med":
+        # anchor kann sein:
+        # kurz, zulassung, dokumente, studienverlauf, modulplan
         filenames = ["studiengaenge/med/index-2018.html"]
     if studiengang == "med_erw":
         filenames = ["studiengaenge/med_erw/index-2021.html"]
     if studiengang == "promotion":
         filenames = ["studiengaenge/promotion/index.html"]
-    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
+    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor, _anchor=anchor+"Content")
 
 @app.route("/<lang>/studiengaenge/<studiengang>/news/")
 def showstudiengangnews(lang, studiengang):

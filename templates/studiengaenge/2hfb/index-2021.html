@@ -63,12 +63,12 @@
   </div>
 
   <div class="accordion accordion-flush" id="accordionExample">
-    <div class="accordion-item" id="kurz">
-      <h4 class="accordion-header" id="headerkurz">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
           aria-controls="kurzContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'kurz' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'kurz' %}collapsed{% endif %}"
           data-bs-target="#kurzContent"
           data-bs-toggle="collapse"
           type="button"
@@ -78,21 +78,21 @@
       </h4>
       <div
         aria-labelledby="kurzContent"
-        class="accordion-collapse collapse"
+        class="accordion-collapse collapse {% if anchor == 'kurz' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="kurzContent"
       >
-        <div class="accordion-body" id="kurzContent">
+        <div class="accordion-body" id="kurz">
           {% include "studiengaenge/2hfb/kurz.html" %}
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="vor">
-      <h4 class="accordion-header" id="headervor">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
           aria-controls="vorContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'bewerbung' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'bewerbung' %}collapsed{% endif %}"
           data-bs-target="#vorContent"
           data-bs-toggle="collapse"
           type="button"
@@ -102,11 +102,11 @@
       </h4>
       <div
         aria-labelledby="vorContent"
-        class="accordion-collapse collapse"
+        class="accordion-collapse collapse {% if anchor == 'bewerbung' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="vorContent"
       >
-        <div class="accordion-body" id="vorContent">
+        <div class="accordion-body" id="bewerbung">
           <p>
             Studienbeginn ist nur zum Wintersemester möglich. Das Fach
             Mathematik ist nicht zulassungsbeschränkt.
@@ -158,12 +158,12 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="dokumente">
-      <h4 class="accordion-header" id="headerdokumente">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
           aria-controls="dokumenteContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'dokumente' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'dokumente' %}collapsed{% endif %}"
           data-bs-target="#dokumenteContent"
           data-bs-toggle="collapse"
           type="button"
@@ -179,17 +179,17 @@
         data-bs-parent="#accordionExample"
         id="dokumenteContent"
       >
-        <div class="accordion-body">
+        <div class="accordion-body" id="dokumente">
           {% include "studiengaenge/2hfb/dokumente.html" %}
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="verlauf">
-      <h4 class="accordion-header" id="headerverlauf">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
           aria-controls="verlaufContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'studienverlauf' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'studienverlauf' %}collapsed{% endif %}"
           data-bs-target="#verlaufContent"
           data-bs-toggle="collapse"
           type="button"
@@ -199,11 +199,11 @@
       </h4>
       <div
         aria-labelledby="verlaufContent"
-        class="accordion-collapse collapse"
+        class="accordion-collapse collapse {% if anchor == 'studienverlauf' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="verlaufContent"
       >
-        <div class="accordion-body" id="verlaufContent">
+        <div class="accordion-body" id="studienverlauf">
           <p>
             Das Studium umfasst 180 ECTS-Punkte (Regelstudienzeit 6 Semester)
             und gliedert sich in die Bereiche:
@@ -299,13 +299,13 @@
         </div>
       </div>
     </div>
-<div class="accordion-item">
+    <div class="accordion-item">
       <h4 class="accordion-header">
         <button
-          aria-controls="modulplan"
-          aria-expanded="false"
+          aria-controls="modulplanContent"
+          aria-expanded="{% if anchor == 'modulplan' %}true{% else %}false{% endif %}"
           class="accordion-button {% if anchor != 'modulplan' %}collapsed{% endif %}"
-          data-bs-target="#modulplan"
+          data-bs-target="#modulplanContent"
           data-bs-toggle="collapse"
           type="button"
         >
@@ -315,12 +315,12 @@
         </button>
       </h4>
       <div
-        aria-labelledby="modulplan"
-        class="accordion-collapse collapse"
+        aria-labelledby="modulplanContent"
+        class="accordion-collapse collapse {% if anchor == 'modulplan' %}show{% endif %}"
         data-bs-parent="#accordionExample"
-        id="modulplan"
+        id="modulplanContent"
       >
-        <div class="accordion-body" id="afContent">
+        <div class="accordion-body" id="modulplan">
           {% include "/studiendekanat/belegung_2hfb.html" %}
         </div>
       </div>

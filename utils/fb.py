@@ -25,7 +25,7 @@ def get_openligadb_text(url, date, offset):
                 if datetime.now() > t:
                     score1 = max([0] + [i["scoreTeam1"] for i in m["goals"]])
                     score2 = max([0] + [i["scoreTeam2"] for i in m["goals"]])
-                    y = f": {score1}:{score2}" + ("" if m["matchIsFinished"] else " <blink>Spiel läuft noch</blink>")
+                    y = f": {score1}:{score2}" + ("" if m["matchIsFinished"] else " (Spiel läuft noch)")
                 ausgabe = ausgabe + "<h3>" + x + y + "</h3>"
         else:
             ausgabe = "<h2>Heute keine Spiele!</h2>"

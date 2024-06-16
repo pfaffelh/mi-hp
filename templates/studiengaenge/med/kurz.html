@@ -1,0 +1,150 @@
+<div class="container" id="featured-3">
+  <h1>Zwei-Hauptfächer-Bachelor</h1>
+  <div class="container px-4 py-1" id="featured-3">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %} Kurzprofil{% else %} Short profile {% endif %}
+          </h2>
+        </div>
+        {% if lang == "de" %}
+        <ul>
+          <li>Zweijährig und (in Mathematik) deutschsprachig.</li>
+          <li>
+            Zwei gleichberechtigte Fächer und Bildungswissenschaft; kann mit
+            allen
+            <a
+              href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher?degree=19&show=s&senden=Auswahl+anzeigen/"
+              >Schulfächern</a
+            >
+            kombinert werden (auch Musik an einer Musikhochschule oder Bildende
+            Kunst an einer Kunsthochschule).
+          </li>
+          <li>Praxisphase (13 Wochen) im dritten Semester.</li>
+          <li>
+            Masterarbeit in einer der beiden Fachwissenschaften, einer der
+            beiden Fachdidaktiken oder Bildungswissenschaft.
+          </li>
+          <li>
+            Kann auch als
+            <a
+              href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
+              >Erweiterungsfach</a
+            >
+            mit 90 oder 120 ECTS-Punkten studiert werden.
+          </li>
+        </ul>
+        {% else %}
+        <ul></ul>
+        {% endif %}
+      </div>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <!--               <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
+          <a
+            href="https://campus.uni-freiburg.de"
+            class="btn btn-primary {% if showanmeldung['med'] %} {% else %} disabled {% endif %}"
+            role="button"
+            aria-disabled="true"
+          >
+            <h2>Zur Bewerbung</h2></a
+          >
+        </div>
+        <div class="py-5">
+          {% if showanmeldung['med'] %}
+          <p>
+            Die Bewerbung erfolgt zentral über die Universität. Ende der
+            Bewerbungsfrist ist jeweils 15. Juli für das Wintersemester und 15.
+            Januar für das Sommersemester.
+          </p>
+          {% else %} Bewerbung öffnet wieder am xxx{% endif %}
+        </div>
+      </div>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-info fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %} Zulassung{% else %} Admission {% endif %}
+          </h2>
+        </div>
+        {% if lang == "de" %}
+        <ul>
+          <li>Zweijährig und deutschsprachig.</li>
+          <li>
+            Studienbeginn in Mathematik in jedem Semester möglich; kannn im
+            zweiten Fach abweichen.
+          </li>
+          <li>
+            Nicht zulassungsbeschränkt in Mathematik (kann im zweiten Fach
+            abweichen)
+          </li>
+        </ul>
+        {% else %}
+        <ul></ul>
+        {% endif %}
+      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-infinity fa-4" aria-hidden="true"></i></h2>
+          <h2>
+            {% if lang == "de" %} Mathematik{% else %}Mathematics {% endif %}
+          </h2>
+        </div>
+        {% if lang == "de" %}
+        <p>
+          In Mathematik werden in Fachwissenschaft und Fachdidaktik die für das
+          Lehramt an Gymnasien nötigen Inhalte vermittelt, die über den
+          Zwei-Hauptfächer-Bachelor-Studiengang hinausgehen. Wahlmöglichkeiten
+          erlauben eine adäquate Vorbereitung sowohl fachwissenschaftlicher als
+          auch fachdidaktischer Master-Arbeiten, in Fachwissenschaft in einem
+          Schwerpunktgebiet eigener Wahl.
+        </p>
+
+        {% else %} {% endif %}
+      </div>
+
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-infinity fa-4" aria-hidden="true"></i></h2>
+          <h2>Und danach?</h2>
+        </div>
+        <div>
+          <p>
+            Im Anschluss an den Master of Education bildet der
+            <a
+              href="https://lehrer-online-bw.de/,Lde/Startseite/vdonline/VD-Gymnasien"
+              >Vorbereitungsdienst</a
+            >
+            eine vollständige Ausbildung zur Lehrer in bzw. Lehrer an Gymnasien.
+          </p>
+        </div>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
+          <h2>Freiburg</h2>
+        </div>
+        <div>{% include "studiengaenge/freiburg.html" %}</div>
+      </div>
+    </div>
+
+    <!--    <div class="row g-4 py-5 row-cols-1 row-cols-lg-1">
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
+          <h2>Curriculum</h2>
+        </div>
+        <div>
+          {% if lang == "de" %} {% include
+          "studiengaenge/2hfb/studienverlauf-2hfb-2021.html" %} {% else %}
+          <p></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>-->
+  </div>
+</div>

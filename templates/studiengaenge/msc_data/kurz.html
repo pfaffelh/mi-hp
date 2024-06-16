@@ -44,7 +44,7 @@
           <!--               <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
           <a
             href="https://campus.uni-freiburg.de"
-            class="btn btn-primary"
+            class="btn btn-primary {% if showanmeldung['mscdata'] %} {% else %} disabled {% endif %}"
             role="button"
             aria-disabled="true"
           >
@@ -54,10 +54,15 @@
             </h2></a
           >
         </div>
-        <div class="py-3 text-center">
-          <div class="py-3 text-center">
-            <p>A detailed description of the process can be found below.</p>
-          </div>
+        <div class="py-5">
+          {% if showanmeldung['mscdata'] %}
+          <p>
+            Application closes 15.9. For application until mid of July,
+            admission will be end of July.<br />
+            A detailed description of the application process can be found
+            below.
+          </p>
+          {% else %} Applications reopen 1.6. {% endif %}
         </div>
       </div>
 

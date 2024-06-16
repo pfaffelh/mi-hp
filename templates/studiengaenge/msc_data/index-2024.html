@@ -7,16 +7,14 @@
     Modulplan, etc) finden Sie auf den Seiten des Prüfungsamts.
 
     <br />
-    Einige Fragen beantwortet das FAQ. Falls Fragen offen bleiben, wenden Sie
-    sich gerne an die
+    Einige Fragen beantwortet das
+    <a href="{{ url_for('showfaq', lang=lang) }}">FAQ</a>. Falls Fragen offen
+    bleiben, wenden Sie sich gerne an die
     <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
       Studienberatung des Mathematischen Instituts
     </a>
     (
-    <a href="mailto:studienberatung@math.uni-freiburg.de">
-      ✉
-      <!--studienberatung&#x40;&#x6d;&#x61;&#x74;&#x68;&#x2e;&#x75;&#x6e;&#x69;&#x2d;&#x66;&#x72;&#x65;&#x69;&#x62;&#x75;&#x72;&#x67;&#x2e;&#x64;&#x65;-->
-    </a>
+    <a href="mailto:studienberatung@math.uni-freiburg.de"> </a>
     ) wenden.
   </p>
 
@@ -52,12 +50,12 @@
   </div>
 
   <div class="accordion accordion-flush" id="accordionExample">
-    <div class="accordion-item" id="kurz">
-      <h4 class="accordion-header" id="headerkurz">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
           aria-controls="kurzContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'kurz' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'kurz' %}collapsed{% endif %}"
           data-bs-target="#kurzContent"
           data-bs-toggle="collapse"
           type="button"
@@ -67,7 +65,7 @@
       </h4>
       <div
         aria-labelledby="kurzContent"
-        class="accordion-collapse collapse"
+        class="accordion-collapse collapse {% if anchor == 'kurz' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="kurzContent"
       >
@@ -76,12 +74,12 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="vor">
-      <h4 class="accordion-header" id="headervor">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
           aria-controls="vorContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'bewerbung' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'bewerbung' %}collapsed{% endif %}"
           data-bs-target="#vorContent"
           data-bs-toggle="collapse"
           type="button"
@@ -91,7 +89,7 @@
       </h4>
       <div
         aria-labelledby="vorContent"
-        class="accordion-collapse collapse"
+        class="accordion-collapse collapse {% if anchor == 'bewerbung' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="vorContent"
       >
@@ -100,12 +98,12 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="dokumente">
-      <h4 class="accordion-header" id="headerdokumente">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
           aria-controls="dokumenteContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'dokumente' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'dokumente' %}collapsed{% endif %}"
           data-bs-target="#dokumenteContent"
           data-bs-toggle="collapse"
           type="button"
@@ -126,12 +124,12 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="verlauf">
-      <h3 class="accordion-header" id="headerverlauf">
+    <div class="accordion-item">
+      <h3 class="accordion-header">
         <button
           aria-controls="verlaufContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'studienverlauf' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'studienverlauf' %}collapsed{% endif %}"
           data-bs-target="#verlaufContent"
           data-bs-toggle="collapse"
           type="button"
@@ -148,7 +146,7 @@
         data-bs-parent="#accordionExample"
         id="verlaufContent"
       >
-        <div class="accordion-body">
+        <div class="accordion-body" id="studienverlauf">
           {% include "/studiengaenge/msc_data/studienverlauf.html" %}
         </div>
       </div>
@@ -156,30 +154,28 @@
     <div class="accordion-item">
       <h4 class="accordion-header">
         <button
-          aria-controls="modulplan"
-          aria-expanded="false"
+          aria-controls="modulplanContent"
+          aria-expanded="{% if anchor == 'modulplan' %}true{% else %}false{% endif %}"
           class="accordion-button {% if anchor != 'modulplan' %}collapsed{% endif %}"
-          data-bs-target="#modulplan"
+          data-bs-target="#modulplanContent"
           data-bs-toggle="collapse"
           type="button"
         >
-          <a
-            href="{{ url_for('showpruefungsamt', lang=lang, unterseite='modulplan', anchor='mscdata') }}"
-            class="link-dark"
-          >
-            <h3 class="h5">
-              {% if lang == 'de' %}Modulplan{% else %}Plan of modules{% endif %}
-            </h3></a
-          >
+          <h3 class="h5">
+            {% if lang == 'de' %}Modulplan{% else %}Plan of modules{% endif %}
+          </h3>
         </button>
       </h4>
       <div
-        aria-labelledby="modulplan"
-        class="accordion-collapse collapse"
+        aria-labelledby="modulplanContent"
+        class="accordion-collapse collapse {% if anchor == 'modulplan' %}show{% endif %}"
         data-bs-parent="#accordionExample"
-        id="modulplan"
-      ></div>
+        id="modulplanContent"
+      >
+        <div class="accordion-body" id="modulplan">
+          {% include "/studiendekanat/belegung_mscdata.html" %}
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

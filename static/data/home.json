@@ -12,7 +12,7 @@
     },
     {
       "showstart": "06.06.2024 16:00",
-      "showend": "14.06.2024 18:00",
+      "showend": "14.06.2024 16:00",
       "interval": "4000",
       "image": "/static/images/grapes-2000.jpg",
       "left": "10%",
@@ -101,6 +101,24 @@
   ],
   "news": [
     {
+      "id": "stadtradeln",
+      "showhomestart": "17.06.2000 00:00",
+      "showhomeend": "24.06.2024 00:00",
+      "showmonitorstart": "17.06.2000 00:00",
+      "showmonitorend": "24.06.2024 00:00",
+      "title_de": "Mach mit beim Stadtradeln!",
+      "title_en": "",
+      "image": "/static/images/bicycles.jpg",
+      "style": "height: 20vw; object-fit: cover",
+      "link": "https://www.stadtradeln.de/index.php?id=171&L=0&team_preselect=59758",
+      "popover_title_de": "",
+      "popover_title_en": "",
+      "popover_text_de": "",
+      "popover_text_en": "",
+      "text_de": "... und tritt dem Team <strong>Mathematisches Institut</strong> der Fachschaft bei! (Laufzeit: 17.6.-7.7.)",
+      "text_en": ""
+    },
+    {
       "id": "alumni3",
       "showhomestart": "17.06.2000 00:00",
       "showhomeend": "24.06.2024 00:00",
@@ -160,7 +178,7 @@
       "showhomeend": "20.06.2024 15:00",
       "showmonitorstart": "17.06.2000 00:00",
       "showmonitorend": "20.06.2024 15:00",
-      "title_de": "Werde Tutor*in!",
+      "title_de": "<h1>Werde Tutor*in!</h1>",
       "title_en": "",
       "image": "/static/images/Studierende_im_Hoersaal.jpg",
       "style": "height: 25vw; object-fit: cover",

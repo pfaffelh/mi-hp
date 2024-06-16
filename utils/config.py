@@ -1,6 +1,7 @@
 import socket
 import netrc
 import os
+from datetime import datetime
 
 hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
@@ -87,3 +88,9 @@ studiengaenge = {"all": "alle Studiengänge",
                     "mederw": "Master of Education Mathematik Erweiterungsfach",
                     "meddual": "Masterstudiengang Lehramt Gymnasium – dual"
                     }
+
+bewerbungsdaten = {
+    "bsc": [{"start": "01.08.", "end": "30.10."}],
+    "msc": [{"start": "01.06.", "end": "15.09."}, {"start": "01.02.", "end": "15.03."}],
+    "mscdata": [{"start": "01.06.", "end": "15.09."}]
+}

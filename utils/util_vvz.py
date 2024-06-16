@@ -32,6 +32,19 @@ except:
 # a dict with the shortnames as keys, where each value is a list of triples (id, q, a), which contains the information for each question in each category (qa_pairs). 
 # recall that category and qa come with a variable rang: int, which serves to order the categories and qa-pairs. 
 
+def get_showanmeldung(studiengang):
+    year = datetime.now().year
+    date_format = '%d.%m.'
+    res = False
+    for b in bewerbungsdaten[studiengang]:
+        loc_start = datetime.strptime(b["start"], date_format)
+        loc_start = datetime(year, loc_start.month, loc_start.day)
+        loc_end = datetime.strptime(b["end"], date_format)
+        loc_end = datetime(year, loc_end.month, loc_end.day)
+        if loc_start < datetime.now() and datetime.now() < loc_end:
+            res = True
+    return res
+
 def get_showsemester(shortname):
     # Gibt es ein sichtbares Semester mit shortname?
     b = vvz_semester.find_one({"kurzname": shortname, "hp_sichtbar": True })
