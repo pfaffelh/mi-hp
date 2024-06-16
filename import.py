@@ -29,9 +29,17 @@ files = [
     #     "target": "templates/index.html"
     # },
     {
-        "source": "https://www.math.uni-freiburg.de/lehre/promotion.html",
-        "target": "templates/studiengaenge/promotion/index.html"
+        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-meh-2021.html",
+        "target": "templates/studiengaenge/med_erw/studienverlauf-meh-2021.html"
+    },
+    {
+        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-meb-2021.html",
+        "target": "templates/studiengaenge/med_erw/studienverlauf-meb-2021.html"
     }
+    #{
+    #    "source": "https://www.math.uni-freiburg.de/lehre/promotion.html",
+    #    "target": "templates/studiengaenge/promotion/index.html"
+    #}
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/mathematikinteresse.html",
     #     "target": "templates/interesse/prospective.html"

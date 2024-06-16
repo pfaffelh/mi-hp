@@ -16,26 +16,23 @@
       >Vorbereitungsdienst</a
     >
     (Referendariat) an.
-
     <br />
-    Alle Lehramts-Studierende since Mitglied im
+    Alle Studierende im Master of Education sind Mitglied im
     <a href="https://www.face-freiburg.de/"
-      ><i>Freiburger Advanced Center of Education (FACE)</i></a
-    >. Hier finden Sie auch weitere Informationen rund um das Lehramt.
+      >Freiburger Advanced Center of Education (FACE)</a
+    >. Dort finden Sie auch weitere Informationen rund um das Lehramt.
     <br />
     Fragen der Studienorganisation (Belegung, Prüfungsanmeldung, detaillierter
-    Modulplan, etc) finden Sie auf den Seiten des Prüfungsamts.
-
+    Modulplan, etc) finden Sie auf den Seiten des
+    <a href="{{ url_for('showpruefungsamtbase', lang=lang) }}">Prüfungsamts</a>.
     <br />
     Einige Fragen beantwortet das
     <a href="{{ url_for('showfaq', lang=lang) }}">FAQ</a>. Falls Fragen offen
     bleiben, wenden Sie sich gerne an die
-    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+    <a href="{{ url_for('showstudienberatungbase', lang=lang) }}">
       Studienberatung des Mathematischen Instituts
     </a>
-    (
-    <a href="mailto:studienberatung@math.uni-freiburg.de"> </a>
-    ) wenden.
+    wenden.
   </p>
 
   <div class="container text-end">
@@ -50,7 +47,7 @@
           FAQ
         </a>
         <a
-          href="mailto:studienberatung@math.uni-freiburg.de"
+          href="{{ url_for('showstudienberatungbase', lang=lang) }}"
           class="btn btn-primary"
           role="button"
           aria-disabled="true"

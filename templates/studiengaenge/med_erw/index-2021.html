@@ -7,11 +7,10 @@
   <img src="https://www.math.uni-freiburg.de/lehre/bilder/Freikon23359a-Thomas_Kunz_2007-Ausschnitt.jpg" title="Im Hörsaal Rundbau (Foto: Thomas Kunz, Ausschnitt)" alt="Im Hörsaal Rundbau (Foto: Thomas Kunz, Ausschnitt)" style="width:100%;">
 </p>-->
   <p>
-    Der <i> Master of Education Erweiterungsfach </i>
-    ist für Studierende, die Mathematik als Drittfach im Gymnasium unterrichten
-    wollen.
+    Der Master of Education Erweiterungsfach ist für Studierende, die Mathematik
+    als Drittfach im Gymnasium unterrichten wollen.
     <br />
-    Der Studiengang wird in drei Varianten angeboten:
+    Der Studiengang wird in verschiedenen Varianten angeboten:
   </p>
   <ul>
     <li>
@@ -19,10 +18,10 @@
       sowohl in Sekundarstufe 1 als auch Sekundarstufe 2 unterrichten (also
       genau so als wäre Mathematik das Erst- oder Zweitfach).
     </li>
-    <li>
+    <!--    <li>
       Hauptfachvariante mit Zertifikatsoption: Wird in der Hauptfachvariante
       keine Master-Arbeit angefertigt, xxx.
-    </li>
+    </li>-->
     <li>
       Beifachvariante mit 90 ECTS-Punkten: Absolventen dieser Variante können
       nur in Sekundarstufe 1 unterrichten.
@@ -30,8 +29,9 @@
   </ul>
   <p>
     Falls Fragen offen bleiben, können Sie sich gerne an die
-    <a href="{{ url_for('showstudienberatungbase', lang=lang) }}"> </a>
-    <a href="mailto:studienberatung@math.uni-freiburg.de"> Studienberatung </a>
+    <a href="{{ url_for('showstudienberatungbase', lang=lang) }}">
+      Studienberatung
+    </a>
     wenden.
   </p>
 
@@ -47,7 +47,7 @@
           FAQ
         </a>
         <a
-          href="mailto:studienberatung@math.uni-freiburg.de"
+          href="{{ url_for('showstudienberatungbase', lang=lang) }}"
           class="btn btn-primary"
           role="button"
           aria-disabled="true"
@@ -74,10 +74,9 @@
     </div>
   </div>
 
-  <p></p>
   <div class="accordion accordion-flush" id="accordionExample">
     <div class="accordion-item">
-      <h3 class="accordion-header">
+      <h4 class="accordion-header">
         <button
           aria-controls="kurzContent"
           aria-expanded="{% if anchor == 'kurz' %}true{% else %}false{% endif %}"
@@ -86,9 +85,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Kurzbeschreibung des Studiengangs
+          <h3 class="h5">Kurzbeschreibung</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="kurzContent"
         class="accordion-collapse collapse {% if anchor == 'kurz' %}show{% endif %}"
@@ -96,60 +95,162 @@
         id="kurzContent"
       >
         <div class="accordion-body" id="kurz">
-          <p>
-            Der Studiengang ermöglicht das Studium eines dritten Fachs für das
-            Lehramt an Gymnasien. Er kann bereits begonnen werden, während man
-            die beiden ersten Fächer noch im Poylvalenten
-            Zwei-Hauptfächer-Bachelor-Studiengang studiert. Der Studiengang ist
-            deutschsprachig.
-          </p>
-          <p>
-            Es gibt den Studiengang in einer "Hauptfachvariante"
-            (120 ECTS-Punkte) für die volle Lehrbefähigung und in einer
-            "Beifachvariante" (90 ECTS-Punkte) für die Lehrbefähigung der
-            Sekundarstufe I.
-            <br />
-            Idealerweise sollte man mit dem Erweiterungsfach beginnen, während
-            man noch die beiden ersten Hauptfächer studiert, und den Studiengang
-            auf mehrere Jahre strecken,
-          </p>
-          <p>
-            <a
-              href="studienverlauf-meh-2021.html"
-              rel="noopener"
-              target="_blank"
-            >
-              <img
-                alt="Beispielhafter Studienverlauf im Master-of-Education-Studiengang Mathematik als Erweiterungsfach, 120 ECTS-Punkte"
-                src="https://www.math.uni-freiburg.de/lehre/bilder/MEH21.png"
-                style="width: 35%; float: right"
-                title="Beispielhafter Studienverlauf im Master-of-Education-Studiengang Mathematik als Erweiterungsfach, 120 ECTS-Punkte"
-              />
-            </a>
-          </p>
+          <div class="container" id="featured-3">
+            <h1>Master of Education, Mathematik als Erweiterungsfach</h1>
+            <div class="container px-4 py-1" id="featured-3">
+              <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+                <div class="feature col">
+                  <div class="feature-icon bg-gradient text-center">
+                    <h2>
+                      <i class="fa fa-pencil fa-4" aria-hidden="true"></i>
+                    </h2>
+                    <h2>
+                      {% if lang == "de" %} Kurzprofil{% else %} Short profile
+                      {% endif %}
+                    </h2>
+                  </div>
+                  {% if lang == "de" %}
+                  <ul>
+                    <li>(In Mathematik) deutschsprachig.</li>
+                    <li>
+                      Der Studiengang kann bereits begonnen werden, während man
+                      die beiden ersten Fächer noch im Poylvalenten
+                      Zwei-Hauptfächer-Bachelor-Studiengang studiert.
+                    </li>
+                    <li>
+                      Es gibt die "Hauptfachvariante" (120 ECTS-Punkte) für die
+                      volle Lehrbefähigung und die "Beifachvariante" (90
+                      ECTS-Punkte) für die Lehrbefähigung der Sekundarstufe I.
+                    </li>
+                    <li>
+                      Beginn idealerweise während man noch die beiden ersten
+                      Hauptfächer studiert, um den Studiengang auf mehrere Jahre
+                      zu strecken.
+                    </li>
+                  </ul>
+                  {% else %}
+                  <ul></ul>
+                  {% endif %}
+                </div>
+
+                <div class="feature col">
+                  <div class="feature-icon bg-gradient text-center">
+                    <!--               <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
+                    <a
+                      href="https://campus.uni-freiburg.de"
+                      class="btn btn-primary {% if showanmeldung['med'] %} {% else %} disabled {% endif %}"
+                      role="button"
+                      aria-disabled="true"
+                    >
+                      <h2>Zur Bewerbung</h2></a
+                    >
+                  </div>
+                  <div class="py-5">
+                    {% if showanmeldung['med'] %}
+                    <p>
+                      Die Bewerbung erfolgt zentral über die Universität. Ende
+                      der Bewerbungsfrist ist jeweils 15. Juli für das
+                      Wintersemester und 15. Januar für das Sommersemester.
+                      (Ein- bzw. Umschreibungen in höhere Fachsemester sind noch
+                      bis ca. zwei Wochen vor Vorlesungsbeginn möglich).
+                    </p>
+                    {% else %} Bewerbung öffnet wieder am xxx{% endif %}
+                  </div>
+                </div>
+
+                <div class="feature col">
+                  <div class="feature-icon bg-gradient text-center">
+                    <h2><i class="fa fa-info fa-4" aria-hidden="true"></i></h2>
+                    <h2>
+                      {% if lang == "de" %} Zulassung{% else %} Admission {%
+                      endif %}
+                    </h2>
+                  </div>
+                  {% if lang == "de" %}
+                  <ul>
+                    <li>Zweijährig und deutschsprachig.</li>
+                    <li>
+                      Studienbeginn nur im Wintersemester möglich; Einstieg in
+                      ein höheres Fachsemester auch zum Sommer­semester.
+                    </li>
+                  </ul>
+                  {% else %}
+                  <ul></ul>
+                  {% endif %}
+                </div>
+                <div class="feature col">
+                  <div class="feature-icon bg-gradient text-center">
+                    <h2>
+                      <i class="fa fa-infinity fa-4" aria-hidden="true"></i>
+                    </h2>
+                    <h2>
+                      {% if lang == "de" %} Mathematik{% else %}Mathematics {%
+                      endif %}
+                    </h2>
+                  </div>
+                  {% if lang == "de" %}
+                  <p>
+                    In der Hauptfachvariante gibt es dieselben Inhalte wie im
+                    MEd. In der Beifachvariante fallen ein paar Veranstaltungen
+                    weg, etwa Stochastik II, Numerik II und die Erweiterung der
+                    Analysis.
+                  </p>
+
+                  {% else %} {% endif %}
+                </div>
+
+                <div class="feature col">
+                  <div class="feature-icon bg-gradient text-center">
+                    <h2>
+                      <i class="fa fa-infinity fa-4" aria-hidden="true"></i>
+                    </h2>
+                    <h2>Und danach?</h2>
+                  </div>
+                  <div>
+                    <p>
+                      Im Anschluss an den Master of Education bildet der
+                      <a
+                        href="https://lehrer-online-bw.de/,Lde/Startseite/vdonline/VD-Gymnasien"
+                        >Vorbereitungsdienst</a
+                      >
+                      eine vollständige Ausbildung zur Lehrer in bzw. Lehrer an
+                      Gymnasien.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature col">
+                  <div class="feature-icon bg-gradient text-center">
+                    <h2>
+                      <i class="fa fa-compass fa-4" aria-hidden="true"></i>
+                    </h2>
+                    <h2>Freiburg</h2>
+                  </div>
+                  <div>{% include "studiengaenge/freiburg.html" %}</div>
+                </div>
+              </div>
+
+              <!--    <div class="row g-4 py-5 row-cols-1 row-cols-lg-1">
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
+          <h2>Curriculum</h2>
+        </div>
+        <div>
+          {% if lang == "de" %} {% include
+          "studiengaenge/2hfb/studienverlauf-2hfb-2021.html" %} {% else %}
           <p></p>
-          <ul>
-            <li>
-              In
-              <b> Mathematik </b>
-              werden in Fachwissenschaft und Fachdidaktik die für das Lehramt an
-              Gymnasien nötigen Inhalte vermittelt. In der Hauptfachvariante
-              erlauben Wahlmöglichkeiten eine adäquate Vorbereitung sowohl
-              fachwissenschaftlicher als auch fachdidaktischer Master-Arbeiten,
-              in Fachwissenschaft in einem Schwerpunktgebiet eigener Wahl.
-            </li>
-            <li>
-              Die
-              <b> Master-Arbeit </b>
-              kann in der Hauptfachvariante nach Wahl in Fachwissenschaft oder
-              Fachdidaktik geschrieben werden kann.
-            </li>
-          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>-->
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="accordion-item">
-      <h3 class="accordion-header">
+      <h4 class="accordion-header">
         <button
           aria-controls="bewerbungContent"
           aria-expanded="{% if anchor == 'bewerbung' %}true{% else %}false{% endif %}"
@@ -158,9 +259,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Studienbeginn, Bewerbung und Zulassung
+          <h3 class="h5">Studienbeginn, Bewerbung und Zulassung</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="bewerbungContent"
         class="accordion-collapse collapse {% if anchor == 'bewerbung' %}show{% endif %}"
@@ -260,80 +361,193 @@
       </div>
     </div>
     <div class="accordion-item">
-      <h3 class="accordion-header">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="linksContent"
+          aria-expanded="{% if anchor == 'dokumente' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'dokumente' %}collapsed{% endif %}"
+          data-bs-target="#linksContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Dokumente</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="linksContent"
+        class="accordion-collapse collapse {% if anchor == 'dokumente' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="linksContent"
+      >
+        <div class="accordion-body" id="dokumente">
+          <p>
+            Alle rechtlich verbindlichen Dokumente gibt es für die
+            <a
+              href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/747#collapse-Satzungen"
+              >Hauptfachvariante</a
+            >
+            und für die
+            <a
+              href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/748#collapse-Satzungen"
+              >Beifachvariante</a
+            >
+          </p>
+          <div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
+            <div class="col">
+              <div class="card h-100">
+                <center>
+                  <img
+                    src="/static/images/zulassungsordnung.jpg"
+                    class="card-img-fluid"
+                    alt="..."
+                    style="height: 15vw; object-fit: cover"
+                  />
+                </center>
+                <div class="card-body">
+                  <h3 class="h5">
+                    <a
+                      href="https://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/zulassungsordnungen/zulassungsordnung-m.ed.-erweiterungsfach-mathematik.pdf"
+                      >Zulassungsordnung</a
+                    >
+                  </h3>
+                  <div class="card-text">
+                    <p>
+                      Diese Ordnung regelt allgemein die Zulassung zum Master of
+                      Education Erweiterungsfach in Mathematik.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100">
+                <center>
+                  <img
+                    src="/static/images/ordnung.jpg"
+                    class="card-img-fluid"
+                    alt="..."
+                    style="height: 15vw; object-fit: cover"
+                  />
+                </center>
+                <div class="card-body">
+                  <h3 class="h5">Prüfungsordnung</h3>
+                  <div class="card-text">
+                    <ul>
+                      <li>
+                        In der
+                        <a
+                          href="https://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/pruefungsordnungen/master_of_education/studien-und-pruefungsordnung-m.ed.-erweiterungsfach.pdf"
+                        >
+                          <i>Rahmenprüfungsordnung</i></a
+                        >
+                        sind Regeln festgehalten, die für alle MEd
+                        Erweiterungsfach Studiengänge gelten.
+                      </li>
+                      <li>
+                        Die fachspezifischen Teile für die
+                        <a
+                          href="https://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/pruefungsordnungen/master_of_education/m.ed.-erweiterungsfach-mathematik-120-ects-punkte.pdf"
+                          >Hauptfachvariante
+                        </a>
+                        und die
+                        <a
+                          href="https://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/pruefungsordnungen/master_of_education/m.ed.-erweiterungsfach-mathematik-90-ects-punkte.pdf"
+                          >Beifachvariante
+                        </a>
+                        regeln die hier weiter ausgeführten speziellen
+                        Regelungen.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100">
+                <center>
+                  <img
+                    src="/static/images/modulhandbuch.jpg"
+                    class="card-img-fluid"
+                    alt="..."
+                    style="height: 15vw; object-fit: cover"
+                  />
+                </center>
+                <div class="card-body">
+                  <h3 class="h5">Modulhandbuch</h3>
+                  <p class="card-text">
+                    Die Modulhandbücher für die
+                    <a
+                      href="{{url_for('static', filename='pdf/studiengaenge/med_erw/Modulhandbuch-Mathematik-MEH21-2022.05.22.pdf')}}"
+                      >Hauptfachvariante</a
+                    >
+                    und die
+                    <a
+                      href="{{url_for('static', filename='pdf/studiengaenge/med_erw/Modulhandbuch-Mathematik-MEB21-2022.05.22.pdf')}}"
+                      >Beifachvariante</a
+                    >
+                    beschreiben etwas genauer die Anforderungen in den einzennen
+                    Modulen. Welche Wahlmöglichkeiten Sie in den Modulen haben,
+                    ist semesterweise in den aktuellen
+                    <a
+                      href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
+                      >Ergänzungen der Modulhandbücher</a
+                    >
+                    beschrieben. Kompakt findet sich die Information in den
+                    Verwendungstabellen.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
           aria-controls="verlaufContent"
-          aria-expanded="{% if anchor == 'studienverlauf' %}true{% else %}false{% endif %}"
-          class="accordion-button {% if anchor != 'studienverlauf' %}collapsed{% endif %}"
+          aria-expanded="{% if anchor == 'studienverlaufhf' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'studienverlaufhf' %}collapsed{% endif %}"
           data-bs-target="#verlaufContent"
           data-bs-toggle="collapse"
           type="button"
         >
-          Aufbau des Studiengangs und Studienverlauf
+          <h3 class="h5">
+            Studienverlauf für die "Hauptfachvariante" (120 ECTS)
+          </h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="verlaufContent"
-        class="accordion-collapse collapse {% if anchor == 'studienverlauf' %}show{% endif %}"
+        class="accordion-collapse collapse {% if anchor == 'studienverlaufhf' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="verlaufContent"
       >
-        <div class="accordion-body" id="studienverlauf">
+        <div class="accordion-body" id="studienverlaufhf">
           <p>
-            Das Studium umfasst in der „Hauptfachvariante“ 120 ECTS-Punkte in
-            der „Beifachvariante“ 90 ECTS-Punkte und gliedert sich in die
-            Bereiche:
+            Das Studium umfasst in der „Hauptfachvariante“ 120 ECTS-Punkte und
+            gliedert sich in die Bereiche:
           </p>
           <ul>
             <li>
               <b> Fachwissenschaft </b>
-              (90 Punkte bzw. 75 Punkte)
+              (90 ECTS)
             </li>
             <li>
               <b> Fachdidaktik </b>
-              (15 Punkte)
+              (15 ECTS)
             </li>
             <li>
               <b> Master-Arbeit </b>
-              in Mathematik (Fachdidaktik oder Fachwissenschaft, 15 Punkte)
+              in Mathematik (Fachdidaktik oder Fachwissenschaft, 15 ECTS)
               <br />
-              In der Beifachvariante sind rein fachdidaktische Master-Arbeiten
-              nicht möglich.
             </li>
           </ul>
-          Beispielhafter Studienverlauf in der Hauptfachvariante:
-          <center>
-            <a
-              href="studienverlauf-meh-2021.html"
-              rel="noopener"
-              target="_blank"
-            >
-              <img
-                alt="Beispielhafter Studienverlauf im Master-of-Education-Studiengang Mathematik als Erweiterungsfach, 120 ECTS-Punkte"
-                src="https://www.math.uni-freiburg.de/lehre/bilder/MEH21.png"
-                style="width: 80%"
-                title="Beispielhafter Studienverlauf im Master-of-Education-Studiengang Mathematik als Erweiterungsfach, 120 ECTS-Punkte"
-              />
-            </a>
-          </center>
-          Beispielhafter Studienverlauf in der Beifachvariante:
-          <center>
-            <a
-              href="studienverlauf-meb-2021.html"
-              rel="noopener"
-              target="_blank"
-            >
-              <img
-                alt="Beispielhafter Studienverlauf im Master-of-Education-Studiengang Mathematik, 90 ECTS-Punkte"
-                src="https://www.math.uni-freiburg.de/lehre/bilder/MEB21.png"
-                style="width: 80%"
-                title="Beispielhafter Studienverlauf im Master-of-Education-Studiengang Mathematik als Erweiterungsfach, 90 ECTS-Punkte"
-              />
-            </a>
-          </center>
+          Beispielhafter Studienverlauf in der Hauptfachvariante: {% include
+          "/studiengaenge/med_erw/studienverlauf-meh-2021.html" %}
           <p>
-            Diese Pläne sind
-            <b> nur Orientierungshilfen! </b>
+            Dieser Pläne ist
+            <b> nur eine Orientierungshilfen! </b>
             Der tatsächliche Studienverlauf kann flexibel gestaltet werden. Nach
             Möglichkeit sollte das Studium auf mehrere Jahre gestreckt werden.
             <br />
@@ -345,13 +559,13 @@
             die Studiensemester verteilt werden. Inhaltliche Abhängigkeiten der
             Module voneinander sind im
             <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
+              href="{{url_for('static', filename='pdf/studiengaenge/med_erw/Modulhandbuch-Mathematik-MEH21-2022.05.22.pdf')}}"
             >
               Modulhandbuch
             </a>
             beschrieben. Für die Studiumsplanung können auch die
             <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2015.html#verlauf"
+              href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor='studienverlauf', _anchor = 'studienverlauf')}}"
             >
               Studienplanvarianten im Zwei-Hauptfächer-Bachelor
             </a>
@@ -361,210 +575,79 @@
       </div>
     </div>
     <div class="accordion-item">
-      <h3 class="accordion-header">
+      <h4 class="accordion-header">
         <button
-          aria-controls="linksContent"
-          aria-expanded="{% if anchor == 'dokumente' %}true{% else %}false{% endif %}"
-          class="accordion-button {% if anchor != 'dokumente' %}collapsed{% endif %}"
-          data-bs-target="#linksContent"
+          aria-controls="verlaufContent"
+          aria-expanded="{% if anchor == 'studienverlaufbf' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'studienverlaufbf' %}collapsed{% endif %}"
+          data-bs-target="#verlaufContent"
           data-bs-toggle="collapse"
           type="button"
         >
-          Dokumente und Links
+          <h3 class="h5">Studienverlauf für die "Beifachvariante" (90 ECTS)</h3>
         </button>
-      </h3>
+      </h4>
       <div
-        aria-labelledby="linksContent"
-        class="accordion-collapse collapse {% if anchor == 'dokumente' %}show{% endif %}"
+        aria-labelledby="verlaufContent"
+        class="accordion-collapse collapse {% if anchor == 'studienverlaufhf' %}show{% endif %}"
         data-bs-parent="#accordionExample"
-        id="linksContent"
+        id="verlaufContent"
       >
-        <div class="accordion-body" id="dokumente">
+        <div class="accordion-body" id="studienverlaufbf">
           <p>
-            <b> Beratung: </b>
+            Das Studium umfasst in der „Beifachvariante“ 90 ECTS-Punkte und
+            gliedert sich in die Bereiche:
           </p>
           <ul>
             <li>
-              <a
-                href="https://www.math.uni-freiburg.de/lehre/studienberatung.html"
-              >
-                Studienberatung Mathematik
-              </a>
+              <b> Fachwissenschaft </b>
+              (75 ECTS)
             </li>
             <li>
-              <a href="https://www.face-freiburg.de/studium-lehre/beratung/">
-                Studienberatung Lehramt
-              </a>
-              beim
-              <a href="https://www.face-freiburg.de">
-                „Freiburg Advanced Center of Education“ (FACE)
-              </a>
+              <b> Fachdidaktik </b>
+              (15 ECTS)
             </li>
             <li>
-              <a href="https://www.studium.uni-freiburg.de/de/beratung">
-                Zentrale Studienberatung der Uni
-              </a>
+              <b> Master-Arbeit </b>
+              in Mathematik (Fachdidaktik oder Fachwissenschaft, 15 ECTS)
+              <br />
+              In der Beifachvariante sind rein fachdidaktische Master-Arbeiten
+              nicht möglich.
             </li>
           </ul>
+          Beispielhafter Studienverlauf in der Beifachvariante: {% include
+          "/studiengaenge/med_erw/studienverlauf-meb-2021.html" %}
           <p>
-            <b> Computersysteme: </b>
+            Dieser Plan ist
+            <b> nur eine Orientierungshilfe! </b>
+            Der tatsächliche Studienverlauf kann flexibel gestaltet werden. Nach
+            Möglichkeit sollte das Studium auf mehrere Jahre gestreckt werden.
+            <br />
+            Es gibt keine formalen Abfolgebedingungen für die
+            Mathematikveranstaltungen oder Festlegungen auf bestimmte
+            Fachsemester. Die Grundvorlesungen in Analysis und Linearer Algebra
+            stehen am Anfang; die darauf aufbauenden weiterführenden Vorlesungen
+            sind im Wesentlichen unabhängig voneinander und können beliebig auf
+            die Studiensemester verteilt werden. Inhaltliche Abhängigkeiten der
+            Module voneinander sind im
+            <a
+              href="{{url_for('static', filename='pdf/studiengaenge/med_erw/Modulhandbuch-Mathematik-MEB21-2022.05.22.pdf')}}"
+            >
+              Modulhandbuch
+            </a>
+            beschrieben. Für die Studiumsplanung können auch die
+            <a
+              href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor='studienverlauf', _anchor = 'studienverlauf')}}"
+            >
+              Studienplanvarianten im Zwei-Hauptfächer-Bachelor
+            </a>
+            helfen.
           </p>
-          <ul>
-            <li>
-              Campus-Management-System
-              <a href="https://campus.uni-freiburg.de"> HISinOne </a>
-              mit Anleitungen im
-              <a
-                href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:studieren:start"
-              >
-                Campus Management Wiki
-              </a>
-            </li>
-            <li>
-              Lernplattform
-              <a href="https://ilias.uni-freiburg.de"> ILIAS </a>
-            </li>
-            <li>
-              <a href="https://myaccount.uni-freiburg.de"> myAccount </a>
-              : Verwaltung des eigenen Uni-Accounts
-            </li>
-          </ul>
-          <p>
-            <b> Lehrveranstaltungen </b>
-            :
-          </p>
-          <ul style="margin-top: -7px">
-            <li>
-              <a
-                href="https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten/"
-              >
-                Semester- und Vorlesungszeiten
-              </a>
-            </li>
-            <li>
-              <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
-                Vorlesungsverzeichnis Mathematik
-              </a>
-              mit Kommentaren
-            </li>
-            <li>
-              <a
-                href="https://campus.uni-freiburg.de/qisserver/pages/cm/exa/coursecatalog/showCourseCatalog.xhtml?_flowId=showCourseCatalog-flow"
-              >
-                Vorlesungsverzeichnis der Universität
-              </a>
-              in HISinOne
-            </li>
-            <li style="margin-top: 10px">
-              <a
-                href="https://www.international.uni-freiburg.de/de/european-campus"
-              >
-                Eucor – The European Campus / Le Campus Européen
-              </a>
-            </li>
-            <li>
-              <a href="https://www.sli.uni-freiburg.de/">
-                Sprachlehrinstitut (SLI)
-              </a>
-            </li>
-            <li>
-              <a href="https://www.studiumgenerale.uni-freiburg.de/">
-                Studium generale
-              </a>
-            </li>
-          </ul>
-          <p>
-            <b> Modulhandbuch und Studienplanung </b>
-            :
-          </p>
-          <ul style="margin-top: -7px">
-            <li>
-              <a
-                href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-              >
-                Modulhandbücher
-              </a>
-              mit den Anforderungen an Studien- und Prüfungsleistungen in den
-              Lehrveranstaltungen
-            </li>
-            <li>
-              <a
-                href="https://www.math.uni-freiburg.de/lehre/dokumente/uebersicht-vorlesungen.pdf"
-              >
-                Überblick über die regelmäßig angebotenen Mathematik-Vorlesungen
-              </a>
-            </li>
-          </ul>
-          <p>
-            <b> Prüfungen / Prüfungsordnung: </b>
-          </p>
-          <ul style="margin-top: -7px">
-            <li>
-              <a href="../pruefungsamt/termine.html"> Anmeldefristen </a>
-            </li>
-            <li>
-              <a
-                href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/abschlussarbeiten.html"
-              >
-                Master-Arbeit
-              </a>
-            </li>
-            <!--      <li> <a href="../pruefungsamt/pruefungen.html#2hfb21">Erläuterungen zu den Prüfungen</a> </li> -->
-            <li>
-              <a href="../pruefungsamt/termine.html">
-                Prüfungsamt Mathematik
-              </a>
-              (zuständig für Prüfungen in den Mathematik-Modulen)
-              <br style="margin-bottom: 5px" />
-              <a
-                href="https://www.face-freiburg.de/studium-lehre/zentrales-pruefungsamt-m-ed-uni/"
-              >
-                Zentrales Prüfungsamt
-              </a>
-              (zuständig für die Abschlussdokumente)
-            </li>
-            <li>
-              <a
-                href="../dokumente/MEd_Erweiterungsfach120-Pruefungsordnung-Mathematik-2021.06.30.pdf"
-              >
-                Prüfungsordnung Mathematik, 120 ECTS-Punkten
-              </a>
-              —
-              <a
-                href="../dokumente/MEd_Erweiterungsfach90-Pruefungsordnung-Mathematik-2021.07.28.pdf"
-              >
-                Prüfungsordnung Mathematik, 90 ECTS-Punkten
-              </a>
-              <br style="margin-bottom: 5px" />
-              Prüfungsordnung allgemeiner Teil, Zulassungsordnung Mathematik:
-              <a
-                href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/747#collapse-Satzungen"
-              >
-                120 ECTS-Punkte
-              </a>
-              —
-              <a
-                href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/748#collapse-Satzungen"
-              >
-                90 ECTS-Punkte
-              </a>
-            </li>
-          </ul>
-          <p>
-            <b> Weitere Links: </b>
-          </p>
-          <ul style="margin-top: -7px">
-            <li>
-              <a href="https://www.ph-freiburg.de">
-                Pädagogische Hochschule Freiburg
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
     <div class="accordion-item">
-      <h3 class="accordion-header">
+      <h4 class="accordion-header">
         <button
           aria-controls="studienplanmehContent"
           aria-expanded="{% if anchor == 'studienverlaufmeh' %}true{% else %}false{% endif %}"
@@ -573,10 +656,11 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Studienplan mit Erläuterungen für die "Hauptfachvariante"
-          (120 ECTS-Punkte)
+          <h3 class="h5">
+            Studienplan für die "Hauptfachvariante" (120 ECTS-Punkte)
+          </h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="studienplanmehContent"
         class="accordion-collapse collapse {% if anchor == 'studienverlaufmeh' %}show{% endif %}"
@@ -1066,7 +1150,7 @@
       </div>
     </div>
     <div class="accordion-item">
-      <h3 class="accordion-header">
+      <h4 class="accordion-header">
         <button
           aria-controls="studienplanmebContent"
           aria-expanded="{% if anchor == 'studienverlaufmeb' %}true{% else %}false{% endif %}"
@@ -1075,10 +1159,11 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Studienplan mit Erläuterungen für die "Beifachvariante"
-          (90 ECTS-Punkte)
+          <h3 class="h5">
+            Studienplan für die "Beifachvariante" (90 ECTS-Punkte)
+          </h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="studienplanmebContent"
         class="accordion-collapse collapse {% if anchor == 'studienverlaufmeb' %}show{% endif %}"
@@ -1447,6 +1532,58 @@
               </td>
             </tr>
           </table>
+        </div>
+      </div>
+    </div> 
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="modulplanhfContent"
+          aria-expanded="{% if anchor == 'modulplanhf' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'modulplanhf' %}collapsed{% endif %}"
+          data-bs-target="#modulplanhfContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">
+            Modulplan für die "Hauptfachvariante" (120 ECTS-Punkte)
+          </h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="modulplanhfContent"
+        class="accordion-collapse collapse {% if anchor == 'modulplanhf' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="modulplanhfContent"
+      >
+        <div class="accordion-body" id="modulplanhf">
+          {% include "/studiendekanat/belegung_mederwhf.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="modulplanbfContent"
+          aria-expanded="{% if anchor == 'modulplanbf' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'modulplanbf' %}collapsed{% endif %}"
+          data-bs-target="#modulplanbfContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">
+            Modulplan für die "Beifachvariante" (90 ECTS-Punkte)
+          </h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="modulplanbfContent"
+        class="accordion-collapse collapse {% if anchor == 'modulplanbf' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="modulplanbfContent"
+      >
+        <div class="accordion-body" id="modulplanbf">
+          {% include "/studiendekanat/belegung_mederwbf.html" %}
         </div>
       </div>
     </div>

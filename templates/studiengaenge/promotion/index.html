@@ -1,3 +1,7 @@
+<!-- English version below -->
+
+{% if lang == "de" %}
+
 <div class="container" id="inhalt">
   <h1>Promotion</h1>
   <h2>Kontaktadresse</h2>
@@ -18,29 +22,29 @@
   <div id="accordion"></div>
   <div class="accordion accordion-flush" id="accordionExample">
     <div class="accordion-item">
-      <h3 class="accordion-header">
+      <h4 class="accordion-header">
         <button
           aria-controls="_betreuungContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'schritt' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'schritt' %}collapsed{% endif %}"
           data-bs-target="#_betreuungContent"
           data-bs-toggle="collapse"
           type="button"
         >
-          <h2>Schritt für Schritt zur Promotion</h2>
+          <h3 class="h5">Schritt für Schritt zur Promotion</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_betreuungContent"
-        class="accordion-collapse collapse"
+        class="accordion-collapse collapse {% if anchor == 'schritt' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="_betreuungContent"
       >
-        <div class="accordion-body" id="betreuungContent">
+        <div class="accordion-body" id="schritt">
           <div id="accordionStep"></div>
           <div class="accordion" id="accordionExampleStep">
             <div class="accordion-item">
-              <h3 class="accordion-header">
+              <h4 class="accordion-header">
                 <button
                   aria-controls="step0"
                   aria-expanded="false"
@@ -49,9 +53,9 @@
                   data-bs-toggle="collapse"
                   type="button"
                 >
-                  <h3>Schritt 0: Betreuung der Dissertation</h3>
+                  <h3 class="h5">Schritt 0: Betreuung der Dissertation</h3>
                 </button>
-              </h3>
+              </h4>
               <div
                 aria-labelledby="_betreuungContent"
                 class="accordion-collapse collapse"
@@ -89,7 +93,7 @@
               </div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header">
+              <h4 class="accordion-header">
                 <button
                   aria-controls="step1"
                   aria-expanded="false"
@@ -98,9 +102,9 @@
                   data-bs-toggle="collapse"
                   type="button"
                 >
-                  <h3>Schritt 1: Promotionsvereinbarung</h3>
+                  <h3 class="h5">Schritt 1: Promotionsvereinbarung</h3>
                 </button>
-              </h3>
+              </h4>
               <div
                 aria-labelledby="_betreuungContent"
                 class="accordion-collapse collapse"
@@ -147,7 +151,7 @@
               </div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header">
+              <h4 class="accordion-header">
                 <button
                   aria-controls="step2"
                   aria-expanded="false"
@@ -156,9 +160,11 @@
                   data-bs-toggle="collapse"
                   type="button"
                 >
-                  <h3>Schritt 2: Annahme als Doktorand/Doktorandin</h3>
+                  <h3 class="h5">
+                    Schritt 2: Annahme als Doktorand/Doktorandin
+                  </h3>
                 </button>
-              </h3>
+              </h4>
               <div
                 aria-labelledby="_betreuungContent"
                 class="accordion-collapse collapse"
@@ -167,8 +173,8 @@
               >
                 <div class="accordion-body" id="step2Content">
                   <p>
-                    Ab Januar 2024 stellen Sie den Antrag auf Annahme als
-                    Doktorand/in online über
+                    Sie stellen den Antrag auf Annahme als Doktorand/in online
+                    über
                     <a
                       href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:promotionsinteresse:annahmeantrag_kopie"
                     >
@@ -198,7 +204,7 @@
               </div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header">
+              <h4 class="accordion-header">
                 <button
                   aria-controls="step3"
                   aria-expanded="false"
@@ -207,11 +213,11 @@
                   data-bs-toggle="collapse"
                   type="button"
                 >
-                  <h3>
+                  <h3 class="h5">
                     Schritt 3: Immatrikulations - bzw. Registrierungspflicht
                   </h3>
                 </button>
-              </h3>
+              </h4>
               <div
                 aria-labelledby="_betreuungContent"
                 class="accordion-collapse collapse"
@@ -238,20 +244,6 @@
                     Arbeitszeit); sie können sich von der
                     Immatrikulationspflicht befreien lassen.
                   </p>
-                  <p>
-                    Alle Promovierenden, die bereits vor dem 30.März 2018 als
-                    Doktorand/in angenommen worden sind, sind zur
-                    Immatrikulation berechtigt, aber nicht verpflichtet.
-                    Promovierende, die sich nicht immatrikulieren lassen, sind
-                    zur Registrierung verpflichtet. Weitere Informationen finden
-                    Sie auf der Seite des
-                    <a
-                      href="https://www.frs.uni-freiburg.de/de/promovierende/index"
-                    >
-                      Freiburg Research Services.
-                    </a>
-                  </p>
-                  <p>Siehe auch:</p>
                   <ul>
                     <li>
                       <a
@@ -282,7 +274,7 @@
               </div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header">
+              <h4 class="accordion-header">
                 <button
                   aria-controls="step4"
                   aria-expanded="false"
@@ -291,12 +283,12 @@
                   data-bs-toggle="collapse"
                   type="button"
                 >
-                  <h3>
+                  <h3 class="h5">
                     Schritt 4: Eröffnung des Promotionsverfahren/Abgabe der
                     Dissertation
                   </h3>
                 </button>
-              </h3>
+              </h4>
               <div
                 aria-labelledby="_betreuungContent"
                 class="accordion-collapse collapse"
@@ -395,7 +387,7 @@
               </div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header">
+              <h4 class="accordion-header">
                 <button
                   aria-controls="step5"
                   aria-expanded="false"
@@ -404,9 +396,9 @@
                   data-bs-toggle="collapse"
                   type="button"
                 >
-                  <h3>Schritt 5: Disputation / Mündliche Prüfung</h3>
+                  <h3 class="h5">Schritt 5: Disputation / Mündliche Prüfung</h3>
                 </button>
-              </h3>
+              </h4>
               <div
                 aria-labelledby="_betreuungContent"
                 class="accordion-collapse collapse"
@@ -447,7 +439,7 @@
               </div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header">
+              <h4 class="accordion-header">
                 <button
                   aria-controls="step6"
                   aria-expanded="false"
@@ -456,9 +448,11 @@
                   data-bs-toggle="collapse"
                   type="button"
                 >
-                  <h3>Schritt 6: Veröffentlichung der Dissertation</h3>
+                  <h3 class="h5">
+                    Schritt 6: Veröffentlichung der Dissertation
+                  </h3>
                 </button>
-              </h3>
+              </h4>
               <div
                 aria-labelledby="_betreuungContent"
                 class="accordion-collapse collapse"
@@ -497,7 +491,7 @@
               </div>
             </div>
             <div class="accordion-item">
-              <h3 class="accordion-header">
+              <h4 class="accordion-header">
                 <button
                   aria-controls="step7"
                   aria-expanded="false"
@@ -506,9 +500,11 @@
                   data-bs-toggle="collapse"
                   type="button"
                 >
-                  <h3>Schritt 7: Vollzug der Promotion und Urkunde</h3>
+                  <h3 class="h5">
+                    Schritt 7: Vollzug der Promotion und Urkunde
+                  </h3>
                 </button>
-              </h3>
+              </h4>
               <div
                 aria-labelledby="_betreuungContent"
                 class="accordion-collapse collapse"
@@ -538,26 +534,26 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="_promotion">
-      <h3 class="accordion-header" id="header_promotion">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
           aria-controls="_promotionContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'allgemein' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'allgemein' %}collapsed{% endif %}"
           data-bs-target="#_promotionContent"
           data-bs-toggle="collapse"
           type="button"
         >
-          <h2>Allgemeine Hinweise</h2>
+          <h3 class="h5">Allgemeine Hinweise</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_promotionContent"
-        class="accordion-collapse collapse"
+        class="accordion-collapse collapse {% if anchor == 'allgemein' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="_promotionContent"
       >
-        <div class="accordion-body" id="promotionContent">
+        <div class="accordion-body" id="allgemein">
           <h3>
             Aufgaben und Pflichten des Doktoranden/der Doktorandin sowie des
             Betreuers/der Betreuerin
@@ -669,127 +665,27 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="links">
-      <h2 class="accordion-header" id="headerlinks">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
         <button
           aria-controls="linksContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
+          aria-expanded="{% if anchor == 'promotion-downloads' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'promotion-downloads' %}collapsed{% endif %}"
           data-bs-target="#linksContent"
           data-bs-toggle="collapse"
           type="button"
         >
-          <h2>Links und Downloads</h2>
+          <h3 class="h5">Links und Downloads</h3>
         </button>
-      </h2>
+      </h4>
       <div
         aria-labelledby="linksContent"
-        class="accordion-collapse collapse"
+        class="accordion-collapse collapse {% if anchor == 'promotion-downloads' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="linksContent"
       >
-        <div class="accordion-body" id="linksContent">
-          <h3>Vordrucke</h3>
-          <ul>
-            <li>
-              <a
-                href="/static/pdf/studiengaenge/promotion/promotionsordnung-fr-2016.pdf"
-              >
-                Promotionsordnung
-              </a>
-              (
-              <a
-                href="/static/pdf/studiengaenge/promotion/promotionsordnung-fr-2016_eng.pdf"
-              >
-                in english
-              </a>
-              )
-            </li>
-            <li>
-              <a
-                href="/static/pdf/studiengaenge/promotion/Merkblatt_und_Immatrikulationsantrag_Promovierende.pdf"
-              >
-                Merkblatt und Antrag auf Immatrikulation/Registrierung
-              </a>
-            </li>
-            <li>
-              <a
-                href="/static/pdf/studiengaenge/promotion/Promotionsvereinbarung_MathPhys_Vordruck.pdf"
-              >
-                Promotionsvereinbarung
-              </a>
-            </li>
-            <li>
-              <a
-                href="/static/pdf/studiengaenge/promotion/Anlage1_Promotionsvereinbarung_fin.doc"
-              >
-                Anlage 1 zur Promotionsvereinbarung
-              </a>
-            </li>
-            <li>
-              <a
-                href="/static/pdf/studiengaenge/promotion/Anlage2_Promotionsvereinbarung_fin.doc"
-              >
-                Anlage 2 zur Promotionsvereinbarung
-              </a>
-            </li>
-            <li>
-              <a
-                href="/static/pdf/studiengaenge/promotion/Antrag auf Eröffnung des Promotionsverfahrens.docx"
-              >
-                Antrag auf Eröffnung des Promotionsverfahrens
-              </a>
-            </li>
-            <li>
-              <a
-                href="/static/pdf/studiengaenge/promotion/Abfrage_PromVereinbarung.docx"
-              >
-                Abfrage Promotionsvereinbarung
-              </a>
-            </li>
-            <li>
-              Vorlage für das Titelblatt (
-              <a
-                href="/static/pdf/studiengaenge/promotion/Titelblatt_Dissertation.pdf"
-              >
-                pdf
-              </a>
-              ,
-              <a
-                href="/static/pdf/studiengaenge/promotion/Titelblatt_Dissertation.docx"
-              >
-                docx
-              </a>
-              ,
-              <a
-                href="/static/pdf/studiengaenge/promotion/Dissertation-Titelseite-20230427.zip"
-              >
-                TeX (.zip)
-              </a>
-              )
-            </li>
-            <li>
-              <a
-                href="/static/pdf/studiengaenge/promotion/Eidesstattliche Versicherung-Formular.pdf"
-              >
-                Eidesstattliche Versicherung
-              </a>
-            </li>
-            <li>
-              <a
-                href="/static/pdf/studiengaenge/promotion/Veröffentlichungen.doc"
-              >
-                Veröffentlichungen
-              </a>
-            </li>
-            <li>
-              <a
-                href="/static/pdf/studiengaenge/promotion/PromO_neu_Druckerlaubnis_§13Abs.2.docx"
-              >
-                Druckerlaubnis nach §13 Abs. 2
-              </a>
-            </li>
-          </ul>
+        <div class="accordion-body" id="promotion-downloads">
+          {% include "/studiengaenge/promotion/downloads.html" %}
 
           <h3>
             Beratungseinrichtungen an der Albert-Ludwigs-Universität Freiburg
@@ -878,3 +774,773 @@
     </div>
   </div>
 </div>
+
+{% else %}
+
+<div class="container" id="content">
+  <h1>Promotion</h1>
+  <h2>Contact address</h2>
+  <p>
+    Dean's Office, Ernst-Zermelo-Straße 1
+    <br />
+  </p>
+  <ul>
+    <li>
+      Claudia Zier, Room 428, Tel: 0761 203 5534
+      <br />
+      Email:
+      <a href="mailto:claudia.zier@mathphys.uni-freiburg.de">
+        claudia.zier@mathphys.uni-freiburg.de
+      </a>
+    </li>
+  </ul>
+  <div id="accordion"></div>
+  <div class="accordion accordion-flush" id="accordionExample">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="_betreuungContent"
+          aria-expanded="{% if anchor == 'schritt' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'schritt' %}collapsed{% endif %}"
+          data-bs-target="#_betreuungContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Step by step to your PhD</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="_betreuungContent"
+        class="accordion-collapse collapse {% if anchor == 'schritt' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="_betreuungContent"
+      >
+        <div class="accordion-body" id="schritt">
+          <div id="accordionStep"></div>
+          <div class="accordion" id="accordionExampleStep">
+            <div class="accordion-item">
+              <h4 class="accordion-header">
+                <button
+                  aria-controls="step0"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#step0"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5">Step 0: Supervision of the dissertation</h3>
+                </button>
+              </h4>
+              <div
+                aria-labelledby="_betreuungContent"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExampleStep"
+                id="step0"
+              >
+                <div class="accordion-body" id="step0Content">
+                  <p>
+                    Apart from various
+                    <a
+                      href="http://www.frs.uni-freiburg.de/de/iga/promotionsprogramme"
+                    >
+                      doctoral programs
+                    </a>
+                    those interested in a doctorate must first be supervised by
+                    a person authorized to supervise doctoral candidates (see §3
+                    of the Promotionsordnung) and receive a confirmation of
+                    supervision.
+                  </p>
+                  <p>
+                    You can find the eligible supervisors under the lecturers on
+                    <a
+                      href="https://www.math.uni-freiburg.de/forschung/index.html?l=de"
+                    >
+                      this page
+                    </a>
+                    .
+                  </p>
+                  <p>
+                    After the confirmation of supervision, a doctoral agreement
+                    must be signed between you and the the supervisor.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h4 class="accordion-header">
+                <button
+                  aria-controls="step1"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#step1"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5">Step 1: Doctoral agreement</h3>
+                </button>
+              </h4>
+              <div
+                aria-labelledby="_betreuungContent"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExampleStep"
+                id="step1"
+              >
+                <div class="accordion-body" id="step1Content">
+                  <p>
+                    The prerequisite for acceptance as a doctoral candidate is
+                    the conclusion of a doctoral agreement with the supervisor.
+                  </p>
+                  <ol>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Hinweisblatt_Promotionsvereinbarung.pdf"
+                      >
+                        Information sheet on the doctoral agreement
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Promotionsvereinbarung_MathPhys_Vordruck.pdf"
+                      >
+                        Doctoral agreement
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Anlage1_Promotionsvereinbarung_fin.doc"
+                      >
+                        Annex 1 to the doctoral agreement
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Anlage2_Promotionsvereinbarung_fin.doc"
+                      >
+                        Annex 2 to the doctoral agreement
+                      </a>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h4 class="accordion-header">
+                <button
+                  aria-controls="step2"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#step2"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5">Step 2: Acceptance as a doctoral candidate</h3>
+                </button>
+              </h4>
+              <div
+                aria-labelledby="_betreuungContent"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExampleStep"
+                id="step2"
+              >
+                <div class="accordion-body" id="step2Content">
+                  <p>
+                    You must submit the application for acceptance as a doctoral
+                    candidate online via
+                    <a
+                      href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:promotionsinteresse:annahmeantrag_kopie"
+                    >
+                      HISinOne:
+                    </a>
+                  </p>
+                  <p>
+                    The application for acceptance as a doctoral candidate is
+                    generated in the last step from the information entered.
+                  </p>
+                  <p>
+                    After completion, please send the printed and signed
+                    application together with all other necessary documents (§ 6
+                    (2)) to the Dean's Office of the Faculty, Ernst-Zermelo-Str.
+                    1, room 428. Please note that a decision on acceptance as a
+                    doctoral doctoral candidate can only be made on the basis of
+                    a complete application. The decision on acceptance is made
+                    by the doctoral committee.
+                  </p>
+                  <p>
+                    You will be informed of the decision of the doctoral
+                    committee by a letter which, in the event of rejection,
+                    includes reasons for the rejection (§ 7 para. 3 sentence 3
+                    RPO).
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h4 class="accordion-header">
+                <button
+                  aria-controls="step3"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#step3"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5">
+                    Step 3: Obligation to matriculation or register
+                  </h3>
+                </button>
+              </h4>
+              <div
+                aria-labelledby="_betreuungContent"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExampleStep"
+                id="step3"
+              >
+                <div class="accordion-body" id="step3Content">
+                  <p>
+                    After acceptance as a doctoral candidate by the faculty, you
+                    must register in the
+                    <a href="http://www.studium.uni-freiburg.de/de">
+                      Study Service Center
+                    </a>
+                    at the University of Freiburg (see § 38 para. 5, sentence 1,
+                    first half-sentence of the State Higher Education Act
+                    [LHG]). The enrollment obligation applies to all doctoral
+                    candidates who are accepted as a doctoral candidate at the
+                    University of Freiburg as a doctoral candidate after March
+                    30, 2018.
+                  </p>
+                  <p>
+                    There is an exception for doctoral candidates who work
+                    full-time at the University of Freiburg (employment contract
+                    with at least half of the regular working hours); they can
+                    be exempted from the be exempted from the enrollment
+                    requirement.
+                  </p>
+                  <ul>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Flyer_Imm_Reg_deu.pdf"
+                      >
+                        Flyer (German)
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Flyer_Imm_Reg_engl.pdf"
+                      >
+                        Flyer (english)
+                      </a>
+                    </li>
+                  </ul>
+                  <p>
+                    Note: The "Application for enrolment/registration for
+                    doctoral doctoral students" can be found on the website of
+                    the Service Study Center. Download link:
+                    <a
+                      href="http://www.studium.uni-freiburg.de/de/studierendenservices/immatrikulation/docs/Uni-Freiburg-Merkblatt-und-Immatrikulationsantrag-Promovierende.pdf"
+                    >
+                      Information sheet and application for
+                      enrolment/registration
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h4 class="accordion-header">
+                <button
+                  aria-controls="step4"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#step4"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5">
+                    Step 4: Opening of the doctoral procedure/submission of the
+                    dissertation
+                  </h3>
+                </button>
+              </h4>
+              <div
+                aria-labelledby="_betreuungContent"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExampleStep"
+                id="step4"
+              >
+                <div class="accordion-body" id="step4Content">
+                  <p>
+                    After completing the dissertation, submit an application to
+                    the Dean's Office for the opening of the doctoral procedure.
+                    The application must be accompanied by the documents listed
+                    under § 7 Promotionsordnung.
+                  </p>
+                  <ol>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Antrag auf Eröffnung des Promotionsverfahrens.docx"
+                      >
+                        Application for the opening of the doctoral procedure
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Eidesstattliche Versicherung-Formular.pdf"
+                      >
+                        Affidavit form
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Belehrung_eidesstattliche_Versicherung.pdf"
+                      >
+                        Instruction on the meaning and criminal consequences of
+                        the consequences of the affidavit
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Publications.doc"
+                      >
+                        Publications
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Abfrage_PromVereinbarung.docx"
+                      >
+                        Query doctoral agreement
+                      </a>
+                    </li>
+                    <li>
+                      Template for the title page (
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Titelblatt_Dissertation.pdf"
+                      >
+                        pdf
+                      </a>
+                      ,
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Titelblatt_Dissertation.docx"
+                      >
+                        docx
+                      </a>
+                      ,
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Dissertation-Titelseite-20230427.zip"
+                      >
+                        TeX (.zip)
+                      </a>
+                      )
+                    </li>
+                  </ol>
+                  <!-- <h4>
+                    Opening of the doctoral procedure for doctoral candidates already
+                    already accepted under the old doctoral regulations (see
+                    transitional provision)
+                  </h4>
+                  <ul>
+                    <li>
+                      Application for the opening of the doctoral procedure (
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Übergangsbestimmung_Antrag_auf_Eroeffnung_des_Promotionsverfahren_neue_PromO.docx"
+                      >
+                        docx
+                      </a>
+                      ,
+                      <a
+                        href="/static/pdf/studiengaenge/promotion/Übergangsbestimmung_Antrag_auf_Eroeffnung_des_Promotionsverfahren_neue_PromO.pdf"
+                      >
+                        pdf
+                      </a>
+                      )
+                    </li>
+                  </ul>-->
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h4 class="accordion-header">
+                <button
+                  aria-controls="step5"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#step5"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5">Step 5: Disputation / oral examination</h3>
+                </button>
+              </h4>
+              <div
+                aria-labelledby="_betreuungContent"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExampleStep"
+                id="step5"
+              >
+                <div class="accordion-body" id="step5Content">
+                  <p>
+                    After receipt of all reviews and the proposal of the
+                    reviewers for acceptance of the dissertation, the doctoral
+                    doctoral committee appoints the examination board for the
+                    oral examination and the determination of the overall result
+                    of the doctorate.
+                  </p>
+                  <p>
+                    The doctoral candidate arranges a date for the oral
+                    examination committee a date for the oral examination
+                    (disputation).
+                  </p>
+                  <p>
+                    The oral defense, which can be held in German or English, is
+                    an in-depth scientific debate debate, which is intended to
+                    show that the doctoral candidate has mastered the subject
+                    area from which the dissertation originates and is familiar
+                    with current developments in his/her field. It also extends
+                    to selected topics in topics in related subject areas that
+                    are factually and methodologically related to the field of
+                    work. The disputation has duration of approximately 90
+                    minutes; it begins with an approximately 30-minute
+                    presentation by the doctoral candidate on the dissertation.
+                    The chairperson of the examination committee leads the
+                    defense; he/she may also take questions from the questions
+                    from the public about the doctoral candidate's doctoral
+                    candidate. The disputation is open to the faculty.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h4 class="accordion-header">
+                <button
+                  aria-controls="step6"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#step6"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5">Step 6: Publishing the dissertation</h3>
+                </button>
+              </h4>
+              <div
+                aria-labelledby="_betreuungContent"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExampleStep"
+                id="step6"
+              >
+                <div class="accordion-body" id="step6Content">
+                  <p>
+                    The doctoral candidate is obliged to submit a thesis within
+                    one year after passing the oral examination, where
+                    applicable with the amendments requested or approved by the
+                    or approved by the examination committee, to the scientific
+                    public in an appropriate manner by means of by reproduction
+                    and dissemination.
+                  </p>
+                  <p>
+                    Prior to publication, the dissertation must be submitted to
+                    the permission to print to the supervisor responsible for
+                    the thesis. The permission to print must be submitted on a
+                    form and added to the doctoral file.
+                  </p>
+                  <p>
+                    <a
+                      href="/static/pdf/studiengaenge/promotion/PromO_neu_Druckerlaubnis_§13Abs.2.docx"
+                    >
+                      Printing permission according to §13 para. 2
+                    </a>
+                  </p>
+                  <p>
+                    The dissertation is deemed to be published if it fulfills
+                    the conditions according to §13 para. 3 of the doctoral
+                    degree regulations.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h4 class="accordion-header">
+                <button
+                  aria-controls="step7"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#step7"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5">
+                    Step 7: Completion of the doctorate and certificate
+                  </h3>
+                </button>
+              </h4>
+              <div
+                aria-labelledby="_betreuungContent"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExampleStep"
+                id="step7"
+              >
+                <div class="accordion-body" id="step7Content">
+                  <p>
+                    The doctorate is awarded by handing over the certificate is
+                    completed.
+                  </p>
+                  <p>
+                    The doctoral degree certificate is only issued when the
+                    doctoral candidate has submitted the deposit copies of the
+                    dissertation to the Faculty of Mathematics and Mathematics
+                    and Physics.
+                  </p>
+                  <p>
+                    Before the doctoral certificate is issued, the doctoral
+                    candidate must doctoral candidate does not have the right to
+                    use the doctoral degree degree, not even with a supplement.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="_promotionContent"
+          aria-expanded="{% if anchor == 'general' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'general' %}collapsed{% endif %}"
+          data-bs-target="#_promotionContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">General information</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="_promotionContent"
+        class="accordion-collapse collapse {% if anchor == 'general' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="_promotionContent"
+      >
+        <div class="accordion-body" id="general">
+          <h3>
+            Tasks and duties of the doctoral candidate and the supervisor of the
+            supervisor
+          </h3>
+          <p>
+            These are regulated in the doctoral agreement. In particular the
+            responsible supervisor ensures that the doctoral candidate ensures
+            that the doctoral candidate has been familiarized with the rules of
+            good scientific practice.
+          </p>
+          <p>
+            <a
+              href="https://uni-freiburg.de/forschung/wp-content/uploads/sites/2/2020/10/Uni-Freiburg-Ordnung-Redlichkeit-in-der-Wissenschaft.pdf"
+            >
+              Code of probity (German)
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://uni-freiburg.de/forschung/wp-content/uploads/sites/2/2020/10/Uni-Freiburg-Ordnung-Redlichkeit-in-der-Wissenschaft-en.pdf"
+            >
+              Code of probity (English)
+            </a>
+          </p>
+          <p>
+            Two years after acceptance as a doctoral candidate, the responsible
+            supervisor reviews whether the doctoral project can be continued and
+            informs the doctoral project can be continued and communicates the
+            result of the of the review to the doctoral committee.
+          </p>
+          <h3>Confidants for doctoral candidates</h3>
+          <p>
+            The Institute of Mathematics and the Institute of Physics each have
+            a person of trust. They are elected by the Doctoral Convention for
+            each elected for two years.
+          </p>
+          <p>The currently elected liaison officers are:</p>
+          <p>
+            For the Institute of Mathematics Prof. Nadine Große; E-mail address:
+          </p>
+          <p>
+            <a href="mailto:nadine.grosse@math.uni-freiburg.de">
+              nadine.grosse@math.uni-freiburg.de
+            </a>
+          </p>
+          <p>
+            For the Institute of Physics Mr. apl. Prof. Thomas Filk; E-mail
+            address:
+          </p>
+          <p>
+            <a href="mailto:Thomas.Filk@physik.uni-freiburg.de">
+              Thomas.Filk@physik.uni-freiburg.de
+            </a>
+          </p>
+          <p></p>
+          <p>
+            <i>They perform the following tasks:</i>
+          </p>
+          <ul>
+            <li>
+              Advice on questions regarding the doctoral conditions,
+              e.g. regularity of substantive supervision meetings, work for the
+              chair, participation in conferences chair, participation in
+              conferences;
+            </li>
+            <li>
+              In case of conflict, providing an assessment of the situation and
+              pointing out possibilities for a solution;
+            </li>
+            <li>
+              If necessary, a mediation meeting can be held with all parties
+              involved in the conflict can be held;
+            </li>
+            <li>
+              In more complex cases, referral to GraCe (link:
+              <a
+                href="https://www.frs.uni-freiburg.de/de/iga/beratung/konfliktberatung"
+              >
+                https://www.frs.uni-freiburg.de/de/iga/beratung/konfliktberatung
+              </a>
+              ) or the central ombudsman's office of the university (
+              <a href="https://www.frs.uni-freiburg.de/de/ombudsstelle/index">
+                https://www.frs.uni-freiburg.de/de/ombudsstelle/index
+              </a>
+              )
+            </li>
+          </ul>
+          <h3>
+            Doctoral Representation of the Faculty of Mathematics and Physics
+          </h3>
+
+          <p>
+            The doctoral student representatives of the Faculty of Mathematics
+            and Physics take care of the networking of doctoral students by
+            organizing events organizing events and representing their rights.
+            All further information can be found on the website of the doctoral
+            student representation:
+            <br />
+            <a href="https://www.phd.mathphys.uni-freiburg.de/">
+              https://www.phd.mathphys.uni-freiburg.de
+            </a>
+          </p>
+          <br />
+          <br />
+          New doctoral candidates can subscribe to the mailing list of the
+          doctoral student representation by sending a blank email to :
+          <br />
+          <a href="mailto:phdstudents-subscribe@mathphys.uni-freiburg.de">
+            phdstudents-subscribe@mathphys.uni-freiburg.de
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="linksContent"
+          aria-expanded="{% if anchor == 'promotion-downloads' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'promotion-downloads' %}collapsed{% endif %}"
+          data-bs-target="#linksContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Links and downloads</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="linksContent"
+        class="accordion-collapse collapse {% if anchor == 'promotion-downloads' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="linksContent"
+      >
+        <div class="accordion-body" id="promotion-downloads">
+          {% include "/studiengaenge/promotion/downloads.html" %}
+
+          <h3>Counseling services at the University of Freiburg</h3>
+          <ul>
+            <li>
+              <a href="https://www.frs.uni-freiburg.de/de/iga">
+                Central service center for doctoral candidates: Freiburg
+                Graduate Center (GraCe)
+              </a>
+            </li>
+            <li>
+              <a href="http://www.frs.uni-freiburg.de/">
+                Page of the Freiburg Research Services
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.frs.uni-freiburg.de/de/iga/finanzierung/foerderberatung"
+              >
+                Funding advice
+              </a>
+            </li>
+            <!-- <li>
+              <a href="http://www.welcomecenter.uni-freiburg.de/front-page">
+                Welcome Service for Internationals
+              </a>
+            </li>-->
+            <li>
+              <a href="https://www.frs.uni-freiburg.de/de/ombudsstelle/index">
+                Ombuds procedure for doctoral candidates and supervisors
+              </a>
+            </li>
+            <!-- <li>
+              <a
+                href="http://www.frs.uni-freiburg.de/de/iga/beratung/korrekturservice"
+              >
+                Correction service
+              </a>
+            </li>-->
+            <li>
+              <a
+                href="http://www.frs.uni-freiburg.de/de/iga/beratung/sprachtandem"
+              >
+                Language tandem
+              </a>
+            </li>
+            <!-- <li>
+              <a
+                href="http://www.frs.uni-freiburg.de/de/iga/beratung/schreibberatung"
+              >
+                Writing advice
+              </a>
+            </li>-->
+            <li>
+              <a
+                href="http://www.frs.uni-freiburg.de/de/iga/beratung/karriereberatung"
+              >
+                Career advice
+              </a>
+            </li>
+            <!-- <li>
+              <a
+                href="http://www.frs.uni-freiburg.de/de/iga/beratung/gruendungsberatung"
+              >
+                Start-up advice
+              </a>
+            </li>-->
+            <li>
+              <a
+                href="http://www.frs.uni-freiburg.de/de/iga/beratung/individuelles-coaching"
+              >
+                Transfer coaching
+              </a>
+            </li>
+            <li>
+              <a
+                href="http://www.frs.uni-freiburg.de/de/iga/promotion/betreuungskultur"
+              >
+                Compass for good supervision of doctoral candidates
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
