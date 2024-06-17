@@ -126,7 +126,7 @@
       "showmonitorend": "24.06.2024 00:00",
       "title_de": "Patricia Zwick erhält einen Alumni-Preis",
       "title_en": "",
-      "image": "/static/images/nn.png",
+      "image": "/static/images/zwick.jpg",
       "style": "height: 20vw; object-fit: cover",
       "link": "",
       "popover_title_de": "",
@@ -173,7 +173,7 @@
       "text_en": ""
     },
     {
-      "id": "alumni2",
+      "id": "tutorengesucht",
       "showhomestart": "17.06.2000 00:00",
       "showhomeend": "20.06.2024 15:00",
       "showmonitorstart": "17.06.2000 00:00",
@@ -188,6 +188,24 @@
       "popover_text_de": "",
       "popover_text_en": "",
       "text_de": "Die Informationsveranstaltung findet am <strong>Donnerstag, 20.6. um 14:15 im Raum 414</strong> statt.",
+      "text_en": ""
+    },
+    {
+      "id": "sommerfest",
+      "showhomestart": "24.06.2024 00:00",
+      "showhomeend": "05.07.2024 15:00",
+      "showmonitorstart": "24.06.2024 00:00",
+      "showmonitorend": "05.07.2024 15:00",
+      "title_de": "<h1>Save the Date! Ab 5.7. ab 15:30 </h1>",
+      "title_en": "",
+      "image": "/static/images/sommerfest.png",
+      "style": "height: 25vw; object-fit: cover",
+      "link": "https://www.math.uni-freiburg.de/aktuell/Plakat_Abschlussfeier_2024.pdf",
+      "popover_title_de": "",
+      "popover_title_en": "",
+      "popover_text_de": "",
+      "popover_text_en": "",
+      "text_de": "... im Innenhof der Physik <br> Bereits ab 14:30: Abschlussfeier und Fakultätsfest, Großer Hörsal der Physik, mit Verleihung der Alumni-Preise und des Lehrpreises Physik <br> Festvortrag: Pomelo- und Kaktus-Mathematik, Patrick Dondl.",
       "text_en": ""
     },
     {
@@ -308,6 +326,23 @@
       "popover_text_de": "",
       "popover_text_en": "",
       "text_de": "<ul><li>Sprecher: Peter Pfaffelhuber</li><li>Donnerstag, 6.6., 14.15, Hörsal II</li><li>Interaktives Beweisen mit Lean</li></ul>",
+      "text_en": ""
+    },
+    {
+      "showhomestart": "01.01.2024 00:00",
+      "showhomeend": "01.11.2023 00:00",
+      "showmonitorstart": "30.06.2024 00:00",
+      "showmonitorend": "05.07.2024 15:00",
+      "title_de": "Vortrag am 5.7. um 14:15, Studierendenkolloquium",
+      "title_en": "",
+      "image": "/static/images/20240609frbpse126.jpg",
+      "style": "object-fit: cover",
+      "link": "https://www.math.uni-freiburg.de/index.html",
+      "popover_title_de": "",
+      "popover_title_en": "",
+      "popover_text_de": "",
+      "popover_text_en": "",
+      "text_de": "<ul><li>Sprecher: Heike Mildenberger</li><li>Donnerstag, 5.7., 14.15, Hörsal II</li><li>Sitzverteilungsverfahren </li></ul>",
       "text_en": ""
     },
     {
