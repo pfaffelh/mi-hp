@@ -6,8 +6,10 @@ from datetime import datetime
 hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
 
-if (ip_address == "127.0.1.1") or os.getcwd() == "/home/flask-reader/mi-hp":
+if (ip_address == "127.0.1.1"):
     netrc = netrc.netrc()
+elif os.getcwd() == "/home/flask-reader/mi-hp":
+    netrc = netrc.netrc("/home/flask-reader/netrc")
 else:
     netrc = netrc.netrc("/usr/local/lib/mi-hp/.netrc")
 
