@@ -68,8 +68,12 @@ cal_username, cal_account, cal_password = netrc.authenticators(calendar_host)
 sondertermine_lehre_calendar_url = "http://cal.mathematik.privat/davical/caldav.php/pruefungsamt/pramt/"
 
 mensaplan_host = "https://www.swfr.de/"
-mensa_username, mensa_account, mensa_password = netrc.authenticators(mensaplan_host)
+try:
+    mensa_username, mensa_account, mensa_password = netrc.authenticators(mensaplan_host)
+except:
+    mensa_password = ""
 mensaplan_url = mensaplan_host + "apispeiseplan?&type=98&tx_speiseplan_pi1[apiKey]=" + mensa_password + "&&tx_speiseplan_pi1[ort]=620"
+
 
 studiengaenge = {"all": "alle Studiengänge",
                     "bsc": "Bachelor of Science Mathematik",
