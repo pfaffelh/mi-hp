@@ -1,0 +1,584 @@
+{
+  "plan": {
+    "ort": {
+      "@id": "620",
+      "mensa": "Mensa Institutsviertel",
+      "tagesplan": [
+        {
+          "@datum": "18.06.2024",
+          "menue": [
+            {
+              "@art": "Schneller Teller",
+              "name": "Lauchnudeln Rauchlachssauce",
+              "nameMitUmbruch": "Lauchnudeln<br>Rauchlachssauce",
+              "kennzeichnungen": "alc: mit Alkohol",
+              "allergene": "Gl: GLUTENHALTIGES Getreide,Fi: Fisch,ML: Milch /-erzeugnisse,GlW: Weizen",
+              "preis": {
+                "studierende": "2,10\u20ac",
+                "angestellte": "3,85\u20ac",
+                "gaeste": "5,70\u20ac",
+                "schueler": "2,10\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 1",
+              "@zusatz": "vegan",
+              "name": "Sojageschnetzeltes Z\u00fcricher Sauce Rigatoni Fingerm\u00f6hren",
+              "nameMitUmbruch": "Sojageschnetzeltes<br>Z\u00fcricher Sauce<br>Rigatoni<br>Fingerm\u00f6hren",
+              "kennzeichnungen": null,
+              "allergene": "So: Soja,GlW: Weizen,Gl: GLUTENHALTIGES Getreide",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 2",
+              "@aktion": "Newcomer",
+              "name": "Pulled Pork Burger Pommes frites Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Pulled Pork Burger<br>Pommes frites<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": "sch: mit Schwein",
+              "allergene": "Gl: GLUTENHALTIGES Getreide,Sa: Sesam,GlW: Weizen,Sn: Senf",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 3",
+              "@zusatz": "auf Wunsch vegan",
+              "@aktion": "An der Kaffeebar gibt es:",
+              "name": "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": null,
+              "allergene": "Sn: Senf,So: Soja,ML: Milch /-erzeugnisse,GlW: Weizen,Gl: GLUTENHALTIGES Getreide",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Wochenangebot",
+              "name": "Dicke Fritten Chili con Carne Knoblauch\u00f6l, Peperoni\u00f6l Geriebener Mozzarella Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Dicke Fritten<br>Chili con Carne<br>Knoblauch\u00f6l, Peperoni\u00f6l<br>Geriebener Mozzarella<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": "ri: mit Rindfleisch",
+              "allergene": "ML: Milch /-erzeugnisse,Se: Sellerie,Sn: Senf",
+              "preis": {
+                "studierende": "3,70\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,70\u20ac"
+              }
+            },
+            {
+              "@art": "Buffet",
+              "@zusatz": "auf Wunsch vegan",
+              "name": "Bio Stangenspargel Holl\u00e4ndische Sauce Holzf\u00e4llersteak , S\u00fc\u00dfkartoffel Pommes frites Zur Wahl: Fleisch-, Fisch- und vegane Spezialit\u00e4ten Pasta-, Reis und Kartoffelvariationen, Gem\u00fcse",
+              "nameMitUmbruch": "Bio Stangenspargel<br>Holl\u00e4ndische Sauce<br>Holzf\u00e4llersteak , S\u00fc\u00dfkartoffel Pommes frites<br>Zur Wahl: Fleisch-, Fisch- und vegane Spezialit\u00e4ten<br>Pasta-, Reis und Kartoffelvariationen, Gem\u00fcse",
+              "kennzeichnungen": "sch: mit Schwein, o: Hauptzutat der bio-gekennzeich. Komponente ist bio, bio: Bio DE-\u00d6KO-007",
+              "allergene": "Ei: Eier,GlW: Weizen,Gl: GLUTENHALTIGES Getreide,Se: Sellerie,ML: Milch /-erzeugnisse",
+              "preis": {
+                "studierende": "0,95\u20ac pro 100g",
+                "angestellte": "1,20\u20ac pro 100g",
+                "gaeste": "1,50\u20ac pro 100g",
+                "schueler": "0,95\u20ac pro 100g"
+              }
+            },
+            {
+              "@art": "Abendessen 1",
+              "@zusatz": "vegetarisch",
+              "name": "Linsengem\u00fcse Schw\u00e4bisch Bauernsp\u00e4tzle Vegane Bratwurst Beilagensalat vom Buffet",
+              "nameMitUmbruch": "Linsengem\u00fcse Schw\u00e4bisch<br>Bauernsp\u00e4tzle<br>Vegane Bratwurst<br>Beilagensalat vom Buffet",
+              "kennzeichnungen": null,
+              "allergene": "Gl: GLUTENHALTIGES Getreide,Sn: Senf,So: Soja,Ei: Eier,Sf: Schwefeldioxid/Sulfite,Se: Sellerie,GlW: Weizen",
+              "preis": {
+                "studierende": "3,65\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,65\u20ac"
+              }
+            },
+            {
+              "@art": "Abendessen 2",
+              "name": "Halbes H\u00e4hnchen Baguette Beilagensalat vom Buffet",
+              "nameMitUmbruch": "Halbes H\u00e4hnchen<br>Baguette<br>Beilagensalat vom Buffet",
+              "kennzeichnungen": null,
+              "allergene": "Gl: GLUTENHALTIGES Getreide,GlG: Gerste,Sn: Senf,GlW: Weizen,GlR: Roggen",
+              "preis": {
+                "studierende": "3,65\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,65\u20ac"
+              }
+            }
+          ]
+        },
+        {
+          "@datum": "19.06.2024",
+          "menue": [
+            {
+              "@art": "Schneller Teller",
+              "@zusatz": "vegan",
+              "name": "Gem\u00fcsecremesuppe Baguette",
+              "nameMitUmbruch": "Gem\u00fcsecremesuppe<br>Baguette",
+              "kennzeichnungen": null,
+              "allergene": "Gl: GLUTENHALTIGES Getreide,GlG: Gerste,GlR: Roggen,Se: Sellerie,GlW: Weizen",
+              "preis": {
+                "studierende": "2,10\u20ac",
+                "angestellte": "3,85\u20ac",
+                "gaeste": "5,70\u20ac",
+                "schueler": "2,10\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 1",
+              "@zusatz": "vegan",
+              "name": "Arabischer Salat Rote Bete-Hummus Fladenbrot Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Arabischer Salat<br>Rote Bete-Hummus<br>Fladenbrot<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": "o: Hauptzutat der bio-gekennzeich. Komponente ist bio, bio: Bio DE-\u00d6KO-007",
+              "allergene": "Gl: GLUTENHALTIGES Getreide,GlW: Weizen,Sa: Sesam,Sf: Schwefeldioxid/Sulfite,Sn: Senf",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 2",
+              "@zusatz": "vegetarisch",
+              "name": "Kartoffel-Spargelauflauf Wei\u00dfe Sauce Beilagensalat oder Regio-Apfel Dessert",
+              "nameMitUmbruch": "Kartoffel-Spargelauflauf<br>Wei\u00dfe Sauce<br>Beilagensalat oder Regio-Apfel<br>Dessert",
+              "kennzeichnungen": "bio: Bio DE-\u00d6KO-007, o: Hauptzutat der bio-gekennzeich. Komponente ist bio",
+              "allergene": "Se: Sellerie,Sn: Senf,GlW: Weizen,Gl: GLUTENHALTIGES Getreide,Ei: Eier,ML: Milch /-erzeugnisse",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 3",
+              "@zusatz": "auf Wunsch vegan",
+              "@aktion": "An der Kaffeebar gibt es:",
+              "name": "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": null,
+              "allergene": "ML: Milch /-erzeugnisse,Sn: Senf,GlW: Weizen,Gl: GLUTENHALTIGES Getreide,So: Soja",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Wochenangebot",
+              "name": "Dicke Fritten Chili con Carne Knoblauch\u00f6l, Peperoni\u00f6l Geriebener Mozzarella Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Dicke Fritten<br>Chili con Carne<br>Knoblauch\u00f6l, Peperoni\u00f6l<br>Geriebener Mozzarella<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": "ri: mit Rindfleisch",
+              "allergene": "ML: Milch /-erzeugnisse,Se: Sellerie,Sn: Senf",
+              "preis": {
+                "studierende": "3,70\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,70\u20ac"
+              }
+            },
+            {
+              "@art": "Buffet",
+              "@zusatz": "auf Wunsch vegan",
+              "name": "Bio Stangenspargel Holl\u00e4ndische Sauce Pfannkuchen , Rauchlachsstreifen Zur Wahl: Fleisch-, Fisch- und vegane Spezialit\u00e4ten Pasta-, Reis und Kartoffelvariationen, Gem\u00fcse",
+              "nameMitUmbruch": "Bio Stangenspargel<br>Holl\u00e4ndische Sauce<br>Pfannkuchen , Rauchlachsstreifen<br>Zur Wahl: Fleisch-, Fisch- und vegane Spezialit\u00e4ten<br>Pasta-, Reis und Kartoffelvariationen, Gem\u00fcse",
+              "kennzeichnungen": "o: Hauptzutat der bio-gekennzeich. Komponente ist bio, bio: Bio DE-\u00d6KO-007",
+              "allergene": "Ei: Eier,Gl: GLUTENHALTIGES Getreide,Fi: Fisch,Se: Sellerie,ML: Milch /-erzeugnisse,GlW: Weizen",
+              "preis": {
+                "studierende": "0,95\u20ac pro 100g",
+                "angestellte": "1,20\u20ac pro 100g",
+                "gaeste": "1,50\u20ac pro 100g",
+                "schueler": "0,95\u20ac pro 100g"
+              }
+            },
+            {
+              "@art": "Abendessen 1",
+              "@zusatz": "vegetarisch",
+              "name": "Kartoffelpuffer Erbsen-Guacamole Kr\u00e4uter-Joghurtdip Beilagensalat vom Buffet",
+              "nameMitUmbruch": "Kartoffelpuffer<br>Erbsen-Guacamole<br>Kr\u00e4uter-Joghurtdip<br>Beilagensalat vom Buffet",
+              "kennzeichnungen": null,
+              "allergene": "GlW: Weizen,Gl: GLUTENHALTIGES Getreide,ML: Milch /-erzeugnisse,Ei: Eier,Sn: Senf",
+              "preis": {
+                "studierende": "3,65\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,65\u20ac"
+              }
+            },
+            {
+              "@art": "Abendessen 2",
+              "name": "Putensteak vom Grill Kr\u00e4uterbutter Pommes frites Beilagensalat vom Buffet",
+              "nameMitUmbruch": "Putensteak vom Grill<br>Kr\u00e4uterbutter<br>Pommes frites<br>Beilagensalat vom Buffet",
+              "kennzeichnungen": null,
+              "allergene": "Sn: Senf,ML: Milch /-erzeugnisse",
+              "preis": {
+                "studierende": "3,65\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,65\u20ac"
+              }
+            }
+          ]
+        },
+        {
+          "@datum": "20.06.2024",
+          "menue": [
+            {
+              "@art": "Schneller Teller",
+              "name": "Wurstsalat Kr\u00e4uterquark Bratkartoffeln",
+              "nameMitUmbruch": "Wurstsalat<br>Kr\u00e4uterquark<br>Bratkartoffeln",
+              "kennzeichnungen": "ri: mit Rindfleisch, 5: mit Antioxidationsmittel, 9: mit S\u00fc\u00dfungsmittel, 8: mit Phosphat, 6: mit Konservierungsstoff, sch: mit Schwein, 3: mit Geschmacksverst\u00e4rker",
+              "allergene": "Sf: Schwefeldioxid/Sulfite,Se: Sellerie,ML: Milch /-erzeugnisse,Sn: Senf",
+              "preis": {
+                "studierende": "2,10\u20ac",
+                "angestellte": "3,85\u20ac",
+                "gaeste": "5,70\u20ac",
+                "schueler": "2,10\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 1",
+              "@zusatz": "vegan",
+              "name": "Mangold-Linsencurry mit Zitronenbl\u00e4ttern Basmatireis Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Mangold-Linsencurry mit Zitronenbl\u00e4ttern<br>Basmatireis<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": null,
+              "allergene": "Sn: Senf",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 2",
+              "name": "Bio Stangenspargel Buttersauce Putenschnitzel natur Neue Kartoffeln",
+              "nameMitUmbruch": "Bio Stangenspargel<br>Buttersauce<br>Putenschnitzel natur<br>Neue Kartoffeln",
+              "kennzeichnungen": "bio: Bio DE-\u00d6KO-007, o: Hauptzutat der bio-gekennzeich. Komponente ist bio",
+              "allergene": "ML: Milch /-erzeugnisse,Se: Sellerie,Ei: Eier,GlW: Weizen,Gl: GLUTENHALTIGES Getreide",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 3",
+              "@zusatz": "auf Wunsch vegan",
+              "@aktion": "Am Buffet gibt es:",
+              "name": "Pizza belegt nach Wahl",
+              "nameMitUmbruch": "Pizza belegt nach Wahl",
+              "kennzeichnungen": "8: mit Phosphat, 6: mit Konservierungsstoff, 5: mit Antioxidationsmittel, 3: mit Geschmacksverst\u00e4rker, 4: mit Farbstoff, ri: mit Rindfleisch, sch: mit Schwein",
+              "allergene": "ML: Milch /-erzeugnisse,GlW: Weizen,Gl: GLUTENHALTIGES Getreide,Se: Sellerie,Sn: Senf",
+              "preis": {
+                "studierende": "4,90\u20ac",
+                "angestellte": "6,50\u20ac",
+                "gaeste": "8,90\u20ac",
+                "schueler": "4,90\u20ac"
+              }
+            },
+            {
+              "@art": "Wochenangebot",
+              "name": "Dicke Fritten Chili con Carne Knoblauch\u00f6l Peperoni\u00f6l Geriebener Mozzarella",
+              "nameMitUmbruch": "Dicke Fritten<br>Chili con Carne<br>Knoblauch\u00f6l<br>Peperoni\u00f6l<br>Geriebener Mozzarella",
+              "kennzeichnungen": "ri: mit Rindfleisch",
+              "allergene": "ML: Milch /-erzeugnisse,Se: Sellerie,Sn: Senf",
+              "preis": {
+                "studierende": "3,70\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,70\u20ac"
+              }
+            },
+            {
+              "@art": "Buffet",
+              "@zusatz": "auf Wunsch vegan",
+              "name": "Bio Stangenspargel Holl\u00e4ndische Sauce Feurige H\u00e4hnchenbrust , Butterkartoffeln Zur Wahl: Fleisch-, Fisch- und vegane Spezialit\u00e4ten Pasta-, Reis und Kartoffelvariationen, Gem\u00fcse",
+              "nameMitUmbruch": "Bio Stangenspargel<br>Holl\u00e4ndische Sauce<br>Feurige H\u00e4hnchenbrust , Butterkartoffeln<br>Zur Wahl: Fleisch-, Fisch- und vegane Spezialit\u00e4ten<br>Pasta-, Reis und Kartoffelvariationen, Gem\u00fcse",
+              "kennzeichnungen": "o: Hauptzutat der bio-gekennzeich. Komponente ist bio, bio: Bio DE-\u00d6KO-007, 6: mit Konservierungsstoff",
+              "allergene": "Sf: Schwefeldioxid/Sulfite,Se: Sellerie,ML: Milch /-erzeugnisse,GlW: Weizen,Gl: GLUTENHALTIGES Getreide,Ei: Eier",
+              "preis": {
+                "studierende": "0,95\u20ac pro 100g",
+                "angestellte": "1,20\u20ac pro 100g",
+                "gaeste": "1,50\u20ac pro 100g",
+                "schueler": "0,95\u20ac pro 100g"
+              }
+            },
+            {
+              "@art": "Abendessen 1",
+              "@zusatz": "vegetarisch",
+              "name": "Gem\u00fcselasagne mit Oliven und Wei\u00dfk\u00e4se Tomaten-Basilikumragout Kr\u00e4uterpesto Beilagensalat vom Buffet",
+              "nameMitUmbruch": "Gem\u00fcselasagne mit Oliven und Wei\u00dfk\u00e4se<br>Tomaten-Basilikumragout<br>Kr\u00e4uterpesto<br>Beilagensalat vom Buffet",
+              "kennzeichnungen": "5: mit Antioxidationsmittel",
+              "allergene": "So: Soja,Gl: GLUTENHALTIGES Getreide,GlW: Weizen,ML: Milch /-erzeugnisse,Se: Sellerie,Sn: Senf",
+              "preis": {
+                "studierende": "3,65\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,65\u20ac"
+              }
+            },
+            {
+              "@art": "Abendessen 2",
+              "name": "Bio Rinderbraten Rotweinsauce Bauernsp\u00e4tzle Beilagensalat vom Buffet",
+              "nameMitUmbruch": "Bio Rinderbraten<br>Rotweinsauce<br>Bauernsp\u00e4tzle<br>Beilagensalat vom Buffet",
+              "kennzeichnungen": "ri: mit Rindfleisch, alc: mit Alkohol, bio: Bio DE-\u00d6KO-007, o: Hauptzutat der bio-gekennzeich. Komponente ist bio",
+              "allergene": "Ei: Eier,Gl: GLUTENHALTIGES Getreide,GlW: Weizen,Sn: Senf",
+              "preis": {
+                "studierende": "4,35\u20ac",
+                "angestellte": "6,05\u20ac",
+                "gaeste": "8,60\u20ac",
+                "schueler": "4,35\u20ac"
+              }
+            }
+          ]
+        },
+        {
+          "@datum": "21.06.2024",
+          "menue": [
+            {
+              "@art": "Schneller Teller",
+              "@zusatz": "auf Wunsch vegan",
+              "name": "Milchreis auf Wunsch vegan + 0,50 \u20ac Rote Gr\u00fctze Zimtzucker",
+              "nameMitUmbruch": "Milchreis<br>auf Wunsch vegan + 0,50 \u20ac<br>Rote Gr\u00fctze<br>Zimtzucker",
+              "kennzeichnungen": null,
+              "allergene": "So: Soja,ML: Milch /-erzeugnisse",
+              "preis": {
+                "studierende": "2,10\u20ac",
+                "angestellte": "3,85\u20ac",
+                "gaeste": "5,70\u20ac",
+                "schueler": "2,10\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 1",
+              "@zusatz": "vegan",
+              "name": "Blumenkohlburger mit Harissa-Mayonnaise, Aubergine und Rucola Gebackene Kartoffel- und S\u00fc\u00dfkartoffelspalten Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Blumenkohlburger mit Harissa-Mayonnaise, Aubergine und Rucola<br>Gebackene Kartoffel- und S\u00fc\u00dfkartoffelspalten<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": null,
+              "allergene": "Gl: GLUTENHALTIGES Getreide,So: Soja,Sn: Senf,Sf: Schwefeldioxid/Sulfite,GlW: Weizen",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 2",
+              "name": "Seelachsfilet Tomate-Basilikum Wei\u00dfweinsauce Wellenbandnudeln Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Seelachsfilet Tomate-Basilikum<br>Wei\u00dfweinsauce<br>Wellenbandnudeln<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": "alc: mit Alkohol, nF: aus nachhaltigem Fischfang",
+              "allergene": "Ei: Eier,Fi: Fisch,Gl: GLUTENHALTIGES Getreide,GlW: Weizen,ML: Milch /-erzeugnisse,Se: Sellerie,Sn: Senf",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 3",
+              "@zusatz": "auf Wunsch vegan",
+              "name": "Dessert",
+              "nameMitUmbruch": "Dessert",
+              "kennzeichnungen": null,
+              "allergene": "ML: Milch /-erzeugnisse",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Wochenangebot",
+              "name": "Dicke Fritten Chili con Carne Knoblauch\u00f6l, Peperoni\u00f6l Geriebener Mozzarella Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Dicke Fritten<br>Chili con Carne<br>Knoblauch\u00f6l, Peperoni\u00f6l<br>Geriebener Mozzarella<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": "ri: mit Rindfleisch",
+              "allergene": "Sn: Senf,Se: Sellerie,ML: Milch /-erzeugnisse",
+              "preis": {
+                "studierende": "3,70\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,70\u20ac"
+              }
+            },
+            {
+              "@art": "Buffet",
+              "@zusatz": "auf Wunsch vegan",
+              "name": "Bio Stangenspargel Holl\u00e4ndische Sauce Paniertes Putenschnitzel , Kartoffelgratin Zur Wahl: Fleisch-, Fisch- und vegane Spezialit\u00e4ten Pasta-, Reis und Kartoffelvariationen, Gem\u00fcse",
+              "nameMitUmbruch": "Bio Stangenspargel<br>Holl\u00e4ndische Sauce<br>Paniertes Putenschnitzel , Kartoffelgratin<br>Zur Wahl: Fleisch-, Fisch- und vegane Spezialit\u00e4ten<br>Pasta-, Reis und Kartoffelvariationen, Gem\u00fcse",
+              "kennzeichnungen": "o: Hauptzutat der bio-gekennzeich. Komponente ist bio, bio: Bio DE-\u00d6KO-007",
+              "allergene": "GlW: Weizen,Gl: GLUTENHALTIGES Getreide,Se: Sellerie,ML: Milch /-erzeugnisse,Ei: Eier",
+              "preis": {
+                "studierende": "0,95\u20ac pro 100g",
+                "angestellte": "1,20\u20ac pro 100g",
+                "gaeste": "1,50\u20ac pro 100g",
+                "schueler": "0,95\u20ac pro 100g"
+              }
+            },
+            {
+              "@art": "Abendessen 1",
+              "@zusatz": "vegan",
+              "name": "Orientalische Falafel Mangochutney Gebratener Gem\u00fcsereis Nasi Goreng Beilagensalat vom Buffet",
+              "nameMitUmbruch": "Orientalische Falafel<br>Mangochutney<br>Gebratener Gem\u00fcsereis Nasi Goreng<br>Beilagensalat vom Buffet",
+              "kennzeichnungen": "alc: mit Alkohol",
+              "allergene": "So: Soja,Gl: GLUTENHALTIGES Getreide,GlW: Weizen,Se: Sellerie,Sf: Schwefeldioxid/Sulfite,Sn: Senf",
+              "preis": {
+                "studierende": "3,65\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,65\u20ac"
+              }
+            },
+            {
+              "@art": "Abendessen 2",
+              "name": "Feurige H\u00e4hnchenbrust Joghurt-Minzedip Bio Couscous mit Gem\u00fcse, Oliven und Schafsk\u00e4se Beilagensalat vom Buffet",
+              "nameMitUmbruch": "Feurige H\u00e4hnchenbrust<br>Joghurt-Minzedip<br>Bio Couscous mit Gem\u00fcse, Oliven und Schafsk\u00e4se<br>Beilagensalat vom Buffet",
+              "kennzeichnungen": "bio: Bio DE-\u00d6KO-007, o: Hauptzutat der bio-gekennzeich. Komponente ist bio, 5: mit Antioxidationsmittel, 6: mit Konservierungsstoff",
+              "allergene": "Sf: Schwefeldioxid/Sulfite,Sn: Senf,GlW: Weizen,Gl: GLUTENHALTIGES Getreide,ML: Milch /-erzeugnisse",
+              "preis": {
+                "studierende": "3,65\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,65\u20ac"
+              }
+            }
+          ]
+        },
+        {
+          "@datum": "24.06.2024",
+          "menue": [
+            {
+              "@art": "Schneller Teller",
+              "name": "H\u00fchnerfrikassee Wei\u00dfe Sauce mit frischen Champignons Reis mit Erbsen",
+              "nameMitUmbruch": "H\u00fchnerfrikassee<br>Wei\u00dfe Sauce<br>mit frischen Champignons<br>Reis mit Erbsen",
+              "kennzeichnungen": "alc: mit Alkohol",
+              "allergene": "So: Soja,ML: Milch /-erzeugnisse,GlW: Weizen,GlG: Gerste,Gl: GLUTENHALTIGES Getreide",
+              "preis": {
+                "studierende": "2,10\u20ac",
+                "angestellte": "3,85\u20ac",
+                "gaeste": "5,70\u20ac",
+                "schueler": "2,10\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 1",
+              "@zusatz": "vegetarisch",
+              "name": "Tortellini gef\u00fcllt mit Ricotta und Spinat Spargel-Gem\u00fcseragout Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Tortellini gef\u00fcllt mit Ricotta und Spinat<br>Spargel-Gem\u00fcseragout<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": "o: Hauptzutat der bio-gekennzeich. Komponente ist bio, bio: Bio DE-\u00d6KO-007",
+              "allergene": "GlW: Weizen,Sn: Senf,Se: Sellerie,ML: Milch /-erzeugnisse,Gl: GLUTENHALTIGES Getreide",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 2",
+              "name": "Hacksteak Berner Art Pfeffer-Rahmsauce Kartoffelbrei Karotten-Erbsengem\u00fcse",
+              "nameMitUmbruch": "Hacksteak Berner Art<br>Pfeffer-Rahmsauce<br>Kartoffelbrei<br>Karotten-Erbsengem\u00fcse",
+              "kennzeichnungen": "bio: Bio DE-\u00d6KO-007, 5: mit Antioxidationsmittel, sch: mit Schwein, ri: mit Rindfleisch, o: Hauptzutat der bio-gekennzeich. Komponente ist bio",
+              "allergene": "GlW: Weizen,Gl: GLUTENHALTIGES Getreide,Ei: Eier,ML: Milch /-erzeugnisse,Sn: Senf",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Essen 3",
+              "@zusatz": "auf Wunsch vegan",
+              "@aktion": "An der Kaffeebar gibt es:",
+              "name": "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Pasta-Kreationen aus unserer eigenen Pasta-Manufaktur mit verschiedenen Saucen und Toppings<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": null,
+              "allergene": "Gl: GLUTENHALTIGES Getreide,GlW: Weizen,ML: Milch /-erzeugnisse,Sn: Senf,So: Soja",
+              "preis": {
+                "studierende": "3,35\u20ac",
+                "angestellte": "5,00\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,35\u20ac"
+              }
+            },
+            {
+              "@art": "Wochenangebot",
+              "@zusatz": "auf Wunsch vegan",
+              "name": "Currywurst oder planted Currywurst Pommes frites Beilagensalat oder Regio-Apfel",
+              "nameMitUmbruch": "Currywurst oder planted Currywurst<br>Pommes frites<br>Beilagensalat oder Regio-Apfel",
+              "kennzeichnungen": "sch: mit Schwein, ri: mit Rindfleisch, 8: mit Phosphat",
+              "allergene": "Sn: Senf,Sf: Schwefeldioxid/Sulfite,Lu: Lupine",
+              "preis": {
+                "studierende": "3,70\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,70\u20ac"
+              }
+            },
+            {
+              "@art": "Buffet",
+              "@zusatz": "auf Wunsch vegan",
+              "name": "Pfannkuchen gef\u00fcllt mit Bolognese und Mozzarella \u00fcberbacken Kartoffelgratin Zur Wahl: Fleisch-, Fisch- und vegane Spezialit\u00e4ten Pasta-, Reis und Kartoffelvariationen, Gem\u00fcse",
+              "nameMitUmbruch": "Pfannkuchen gef\u00fcllt mit Bolognese und Mozzarella \u00fcberbacken<br>Kartoffelgratin<br>Zur Wahl: Fleisch-, Fisch- und vegane Spezialit\u00e4ten<br>Pasta-, Reis und Kartoffelvariationen, Gem\u00fcse",
+              "kennzeichnungen": "o: Hauptzutat der bio-gekennzeich. Komponente ist bio, ri: mit Rindfleisch, bio: Bio DE-\u00d6KO-007",
+              "allergene": "ML: Milch /-erzeugnisse,GlW: Weizen,Gl: GLUTENHALTIGES Getreide,Ei: Eier",
+              "preis": {
+                "studierende": "0,95\u20ac pro 100g",
+                "angestellte": "1,20\u20ac pro 100g",
+                "gaeste": "1,50\u20ac pro 100g",
+                "schueler": "0,95\u20ac pro 100g"
+              }
+            },
+            {
+              "@art": "Abendessen 1",
+              "@zusatz": "vegetarisch",
+              "name": "Auberginen-Tomatenmasala Joghurt-Gurkendip Curryreis Fladenbrot Beilagensalat vom Buffet",
+              "nameMitUmbruch": "Auberginen-Tomatenmasala<br>Joghurt-Gurkendip<br>Curryreis<br>Fladenbrot<br>Beilagensalat vom Buffet",
+              "kennzeichnungen": null,
+              "allergene": "Gl: GLUTENHALTIGES Getreide,GlW: Weizen,ML: Milch /-erzeugnisse,Sa: Sesam,Sn: Senf",
+              "preis": {
+                "studierende": "3,65\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,65\u20ac"
+              }
+            },
+            {
+              "@art": "Abendessen 2",
+              "name": "Shawarma-H\u00e4hnchenfleisch Pommes frites Beilagensalat vom Buffet",
+              "nameMitUmbruch": "Shawarma-H\u00e4hnchenfleisch<br>Pommes frites<br>Beilagensalat vom Buffet",
+              "kennzeichnungen": null,
+              "allergene": "Sn: Senf",
+              "preis": {
+                "studierende": "3,65\u20ac",
+                "angestellte": "5,35\u20ac",
+                "gaeste": "7,90\u20ac",
+                "schueler": "3,65\u20ac"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

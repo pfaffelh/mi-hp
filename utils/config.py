@@ -7,23 +7,9 @@ hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
 
 if (ip_address == "127.0.1.1") or os.getcwd() == "/home/flask-reader/mi-hp":
-#    home = 'static/data/home.json'
-#    interesse = 'static/data/interesse.json'
-#    studiendekanat = 'static/data/studiendekanat.json'
-    home = 'home.json'
-    interesse = 'interesse.json'
-    weiterbildung = 'weiterbildung.json'
-    studiendekanat = 'studiendekanat.json'
-    bildnachweis = 'bildnachweis.json'
     netrc = netrc.netrc()
 else:
-    home = os.path.abspath("/usr/local/lib/mi-hp/home.json")
-    interesse = os.path.abspath("/usr/local/lib/mi-hp/interesse.json")
-    weiterbildung = os.path.abspath("/usr/local/lib/mi-hp/weiterbildung.json")
-    studiendekanat = os.path.abspath("/usr/local/lib/mi-hp/studiendekanat.json")
-    bildnachweis = os.path.abspath("/usr/local/lib/mi-hp/bildnachweis.json")
     netrc = netrc.netrc("/usr/local/lib/mi-hp/.netrc")
-
 
 weekday = {
     "Montag": "Mo",
@@ -76,8 +62,12 @@ semester_dict_old = {
 }
 
 calendar_host = "cal.mathematik.privat/davical/caldav.php/"
-username, account, password = netrc.authenticators(calendar_host)
+cal_username, cal_account, cal_password = netrc.authenticators(calendar_host)
 sondertermine_lehre_calendar_url = "http://cal.mathematik.privat/davical/caldav.php/pruefungsamt/pramt/"
+
+mensaplan_host = "https://www.swfr.de/"
+mensa_username, mensa_account, mensa_password = netrc.authenticators(mensaplan_host)
+mensaplan_url = mensaplan_host + "apispeiseplan?&type=98&tx_speiseplan_pi1[apiKey]=" + mensa_password + "&&tx_speiseplan_pi1[ort]=620"
 
 studiengaenge = {"all": "alle Studiengänge",
                     "bsc": "Bachelor of Science Mathematik",

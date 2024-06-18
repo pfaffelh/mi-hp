@@ -19,6 +19,7 @@ import socket
 from datetime import datetime
 import utils.util_vvz as vvz
 from urllib.request import urlopen 
+import xmltodict
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True)
@@ -152,7 +153,7 @@ def showstudiengang(lang, studiengang, anchor=""):
         filenames = ["studiengaenge/med_erw/index-2021.html"]
     if studiengang == "promotion":
         filenames = ["studiengaenge/promotion/index.html"]
-    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor, _anchor=anchor+"Content")
+    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
 
 @app.route("/<lang>/studiengaenge/<studiengang>/news/")
 def showstudiengangnews(lang, studiengang):
@@ -317,13 +318,50 @@ def showdownloads(lang, anchor=""):
 ## Monitor EG  ##
 #################
 
+def get_mensaplan_text(url, date):
+    response = requests.get(url)
+    if response.status_code == 200:
+        mensaplan_xml = response.text
+        mensaplan = xmltodict.parse(mensaplan_xml)
+        date_format = '%d.%m.%Y'
+        tagesplan = mensaplan["plan"]["ort"]["tagesplan"]
+        tagesplan = [t["menue"] for t in tagesplan if t["@datum"] == datetime.now().strftime('%d.%m.%Y')][0]
+        if tagesplan != []:
+            ausgabe = f"<h2>Mensaplan am {date.strftime('%d.%m.')}</h2>"
+            # Abendessen wird nicht ausgegeben
+            for t in [t for t in tagesplan if t["@art"][0:10] != "Abendessen"]: 
+                art = t["@art"]
+                name = t["name"]
+                if len(t["name"]) > 80:
+                    name = name[0:79] + "..."
+                ausgabe = ausgabe + f"<h4>{art}: {name}</h4>"
+        else:
+            ausgabe = "<h2>Heute ist die Mensa zu!</h2>"
+    else: 
+        ausgabe = ""
+    return ausgabe
+
+
 @app.route("/monitor/")
 def showmonitor():
-
     with app.open_resource('static/data/home.json') as f:
         data = json.load(f)    
     date_format = '%d.%m.%Y %H:%M'
     data['carouselmonitor'] = [item for item in data['carouselmonitor'] if datetime.strptime(item['showstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showend'], date_format)]
+
+    # Mensaplan
+    text = get_mensaplan_text(mensaplan_url, datetime.now().date())
+    if datetime.now().hour < 14 and text != "":
+        data['carouselmonitor'].append(
+                    {
+                    "interval": "15000",
+                    "image": "/static/images/buffet.jpg",
+                    "left": "15%",
+                    "right": "15%",
+                    "bottom": "50%" if text == "<h2>Heute ist die Mensa zu!</h2>" else "2%",
+                    "text": text
+                    }
+            )
 
     # Fußball EM 2024
     if datetime(2024,6,14) < datetime.now() and datetime.now() < datetime(2024,7,15):

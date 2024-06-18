@@ -8,7 +8,7 @@ from .config import *
 
 # Das ist der Prüfungsamts-Kalender
 url_prefix = "http://" + calendar_host
-calendar = (url_prefix, username, password, sondertermine_lehre_calendar_url)
+calendar = (url_prefix, cal_username, cal_password, sondertermine_lehre_calendar_url)
 
 def remove_p_tags(text):
     text = text.replace("<p>", "")

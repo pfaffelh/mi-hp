@@ -23,7 +23,7 @@
         >
           <h3 class="h5">
             {% if lang == 'de' %}{{ acc_item['title_de'] }} {% else %} {{
-            acc_item['title_de'] }} {% endif %}
+            acc_item['title_en'] }} {% endif %}
           </h3>
         </button>
       </h3>
@@ -37,7 +37,7 @@
         <div class="accordion-body">
           <p>
             {% if lang == 'de' %}{{ acc_item['prefix_de'] }} {% else %} {{
-            acc_item['prefix_de'] }} {% endif %}
+            acc_item['prefix_en'] }} {% endif %}
           </p>
           <div class="row row-cols-1 row-cols-md-4 g-3">
             {% for item in acc_item['cards'] %} {% if item['show'] %}

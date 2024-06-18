@@ -1,7 +1,7 @@
 <div class="container" id="inhalt">
   <div class="row">
-    <h2>Wegweiser für den Studienanfang im Fach Mathematik</h2>
     <!--  <p>
+      <h2>Wegweiser für den Studienanfang im BSc Mathematik und im 2-Hauptfächer Bachelor</h2>
     <img
       alt="[Straßenschild Ernst-Zermelo-Straße]"
       src="https://www.math.uni-freiburg.de/i/Webseite-oben-Strassenschild.jpg"
@@ -15,19 +15,19 @@
       sich in einen der beiden Bachelor-Studiengänge in Mathematik
       eingeschrieben (
       <a
-        href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html"
+        href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
       >
         Bachelor of Science
       </a>
       oder
       <a
-        href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html"
+        href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
       >
         2-Hauptfächer-Bachelor
       </a>
       ) oder in den
       <a
-        href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html"
+        href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
       >
         Master of Ecucation als Erweiterungsfach
       </a>
@@ -38,7 +38,7 @@
       zur Einführungswoche, vorher müssen Sie in der Regel nichts tun. Einige
       typische Fragen werden auch hier beantwortet; weitere Fragen beantwortet
       bei Bedarf die
-      <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+      <a href="{{ url_for('showstudienberatungbase', lang=lang) }}">
         Studienberatung
       </a>
       des Mathematischen Instituts oder die Studierenden der
@@ -85,7 +85,7 @@
           Studienberatung
         </a>
         <a
-          href="fachscahft"
+          href="https://fachschaft-mathe-freiburg.de/"
           class="btn btn-primary"
           role="button"
           aria-disabled="true"
@@ -99,7 +99,7 @@
   <div id="accordion"></div>
   <div class="accordion accordion-flush" id="accordionExample">
     <div class="accordion-item" id="_vorbereitung">
-      <h3 class="accordion-header" id="header_vorbereitung">
+      <h4 class="accordion-header" id="header_vorbereitung">
         <button
           aria-controls="_vorbereitungContent"
           aria-expanded="false"
@@ -108,9 +108,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Vor dem Studium
+          <h3 class="h5">Vor dem Studium</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_vorbereitungContent"
         class="accordion-collapse collapse"
@@ -143,7 +143,7 @@
             Wer sich vor Vorlesungsbeginn schon ein wenig mit Mathematik und dem
             Mathematikstudium beschäftigen möchte, findet
             <a
-              href="https://www.math.uni-freiburg.de/lehre/studieninteresse/literatur.html"
+              href="{{url_for('showanfang', lang = lang, anchor = 'literatur', _anchor='literatur')}}"
             >
               auf dieser Seite
             </a>
@@ -162,7 +162,7 @@
           <ul>
             <li>
               für Mathematikveranstaltungen am besten im
-              <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+              <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
                 Vorlesungsverzeichnis Mathematik
               </a>
               ,
@@ -213,10 +213,10 @@
             Tutorate werden von der Assistenz der Vorlesung organisiert, an die
             Sie sich bei Terminschwierigkeiten wenden können. (Wer Assistent/in
             ist, finden Sie im
-            <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+            <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Vorlesungsverzeichnis Mathematik
             </a>
-            , die Kontraktdaten in unserem
+            , die Kontaktdaten in unserem
             <a href="https://home.mathematik.uni-freiburg.de/personen/list">
               Personenverzeichnis
             </a>
@@ -226,7 +226,7 @@
             <li>
               Im
               <a
-                href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html"
+                href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
               >
                 <b> Bachelor-of-Science-Studiengang Mathematik </b>
               </a>
@@ -244,7 +244,7 @@
             <li>
               Studieren Sie Mathematik im
               <a
-                href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html"
+                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
               >
                 <b> Polyvalenten Zwei-Hauptfächer-Bachelor-Studiengang </b>
               </a>
@@ -258,7 +258,7 @@
               anderen Fach. (Hinweise zu den verschiedenen Studienplanvarianten
               finden Sie
               <a
-                href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html#verlauf"
+                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}"
               >
                 hier
               </a>
@@ -273,7 +273,7 @@
             <li>
               Der Studiengang
               <a
-                href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html"
+                href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
               >
                 <b> Master of Ecucation als Erweiterungsfach </b>
               </a>
@@ -288,7 +288,7 @@
               <i> Analysis I </i>
               “ und können sich an den Hinweisen zu den
               <a
-                href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html#verlauf"
+                href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}"
               >
                 Studienplanvarianten für Mathematik im
                 Zwei-Hauptfächer-Bachelor-Studiengang
@@ -328,7 +328,7 @@
             sollten Sie sich Gedanken über die Wahl des Anwendungsfachs machen.
             Informationen zum Anwendungsfach gibt es
             <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html#af"
+              href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'anwendungsfaecher', _anchor = 'anwendungsfaecher') }}"
             >
               hier
             </a>
@@ -368,7 +368,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_vorkurs">
-      <h3 class="accordion-header" id="header_vorkurs">
+      <h4 class="accordion-header" id="header_vorkurs">
         <button
           aria-controls="_vorkursContent"
           aria-expanded="false"
@@ -377,9 +377,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Vorkurs Mathematik
+          <h3 class="h5">Vorkurs Mathematik</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_vorkursContent"
         class="accordion-collapse collapse"
@@ -403,19 +403,15 @@
           </p>
           <ul>
             <li>
-              Montag, 2. Oktober und Mittwoch 4. bis Freitag 6. Oktober 2023,
-              jeweils von 11 bis 16 Uhr mit Mittagspause.
-              <br />
-              Er startet am 02.10. um 11 Uhr im Hörsaal Weismann-Haus
-              (Albertstr. 21a – Nr. 29 im
+              Den Termin entnehmen Sie bitte dem
+              <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">Vorlesungsverzeichnis</a>.
               <a
                 href="https://www.uni-freiburg.de/universitaet/universitaet-im-ueberblick/kontakt-und-wegweiser/lageplaene/institutsviertel"
               >
-                Lageplan des Institutsviertels
+                Hier
               </a>
-              ).
-              <br />
-              Der Kurs kann auch nur teilweise besucht werden.
+              finden Sie einen Lageplan des Institutsviertels. Der Kurs kann
+              auch nur teilweise besucht werden.
             </li>
           </ul>
           <p>
@@ -548,7 +544,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_beginn">
-      <h3 class="accordion-header" id="header_beginn">
+      <h4 class="accordion-header" id="header_beginn">
         <button
           aria-controls="_beginnContent"
           aria-expanded="false"
@@ -557,9 +553,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Die ersten Wochen
+          <h3 class="h5">Die ersten Wochen</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_beginnContent"
         class="accordion-collapse collapse"
@@ -676,7 +672,7 @@
             Sie sich bei Problemen wenden können, insbesondere wenn es
             Terminschwierigkeiten bei den Tutoraten gibt. Wer Assistent:in ist,
             ist im
-            <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+            <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Vorlesungsverzeichnis des Mathematischen Instituts
             </a>
             bei jeder Vorlesung vermerkt.
@@ -807,7 +803,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_beratung">
-      <h3 class="accordion-header" id="header_beratung">
+      <h4 class="accordion-header" id="header_beratung">
         <button
           aria-controls="_beratungContent"
           aria-expanded="false"
@@ -816,9 +812,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Weitere Informationen und Beratung
+          <h3 class="h5">Weitere Informationen und Beratung</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_beratungContent"
         class="accordion-collapse collapse"
@@ -914,7 +910,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_ausblick">
-      <h3 class="accordion-header" id="header_ausblick">
+      <h4 class="accordion-header" id="header_ausblick">
         <button
           aria-controls="_ausblickContent"
           aria-expanded="false"
@@ -923,9 +919,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Ausblick
+          <h3 class="h5">Ausblick</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_ausblickContent"
         class="accordion-collapse collapse"
@@ -1135,7 +1131,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_einfuehrungswoche">
-      <h3 class="accordion-header" id="header_einfuehrungswoche">
+      <h4 class="accordion-header" id="header_einfuehrungswoche">
         <button
           aria-controls="_einfuehrungswocheContent"
           aria-expanded="false"
@@ -1144,9 +1140,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Einführungswoche
+          <h3 class="h5">Einführungswoche</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_einfuehrungswocheContent"
         class="accordion-collapse collapse"
@@ -1281,6 +1277,107 @@
 	  am Donnerstag, 13.&nbsp;Oktober 2022 um 18:00 Uhr im HS&nbsp;00&thinsp;026 an der Technischen Fakultät
 	  und am Mittwoch 19.&nbsp;Oktober 2022 im Hörsaal&nbsp;I im Physik-Hochhaus; 
 	  für den Zwei-Hauptfächer-Bachelor ohne Lehramtsoption am Donnerstag 13.&nbsp;Oktober 2022 im HS&nbsp;1010 im KG&nbsp;I. </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="_literaturContent"
+          aria-expanded="{% if anchor == 'literatur' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'literatur' %}collapsed{% endif %}"
+          data-bs-target="#_literaturContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Literaturhinweise</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="_literaturContent"
+        class="accordion-collapse collapse {% if anchor == 'literatur' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="_literaturContent"
+      >
+        <div class="accordion-body" id="literatur">
+          <b>Als Vorbereitung aufs Studium:</b>
+          <ul>
+            <li>
+              Kevin Houston <i>„Wie man mathematisch denkt“</i>, Springer
+              Spektrum 2012. <br />
+              (Beschreibung siehe
+              <a
+                href="https://www.mathematik.de/leseecke-article/1289-wie-man-mathematisch-denkt"
+                >Rezension auf der DMV-Seite</a
+              >)
+            </li>
+            <li>
+              Lara Alcock <i>„Wie man erfolgreich Mathematik studiert“</i>,
+              Springer Spektrum 2017. <br />
+              (Beschreibung siehe
+              <a href="https://rdcu.be/braBb"
+                >Rezension in den Mathematischen Semesterberichten</a
+              >)
+            </li>
+            <li>
+              Tobias Glasauer
+              <i
+                >„(Hoch)Schulmathmatik. Ein Sprungbrett vom Gymnasium an die
+                Uni“</i
+              >, Springer Spektrum 2015.
+            </li>
+          </ul>
+
+          <b>Begleitend zum Studium:</b>
+          <ul>
+            <li>
+              Oliver Deiser et. al.
+              <i>„12 x 12 Schlüsselkonzepte zur Mathematik“</i>, Springer
+              Spektrum 2012. <br />
+              (Beschreibung siehe
+              <a
+                href="https://ojs.didaktik-der-mathematik.de/index.php/mgdm/article/download/414/408"
+                >Rezension in den Mitteilungen der GDM</a
+              >)
+            </li>
+            <li>
+              Markus Junker
+              <i
+                >„<a
+                  href="https://home.mathematik.uni-freiburg.de/junker/skripte/Grundlagen-WS1011.pdf"
+                  >Einführung in Sprache und Grundbegriffe der Mathematik“</a
+                ></i
+              >
+              (pdf), Wintersemester 2010/11 (mit minimalen Überarbeitungen 2017)
+            </li>
+          </ul>
+
+          <b>Populärwissenschaftliche Bücher über mathematische Themen:</b>
+          <ul>
+            <li>
+              Günter M. Ziegler
+              <i>„Darf ich Zahlen? Geschichten aus der Mathematik"</i>; Piper
+              Taschenbuch, 2010.
+            </li>
+            <li>
+              Donal O’Shea
+              <i
+                >„The Poincaré Conjecture: In Search of the Shape of the
+                Universe“</i
+              >, Walker 2007. <br style="margin-bottom: 5px" />
+              Übersetzung von Hartmut Schickert:
+              <i
+                >„Poincarés Vermutung. Die Geschichte eines mathematischen
+                Abenteuers“</i
+              >, S. Fischer, 2007. Taschenbuchausgabe bei Fischer.
+            </li>
+            <li>
+              Simon Singh <i>„Fermat's Last Theorem“</i>, London 1997.
+              <br style="margin-bottom: 5px" />
+              Übersetzung von Klaus Fritz: <i>„Fermats letzter Satz“</i>, Hanser
+              1998. Taschenbuchausgabe bei dtv.
+            </li>
           </ul>
         </div>
       </div>
