@@ -232,11 +232,18 @@ def showlehrveranstaltungen(lang, semester):
 #####################################
 
 @app.route("/<lang>/studiendekanat/")
-def showstudiendekanatbase(lang):
-    with app.open_resource('static/data/studiendekanat.json') as f:
-        data = json.load(f)    
-    filenames = ["studiendekanat/index.html"]
-    return render_template("home.html", data=data, filenames = filenames, lang=lang)
+@app.route("/<lang>/studiendekanat/<unterseite>")
+def showstudiendekanatbase(lang, unterseite = ""):
+    if unterseite == "ausland":
+        filenames = ["studiendekanat/ausland.html"]
+        return render_template("home.html", filenames = filenames, lang=lang)
+    else:
+        with app.open_resource('static/data/studiendekanat.json') as f:
+            data = json.load(f)    
+        filenames = ["studiendekanat/index.html"]
+        return render_template("home.html", data=data, filenames = filenames, lang=lang)
+
+
 
 @app.route("/<lang>/studienberatung/")
 def showstudienberatungbase(lang):

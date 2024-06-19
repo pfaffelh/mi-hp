@@ -255,8 +255,8 @@
               “ anfangen oder nur mit einer von beiden – je nachdem, wann Ihre
               Veranstaltungen im zweiten Fach liegen und ob Sie am Anfang eher
               etwas mehr Mathematik machen möchten oder eher etwas mehr im Ihrem
-              anderen Fach. (Hinweise zu den verschiedenen Studienplanvarianten
-              finden Sie
+              anderen Fach. (Hinweise zu den verschiedenen
+              Studienverlaufsvarianten finden Sie
               <a
                 href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}"
               >
@@ -288,9 +288,9 @@
               <i> Analysis I </i>
               “ und können sich an den Hinweisen zu den
               <a
-                href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}"
+                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}"
               >
-                Studienplanvarianten für Mathematik im
+                Studienverlaufsvarianten für Mathematik im
                 Zwei-Hauptfächer-Bachelor-Studiengang
               </a>
               orientieren.
@@ -404,7 +404,9 @@
           <ul>
             <li>
               Den Termin entnehmen Sie bitte dem
-              <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">Vorlesungsverzeichnis</a>.
+              <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
+                >Vorlesungsverzeichnis</a
+              >.
               <a
                 href="https://www.uni-freiburg.de/universitaet/universitaet-im-ueberblick/kontakt-und-wegweiser/lageplaene/institutsviertel"
               >
@@ -784,7 +786,7 @@
             zwei separate Studienleistungen bestehen müssen: Übungen und
             Klausur. Zu beiden müssen Sie sich
             <a
-              href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+              href="{{ url_for('showpruefungsamt', unterseite='calendar', lang=lang) }}"
             >
               fristgerecht
             </a>
@@ -793,11 +795,25 @@
             registrieren. Siehe hierzu auch die Informationen zu den Prüfungen
             im
             <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html#studienplan"
+              href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'modulplan', _anchor = 'modulplan') }}"
             >
-              Zwei-Hauptfächer-Bachelor
-            </a>
-            (B.Sc. folgt noch).
+              Zwei-Hauptfächer-Bachelor </a
+            >, (bzw.
+            <a
+              href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'modulplan', _anchor = 'modulplan') }}"
+            >
+              BSc Mathematik </a
+            >, im
+            <a
+              href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'modulplanhf', _anchor = 'modulplanhf') }}"
+            >
+              MEd Erweiterungsfach (120 ECTS)</a
+            >, oder im
+            <a
+              href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'modulplanbf', _anchor = 'modulplanbf') }}"
+            >
+              MEd Erweiterungsfach (90 ECTS)</a
+            >.
           </p>
         </div>
       </div>
@@ -833,7 +849,7 @@
               <ul>
                 <li>
                   <a
-                    href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html"
+                    href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
                   >
                     Bachelor of Science
                   </a>
@@ -841,14 +857,14 @@
                 </li>
                 <li>
                   <a
-                    href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html"
+                    href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
                   >
                     Polyvalenter Zwei-Hauptfächer-Bachelor
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html"
+                    href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
                   >
                     Master of Education als Erweiterungsfach
                   </a>
@@ -860,16 +876,23 @@
               <ul>
                 <li>
                   <a
-                    href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-2018.html"
+                    href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}"
                   >
                     Master of Education
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html"
+                    href="{{ url_for('showstudiengang', studiengang='msc', lang = lang) }}"
                   >
                     Master of Science
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="{{ url_for('showstudiengang', studiengang='msc_data', lang = lang) }}"
+                  >
+                    Master of Science Mathematics in Data and Technology
                   </a>
                 </li>
               </ul>
@@ -879,9 +902,7 @@
           Anlaufstellen:
           <ul>
             <li>
-              <a
-                href="https://www.math.uni-freiburg.de/lehre/studienberatung.html"
-              >
+              <a href="{{ url_for('showstudienberatungbase', lang=lang) }}">
                 Beratung und Anlaufstellen
               </a>
             </li>
@@ -943,12 +964,11 @@
             über
             <i> Analysis I und II </i>
             bzw.
-            <i> Lineare Algebra I und II </i>
-            . Für diese Prüfungen gibt es zwei Prüfungszeiträume im Jahr: April
-            und Oktober (genauer: jeweils etwa drei Wochen vor Vorlesungsbeginn
-            und die erste Vorlesungswoche). Sie können diese beiden Prüfungen
-            auf verschiedene Semester aufteilen, auch wenn Sie beide
-            Grundvorlesungen gleichzeitig gehört haben.
+            <i> Lineare Algebra I und II </i>. Für diese Prüfungen gibt es zwei
+            Prüfungszeiträume im Jahr: April und Oktober (genauer: jeweils etwa
+            drei Wochen vor Vorlesungsbeginn und die erste Vorlesungswoche). Sie
+            können diese beiden Prüfungen auf verschiedene Semester aufteilen,
+            auch wenn Sie beide Grundvorlesungen gleichzeitig gehört haben.
           </p>
           <p>
             Falls Sie die Lehramtsoption wählen, bietet es sich an, zwischen dem
@@ -1051,9 +1071,7 @@
             Pflichtveranstaltungen weiterführende Wahlvorlesungen nach Ihren
             Interessen hinzunehmen; eine Übersicht über das regelmäßige Angebot
             an geeigneten Vorlesungen finden Sie
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/dokumente/uebersicht-bsc-vorlesungen.pdf"
-            >
+            <a href="/static/pdf/studienberatung/uebersicht-vorlesungen.pdf">
               hier (pdf)
             </a>
             . Schauen Sie sich vor Semesterbeginn das Vorlesungsverzeichnis an;
@@ -1117,7 +1135,7 @@
             2. Fachsemesters/Beginn des 3. Fachsemesters begonnen werden.
             Näheres dazu auf der Webseite des
             <a
-              href="https://www.math.uni-freiburg.de/lehre/studienberatung.html#ausland"
+              href="{{ url_for('showstudiendekanatbase', unterseite = 'ausland', lang=lang) }}"
             >
               Auslandsbeauftragten des Mathematischen Instituts
             </a>
@@ -1165,9 +1183,7 @@
             Die Dozent:inn:en der Erstsemestervorlesungen stellen sich vor, und
             es gibt Führungen durch das Mathematische Institut, die Universität
             und die Stadt Freiburg. Innerhalb der Einführungswoche bietet die
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studienberatung.html"
-            >
+            <a href="{{ url_for('showstudienberatungbase', lang=lang) }}">
               Studienberatung
             </a>
             eine Informationsveranstaltung an, bei der offene Fragen zum Ablauf
@@ -1230,16 +1246,14 @@
             </li>
             <li>
               <a
-                href="https://math.uni-freiburg.de/lehre/dokumente/2023_Folien_SCS_Studienstart_Studiengänge.pdf"
+                href="/static/pdf/studienberatung/2023_Folien_SCS_Studienstart_Studiengänge.pdf"
               >
                 Folien der Zentralen Studienberatung
               </a>
               (2023)
             </li>
             <li>
-              <a
-                href="https://math.uni-freiburg.de/lehre/dokumente/ese2023.pdf"
-              >
+              <a href="/static/pdf/studienberatung/ese2023.pdf">
                 Präsentation 2023
               </a>
               zur Einführung in die Studiengänge
