@@ -332,8 +332,10 @@ def get_mensaplan_text(url, date):
         mensaplan = xmltodict.parse(mensaplan_xml)
         date_format = '%d.%m.%Y'
         tagesplan = mensaplan["plan"]["ort"]["tagesplan"]
-        tagesplan = [t["menue"] for t in tagesplan if t["@datum"] == datetime.now().strftime('%d.%m.%Y')][0]
+        tagesplan = [t["menue"] for t in tagesplan if t["@datum"] == datetime.now().strftime('%d.%m.%Y')]
+        print(tagesplan)
         if tagesplan != []:
+            tagesplan = tagesplan[0]
             ausgabe = f"<h2>Mensaplan am {date.strftime('%d.%m.')}</h2>"
             # Abendessen wird nicht ausgegeben
             for t in [t for t in tagesplan if t["@art"][0:10] != "Abendessen"]: 
@@ -357,7 +359,9 @@ def showmonitor():
     data['carouselmonitor'] = [item for item in data['carouselmonitor'] if datetime.strptime(item['showstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showend'], date_format)]
 
     # Mensaplan
-    text = get_mensaplan_text(mensaplan_url, datetime.now().date())
+#    date = datetime(2024, 6, 24).date()
+    date = datetime.now().date()
+    text = get_mensaplan_text(mensaplan_url, date)
     if datetime.now().hour < 14 and text != "":
         data['carouselmonitor'].append(
                     {
