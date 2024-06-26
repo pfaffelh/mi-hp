@@ -141,6 +141,8 @@ def make_raumzeit(veranstaltung):
                     datum = " bis ".join([startdatum, enddatum]) if startdatum != enddatum else startdatum
                 else:
                     datum = startdatum
+            else:
+                datum = ""
             if termin['startzeit'] is not None:
                 zeit = f"{str(termin['startzeit'].hour)}{': '+str(termin['startzeit'].minute) if termin['startzeit'].minute > 0 else ''}"
                 if termin['endzeit'] is not None:
