@@ -54,7 +54,7 @@ endblock %} {% block content %}
           {{ v['titel']|markdown }}
           {% endif %}
         </td>
-        <td rowspan="{{ 1 + v['raumzeit'] | length }}">{{ v['dozent'] }}</td>
+        <td rowspan="{{ 1 + v['raumzeit'] | length }}">{{ v['dozent']|markdown }}</td>
       </tr>
       {% for line in v["raumzeit"] %}
       <tr {% if ns.i % 2 %} class="bg-light"{% endif %}>
@@ -66,7 +66,13 @@ endblock %} {% block content %}
       <tr {% if ns.i % 2 %} class="bg-light"{% endif %}>
         <td></td>
         <td>Assistenz</td>
-        <td>{{ v["assistent"] }}</td>
+        <td>{{ v["assistent"]|markdown }}</td>
+      </tr>
+      {% endif %}
+      {% if v["kommentar"] %}
+      <tr {% if ns.i % 2 %} class="bg-light"{% endif %}>
+        <td></td>
+        <td>{{ v["kommentar"]|markdown }}</td>
       </tr>
       {% endif %}
       <tr {% if ns.i % 2 %} class="bg-light"{% endif %}>
