@@ -22,7 +22,7 @@ from urllib.request import urlopen
 import xmltodict
 
 app = Flask(__name__)
-Misaka(app, autolink=True, tables=True)
+Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
 
 # This is such that we can use os-commands in jinja2-templates.
 @app.context_processor
