@@ -212,6 +212,7 @@ def get_data(sem_shortname):
             # raumzeit ist der Text, der unter der Veranstaltung steht.
             # print(v_dict["titel"])
             v_dict["raumzeit"] = make_raumzeit(veranstaltung)
+            v_dict["raumzeit"].append(veranstaltung["kommentar_html_de"]) 
             r_dict["veranstaltung"].append(v_dict)
 
         data["rubrik"].append(r_dict)
