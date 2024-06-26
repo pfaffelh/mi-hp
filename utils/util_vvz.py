@@ -96,38 +96,41 @@ def vorname_name(person_id):
 def make_raumzeit(veranstaltung):
     res = []
     for termin in veranstaltung["woechentlicher_termin"]:
-        ta = vvz_terminart.find_one({"_id": termin['key']})["name_de"]
-        if termin['wochentag'] !="":
-            # key, raum, zeit, person, kommentar
-            key = f"{ta}:" if ta != "" else ""
-            # Raum und Gebäude mit Url, zB Hs II.
-            r = vvz_raum.find_one({ "_id": termin["raum"]})
-            raum = get_html(r["_id"])
-            # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
-            if termin['start'] is not None:
-                zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}"
-                if termin['ende'] is not None:
-                    zeit = zeit + f"-{str(termin['ende'].hour)}{': '+str(termin['ende'].minute) if termin['ende'].minute > 0 else ''}"
-            else:
-                zeit = ""
-            # zB Mo, 8-10
-            tag = weekday[termin['wochentag']]
-            # person braucht man, wenn wir dann die Datenbank geupdated haben.
-            #person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
-            kommentar = rf"\newline{termin['kommentar']}" if termin['kommentar'] != "" else ""
-            new = [key, tag, zeit, raum, kommentar]
-            if key in [x[0] for x in res]:
-                new.pop(0)
-                i = [x[0] for x in res].index(key)
-                res[i] = (res[i] + new)
-                res[i].reverse()
-                res[i] = list(OrderedDict.fromkeys(res[i]))
-                res[i].reverse()
-            else:
-                res.append(new)
+        ta = vvz_terminart.find_one({"_id": termin['key']})
+        if ta["hp_sichtbar"]:
+            ta = ta["name_de"]
+            if termin['wochentag'] !="":
+                # key, raum, zeit, person, kommentar
+                key = f"{ta}:" if ta != "" else ""
+                # Raum und Gebäude mit Url, zB Hs II.
+                r = vvz_raum.find_one({ "_id": termin["raum"]})
+                raum = get_html(r["_id"])
+                # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
+                if termin['start'] is not None:
+                    zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}"
+                    if termin['ende'] is not None:
+                        zeit = zeit + f"-{str(termin['ende'].hour)}{': '+str(termin['ende'].minute) if termin['ende'].minute > 0 else ''}"
+                else:
+                    zeit = ""
+                # zB Mo, 8-10
+                tag = weekday[termin['wochentag']]
+                # person braucht man, wenn wir dann die Datenbank geupdated haben.
+                #person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
+                kommentar = rf"\newline{termin['kommentar']}" if termin['kommentar'] != "" else ""
+                new = [key, tag, zeit, raum, kommentar]
+                if key in [x[0] for x in res]:
+                    new.pop(0)
+                    i = [x[0] for x in res].index(key)
+                    res[i] = (res[i] + new)
+                    res[i].reverse()
+                    res[i] = list(OrderedDict.fromkeys(res[i]))
+                    res[i].reverse()
+                else:
+                    res.append(new)
     for termin in veranstaltung["einmaliger_termin"]:
-        ta = vvz_terminart.find_one({"_id": termin['key']})["name_de"]
-        if ta !="-":
+        ta = vvz_terminart.find_one({"_id": termin['key']})
+        if ta["hp_sichtbar"]:
+            ta = ta["name_de"]
             # Raum und Gebäude mit Url.
             raeume = list(vvz_raum.find({ "_id": { "$in": termin["raum"]}}))
             raum = ", ".join([get_html(r["_id"]) for r in raeume])
