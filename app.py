@@ -219,7 +219,7 @@ def showlehrveranstaltungenbase(lang="de"):
 
 @app.route("/<lang>/lehrveranstaltungen/<semester>/")
 def showlehrveranstaltungen(lang, semester):
-    if semester in [f"{s}s{i}{j}" for s in ["s", "w"] for i in range(3) for j in range(10)]:
+    if semester in [f"{s}s{i}{j}" for s in ['s', 'w'] for i in range(3) for j in range(10)]:
         filenames = [f"lehrveranstaltungen/{semester}.html"]
         return render_template("home.html", filenames = filenames, lang=lang, semester=semester)
     else:

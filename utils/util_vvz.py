@@ -151,7 +151,7 @@ def make_raumzeit(veranstaltung):
                 zeit = ""
             # person braucht man, wenn wir dann die Datenbank geupdated haben.
             # person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
-            kommentar = rf"\newline{termin['kommentar']}" if termin['kommentar'] != "" else ""
+            kommentar = rf"{termin['kommentar']}" if termin['kommentar'] != "" else ""
             new = [ta, datum, zeit, raum, kommentar]
             res.append(new)
     res = [f"{x[0]} {(', '.join([z for z in x if z !='' and x.index(z)!=0]))}" for x in res]
