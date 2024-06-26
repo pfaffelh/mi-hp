@@ -179,13 +179,17 @@ def get_data(sem_shortname):
     for rubrik in rubriken:
         r_dict = {}
         r_dict["titel"] = rubrik["titel_de"]
+        r_dict["untertitel"] = rubrik["untertitel_de"]
+        r_dict["prefix"] = rubrik["prefix_de"]
+        r_dict["suffix"] = rubrik["suffix_de"]
         print(r_dict["titel"])
         r_dict["veranstaltung"] = []
         veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
             v_dict = {}
-            v_dict["code"] = make_codes(sem_id, veranstaltung["_id"])
+            v_dict["code"] = make_codes(sem_id, veranstaltung["_id"])            
             v_dict["titel"] = veranstaltung["name_de"]
+            v_dict["kommentar"] = veranstaltung["kommentar_html_de"]
             v_dict["link"] = veranstaltung["url"]
             v_dict["dozent"] = ", ".join([vorname_name(x) for x in veranstaltung["dozent"]])
             v_dict["assistent"] = ", ".join([vorname_name(x) for x in veranstaltung["assistent"]])
@@ -195,6 +199,7 @@ def get_data(sem_shortname):
             r_dict["veranstaltung"].append(v_dict)
 
         data["rubrik"].append(r_dict)
+        print(data)
     return data
 
 
