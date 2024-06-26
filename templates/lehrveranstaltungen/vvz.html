@@ -3,6 +3,19 @@ endblock %} {% block content %}
 
 <div class="container" id="inhalt">
   <h2>Lehrveranstaltungen im {{data['semester']}}</h2>
+
+  {% if data["codes"] != [] %}
+  <h2>Codes</h2>
+  <table>
+    {% for c in data["codes"] %}
+    <tr>
+      <td style="vertical-align: top"> {{ c["name"] | markdown}}</td>
+      <td>c["beschreibung"] | markdown</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
   <table class="table table-borderless table-sm">
     {% set ns = namespace(i = 1) %}
     {% for r in data["rubrik"] %}

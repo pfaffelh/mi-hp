@@ -172,9 +172,18 @@ def get_data(sem_shortname):
 
     rubriken = list(vvz_rubrik.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
 
+    codekategorie = list(vvz_codekategorie.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
+    codes = list(vvz_code.find({"semester": sem_id, "codekategorie": { "$in" : [c["_id"] for c in codekategorie] }}, sort=[("rang", pymongo.ASCENDING)]))
+
     data = {}
     data["semester"] = vvz_semester.find_one({"kurzname": sem_shortname})["name_de"]
     data["rubrik"] = []
+    data["code"] = []
+
+    for code in codes:
+        code_dict = {}
+        code_dict["name"] = code["name"]
+        code_dict["beschreibung"] = code["beschreibung_de"]
 
     for rubrik in rubriken:
         r_dict = {}
