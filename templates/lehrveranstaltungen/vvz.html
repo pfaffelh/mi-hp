@@ -26,7 +26,7 @@ endblock %} {% block content %}
       {% for line in v["raumzeit"] %}
       <tr {% if ns.i % 2 %} class="bg-light"{% endif %}>
         <td></td>
-      <td>{{ line | safe }}</td>
+      <td>{{ line|markdown }}</td>
       </tr>
       {% endfor %} 
       {% if v["assistent"] %}
