@@ -174,6 +174,7 @@ def get_data(sem_shortname):
 
     codekategorie = list(vvz_codekategorie.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
     codes = list(vvz_code.find({"semester": sem_id, "codekategorie": { "$in" : [c["_id"] for c in codekategorie] }}, sort=[("rang", pymongo.ASCENDING)]))
+    #print(codes)
 
     data = {}
     data["semester"] = vvz_semester.find_one({"kurzname": sem_shortname})["name_de"]
@@ -181,9 +182,12 @@ def get_data(sem_shortname):
     data["code"] = []
 
     for code in codes:
-        code_dict = {}
-        code_dict["name"] = code["name"]
-        code_dict["beschreibung"] = code["beschreibung_de"]
+        if vvz_veranstaltung.find_one({"semester": sem_id, "code" : { "$elemMatch" : { "$eq": code["_id"]}}}):
+            code_dict = {}
+            code_dict["name"] = code["name"]
+            code_dict["beschreibung"] = code["beschreibung_de"]
+            data["code"].append(code_dict)
+    print(data["code"])
 
     for rubrik in rubriken:
         r_dict = {}
@@ -191,7 +195,7 @@ def get_data(sem_shortname):
         r_dict["untertitel"] = rubrik["untertitel_de"]
         r_dict["prefix"] = rubrik["prefix_de"]
         r_dict["suffix"] = rubrik["suffix_de"]
-        print(r_dict["titel"])
+        # print(r_dict["titel"])
         r_dict["veranstaltung"] = []
         veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
@@ -203,12 +207,12 @@ def get_data(sem_shortname):
             v_dict["dozent"] = ", ".join([vorname_name(x) for x in veranstaltung["dozent"]])
             v_dict["assistent"] = ", ".join([vorname_name(x) for x in veranstaltung["assistent"]])
             # raumzeit ist der Text, der unter der Veranstaltung steht.
-            print(v_dict["titel"])
+            # print(v_dict["titel"])
             v_dict["raumzeit"] = make_raumzeit(veranstaltung)
             r_dict["veranstaltung"].append(v_dict)
 
         data["rubrik"].append(r_dict)
-        print(data)
+        #print(data)
     return data
 
 
