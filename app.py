@@ -341,8 +341,8 @@ def get_mensaplan_text(url, date):
             for t in [t for t in tagesplan if t["@art"][0:10] != "Abendessen"]: 
                 art = t["@art"]
                 name = t["name"]
-                if len(t["name"]) > 80:
-                    name = name[0:79] + "..."
+                if len(t["name"]) > 60:
+                    name = name[0:59] + "..."
                 ausgabe = ausgabe + f"<h4>{art}: {name}</h4>"
         else:
             ausgabe = "<h2>Heute ist die Mensa zu!</h2>"

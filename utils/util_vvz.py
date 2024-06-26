@@ -104,7 +104,12 @@ def make_raumzeit(veranstaltung):
             r = vvz_raum.find_one({ "_id": termin["raum"]})
             raum = get_html(r["_id"])
             # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
-            zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}-{str(termin['ende'].hour)}{': '+str(termin['ende'].minute) if termin['ende'].minute > 0 else ''}"
+            if termin['start'] is not None:
+                zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}"
+                if termin['ende'] is not None:
+                    zeit = zeit + f"-{str(termin['ende'].hour)}{': '+str(termin['ende'].minute) if termin['ende'].minute > 0 else ''}"
+            else:
+                zeit = ""
             # zB Mo, 8-10
             tag = weekday[termin['wochentag']]
             # person braucht man, wenn wir dann die Datenbank geupdated haben.
@@ -127,14 +132,19 @@ def make_raumzeit(veranstaltung):
             raeume = list(vvz_raum.find({ "_id": { "$in": termin["raum"]}}))
             raum = ", ".join([get_html(r["_id"]) for r in raeume])
             # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
-            startdatum = termin['startdatum'].strftime("%d.%m.")
-            if termin['startdatum'] != termin['enddatum']:
-                enddatum = termin['enddatum'].strftime("%d.%m.")
-                datum = " bis ".join([startdatum, enddatum]) if startdatum != enddatum else startdatum
-            else:
-                datum = startdatum
+            if termin['enddatum'] is None:
+                termin['enddatum'] = termin['startdatum']
+            if termin['startdatum'] is not None:
+                startdatum = termin['startdatum'].strftime("%d.%m.")
+                if termin['startdatum'] != termin['enddatum']:
+                    enddatum = termin['enddatum'].strftime("%d.%m.")
+                    datum = " bis ".join([startdatum, enddatum]) if startdatum != enddatum else startdatum
+                else:
+                    datum = startdatum
             if termin['startzeit'] is not None:
-                zeit = f"{str(termin['startzeit'].hour)}{': '+str(termin['startzeit'].minute) if termin['startzeit'].minute > 0 else ''}--{str(termin['endzeit'].hour)}{': '+str(termin['endzeit'].minute) if termin['endzeit'].minute > 0 else ''}"
+                zeit = f"{str(termin['startzeit'].hour)}{': '+str(termin['startzeit'].minute) if termin['startzeit'].minute > 0 else ''}"
+                if termin['endzeit'] is not None:
+                    zeit = zeit + f"--{str(termin['endzeit'].hour)}{': '+str(termin['endzeit'].minute) if termin['endzeit'].minute > 0 else ''}"
             else:
                 zeit = ""
             # person braucht man, wenn wir dann die Datenbank geupdated haben.
