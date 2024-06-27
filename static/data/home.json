@@ -364,6 +364,23 @@
       "text_en": ""
     },
     {
+      "showhomestart": "01.01.2000 00:00",
+      "showhomeend": "01.11.2000 00:00",
+      "showmonitorstart": "27.06.2024 10:00",
+      "showmonitorend": "02.07.2024 19:00",
+      "title_de": "Vortrag von Uli Brauner im Didaktischen Seminar",
+      "title_en": "",
+      "image": "/static/images/UlrichBrauner.jpg",
+      "style": "object-fit: cover",
+      "link": "https://wochenprogramm.mathematik.uni-freiburg.de/abstract.html?l=de&LetzteSeite=woche&LfdNr=4&Semester=SS2024",
+      "popover_title_de": "",
+      "popover_title_en": "",
+      "popover_text_de": "",
+      "popover_text_en": "",
+      "text_de": "<ul><li>Dienstag, 2. Juli 2024, 18:30 Uhr, Hörsal II</li><li><strong>Zaubern mit Mathematik im Unterricht</strong></li><li>Im Vortrag werden - zum Teil interaktiv - mathematische Zaubertricks vorgestellt, die spaß- und gewinnbringend an vielen Stellen im Unterricht in heterogenen Lerngruppen eingesetzt werden können. Es wird erläutert, wie etwa ein Zaubertrick zur mathematischen Sprachbildung beitragen kann, ein anderer funktionales Denken fördert.</li></ul>",
+      "text_en": ""
+    },
+    {
       "showhomestart": "01.01.2024 00:00",
       "showhomeend": "01.11.2023 00:00",
       "showmonitorstart": "29.05.2024 00:00",
