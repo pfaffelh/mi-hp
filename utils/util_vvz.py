@@ -105,11 +105,12 @@ def make_raumzeit(veranstaltung):
                 # Raum und Gebäude mit Url, zB Hs II.
                 r = vvz_raum.find_one({ "_id": termin["raum"]})
                 raum = get_html(r["_id"])
-                # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
+                # zB Vorlesung: Montag, 8-10 Uhr, HSII, Albertstr. 23a
                 if termin['start'] is not None:
                     zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}"
                     if termin['ende'] is not None:
                         zeit = zeit + f"-{str(termin['ende'].hour)}{': '+str(termin['ende'].minute) if termin['ende'].minute > 0 else ''}"
+                    zeit = zeit + " Uhr"
                 else:
                     zeit = ""
                 # zB Mo, 8-10
@@ -149,7 +150,8 @@ def make_raumzeit(veranstaltung):
             if termin['startzeit'] is not None:
                 zeit = f"{str(termin['startzeit'].hour)}{': '+str(termin['startzeit'].minute) if termin['startzeit'].minute > 0 else ''}"
                 if termin['endzeit'] is not None:
-                    zeit = zeit + f"--{str(termin['endzeit'].hour)}{': '+str(termin['endzeit'].minute) if termin['endzeit'].minute > 0 else ''}"
+                    zeit = zeit + f"-{str(termin['endzeit'].hour)}{': '+str(termin['endzeit'].minute) if termin['endzeit'].minute > 0 else ''}"
+                zeit = zeit + " Uhr"
             else:
                 zeit = ""
             # person braucht man, wenn wir dann die Datenbank geupdated haben.

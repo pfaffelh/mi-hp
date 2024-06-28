@@ -119,6 +119,24 @@
       "text_en": ""
     },
     {
+      "id": "anmeldung",
+      "showhomestart": "18.06.2000 00:00",
+      "showhomeend": "24.06.2024 00:00",
+      "showmonitorstart": "28.06.2024 00:00",
+      "showmonitorend": "05.07.2024 23:00",
+      "title_de": "Prüfungsanmeldung!",
+      "title_en": "",
+      "image": "/static/images/Uni Rostock-Akad_Festver _MBF 13-11-15_0098a-preview-26064@528f6ee5-d1ae-49fd-a381-88c12a465571.jpg",
+      "style": "height: 20vw; object-fit: cover",
+      "link": "",
+      "popover_title_de": "",
+      "popover_title_en": "",
+      "popover_text_de": "",
+      "popover_text_en": "",
+      "text_de": "Am Freitag, den 5. Juli, endet die Frist für die Anmeldung von Prüfungs- und Registrierung von Studienleistungen für alle Mathematikveranstaltungen in den Mathematikstudiengängen (außer (Pro-)Seminaren). <br>Sollte eine Anmeldung nicht möglich sein, melden Sie sich bitte vor Ende der Frist beim Prüfungsamt oder der Studiengangkoordination! ",
+      "text_en": ""
+    },
+    {
       "id": "stadtradeln",
       "showhomestart": "17.06.2000 00:00",
       "showhomeend": "24.06.2024 00:00",
@@ -411,7 +429,7 @@
       "popover_title_en": "",
       "popover_text_de": "",
       "popover_text_en": "",
-      "text_de": "<ul><li>Sprecherin: Heike Mildenberger</li><li>Donnerstag, 4.7., 14.15, Hörsal II</li><li>Wie funktioniert das Sainte-Laguë/Schepers-Verfahren, um ein Wahlergebnis in eine Sitzverteilung umzurechnen? Gibt es schnellere Algorithmen als das Höchstzahlverfahren? In welchem Sinn sind die Regeln von Sainte-Laguë/Schepers optimal? Wir vergleichen mit anderen Divisor- und Proporzverfahren. </li></ul>",
+      "text_de": "<ul><li>Donnerstag, 4.7., 14.15, Hörsal II</li><li>Wie funktioniert das Sainte-Laguë/Schepers-Verfahren, um ein Wahlergebnis in eine Sitzverteilung umzurechnen? Gibt es schnellere Algorithmen als das Höchstzahlverfahren? In welchem Sinn sind die Regeln von Sainte-Laguë/Schepers optimal? Wir vergleichen mit anderen Divisor- und Proporzverfahren. </li></ul>",
       "text_en": ""
     },
     {

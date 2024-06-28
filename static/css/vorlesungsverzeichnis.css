@@ -1,7 +1,7 @@
 table.vlverz td { border: none; }
 table.vlverz td { vertical-align: top; }
-table.vlverz td { padding-top: 0.2em; padding-bottom: 0; }
-table.vlverz tr.note td { padding-top: 0.25em; font-style: italic; }
+table.vlverz td { margin-top: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; }
+table.vlverz tr.note td { padding-top: 0.25em !important; font-style: italic; }
 table.vlverz td:nth-child(2) { padding-right: 3ex; }
 table.vlverz col:nth-child(1) { width: 50pt; }
 table.vlverz col:nth-child(3) { width: 30%; }
