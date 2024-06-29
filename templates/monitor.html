@@ -11,7 +11,9 @@
         class="carousel-image"
         src="{{ item['image']}}"
         class="d-block w-100"
-        alt="..."
+        {% if item['style'] %}
+        style = "{{ item['style'] }}"
+        {% endif %}
       />
       {% if item['text'] != "" %}
       <div class="container-sm">

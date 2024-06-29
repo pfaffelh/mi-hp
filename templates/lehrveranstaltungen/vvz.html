@@ -2,10 +2,12 @@
 endblock %} {% block content %}
 
 <div class="container" id="inhalt">
-  <h2>Lehrveranstaltungen im {{data['semester']}}</h2>
-
+  <h2>Lehrveranstaltungen im {{data['semester']['name_de']}}</h2>
+  {% if data['semester']['prefix_de'] != "" %}
+  <p> {{ data['semester']['prefix_de'] | markdown }}  </p>
+  {% endif %}
   {% if data["code"] != [] %}
-  <!--<h2>Codes</h2>-->
+  <h2>Codes</h2>
   <table class="table table-borderless table-sm">
     {% for c in data["code"] %}
     <tr>

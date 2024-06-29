@@ -350,7 +350,6 @@ def get_mensaplan_text(url, date):
         ausgabe = ""
     return ausgabe
 
-
 @app.route("/monitor/")
 def showmonitor():
     with app.open_resource('static/data/home.json') as f:
@@ -358,21 +357,48 @@ def showmonitor():
     date_format = '%d.%m.%Y %H:%M'
     data['carouselmonitor'] = [item for item in data['carouselmonitor'] if datetime.strptime(item['showstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showend'], date_format)]
 
+    # Wetter vom DWD
+
+#    data['carouselmonitor'].append(
+#            {
+#            "interval": "7000",
+#            "image": "https://morgenwirdes.de/api/v3/minimet.php?plz=79104",
+#            "left": "5%",
+#            "right": "40%",
+#            "bottom": "20%",
+#            "text": "",
+#            "style": "max-height: 10vw; object-fit: cover",
+#            },
+#   )
+
+#    data['carouselmonitor'].append(
+#            {
+#            "interval": "7000",
+#            "image": "https://morgenwirdes.de/api/v3/gif6.php?plz=79104&delay=70&type=1&zoomlvl=3&bar=1&map=0&textcol=ffffff&bgcol=8393c9",
+#            "left": "5%",
+#            "right": "40%",
+#            "bottom": "20%",
+#            "text": "",
+#            "style": "height: 10vw; object-fit: contain",
+#            },
+#   )
+
     # Mensaplan
 #    date = datetime(2024, 6, 24).date()
     date = datetime.now().date()
-    text = get_mensaplan_text(mensaplan_url, date)
-    if datetime.now().hour < 14 and text != "":
-        data['carouselmonitor'].append(
-                    {
-                    "interval": "15000",
-                    "image": "/static/images/buffet.jpg",
-                    "left": "15%",
-                    "right": "15%",
-                    "bottom": "50%" if text == "<h2>Heute ist die Mensa zu!</h2>" else "2%",
-                    "text": text
-                    }
-            )
+    if datetime.now().hour < 14:
+        text = get_mensaplan_text(mensaplan_url, date)
+        if text != "":
+            data['carouselmonitor'].append(
+                        {
+                        "interval": "15000",
+                        "image": "/static/images/buffet.jpg",
+                        "left": "15%",
+                        "right": "15%",
+                        "bottom": "50%" if text == "<h2>Heute ist die Mensa zu!</h2>" else "2%",
+                        "text": text
+                        }
+                )
 
     # Fußball EM 2024
     if datetime(2024,6,14) < datetime.now() and datetime.now() < datetime(2024,7,15):

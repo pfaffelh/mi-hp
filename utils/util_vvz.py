@@ -182,7 +182,7 @@ def get_data(sem_shortname):
     #print(codes)
 
     data = {}
-    data["semester"] = vvz_semester.find_one({"kurzname": sem_shortname})["name_de"]
+    data["semester"] = vvz_semester.find_one({"kurzname": sem_shortname})
     data["rubrik"] = []
     data["code"] = []
 
@@ -219,5 +219,4 @@ def get_data(sem_shortname):
         data["rubrik"].append(r_dict)
         #print(data)
     return data
-
 
