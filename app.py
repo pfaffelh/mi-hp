@@ -387,7 +387,7 @@ def showmonitor():
 #    date = datetime(2024, 6, 24).date()
     date = datetime.now().date()
     if datetime.now().hour < 14:
-        text = get_mensaplan_text(mensaplan_url, date)
+        text = ""# get_mensaplan_text(mensaplan_url, date)
         if text != "":
             data['carouselmonitor'].append(
                         {
