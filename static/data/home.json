@@ -245,6 +245,24 @@
       "text_en": ""
     },
     {
+      "id": "EMturn",
+      "showhomestart": "17.06.2000 00:00",
+      "showhomeend": "24.06.2024 00:00",
+      "showmonitorstart": "03.07.2024 00:00",
+      "showmonitorend": "05.07.2024 22:00",
+      "title_de": "Im Rahmen des Sommerfestes am 5.7.",
+      "title_en": "",
+      "image": "/static/images/EM.jpg",
+      "style": "height: 25vw; object-fit: cover",
+      "link": "",
+      "popover_title_de": "",
+      "popover_title_en": "",
+      "popover_text_de": "",
+      "popover_text_en": "",
+      "text_de": "... gibt es ein Public Viewing im Großen Hörsaal Physik.",
+      "text_en": ""
+    },
+    {
       "id": "tutorengesucht",
       "showhomestart": "17.06.2000 00:00",
       "showhomeend": "20.06.2024 15:00",
