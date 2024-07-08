@@ -46,7 +46,7 @@
                   item['title_en'] | safe}} {% endif %}
                 </h3>
                 <p
-                  class="card-text {% if item['today'] %} watermark-today {% endif %}"
+                  class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
                 >
                   {% if item['link']!= '' %}
                   <img
@@ -99,7 +99,7 @@
                 item['title_en'] | safe}} {% endif %}
               </h3>
               <div
-                class="card-text {% if item['today'] %} watermark-today {% endif %}"
+                class="card-text {% if item['today']  and item['showlastday'] %} watermark-today {% endif %}"
               >
                 {% if item['link']!= '' %}
                 <img
