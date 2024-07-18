@@ -21,6 +21,16 @@
       "text": "Am 13.6. und 14.6. stellen sich Kandidat*innen für eine Professur <br>in <i>Reiner Mathematik</i> vor. Details siehe unten."
     },
     {
+      "showstart": "18.07.2024 06:00",
+      "showend": "20.07.2024 16:00",
+      "interval": "4000",
+      "image": "/static/images/grapes-2000.jpg",
+      "left": "10%",
+      "right": "10%",
+      "bottom": "40%",
+      "text": "Am 19.7. verabschiede ich mich in die Sommerpause und werde vermutlich Anfang Oktober wieder eingeschaltet."
+    },
+    {
       "showstart": "01.01.2000 00:00",
       "showend": "01.06.2024 00:00",
       "interval": "4000",

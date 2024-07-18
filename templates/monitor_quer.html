@@ -6,7 +6,7 @@
 >
   <div class="carousel-inner">
     {% for item in data["carouselmonitor"] %}
-    <div class="carousel-item active" data-bs-interval="{{ item['interval'] }}">
+    <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %}" data-bs-interval="{{ item['interval'] }}">
       <img
         class="carousel-image"
         src="{{ item['image']}}"
@@ -40,7 +40,7 @@
           <div class="card-body py-0 px-0">
             <div class="row py-0 px-0">
               {% if loop.index0 %2 == 0 %}
-              <div class="col-sm-6 px-4">
+              <div class="col-sm-11 px-4">
                 <h3 class="card-title">
                   {% if lang == 'de' %}{{ item['title_de'] | safe }}{% else %}{{
                   item['title_en'] | safe}} {% endif %}
@@ -69,6 +69,7 @@
                   >
                 </p>
               </div>
+              {% if item['image']!= '' %}
               <div class="col-sm-6 text-right">
                 <img
                   src="{{ item['image'] }}"
@@ -77,10 +78,9 @@
                   style="height: 30vw; max-width: 40vw; {{ item['style'] }}"
                 />
               </div>
-              {% endif %}
+              {% endif %} {% endif %}
             </div>
           </div>
-
           {% if loop.index0 %2 == 1 %}
           <div class="d-inline-flex align-top">
             <div class="float-start py-0 my-0 g-0">
@@ -99,7 +99,7 @@
                 item['title_en'] | safe}} {% endif %}
               </h3>
               <div
-                class="card-text {% if item['today']  and item['showlastday'] %} watermark-today {% endif %}"
+                class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
               >
                 {% if item['link']!= '' %}
                 <img

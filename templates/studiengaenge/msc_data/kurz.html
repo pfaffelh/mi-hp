@@ -173,6 +173,37 @@
       </div>
       <div class="feature col">
         <div class="feature-icon bg-gradient text-center">
+          <h2><i class="fa fa-dollar-sign fa-4" aria-hidden="true"></i></h2>
+          <h2>Fees</h2>
+        </div>
+        <div>
+          {% if lang == "de" %}
+          <p>
+            Das Master-Programm selbst hat keine Gebühren, allerdings gibt es
+            den allgemeinene Semesterbeitrag (aktuell circa € 180,-).
+            Studierende aus dem nicht-EU Ausland müssen darüberhinaus € 1500,-
+            pro Semester bezahlen. Mehr Informationen sind
+            <a
+              href="https://www.studium.uni-freiburg.de/en/student-services/study-fees?set_language=de"
+              >hier</a
+            >.
+          </p>
+          {% else %}
+          <p>
+            There are no special fees for the master course itself, one only has
+            to pay a general semester fee (currently about € 180,-). Students
+            from a non-EU country additionally have to pay a fee of € 1500,- per
+            term. For more detailed information, see
+            <a
+              href="https://www.studium.uni-freiburg.de/en/student-services/study-fees?set_language=en"
+              >here</a
+            >.
+          </p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon bg-gradient text-center">
           <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
           <h2>Freiburg</h2>
         </div>
@@ -201,48 +232,49 @@
           {% endif %}
         </div>
       </div>
-    </div>
 
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-1">
-      <div class="feature col">
-        <div class="feature-icon bg-gradient text-center">
-          <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
-          <h2>Curriculum</h2>
-        </div>
-        {% if lang == "de" %}
-        <p>
-          Sie erhalten eine solide Grundlage in Mathematik in einem Basiskurs,
-          und einen zusätzlichen Aufbaukurs in angewandter Mathematik. In
-          Wahlfächern können Sie aus Modulen wie Numerische Optimierung, Numerik
-          für partielle Differentialgleichungen, neuronale Netze,
-          Finanzmathematik, Dynamische Systeme in der Biologie, Ökonometrie,
-          Computer Vision, automatisiertes maschinelles Lernen, etc. wählen.
-          Mehr Informationen finden Sie
-          <a
-            href="{{url_for('showstudiengang', studiengang='msc_data', anchor='studienverlauf', lang=lang)}}"
-            >hier</a
-          >
-        </p>
-        {% else %}
-        <p>
-          You will obtain solid foundation in mathematics in a basic course, and
-          an additional advanced course in applied mathematics. In the
-          electives, you can choose from modules such as numerical optimization,
-          numerics for partial differential equations, neural nets, financial
-          mathematics, dynamical systems in biology, econometrics, computer
-          vision, automated machine learning, etc. More information can be found
-          <a
-            href="{{url_for('showstudiengang', studiengang='msc_data', anchor='studienverlauf', lang=lang)}}"
-            >here</a
-          >
-        </p>
-        {% endif %}
-
-        <div>
-          {% if lang == "de" %} {% include
-          "studiengaenge/msc_data/studienverlauf_tabelle.html" %} {% else %}
-          <p></p>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-1">
+        <div class="feature col">
+          <div class="feature-icon bg-gradient text-center">
+            <h2><i class="fa fa-puzzle-piece fa-4" aria-hidden="true"></i></h2>
+            <h2>Curriculum</h2>
+          </div>
+          {% if lang == "de" %}
+          <p>
+            Sie erhalten eine solide Grundlage in Mathematik in einem Basiskurs,
+            und einen zusätzlichen Aufbaukurs in angewandter Mathematik. In
+            Wahlfächern können Sie aus Modulen wie Numerische Optimierung,
+            Numerik für partielle Differentialgleichungen, neuronale Netze,
+            Finanzmathematik, Dynamische Systeme in der Biologie, Ökonometrie,
+            Computer Vision, automatisiertes maschinelles Lernen, etc. wählen.
+            Mehr Informationen finden Sie
+            <a
+              href="{{url_for('showstudiengang', studiengang='msc_data', anchor='studienverlauf', lang=lang)}}"
+              >hier</a
+            >
+          </p>
+          {% else %}
+          <p>
+            You will obtain solid foundation in mathematics in a basic course,
+            and an additional advanced course in applied mathematics. In the
+            electives, you can choose from modules such as numerical
+            optimization, numerics for partial differential equations, neural
+            nets, financial mathematics, dynamical systems in biology,
+            econometrics, computer vision, automated machine learning, etc. More
+            information can be found
+            <a
+              href="{{url_for('showstudiengang', studiengang='msc_data', anchor='studienverlauf', lang=lang)}}"
+              >here</a
+            >
+          </p>
           {% endif %}
+
+          <div>
+            {% if lang == "de" %} {% include
+            "studiengaenge/msc_data/studienverlauf_tabelle.html" %} {% else %}
+            <p></p>
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>
