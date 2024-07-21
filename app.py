@@ -18,8 +18,10 @@ from flask_misaka import Misaka
 import socket
 from datetime import datetime
 import utils.util_vvz as vvz
+import utils.util_news as news
 from urllib.request import urlopen 
 import xmltodict
+import base64
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
@@ -351,13 +353,24 @@ def get_mensaplan_text(url, date):
     return ausgabe
 
 @app.route("/monitor/")
-def showmonitor():
-    with app.open_resource('static/data/home.json') as f:
-        data = json.load(f)    
-    date_format = '%d.%m.%Y %H:%M'
-    data['carouselmonitor'] = [item for item in data['carouselmonitor'] if datetime.strptime(item['showstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showend'], date_format)]
+@app.route("/monitortest/")
+@app.route("/monitor/<dtstring>")
+@app.route("/monitortest/<dtstring>")
+def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+    testorpublic = 'test' if request.endpoint.split(".")[0] == 'monitortest' else '_public'
+    date_format_no_space = '%Y%m%d%H%M'
+    dt = datetime.strptime(dtstring, date_format_no_space)
 
-    # Wetter vom DWD
+
+
+
+#    with app.open_resource('static/data/home2.json') as f:
+#        data = json.load(f)    
+#    date_format = '%d.%m.%Y %H:%M'
+#    data['carouselmonitor'] = [item for item in data['carouselmonitor'] if datetime.strptime(item['showstart'], date_format) < dt and dt < datetime.strptime(item['showend'], date_format)]
+
+
+# Wetter vom DWD
 
 #    data['carouselmonitor'].append(
 #            {
@@ -383,10 +396,10 @@ def showmonitor():
 #            },
 #   )
 
-    # Mensaplan
+# Mensaplan
 #    date = datetime(2024, 6, 24).date()
-    date = datetime.now().date()
-    if datetime.now().hour < 14:
+    date = dt.date()
+    if dt.hour < 14:
         text = "" # get_mensaplan_text(mensaplan_url, date)
         if text != "":
             data['carouselmonitor'].append(
@@ -401,20 +414,19 @@ def showmonitor():
                 )
 
     # Fußball EM 2024
-    if datetime(2024,6,14) < datetime.now() and datetime.now() < datetime(2024,7,15):
-        url = "https://api.openligadb.de/getmatchdata/em/2024/"
-        date = datetime.now().date()
-#        date = datetime(2024, 6, 29).date()
-        data['carouselmonitor'].append(
-                {
-                "interval": "7000",
-                "image": "/static/images/fussball.jpeg",
-                "left": "5%",
-                "right": "40%",
-                "bottom": "20%",
-                "text": fb.get_openligadb_text(url, date, 0)
-                },
-        )
+#    if datetime(2024,6,14) < dt and dt < datetime(2024,7,15):
+#        url = "https://api.openligadb.de/getmatchdata/em/2024/"
+#        date = datetime.now().date()
+#        data['carouselmonitor'].append(
+#                {
+#                "interval": "7000",
+#                "image": "/static/images/fussball.jpeg",
+#                "left": "5%",
+#                "right": "40%",
+#                "bottom": "20%",
+#                "text": fb.get_openligadb_text(url, date, 0)
+#                },
+#        )
 
 #    os.system('textimg -i "$(curl de.wttr.in/Freiburg?1pQ | tail -n 20 -q | head -n 18 -q)" -o static/images/wetter.png')
 #    os.system("convert static/images/wetter.png -resize 2000x500 static/images/wetter_cropped.png")
@@ -429,10 +441,24 @@ def showmonitor():
 #            },
 #    )
 
-    data['news'] = [item for item in data['news'] if datetime.strptime(item['showmonitorstart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showmonitorend'], date_format)]
+#https://stackoverflow.com/questions/20718251/how-to-retrieve-image-files-from-mongodb-to-html-page
+#<img src="data:image/png;base64, {{ item['image'][] }}
+    data = {}
+    print(testorpublic)
+    data["carouselnews"] = list(news.carouselnews.find({ testorpublic : True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))
+    print(data)
+    for item in data["carouselnews"]:
+        item["image"] = base64.b64encode(news.bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
+        print((item["image"][0:100]))
+
+    data["news"] =  list(news.news.find({ f"monitor.{testorpublic}" : True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))
+    for item in data["news"]:
+        if item["image"] != []:
+            item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
+
+#    data['news'] = [item for item in data['news'] if item['monitor'][testorpublic] and datetime.strptime(item['monitor']['showstart'], date_format) < dt and dt < datetime.strptime(item['monitor']['showend'], date_format)]
     for item in data['news']:
-        item['today'] = True if datetime.now().date() == datetime.strptime(item['showmonitorend'], date_format).date() else False
+        item['today'] = True if (item["monitor"]["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
+ 
     filenames = ["monitor_quer.html"]
     return render_template("monitor_quer.html", data=data, filenames = filenames, lang="de")
-
-
