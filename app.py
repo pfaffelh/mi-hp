@@ -444,21 +444,22 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 #https://stackoverflow.com/questions/20718251/how-to-retrieve-image-files-from-mongodb-to-html-page
 #<img src="data:image/png;base64, {{ item['image'][] }}
     data = {}
-    print(testorpublic)
     data["carouselnews"] = list(news.carouselnews.find({ testorpublic : True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))
-    print(data)
     for item in data["carouselnews"]:
         item["image"] = base64.b64encode(news.bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
         print((item["image"][0:100]))
 
-    data["news"] =  list(news.news.find({ f"monitor.{testorpublic}" : True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))
+    if testorpublic == "test":
+        data["news"] =  list(news.news.find({ "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))
+    else:
+        data["news"] =  list(news.news.find({ "_public": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))        
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
 
 #    data['news'] = [item for item in data['news'] if item['monitor'][testorpublic] and datetime.strptime(item['monitor']['showstart'], date_format) < dt and dt < datetime.strptime(item['monitor']['showend'], date_format)]
     for item in data['news']:
-        item['today'] = True if (item["monitor"]["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
+        item['today'] = True if (item["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
  
     filenames = ["monitor_quer.html"]
     return render_template("monitor_quer.html", data=data, filenames = filenames, lang="de")
