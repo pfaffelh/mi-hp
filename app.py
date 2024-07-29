@@ -357,12 +357,9 @@ def get_mensaplan_text(url, date):
 @app.route("/monitor/<dtstring>")
 @app.route("/monitortest/<dtstring>")
 def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
-    testorpublic = 'test' if request.endpoint.split(".")[0] == 'monitortest' else '_public'
+    public = True if request.endpoint.split(".")[0] == 'monitor' else False
     date_format_no_space = '%Y%m%d%H%M'
     dt = datetime.strptime(dtstring, date_format_no_space)
-
-
-
 
 #    with app.open_resource('static/data/home2.json') as f:
 #        data = json.load(f)    
