@@ -441,7 +441,10 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 #https://stackoverflow.com/questions/20718251/how-to-retrieve-image-files-from-mongodb-to-html-page
 #<img src="data:image/png;base64, {{ item['image'][] }}
     data = {}
-    data["carouselnews"] = list(news.carouselnews.find({ testorpublic : True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))
+    if testorpublic == "test":
+        data["carouselnews"] = list(news.carouselnews.find({"start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))
+    else:
+        data["carouselnews"] = list(news.carouselnews.find({"_public" :True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))        
     for item in data["carouselnews"]:
         item["image"] = base64.b64encode(news.bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
         print((item["image"][0:100]))
