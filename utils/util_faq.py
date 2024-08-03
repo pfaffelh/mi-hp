@@ -27,7 +27,7 @@ def get_faq(lang):
     qa_pairs = {}
     for cat_kurzname in cats_kurzname:
         y = qa.find({"category": cat_kurzname}, sort=[("rang", pymongo.ASCENDING)])
-        qa_pairs[cat_kurzname] = [ (f"qa_{str(x['_id'])}", f"{x['q_de'] if lang == "de" else x["q_en"]} " + (f"({', '.join([config.studiengaenge[s] for s in x['studiengang']])})" if x['studiengang'] != [] else ""), (x["a_de"]) if lang == "de" else (x["a_en"])) for x in y]
+        qa_pairs[cat_kurzname] = [ (f"qa_{str(x['_id'])}", f"{x['q_de'] if lang == 'de' else x['q_en']} " + (f"({', '.join([config.studiengaenge[s] for s in x['studiengang']])})" if x['studiengang'] != [] else ""), (x["a_de"]) if lang == "de" else (x["a_en"])) for x in y]
     return cats_kurzname, names_dict, qa_pairs
 
 def get_cat(qa_id):
