@@ -1,7 +1,7 @@
 <div class="container" id="inhalt">
   <br />
 
-  <div
+  <!--   <div
     id="carouselExampleIndicators"
     class="carousel slide"
     data-bs-ride="carousel"
@@ -48,29 +48,31 @@
       ></button>
       {% endfor %}
     </div>
-  </div>
+  </div> -->
   <div class="row row-cols-1 row-cols-md-3 g-3">
-    {% for item in data["news"] %} 
+    {% for item in data["news"] %}
     <div class="col">
-      <div class="card h-100  flex-grow-1 {{ item['color'] }}">
+      <div
+        class="card h-100 flex-grow-1 {% if item['today'] and item['monitor']['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
+      >
         <center>
           <img
-            src="{{ item['image'] }}"
+            src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
             class="card-img-fluid d-none d-md-block"
             alt="..."
-            style="height: 15vw; width: 100%; {{ item['style'] }}"
+                  style="height: 15vw; {{ item['image'][0]['stylehome'] }}"
           />
         </center>
         <div class="card-body">
           <h3 class="h5">
-            {% if lang == 'de' %}{{ item['title_de'] | safe }}{% else %}{{
-            item['title_en'] | safe}} {% endif %}
+            {% if lang == 'de' %}{{ item['home']['title_de'] | safe }}{% else %}{{
+            item['home']['title_en'] | safe}} {% endif %}
           </h3>
           <div class="card-text">
-            {% if lang == 'de' %}{{ item['text_de'] | safe}}{% else %}{{
-            item['text_en'] | safe }} {% endif %}
+            {% if lang == 'de' %}{{ item['home']['text_de'] | safe}}{% else %}{{
+            item['home']['text_en'] | safe }} {% endif %}
             <p align="right">
-              {% if item['popover_title_de']!= '' or item['popover_text_de']!=
+              {% if item['home']['popover_title_de']!= '' or item['home']['popover_text_de']!=
               '' %}
               <button
                 type="button"
@@ -79,8 +81,8 @@
                 data-bs-toggle="popover"
                 data-bs-html="true"
                 style="color: #004a99"
-                title="{% if lang == 'de' %}{{ item['popover_title_de'] | safe }}{% else %}{{ item['popover_title_en'] | safe }}{% endif %}"
-                data-bs-content="{% if lang == 'de' %}{{ item['popover_text_de'] | safe }}{% else %}{{ item['popover_text_en'] | safe }}{% endif %}"
+                title="{% if lang == 'de' %}{{ item['home']['popover_title_de'] | safe }}{% else %}{{ item['home']['popover_title_en'] | safe }}{% endif %}"
+                data-bs-content="{% if lang == 'de' %}{{ item['home']['popover_text_de'] | safe }}{% else %}{{ item['home']['popover_text_en'] | safe }}{% endif %}"
               >
                 <i class="fa-solid fa-info" style="color: #004a99"></i>
               </button>
@@ -93,7 +95,6 @@
               >
                 <i class="fa-solid fa-link" style="color: #004a99"></i>
               </a>
-
               {% endif %}
             </p>
           </div>

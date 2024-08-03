@@ -1,4 +1,6 @@
 import pymongo
+import utils.config as config
+from bson import ObjectId
 #from .util_logging import logger
 
 # Connect to MongoDB
@@ -25,8 +27,17 @@ def get_faq(lang):
     qa_pairs = {}
     for cat_kurzname in cats_kurzname:
         y = qa.find({"category": cat_kurzname}, sort=[("rang", pymongo.ASCENDING)])
-        qa_pairs[cat_kurzname] = [ (f"qa_{str(x['_id'])}", (x["q_de"]) if lang == "de" else (x["q_en"]), (x["a_de"]) if lang == "de" else (x["a_en"])) for x in y]
+        qa_pairs[cat_kurzname] = [ (f"qa_{str(x['_id'])}", f"{x['q_de'] if lang == "de" else x["q_en"]} " + (f"({', '.join([config.studiengaenge[s] for s in x['studiengang']])})" if x['studiengang'] != [] else ""), (x["a_de"]) if lang == "de" else (x["a_en"])) for x in y]
     return cats_kurzname, names_dict, qa_pairs
 
-
+def get_cat(qa_id):
+    print(qa_id)
+    id = qa_id.split("_")[-1]
+    print(id)
+    x = qa.find_one({"_id" : ObjectId(id)})
+    if x:
+        res = x["category"]
+    else:
+        res = ""
+    return res
 

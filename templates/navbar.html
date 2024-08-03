@@ -282,6 +282,36 @@
             <a
               class="nav-link text-white"
               href="{{ url_for('showdownloads', lang=lang) }}"
+              >{% if lang == "de" %}Internes{% else %}Internals{% endif %}</a
+            >
+            <ul class="dropdown-menu" data-bs-theme="light">
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatungbase', lang=lang) }}"
+                  >{% if lang == "de" %}Lehrorganisation{% else %}Organisition of Teaching{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatungbase', lang=lang) }}"
+                  >{% if lang == "de" %}Lehrzertifikat{% else %}Certificate Teaching{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudienberatungbase', lang=lang) }}"
+                  >{% if lang == "de" %}FAQ{% else %}FAQ{% endif %}</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item px-3">
+            <a
+              class="nav-link text-white"
+              href="{{ url_for('showdownloads', lang=lang) }}"
               >Downloads</a
             >
           </li>

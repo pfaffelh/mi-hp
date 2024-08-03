@@ -90,3 +90,18 @@ bewerbungsdaten = {
     "msc": [{"start": "01.06.", "end": "15.09."}, {"start": "01.02.", "end": "15.03."}],
     "mscdata": [{"start": "01.06.", "end": "15.09."}]
 }
+
+
+
+#    qa_pairs = {}
+#    for cat_kurzname in cats_kurzname:
+#        y = qa.find({"category": cat_kurzname}, sort=[("rang", pymongo.ASCENDING)])
+#        res = []
+#        for x in y:
+#            a = f"qa_{str(x['_id'])}"
+#            d = f"({', '.join(studiengaenge[x['studiengang']])})" if x["studiengang"] != [] else ""
+#            b = f"{x['q_de'] if lang == "de" else x["q_en"]} {d}" 
+#            c  = (x["a_de"]) if lang == "de" else x["a_en"]
+#            res.append((a, b, c))
+#        qa_pairs[cat_kurzname] = res
+#    return cats_kurzname, names_dict, qa_pairs

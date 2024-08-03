@@ -11,7 +11,7 @@ from flask import make_response
 from utils.config import *
 #from utils.util_logging import logger
 from utils.util_calendar import calendar, get_caldav_calendar_events
-from utils.util_faq import get_faq
+from utils.util_faq import get_faq, get_cat
 import utils.fb as fb
 from flask_misaka import markdown
 from flask_misaka import Misaka
@@ -22,6 +22,8 @@ import utils.util_news as news
 from urllib.request import urlopen 
 import xmltodict
 import base64
+import pymongo
+from bson import ObjectId
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
@@ -57,17 +59,32 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 ## Home page ##
 ###############
 
+@app.route("/test/")
+@app.route("/test/<lang>/")
+@app.route("/test/<lang>/<dtstring>")
 @app.route("/")
 @app.route("/<lang>/")
-def showbase(lang="de"):
-    date_format = '%d.%m.%Y %H:%M'
-    with app.open_resource('static/data/home.json') as f:
-        data = json.load(f)    
-    data['news'] = [item for item in data['news'] if datetime.strptime(item['showhomestart'], date_format) < datetime.now() and datetime.now() < datetime.strptime(item['showhomeend'], date_format)]
+@app.route("/<lang>/<dtstring>")
+def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+    testorpublic = "_public" if request.endpoint.split(".")[0] == 'monitor' else "test"
+    date_format_no_space = '%Y%m%d%H%M'
+    dt = datetime.strptime(dtstring, date_format_no_space)
+
+    data = {}
+    if testorpublic == "test":
+        data["news"] =  list(news.news.find({ "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))
+    else:
+        data["news"] =  list(news.news.find({ "_public": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}))        
+    for item in data["news"]:
+        if item["image"] != []:
+            item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
+
     for item in data['news']:
-        item['color'] = "bg-ufr-yellow" if datetime.now().date() == datetime.strptime(item['showhomeend'], date_format).date() else "" 
+        item['today'] = True if (item["showlastday"] and dt.date() == item['home']['end'].date()) else False
+
     filenames = ["index.html"]
     return render_template("home.html", filenames=filenames, data = data, lang=lang)
+
 
 ############
 ## footer ##
@@ -299,19 +316,24 @@ def showpruefungsamt(lang, unterseite, anchor=""):
 #########
 
 # which can Werte 'all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw', 'meddual' annehmen
-# show ist entweder "", oder "alleantworten", oder der kurzname für eine category im FAQ
-# anchor ist entweder "", oder eine id für ein qa-Paar
+# show ist entweder "", oder "all" oder eine id für ein qa-Paar
 @app.route("/<lang>/faq/")
-@app.route("/<lang>/faq/<which>/")
-@app.route("/<lang>/faq/<which>/<show>/<anchor>/")
-def showfaq(lang, which = "all", show = "", anchor =""):
+@app.route("/<lang>/faq/<show>/")
+#@app.route("/<lang>/faq/<which>/<show>/<anchor>/")
+def showfaq(lang, show =""):
     try:
         cats_kurzname, names_dict, qa_pairs = get_faq(lang)
     except:
 #        logger.warning("No connection to database")
         cats_kurzname, names_dict, qa_pairs  = ["unsichtbar"], {"unsichtbar": "Unsichtbar"}, {"unsichtbar": []}
-
-    return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, which=which, show = show, studiengaenge = studiengaenge, anchor=anchor)
+    if show == "":
+        showcat = ""
+    elif show == "all":
+        showcat = "all"
+    else:
+        showcat = get_cat(show)
+    print(qa_pairs)
+    return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
 
 ###############
 ## Downloads ##
