@@ -1,25 +1,9 @@
 ### TODO
 
-Dualer Master als News
-
-### Plan, mit Markus absprechen:
-
-##### Navigation
-* bekommt gelbe Buttons für Studieninteressierte, und Studienanfänger, daneben blaue Buttons für Studiengänge, Lehrveranstaltungen, Studienberatung und Prüfungsamt, FAQ, Download (siehe unten)
-* Mediathek kommt weg (Inhalte vor allem -> Studieninteressierten)
-* Neuer Button _Download_. Hier kommen sowohl Formulare des Prüfungsamts hin, aber auch die administrativen Dokumente. Prüfungsordnungen, Modulhandbücher, Kommentiertes Vvz verbleiben auf der Veranstaltungs-Seite. Hier können zB auch Datenschutzbestimmungen hin.
+* Monitor: Wetter im Carousel; Mensa im Carousel
 * 
-
-##### Hauptseite Studium und Lehre
-* Aktuelle Studiengänge nicht mehr hier, sondern nur noch in der Navigation führen.
-* Ausgelaufene Studiengänge nicht mehr auf der Homepage führen.
-* Promotionen, Habilitationen nicht mehr auf der Lehre-Homepage führen.
-* Aktuelle Informationen werden zu Karten auf der Startseite.
 * Links zu Fachschaft, Studienberatung, Prüfungsamt, Studierendenportal etc werden Karten unterhalb den News
-* Administrative Dokumente 
 
-##### Studieninteressierte
-* Enthält neben Bogi, Science Days etc noch die Videos/Mediathek
 
 ##### Studienanfang
 * Enthält neben einer Begrüßung den Vorkurs, Einführungswoche der Fachschaft als Karten. Inhalte ergeben sich aus einer abgespeckten Version des _Wegweiser für den Studienanfang_. Die Informationen würde ich schlanker halten, so dass sie sich nie ändern, und den Rest im FAQ für Studienanfänger abwickeln.
@@ -66,8 +50,3 @@ Gerne mit Links zu konkreten Fragen im FAQ!
 
 
 
-
-* Hauptseite: Webseitenlinks für Studieninteressierte weg
-* Studienberatung: IT-Links weg
-* A-Z ins FAQ (oder?)
-* 

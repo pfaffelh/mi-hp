@@ -1,14 +1,4 @@
 <div class="container" id="inhalt">
-  <h1>Informationen zur Prüfungsanmeldung in Mathematik</h1>
-  <p>
-    <img
-      alt="[In der Bibliothek]"
-      src="https://www.math.uni-freiburg.de/i/Webseite-oben-schmal-alte_Buecher.jpg"
-      style="width: 100%"
-      title="In der Bibliothek (Foto: Martin Kramer, © Mathematisches Institut Freiburg)"
-    />
-  </p>
-
   <b style="font-size: 110%">(A) Belegungen von Veranstaltungen:</b>
   <ul>
     <li>
@@ -25,7 +15,7 @@
       Studienpätze für (Pro-)Seminare werden bei der Vorbesprechung am Ende der
       Vorsemesters vergeben. Die Termine dafür und ggf. die Art der Voranmeldung
       sind im
-      <a href="https://www.math.uni-freiburg.de/lehre/v/index.html"
+      <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang) }}"
         >Kommentierten Vorlesungsverzeichnis</a
       >
       angegeben.<br />
@@ -52,8 +42,7 @@
   </ul>
   Die genauen Anforderungen an Prüfungs- und Studienleistungen sind
   semesterweise in den
-  <a
-    href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
+  <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang) }}"
     >aktuellen Ergänzungen der Modulhandbücher</a
   >
   beschrieben.
@@ -98,14 +87,20 @@
   <p>
     <b>
       Vor jeder Prüfung muss man sich (
-      <a href="termine.html"> rechtzeitig </a>
+      <a
+        href="{{ url_for('showstudiendekanat', unterseite='termine', lang=lang) }}"
+      >
+        rechtzeitig
+      </a>
       !) zu dieser Prüfung anmelden
     </b>
     – teils über das Campus-Management-System
     <a href="https://campus.uni-freiburg.de"> HISinOne </a>
     <!-- (<a href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:studieren:pruefung">Anleitung</a>) -->
     teils schriftlich über das
-    <a href="https://home.mathematik.uni-freiburg.de/pruefungsamt/index.html">
+    <a
+      href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}"
+    >
       Prüfungsamt
     </a>
     .
@@ -124,23 +119,27 @@
   <p></p>
   <ul>
     <li>
-      <a href="termine.html">
+      <a
+        href="{{ url_for('showstudiendekanat', unterseite='termine', lang=lang) }}"
+      >
         Anmeldefristen und Termine für Prüfungen in Mathematik
       </a>
     </li>
     <li>
-      <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">
+      <a href="{{url_for('showbase', lang = lang) }}">
         Aktuelle Informationen für Studierende
       </a>
     </li>
   </ul>
   <p>
     Bei Rückfragen oder Problemen können Sie sich gerne an die
-    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+    <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
       Studienberatung
     </a>
     oder das
-    <a href="https://home.mathematik.uni-freiburg.de/pruefungsamt/index.html">
+    <a
+      href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}"
+    >
       Prüfungsamt
     </a>
     wenden. Geben Sie dabei grundsätzlich Ihren Studiengang und Ihre
@@ -165,7 +164,7 @@
   </div>
   <div class="accordion accordion-flush" id="accordionExample">
     <div class="accordion-item" id="_anleitung">
-      <h3 class="accordion-header" id="header_anleitung">
+      <h4 class="accordion-header" id="header_anleitung">
         <button
           aria-controls="_anleitungContent"
           aria-expanded="false"
@@ -174,9 +173,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Anleitung
+          <h3 class="h5">Anleitung</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_anleitungContent"
         class="accordion-collapse collapse"
@@ -234,7 +233,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_probleme">
-      <h3 class="accordion-header" id="header_probleme">
+      <h4 class="accordion-header" id="header_probleme">
         <button
           aria-controls="_problemeContent"
           aria-expanded="false"
@@ -243,9 +242,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Häufiger auftauchende Probleme
+          <h3 class="h5">Häufiger auftauchende Probleme</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_problemeContent"
         class="accordion-collapse collapse"
@@ -271,7 +270,11 @@
               Die Möglichkeit der Registrierung von Studienleistungen in
               fachfremden Wahlmodulen wird nach Bedarf eingerichtet, ebenso
               Anmeldung bzw. Registrierung in Sondersituationen. Wenden Sie sich
-              <a href="termine.html"> rechtzeitig </a>
+              <a
+                href="{{ url_for('showstudiendekanat', unterseite='termine', lang=lang) }}"
+              >
+                rechtzeitig
+              </a>
               an die Studiengangkoordination bzw. das Prüfungsamt!
             </li>
             <li>
@@ -299,7 +302,7 @@
             <br />
             Sie erhalten einen Bescheid mit einem
             <a
-              href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+              href="{{ url_for('showdownloads', anchor='pruefungsamt', lang=lang) }}"
             >
               Merkblatt zur Wiederolungsprüfung
             </a>
@@ -312,7 +315,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_zustaendig">
-      <h3 class="accordion-header" id="header_zustaendig">
+      <h4 class="accordion-header" id="header_zustaendig">
         <button
           aria-controls="_zustaendigContent"
           aria-expanded="false"
@@ -321,9 +324,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Zuständigkeiten von Prüfungsämtern
+          <h3 class="h5">Zuständigkeiten von Prüfungsämtern</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_zustaendigContent"
         class="accordion-collapse collapse"
@@ -517,7 +520,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_details">
-      <h3
+      <h4
         class="accordion-header"
         id="header_details"
         style="background-color: #f4f3f3; margin-top: 10px; margin-bottom: 5px"
@@ -530,9 +533,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Details zu speziellen Prüfungen
+          <h3 class="h5">Details zu speziellen Prüfungen</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_detailsContent"
         class="accordion-collapse collapse"
@@ -543,7 +546,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_arbeit">
-      <h3 class="accordion-header" id="header_arbeit">
+      <h4 class="accordion-header" id="header_arbeit">
         <button
           aria-controls="_arbeitContent"
           aria-expanded="false"
@@ -552,9 +555,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          ↷ Abschlussarbeiten   (alle Studiengänge)
+          <h3 class="h5">Abschlussarbeiten (alle Studiengänge)</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_arbeitContent"
         class="accordion-collapse collapse"
@@ -565,7 +568,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_fwm">
-      <h3 class="accordion-header" id="header_fwm">
+      <h4 class="accordion-header" id="header_fwm">
         <button
           aria-controls="_fwmContent"
           aria-expanded="false"
@@ -574,9 +577,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Fachfremde Wahlmodule   (B.Sc. / M.Sc.)
+          <h3 class="h5">Fachfremde Wahlmodule (B.Sc. / M.Sc.)</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_fwmContent"
         class="accordion-collapse collapse"
@@ -705,9 +708,9 @@
             Wirtschaftswissenschaften absolviert werden. Nähere Informationen,
             insbesondere über die zulässigen Module, auf der
             <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html#finanz"
+              href="{{ url_for('showstudiengang', studiengang='msc', lang = lang, anchor = 'finanz') }}"
             >
-              Informationsseite zur Proffilline
+              Informationsseite zur Profilline
             </a>
             . Eine fristgerechte Anmeldung über HISinOne ist notwendig; die
             Anmeldefrist richtet sich nach der Anmeldefrist des
@@ -743,7 +746,7 @@
           <p>
             Die mündlichen Prüfungen werden jedes Semester im
             <a
-              href="https://home.mathematik.uni-freiburg.de/pruefungsamt/termine.html#termine"
+              href="{{ url_for('showstudiendekanat', unterseite='termine', lang=lang) }}"
             >
               Prüfungszeitraum
             </a>
@@ -820,7 +823,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_muendlichmaster">
-      <h3 class="accordion-header" id="header_muendlichmaster">
+      <h4 class="accordion-header" id="header_muendlichmaster">
         <button
           aria-controls="_muendlichmasterContent"
           aria-expanded="false"
@@ -829,9 +832,12 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Mündliche Prüfungen im Master   (M.Ed. inkl. Erweiterungsfach / M.Sc.)
+          <h3 class="h5">
+            Mündliche Prüfungen im Master   (M.Ed. inkl. Erweiterungsfach /
+            M.Sc.)
+          </h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_muendlichmasterContent"
         class="accordion-collapse collapse"
@@ -847,7 +853,7 @@
             Studiums absolviert werden. Dazu vereinbaren Sie einen individuellen
             Prüfungstermin mit dem Prüfer, lassen ihn das
             <a
-              href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+              href="{{ url_for('showdownloads', anchor='pruefungsamt', lang=lang) }}"
             >
               Anmeldeformular
             </a>
@@ -950,7 +956,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_op">
-      <h3 class="accordion-header" id="header_op">
+      <h4 class="accordion-header" id="header_op">
         <button
           aria-controls="_opContent"
           aria-expanded="false"
@@ -959,9 +965,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Orientierungsleistung   (2-Hf.-B. / B.Sc.)
+          <h3 class="h5">Orientierungsleistung   (2-Hf.-B. / B.Sc.)</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_opContent"
         class="accordion-collapse collapse"
@@ -1008,7 +1014,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_sem">
-      <h3 class="accordion-header" id="header_sem">
+      <h4 class="accordion-header" id="header_sem">
         <button
           aria-controls="_semContent"
           aria-expanded="false"
@@ -1017,9 +1023,9 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Proseminare und Seminare   (alle Studiengänge)
+          <h3 class="h5">Proseminare und Seminare   (alle Studiengänge)</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_semContent"
         class="accordion-collapse collapse"
@@ -1034,7 +1040,7 @@
             <li>
               Gegen Ende des Vorsemesters melden Sie Ihr Interesse an der
               Teilnahme an einem Proseminar bzw. Seminar nach der im
-              <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+              <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
                 kommentierten Vorlesungverzeichnis
               </a>
               angegebenen Weise an. Üblicherweise gibt ea dazu eine von der
@@ -1048,7 +1054,11 @@
             <li>
               Falls Sie einen Platz in einem Proseminar bzw. Seminar bekommen
               haben, melden Sie sich während des
-              <a href="termine.html"> Anmeldezeitraums </a>
+              <a
+                href="{{ url_for('showstudiendekanat', unterseite='termine', lang=lang) }}"
+              >
+                Anmeldezeitraums
+              </a>
               (in der Regel bis Mittwoch vor Vorlesungsbgeinn) online zu der
               Prüfung an. Ohne diese Anmeldung kann Ihre Teilnahme nicht
               gewertet werden. Anmeldungen ohne vorherige Studienplatzzuteilung
@@ -1090,89 +1100,8 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="_staatsexamen">
-      <h3 class="accordion-header" id="header_staatsexamen">
-        <button
-          aria-controls="_staatsexamenContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_staatsexamenContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          Staatsexamen   (GymPO)
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_staatsexamenContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_staatsexamenContent"
-      >
-        <div class="accordion-body" id="staatsexamenContent">
-          <p>
-            Alle verbeamteten Professoren des Mathematischen Instituts sind als
-            Prüfer für das Staatsexamen im Fach Mathematik zugelassen. Die
-            Staatsexamensprüfung wird von zwei oder drei Prüfern abgenommen, die
-            Sie sich im Rahmen der Kapazitäten der einzelnen Prüfer selbst
-            aussuchen können (frühzeitige Absprache ist sinnvoll). Den Vorsitz
-            der Prüfungskommission übernimmt ein Vertreter des
-            Landeslehrerprüfungsamts.
-          </p>
-          <p>
-            Die Prüfung richtet sich nach den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/dokumente/GymPO-2010-Mathematik.pdf"
-            >
-              Bestimmungen der GymPO zum Fach Mathematik (pdf)
-            </a>
-            . Als Grundlagen- und Überblickswissen wird über die
-            Grundvorlesungen Analysis I und II und Lineare Algebra I und II
-            geprüft. Darüber hinaus müssen pro gewähltem Schwerpunktgebiet (drei
-            im Hauptfach, zwei im Beifach) 4 SWS an Vorlesungsstoff gewählt
-            werden. Bei den meisten typischerwesie als Prüfungsstoff in Frage
-            kommenden 4-stündigen Vorlesungen ergibt sich die Zuordnung zu einem
-            der fünf Teilbereiche aus dem Vorlesungstitel. Außerdem gelten die
-            folgenden Regeln:
-          </p>
-          <ul>
-            <li>
-              "Funktionentheorie" als Schwerpunktgebiet zählt zum Teilbereich
-              "Analysis", "Mathematische Logik" zu "Algebra", "Topologie"
-              wahlweise zu "Algebra", "Analysis" oder "Geometrie".
-            </li>
-            <li>
-              "Elementargeometrie" und "Mehrfachintegrale" können zusammen als
-              Schwerpunktgebiet im Bereich "Geometrie" geprüft werden.
-            </li>
-            <li>
-              Im Erweiterungsbeifach kann auch "Stochastik Teil 1" mit
-              "Mehrfachintegrale" oder mit "Elementargeometrie" zusammen als ein
-              Schwerpunktgebiet geprüft werden.
-            </li>
-          </ul>
-          <p>
-            Das "Grundlagen- und Überblickswissen" wird dabei von allen Prüfern
-            gleichermaßen geprüft, d.h. im Hauptfach (oder Beifach) bekommt ein
-            Prüfer pro Schwerpunktgebiet 20 Minuten (bzw. 22,5 Minuten)
-            Prüfungszeit, von denen jeweils ein Drittel auf das Grundlagen- und
-            Überblickswissen entfällt.
-          </p>
-          <p>
-            Zuständig für die Staatsexamensprüfung ist das
-            <a
-              href="http://www.llpa-bw.de/,Lde/Startseite/Aussenstellen+des+LLPA/beim+Regierungspraesidium+Freiburg"
-            >
-              Landeslehrerprüfungsamt
-            </a>
-            , auf dessen Internetseiten Sie auch die Anmeldeformulare und die
-            Anmeldefristen finden.
-          </p>
-        </div>
-      </div>
-    </div>
     <div class="accordion-item" id="_allgemein">
-      <h3
+      <h4
         class="accordion-header"
         id="header_allgemein"
         style="background-color: #f4f3f3; margin-top: 10px; margin-bottom: 5px"
@@ -1185,1101 +1114,1080 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Allgemeines zum Anmelden von Veranstaltungen und Prüfungen
+          <h3 class="h5">
+            Allgemeines zum Anmelden von Veranstaltungen und Prüfungen
+          </h3>
         </button>
-      </h3>
-      <p>
-        Veranstaltungen werden
-        <b> belegt </b>
-        , Prüfungsleistungen
-        <b> angemeldet </b>
-        und Studienleistungen
-        <b> registriert </b>
-        .
-        <br />
-        Die Anmeldung von Prüfungsleistungen ist besonders wichtig und hat
-        juristische Auswirkungen. Die Belegung von Veranstaltung und
-        Registrierung von Studienleistungen ist dagegen eher aus
-        verfahrenstechnischen Gründen wichtig.
-      </p>
-      <p>
-        <b> Prüfungsleistungen </b>
-        sind (benotete) Teilprüfungen der Bachelor- oder Master-Prüfung: Mit
-        einer endgültig nicht bestandenen Prüfungsleistung ist die Bachelor-
-        oder Master-Prüfung nicht bestanden und der Prüfungsanspruch verloren.
-      </p>
-      <ul>
-        <li>
-          Prüfungsleistungen müssen zwingend vor Ablegen der Leistung angemeldet
-          werden. Eine Abmeldung nach Fristende ist normalerweise nicht mehr
-          möglich: Durch die Zulassung zu einer Prüfung entsteht ein
-          "Prüfungsrechtsverhältnis", das auch durch den Wechsel des
-          Studiengangs oder Studienorts nicht endet.
-        </li>
-        <li>
-          Prüfungsleistungen dürfen nur begrenzt oft wiederholt werden (meist
-          nur ein- oder zweimal). Für die Anzahl und den zeitlichen Rahmen der
-          Wiederholungen gibt es strenge Vorgaben in den Prüfungsordnungen.
-        </li>
-      </ul>
-      <p>
-        <b> Studienleistungen </b>
-        sind weitere Leistungen, die die Studierenden erbringen müssen. Sie sind
-        in der Regel unbenotet und können bis auf wenige Ausnahmen beliebig oft
-        wiederholt werden. Eine Studienleistung kann aber durchaus aus einer
-        Prüfung bestehen, etwa einer Klausur oder einem Prüfungsgespräch.
-      </p>
-      <p>
-        <b> Ob etwas eine Studien- oder Prüfungsleistung ist </b>
-        , hängt vom Studiengang und dem Modul ab, in dem die Leistung vorkommt.
-        Eine Prüfung kann in derselben Veranstaltung für manche Studierende eine
-        Studien- und für andere Studierende eine Prüfungsleistung sein (sogar im
-        selben Studiengang, bei Verwendung in einem anderen Modul oder
-        Studienbereich).
-        <br />
-        Welche Studien- und welche Prüfungsleistungen zu einer Veranstaltung
-        abhängig von Studiengang und Modul gefordert werden, ist für das Fach
-        Mathematik semesterweise in den
-        <a
-          href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-        >
-          Ergänzungen der Modulhandbücher
-        </a>
-        beschrieben.
-      </p>
+      </h4>
       <div
         aria-labelledby="_allgemeinContent"
         class="accordion-collapse collapse"
         data-bs-parent="#accordionExample"
         id="_allgemeinContent"
       >
-        <div class="accordion-body" id="allgemeinContent"></div>
-      </div>
-    </div>
-    <div class="accordion-item" id="_belegung">
-      <h3 class="accordion-header" id="header_belegung">
-        <button
-          aria-controls="_belegungContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_belegungContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          Belegung von Veranstaltungen
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_belegungContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_belegungContent"
-      >
-        <div class="accordion-body" id="belegungContent">
+        <div class="accordion-body" id="allgemeinContent">
           <p>
-            <b> Terminologie und Anleitung: </b>
+            Veranstaltungen werden
+            <b> belegt </b>
+            , Prüfungsleistungen
+            <b> angemeldet </b>
+            und Studienleistungen
+            <b> registriert </b>
+            .
+            <br />
+            Die Anmeldung von Prüfungsleistungen ist besonders wichtig und hat
+            juristische Auswirkungen. Die Belegung von Veranstaltung und
+            Registrierung von Studienleistungen ist dagegen eher aus
+            verfahrenstechnischen Gründen wichtig.
+          </p>
+          <p>
+            <b> Prüfungsleistungen </b>
+            sind (benotete) Teilprüfungen der Bachelor- oder Master-Prüfung: Mit
+            einer endgültig nicht bestandenen Prüfungsleistung ist die Bachelor-
+            oder Master-Prüfung nicht bestanden und der Prüfungsanspruch
+            verloren.
           </p>
           <ul>
             <li>
-              Veranstaltungen werden
-              <u> belegt </u>
-              . Der Status erscheint nicht auf der Leistungsübersicht, kann aber
-              online im HISinOne-Account eingesehen werden:
-              <br style="margin-bottom: 5px" />
-              BW steht für '
-              <i> Belegwunsch abgegeben </i>
-              ', TA für '
-              <i> Teilnahme akzeptiert </i>
-              ', TNA für '
-              <i> Teilnahme abgelehnt </i>
-              '.
+              Prüfungsleistungen müssen zwingend vor Ablegen der Leistung
+              angemeldet werden. Eine Abmeldung nach Fristende ist normalerweise
+              nicht mehr möglich: Durch die Zulassung zu einer Prüfung entsteht
+              ein "Prüfungsrechtsverhältnis", das auch durch den Wechsel des
+              Studiengangs oder Studienorts nicht endet.
             </li>
             <li>
-              Die Nummern von Mathematik-Veranstaltungen in HISinOne beginnen
-              mit 07LE23V- (Vorlesungen), 07LE23Ü- (Übungen), 07LE23PÜ-
-              (Praktische Übungen) bzw. 07LE23S- (Seminare u.Ä.).
-              <br style="margin-bottom: 5px" />
-              Zum Belegen in HISinOne einloggen, über "
-              <i> Studienangebot &gt; Veranstaltungen suchen </i>
-              " zur Veranstaltung gehen, dort findet sich im Normalfall der
-              Belegbutton. Veranstaltungen, die nur für spezifische Studiengänge
-              freigegeben sind, kann man nur über den Studienplaner belegen (
-              <a
-                href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:studieren:belegung_stornierung"
-              >
-                Anleitung
-              </a>
-              im HISinOne-Wiki).
-              <br style="margin-bottom: 5px" />
-              Für (Pro-)Seminare sind normalerweise keine Belegungen vorgesehen
-              und möglich; häufig auch für Übungen zu kleinen Vorlesungen nicht.
-            </li>
-            <li>
-              Eine Veranstaltungsbelegung ersetzt nicht die Prüfungsanmeldung
-              oder Studienleistungsregistrierung!
+              Prüfungsleistungen dürfen nur begrenzt oft wiederholt werden
+              (meist nur ein- oder zweimal). Für die Anzahl und den zeitlichen
+              Rahmen der Wiederholungen gibt es strenge Vorgaben in den
+              Prüfungsordnungen.
             </li>
           </ul>
           <p>
-            <b> Auswirkungen: </b>
+            <b> Studienleistungen </b>
+            sind weitere Leistungen, die die Studierenden erbringen müssen. Sie
+            sind in der Regel unbenotet und können bis auf wenige Ausnahmen
+            beliebig oft wiederholt werden. Eine Studienleistung kann aber
+            durchaus aus einer Prüfung bestehen, etwa einer Klausur oder einem
+            Prüfungsgespräch.
           </p>
-          <ul>
-            <li>
-              Die Belegung einer Veranstaltung ist lediglich die Äußerung des
-              Wunsches, daran teilzunehmen. Sie verpflichtet nicht dazu, dies
-              auch zu tun. Bei ZfS-Kursen kann die Nicht-Teilnahme allerdings zu
-              zeitweiser Sperrung führen, siehe
+          <p>
+            <b> Ob etwas eine Studien- oder Prüfungsleistung ist </b>
+            , hängt vom Studiengang und dem Modul ab, in dem die Leistung
+            vorkommt. Eine Prüfung kann in derselben Veranstaltung für manche
+            Studierende eine Studien- und für andere Studierende eine
+            Prüfungsleistung sein (sogar im selben Studiengang, bei Verwendung
+            in einem anderen Modul oder Studienbereich).
+            <br />
+            Welche Studien- und welche Prüfungsleistungen zu einer Veranstaltung
+            abhängig von Studiengang und Modul gefordert werden, ist für das
+            Fach Mathematik semesterweise in den
+            <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
+              Ergänzungen der Modulhandbücher
+            </a>
+            beschrieben.
+          </p>
+        </div>
+      </div>
+      <div class="accordion-item" id="_belegung">
+        <h4 class="accordion-header" id="header_belegung">
+          <button
+            aria-controls="_belegungContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_belegungContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">Belegung von Veranstaltungen</h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_belegungContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_belegungContent"
+        >
+          <div class="accordion-body" id="belegungContent">
+            <p>
+              <b> Terminologie und Anleitung: </b>
+            </p>
+            <ul>
+              <li>
+                Veranstaltungen werden
+                <u> belegt </u>
+                . Der Status erscheint nicht auf der Leistungsübersicht, kann
+                aber online im HISinOne-Account eingesehen werden:
+                <br style="margin-bottom: 5px" />
+                BW steht für '
+                <i> Belegwunsch abgegeben </i>
+                ', TA für '
+                <i> Teilnahme akzeptiert </i>
+                ', TNA für '
+                <i> Teilnahme abgelehnt </i>
+                '.
+              </li>
+              <li>
+                Die Nummern von Mathematik-Veranstaltungen in HISinOne beginnen
+                mit 07LE23V- (Vorlesungen), 07LE23Ü- (Übungen), 07LE23PÜ-
+                (Praktische Übungen) bzw. 07LE23S- (Seminare u.Ä.).
+                <br style="margin-bottom: 5px" />
+                Zum Belegen in HISinOne einloggen, über "
+                <i> Studienangebot &gt; Veranstaltungen suchen </i>
+                " zur Veranstaltung gehen, dort findet sich im Normalfall der
+                Belegbutton. Veranstaltungen, die nur für spezifische
+                Studiengänge freigegeben sind, kann man nur über den
+                Studienplaner belegen (
+                <a
+                  href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:studieren:belegung_stornierung"
+                >
+                  Anleitung
+                </a>
+                im HISinOne-Wiki).
+                <br style="margin-bottom: 5px" />
+                Für (Pro-)Seminare sind normalerweise keine Belegungen
+                vorgesehen und möglich; häufig auch für Übungen zu kleinen
+                Vorlesungen nicht.
+              </li>
+              <li>
+                Eine Veranstaltungsbelegung ersetzt nicht die Prüfungsanmeldung
+                oder Studienleistungsregistrierung!
+              </li>
+            </ul>
+            <p>
+              <b> Auswirkungen: </b>
+            </p>
+            <ul>
+              <li>
+                Die Belegung einer Veranstaltung ist lediglich die Äußerung des
+                Wunsches, daran teilzunehmen. Sie verpflichtet nicht dazu, dies
+                auch zu tun. Bei ZfS-Kursen kann die Nicht-Teilnahme allerdings
+                zu zeitweiser Sperrung führen, siehe
+                <a
+                  href="https://www.zfs.uni-freiburg.de/de/bok-sq-mpk-teilnahmeinformationen-und-bedingungen/bok-sq-mpk-teilnahmeinformationen-und-bedingungen"
+                >
+                  Teilnahmebedingungen des ZfS
+                </a>
+                .
+              </li>
+              <li>
+                In manchen Veranstaltungen ist eine Belegung erwünscht oder
+                sogar erforderlich, um an der Veranstaltung teilnehmen zu
+                dürfen. Belegungen sind außerdem nötig für:
+                <ul>
+                  <li>die Verteilung auf Übungsgruppen;</li>
+                  <li>
+                    die Teilnahme an der online-Evaluation von Veranstaltungen;
+                  </li>
+                  <li>
+                    ggf. um automatisch in einen ILIAS-Kurs zur Veranstaltung
+                    übernommen zu werden.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Falls die Veranstaltung in einem Studiengang in mehreren Modulen
+                verwendet werden kann, muss für die Belegung bereits ein Modul
+                ausgesucht werden. Dieses gewählte Modul ist dann in der Regel
+                durch die Belegung für die Anmeldung von Prüfungen bzw.
+                Registrierung von Studienleistungen anderer Veranstaltungen
+                blockiert.
+                <br />
+                Im M.Sc.-Studiengang ist daher ein eigene "Belegkonto" für
+                Belegungen eingerichtet, um sich nicht bei der Belegung bereits
+                auf ein Modul festlegen zu müssen. In anderen Fällen können Sie
+                sich an die Studiengangkoordination oder das Prüfungsamt wenden,
+                um Belegungen umzubuchen.
+              </li>
+              <li>
+                Im B.Sc. wird durch Belegungen noch kein
+                (Standard-)Anwendungsfach festgelegt, sondern erst durch
+                Anmeldungen von Prüfungen oder Registrieren von
+                Studienleistungen. Belegungen können durch die
+                Studiengangkoordination oder das Prüfungsamt umgebucht werden.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item" id="_entbelegung">
+        <h4 class="accordion-header" id="header_entbelegung">
+          <button
+            aria-controls="_entbelegungContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_entbelegungContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">"Ent-Belegung" von Veranstaltungen</h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_entbelegungContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_entbelegungContent"
+        >
+          <div class="accordion-body" id="entbelegungContent">
+            <p>
+              Während der Belegphase kann man auf gleichem Weg eine Belegung
+              wieder rückgängig machen. Da eine Belegung im Regelfall keine
+              negativen Auswirkungen hat, gibt es darüber hinaus kein
+              formalisiertes Verfahren, um eine Belegung rückgängig zu machen.
+              <br />
+              Eine Ausnahme stellen BOK-Kurse dar: Belegungen ohne Teilnahme
+              können hier zu Sperrungen führen. Beachten Sie für diesen Fall die
               <a
                 href="https://www.zfs.uni-freiburg.de/de/bok-sq-mpk-teilnahmeinformationen-und-bedingungen/bok-sq-mpk-teilnahmeinformationen-und-bedingungen"
               >
-                Teilnahmebedingungen des ZfS
+                Teilnahmebedingungen
+              </a>
+              des ZfS und die
+              <a
+                href="https://www.zfs.uni-freiburg.de/de/belegung-und-abmeldung"
+              >
+                Hinweise zur Abmeldung
               </a>
               .
-            </li>
-            <li>
-              In manchen Veranstaltungen ist eine Belegung erwünscht oder sogar
-              erforderlich, um an der Veranstaltung teilnehmen zu dürfen.
-              Belegungen sind außerdem nötig für:
-              <ul>
-                <li>die Verteilung auf Übungsgruppen;</li>
-                <li>
-                  die Teilnahme an der online-Evaluation von Veranstaltungen;
-                </li>
-                <li>
-                  ggf. um automatisch in einen ILIAS-Kurs zur Veranstaltung
-                  übernommen zu werden.
-                </li>
-              </ul>
-            </li>
-            <li>
-              Falls die Veranstaltung in einem Studiengang in mehreren Modulen
-              verwendet werden kann, muss für die Belegung bereits ein Modul
-              ausgesucht werden. Dieses gewählte Modul ist dann in der Regel
-              durch die Belegung für die Anmeldung von Prüfungen bzw.
-              Registrierung von Studienleistungen anderer Veranstaltungen
-              blockiert.
-              <br />
-              Im M.Sc.-Studiengang ist daher ein eigene "Belegkonto" für
-              Belegungen eingerichtet, um sich nicht bei der Belegung bereits
-              auf ein Modul festlegen zu müssen. In anderen Fällen können Sie
-              sich an die Studiengangkoordination oder das Prüfungsamt wenden,
-              um Belegungen umzubuchen.
-            </li>
-            <li>
-              Im B.Sc. wird durch Belegungen noch kein (Standard-)Anwendungsfach
-              festgelegt, sondern erst durch Anmeldungen von Prüfungen oder
-              Registrieren von Studienleistungen. Belegungen können durch die
-              Studiengangkoordination oder das Prüfungsamt umgebucht werden.
-            </li>
-          </ul>
+            </p>
+            <p>
+              Bei kleinen Veranstaltungen (wie auch Tutoraten) ist es allerdings
+              ein Gebot der Höflichkeit, den Dozenten/die Dozentin darüber zu
+              informieren, wennn man sich im laufenden Lehrbetrieb entscheidet,
+              die Veranstaltung nicht mehr zu besuchen.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="accordion-item" id="_entbelegung">
-      <h3 class="accordion-header" id="header_entbelegung">
-        <button
-          aria-controls="_entbelegungContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_entbelegungContent"
-          data-bs-toggle="collapse"
-          type="button"
+      <div class="accordion-item" id="_wiederbelegung">
+        <h4 class="accordion-header" id="header_wiederbelegung">
+          <button
+            aria-controls="_wiederbelegungContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_wiederbelegungContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">Wiederholung von Veranstaltungen</h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_wiederbelegungContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_wiederbelegungContent"
         >
-          "Ent-Belegung" von Veranstaltungen
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_entbelegungContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_entbelegungContent"
-      >
-        <div class="accordion-body" id="entbelegungContent">
-          <p>
-            Während der Belegphase kann man auf gleichem Weg eine Belegung
-            wieder rückgängig machen. Da eine Belegung im Regelfall keine
-            negativen Auswirkungen hat, gibt es darüber hinaus kein
-            formalisiertes Verfahren, um eine Belegung rückgängig zu machen.
-            <br />
-            Eine Ausnahme stellen BOK-Kurse dar: Belegungen ohne Teilnahme
-            können hier zu Sperrungen führen. Beachten Sie für diesen Fall die
+          <div class="accordion-body" id="wiederbelegungContent">
+            <p>
+              Vorlesungen und Übungen dürfen beliebig oft besucht werden; eine
+              Belegung im Vorsemester verhindert normalerweise nicht eine
+              erneute Belegung. Falls dies doch der Fall sein sollte, melden Sie
+              sich bitte bei der Studiengangkoordination!
+              <br />
+              Übungen dürfen auch wiederholt werden, wenn die Studienleistung in
+              den Übungen berets bestanden ist. Als Vorbereitung für eine
+              Klausur ist dies – insbesondere im Wiederholungsfall – sogar sehr
+              zu raten.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item" id="_plan">
+        <h4 class="accordion-header" id="header_plan">
+          <button
+            aria-controls="_planContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_planContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">Anmeldung von Prüfungen</h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_planContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_planContent"
+        >
+          <div class="accordion-body" id="planContent">
+            <p>
+              <b> Terminologie und Anleitung: </b>
+            </p>
+            <ul>
+              <li>
+                Prüfungen (im Sinne von Prüfungsleistungen) werden
+                <u> angemeldet </u>
+                . Der Status erscheint auf der Leistungsübersicht und kann
+                online im HISinOne-Account eingesehen werden:
+                <br style="margin-bottom: 5px" />
+                ZU steht für '
+                <i> zugelassen </i>
+                ', ZUV für '
+                <i> zunter Vorbehalt ugelassen </i>
+                ', NZU für '
+                <i> nicht zugelassen </i>
+                '.
+                <br style="margin-bottom: 5px" />
+                Zulassung unter Vorbehalt bedeutet, dass die
+                Zulassungsvoraussetzungen noch nicht erfüllt sind.
+              </li>
+              <li>
+                Die Nummern von Prüfungsleistungen in HISinOne beginnen für
+                Mathematik mit 07LE23PL- .
+                <br style="margin-bottom: 5px" />
+                Kurzanleitung zur Prüfugnsanmeldung siehe oben unter
+                "Anleitung",
+                <a
+                  href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:studieren:pruefung"
+                >
+                  ausführliche Anleitung
+                </a>
+                im HISinOne-Wiki.
+              </li>
+              <li>
+                Eine Veranstaltungsbelegung kann nie eine Prüfungsanmeldung
+                ersetzen!
+              </li>
+            </ul>
+            <p>
+              <b> Auswirkungen: </b>
+            </p>
+            <ul>
+              <li>
+                Ohne vorherige Anmeldung und Zulassung darf keine Prüfung
+                abgelegt oder bewertet werden.
+              </li>
+              <li>
+                Durch die Anmeldung und Zulassung zu einer Prüfung entsteht ein
+                Prüfungsrechtsverhältnis, das in der Regel erst durch Bestehen
+                oder endgültiges Nicht-Bestehen der Prüfung endet, und z.B.
+                nicht durch Exmatrikulation oder Studiengangwechsel.
+                <br />
+                Eine Abmeldung ist nur vor dem ersten Prüfungsversuch und
+                innerhalb der
+                <a
+                  href="{{ url_for('showstudiendekanat', unterseite='termine', lang=lang) }}"
+                >
+                  Abmeldefrist
+                </a>
+                möglich.
+              </li>
+              <li>
+                Die Anzahl der Wiederholungsversuche einer Prüfungsleistung ist
+                begrenzt (typischerweise ein oder zwei).
+                <br />
+                Falls eine Prüfung nicht bestanden ist, aber noch
+                Prüfungsversuche bleiben, oder falls ein Rücktritt von der
+                Prüfung genehmigt wurde, bleibt die Anmeldung zu der Prüfung
+                bestehen. Die Prüfung muss dann zum nächstmöglichen Zeitpunkt
+                wiederholt werden,in der Regel im folgenden Semester.
+              </li>
+              <li>
+                Sofern Studienleistungen Voraussetzung für die Zulassung zur
+                Prüfung sind, müssen diese Studienleistungen in HISinOne
+                registriert oder verbucht sein, damit die Prüfung angemeldet
+                werden kann. Die Zulassung zur Prüfung erfolgt unter Vorbehalt,
+                solange die vorausgesetzten Studienleistungen noch nicht
+                erbracht sind.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item" id="_plab">
+        <h4 class="accordion-header" id="header_plab">
+          <button
+            aria-controls="_plabContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_plabContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">Abmeldung und Rücktritt von Prüfungen</h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_plabContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_plabContent"
+        >
+          <div class="accordion-body" id="plabContent">
+            <p>
+              Die
+              <b> Abmeldung von einer Prüfung </b>
+              setzt in den Stand vor der Anmeldung zurück, als wäre man nie
+              angemeldet gewesen (das "Prüfungsrechtsverhältnis" ist aufgelöst).
+              Insbesondere besteht danach keine Verpflichtung, die Prüfung zu
+              einem festen späteren Zeitpunkt abzulegen, und es geht kein
+              Prüfungsversuch verloren.
+            </p>
+            <p>
+              Eine Abmeldung ist nur vor dem Erstversuch der Prüfung möglich.
+              (Ein genehmigter Rücktritt zählt nicht als Prüfungsversuch, eine
+              nicht angetretene Prüfung ohne genehmigten Rücktritt aber schon.)
+            </p>
+            <ul>
+              <li>
+                <a
+                  href="{{ url_for('showstudiendekanat', unterseite='termine', lang=lang) }}"
+                >
+                  Abmeldefristen
+                </a>
+              </li>
+            </ul>
+            <p>
+              Möchte man nach einer erfolgten Abmeldung die Prüfung zu einem
+              späteren Zeitpunkt ablegen, muss man sich im regulären
+              Anmeldeverfahren erneut anmelden. Die Teilnahme an Nachklausuren
+              oder Nachprüfung zu einzelnen Vorlesungen ist daher in der Regel
+              nicht möglich.
+            </p>
+            <p>
+              Ein
+              <b> Rücktritt von einer Prüfung </b>
+              ist in der juristischen Terminologie der Prüfungsordnung jedes
+              Fernbleiben von einer Prüfung, zu der man angemeldet und
+              zugelassen ist. Wenn der Rücktritt nicht genehmigt wird, zählt
+              dies als nicht bestandene Prüfung. Wenn der Rücktritt genehmigt
+              wird, zählt die Prüfung dagegen nicht als Fehlversuch. Die
+              Anmeldung und Zulassung zur Prüfung (also das
+              Prüfungsrechtsverhältnis) bleibt im Fall eines genehmigten
+              Rücktritts bestehen und wird auf den nächsten Prüfungstermin
+              verschoben, üblicherweise im nächsten Semester.
+            </p>
+            <p></p>
+            <p>
+              Zur Genehmigung eines Rücktritts muss ein begründeter Antrag an
+              den Fachprüfungsausschuss gestellt werden, mit geeignetem Nachweis
+              der Gründe.
+            </p>
+            <ul>
+              <li>
+                Ausreichende Gründe sind z.B. Krankheit, Beurlaubung wegen
+                Auslandsstudiums, Gleichzeitigkeit mit einer anderen Prüfung.
+              </li>
+              <li>
+                Nicht ausreichende Gründe sind z.B. mangelnde Vorbereitung,
+                andere Prüfungen im zeitlichen Umfeld der Prüfung, private
+                Reisen oder Familienfeiern, unspezifische private Probleme,
+                Auslandsstudium innerhalb von Europa ohne Beurlaubung.
+              </li>
+            </ul>
+            Nach einem Rücktritt muss man die Prüfung zum nächstmöglichen
+            Zeitpunkt absolvieren (in der Regel im Folgesemester). Die Anmeldung
+            zum nächsten Prüfungstermin wird vom Prüfugnsamt vorgenommen.
+            <p>
+              <b> Antragsfristen </b>
+            </p>
+            <ul>
+              <li>
+                Der Antrag auf Rücktritt von der Prüfung sollte unmittelbar nach
+                Bekanntwerden der Rücktrittsgründe gestellt werden. Im
+                Krankheitsfall muss der Antrag samt Attest spätestens am dritten
+                Tag nach der Prüfung im Prüfungsamt eingehen; der Arztbesuch
+                muss spätestens am Tag der Prüfung erfolgen. Wenn der Antrag per
+                E-Mail geschickt wird, muss das Originalattest innerhalb einer
+                Woche beim Prüfungsamt eingereicht werden (persönliche Abgabe
+                oder per Post).
+                <br style="margin-bottom: 5px" />
+                <a href="index.html#formulare">
+                  Formulare für den Rücktritt aus Krankheitsgründen
+                </a>
+                .
+              </li>
+              <li>
+                Liegen am Prüfungtag "Anhaltspunkte für eine gesundheitliche
+                Beeinträchtigung" vor, muss laut Prüfungordnung "unverzüglich
+                eine Klärung herbeigeführt" werden. Konkret: Wenn sich jemand
+                krank fühlt und dennoch eine Prüfung antritt, zählt der
+                Prüfungsversuch in jedem Fall. Eine nachträgliche Krankmeldung
+                hat keine Auswirkungen.
+              </li>
+              <li>
+                Ein Rücktritt nach absolvierter, nicht-bestandener Prüfung ist
+                nur in extremen Ausnahmefällen genehmigungsfähig!
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item" id="_plwieder">
+        <h4 class="accordion-header" id="header_plwieder">
+          <button
+            aria-controls="_plwiederContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_plwiederContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">Anmeldung von Wiederholungsprüfungen</h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_plwiederContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_plwiederContent"
+        >
+          <div class="accordion-body" id="plwiederContent">
+            <p>
+              Nicht bestandene Prüfungsleistungen dürfen ein oder zwei Mal
+              wiederholt werden. Die Wiederholung einer bestandenen Prüfung zur
+              Notenverbesserung ist nicht möglich.
+              <br />
+              Wiederholungsprüfungen müssen grundsätzlich zum nächstmöglichen
+              Zeitpunkt erfolgen, d.h. in der Regel im Folgesemester. Vor dem
+              letzten Prüfungsversuch hat man auf (formlosen) Antrag hin das
+              Recht, die Veranstaltung erneut zu besuchen.
+            </p>
+            <p>
+              Zu Wiederholungsprüfungen meldet das Prüfungsamt an; eine
+              Online-Anmeldung für Wiederholungsprüfungen ist nicht vorgesehen.
+              Achtung:
+            </p>
+            <ul>
+              <li>Dies gilt nicht für Studienleistungen!</li>
+              <li>
+                Ausnahme sind Wiederholungsprüfungen in einem
+                Sonder-Anwendugnsfach, die Sie erneut über das enteprechende
+                Anmeldeformular anmelden.
+              </li>
+            </ul>
+            Bitte kontrollieren Sie stets, ob die Anmeldung tatsächlich erfolgt
+            ist, und wenden Sie sich andernfalls rechtzeitig an das Prüfungsamt
+            des Mathematischen Instituts.
+            <ul>
+              <!-- style="margin-left:-1.5em;"> -->
+              <li>
+                Im Falle der Wiederholung eines Proseminars oder Seminars müssen
+                Sie dem Prüfungsamt melden, in welchem (Pro-)Seminar Sie die
+                Wiederholungsprüfung ablegen.
+              </li>
+              <li>
+                Falls Sie eine Wiederholungsprüfung nicht oder nicht zum
+                nächsten Termin wahrnehmen wollen, weil
+                <ul>
+                  <li>
+                    es sich um den letzten Prüfungsversuch handelt und Sie die
+                    Veranstaltung erneut hören wollen
+                  </li>
+                  <li>
+                    oder Sie die Veranstaltung (B.Sc., M.Ed.) bzw. das
+                    Anwendungsfach (B.Sc.) wechseln möchten,
+                  </li>
+                </ul>
+                müssen Sie dies rechtzeitig, d.h. vor der eigentlichen Prüfung,
+                und schriftlich beim Prüfungsamt beantragen.
+              </li>
+              <li>
+                Zur Wiederholung einer mündlichen Prüfung im Master vereinbaren
+                Sie mit dem Prüfer einen neuen Termin, der frühestens vier
+                Wochen später und spätestens am Ende des Folgesemesters liegen
+                muss. Im M.Sc. kann weder Prüfungsstoff noch Prüfer gewechselt
+                werden; im M.Ed. besteht einmal die Möglichkeit, die Vorlesung
+                zu wechseln, über die geprüft wird.
+              </li>
+            </ul>
+            Beachten Sie auch die
             <a
-              href="https://www.zfs.uni-freiburg.de/de/bok-sq-mpk-teilnahmeinformationen-und-bedingungen/bok-sq-mpk-teilnahmeinformationen-und-bedingungen"
+              href="{{ url_for('showdownloads', anchor='pruefungsamt', lang=lang) }}"
             >
-              Teilnahmebedingungen
+              Merkblätter zur Wiederholungsprüfung
             </a>
-            des ZfS und die
-            <a href="https://www.zfs.uni-freiburg.de/de/belegung-und-abmeldung">
-              Hinweise zur Abmeldung
-            </a>
-            .
-          </p>
-          <p>
-            Bei kleinen Veranstaltungen (wie auch Tutoraten) ist es allerdings
-            ein Gebot der Höflichkeit, den Dozenten/die Dozentin darüber zu
-            informieren, wennn man sich im laufenden Lehrbetrieb entscheidet,
-            die Veranstaltung nicht mehr zu besuchen.
-          </p>
+            !
+          </div>
         </div>
       </div>
-    </div>
-    <div class="accordion-item" id="_wiederbelegung">
-      <h3 class="accordion-header" id="header_wiederbelegung">
-        <button
-          aria-controls="_wiederbelegungContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_wiederbelegungContent"
-          data-bs-toggle="collapse"
-          type="button"
+      <div class="accordion-item" id="_anzahl">
+        <h4 class="accordion-header" id="header_anzahl">
+          <button
+            aria-controls="_anzahlContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_anzahlContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">Anzahl der Wiederholungsmöglichkeiten</h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_anzahlContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_anzahlContent"
         >
-          Wiederholung von Veranstaltungen
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_wiederbelegungContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_wiederbelegungContent"
-      >
-        <div class="accordion-body" id="wiederbelegungContent">
-          <p>
-            Vorlesungen und Übungen dürfen beliebig oft besucht werden; eine
-            Belegung im Vorsemester verhindert normalerweise nicht eine erneute
-            Belegung. Falls dies doch der Fall sein sollte, melden Sie sich
-            bitte bei der Studiengangkoordination!
-            <br />
-            Übungen dürfen auch wiederholt werden, wenn die Studienleistung in
-            den Übungen berets bestanden ist. Als Vorbereitung für eine Klausur
-            ist dies – insbesondere im Wiederholungsfall – sogar sehr zu raten.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item" id="_trenner1">
-      <h3 class="accordion-header" id="header_trenner1">
-        <button
-          aria-controls="_trenner1Content"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_trenner1Content"
-          data-bs-toggle="collapse"
-          type="button"
-        ></button>
-      </h3>
-      <!--  Leerzeichen unbedingt stehen lassen! -->
-      <div
-        aria-labelledby="_trenner1Content"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_trenner1Content"
-      >
-        <div class="accordion-body" id="trenner1Content"></div>
-      </div>
-    </div>
-    <div class="accordion-item" id="_plan">
-      <h3 class="accordion-header" id="header_plan">
-        <button
-          aria-controls="_planContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_planContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          Anmeldung von Prüfungen
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_planContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_planContent"
-      >
-        <div class="accordion-body" id="planContent">
-          <p>
-            <b> Terminologie und Anleitung: </b>
-          </p>
-          <ul>
-            <li>
-              Prüfungen (im Sinne von Prüfungsleistungen) werden
-              <u> angemeldet </u>
-              . Der Status erscheint auf der Leistungsübersicht und kann online
-              im HISinOne-Account eingesehen werden:
-              <br style="margin-bottom: 5px" />
-              ZU steht für '
-              <i> zugelassen </i>
-              ', ZUV für '
-              <i> zunter Vorbehalt ugelassen </i>
-              ', NZU für '
-              <i> nicht zugelassen </i>
-              '.
-              <br style="margin-bottom: 5px" />
-              Zulassung unter Vorbehalt bedeutet, dass die
-              Zulassungsvoraussetzungen noch nicht erfüllt sind.
-            </li>
-            <li>
-              Die Nummern von Prüfungsleistungen in HISinOne beginnen für
-              Mathematik mit 07LE23PL- .
-              <br style="margin-bottom: 5px" />
-              Kurzanleitung zur Prüfugnsanmeldung siehe oben unter "Anleitung",
-              <a
-                href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:studieren:pruefung"
-              >
-                ausführliche Anleitung
-              </a>
-              im HISinOne-Wiki.
-            </li>
-            <li>
-              Eine Veranstaltungsbelegung kann nie eine Prüfungsanmeldung
-              ersetzen!
-            </li>
-          </ul>
-          <p>
-            <b> Auswirkungen: </b>
-          </p>
-          <ul>
-            <li>
-              Ohne vorherige Anmeldung und Zulassung darf keine Prüfung abgelegt
-              oder bewertet werden.
-            </li>
-            <li>
-              Durch die Anmeldung und Zulassung zu einer Prüfung entsteht ein
-              Prüfungsrechtsverhältnis, das in der Regel erst durch Bestehen
-              oder endgültiges Nicht-Bestehen der Prüfung endet, und z.B. nicht
-              durch Exmatrikulation oder Studiengangwechsel.
+          <div class="accordion-body" id="anzahlContent">
+            <p>
+              <b> Studienleistungen: </b>
               <br />
-              Eine Abmeldung ist nur vor dem ersten Prüfungsversuch und
-              innerhalb der
-              <a
-                href="https://home.mathematik.uni-freiburg.de/pruefungsamt/termine.html"
-              >
-                Abmeldefrist
-              </a>
-              möglich.
-            </li>
-            <li>
-              Die Anzahl der Wiederholungsversuche einer Prüfungsleistung ist
-              begrenzt (typischerweise ein oder zwei).
+              Mit Ausnahme der Klausuren zu "Analysis I" und "Lineare Algebra I"
+              können alle Studienleistungen beliebig oft wiederholt werden.
+              Wiederholungen bestandener Leistungen zur Notenverbesserung sind
+              ausgeschlossen.
+            </p>
+            <p>
+              <b> Prüfungsleistungen: </b>
               <br />
-              Falls eine Prüfung nicht bestanden ist, aber noch Prüfungsversuche
-              bleiben, oder falls ein Rücktritt von der Prüfung genehmigt wurde,
-              bleibt die Anmeldung zu der Prüfung bestehen. Die Prüfung muss
-              dann zum nächstmöglichen Zeitpunkt wiederholt werden,in der Regel
-              im folgenden Semester.
-            </li>
-            <li>
-              Sofern Studienleistungen Voraussetzung für die Zulassung zur
-              Prüfung sind, müssen diese Studienleistungen in HISinOne
-              registriert oder verbucht sein, damit die Prüfung angemeldet
-              werden kann. Die Zulassung zur Prüfung erfolgt unter Vorbehalt,
-              solange die vorausgesetzten Studienleistungen noch nicht erbracht
-              sind.
-            </li>
-          </ul>
+              Prüfungsleistungen können prinzipiell einmal wiederholt werden,
+              manche auch zweimal, gemäß den im Folgenden beschriebenen
+              Regelungen der einzelnen Prüfungsordnungen. Wiederholungen
+              bestandener Leistungen zur Notenverbesserung sind ausgeschlossen.
+            </p>
+            <p>
+              <b> Zwei-Hauptfächer-Bachelor </b>
+              (Stand: 1. März 2023)
+            </p>
+            <ul>
+              <li>
+                Eine der beiden Klausuren zu "Analysis I" und "Lineare
+                Algebra I" muss als Orientierugsleistung bis zum Ende des
+                3. Fachsemesters bestanden sein und kann daher nur begrenzt oft
+                wiederholt werden.
+              </li>
+              <li>
+                Die mündlichen Prüfungen in "Analysis" und in "Lineare Algebra",
+                die Prüfung im Proseminar und die Bachelor-Arbeit dürfen nur
+                einmal wiederholt werden.
+              </li>
+              <li>
+                Die Prüfungen in "Algebra und Zahlentheorie",
+                "Elementargeometrie", "Numerik" und "Stochastik" dürfen zweimal
+                wiederholt werden.
+              </li>
+            </ul>
+            <p>
+              <b> Bachelor of Science (PO 2021) </b>
+              (Stand: 1. März 2023)
+            </p>
+            <ul>
+              <li>
+                Die beiden Klausuren zu "Analysis I" und "Lineare Algebra I"
+                müssen als Orientierugsleistung bis zum Ende des
+                3. Fachsemesters bestanden sein und können daher nur begrenzt
+                oft wiederholt werden.
+              </li>
+              <li>
+                Die mündlichen Prüfungen in "Analysis I und II" und in "Lineare
+                Algebra", die Klausur in "Analysis III", die Prüfungen im
+                Proseminar und im Seminar und die Bachelor-Arbeit dürfen nur
+                einmal wiederholt werden.
+              </li>
+              <li>
+                Die Prüfungen in "Numerik", "Stochastik I" und in den
+                Wahlpflichtmodulen in Mathematik dürfen zweimal wiederholt
+                werden.
+              </li>
+              <li>
+                Bis zu zwei Mal kann in den Wahlpflichtmodulen in Mathematik
+                anstelle einer Wiederholungsprüfung (auf fristgerechten Antrag
+                hin) auch eine andere Veranstaltung gewählt werden. Es gibt dann
+                drei Prüfungsversuche über die neue Veranstaltung.
+              </li>
+              <li>
+                Die Prüfungen im Anwendungsfach dürfen einmal wiederholt werden;
+                maximal eine Prüfung im Anwendungsfach auch ein zweites Mal.
+              </li>
+              <li>
+                Anstelle einer zweiten Prüfungswiederholung im Anwendungsfach
+                kann das Anwendungsfach auch (auf fristgerechten Antrag hin)
+                einmalig gewechselt werden. Im neuen Anwendungfach gilt
+                ebenfalls, dass eine Prüfungsleistung zweimal wiederholt werden
+                darf. Ein erneuter Wechsel des Anwendungsfachs ist
+                ausgeschlossen.
+              </li>
+            </ul>
+            <p>
+              <b> Bachelor of Science (PO 2012) </b>
+              (Stand: 15. März 2019)
+            </p>
+            <ul>
+              <li>
+                Die beiden Klausuren zu "Analysis I" und "Lineare Algebra I"
+                müssen als Orientierugsleistung bis zum Ende des
+                3. Fachsemesters bestanden sein und können daher nur begrenzt
+                oft wiederholt werden.
+              </li>
+              <li>
+                Die mündlichen Prüfungen in "Analysis II" und in "Lineare
+                Algebra II", die Prüfungen im Proseminar und im Bachelor-Seminar
+                und die Bachelor-Arbeit dürfen nur einmal wiederholt werden.
+              </li>
+              <li>
+                Die Prüfungen in "Numerik", "Stochastik" und in den
+                Wahlpflichtmodulen in Mathematik dürfen zweimal wiederholt
+                werden.
+              </li>
+              <li>
+                Bis zu zwei Mal kann in den Wahlpflichtmodulen in Mathematik
+                anstelle einer Wiederholungsprüfung (auf fristgerechten Antrag
+                hin) auch eine andere Veranstaltung gewählt werden. Es gibt dann
+                drei Prüfungsversuche über die neue Veranstaltung.
+              </li>
+              <li>
+                Die Prüfungen im Anwendungsfach dürfen einmal wiederholt werden;
+                maximal eine Prüfung im Anwendungsfach auch ein zweites Mal.
+              </li>
+              <li>
+                Anstelle einer zweiten Prüfungswiederholung im Anwendungsfach
+                kann das Anwendungsfach auch (auf fristgerechten Antrag hin)
+                einmalig gewechselt werden. Im neuen Anwendungfach gilt
+                ebenfalls, dass eine Prüfungsleistung zweimal wiederholt werden
+                darf. Ein erneuter Wechsel des Anwendungsfachs ist
+                ausgeschlossen.
+              </li>
+            </ul>
+            <p>
+              <b> Lehramt nach GymPO </b>
+              (Stand: 15. März 2019)
+            </p>
+            <ul>
+              <li>
+                Alle Prüfungen können mindestens einmal wiederholt werden.
+              </li>
+              <li>
+                Falls eine Orientierungsprüfung gefordert wird (also in allen
+                Varianten außer Erweiterungshaupt- oder -beifach), darf
+                diejenige der beiden Klausuren zu "Analysis I" bzw. zu "Lineare
+                Algebra I", die die Orientierungsprüfung darstellt, nur einmal
+                wiederholt werden. Die andere der beiden Klausuren darf ein
+                zweites Mal wiederholt werden.
+              </li>
+              <li>
+                Falls keine Orientierungsprüfung gefordert wird (also im
+                Erweiterungshaupt- oder -beifach), darf eine der beiden
+                Klausuren zu "Analysis I" bzw. zu "Lineare Algebra I" ein
+                zweites Mal weiderholt werden.
+              </li>
+              <li>
+                In allen Fällen dürfen zwei weitere Prüfungsleistungen ein
+                zweites Mal weiderholt werden.
+              </li>
+            </ul>
+            <p>
+              <b> Master of Education </b>
+              (Stand: 15. März 2019)
+            </p>
+            <ul>
+              <li>
+                Die Prüfung im Modul "Mathematische Vertiefung" bzw.
+                "Wissenschaftliches Arbeiten" und die Master-Arbeit dürfen
+                einmal wiederholt werden.
+              </li>
+              <li>
+                Die Prüfungen in den Modulen "Erweiterung der Analysis" und
+                "Fachdidaktik der mathematischen Teilgebiete" dürfen zweimal
+                wiederholt werden.
+              </li>
+              <li>
+                Anstelle der Wiederholungsprüfung im Modul "Mathematische
+                Vertiefung" darf (auf fristgerechten Antrag hin) auch einmalig
+                die Veranstaltung, über die geprüft wird, gewechselt werden. Es
+                gibt dann zwei Prüfungsversuche über die neue Veranstaltung.
+              </li>
+            </ul>
+            <p>
+              <b> Master of Education als Erweiterungsfach </b>
+              : Informationen folgen noch!
+            </p>
+            <p>
+              <b> Master of Science </b>
+              (Stand: 15. März 2019)
+            </p>
+            <ul>
+              <li>
+                Die Prüfungen in Seminar A, und Seminar B und die Master-Arbeit
+                dürfen einmal wiederholt werden.
+              </li>
+              <li>
+                Die Prüfungen in den Modulen "Angewandte Mathematik", "Reine
+                Mathematik", "Mathematik" und im Vertiefungsmodul dürfen einmal
+                wiederholt werden; maximal eine davon auch ein zweites Mal.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="accordion-item" id="_plab">
-      <h3 class="accordion-header" id="header_plab">
-        <button
-          aria-controls="_plabContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_plabContent"
-          data-bs-toggle="collapse"
-          type="button"
+      <div class="accordion-item" id="_slan">
+        <h4 class="accordion-header" id="header_slan">
+          <button
+            aria-controls="_slanContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_slanContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">Registrierung von Studienleistungen</h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_slanContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_slanContent"
         >
-          Abmeldung und Rücktritt von Prüfungen
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_plabContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_plabContent"
-      >
-        <div class="accordion-body" id="plabContent">
-          <p>
-            Die
-            <b> Abmeldung von einer Prüfung </b>
-            setzt in den Stand vor der Anmeldung zurück, als wäre man nie
-            angemeldet gewesen (das "Prüfungsrechtsverhältnis" ist aufgelöst).
-            Insbesondere besteht danach keine Verpflichtung, die Prüfung zu
-            einem festen späteren Zeitpunkt abzulegen, und es geht kein
-            Prüfungsversuch verloren.
-          </p>
-          <p>
-            Eine Abmeldung ist nur vor dem Erstversuch der Prüfung möglich. (Ein
-            genehmigter Rücktritt zählt nicht als Prüfungsversuch, eine nicht
-            angetretene Prüfung ohne genehmigten Rücktritt aber schon.)
-          </p>
-          <ul>
-            <li>
-              <a
-                href="https://home.mathematik.uni-freiburg.de/pruefungsamt/termine.html"
-              >
-                Abmeldefristen
-              </a>
-            </li>
-          </ul>
-          <p>
-            Möchte man nach einer erfolgten Abmeldung die Prüfung zu einem
-            späteren Zeitpunkt ablegen, muss man sich im regulären
-            Anmeldeverfahren erneut anmelden. Die Teilnahme an Nachklausuren
-            oder Nachprüfung zu einzelnen Vorlesungen ist daher in der Regel
-            nicht möglich.
-          </p>
-          <p>
-            Ein
-            <b> Rücktritt von einer Prüfung </b>
-            ist in der juristischen Terminologie der Prüfungsordnung jedes
-            Fernbleiben von einer Prüfung, zu der man angemeldet und zugelassen
-            ist. Wenn der Rücktritt nicht genehmigt wird, zählt dies als nicht
-            bestandene Prüfung. Wenn der Rücktritt genehmigt wird, zählt die
-            Prüfung dagegen nicht als Fehlversuch. Die Anmeldung und Zulassung
-            zur Prüfung (also das Prüfungsrechtsverhältnis) bleibt im Fall eines
-            genehmigten Rücktritts bestehen und wird auf den nächsten
-            Prüfungstermin verschoben, üblicherweise im nächsten Semester.
-          </p>
-          <p></p>
-          <p>
-            Zur Genehmigung eines Rücktritts muss ein begründeter Antrag an den
-            Fachprüfungsausschuss gestellt werden, mit geeignetem Nachweis der
-            Gründe.
-          </p>
-          <ul>
-            <li>
-              Ausreichende Gründe sind z.B. Krankheit, Beurlaubung wegen
-              Auslandsstudiums, Gleichzeitigkeit mit einer anderen Prüfung.
-            </li>
-            <li>
-              Nicht ausreichende Gründe sind z.B. mangelnde Vorbereitung, andere
-              Prüfungen im zeitlichen Umfeld der Prüfung, private Reisen oder
-              Familienfeiern, unspezifische private Probleme, Auslandsstudium
-              innerhalb von Europa ohne Beurlaubung.
-            </li>
-          </ul>
-          Nach einem Rücktritt muss man die Prüfung zum nächstmöglichen
-          Zeitpunkt absolvieren (in der Regel im Folgesemester). Die Anmeldung
-          zum nächsten Prüfungstermin wird vom Prüfugnsamt vorgenommen.
-          <p>
-            <b> Antragsfristen </b>
-          </p>
-          <ul>
-            <li>
-              Der Antrag auf Rücktritt von der Prüfung sollte unmittelbar nach
-              Bekanntwerden der Rücktrittsgründe gestellt werden. Im
-              Krankheitsfall muss der Antrag samt Attest spätestens am dritten
-              Tag nach der Prüfung im Prüfungsamt eingehen; der Arztbesuch muss
-              spätestens am Tag der Prüfung erfolgen. Wenn der Antrag per E-Mail
-              geschickt wird, muss das Originalattest innerhalb einer Woche beim
-              Prüfungsamt eingereicht werden (persönliche Abgabe oder per Post).
-              <br style="margin-bottom: 5px" />
-              <a href="index.html#formulare">
-                Formulare für den Rücktritt aus Krankheitsgründen
-              </a>
-              .
-            </li>
-            <li>
-              Liegen am Prüfungtag "Anhaltspunkte für eine gesundheitliche
-              Beeinträchtigung" vor, muss laut Prüfungordnung "unverzüglich eine
-              Klärung herbeigeführt" werden. Konkret: Wenn sich jemand krank
-              fühlt und dennoch eine Prüfung antritt, zählt der Prüfungsversuch
-              in jedem Fall. Eine nachträgliche Krankmeldung hat keine
-              Auswirkungen.
-            </li>
-            <li>
-              Ein Rücktritt nach absolvierter, nicht-bestandener Prüfung ist nur
-              in extremen Ausnahmefällen genehmigungsfähig!
-            </li>
-          </ul>
+          <div class="accordion-body" id="slanContent">
+            <p>
+              <b> Terminologie und Anleitung: </b>
+            </p>
+            <ul>
+              <li>
+                Studienleistungen werden
+                <u> registriert </u>
+                . Der Status erscheint auf der Leistungsübersicht und kann
+                online im HISinOne-Account eingesehen werden:
+                <br style="margin-bottom: 5px" />
+                REG steht für '
+                <i> registriert </i>
+                ', BE für '
+                <i> bestanden </i>
+                ', NB für '
+                <i> nicht bestanden </i>
+                '.
+              </li>
+              <li>
+                Die Nummern von Studienleistungen in HISinOne beginnen für
+                Mathematik mit 07LE23SL- .
+                <br style="margin-bottom: 5px" />
+                Kurzanleitung zur Studienleistungsregistrierung siehe oben unter
+                "Anleitung",
+                <a
+                  href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:studieren:studienleistung_anmelden"
+                >
+                  ausführliche Anleitung
+                </a>
+                im HISinOne-Wiki.
+              </li>
+              <li>
+                Eine Veranstaltungsbelegung ersetzt (
+                <i> außer bei BOK-Kursen des ZfS </i>
+                ) nicht die Registrierung einer Studienleistung!
+                <br />
+              </li>
+            </ul>
+            <p>
+              <b> Auswirkungen: </b>
+            </p>
+            <ul>
+              <li>
+                Die Registrierung einer Studienleistung ist lediglich die
+                Äußerung des Wunsches, eine gewisse Studienleistung zu
+                erbringen. Sie verpflichtet nicht dazu, dies auch zu tun.
+                <br style="margin-bottom: 5px" />
+                Im B.Sc. wird durch die Registrierung einer Studienleistung im
+                Anwendungsfach allerdings dieses Anwendungsfach verbindlich
+                gewählt.
+              </li>
+              <li>
+                Ein Fehlen der Registrierung kann zu Problemen und Verzögerungen
+                führen:
+                <br style="margin-bottom: 5px" />
+                (1) Eine bestandene, aber nicht-registrierte Studienleistung
+                wird möglicherweise nicht dokumentiert. Nach einiger Zeit ist
+                möglicherweise nicht mehr nachvollziehbar, dass die Leistung
+                tatsächlich erbracht wurde.
+                <br style="margin-bottom: 5px" />
+                (2) Wenn die Studienleisztung eine Klausur enthält, die für
+                andere Teilnehmer eine Prüfungsleistung ist, muss die
+                Anwesenheit kontrolliert werden, um die Berechtigung der
+                Teilnahme zu klären. Ein Fehlen der Registrierung kann zum
+                Ausschluss von der Klausur führen. (Bei fachfremden Wahlmodulen
+                kann ein Ausdruck der Leistungsübersicht mit der Registrierung
+                hilfreich sein.)
+              </li>
+              <li>
+                Falls eine Studienleistung erbracht, aber nicht registriert
+                wurde, liegt es in der Verantwortung der Studierenden, sich vom
+                Dozenten (zeitnah!) eine Bestätigung der absolvierten
+                Studienleistung geben zu lassen und diese beim Prüfungsamt zur
+                Verbuchung einzureichen.
+              </li>
+              <li>
+                Studienleistungen werden typischerweise nicht benotet. In
+                einigen Fällen ist die Möglichkeit vorhanden, Noten einzugeben.
+                Falls Sie (z.B. in Hinblick auf einen späteren Fachwechsel) eine
+                Note für eine Studienleistung brauchen, bitten Sie rechtzeitig
+                den/die Dozent:in darum.
+                <br />
+                Bei benoteten Studienleistungen erscheinen die Noten auf der
+                Leistungsübersicht in Klammern.
+              </li>
+              <li>
+                Registrierte, aber nicht bestandene Studienleistungen bleiben
+                zunächst auf der Leistungsübersicht stehen. Sie können bei
+                Bedarf vom Prüfungsamt gelöscht werden.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="accordion-item" id="_plwieder">
-      <h3 class="accordion-header" id="header_plwieder">
-        <button
-          aria-controls="_plwiederContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_plwiederContent"
-          data-bs-toggle="collapse"
-          type="button"
+      <div class="accordion-item" id="_slab">
+        <h4 class="accordion-header" id="header_slab">
+          <button
+            aria-controls="_slabContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_slabContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">
+              Deregistrierung und Rücktritt von Studienleistungen
+            </h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_slabContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_slabContent"
         >
-          Anmeldung von Wiederholungsprüfungen
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_plwiederContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_plwiederContent"
-      >
-        <div class="accordion-body" id="plwiederContent">
-          <p>
-            Nicht bestandene Prüfungsleistungen dürfen ein oder zwei Mal
-            wiederholt werden. Die Wiederholung einer bestandenen Prüfung zur
-            Notenverbesserung ist nicht möglich.
-            <br />
-            Wiederholungsprüfungen müssen grundsätzlich zum nächstmöglichen
-            Zeitpunkt erfolgen, d.h. in der Regel im Folgesemester. Vor dem
-            letzten Prüfungsversuch hat man auf (formlosen) Antrag hin das
-            Recht, die Veranstaltung erneut zu besuchen.
-          </p>
-          <p>
-            Zu Wiederholungsprüfungen meldet das Prüfungsamt an; eine
-            Online-Anmeldung für Wiederholungsprüfungen ist nicht vorgesehen.
-            Achtung:
-          </p>
-          <ul>
-            <li>Dies gilt nicht für Studienleistungen!</li>
-            <li>
-              Ausnahme sind Wiederholungsprüfungen in einem
-              Sonder-Anwendugnsfach, die Sie erneut über das enteprechende
-              Anmeldeformular anmelden.
-            </li>
-          </ul>
-          Bitte kontrollieren Sie stets, ob die Anmeldung tatsächlich erfolgt
-          ist, und wenden Sie sich andernfalls rechtzeitig an das Prüfungsamt
-          des Mathematischen Instituts.
-          <ul>
-            <!-- style="margin-left:-1.5em;"> -->
-            <li>
-              Im Falle der Wiederholung eines Proseminars oder Seminars müssen
-              Sie dem Prüfungsamt melden, in welchem (Pro-)Seminar Sie die
-              Wiederholungsprüfung ablegen.
-            </li>
-            <li>
-              Falls Sie eine Wiederholungsprüfung nicht oder nicht zum nächsten
-              Termin wahrnehmen wollen, weil
-              <ul>
-                <li>
-                  es sich um den letzten Prüfungsversuch handelt und Sie die
-                  Veranstaltung erneut hören wollen
-                </li>
-                <li>
-                  oder Sie die Veranstaltung (B.Sc., M.Ed.) bzw. das
-                  Anwendungsfach (B.Sc.) wechseln möchten,
-                </li>
-              </ul>
-              müssen Sie dies rechtzeitig, d.h. vor der eigentlichen Prüfung,
-              und schriftlich beim Prüfungsamt beantragen.
-            </li>
-            <li>
-              Zur Wiederholung einer mündlichen Prüfung im Master vereinbaren
-              Sie mit dem Prüfer einen neuen Termin, der frühestens vier Wochen
-              später und spätestens am Ende des Folgesemesters liegen muss. Im
-              M.Sc. kann weder Prüfungsstoff noch Prüfer gewechselt werden; im
-              M.Ed. besteht einmal die Möglichkeit, die Vorlesung zu wechseln,
-              über die geprüft wird.
-            </li>
-          </ul>
-          Beachten Sie auch die
-          <a href="index.html#formulare">
-            Merkblätter zur Wiederholungsprüfung
-          </a>
-          !
+          <div class="accordion-body" id="slabContent">
+            <p>
+              Da die Registrierung einer Studienleistung keine rechtliche
+              Verbindlichkeit hat, sondern dazu dient, bestandene
+              Studienleistungen im Campus-Management-System verbuchen zu können,
+              kann die Löschung einer Registrierung jederzeit formlos im
+              Prüfungsamt erfolgen. Weil man nicht bestandene Studienleistungen
+              beliebig oft wiederholen kann (Ausnahme siehe unten), verliert man
+              aber keinen Versuch, wenn man sich nicht abmeldet
+              ("deregistriert"). Im Fall von Krankheit muss daher auch kein
+              Attest eingereicht werden.
+            </p>
+            <p>
+              <b> Ausnahme: </b>
+              Die Klausuren zu Analysis I und bzw. oder Lineare Algebra I können
+              nur im Rahmen der Orientierungsleistungsfrist beliebig oft
+              wiederholt werden. Sie haben daher Ähnlichkeit mit
+              Prüfungsleistungen. Sofern Sie die Orientierungsleistung noch
+              nicht bestanden haben, können Sie bei Krankheit ein Attest beim
+              Prüfungsamt einreichen, da diese Information relevant sein könnte.
+            </p>
+            <p>
+              Wurde eine Studienleistung als nicht-bestanden verbucht, bleibt
+              dieser Eintrag in der Leistungsübersicht bestehen, bis entweder
+              die Studienleistung bestanden wird oder das Studium beendet ist.
+              Dann werden nicht-bestandene Studienleistungen auf formlosen
+              Antrag hin aus der Leistungsübersicht gelöscht.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="accordion-item" id="_anzahl">
-      <h3 class="accordion-header" id="header_anzahl">
-        <button
-          aria-controls="_anzahlContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_anzahlContent"
-          data-bs-toggle="collapse"
-          type="button"
+      <div class="accordion-item" id="_slwieder">
+        <h4 class="accordion-header" id="header_slwieder">
+          <button
+            aria-controls="_slwiederContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_slwiederContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">Registrierung von Wiederholungsstudienleistungen</h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_slwiederContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_slwiederContent"
         >
-          Anzahl der Wiederholungsmöglichkeiten
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_anzahlContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_anzahlContent"
-      >
-        <div class="accordion-body" id="anzahlContent">
-          <p>
-            <b> Studienleistungen: </b>
-            <br />
-            Mit Ausnahme der Klausuren zu "Analysis I" und "Lineare Algebra I"
-            können alle Studienleistungen beliebig oft wiederholt werden.
-            Wiederholungen bestandener Leistungen zur Notenverbesserung sind
-            ausgeschlossen.
-          </p>
-          <p>
-            <b> Prüfungsleistungen: </b>
-            <br />
-            Prüfungsleistungen können prinzipiell einmal wiederholt werden,
-            manche auch zweimal, gemäß den im Folgenden beschriebenen Regelungen
-            der einzelnen Prüfungsordnungen. Wiederholungen bestandener
-            Leistungen zur Notenverbesserung sind ausgeschlossen.
-          </p>
-          <p>
-            <b> Zwei-Hauptfächer-Bachelor </b>
-            (Stand: 1. März 2023)
-          </p>
-          <ul>
-            <li>
-              Eine der beiden Klausuren zu "Analysis I" und "Lineare Algebra I"
-              muss als Orientierugsleistung bis zum Ende des 3. Fachsemesters
-              bestanden sein und kann daher nur begrenzt oft wiederholt werden.
-            </li>
-            <li>
-              Die mündlichen Prüfungen in "Analysis" und in "Lineare Algebra",
-              die Prüfung im Proseminar und die Bachelor-Arbeit dürfen nur
-              einmal wiederholt werden.
-            </li>
-            <li>
-              Die Prüfungen in "Algebra und Zahlentheorie",
-              "Elementargeometrie", "Numerik" und "Stochastik" dürfen zweimal
-              wiederholt werden.
-            </li>
-          </ul>
-          <p>
-            <b> Bachelor of Science (PO 2021) </b>
-            (Stand: 1. März 2023)
-          </p>
-          <ul>
-            <li>
-              Die beiden Klausuren zu "Analysis I" und "Lineare Algebra I"
-              müssen als Orientierugsleistung bis zum Ende des 3. Fachsemesters
-              bestanden sein und können daher nur begrenzt oft wiederholt
-              werden.
-            </li>
-            <li>
-              Die mündlichen Prüfungen in "Analysis I und II" und in "Lineare
-              Algebra", die Klausur in "Analysis III", die Prüfungen im
-              Proseminar und im Seminar und die Bachelor-Arbeit dürfen nur
-              einmal wiederholt werden.
-            </li>
-            <li>
-              Die Prüfungen in "Numerik", "Stochastik I" und in den
-              Wahlpflichtmodulen in Mathematik dürfen zweimal wiederholt werden.
-            </li>
-            <li>
-              Bis zu zwei Mal kann in den Wahlpflichtmodulen in Mathematik
-              anstelle einer Wiederholungsprüfung (auf fristgerechten Antrag
-              hin) auch eine andere Veranstaltung gewählt werden. Es gibt dann
-              drei Prüfungsversuche über die neue Veranstaltung.
-            </li>
-            <li>
-              Die Prüfungen im Anwendungsfach dürfen einmal wiederholt werden;
-              maximal eine Prüfung im Anwendungsfach auch ein zweites Mal.
-            </li>
-            <li>
-              Anstelle einer zweiten Prüfungswiederholung im Anwendungsfach kann
-              das Anwendungsfach auch (auf fristgerechten Antrag hin) einmalig
-              gewechselt werden. Im neuen Anwendungfach gilt ebenfalls, dass
-              eine Prüfungsleistung zweimal wiederholt werden darf. Ein erneuter
-              Wechsel des Anwendungsfachs ist ausgeschlossen.
-            </li>
-          </ul>
-          <p>
-            <b> Bachelor of Science (PO 2012) </b>
-            (Stand: 15. März 2019)
-          </p>
-          <ul>
-            <li>
-              Die beiden Klausuren zu "Analysis I" und "Lineare Algebra I"
-              müssen als Orientierugsleistung bis zum Ende des 3. Fachsemesters
-              bestanden sein und können daher nur begrenzt oft wiederholt
-              werden.
-            </li>
-            <li>
-              Die mündlichen Prüfungen in "Analysis II" und in "Lineare
-              Algebra II", die Prüfungen im Proseminar und im Bachelor-Seminar
-              und die Bachelor-Arbeit dürfen nur einmal wiederholt werden.
-            </li>
-            <li>
-              Die Prüfungen in "Numerik", "Stochastik" und in den
-              Wahlpflichtmodulen in Mathematik dürfen zweimal wiederholt werden.
-            </li>
-            <li>
-              Bis zu zwei Mal kann in den Wahlpflichtmodulen in Mathematik
-              anstelle einer Wiederholungsprüfung (auf fristgerechten Antrag
-              hin) auch eine andere Veranstaltung gewählt werden. Es gibt dann
-              drei Prüfungsversuche über die neue Veranstaltung.
-            </li>
-            <li>
-              Die Prüfungen im Anwendungsfach dürfen einmal wiederholt werden;
-              maximal eine Prüfung im Anwendungsfach auch ein zweites Mal.
-            </li>
-            <li>
-              Anstelle einer zweiten Prüfungswiederholung im Anwendungsfach kann
-              das Anwendungsfach auch (auf fristgerechten Antrag hin) einmalig
-              gewechselt werden. Im neuen Anwendungfach gilt ebenfalls, dass
-              eine Prüfungsleistung zweimal wiederholt werden darf. Ein erneuter
-              Wechsel des Anwendungsfachs ist ausgeschlossen.
-            </li>
-          </ul>
-          <p>
-            <b> Lehramt nach GymPO </b>
-            (Stand: 15. März 2019)
-          </p>
-          <ul>
-            <li>Alle Prüfungen können mindestens einmal wiederholt werden.</li>
-            <li>
-              Falls eine Orientierungsprüfung gefordert wird (also in allen
-              Varianten außer Erweiterungshaupt- oder -beifach), darf diejenige
-              der beiden Klausuren zu "Analysis I" bzw. zu "Lineare Algebra I",
-              die die Orientierungsprüfung darstellt, nur einmal wiederholt
-              werden. Die andere der beiden Klausuren darf ein zweites Mal
-              wiederholt werden.
-            </li>
-            <li>
-              Falls keine Orientierungsprüfung gefordert wird (also im
-              Erweiterungshaupt- oder -beifach), darf eine der beiden Klausuren
-              zu "Analysis I" bzw. zu "Lineare Algebra I" ein zweites Mal
-              weiderholt werden.
-            </li>
-            <li>
-              In allen Fällen dürfen zwei weitere Prüfungsleistungen ein zweites
-              Mal weiderholt werden.
-            </li>
-          </ul>
-          <p>
-            <b> Master of Education </b>
-            (Stand: 15. März 2019)
-          </p>
-          <ul>
-            <li>
-              Die Prüfung im Modul "Mathematische Vertiefung" bzw.
-              "Wissenschaftliches Arbeiten" und die Master-Arbeit dürfen einmal
-              wiederholt werden.
-            </li>
-            <li>
-              Die Prüfungen in den Modulen "Erweiterung der Analysis" und
-              "Fachdidaktik der mathematischen Teilgebiete" dürfen zweimal
-              wiederholt werden.
-            </li>
-            <li>
-              Anstelle der Wiederholungsprüfung im Modul "Mathematische
-              Vertiefung" darf (auf fristgerechten Antrag hin) auch einmalig die
-              Veranstaltung, über die geprüft wird, gewechselt werden. Es gibt
-              dann zwei Prüfungsversuche über die neue Veranstaltung.
-            </li>
-          </ul>
-          <p>
-            <b> Master of Education als Erweiterungsfach </b>
-            : Informationen folgen noch!
-          </p>
-          <p>
-            <b> Master of Science </b>
-            (Stand: 15. März 2019)
-          </p>
-          <ul>
-            <li>
-              Die Prüfungen in Seminar A, und Seminar B und die Master-Arbeit
-              dürfen einmal wiederholt werden.
-            </li>
-            <li>
-              Die Prüfungen in den Modulen "Angewandte Mathematik", "Reine
-              Mathematik", "Mathematik" und im Vertiefungsmodul dürfen einmal
-              wiederholt werden; maximal eine davon auch ein zweites Mal.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item" id="_trenner2">
-      <h3 class="accordion-header" id="header_trenner2">
-        <button
-          aria-controls="_trenner2Content"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_trenner2Content"
-          data-bs-toggle="collapse"
-          type="button"
-        ></button>
-      </h3>
-      <!--  Leerzeichen unbedingt stehen lassen! -->
-      <div
-        aria-labelledby="_trenner2Content"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_trenner2Content"
-      >
-        <div class="accordion-body" id="trenner2Content"></div>
-      </div>
-    </div>
-    <div class="accordion-item" id="_slan">
-      <h3 class="accordion-header" id="header_slan">
-        <button
-          aria-controls="_slanContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_slanContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          Registrierung von Studienleistungen
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_slanContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_slanContent"
-      >
-        <div class="accordion-body" id="slanContent">
-          <p>
-            <b> Terminologie und Anleitung: </b>
-          </p>
-          <ul>
-            <li>
-              Studienleistungen werden
-              <u> registriert </u>
-              . Der Status erscheint auf der Leistungsübersicht und kann online
-              im HISinOne-Account eingesehen werden:
-              <br style="margin-bottom: 5px" />
-              REG steht für '
-              <i> registriert </i>
-              ', BE für '
-              <i> bestanden </i>
-              ', NB für '
-              <i> nicht bestanden </i>
-              '.
-            </li>
-            <li>
-              Die Nummern von Studienleistungen in HISinOne beginnen für
-              Mathematik mit 07LE23SL- .
-              <br style="margin-bottom: 5px" />
-              Kurzanleitung zur Studienleistungsregistrierung siehe oben unter
-              "Anleitung",
-              <a
-                href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:studieren:studienleistung_anmelden"
-              >
-                ausführliche Anleitung
-              </a>
-              im HISinOne-Wiki.
-            </li>
-            <li>
-              Eine Veranstaltungsbelegung ersetzt (
-              <i> außer bei BOK-Kursen des ZfS </i>
-              ) nicht die Registrierung einer Studienleistung!
+          <div class="accordion-body" id="slwiederContent">
+            <p>
+              Das Prüfungsamt registriert Studierende nicht zu Nachklausuren
+              oder Nachprüfungen, wenn es sich dabei um Studienleistungen
+              handelt. Sie müssen dies selbst über HISinOne tun.
               <br />
-            </li>
-          </ul>
-          <p>
-            <b> Auswirkungen: </b>
-          </p>
-          <ul>
-            <li>
-              Die Registrierung einer Studienleistung ist lediglich die Äußerung
-              des Wunsches, eine gewisse Studienleistung zu erbringen. Sie
-              verpflichtet nicht dazu, dies auch zu tun.
-              <br style="margin-bottom: 5px" />
-              Im B.Sc. wird durch die Registrierung einer Studienleistung im
-              Anwendungsfach allerdings dieses Anwendungsfach verbindlich
-              gewählt.
-            </li>
-            <li>
-              Ein Fehlen der Registrierung kann zu Problemen und Verzögerungen
-              führen:
-              <br style="margin-bottom: 5px" />
-              (1) Eine bestandene, aber nicht-registrierte Studienleistung wird
-              möglicherweise nicht dokumentiert. Nach einiger Zeit ist
-              möglicherweise nicht mehr nachvollziehbar, dass die Leistung
-              tatsächlich erbracht wurde.
-              <br style="margin-bottom: 5px" />
-              (2) Wenn die Studienleisztung eine Klausur enthält, die für andere
-              Teilnehmer eine Prüfungsleistung ist, muss die Anwesenheit
-              kontrolliert werden, um die Berechtigung der Teilnahme zu klären.
-              Ein Fehlen der Registrierung kann zum Ausschluss von der Klausur
-              führen. (Bei fachfremden Wahlmodulen kann ein Ausdruck der
-              Leistungsübersicht mit der Registrierung hilfreich sein.)
-            </li>
-            <li>
-              Falls eine Studienleistung erbracht, aber nicht registriert wurde,
-              liegt es in der Verantwortung der Studierenden, sich vom Dozenten
-              (zeitnah!) eine Bestätigung der absolvierten Studienleistung geben
-              zu lassen und diese beim Prüfungsamt zur Verbuchung einzureichen.
-            </li>
-            <li>
-              Studienleistungen werden typischerweise nicht benotet. In einigen
-              Fällen ist die Möglichkeit vorhanden, Noten einzugeben. Falls Sie
-              (z.B. in Hinblick auf einen späteren Fachwechsel) eine Note für
-              eine Studienleistung brauchen, bitten Sie rechtzeitig den/die
-              Dozent:in darum.
-              <br />
-              Bei benoteten Studienleistungen erscheinen die Noten auf der
-              Leistungsübersicht in Klammern.
-            </li>
-            <li>
-              Registrierte, aber nicht bestandene Studienleistungen bleiben
-              zunächst auf der Leistungsübersicht stehen. Sie können bei Bedarf
-              vom Prüfungsamt gelöscht werden.
-            </li>
-          </ul>
+              Dies gilt insbesondere für die Klausuren zu "Analysis I" und
+              "Lineare Algebra I".
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="accordion-item" id="_slab">
-      <h3 class="accordion-header" id="header_slab">
-        <button
-          aria-controls="_slabContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_slabContent"
-          data-bs-toggle="collapse"
-          type="button"
+      <div class="accordion-item" id="_studienganginfo">
+        <h4 class="accordion-header" id="header_studienganginfo">
+          <button
+            aria-controls="_studienganginfoContent"
+            aria-expanded="false"
+            class="accordion-button collapsed"
+            data-bs-target="#_studienganginfoContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">
+              Welche Studien- und Prüfungleistungen müssen wie angemeldet
+              werden?
+            </h3>
+          </button>
+        </h4>
+        <div
+          aria-labelledby="_studienganginfoContent"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+          id="_studienganginfoContent"
         >
-          Deregistrierung und Rücktritt von Studienleistungen
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_slabContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_slabContent"
-      >
-        <div class="accordion-body" id="slabContent">
-          <p>
-            Da die Registrierung einer Studienleistung keine rechtliche
-            Verbindlichkeit hat, sondern dazu dient, bestandene
-            Studienleistungen im Campus-Management-System verbuchen zu können,
-            kann die Löschung einer Registrierung jederzeit formlos im
-            Prüfungsamt erfolgen. Weil man nicht bestandene Studienleistungen
-            beliebig oft wiederholen kann (Ausnahme siehe unten), verliert man
-            aber keinen Versuch, wenn man sich nicht abmeldet ("deregistriert").
-            Im Fall von Krankheit muss daher auch kein Attest eingereicht
-            werden.
-          </p>
-          <p>
-            <b> Ausnahme: </b>
-            Die Klausuren zu Analysis I und bzw. oder Lineare Algebra I können
-            nur im Rahmen der Orientierungsleistungsfrist beliebig oft
-            wiederholt werden. Sie haben daher Ähnlichkeit mit
-            Prüfungsleistungen. Sofern Sie die Orientierungsleistung noch nicht
-            bestanden haben, können Sie bei Krankheit ein Attest beim
-            Prüfungsamt einreichen, da diese Information relevant sein könnte.
-          </p>
-          <p>
-            Wurde eine Studienleistung als nicht-bestanden verbucht, bleibt
-            dieser Eintrag in der Leistungsübersicht bestehen, bis entweder die
-            Studienleistung bestanden wird oder das Studium beendet ist. Dann
-            werden nicht-bestandene Studienleistungen auf formlosen Antrag hin
-            aus der Leistungsübersicht gelöscht.
-          </p>
+          <div class="accordion-body" id="studienganginfoContent">
+            <p>
+              Diese Informationen finden Sie auf den Informationsseiten der
+              einzelnen Studiengänge:
+            </p>
+            <ul>
+              <li>
+                <a
+                  href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
+                >
+                  Bachelor of Science
+                </a>
+                (PO 2021) 
+              </li>
+              <li>
+                <a
+                  href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
+                >
+                  Zwei-Hauptfächer-Bachelor
+                </a>
+                (PO 2021)
+              </li>
+              <li>
+                <a
+                  href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}"
+                >
+                  Master of Education
+                </a>
+                (PO 2018) /
+                <a
+                  href="{{ url_for('showstudiengang', studiengang='mederw', lang = lang) }}"
+                >
+                  Master of Education als Erweiterungsfach
+                </a>
+                (PO 2021)
+              </li>
+              <li>
+                <a
+                  href="{{ url_for('showstudiengang', studiengang='msc', lang = lang) }}"
+                >
+                  Master of Science
+                </a>
+                (PO 2014)
+              </li>
+            </ul>
+            <div
+              aria-labelledby="studienganginfoContent"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+              id="studienganginfoContent"
+            >
+              <div class="accordion-body" id="studienganginfoContent"></div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="accordion-item" id="_slwieder">
-      <h3 class="accordion-header" id="header_slwieder">
-        <button
-          aria-controls="_slwiederContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_slwiederContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          Registrierung von Wiederholungsstudienleistungen
-        </button>
-      </h3>
-      <div
-        aria-labelledby="_slwiederContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_slwiederContent"
-      >
-        <div class="accordion-body" id="slwiederContent">
-          <p>
-            Das Prüfungsamt registriert Studierende nicht zu Nachklausuren oder
-            Nachprüfungen, wenn es sich dabei um Studienleistungen handelt. Sie
-            müssen dies selbst über HISinOne tun.
-            <br />
-            Dies gilt insbesondere für die Klausuren zu "Analysis I" und
-            "Lineare Algebra I".
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item" id="studienganginfo">
-      <h3
-        class="accordion-header"
-        id="headerstudienganginfo"
-        style="background-color: #f4f3f3; margin-top: 10px; margin-bottom: 5px"
-      >
-        <button
-          aria-controls="studienganginfoContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#studienganginfoContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          Welche Studien- und Prüfungleistungen müssen wie angemeldet werden?
-        </button>
-      </h3>
-      <p>
-        Diese Informationen finden Sie auf den Informationsseiten der einzelnen
-        Studiengänge:
-      </p>
-      <ul>
-        <li>
-          <a
-            href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html"
-          >
-            Bachelor of Science
-          </a>
-          (PO 2021) –
-          <a
-            href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2012.html"
-          >
-            frühere Prüfungsordnung PO 2012
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html"
-          >
-            Zwei-Hauptfächer-Bachelor
-          </a>
-          (PO 2021)
-        </li>
-        <li>
-          <a
-            href="https://www.math.uni-freiburg.de/lehre/studiengaenge/lehramt.html"
-          >
-            Lehramt nach GymPO
-          </a>
-          (PO 2010)
-        </li>
-        <li>
-          <a
-            href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-2018.html"
-          >
-            Master of Education
-          </a>
-          (PO 2018) /
-          <a
-            href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html"
-          >
-            Master of Education als Erweiterungsfach
-          </a>
-          (PO 2021)
-        </li>
-        <li>
-          <a
-            href="https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html"
-          >
-            Master of Science
-          </a>
-          (PO 2014)
-        </li>
-      </ul>
-      <div
-        aria-labelledby="studienganginfoContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="studienganginfoContent"
-      >
-        <div class="accordion-body" id="studienganginfoContent"></div>
       </div>
     </div>
   </div>

@@ -1,163 +1,200 @@
+{% extends 'base.html' %} {% block navbar %} {% include 'navbar.html' %} {%
+endblock %} {% block content %} {% if lang == "de" %}
 <div class="container" id="inhalt">
-  <div>
-    <h2>Studiendekanat</h2>
-  </div>
-  <div class="container">
-    <a href="{{ url_for('showstudienberatungbase', lang=lang)}}"
-      >Studienberatung</a
-    >
-    und
-    <a href="{{ url_for('showpruefungsamtbase', lang=lang)}}">Prüfungsamt</a>
-    arbeiten eng zusammen. Damit Sie den richtigen Ansprechpartner finden,
-    erfahren Sie hier, wer wofür zuständig ist.
-    <p></p>
-    <ul>
-      <li>
-        Die
-        <a href="{{ url_for('showstudienberatungbase', lang=lang)}}"
-          >Studienberatung</a
-        >steht allen Studierenden bei administrativen und organisatorischen
-        Fragen offen.
-      </li>
-      <li>
-        Das
-        <a href="{{ url_for('showpruefungsamtbase', lang=lang)}}"
-          >Prüfungsamt</a
-        >
-        ist zuständig für die Prüfungsverwaltung der Mathematik-Studiengänge.
-      </li>
-    </ul>
-  </div>
+  <h1>FAQ</h1>
+  <p>
+    Das FAQ besteht aus Fragen, die immer wieder in der Beratung der
+    Studiengänge des Mathematischen Instituts gestellt werden. Sollten weitere
+    Fragen auftauchen, können Sie sich gerne an die
+    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+      Studienberatung des Mathematischen Instituts
+    </a>
+    wenden. Hier sind ein paar Stichworte:
+  </p>
 </div>
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <a
+        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6b"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Prüfungsanmeldung funktioniert nicht
+      </a>
+      <a
+        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f84"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Orientierungsleistung
+      </a>
+      <a
+        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f7e"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Prüfungsanmeldung
+      </a>
+      <a
+        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6c"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Krankheit bei Prüfung
+      </a>
+    </div>
+  </div>
+  {% else %}
+  <div class="container" id="inhalt">
+    <h1>FAQ</h1>
+    <p>
+      The FAQ consists of questions that are repeatedly asked in the counseling
+      of the study programs at the Mathematical Institute. Should further
+      questions arise, you are welcome to contact the
+      <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+        Student Advisory Service of the Institute of Mathematics </a
+      >. Here are a few keywords:
+    </p>
+  </div>
 
   <div class="container text-end">
     <div class="row">
       <div class="col">
         <a
-          href="{{ url_for('showstudienberatungbase', lang=lang)}}"
-          class="btn btn-primary bg-ufr-blue"
+          href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6b"
+          class="btn btn-primary bg-ufr-blue link-dark"
           role="button"
           aria-disabled="true"
         >
-          Studienberatung
+          Registering for my exam does not work
         </a>
         <a
-          href="{{ url_for('showpruefungsamtbase', lang=lang)}}"
-          class="btn btn-primary bg-ufr-blue"
+          href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f84"
+          class="btn btn-primary bg-ufr-blue link-dark"
           role="button"
           aria-disabled="true"
         >
-          Prüfungsamt
+          Orientation achievement
         </a>
         <a
-          href="{{ url_for('showfaq', lang=lang) }}"
-          class="btn btn-primary bg-ufr-blue"
+          href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f7e"
+          class="btn btn-primary bg-ufr-blue link-dark"
           role="button"
           aria-disabled="true"
         >
-          FAQ
+          Exam registration
         </a>
-      <a
-          href="https://campus.uni-freiburg.de"
-          class="btn btn-primary bg-ufr-blue"
+        <a
+          href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6c"
+          class="btn btn-primary bg-ufr-blue link-dark"
           role="button"
           aria-disabled="true"
-          >
-          HISInOne
+        >
+          Exam and sickness
         </a>
       </div>
     </div>
-    </div>
-    
-
-<br>
-<br>
-
-
-  <div class="container">
-  <div class="row g-2">
-    {% for item in data["data"] %} {% if item['showstudiendekanat'] %}
-    <div class="col-md-4">
-      <div class="card h-100">
-        <a
-          class="btn bg-ufr-yellow-60 link-dark"
-          {% if item['link']!= '' %} href="{{ item['link'] }}" {% endif %}"
+    {% endif %}
+    <div class="container">
+      <div class="row g-0 py-1 row-cols-4 row-cols-lg-6">
+        <!-- <div class="dropdown">
+        <button
+          class="btn btn-primary dropdown-toggle"
           type="button"
-          style="width: 100%;"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style="background-color: #344a9a"
         >
-          <center>
-            <h4>
-              {% if lang == "de" %} {% if item['rolle_de'] != "" %}
-              {{item['rolle_de']|safe}} {% endif %} {% else %} {% if
-              item['rolle_en'] != "" %} {{item['rolle_en']|safe}}{% endif %}
-              {% endif %}
-            </h4>
-            <h4>
-              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
-              {{ item['name']|safe }}
-            </h4>
-            </center>
-        </a>
-        <div class="card-body">
-          <div class="card-text">
-            <p>
-              {% if lang == "de" %} {% if item['prefix_de'] != "" %}
-              ({{item['prefix_de']|safe}}) {% endif %} {% else %} {% if
-              item['prefix_en'] != "" %} ({{item['prefix_en']|safe}}){% endif
-              %}{% endif %}
-            </p>
-            {% if lang == "de" and item['text_de'] != [] %}
-            <ul>
-              {% for x in item['text_de'] %}
-              <li>{{ x|safe }}</li>
+          {% if lang == "de" %}Studiengang{% else %}Study program{% endif %}
+        </button>
+      </div>-->
+        {% if show != 'all' %}
+        <a
+          class="action"
+          href="{{ url_for('showstufaq', lang = lang, show = 'all') }}"
+        >
+          <button class="btn btn-primary" style="background-color: #344a9a">
+            {% if lang == "de" %}Alles ausklappen{% else %} Expand all {% endif
+            %}
+          </button></a
+        >
+        {% else %}
+        <a
+          class="action"
+          href="{{ url_for('showstufaq', lang = lang, show = '') }}"
+        >
+          <button class="btn btn-primary">
+            {% if lang == "de" %}Alles einklappen{% else %} Collapse all {%
+            endif %}
+          </button></a
+        >
+        {% endif %}
+      </div>
+    </div>
+    <div class="accordion" id="accordionFAQtags">
+      {% for cat_id in cat_ids %}
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button
+            aria-controls="{{cat_id}}"
+            aria-expanded="{% if showcat == 'all' or showcat == cat_id %}true{% else %}false{% endif %}"
+            class="accordion-button {% if showcat != 'all' and showcat != cat_id %}collapsed{% endif %}"
+            data-bs-target="#{{cat_id}}"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <h3 class="h5">{{ names_dict[cat_id] }}</h3>
+          </button>
+        </h3>
+        <div
+          aria-labelledby="{{cat_id}}"
+          class="accordion-collapse collapse {% if showcat == 'all' or showcat == cat_id %}show{% endif %}"
+          data-bs-parent="#accordionFAQtags"
+          id="{{cat_id}}"
+        >
+          <div class="accordion-body">
+            <div class="accordion" id="accordion{{cat_id}}">
+              {% for qa in qa_pairs[cat_id] %}
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button
+                    aria-controls="{{qa[0]}}"
+                    aria-expanded="{% if show == 'all' or show == qa[0] %}true{% else %}false{% endif %}"
+                    class="accordion-button {% if show != 'all' and show != qa[0] %}collapsed{% endif %}"
+                    data-bs-target="#{{qa[0]}}"
+                    data-bs-toggle="collapse"
+                    type="button"
+                  >
+                    <h3 class="h5" id="{{qa[0]}}_q">{{ qa[1]|markdown }}</h3>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="{{qa[0]}}"
+                  class="accordion-collapse collapse {% if show == 'all' or show == qa[0] %}show{% endif %}"
+                  data-bs-parent="#accordion{{cat_id}}"
+                  id="{{qa[0]}}"
+                >
+                  <div class="accordion-body">{{ qa[2]|markdown }}</div>
+                </div>
+              </div>
               {% endfor %}
-            </ul>
-            {% elif lang == "en" and item['text_en'] != [] %}
-            <ul>
-              {% for x in item['text_en'] %}
-              <li>{{ x|safe }}</li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-            <p align="right">
-              {% if item['mail']!= '' %} {% set mail = item['mail'] %}
-              <button
-                type="button"
-                class="btn btn-outline-primary active bg-white"
-                data-bs-toggle="popover"
-                data-bs-html="true"
-                style="color: #004a99"
-                title="{{ item['name'] | safe }}"
-                data-bs-content="{% if lang == 'de' %}
-                {% if item['raum_de'] !='' %} Raum: {{ item['raum_de'] | safe }} {% endif %} <br>
-                {% if item['tel_de'] !='' %} Tel.: {{ item['tel_de'] | safe }} {% endif %}<br>
-                {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
-                {% if item['sprechstunde_de'] !='' %} Sprechstunde: {{ item['sprechstunde_de'] | safe }} {% endif %}<br>
-                {% else %}
-                {% if item['raum_en'] !='' %} Room: {{ item['raum_de'] | safe }} {% endif %} <br>
-                {% if item['tel_en'] !='' %} Tel.: {{ item['tel_en'] | safe }} {% endif %}<br>
-                {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
-                {% if item['sprechstunde_en'] !='' %} Office hours: {{ item['sprechstunde_en'] | safe }} {% endif %}<br>
-                {% endif %}"
-              >
-                <i class="fa-solid fa-info" style="color: #004a99"></i>
-              </button>
-              {% endif %} 
-              <!-- {% if item['link']!= '' %}
-              <a
-                class="btn btn-outline-primary active bg-white"
-                style="border-color: #004a99"
-                href="{{ item['link'] }}"
-                role="button"
-              >
-                <i class="fa-solid fa-link" style="color: #004a99"></i>
-              </a>
-              {% endif %} -->
-            </p>
+            </div>
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endif %} {% endfor %}
   </div>
-  </div>
+  {% endblock %} {% block js %}
+  <script>
+    var element = document.getElementById("{{show}}_q");
+    element.scrollIntoView();
+  </script>
+  {% endblock %}
+</div>

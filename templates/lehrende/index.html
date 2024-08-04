@@ -1,0 +1,106 @@
+{% extends 'base.html' %} {% block navbar %} {% include 'navbar.html' %} {%
+endblock %} {% block content %}
+
+<div class="container" id="inhalt">
+  <h1>FAQ</h1>
+  <p>
+    {% if lang == "de" %} Diese FAQ besteht aus Fragen, die Mitarbeiter*innen des Mathematischen Instituts immer wieder stellen. 
+    {% else %} The FAQ consists of questions that staff at the mathematical institute askes frequently.
+    {% endif %}
+  </p>
+  <div class="container">
+    <div class="row g-0 py-1 row-cols-4 row-cols-lg-6">
+    <!-- <div class="dropdown">
+        <button
+          class="btn btn-primary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style="background-color: #344a9a"
+        >
+          {% if lang == "de" %}Studiengang{% else %}Study program{% endif %}
+        </button>
+      </div>-->
+      {% if show != 'all' %}
+      <a
+        class="action"
+        href="{{ url_for('showmitfaq', lang = lang, show = 'all') }}"
+      >
+        <button class="btn btn-primary" style="background-color: #344a9a">
+          {% if lang == "de" %}Alles ausklappen{% else %} Expand all {% endif %}
+        </button></a
+      >
+      {% else %}
+      <a
+        class="action"
+        href="{{ url_for('showmitfaq', lang = lang, show = '') }}"
+      >
+        <button class="btn btn-primary">
+          {% if lang == "de" %}Alles einklappen{% else %} Collapse all {% endif
+          %}
+        </button></a
+      >
+      {% endif %}
+    </div>
+  </div>
+  <div class="accordion" id="accordionFAQtags">
+    {% for cat_id in cat_ids %}
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          aria-controls="{{cat_id}}"
+          aria-expanded="{% if showcat == 'all' or showcat == cat_id %}true{% else %}false{% endif %}"
+          class="accordion-button {% if showcat != 'all' and showcat != cat_id %}collapsed{% endif %}"
+          data-bs-target="#{{cat_id}}"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">{{ names_dict[cat_id] }}</h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="{{cat_id}}"
+        class="accordion-collapse collapse {% if showcat == 'all' or showcat == cat_id %}show{% endif %}"
+        data-bs-parent="#accordionFAQtags"
+        id="{{cat_id}}"
+      >
+        <div class="accordion-body">
+          <div class="accordion" id="accordion{{cat_id}}">
+            {% for qa in qa_pairs[cat_id] %}
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="{{qa[0]}}"
+                  aria-expanded="{% if show == 'all' or show == qa[0] %}true{% else %}false{% endif %}"
+                  class="accordion-button {% if show != 'all' and show != qa[0] %}collapsed{% endif %}"
+                  data-bs-target="#{{qa[0]}}"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="{{qa[0]}}_q">{{ qa[1]|markdown }}</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="{{qa[0]}}"
+                class="accordion-collapse collapse {% if show == 'all' or show == qa[0] %}show{% endif %}"
+                data-bs-parent="#accordion{{cat_id}}"
+                id="{{qa[0]}}"
+              >
+                <div class="accordion-body">{{ qa[2]|markdown }}</div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %} {% block js %}
+<script>
+  var element = document.getElementById("{{show}}_q");
+  element.scrollIntoView();
+</script>
+{% endblock %}

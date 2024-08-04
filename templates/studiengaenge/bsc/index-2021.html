@@ -4,13 +4,13 @@
   <p>
     Fragen der Studienorganisation (Belegung, Prüfungsanmeldung, etc) finden Sie
     auf den Seiten des
-    <a href="{{ url_for('showpruefungsamtbase', lang=lang) }}">Prüfungsamts</a>.
+    <a href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}">Prüfungsamts</a>.
 
     <br />
     Einige Fragen beantwortet das
-    <a href="{{ url_for('showfaq', lang=lang) }}"> FAQ</a>. Falls Fragen offen
+    <a href="{{ url_for('showstufaq', lang=lang) }}"> FAQ</a>. Falls Fragen offen
     bleiben, wenden Sie sich gerne an die
-    <a href="{{ url_for('showstudienberatungbase', lang=lang) }}">
+    <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
       Studienberatung des Mathematischen Instituts
     </a>
     wenden.
@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col">
         <a
-          href="{{ url_for('showfaq', lang=lang) }}"
+          href="{{ url_for('showstufaq', lang=lang) }}"
           class="btn btn-primary"
           role="button"
           aria-disabled="true"

@@ -1,0 +1,383 @@
+<div class="container" id="inhalt">
+  <p></p>
+  
+  <div class="container text-end">
+    <div class="row">
+      <div class="col">
+        <a
+          href="{{url_for('showinteresse', lang = lang)}}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          {% if lang == "de" %} Für Studieninteressierte {% else %} Study with us {% endif %}
+        </a>
+        <a
+          href="{{ url_for('showweiterbildung', lang=lang)}}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          {% if lang == "de" %} Weiterbildung {% else %} Further education {%
+          endif %}
+        </a>
+        <a
+          href="{{ url_for('showstudiendekanat', lang=lang) }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          {% if lang == "de" %} Studienberatung {% else %} Academic advice
+          office {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <p>
+    Zurück zur Überblicksseite „
+    <a href="{{url_for('showinteresse', lang = lang)}}">
+      Informationen für Studieninteressierte
+    </a>
+    “.
+  </p>
+  <div id="accordion"></div>
+  <div class="accordion accordion-flush" id="accordionExample">
+    <div class="accordion-item" id="_studiengaenge">
+      <h4 class="accordion-header" id="header_studiengaenge">
+        <button
+          aria-controls="_studiengaengeContent"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#_studiengaengeContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Welche Studiengänge gibt es?</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="_studiengaengeContent"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="_studiengaengeContent"
+      >
+        <div class="accordion-body" id="studiengaengeContent">
+          <p>
+            Für den
+            <b> Studienanfang </b>
+            gibt es zwei Bachelor-Studiengänge in Mathematik. Bei beiden beginnt
+            das Studium im Wintersemester. Ein Wechsel ist innerhalb der ersten
+            ein, zwei Jahre gut möglich, da sie eine große Überschneidung im
+            Studienprogramm in Mathematik haben.
+          </p>
+          <ul>
+            <li>
+              <a
+                href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
+              >
+                <b> Bachelor of Science </b>
+              </a>
+              <br style="margin-bottom: 5px" />
+              – Mathematik als Hauptfach mit Bachelor-Arbeit (
+              <i> mind. 120 Leistungspunkte </i>
+              )
+              <br />
+              – Anwendungsfach, Wahlbereich und Schlüsselqualifikationen (
+              <i> je ca. 20 Leistungspunkte </i>
+              )
+            </li>
+            <li style="margin-top: 10px">
+              <b>
+                <a
+                  href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
+                >
+                  Polyvalenter Zwei-Hauptfächer-Bachelor
+                </a>
+                (mit oder ohne Lehramtsoption)
+              </b>
+              <br style="margin-bottom: 5px" />
+              – Mathematik und ein weiteres Fach als Hauptfächer (
+              <i> jeweils 75 Leistungspunkte </i>
+              )
+              <br />
+              – Bachelor-Arbeit in einem der Fächer (
+              <i> 10 Leistungspunkte </i>
+              )
+              <br />
+              – Wahlbereich (
+              <i> 20 Leistungspunkte </i>
+              )
+              <br style="margin-bottom: 5px" />
+              Die Lehramtsoption im Wahlbereich ermöglicht mit anschließendem
+              Master of Education den Zugang zum Lehramt an Gymnasien. Für
+              Mathematik als Drittfach im Lehramtsstudium siehe „Master of
+              Education als Erweiterungsfach“ unten
+            </li>
+          </ul>
+          <p>
+            Für das
+            <b> Weiterstudium </b>
+            gibt es die beiden Studiengänge:
+          </p>
+          <ul>
+            <li>
+              <a
+                href="{{ url_for('showstudiengang', studiengang='msc', lang = lang) }}"
+              >
+                <b> Master of Science </b>
+              </a>
+              <br style="margin-bottom: 5px" />
+              <i>
+                Voraussetzung: Bachelor of Science in Mathematik oder
+                gleichwertiger Abschluss oder Zwei-Hauptfächer-Bachelor mit
+                Zusatzleistungen
+              </i>
+              <br style="margin-bottom: 5px" />
+              An den Master of Science kann sich eine
+              <a
+                href="{{ url_for('showstudiengang', studiengang='promotion', lang = lang) }}"
+              >
+                <b> Promotion </b>
+              </a>
+              in Mathematik anschließen.
+            </li>
+            <li>
+              <a
+                href="{{ url_for('showstudiengang', studiengang='msc_data', lang = lang) }}"
+              >
+                <b> Master of Science Mathematics in Data and Technology</b>
+              </a>
+              <br style="margin-bottom: 5px" />
+              <i>
+                Voraussetzung: Bachelor of Science in einer Naturwissenschaft
+                mit mindestens 30 ECTS-Punkten in Mathematik.
+              </i>
+              <br style="margin-bottom: 5px" />
+              Auch hier kann sich eine
+              <a
+                href="{{ url_for('showstudiengang', studiengang='promotion', lang = lang) }}"
+              >
+                <b> Promotion </b>
+              </a>
+              in Mathematik anschließen.
+            </li>
+            <li style="margin-top: 10px">
+              <a
+                href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}"
+              >
+                <b> Master of Education </b>
+              </a>
+              <br style="margin-bottom: 5px" />
+              <i>
+                Voraussetzung: Zwei-Hauptfächer-Bachelor mit Lehramtsoption oder
+                gleichwertiger Abschluss
+              </i>
+            </li>
+          </ul>
+          <p>
+            Für Mathematik als
+            <b> Drittfach im Lehramtsstudium </b>
+            gibt es den Studiengang:
+          </p>
+          <ul>
+            <li>
+              <a
+                href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
+              >
+                <b> Master of Education als Erweiterungsfach </b>
+              </a>
+              <br style="margin-bottom: 5px" />
+              <i>
+                Voraussetzung: ein Lehramts-Bachelor- oder Master-Studiengang in
+                zwei weiteren Fächern wird parallel studiert oder ist bereits
+                abgeschlossen.
+              </i>
+              <br style="margin-bottom: 5px" />
+              Wir empfehlen, das Erweiterungsfach parallel zum
+              Zwei-Hauptfächer-Bachelor in den beiden anderen Fächern zu
+              beginnen, aber frühestens im 3. Semester.
+            </li>
+            <li>
+              <a
+                href="{{ url_for('showstudiengang', studiengang='med_dual', lang = lang) }}"
+              >
+                <b> Masterstudiengang Lehramt Gymnasium – dual</b>
+              </a>
+              <br style="margin-bottom: 5px" />
+              <i>
+                Voraussetzung: ein Bachelor-Abschluss entweder in Informatik und
+                Physik.
+              </i>
+              <br style="margin-bottom: 5px" />
+              Dieser Studiengang ist Modellversuch zur Gewinnung von Lehrkräften
+              aus dem MINT-Bereich.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" id="_verlauf">
+      <h4 class="accordion-header" id="header_verlauf">
+        <button
+          aria-controls="_verlaufContent"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#_verlaufContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Studienverlauf</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="_verlaufContent"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="_verlaufContent"
+      >
+        <div class="accordion-body" id="verlaufContent">
+          <p>
+            Beide Bachelor-Studiengänge beginnen mit grundlegenden Vorlesungen
+            in
+            <i> Analysis </i>
+            und
+            <i> Linearer Algebra </i>
+            . Darauf aufbauend gibt es verpflichtende Einführungen in einige
+            Teilgebiete der Mathematik, ergänzt durch ein Proseminar und
+            Praktische Übungen (Computerübungen). Im B.Sc.-Studiengang folgen
+            mehrere weiterführende Wahlvorlesungen.
+          </p>
+          <p>
+            <b>
+              Beispielhafter Studienverlauf im Bachelor-of-Science-Studiengang
+              Mathematik:
+            </b>
+          </p>
+          {% include "studiengaenge/bsc/studienverlauf-bsc-2021.html" %}
+          <p>
+            Unter Beachtung der Vorkenntnisse kann man die Reihenfolge der
+            Veranstaltungen umstellen, insbesondere in den höheren Semestern.
+            Zusammen mit den Wahlmöglichkeiten bei Veranstaltungen ergeben sich
+            so viele Freiheiten zur individuellen Studiengestaltung. Im
+            Zwei-Hauptfächer-Bachelor-Studiengang sind die Studieninhalte
+            dagegen weitgehend vorgeschrieben.
+          </p>
+          <p>
+            <b>
+              Beispielhafter Studienverlauf im
+              Zwei-Hauptfächer-Bachelor-Studiengang Mathematik:
+            </b>
+          </p>
+          {% include "studiengaenge/2hfb/studienverlauf-2hfb-2021.html" %}
+          <p>
+            Abhängig vom zweiten Fach kann man entweder mit beiden
+            Grundvorlesungen in Analysis und Linearer Algebra beginnen oder nur
+            mit einer von beiden. Die weiterführenden Vorlesungen und
+            Veranstaltungen bauen teilweise inhaltlich auf diesen
+            Grundvorlesungen auf, können aber unter Berücksichtigung der
+            notwendigen Vorkenntnisse beliebig auf die Semester verteilt werden.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" id="_schwerpunkte">
+      <h4 class="accordion-header" id="header_schwerpunkte">
+        <button
+          aria-controls="_schwerpunkteContent"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#_schwerpunkteContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Freiburger Schwerpunktgebiete</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="_schwerpunkteContent"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="_schwerpunkteContent"
+      >
+        <div class="accordion-body" id="schwerpunkteContent">
+          <p>
+            Die Freiburger Mathematik teilt sich auf sechs Bereiche auf, die
+            untereinander mehr oder weniger starke Berührungspunkte haben:
+          </p>
+          <ul>
+            <li>
+              <b> Mathematische Logik </b>
+              formuliert unter anderem die axiomatischen Grundgesetze der
+              Mathematik und untersucht die Beweisbarkeit mathematischer
+              Aussagen.
+              <!-- <br style="margin-bottom:3px;">
+      In Freiburg insbesondere: <i>Mengenlehre</i> und <i>Modelltheorie</i>.-->
+            </li>
+            <li>
+              <b> Algebra und Zahlentheorie </b>
+              beschäftigt sich mit Zahlbereichen und ihren Verallgemeinerungen,
+              insbesondere mit dem Ziel, Aussagen über die Lösbarkeit von
+              Gleichungen zu gewinnen.
+              <!--<br style="margin-bottom:3px;">
+      In Freiburg insbesondere: <i>Algebraische Geometrie</i>,
+      <i>Algebraische Zahlentheorie</i> und <i>Darstellungstheorie</i>.-->
+            </li>
+            <li>
+              <b> Geometrie und Topologie </b>
+              erforscht zum Beispiel Krümmungseigenschaften von Kurven und
+              Flächen und ihrer höherdimensionalen Verallgemeinerungen.
+              <!-- <br style="margin-bottom:3px;">
+      In Freiburg insbesondere: <i>Differentialgeometrie</i>,
+      <i>Differentialtopologie</i>, <i>Globale Analysis</i> und <i>Mathematische Physik (Quantenfeldtheorie)</i>.-->
+            </li>
+            <li>
+              <b> Analysis </b>
+              studiert Eigenschaften auch mehrwertiger Funktionen und Lösungen
+              von Differentialgleichungen.
+              <!--<br style="margin-bottom:3px;">
+      In Freiburg insbesondere: <i>Funktionalanalysis</i>,
+      <i>Partielle Differentialgleichungen</i> und <i>Variationsrechnung</i>.-->
+            </li>
+            <li>
+              <b> Angewandte Analysis und Numerik </b>
+              entwirft Verfahren zur systematischen, rechnerischen Lösung
+              mathematischer Probleme.
+              <!--<br style="margin-bottom:3px;">
+      In Freiburg insbesondere: <i>Nichlineare Elastizität</i>, 
+      <i>Numerik partieller Differentialgleichungen</i>, <i>Strömungsmechanik</i> und <i>Variationsprobleme</i>.-->
+            </li>
+            <li>
+              <b> Stochastik und Statistik </b>
+              modelliert zufällige Ereignisse und entwickelt Methoden zum
+              optimalen Umgang mit zufälligen Ereignissen oder mit großen
+              Datenmengen.
+              <!--<br style="margin-bottom:3px;">
+      In Freiburg insbesondere: <i>Biomathematik</i>, <i>Finanzmathematik</i>,
+      <i>Mathematische Statistik</i> und <i>Stochastische Analysis</i>.-->
+            </li>
+          </ul>
+          <p>
+            Vertreten durch Kooperationen mit Mathematiker:inne:n aus anderen
+            Fakultäten sind außerdem die Gebiete:
+          </p>
+          <ul>
+            <li>Machine Learning und Big Data</li>
+            <li>Medizinische Biometrie und Statistik</li>
+            <li>Quantitative Finanzmarktforschung</li>
+            <li>Systemtheorie, Regelungstechnik und Optimierung</li>
+          </ul>
+          <p>
+            Detailliertere Informationen finden Sie auf der Seite:
+            <br />
+            <a href="https://www.math.uni-freiburg.de/personen/dozenten.html">
+              <b> Dozenten/Dozentinnen und ihre Schwerpunktgebiete </b>
+              .
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

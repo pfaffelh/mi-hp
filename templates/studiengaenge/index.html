@@ -3,24 +3,18 @@
   <br />
   <ul>
     <li>
-      Unser <a href="{{ url_for('showfaq', lang=lang) }}">FAQ</a> beantwortet
+      Unser <a href="{{ url_for('showstufaq', lang=lang) }}">FAQ</a> beantwortet
       viele, aber nicht alle Fragen. Sollten Sie weitere Fragen haben, melden
       Sie sich gerne an die
       <a href="mailto:studienberatung@math.uni-freiburg.de">Studienberatung</a>.
     </li>
-    <li>
-      Es gibt zwar auch den Promotionsstudiengang. Sollten Sie Informationen zu
-      einer Promotion in Mathematik an der Universität Freiburg suchen, schauen
-      Sie bitte
-      <a href="https://www.math.uni-freiburg.de/lehre/promotion.html">hier</a>.
-    </li>
-    <li>
+<!--    <li>
       Wir haben auch
       <a href="{{ url_for('showweiterbildung', lang=lang)}}"
         >Weiterbildungsangebote</a
       >, zu denen Sie nicht an der Universität Freiburg eingeschrieben sein
       müssen.
-    </li>
+    </li>-->
   </ul>
   <br />
 
@@ -28,7 +22,7 @@
     <div class="row">
       <div class="col">
         <a
-          href="{{ url_for('showfaq', lang=lang) }}"
+          href="{{ url_for('showstufaq', lang=lang) }}"
           class="btn btn-primary"
           role="button"
           aria-disabled="true"
@@ -42,15 +36,15 @@
           aria-disabled="true"
         >
           Weiterbildung
-        </a>
+        </a> -->
         <a
-          href="promotion"
+          href="https://freiburg-seminar.de/"
           class="btn btn-primary"
           role="button"
           aria-disabled="true"
         >
-          Promotion
-        </a>-->
+          Schülerstudium
+        </a>
         <a
           href="mailto:studienberatung@math.uni-freiburg.de"
           class="btn btn-primary"
@@ -62,8 +56,6 @@
       </div>
     </div>
   </div>
-
-
 
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
@@ -173,23 +165,20 @@
         </div>
       </div>
     </div>
+
     <div class="accordion-item">
       <h4 class="accordion-header">
         <button
           aria-controls="promotion"
-          aria-expanded="false"
+          aria-expanded="true"
           class="accordion-button {% if anchor != 'promotion' %}collapsed{% endif %}"
           data-bs-target="#promotion"
           data-bs-toggle="collapse"
           type="button"
         >
-          <a
-            href="https://www.math.uni-freiburg.de/lehre/promotion.html"
-            class="link-dark"
-            ><h3 class="h5">
-              {% if lang == 'de' %}Promotion{% else %}PhD studies {% endif %}
-            </h3></a
-          >
+          <h3 class="h5">
+            {% if lang == 'de' %}Promotion{% else %}PhD studies {% endif %}
+          </h3>
         </button>
       </h4>
       <div
@@ -197,59 +186,11 @@
         class="accordion-collapse collapse"
         data-bs-parent="#accordionExample"
         id="promotion"
-      ></div>
-    </div>
-    <div class="accordion-item">
-      <h4 class="accordion-header">
-        <button
-          aria-controls="promotion"
-          aria-expanded="false"
-          class="accordion-button {% if anchor != 'schuelerstudium' %}collapsed{% endif %}"
-          data-bs-target="#schuelerstudium"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <a href="https://freiburg-seminar.de/" class="link-dark"
-            ><h3 class="h5">
-              {% if lang == 'de' %}Schülerstudium{% else %}Studies for pupils{%
-              endif %}
-            </h3></a
-          >
-        </button>
-      </h4>
-      <div
-        aria-labelledby="schuelerstudium"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="schuelerstudium"
-      ></div>
-    </div>
-    <div class="accordion-item">
-      <h4 class="accordion-header">
-        <button
-          aria-controls="weiterbildung"
-          aria-expanded="false"
-          class="accordion-button {% if anchor != 'weiterbildung' %}collapsed{% endif %}"
-          data-bs-target="#weiterbildung"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <a
-            href="{{ url_for('showweiterbildung', lang=lang)}}"
-            class="link-dark"
-            ><h3 class="h5">
-              {% if lang == 'de' %}Weiterbildung{% else %}Continuing education
-              {% endif %}
-            </h3></a
-          >
-        </button>
-      </h4>
-      <div
-        aria-labelledby="weiterbildung"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="weiterbildung"
-      ></div>
+      >
+        <div class="accordion-body">
+          {% include "/studiengaenge/promotion.html" %}
+        </div>
+      </div>
     </div>
   </div>
 </div>

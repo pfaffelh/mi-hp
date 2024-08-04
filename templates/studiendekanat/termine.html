@@ -1,0 +1,1064 @@
+<div class="container" id="inhalt">
+  <h1>Prüfungen in den Mathematikstudiengängen: Anmeldefristen und Termine</h1>
+  <div class="container g-3">
+    <ul>
+      <li>
+        <p>
+          Vor jeder Prüfung muss man sich (rechtzeitig!) zu dieser Prüfung
+          anmelden – teils über das Campus-Management-System
+          <a href="https://campus.uni-freiburg.de"> HISinOne </a>
+          , teils schriftlich über das
+          <a
+            href="https://home.mathematik.uni-freiburg.de/pruefungsamt/index.html"
+          >
+            Prüfungsamt des Mathematischen Instituts
+          </a>
+          .
+          <br />
+          Studienleistungen, die man absolvieren möchte, muss man in der Regel
+          über HISinOne registrieren, damit sie verbucht werden können.
+          Belegungen von Veranstaltungen reichen dafür nicht aus.
+        </p>
+        Falls eine online-Anmeldung vorgesehen, aber nicht möglich ist oder
+        nicht funktioniert, wenden Sie sich frühzeitig und unbedingt unter
+        Wahrung der Anmeldefrist an das zuständige Prüfungsamt!
+        <p></p>
+      </li>
+      <li>
+        Auf welche Art die Prüfungsanmeldungen jeweils erfolgen und welche
+        Studienleistungen registriert werden müssen steht auf den
+        Informationsseiten zu den einzelnen
+        <a href="https://www.math.uni-freiburg.de/lehre/index.html">
+          Studiengängen
+        </a>
+        . Allgemeine Informationen zu Prüfungen und Studienleistungen erfahren
+        Sie auf der Seite
+        <a
+          href="https://home.mathematik.uni-freiburg.de/pruefungsamt/pruefungen.html"
+        >
+          Informationen zur Prüfungsanmeldung
+        </a>
+        .
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col text-end">
+        <a
+          href="{{ url_for('showstudiendekanat', unterseite='anmeldung', lang=lang) }}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          Anleitung Prüfungsanmeldung
+        </a>
+        <a
+          href="#calendar"
+          class="btn btn-primary  bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          Prüfungskalender
+        </a>
+        <a
+          href="https://campus.uni-freiburg.de/"
+          class="btn btn-primary  bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          HISinOne
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="accordion">
+    <!--
+<div id="_ss20" class="fold">
+  <h3>Anmeldefristen im Sommersemester 2020<span class="arrow"></h3>
+<div id="ss20Content" class="foldContent collapse">
+
+<p>  
+  <b>Proseminare, Seminare und</b> (im Lehramt nach GymPO) <b>Fachdidaktikseminare:</b> 
+  <ul>
+    <li> Online-Anmeldung vom 01.&thinsp;03.&thinsp;2020
+         <span style="color:#c1002a;">bis 22.&thinsp;04.&thinsp;2020</span> &nbsp;
+         (<i>in LSF erst ab 01.&thinsp;04.&thinsp;2020</i>) <br style="margin-bottom:3px;">
+        nach Studienplatzzuteilung und verbindlicher Teilnahmezusage in der Vorbesprechung</li>
+  </ul>
+</p>
+
+<p>
+  <b>Mündliche Prüfungen im M.Sc. und M.Ed.:</b>
+  <ul>
+    <li> Schriftliche Anmeldung im Prüfungsamt 
+         <span style="color:#c1002a;">bis spätestens drei Wochen vor der Prüfung</span>
+         nach individueller Terminvereinbarung mit dem Prüfer </li> 
+  </ul>
+</p>  
+
+<p>
+  <b>Andere Mathematik-Veranstaltungen:</b> <br style="margin-bottom:3px;">
+  (einschließlich der mündlichen Prüfungen in Analysis und in Linearer Algebra und der Lesekurse)
+  <ul>
+    <li> Online-Anmeldung von 20.&thinsp;04.&thinsp;2020 
+         <span style="color:#c1002a;">bis 17.&thinsp;07.&thinsp;2020</span> </li>
+    <li> Die <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">aktuellen Informationen für Studierende</a>
+         informieren über den genauen Stand: Für einzelne Prüfungen sind Anmeldungen erst ab einem späteren Starttermin möglich. </li>
+    <li> Kontrolle, ob alle gewünschten Anmeldungen eingerichtet sind,
+         und andernfalls Mitteilung an die Studiengangkoordination:
+         <span style="color:#c1002a;">bis spätestens 30.&thinsp;06.&thinsp;2020</span> </li>
+    <li> <a href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html">Abgabe der Prüferwünsche</a>
+      für die mündliche Prüfungen in Analysis bzw. Linearer Algebra: voraussichtlich ab Anfang/Mitte Juli 2020.
+         Die Abgabe der Prüferwünsche ersetzt nicht die Prüfungsanmeldung! </li>
+  </ul>
+</p>
+
+<p>
+  <b>Module anderer Fächer und Einrichtungen:</b>
+  <ul>
+    <li> Mitteilung von fachfremden Wahlmodulen,
+        für die Studienleistungen über das Campus-Management-System angemeldet werden sollen:
+        <span style="color:#c1002a;">bis spätestens Mitte Juni 2020</span> an die Studiengangkoordination! </li>
+    <li>Für Module des Anwendungsfachs im B.Sc., für fachfremde Wahlmodule im B.Sc. und M.Sc.
+        und für das andere Fach im Lehramt, M.Ed. oder 2-Hauptfächer-Bachelor gelten die Anmeldefristen des jeweiligen Faches. <br>
+        Zuständig ist trotzdem das Prüfungsamt des Mathematischen Institut;
+	<span style="color:#c1002a;">wenden Sie sich bei Problemen nicht an das Prüfungsamt des anderen Faches!!</span> </li>
+    <li> Für externe BOK-Kurse gelten die Fristen des ZfS, für lehramtsspezifische Studienelemente
+        (Bildungswissenschaft, epg, Personal Kompetenz) jeweils die Fristen der zuständigen Einrichtung.</li>
+  </ul>
+</p>
+
+</div>
+</div> 
+
+
+
+<div id="_ws20" class="fold">
+  <h3>Anmeldefristen im Wintersemester 2020/21<span class="arrow"></h3>
+<div id="ws20Content" class="foldContent collapse">
+
+<p>  
+  <b>Proseminare, Seminare und</b> (im Lehramt nach GymPO) <b>Fachdidaktikseminare:</b> 
+  <ul>
+    <li> Online-Anmeldung vom 01.&thinsp;09.&thinsp;2020
+         <span style="color:#c1002a;">bis 28.&thinsp;10.&thinsp;2020</span> &nbsp;
+         (<i>in LSF erst ab 01.&thinsp;10.&thinsp;2020</i>) <br style="margin-bottom:3px;">
+        nach Studienplatzzuteilung und verbindlicher Teilnahmezusage in der Vorbesprechung</li>
+  </ul>
+</p>
+
+<p>
+  <b>Mündliche Prüfungen im M.Sc. und M.Ed.:</b>
+  <ul>
+    <li> Schriftliche Anmeldung im Prüfungsamt 
+         <span style="color:#c1002a;">bis spätestens drei Wochen vor der Prüfung</span>
+         nach individueller Terminvereinbarung mit dem Prüfer </li> 
+  </ul>
+</p>  
+
+<p>
+  <b>Andere Mathematik-Veranstaltungen:</b> <br style="margin-bottom:3px;">
+  (einschließlich der mündlichen Prüfungen in Analysis und in Linearer Algebra und der Lesekurse)
+  <ul>
+    <li> Online-Anmeldung von 19.&thinsp;10.&thinsp;2020 
+      <span style="color:#c1002a;">bis 29.&thinsp;01.&thinsp;2021</span> </li>
+    <li> Die <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">aktuellen Informationen für Studierende</a>
+      informieren über den genauen Stand: Für einzelne Prüfungen sind Anmeldungen erst ab einem späteren Starttermin möglich. </li>
+    <li> Kontrolle, ob alle gewünschten Anmeldungen eingerichtet sind,
+      und andernfalls Mitteilung an die Studiengangkoordination:
+      <span style="color:#c1002a;">bis spätestens 06.&thinsp;01.&thinsp;2021</span> </li>
+    <li> <a href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html">Abgabe der Prüferwünsche</a>
+      für die mündliche Prüfungen in Analysis bzw. Linearer Algebra: voraussichtlich gegen Ende Januar 2021.
+         Die Abgabe der Prüferwünsche ersetzt nicht die Prüfungsanmeldung! </li>
+  </ul>
+</p>
+
+<p>
+  <b>Module anderer Fächer und Einrichtungen:</b>
+  <ul>
+    <li> Mitteilung von fachfremden Wahlmodulen,
+        für die Studienleistungen über das Campus-Management-System angemeldet werden sollen:
+        <span style="color:#c1002a;">bis spätestens Ende November 2020</span> an die Studiengangkoordination! </li>
+    <li>Für Module des Anwendungsfachs im B.Sc., für fachfremde Wahlmodule im B.Sc. und M.Sc.
+        und für das andere Fach im Lehramt, M.Ed. oder 2-Hauptfächer-Bachelor gelten die Anmeldefristen des jeweiligen Faches. <br>
+        Zuständig ist trotzdem das Prüfungsamt des Mathematischen Institut;
+	<span style="color:#c1002a;">wenden Sie sich bei Problemen nicht an das Prüfungsamt des anderen Faches!!</span> </li>
+    <li> Für externe BOK-Kurse gelten die Fristen des ZfS, für lehramtsspezifische Studienelemente
+        (Bildungswissenschaft, epg, Personal Kompetenz) jeweils die Fristen der zuständigen Einrichtung.</li>
+  </ul>
+</p>
+
+</div>
+</div>
+
+
+
+<div id="_ss21" class="fold">
+  <h3>Anmeldefristen im Sommersemester 2021<span class="arrow"></h3>
+<div id="ss21Content" class="foldContent collapse">
+
+<p>  
+  <b>Proseminare und Seminare</b>:
+  <ul>
+    <li> Online-Prüfungsanmeldung vom 01.&thinsp;03.&thinsp;2021
+         <span style="color:#c1002a;">bis 14.&thinsp;04.&thinsp;2021</span>
+        nach Studienplatzzuteilung und verbindlicher Teilnahmezusage in der Vorbesprechung. </li>
+  </ul>
+</p>
+
+<p>
+  <b>Mündliche Prüfungen im M.Sc. und M.Ed.:</b>
+  <ul>
+    <li> Schriftliche Anmeldung im Prüfungsamt 
+         <span style="color:#c1002a;">bis spätestens drei Wochen vor der Prüfung</span>
+         nach individueller Terminvereinbarung mit dem Prüfer. </li> 
+  </ul>
+</p>  
+
+<p>
+  <b>Andere Mathematik-Veranstaltungen:</b> <br style="margin-bottom:3px;">
+  (einschließlich der mündlichen Prüfungen in Analysis und in Linearer Algebra und der Lesekurse)
+  <ul>
+    <li> Online-Prüfungsanmeldung bzw. -Studienleistungsregistrierung von 19.&thinsp;04.&thinsp;2021 
+         <span style="color:#c1002a;">bis 09.&thinsp;07.&thinsp;2021</span>. </li>
+    <li> Die <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">aktuellen Informationen für Studierende</a>
+      informieren ggf. über den genauen Stand:
+      Für einzelne Prüfungen werden Anmeldemöglichkeiten ggf. erst ab einem späteren Starttermin eingerichtet. </li>
+    <li> Kontrolle, ob alle gewünschten Anmeldungemöglichkeiten eingerichtet sind,
+         und andernfalls Mitteilung an die Studiengangkoordination:
+         <span style="color:#c1002a;">bis spätestens 18.&thinsp;06.&thinsp;2021</span>. </li>
+    <li> <a href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html">Abgabe der Prüferwünsche</a>
+      für die mündliche Prüfungen in Analysis bzw. Linearer Algebra: voraussichtlich ab Anfang Juli 2021.
+         Die Abgabe der Prüferwünsche ersetzt nicht die Prüfungsanmeldung! </li>
+  </ul>
+</p>
+
+<p>
+  <b>Module anderer Fächer und Einrichtungen:</b>
+  <ul>
+    <li> Mitteilung von fachfremden Wahlmodulen,
+        für die Studienleistungen über das Campus-Management-System angemeldet werden sollen
+        <span style="color:#c1002a;">bis spätestens Ende Mai 2021</span> an die Studiengangkoordination! </li>
+   <li>
+      Für Module des Anwendungsfachs im B.Sc. und für fachfremde Wahlmodule im B.Sc. und M.Sc. gelten die Anmeldefristen des jeweiligen Faches. 
+      Zuständig ist trotzdem das Prüfungsamt des Mathematischen Institut;
+      <span style="color:#c1002a;">wenden Sie sich bei Problemen nicht an das Prüfungsamt des anderen Faches!!</span>
+    </li>
+    <li>
+      Für das andere Fach im 2-Hauptfächer-Bachelor oder M.Ed. gelten die Anmeldefristen des jeweiligen Faches. 
+      Für externe BOK-Kurse gelten die Fristen des ZfS.
+      Für lehramtsspezifische Studienelemente (Bildungswissenschaft, Schulpraxis) jeweils die Fristen der zuständigen Einrichtung.
+    </li>
+  </ul>
+</p>
+
+</div>
+</div> 
+
+
+<div id="_ws21" class="fold">
+  <h3>Anmeldefristen im Wintersemester 2021/22<span class="arrow"></h3>
+<div id="ws21Content" class="foldContent collapse">
+
+  <p>  
+    <b>Proseminare und Seminare:</b> 
+    <ul>
+      <li> Online-Prüfungsanmeldung vom 01.&thinsp;09.&thinsp;2021
+        <span style="color:#c1002a;">bis 13.&thinsp;10.&thinsp;2021</span> 
+        nach Studienplatzzuteilung und verbindlicher Teilnahmezusage in der Vorbesprechung. </li>
+    </ul>
+  </p>
+  <p>
+    <b>Mündliche Prüfungen im M.Sc. und M.Ed.:</b>
+    <ul>
+      <li> Schriftliche Anmeldung im Prüfungsamt 
+        <span style="color:#c1002a;">bis spätestens drei Wochen vor der Prüfung</span>
+        nach individueller Terminvereinbarung mit dem Prüfer. </li> 
+    </ul>
+  </p>  
+  <p>
+    <b>Andere Mathematik-Veranstaltungen:</b> <br style="margin-bottom:3px;">
+    (einschließlich der mündlichen Prüfungen in Analysis und in Linearer Algebra und der Lesekurse)
+    <ul>
+      <li> Online-Prüfungsanmeldung bzw. -Studienleistungsregistrierung von 18.&thinsp;10.&thinsp;2021
+	<span style="color:#c1002a;">bis 28.&thinsp;01.&thinsp;2022</span>. </li>
+      <li> Die <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">aktuellen Informationen für Studierende</a>
+	informieren ggf. über den genauen Stand:
+	Für einzelne Prüfungen werden Anmeldemöglichkeiten ggf. erst ab einem späteren Starttermin eingerichtet. </li>
+      <li> Kontrolle, ob alle gewünschten Anmeldemöglichkeiten eingerichtet sind,
+	und andernfalls Mitteilung an die Studiengangkoordination
+	<span style="color:#c1002a;">bis spätestens 06.&thinsp;01.&thinsp;2022</span>. </li>
+      <li> <a href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html">Abgabe der Prüferwünsche</a>
+	für die mündliche Prüfungen in Analysis bzw. Linearer Algebra: voraussichtlich gegen Ende Januar 2022.
+        Die Abgabe der Prüferwünsche ersetzt nicht die Prüfungsanmeldung! </li>
+    </ul>
+  </p>
+  <p>
+    <b>Module anderer Fächer und Einrichtungen:</b>
+    <ul>
+      <li>
+	Mitteilung von fachfremden Wahlmodulen,
+	für die Studienleistungen über das Campus-Management-System registriert werden sollen
+	<span style="color:#c1002a;">bis spätestens Ende November 2021</span> an die Studiengangkoordination!
+      </li>
+      <li>
+	Für Module des Anwendungsfachs im B.Sc. und für fachfremde Wahlmodule im B.Sc. und M.Sc. gelten die Anmeldefristen des jeweiligen Faches. 
+	Zuständig ist trotzdem das Prüfungsamt des Mathematischen Institut;
+	<span style="color:#c1002a;">wenden Sie sich bei Problemen nicht an das Prüfungsamt des anderen Faches!!</span>
+      </li>
+      <li>
+	Für das andere Fach im 2-Hauptfächer-Bachelor oder M.Ed. gelten die Anmeldefristen des jeweiligen Faches. 
+	Für externe BOK-Kurse gelten die Fristen des ZfS.
+	Für lehramtsspezifische Studienelemente (Bildungswissenschaft, Schulpraxis) jeweils die Fristen der zuständigen Einrichtung.
+      </li>
+    </ul>
+  </p>
+
+</div>
+</div>
+
+
+<div id="_ss22" class="fold">
+  <h3>Anmeldefristen im Sommersemester 2022<span class="arrow"></h3>
+<div id="ss22Content" class="foldContent collapse">
+
+  <p>  
+    <b>Proseminare und Seminare</b>:
+    <ul>
+      <li> Online-Prüfungsanmeldung von  01.&thinsp;03.&thinsp;2022
+	<span style="color:#c1002a;">bis 20.&thinsp;04.&thinsp;2022</span>
+	nach Studienplatzzuteilung und verbindlicher Teilnahmezusage in der Vorbesprechung. </li>
+    </ul>
+  </p>
+  <p>
+    <b>Mündliche Prüfungen im M.Sc. und M.Ed.:</b>
+    <ul>
+      <li>
+	Schriftliche Anmeldung im Prüfungsamt <span style="color:#c1002a;">bis spätestens drei Wochen vor der Prüfung</span> nach individueller Terminvereinbarung mit dem Prüfer. 
+	
+      </li> 
+    </ul>
+  <p>
+    <b>Andere Mathematik-Veranstaltungen:</b> <br style="margin-bottom:3px;">
+    (einschließlich der mündlichen Prüfungen in Analysis und in Linearer Algebra und der Lesekurse
+    
+    <ul>
+      <li>
+	Online-Prüfungsanmeldung bzw. -Studienleistungsregistrierung von  25.&thinsp;04.&thinsp;2022
+	<span style="color:#c1002a;">bis 15.&thinsp;07.&thinsp;2022</span>.
+      </li>
+      <li>
+	Die <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">aktuellen Informationen für Studierende</a> informieren ggf. über den genauen Stand:
+	  Für einzelne Prüfungen werden Anmeldemöglichkeiten ggf. erst ab einem späteren Starttermin eingerichtet.
+	 
+      </li>
+      <li>
+	Kontrolle, ob alle gewünschten Anmeldemöglichkeiten eingerichtet sind, und andernfalls Mitteilung an die Studiengangkoordination:
+	  <span style="color:#c1002a;">bis spätestens Ende Juni 2022</span>.
+	 
+      </li>
+      <li>
+	<a href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html">Abgabe der Prüferwünsche</a>
+	für die mündliche Prüfungen in Analysis bzw. Linearer Algebra: voraussichtlich ab Anfang Juli 2022.
+	  Die Abgabe der Prüferwünsche ersetzt nicht die Prüfungsanmeldung!
+	
+      </li>
+    </ul>
+  </p>
+  <p>
+    <b>Module anderer Fächer und Einrichtungen:</b>
+    <ul>
+      <li>
+	Mitteilung von fachfremden Wahlmodulen,
+	für die Studienleistungen über das Campus-Management-System angemeldet werden sollen
+	  <span style="color:#c1002a;">bis spätestens Ende Juni 2022</span> an die Studiengangkoordination!
+	
+      </li>
+      <li>
+	Für Module des Anwendungsfachs im B.Sc. und für fachfremde Wahlmodule im B.Sc. und M.Sc. gelten die Anmeldefristen des jeweiligen Faches. 
+	Zuständig ist trotzdem das Prüfungsamt des Mathematischen Institut;
+	  <span style="color:#c1002a;">wenden Sie sich bei Problemen nicht an das Prüfungsamt des anderen Faches!!</span>
+	
+      </li>
+      <li>
+	Für das andere Fach im 2-Hauptfächer-Bachelor oder M.Ed. gelten die Anmeldefristen des jeweiligen Faches. 
+	Für externe BOK-Kurse gelten die Fristen des ZfS.
+	  Für lehramtsspezifische Studienelemente (Bildungswissenschaft, Schulpraxis) jeweils die Fristen der zuständigen Einrichtung.
+	
+      </li>
+    </ul>
+  </p>
+
+</div>
+</div>
+
+
+<div id="_ws22" class="fold">
+  <h3>Anmeldefristen im Wintersemester 2022/23<span class="arrow"></h3>
+<div id="ws22Content" class="foldContent collapse">
+
+  <p>  
+    <b>Proseminare und fachwissenschaftliche Seminare</b>:
+    <ul>
+      <li> Online-Prüfungsanmeldung von 01.&thinsp;09.&thinsp;2022
+	<span style="color:#c1002a;">bis 12.&thinsp;10.&thinsp;2022</span>
+	nach Studienplatzzuteilung und verbindlicher Teilnahmezusage in der Vorbesprechung. </li>
+    </ul>
+  </p>
+  <p>
+    <b>Mündliche Prüfungen im M.Sc. und M.Ed.:</b>
+    <ul>
+      <li>
+	Schriftliche Anmeldung im Prüfungsamt <span style="color:#c1002a;">bis spätestens drei Wochen vor der Prüfung</span> nach individueller Terminvereinbarung mit dem Prüfer. 
+	
+      </li> 
+    </ul>
+  </p>
+  <p>
+    <b>Andere Mathematik-Veranstaltungen (inkl. Seminare in Fachdidaktik):</b> <br style="margin-bottom:3px;">
+    (einschließlich der mündlichen Prüfungen in Analysis und in Linearer Algebra und der Lesekurse)
+    
+    <ul>
+      <li>
+	Online-Prüfungsanmeldung bzw. -Studienleistungsregistrierung von 17.&thinsp;10.&thinsp;2022
+	<span style="color:#c1002a;">bis 27.&thinsp;01.&thinsp;2023</span>.
+      </li>
+      <li>
+	Die <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">aktuellen Informationen für Studierende</a> informieren ggf. über den genauen Stand:
+	  Für einzelne Prüfungen werden Anmeldemöglichkeiten ggf. erst ab einem späteren Starttermin eingerichtet.
+	 
+      </li>
+      <li>
+	Kontrolle, ob alle gewünschten Anmeldemöglichkeiten eingerichtet sind, und andernfalls Mitteilung an die Studiengangkoordination:
+	  <span style="color:#c1002a;">bis spätestens 09.&thinsp;01.&thinsp;2023</span>.
+	 
+      </li>
+      <li>
+	<a href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html">Abgabe der Prüferwünsche</a>
+	für die mündliche Prüfungen in Analysis bzw. Linearer Algebra: voraussichtlich Ende Januar 2023.
+	  Die Abgabe der Prüferwünsche ersetzt nicht die Prüfungsanmeldung!
+	
+      </li>
+    </ul>
+  </p>
+  
+  <p>
+    <b>Module anderer Fächer und Einrichtungen:</b>
+    <ul>
+      <li>
+	Mitteilung von fachfremden Wahlmodulen,
+	für die Studienleistungen über das Campus-Management-System angemeldet werden sollen
+	  <span style="color:#c1002a;">bis spätestens Ende November 2022</span> an die Studiengangkoordination.
+	
+      </li>
+      <li>
+	Für Module des Anwendungsfachs im B.Sc. und für fachfremde Wahlmodule im B.Sc. und M.Sc. gelten die Anmeldefristen des jeweiligen Faches. 
+	Zuständig ist trotzdem das Prüfungsamt des Mathematischen Institut:
+	  <span style="color:#c1002a;">Wenden Sie sich bei Problemen nicht an das Prüfungsamt des anderen Faches!</span>
+	
+      </li>
+      <li>
+	Für das andere Fach im 2-Hauptfächer-Bachelor oder M.Ed. gelten die Anmeldefristen des jeweiligen Faches. 
+	Für externe BOK-Kurse gelten die Fristen des ZfS.
+	  Für lehramtsspezifische Studienelemente (Bildungswissenschaft, Schulpraxis) jeweils die Fristen der zuständigen Einrichtung.
+	
+      </li>
+    </ul>
+  </p>
+ 
+</div>
+</div>
+
+
+<div id="_ss23" class="fold">
+  <h3>Anmeldefristen im Sommersemester 2023<span class="arrow"></h3>
+<div id="ss23Content" class="foldContent collapse">
+
+  <p>  
+    <b>Proseminare und fachwissenschaftliche Seminare</b>:
+    <ul>
+      <li> Online-Prüfungsanmeldung von 01.&thinsp;03.&thinsp;2023
+	<span style="color:#c1002a;">bis 12.&thinsp;04.&thinsp;2023</span>
+	nach Studienplatzzuteilung und verbindlicher Teilnahmezusage in der Vorbesprechung. </li>
+    </ul>
+  </p>
+  <p>
+    <b>Mündliche Prüfungen im M.Sc. und M.Ed.:</b>
+    <ul>
+      <li>
+	Schriftliche Anmeldung im Prüfungsamt <span style="color:#c1002a;">bis spätestens drei Wochen vor der Prüfung</span> nach individueller Terminvereinbarung mit dem Prüfer. 
+	
+      </li> 
+    </ul>
+  </p>
+  <p>
+    <b>Andere Mathematik-Veranstaltungen (inkl. Seminare in Fachdidaktik):</b> <br style="margin-bottom:3px;">
+    (einschließlich der mündlichen Prüfungen in Analysis und in Linearer Algebra und der Lesekurse)
+    
+    <ul>
+      <li>
+	Online-Prüfungsanmeldung bzw. -Studienleistungsregistrierung von 17.&thinsp;04.&thinsp;2023
+	<span style="color:#c1002a;">bis 07.&thinsp;07.&thinsp;2023</span>.
+      </li>
+      <li>
+	Die <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">aktuellen Informationen für Studierende</a> informieren ggf. über den genauen Stand:
+	  Für einzelne Prüfungen werden Anmeldemöglichkeiten ggf. erst ab einem späteren Starttermin eingerichtet.
+	 
+      </li>
+      <li>
+	Kontrolle, ob alle gewünschten Anmeldemöglichkeiten eingerichtet sind, und andernfalls Mitteilung an die Studiengangkoordination:
+	  <span style="color:#c1002a;">bis spätestens Mitte Juni 2023</span>.
+	 
+      </li>
+      <li>
+	<a href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html">Abgabe der Prüferwünsche</a>
+	für die mündliche Prüfungen in Analysis bzw. Linearer Algebra: voraussichtlich ab Anfang Juli 2023.
+	  Die Abgabe der Prüferwünsche ersetzt nicht die Prüfungsanmeldung!
+	
+      </li>
+    </ul>
+  </p>
+  <p>
+    <b>Module anderer Fächer und Einrichtungen:</b>
+    <ul>
+      <li>
+	Mitteilung von fachfremden Wahlmodulen,
+	für die Studienleistungen über das Campus-Management-System angemeldet werden sollen
+	  <span style="color:#c1002a;">bis spätestens Mitte Juni 2023</span> an die Studiengangkoordination.
+	
+      </li>
+      <li>
+	Für Module des Anwendungsfachs im B.Sc. und für fachfremde Wahlmodule im B.Sc. und M.Sc. gelten die Anmeldefristen des jeweiligen Faches. 
+	Zuständig ist trotzdem das Prüfungsamt des Mathematischen Institut:
+	  <span style="color:#c1002a;">Wenden Sie sich bei Problemen nicht an das Prüfungsamt des anderen Faches!</span>
+	
+      </li>
+      <li>
+	Für das andere Fach im 2-Hauptfächer-Bachelor oder M.Ed. gelten die Anmeldefristen des jeweiligen Faches. 
+	Für externe BOK-Kurse gelten die Fristen des ZfS.
+	  Für lehramtsspezifische Studienelemente (Bildungswissenschaft, Schulpraxis) jeweils die Fristen der zuständigen Einrichtung.
+	
+      </li>
+    </ul>
+  </p>
+
+</div>
+</div> -->
+  </div>
+  <div class="accordion accordion-flush" id="accordionExample">
+    <div class="accordion-item" id="_ws23">
+      <h4 class="accordion-header" id="header_ws23">
+        <button
+          aria-controls="_ws23Content"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#_ws23Content"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class = "h5">Anmeldefristen im Wintersemester 2023/24</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="_ws23Content"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="_ws23Content"
+      >
+        <div class="accordion-body" id="ws23Content">
+          <!--<p>  
+  <b style="color:#c1002a;">NOCH OHNE GEWÄHR!</b> 
+</p> -->
+          <p>
+            <b> Proseminare und fachwissenschaftliche Seminare </b>
+            :
+          </p>
+          <ul>
+            <li>
+              Online-Prüfungsanmeldung von 01. 09. 2023
+              <span style="color: #c1002a"> bis 11. 10. 2023 </span>
+              nach Studienplatzzuteilung und verbindlicher Teilnahmezusage in
+              der Vorbesprechung.
+            </li>
+          </ul>
+          <p>
+            <b> Mündliche Prüfungen im M.Sc. und M.Ed.: </b>
+          </p>
+          <ul>
+            <li>
+              Schriftliche Anmeldung im Prüfungsamt
+              <span style="color: #c1002a">
+                bis spätestens drei Wochen vor der Prüfung
+              </span>
+              nach individueller Terminvereinbarung mit dem Prüfer.
+            </li>
+          </ul>
+          <p>
+            <b>
+              Andere Mathematik-Veranstaltungen (inkl. Seminare in
+              Fachdidaktik):
+            </b>
+            <br style="margin-bottom: 3px" />
+            (einschließlich der mündlichen Prüfungen in Analysis und in Linearer
+            Algebra und der Lesekurse)
+          </p>
+          <ul>
+            <li>
+              Online-Prüfungsanmeldung bzw. -Studienleistungsregistrierung von
+              16. 10. 2023
+              <span style="color: #c1002a"> bis 26. 01. 2024 </span>
+              .
+            </li>
+            <li>
+              Die
+              <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">
+                aktuellen Informationen für Studierende
+              </a>
+              informieren ggf. über den genauen Stand: Für einzelne Prüfungen
+              werden Anmeldemöglichkeiten ggf. erst ab einem späteren
+              Starttermin eingerichtet.
+            </li>
+            <li>
+              Kontrolle, ob alle gewünschten Anmeldemöglichkeiten eingerichtet
+              sind, und andernfalls Mitteilung an die Studiengangkoordination:
+              <span style="color: #c1002a"> bis spätestens 09. 01. 2024 </span>
+              .
+            </li>
+            <li>
+              <a
+                href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html"
+              >
+                Abgabe der Prüferwünsche
+              </a>
+              für die mündliche Prüfungen in Analysis bzw. Linearer Algebra:
+              voraussichtlich Ende Januar 2024. Die Abgabe der Prüferwünsche
+              ersetzt nicht die Prüfungsanmeldung!
+            </li>
+          </ul>
+          <p>
+            <b> Module anderer Fächer und Einrichtungen: </b>
+          </p>
+          <ul>
+            <li>
+              Mitteilung von fachfremden Wahlmodulen, für die Studienleistungen
+              über das Campus-Management-System angemeldet werden sollen
+              <span style="color: #c1002a">
+                bis spätestens Ende November 2023
+              </span>
+              an die Studiengangkoordination.
+            </li>
+            <li>
+              Für Module des Anwendungsfachs im B.Sc. und für fachfremde
+              Wahlmodule im B.Sc. und M.Sc. gelten die Anmeldefristen des
+              jeweiligen Faches. Zuständig ist trotzdem das Prüfungsamt des
+              Mathematischen Institut:
+              <span style="color: #c1002a">
+                Wenden Sie sich bei Problemen nicht an das Prüfungsamt des
+                anderen Faches!
+              </span>
+            </li>
+            <li>
+              Für das andere Fach im 2-Hauptfächer-Bachelor oder M.Ed. gelten
+              die Anmeldefristen des jeweiligen Faches. Für externe BOK-Kurse
+              gelten die Fristen des ZfS. Für lehramtsspezifische
+              Studienelemente (Bildungswissenschaft, Schulpraxis) jeweils die
+              Fristen der zuständigen Einrichtung.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" id="_ss24">
+      <h4 class="accordion-header" id="header_ss24">
+        <button
+          aria-controls="_ss24Content"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#_ss24Content"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class = "h5">Anmeldefristen im Sommersemester 2024</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="_ss24Content"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="_ss24Content"
+      >
+        <div class="accordion-body" id="ss24Content">
+          <!--<p>  
+  <b style="color:#c1002a;">NOCH OHNE GEWÄHR!</b> 
+  <b style="color:#c1002a;">NOCH In ARBEIT!</b> 
+</p>-->
+          <p>
+            <b> Proseminare und fachwissenschaftliche Seminare </b>
+            :
+          </p>
+          <ul>
+            <li>
+              Online-Prüfungsanmeldung von 01. 03. 2024
+              <span style="color: #c1002a"> bis 10. 04. 2024 </span>
+              nach Studienplatzzuteilung und verbindlicher Teilnahmezusage in
+              der Vorbesprechung.
+            </li>
+          </ul>
+          <p>
+            <b> Mündliche Prüfungen im M.Sc. und M.Ed.: </b>
+          </p>
+          <ul>
+            <li>
+              Schriftliche Anmeldung im Prüfungsamt
+              <span style="color: #c1002a">
+                bis spätestens drei Wochen vor der Prüfung
+              </span>
+              nach individueller Terminvereinbarung mit dem Prüfer.
+            </li>
+          </ul>
+          <p>
+            <b>
+              Andere Mathematik-Veranstaltungen (inkl. Seminare in
+              Fachdidaktik):
+            </b>
+            <br style="margin-bottom: 3px" />
+            (einschließlich der mündlichen Prüfungen in Analysis und in Linearer
+            Algebra und der Lesekurse)
+          </p>
+          <ul>
+            <li>
+              Online-Prüfungsanmeldung bzw. -Studienleistungsregistrierung von
+              15. 04. 2024
+              <span style="color: #c1002a"> bis 05. 07. 2024 </span>
+              .
+            </li>
+            <li>
+              Die
+              <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">
+                aktuellen Informationen für Studierende
+              </a>
+              informieren ggf. über den genauen Stand: Für einzelne Prüfungen
+              werden Anmeldemöglichkeiten ggf. erst ab einem späteren
+              Starttermin eingerichtet.
+            </li>
+            <li>
+              Kontrolle, ob alle gewünschten Anmeldemöglichkeiten eingerichtet
+              sind, und andernfalls Mitteilung an die Studiengangkoordination:
+              <span style="color: #c1002a">
+                bis spätestens Mitte Juni 2024
+              </span>
+              .
+            </li>
+            <li>
+              <a
+                href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html"
+              >
+                Abgabe der Prüferwünsche
+              </a>
+              für die mündliche Prüfungen in Analysis bzw. Linearer Algebra:
+              voraussichtlich ab Anfang Juli 2024. Die Abgabe der Prüferwünsche
+              ersetzt nicht die Prüfungsanmeldung!
+            </li>
+          </ul>
+          <p>
+            <b> Module anderer Fächer und Einrichtungen: </b>
+          </p>
+          <ul>
+            <li>
+              Mitteilung von fachfremden Wahlmodulen, für die Studienleistungen
+              über das Campus-Management-System angemeldet werden sollen
+              <span style="color: #c1002a">
+                bis spätestens Mitte Juni 2024
+              </span>
+              an die Studiengangkoordination.
+            </li>
+            <li>
+              Für Module des Anwendungsfachs im B.Sc. und für fachfremde
+              Wahlmodule im B.Sc. und M.Sc. gelten die Anmeldefristen des
+              jeweiligen Faches. Zuständig ist trotzdem das Prüfungsamt des
+              Mathematischen Institut:
+              <span style="color: #c1002a">
+                Wenden Sie sich bei Problemen nicht an das Prüfungsamt des
+                anderen Faches!
+              </span>
+            </li>
+            <li>
+              Für das andere Fach im 2-Hauptfächer-Bachelor oder M.Ed. gelten
+              die Anmeldefristen des jeweiligen Faches. Für externe BOK-Kurse
+              gelten die Fristen des ZfS. Für lehramtsspezifische
+              Studienelemente (Bildungswissenschaft, Schulpraxis) jeweils die
+              Fristen der zuständigen Einrichtung.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" id="abmeldung">
+      <h4 class="accordion-header" id="headerabmeldung">
+        <button
+          aria-controls="abmeldungContent"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#abmeldungContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class = "h5">Abmeldefristen</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="abmeldungContent"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="abmeldungContent"
+      >
+        <div class="accordion-body" id="abmeldungContent">
+          <p>
+            Hinweis: Die verkürzten Abmelde- und Rücktrittsregelungen der
+            <a
+              href="https://www.jsl.uni-freiburg.de/Rechtsgrundlagen/corona-satzung"
+            >
+              Corona-Satzung
+            </a>
+            gelten seit 01.04.2023 nicht mehr!
+          </p>
+          <!--  <p>
+    Besondere Regelungen für die
+      <a href="Dokumente/Corona-Regelungen_Pruefungen_im_Wintersemester-202122-2022.02.10.pdf">Prüfungen zwischen 01.02. und 30.09.2022</a> (pdf),
+    insbesondere Freiversuchsregelung.
+     
+  </p> -->
+          <!--  <p>
+    Zum Unterschied zwischen Abmeldung und Rücktritt siehe die <a href="anmelden.html">Allgemeinen Informationen zur Prüfungsanmeldung</a>.
+    
+  </p> -->
+          <p>
+            <b> 1) Fristen für einen Rücktritt von einer Prüfung </b>
+          </p>
+          <ul>
+            <li>
+              Ein Antrag auf Rücktritt von der Prüfung sollte unmittelbar nach
+              Bekanntwerden des Rücktrittsgrundes gestellt werden. Im
+              Krankheitsfall muss der Antrag samt Attest spätestens am dritten
+              Tag nach der Prüfung im Prüfungsamt eingehen; der Arztbesuch muss
+              spätestens am Tag der Prüfung erfolgen.
+            </li>
+            <li>
+              Ein Rücktritt nach absolvierter Prüfung ist nur in ganz seltenen
+              Ausnahmefällen genehmigungsfähig.
+            </li>
+            <li>
+              Bei einem genehmigten Rücktritt meldet das Prüfungsamt automatisch
+              zum nächstmöglichen Prüfungsversuch an.
+            </li>
+          </ul>
+          Hinweise zu akzeptierten und nicht akzeptierten Rücktrittsgründen
+          finden Sie unter den
+          <a href="anmelden.html">
+            Allgemeinen Informationen zur Prüfungsanmeldung
+          </a>
+          , Formulare zum Antrag auf Rücktritt wegen Krankheit auf der
+          <a href="index.html"> Prüfungsamtsseite </a>
+          .
+          <p>
+            <b> 2a) Fristen für die Abmeldung von einer Prüfung </b>
+          </p>
+          <ul>
+            <li>
+              Bei Online-Anmeldungen gilt, dass man sich während des
+              Anmeldezeitraums auch wieder abmelden kann.
+            </li>
+            <li>
+              Die Anmeldungen zu den mündlichen Modulprüfungen in den
+              Master-Studiengängen (
+              <i>
+                im M.Ed. als Erweiterungsfach nur im Modul "Mathematische
+                Vertiefung" bzw. "Wissenschaftliches Arbeiten"
+              </i>
+              ) sowie die Anmeldungen zu einer Abschlussarbeit sind definitiv:
+              Eine Abmeldung ist nicht möglich.
+            </li>
+            <li>
+              In Seminaren und Proseminaren ist eine Abmeldung von
+              Prüfungsleistungen nach Ende des Anmeldezeitraums nicht mehr
+              möglich.
+            </li>
+            <li>
+              Zu allen anderen studienbegleitende Prüfungen in den
+              Mathematik-Studiengängen kann man sich vom Erstversuch nach den
+              unter 2b) beschriebenen Regeln bis eine Woche vor der Prüfung
+              schriftlich im Prüfungsamt des Mathematischen Instituts abmelden.
+            </li>
+            <li>
+              Eine Abmeldung setzt in den Stand zurück, als wäre man nie
+              angemeldet gewesen. Möchte man die Prüfung zu einem späteren
+              Zeitpunkt ablegen, muss man sich erneut und zu den vorgesehenen
+              Fristen anmelden. Eine Teilnahme an einer Wiederholungsprüfung ist
+              typischerweise nicht möglich.
+            </li>
+          </ul>
+          <p>
+            <b>
+              2b) Regeln für die nachträgliche Abmeldung von einer Prüfung
+            </b>
+          </p>
+          <ul>
+            <li>
+              Die Abmeldemöglichkeit besteht nur für den Erstversuch, nicht für
+              Wiederholungsversuche. (Ein genehmigter Rücktritt zählt nicht als
+              Erstversuch.)
+            </li>
+            <li>
+              Die Abmeldung muss schriftlich erfolgen: per E-Mail, Post oder
+              durch persönliche Abgabe im Prüfungsamt. Es reicht nicht aus, nur
+              den Prüfer zu informieren!
+            </li>
+            <li>
+              Die schriftliche Abmeldung muss spätestens am letzten Arbeitstag,
+              der sieben Tage vor der Prüfung liegt, im
+              <a href="index.html">
+                Prüfungsamt des Mathematischen Instituts
+              </a>
+              eingegangen sein. Als Arbeitstage zählen Montag bis Freitag (ohne
+              Feiertage). Bitte beachten Sie die Öffnungszeiten des
+              Prüfungsamts.
+            </li>
+            <li>
+              Falls das Prüfungsamt wegen Urlaub oder Krankheit nicht besetzt
+              ist, kann die Abmeldung ersatzweise im Dekanat oder beim
+              Studiengangkoordinator oder in einem Sekretariat abgegeben werden.
+              <br />
+              In Ausnahmefällen, bei denen niemand das Schreiben entgegennehmen
+              kann (zum Beispiel bei Prüfungen kurz nach der Weihnachtspause),
+              sollte sicherheitshalber zusätzlich eine e-Mail mit der
+              Ankündigung der Abmeldung an das Prüfungsamt und an den Prüfer
+              geschickt werden.
+            </li>
+            <li>
+              Die Abmeldung ist definitiv. Eine nachträgliche Umentscheidung und
+              Teilnahme an der Prüfung ist ausgeschlossen.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" id="termine">
+      <h4 class="accordion-header" id="headertermine">
+        <button
+          aria-controls="termineContent"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#termineContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class = "h5">Prüfungstermine</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="termineContent"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="termineContent"
+      >
+        <div class="accordion-body" id="termineContent">
+          <p>
+            <b> Klausurtermine: </b>
+          </p>
+          <ul>
+            <li>
+              Die Klausurtermine werden in der Regel in den ersten
+              Veranstaltungswochen bekanntgegeben. Die Klausuren finden meistens
+              in der vorlesungsfreien Zeit bis Semesterende statt, in
+              Einzelfällen auch in der letzten Vorlesungswoche.
+            </li>
+            <li>
+              Im August gibt es eine dreiwöchige prüfungsfreie Phase (in etwa
+              die letzten drei Augustwochen).
+            </li>
+            <li>
+              <a href="klausurliste_oeff.html">
+                Klausurplanung des laufenden Semesters
+              </a>
+              <!-- (öffentlich) und
+	<a href="https://home.mathematik.uni-freiburg.de/intern/pruefungsamt/klausurliste.html">weitere Klausurplanung</a>
+	(intern). -->
+            </li>
+          </ul>
+          <p>
+            <a name="mPAnaLa"> </a>
+            <b> Mündliche Prüfungen in Analysis und Linearer Algebra: </b>
+          </p>
+          <ul>
+            <li>
+              Die mündlichen Prüfungen in Analysis und in Linearer Algebra
+              (Bachelor-Studiengänge und M.Ed. als Erweiterungsfach) werden in
+              der Regel Anfang April und Anfang Oktober abgenommen – etwa drei
+              Wochen vor bis eine Woche nach Vorlesungsbeginn. Jede:r Prüfer:in
+              hat einen eigenen Prüfungszeitraum von etwa einer Woche, der auf
+              der
+              <a
+                href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html"
+              >
+                Seite der Prüfer:innen:wünsche
+              </a>
+              angegeben wird.
+            </li>
+            <li>
+              Der Prüfungsplan wird etwa einen Monat vor den ersten Prüfungen
+              veröffentlicht (Eintrag in HISinOne). Die Prüfungen finden
+              üblicherweise im Büro des Prüfers/der Prüferin statt.
+            </li>
+          </ul>
+          <p>
+            <b> Mündliche Prüfungen im M.Sc.- und M.Ed.-Studiengang: </b>
+          </p>
+          <ul>
+            <li>
+              Bitte vereinbaren Sie die Prüfungstermine individuell mit den
+              Prüfer:inne:n. Die schriftliche Anmeldung der Prüfung muss
+              spätestens drei Wochen vor der Prüfung im Prüfungsamt abgegeben
+              werden.
+            </li>
+          </ul>
+          <p>
+            <b> Andere mündliche Prüfungen: </b>
+          </p>
+          <ul>
+            <li>Hierfür gelten die Regeln für Klausuren.</li>
+          </ul>
+          <p>
+            <b> Seminare und Proseminare: </b>
+          </p>
+          <ul>
+            <li>
+              Der Prüfungstermin in Seminaren und Proseminaren ist der Tag des
+              Prüfungsvortrags und wird in der Regel bei der Vorbesprechung
+              festgelegt.
+            </li>
+          </ul>
+          <p>
+            <b>
+              Termine für die Wissenschaftliche Staatsprüfung für das Lehramt an
+              Gymnasien
+            </b>
+          </p>
+          <ul>
+            <li>
+              Die Termine der wenigen verbliebenen Prüfungen werden im Rahmen
+              der Vorgaben des
+              <a
+                href="https://llpa.kultus-bw.de/,Lde/Startseite/Aussenstellen/beim+Regierungspraesidium+Freiburg"
+              >
+                Landeslehrerprüfungsamts
+              </a>
+              festgelegt.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,8 +7,13 @@ from bson import ObjectId
 try:
     cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
     mongo_db_faq = cluster["faq"]
-    category = mongo_db_faq["category"] 
-    qa = mongo_db_faq["qa"]
+    studiengang = mongo_db_faq["studiengang"]
+    stu_category = mongo_db_faq["stu_category"]
+    stu_qa = mongo_db_faq["stu_qa"]
+    mit_category = mongo_db_faq["mit_category"]
+    mit_qa = mongo_db_faq["mit_qa"]
+    studiendekanat = mongo_db_faq["studiendekanat"]
+    
 except:
     logger.warning("No connection to Database 1")
 
@@ -19,24 +24,51 @@ except:
 # a dict with the shortnames as keys, where each value is a list of triples (id, q, a), which contains the information for each question in each category (qa_pairs). 
 # recall that category and qa come with a variable rang: int, which serves to order the categories and qa-pairs. 
 
-def get_faq(lang):
+def get_stu_faq(lang):
     # Alle Kategorien zeigen außer "unsichtbar"
-    cats = list(category.find({"kurzname": {"$ne": "unsichtbar"}}, sort=[("rang", pymongo.ASCENDING)]))
-    cats_kurzname = [cat["kurzname"] for cat in cats]
-    names_dict = {cat["kurzname"]: (cat["name_de"] if lang == "de" else cat["name_en"]) for cat in cats}
-    qa_pairs = {}
-    for cat_kurzname in cats_kurzname:
-        y = qa.find({"category": cat_kurzname}, sort=[("rang", pymongo.ASCENDING)])
-        qa_pairs[cat_kurzname] = [ (f"qa_{str(x['_id'])}", f"{x['q_de'] if lang == 'de' else x['q_en']} " + (f"({', '.join([config.studiengaenge[s] for s in x['studiengang']])})" if x['studiengang'] != [] else ""), (x["a_de"]) if lang == "de" else (x["a_en"])) for x in y]
-    return cats_kurzname, names_dict, qa_pairs
+    cats = list(stu_category.find({"kurzname": {"$ne": "unsichtbar"}}, sort=[("rang", pymongo.ASCENDING)]))
+    q = f"q_{lang}"
+    a = f"a_{lang}"
+    name = f"name_{lang}"
 
-def get_cat(qa_id):
-    print(qa_id)
+    cat_ids = [f"stu_kat_{cat['_id']}" for cat in cats]
+    names_dict = {f"stu_kat_{cat['_id']}": cat[name] for cat in cats}
+    qa_pairs = {}
+    for cat in cats:
+        y = list(stu_qa.find({"category": cat["_id"]}, sort=[("rang", pymongo.ASCENDING)]))
+        qa_pairs[f"stu_kat_{cat['_id']}"] = [ (f"qa_{str(x['_id'])}", x[q]  + (f" ({', '.join([s[name] for s in list(studiengang.find({"_id": { "$in" : x['studiengang']}}))])})" if x['studiengang'] != [] else "") , x[a]) for x in y]
+        #print(qa_pairs[cat_id])
+    return cat_ids, names_dict, qa_pairs
+
+def get_mit_faq(lang):
+    # Alle Kategorien zeigen außer "unsichtbar"
+    cats = list(mit_category.find({"kurzname": {"$ne": "unsichtbar"}}, sort=[("rang", pymongo.ASCENDING)]))
+    q = f"q_{lang}"
+    a = f"a_{lang}"
+    name = f"name_{lang}"
+
+    cat_ids = [f"mit_kat_{cat['_id']}" for cat in cats]
+    names_dict = {f"mit_kat_{cat['_id']}": cat[name] for cat in cats}
+    qa_pairs = {}
+    for cat in cats:
+        y = list(mit_qa.find({"category": cat["_id"]}, sort=[("rang", pymongo.ASCENDING)]))
+        qa_pairs[f"mit_kat_{cat['_id']}"] = [ (f"qa_{str(x['_id'])}", x[q] , x[a]) for x in y]
+    return cat_ids, names_dict, qa_pairs
+
+def get_stu_cat(qa_id):
     id = qa_id.split("_")[-1]
-    print(id)
-    x = qa.find_one({"_id" : ObjectId(id)})
+    x = stu_qa.find_one({"_id" : ObjectId(id)})
     if x:
-        res = x["category"]
+        res = f"stu_kat_{x['category']}"
+    else:
+        res = ""
+    return res
+
+def get_mit_cat(qa_id):
+    id = qa_id.split("_")[-1]
+    x = mit_qa.find_one({"_id" : ObjectId(id)})
+    if x:
+        res = f"mit_kat_{x['category']}"
     else:
         res = ""
     return res

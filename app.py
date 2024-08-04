@@ -1,25 +1,21 @@
 from flask import Flask, url_for, render_template, redirect, request
-# import markdown
 import locale
 import json
 import os
-import glob
 from bs4 import BeautifulSoup
 import requests
-from flask import send_file
-from flask import make_response
 from utils.config import *
-#from utils.util_logging import logger
+from utils.util_logging import logger
 from utils.util_calendar import calendar, get_caldav_calendar_events
-from utils.util_faq import get_faq, get_cat
+
+import utils.util_faq as util_faq
+
 import utils.fb as fb
-from flask_misaka import markdown
 from flask_misaka import Misaka
 import socket
 from datetime import datetime
 import utils.util_vvz as vvz
 import utils.util_news as news
-from urllib.request import urlopen 
 import xmltodict
 import base64
 import pymongo
@@ -120,8 +116,8 @@ def showtools(lang):
 @app.route("/<lang>/interesse/<anchor>")
 def showinteresse(lang, anchor=""):
     with app.open_resource('static/data/interesse.json') as f:
-        data = json.load(f)    
-    filenames = ["interesse_prefix.html", "interesse_content.html"]
+        data = json.load(f)
+    filenames = ["studieninteresse/interesse_prefix.html", "studieninteresse/interesse_content.html"]
     return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
 @app.route("/<lang>/weiterbildung/")
@@ -129,7 +125,7 @@ def showinteresse(lang, anchor=""):
 def showweiterbildung(lang, anchor=""):
     with app.open_resource('static/data/weiterbildung.json') as f:
         data = json.load(f)
-    filenames = ["interesse_content.html"]
+    filenames = ["studieninteresse/interesse_content.html"]
     return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
 ##########################
@@ -139,7 +135,7 @@ def showweiterbildung(lang, anchor=""):
 @app.route("/<lang>/anfang/")
 @app.route("/<lang>/anfang/<anchor>")
 def showanfang(lang, anchor=""):
-    filenames = ["studienanfang.html"]
+    filenames = ["studienanfang/studienanfang.html"]
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
 ###################
@@ -220,7 +216,7 @@ def showlehrveranstaltungenbase(lang="de"):
             app.open_resource('static/pdf/lehrveranstaltungen/'+key+'.pdf')
             semester_dict_2[key]["komm_exists"] = True
         except:
-            semester_dict_2[key]["komm_exists"] =False
+            semester_dict_2[key]["komm_exists"] = False
 
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/'+key+'mh.pdf')
@@ -250,90 +246,104 @@ def showlehrveranstaltungen(lang, semester):
 ## Prüfungsamt und Studienberatung ##
 #####################################
 
-@app.route("/<lang>/studiendekanat/")
-@app.route("/<lang>/studiendekanat/<unterseite>")
-def showstudiendekanatbase(lang, unterseite = ""):
-    if unterseite == "ausland":
-        filenames = ["studiendekanat/ausland.html"]
-        return render_template("home.html", filenames = filenames, lang=lang)
-    else:
-        with app.open_resource('static/data/studiendekanat.json') as f:
-            data = json.load(f)    
-        filenames = ["studiendekanat/index.html"]
-        return render_template("home.html", data=data, filenames = filenames, lang=lang)
-
-
-
-@app.route("/<lang>/studienberatung/")
-def showstudienberatungbase(lang):
-    with app.open_resource('static/data/studiendekanat.json') as f:
-        data = json.load(f)    
-    filenames = ["studiendekanat/studienberatung.html"]
-    return render_template("home.html", data=data, filenames = filenames, lang=lang)
-
-@app.route("/<lang>/studienberatung/<unterseite>/")
-def showstudienberatung(lang, unterseite):
-    if unterseite == "studienanfang":
-        filenames = ["studienberatung/studienanfang.html"]
-    if unterseite == "schwerpunktgebiete":
-        filenames = ["studienberatung/schwerpunktgebiete.html"]
-    if unterseite == "warum_mathematik":
-        filenames = ["studienberatung/warum_mathematik.html"]
-    if unterseite == "matheinfreiburg":
-        filenames = ["studienberatung/mathestudium_in_freiburg.html"]
-    return render_template("home.html", filenames = filenames, lang=lang)
-
-@app.route("/<lang>/pruefungsamt/")
-def showpruefungsamtbase(lang):
-    with app.open_resource('static/data/studiendekanat.json') as f:
-        data = json.load(f)    
-    filenames = ["studiendekanat/pruefungsamt.html"]
-    return render_template("home.html", data=data, filenames = filenames, lang=lang)
-
-@app.route("/<lang>/pruefungsamt/<unterseite>")
-@app.route("/<lang>/pruefungsamt/<unterseite>/<anchor>")
-def showpruefungsamt(lang, unterseite, anchor=""):
-    if unterseite == "calendar":
-        events = get_caldav_calendar_events(calendar)
-        return render_template("pruefungsamt/calendar.html", events=events, lang=lang)
-    if unterseite == "anmeldung":
-        filenames = ["studiendekanat/anmeldung.html"]
-    if unterseite == "modulplan":
-        filenames = ["studiendekanat/modulplan.html"]
-    if unterseite == "belegung":
-        filenames = ["studiendekanat/belegung.html"]
-    if unterseite == "termine":
-        filenames = ["pruefungsamt/termine.html"]
-    if unterseite == "modulhandbuecher":
-        filenames = ["pruefungsamt/modulhandbuecher.html"]    
-    if unterseite == "ausland":
-        filenames = ["pruefungsamt/modulhandbuecher.html"]    
-#    filenames = []
-    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
-
-#########
-## faq ##
-#########
+#@app.route("/<lang>/studiendekanat/")
+#def showstudiendekanatbase(lang):
+#    with app.open_resource('static/data/studiendekanat.json') as f:
+#        data = json.load(f)    
+#    filenames = ["studiendekanat/index.html"]
+#    return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
 # which can Werte 'all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw', 'meddual' annehmen
 # show ist entweder "", oder "all" oder eine id für ein qa-Paar
-@app.route("/<lang>/faq/")
-@app.route("/<lang>/faq/<show>/")
-#@app.route("/<lang>/faq/<which>/<show>/<anchor>/")
-def showfaq(lang, show =""):
+@app.route("/<lang>/studiendekanat/faq/")
+@app.route("/<lang>/studiendekanat/faq/<show>")
+def showstufaq(lang, show =""):
     try:
-        cats_kurzname, names_dict, qa_pairs = get_faq(lang)
+        cat_ids, names_dict, qa_pairs = util_faq.get_stu_faq(lang)
     except:
-#        logger.warning("No connection to database")
-        cats_kurzname, names_dict, qa_pairs  = ["unsichtbar"], {"unsichtbar": "Unsichtbar"}, {"unsichtbar": []}
+        logger.warning("No connection to database")
+        cat_ids, names_dict, qa_pairs  = ["unsichtbar"], {"unsichtbar": "Unsichtbar"}, {"unsichtbar": []}
     if show == "":
         showcat = ""
     elif show == "all":
         showcat = "all"
     else:
-        showcat = get_cat(show)
-    print(qa_pairs)
-    return render_template("faq.html", lang=lang, cats_kurzname = cats_kurzname, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
+        showcat = util_faq.get_stu_cat(show)
+    return render_template("studiendekanat/index.html", lang=lang, cat_ids = cat_ids, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
+
+@app.route("/<lang>/studiendekanat/")
+@app.route("/<lang>/studiendekanat/<unterseite>/")
+def showstudiendekanat(lang, unterseite = ""):
+    data = {}
+    if unterseite == "":
+        try:
+            cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
+            mongo_db_faq = cluster["faq"]
+            studiendekanat = mongo_db_faq["studiendekanat"]
+        except:
+            logger.warning("No connection to Database FAQ")
+
+        data = list(studiendekanat.find({"showstudienberatung" : True}, sort=[("rang", pymongo.ASCENDING)]))
+        filenames = ["studiendekanat/studienberatung.html"]
+    if unterseite == "pruefungsamt":
+        try:
+            cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
+            mongo_db_faq = cluster["faq"]
+            studiendekanat = mongo_db_faq["studiendekanat"]
+        except:
+            logger.warning("No connection to Database FAQ")
+        data = list(studiendekanat.find({"showpruefungsamt" : True}, sort=[("rang", pymongo.ASCENDING)]))
+        print(data)
+        filenames = ["studiendekanat/pruefungsamt.html"]        
+    if unterseite == "studienanfang":
+        filenames = ["studiendekanat/studienanfang.html"]
+    if unterseite == "schwerpunktgebiete":
+        filenames = ["studiendekanat/schwerpunktgebiete.html"]
+    if unterseite == "warum_mathematik":
+        filenames = ["studiendekanat/warum_mathematik.html"]
+    if unterseite == "matheinfreiburg":
+        filenames = ["studiendekanat/mathestudium_in_freiburg.html"]
+    if unterseite == "termine":
+        filenames = ["studiendekanat/termine.html"]
+    if unterseite == "calendar":
+        events = get_caldav_calendar_events(calendar)
+        return render_template("studiendekanat/calendar.html", events=events, lang=lang)
+    if unterseite == "anmeldung":
+        filenames = ["studiendekanat/anmeldung.html"]
+    if unterseite == "modulplan":
+        filenames = ["studiendekanat/modulplan.html"]
+    if unterseite == "termine":
+        filenames = ["studiendekanat/termine.html"]
+    if unterseite == "modulhandbuecher":
+        filenames = ["studiendekanat/modulhandbuecher.html"]    
+    if unterseite == "ausland":
+        filenames = ["studiendekanat/ausland.html"]
+    return render_template("home.html", data=data, filenames = filenames, lang=lang)
+
+
+#####################################
+## Für Lehrende ##
+#####################################
+
+# show ist entweder "", oder "all" oder eine id für ein qa-Paar
+@app.route("/<lang>/intern/")
+@app.route("/<lang>/intern/faq/")
+@app.route("/<lang>/intern/faq/<show>")
+def showmitfaq(lang, show =""):
+    try:
+        cat_ids, names_dict, qa_pairs = util_faq.get_mit_faq(lang)
+    except:
+#        logger.warning("No connection to database")
+        cat_ids, names_dict, qa_pairs  = ["unsichtbar"], {"unsichtbar": "Unsichtbar"}, {"unsichtbar": []}
+    if show == "":
+        showcat = ""
+    elif show == "all":
+        showcat = "all"
+    else:
+        showcat = util_faq.get_mit_cat(show)
+    return render_template("lehrende/index.html", lang=lang, cat_ids = cat_ids, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
+
+
 
 ###############
 ## Downloads ##
@@ -342,7 +352,7 @@ def showfaq(lang, show =""):
 @app.route("/<lang>/downloads/")
 @app.route("/<lang>/downloads/<anchor>")
 def showdownloads(lang, anchor=""):
-    filenames = ["downloads.html"]
+    filenames = ["downloads/downloads.html"]
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
 #################
@@ -379,15 +389,36 @@ def get_mensaplan_text(url, date):
 @app.route("/monitor/<dtstring>")
 @app.route("/monitortest/<dtstring>")
 def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+    # determine if only shown on test
     testorpublic = "_public" if request.endpoint.split(".")[0] == 'monitor' else "test"
+    # the date format for <dtstring>
     date_format_no_space = '%Y%m%d%H%M'
     dt = datetime.strptime(dtstring, date_format_no_space)
 
-#    with app.open_resource('static/data/home2.json') as f:
-#        data = json.load(f)    
-#    date_format = '%d.%m.%Y %H:%M'
-#    data['carouselmonitor'] = [item for item in data['carouselmonitor'] if datetime.strptime(item['showstart'], date_format) < dt and dt < datetime.strptime(item['showend'], date_format)]
+    data = {}
+    # Daten für das Carousel
+    if testorpublic == "test":
+        data["carouselnews"] = list(news.carouselnews.find({"start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))
+    else:
+        data["carouselnews"] = list(news.carouselnews.find({"_public" :True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))        
 
+    for item in data["carouselnews"]:
+        item["image"] = base64.b64encode(news.bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
+        print((item["image"][0:100]))
+
+    # Daten für die News
+    if testorpublic == "test":
+        data["news"] =  list(news.news.find({ "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))
+    else:
+        data["news"] =  list(news.news.find({ "_public": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))        
+    for item in data["news"]:
+        if item["image"] != []:
+            item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
+
+    for item in data['news']:
+        item['today'] = True if (item["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
+ 
+    return render_template("monitor/monitor_quer.html", data=data, lang="de")
 
 # Wetter vom DWD
 
@@ -417,35 +448,20 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 
 # Mensaplan
 #    date = datetime(2024, 6, 24).date()
-    date = dt.date()
-    if dt.hour < 14:
-        text = "" # get_mensaplan_text(mensaplan_url, date)
-        if text != "":
-            data['carouselmonitor'].append(
-                        {
-                        "interval": "15000",
-                        "image": "/static/images/buffet.jpg",
-                        "left": "15%",
-                        "right": "15%",
-                        "bottom": "50%" if text == "<h2>Heute ist die Mensa zu!</h2>" else "2%",
-                        "text": text
-                        }
-                )
-
-    # Fußball EM 2024
-#    if datetime(2024,6,14) < dt and dt < datetime(2024,7,15):
-#        url = "https://api.openligadb.de/getmatchdata/em/2024/"
-#        date = datetime.now().date()
-#        data['carouselmonitor'].append(
-#                {
-#                "interval": "7000",
-#                "image": "/static/images/fussball.jpeg",
-#                "left": "5%",
-#                "right": "40%",
-#                "bottom": "20%",
-#                "text": fb.get_openligadb_text(url, date, 0)
-#                },
-#        )
+#    date = dt.date()
+#    if dt.hour < 14:
+#        text = "" # get_mensaplan_text(mensaplan_url, date)
+#        if text != "":
+#            data['carouselmonitor'].append(
+#                        {
+#                        "interval": "15000",
+#                        "image": "/static/images/buffet.jpg",
+#                        "left": "15%",
+#                        "right": "15%",
+#                        "bottom": "50%" if text == "<h2>Heute ist die Mensa zu!</h2>" else "2%",
+#                        "text": text
+#                        }
+#                )
 
 #    os.system('textimg -i "$(curl de.wttr.in/Freiburg?1pQ | tail -n 20 -q | head -n 18 -q)" -o static/images/wetter.png')
 #    os.system("convert static/images/wetter.png -resize 2000x500 static/images/wetter_cropped.png")
@@ -460,28 +476,3 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 #            },
 #    )
 
-#https://stackoverflow.com/questions/20718251/how-to-retrieve-image-files-from-mongodb-to-html-page
-#<img src="data:image/png;base64, {{ item['image'][] }}
-    data = {}
-    if testorpublic == "test":
-        data["carouselnews"] = list(news.carouselnews.find({"start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))
-    else:
-        data["carouselnews"] = list(news.carouselnews.find({"_public" :True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))        
-    for item in data["carouselnews"]:
-        item["image"] = base64.b64encode(news.bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
-        print((item["image"][0:100]))
-
-    if testorpublic == "test":
-        data["news"] =  list(news.news.find({ "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))
-    else:
-        data["news"] =  list(news.news.find({ "_public": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))        
-    for item in data["news"]:
-        if item["image"] != []:
-            item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
-
-#    data['news'] = [item for item in data['news'] if item['monitor'][testorpublic] and datetime.strptime(item['monitor']['showstart'], date_format) < dt and dt < datetime.strptime(item['monitor']['showend'], date_format)]
-    for item in data['news']:
-        item['today'] = True if (item["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
- 
-    filenames = ["monitor_quer.html"]
-    return render_template("monitor_quer.html", data=data, filenames = filenames, lang="de")

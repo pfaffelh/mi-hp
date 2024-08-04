@@ -93,7 +93,7 @@ def vorname_name(person_id):
 # Die Funktion fasst zB Mo, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21 \n 
 # zusammen in
 # Mo, Mi, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21
-def make_raumzeit(veranstaltung):
+def make_raumzeit(veranstaltung, lang = "de"):    
     res = []
     for termin in veranstaltung["woechentlicher_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})
@@ -117,7 +117,7 @@ def make_raumzeit(veranstaltung):
                 tag = weekday[termin['wochentag']]
                 # person braucht man, wenn wir dann die Datenbank geupdated haben.
                 #person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
-                kommentar = rf"\newline{termin['kommentar']}" if termin['kommentar'] != "" else ""
+                kommentar = rf"\newline{termin['kommentar_de']}" if termin['kommentar_de'] != "" else ""
                 new = [key, tag, zeit, raum, kommentar]
                 if key in [x[0] for x in res]:
                     new.pop(0)
@@ -156,7 +156,7 @@ def make_raumzeit(veranstaltung):
                 zeit = ""
             # person braucht man, wenn wir dann die Datenbank geupdated haben.
             # person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
-            kommentar = rf"{termin['kommentar']}" if termin['kommentar'] != "" else ""
+            kommentar = rf"{termin['kommentar_de']}" if termin['kommentar_de'] != "" else ""
             new = [ta, datum, zeit, raum, kommentar]
             res.append(new)
     res = [f"{x[0]} {(', '.join([z for z in x if z !='' and x.index(z)!=0]))}" for x in res]

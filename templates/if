@@ -1,5 +1,0 @@
-{% if lang == "de" %}
-{% else %}
-{% endif %}
-
-{% if lang == "de" %}{% else %}{% endif %}

@@ -178,7 +178,7 @@
           <li class="nav-item dropdown px-3">
             <a
               class="nav-link dropdown-toggle active"
-              href="{{ url_for('showstudiendekanatbase', lang=lang) }}"
+              href="{{ url_for('showstufaq', lang=lang) }}"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
@@ -191,7 +191,7 @@
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatungbase', lang=lang) }}"
+                  href="{{ url_for('showstudiendekanat', lang=lang) }}"
                   >{% if lang == "de" %}Studienberatung{% else %}Student
                   counceling{% endif %}</a
                 >
@@ -199,30 +199,30 @@
               <!--              <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatung', unterseite='warum_mathematik', lang=lang) }}"
+                  href="{{ url_for('showstudiendekanat', unterseite='warum_mathematik', lang=lang) }}"
                   >{% if lang == "de" %}Warum Mathematik?{% else %}{% endif %}</a
                 >
               </li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatung', unterseite='matheinfreiburg', lang=lang) }}"
+                  href="{{ url_for('showstudiendekanat', unterseite='matheinfreiburg', lang=lang) }}"
                   >{% if lang == "de" %}Mathematik in Freiburg{% else %}{% endif %}</a
                 >
-              </li>-->
+              </li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatung', unterseite='schwerpunktgebiete', lang=lang) }}"
+                  href="{{ url_for('showstudiendekanat', unterseite='schwerpunktgebiete', lang=lang) }}"
                   >{% if lang == "de" %}Schwerpunktgebiete{% else %}Focus
                   areas{% endif %}</a
                 >
-              </li>
+              </li>-->
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showpruefungsamtbase', lang=lang) }}"
+                  href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}"
                   >{% if lang == "de" %}Prüfungsamt{% else %}Examination
                   office{% endif %}</a
                 >
@@ -230,9 +230,16 @@
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showpruefungsamt', unterseite='calendar', lang=lang) }}"
+                  href="{{ url_for('showstudiendekanat', unterseite='termine', lang=lang) }}"
                   >{% if lang == "de" %}Fristen und Termine{% else %}Deadlines
                   and dates{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudiendekanat', unterseite='calendar', lang=lang) }}"
+                  >{% if lang == "de" %}Prüfungskalender{% else %}Calendar for exams{% endif %}</a
                 >
               </li>
               <li>
@@ -243,20 +250,12 @@
                   applications{% endif %}</a
                 >
               </li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showpruefungsamt', unterseite='belegung', lang=lang) }}"
-                  >{% if lang == "de" %}Prüfungsanmeldung und Belegung{% else
-                  %}Exam registration and assignment{% endif %}</a
-                >
-              </li>
               <li><hr class="dropdown-divider" /></li>
 
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudiendekanatbase', unterseite = 'ausland', lang=lang) }}"
+                  href="{{ url_for('showstudiendekanat', unterseite = 'ausland', lang=lang) }}"
                   >{% if lang == "de" %}Studieren im Ausland{% else %}Study
                   abroad{% endif %}</a
                 >
@@ -266,44 +265,41 @@
           <!--              <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showpruefungsamt', unterseite='modulhandbuecher', lang=lang) }}"
+                  href="{{ url_for('showstudiendekanat', unterseite='modulhandbuecher', lang=lang) }}"
                   >{% if lang == "de" %}Modulhandbücher{% else %}Handbooks for
                   modules{% endif %}</a
                 >
-              </li>-->
+              </li>
           <li class="nav-item px-3">
             <a
               class="nav-link text-white"
-              href="{{ url_for('showfaq', lang=lang) }}"
+              href="{{ url_for('showstufaq', lang=lang) }}"
               >FAQ</a
             >
-          </li>
+          </li>-->
           <li class="nav-item px-3">
             <a
-              class="nav-link text-white"
-              href="{{ url_for('showdownloads', lang=lang) }}"
-              >{% if lang == "de" %}Internes{% else %}Internals{% endif %}</a
+              class="nav-link dropdown-toggle active"
+              href="{{ url_for('showmitfaq', lang=lang) }}"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >{% if lang == "de" %}für Lehrende{% else %}for teaching staff{% endif %}</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatungbase', lang=lang) }}"
+                  href="{{ url_for('showstudiendekanat', lang=lang) }}"
                   >{% if lang == "de" %}Lehrorganisation{% else %}Organisition of Teaching{% endif %}</a
                 >
               </li>
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatungbase', lang=lang) }}"
+                  href="{{ url_for('showstudiendekanat', lang=lang) }}"
                   >{% if lang == "de" %}Lehrzertifikat{% else %}Certificate Teaching{% endif %}</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item text-black"
-                  href="{{ url_for('showstudienberatungbase', lang=lang) }}"
-                  >{% if lang == "de" %}FAQ{% else %}FAQ{% endif %}</a
                 >
               </li>
             </ul>

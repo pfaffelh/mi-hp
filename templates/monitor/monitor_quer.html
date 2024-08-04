@@ -1,0 +1,137 @@
+{% extends 'Monitor/basemonitor.html' %} {% block content %}
+<div
+  id="carouselExampleDark"
+  class="carousel carousel-dark slide"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    {% for item in data["carouselnews"] %}
+    <div
+      class="carousel-item {% if loop.index0 == 0 %} active {% endif %}"
+      data-bs-interval="{{ item['interval'] }}"
+    >
+      <img
+        class="carousel-image"
+        src="data:image/{{ item['mime'] }};base64, {{ item['image'] }}"
+        alt = "Red dot"
+        class="d-block w-100"
+        alt="..."
+      />
+      {% if item['text'] != "" %}
+      <div class="container-sm">
+        <div
+          class="carousel-caption d-none d-md-block"
+          style="left:{{ item['left'] }}%; right:{{ item['right'] }}%; bottom:{{ item['bottom'] }}%; background-color: white;"
+        >
+          <h2>{{ item['text'] | safe}}</h2>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div><br /></div>
+<div class="container" id="inhalt">
+  <div class="row row-cols-1 g-3">
+    {% for item in data["news"] %}
+    <div class="col row-cols-1">
+      <div
+        class="card h-100 {% if item['today']  and item['monitor']['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
+      >
+        <div class="g-0">
+          <div class="card-body py-0 px-0">
+            <div class="row py-0 px-0">
+              {% if loop.index0 %2 == 0 %}
+              <div class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4">
+                <h3 class="card-title">
+                  {{ item['monitor']['title'] | safe }}
+                </h3>
+                <p
+                  class="card-text {% if item['today'] and item['monitor']['showlastday'] %} watermark-today {% endif %}"
+                >
+                  {% if item['link']!= '' %}
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?data={{
+                        item['link'] }}&amp;size=100x100"
+                    class="float-start me-4 my-3"
+                    style="display: table-row; vertical-align: bottom"
+                    alt=""
+                    title="HELLO"
+                    width="100"
+                    height="100"
+                  />
+                  {% endif %}
+                </p>
+
+                <p>
+                  <font size="+2">{{ item['monitor']['text'] | safe}}</font>
+                </p>
+              </div>
+              {% if item['image'] != [] %}
+              <div class="col-sm-{{ item['image'][0]['widthmonitor']}} text-right">
+                <img
+                  src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}" 
+                  alt = "Red dot"
+                  class="float-end"
+                  alt="..."
+                  style="{{ item['image'][0]['stylemonitor'] }}"
+                />
+              </div>
+              {% endif %} {% else %} {% if item['image']['file'] != '' %}
+              <div class="col-sm-{{ item['image'][0]['widthmonitor']}} text-left">
+                <img
+                  src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
+                  alt = "Red dot"
+                  class="float-start"
+                  style="{{ item['image'][0]['stylemonitor'] }}"
+                />
+              </div>
+              {% endif %}
+              <div class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4">
+                <h3 class="card-title">
+                  {{ item['monitor']['title'] | safe }}
+                </h3>
+                <p
+                  class="card-text {% if item['today']  and item['monitor']['showlastday'] %} watermark-today {% endif %}"
+                >
+                  {% if item['link']!= '' %}
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?data={{
+                        item['link'] }}&amp;size=100x100"
+                    class="float-start me-4 my-3"
+                    style="display: table-row; vertical-align: bottom"
+                    alt=""
+                    title="HELLO"
+                    width="100"
+                    height="100"
+                  />
+                  {% endif %}
+                </p>
+                <p>
+                  <font size="+2">{{ item['monitor']['text'] | safe}}</font>
+                </p>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div><br /></div>
+{% endblock %}
+
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
