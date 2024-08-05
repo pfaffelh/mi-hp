@@ -1,4 +1,5 @@
-from flask import Flask, url_for, render_template, redirect, request
+from flask import Flask, url_for, render_template, redirect, request, abort
+from ipaddress import ip_network, IPv4Address
 import locale
 import json
 import os
@@ -23,6 +24,18 @@ from bson import ObjectId
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
+
+# Durch diese Funktion werden mit @fortivpn gekennzeichnete Routen nur vom vpn aus erreicht.
+def fortivpn(network = '10.23.0.0/16'):
+    def decorator(f):
+        def wrapper(*args, **kwargs):
+            ip = IPv4Address(request.remote_addr)
+            if ip in ip_network(network):
+                return f(*args, **kwargs)
+            else:
+                abort(403)
+        return wrapper
+    return decorator
 
 # This is such that we can use os-commands in jinja2-templates.
 @app.context_processor
@@ -344,8 +357,10 @@ def showmitfaq(lang, show =""):
         showcat = util_faq.get_mit_cat(show)
     return render_template("lehrende/index.html", lang=lang, cat_ids = cat_ids, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
 
+
 @app.route("/<lang>/lehrende/<unterseite>")
 @app.route("/<lang>/lehrende/<unterseite>/<anchor>")
+@fortivpn()
 def showlehrende(lang, unterseite ="", anchor = ""):
     if unterseite == "zertifikat":
         anchor = "what"
