@@ -23,7 +23,7 @@
           class="carousel-caption d-none d-md-block"
           style="left:{{ item['left'] }}%; right:{{ item['right'] }}%; bottom:{{ item['bottom'] }}%; background-color: white;"
         >
-          <h2>{{ item['text'] | safe}}</h2>
+          <h2>{{ item['text'] | markdown}}</h2>
         </div>
       </div>
       {% endif %}
@@ -45,7 +45,7 @@
               {% if loop.index0 %2 == 0 %}
               <div class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4">
                 <h3 class="card-title">
-                  {{ item['monitor']['title'] | safe }}
+                  {{ item['monitor']['title'] | markdown }}
                 </h3>
                 <p
                   class="card-text {% if item['today'] and item['monitor']['showlastday'] %} watermark-today {% endif %}"
@@ -65,7 +65,7 @@
                 </p>
 
                 <p>
-                  <font size="+2">{{ item['monitor']['text'] | safe}}</font>
+                  <font size="+2">{{ item['monitor']['text'] | markdown}}</font>
                 </p>
               </div>
               {% if item['image'] != [] %}
@@ -90,7 +90,7 @@
               {% endif %}
               <div class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4">
                 <h3 class="card-title">
-                  {{ item['monitor']['title'] | safe }}
+                  {{ item['monitor']['title'] | markdown }}
                 </h3>
                 <p
                   class="card-text {% if item['today']  and item['monitor']['showlastday'] %} watermark-today {% endif %}"
@@ -109,7 +109,7 @@
                   {% endif %}
                 </p>
                 <p>
-                  <font size="+2">{{ item['monitor']['text'] | safe}}</font>
+                  <font size="+2">{{ item['monitor']['text'] | markdown}}</font>
                 </p>
               </div>
               {% endif %}

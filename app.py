@@ -68,9 +68,9 @@ def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 
     data = {}
     if testorpublic == "test":
-        data["news"] =  list(news.news.find({ "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))
+        data["news"] =  list(news.news.find({ "home.fuerhome": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))
     else:
-        data["news"] =  list(news.news.find({ "_public": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}))        
+        data["news"] =  list(news.news.find({ "_public": True, "home.fuerhome": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}))        
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
@@ -409,9 +409,9 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 
     # Daten für die News
     if testorpublic == "test":
-        data["news"] =  list(news.news.find({ "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))
+        data["news"] =  list(news.news.find({ "monitor.fuermonitor": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))
     else:
-        data["news"] =  list(news.news.find({ "_public": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))        
+        data["news"] =  list(news.news.find({ "_public": True, "monitor.fuermonitor": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))        
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
