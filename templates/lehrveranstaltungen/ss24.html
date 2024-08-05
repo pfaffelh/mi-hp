@@ -1,42 +1,2930 @@
 <div class="container" id="inhalt">
-  <h2>Lehrveranstaltungen im {{data['semester']}}</h2>
-  <table class="vlverz">
-    <col />
-    <col />
-    <col />
-    {% for r in data["rubrik"] %}
-    <tr>
-      <td colspan="3">
-        <h2>{{ r[titel] }}</h2>
-      </td>
-    </tr>
-    {% for v in r["veranstaltung"] %}
-    <tbody class="course_snip">
-      <tr>
-        <td rowspan="2">
-          <div style="white-space: nowrap"></div>
-          {{ v["codes"] }}
-        </td>
-        <td>
-          <a href="{{ v['link'] }}"> {{ v['titel_de'] }} </a>
-        </td>
-        <td rowspan="2">{{ v['dozenten'] }}</td>
-      </tr>
-      {% for line in v["raumzeit"] %}
-      <tr>
-        <td>{{ line }}</td>
-      </tr>
-      {% endfor %} {% if v["assistenz"] %}
-      <tr>
-        <td></td>
-        <td>Assistenz</td>
-        <td>{{ v["assistenz"] }}</td>
-      </tr>
-      {% endif %}
-      <tr>
-        <td colspan="3"></td>
-      </tr>
-    </tbody>
-    {% endfor %} {% endfor %}
-  </table>
+ <h1>
+  Lehrveranstaltungen im Sommersemester 2024
+ </h1>
+ <!--      
+  <p style="color:red;">
+    <b>
+      Vorläufiges Vorlesungsverzeichnis &ndash; Änderungen und Ergänzungen sind noch möglich! 
+      
+      Vorlesungsverzeichnis im Planungszustand &ndash; alle Angaben sind noch vorläufig!! 
+-->
+ <p>
+  Ausführliche Informationen zu den Veranstaltungen – insbesondere Inhalt, Verwendbarkeit und Anforderungen – finden Sie im
+  <!-- (ab ca. KW 4 veröffentlichten)-->
+  <a href="https://www.math.uni-freiburg.de/lehre/v/ss24.pdf">
+   Kommentierten Vorlesungsverzeichnis
+  </a>
+  und in den
+  <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/modulhandbuecher.html">
+   Modulhandbüchern
+  </a>
+  .
+ </p>
+ <!--  <p>
+    Änderungen und Ergänzungen des Programms sind noch möglich!<br>Letzte Änderungen:
+    <ul>
+      <li> [22.03.] Praktische Übung zu "Maschinelles Lernen aus Stochastischer Sicht" entfällt </li>
+      <li> [13.03.] Blockseminar "Credit Risk" als Mathematisches Seminar geöffnet (Anmeldung bis 31.03.) </li>
+      <li> {22.02.] Neue zweistündige Vorlesung "Gewöhnliche Differentialgleichungen" </li>
+      <li> {22.02.] Neue Praktische Übung zu "Maschinelles Lernen aus Stochastischer Sicht" </li>
+      <li> [20.02.] Zusätzliches Fachdidaktikseminar "Gleichungen" von J. Kury. </li>
+      <li> [15.02.] Neue zweistündige Vorlesung "Geometrische Variationsprobleme"; das gleichnamige Seminar von Herrn Kuwert entfällt dagegen. </li>
+      <li> [07.02.] Raumtausch bei Proseminar Knies und Seminar Demleitner </li>
+      <li> [30.01.] Seminar Mildenberger verlegt auf Mo 10-12 Uhr </li>
+      <li> [25.01.] Proseminar Knies: Vorbesprechung auf 12 Uhr vorverlegt </li>
+      <li> [17.01.] Proseminar Knies: Terminverschiebung auf Do 14-16 Uhr </li>
+      <li> [16.01.] Neues Seminar "Uniforme zentrale Grenzwertsätze für stochastische Prozesse" (geplant als Blockseminar) </li>
+    </ul>
+  </p> -->
+ <p>
+ </p>
+ <h2>
+  EUCOR
+ </h2>
+ Links zu Vorlesungsverzeichnissen der EUCOR-Partneruniversitäten
+ <ul>
+  <li>
+   Universität Basel:
+   <a href="https://vorlesungsverzeichnis.unibas.ch/de/semester-planung">
+    allgemeines Vorlesungsverzeichnis
+   </a>
+  </li>
+  <li>
+   Université de Strasbourg:
+   <a href="https://irma.math.unistra.fr/linstitut/lmd_enseignement.html#masters">
+    Master Mathématiques Fondamentales et Appliquées
+   </a>
+  </li>
+  <li>
+   Karlsruher Institut für Technologie:
+   <a href=" https://www.math.kit.edu/vvz">
+    Veranstaltungsverzeichnis Mathematik
+   </a>
+  </li>
+ </ul>
+ <p>
+ </p>
+ <h2>
+  Hinweis
+ </h2>
+ Die angegebene Anzahl an ECTS-Punkten gilt für die Verwendung von Veranstaltungen im
+    Wahlpflicht- oder Wahlbereich des jeweiligen Studiengangs.
+    Bei Pflichtveranstaltungen bzw. bei der Verwendung der Veranstaltung in Pflichtmodulen
+    ist die Anzahl der ECTS-Punkte des Moduls in der Prüfungsordnung festgeschrieben.
+ <p>
+  HS = Hörsaal; R = Raum; SR = Seminarraum
+ </p>
+ <table class="vlverz">
+  <col/>
+  <col/>
+  <col/>
+  <tr>
+   <td colspan="3">
+    <h2>
+     1. Vorlesungen
+    </h2>
+   </td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    <h3>
+     1a. Einführende Vorlesungen und Pflichtvorlesungen der verschiedenen Studiengänge
+    </h3>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="5_LA2">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://www.stochastik.uni-freiburg.de/de/lehre/ss-2024/vorlesung-lineare-algebra-ii-ss-2024">
+      Lineare Algebra II
+     </a>
+    </td>
+    <td rowspan="2">
+     A. Rohde
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Di, Do 8-10, HS Rundbau,
+     <a href="https://www.openstreetmap.org/?mlat=48.00156\&amp;mlon=7.84931\#map=19/48.00156/7.84931">
+      Albertstr. 21
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): verschiedene Termine
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     J. Brutsche
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="5_Ana2">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://aam.uni-freiburg.de/agdo/lehre/ss24/analysis2/index.html">
+      Analysis II
+     </a>
+    </td>
+    <td rowspan="2">
+     P. Dondl
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Mo, Mi 8-10, HS Rundbau,
+     <a href="https://www.openstreetmap.org/?mlat=48.00156\&amp;mlon=7.84931\#map=19/48.00156/7.84931">
+      Albertstr. 21
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): verschiedene Termine
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     P. Tscherner
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="5_3">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     0
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/knies/lehre/bkla/index1.html">
+      Brückenkurs Lineare Algebra
+     </a>
+    </td>
+    <td>
+     <i>
+      Organisation:
+     </i>
+     S. Knies
+    </td>
+   </tr>
+   <tr>
+    <td colspan="2">
+     <i>
+      Für Studienplanvariante 3 im Zwei-Hauptfächer-Bachelor, d.h. für Studierende, die Analysis II belegen, ohne Lineare Algebra I gehört zu haben. Bitte Teilnahmewunsch  bis spätestens 9. April melden!
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="5_ElGeo">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/ngrosse/teaching/Vorlesungen/ElemGeo.html">
+      Elementargeometrie
+     </a>
+    </td>
+    <td rowspan="2">
+     N. Große
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Mi 10-12, HS Weismann-Haus,
+     <a href="https://www.openstreetmap.org/?mlat=48.00170\&amp;mlon=7.84946\#map=19/48.00170/7.84946">
+      Albertstr. 21a
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): verschiedene Termine
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     M. Amann
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Im M.Sc.-Studiengang nicht verwendbar.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="5_Num">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://aam.uni-freiburg.de/agru/lehre/ss24/num/index.html">
+      Numerik II
+     </a>
+    </td>
+    <td rowspan="2">
+     A. Gazca
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Mi 14-16, HS Rundbau,
+     <a href="https://www.openstreetmap.org/?mlat=48.00156\&amp;mlon=7.84931\#map=19/48.00156/7.84931">
+      Albertstr. 21
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig, 14-täglich): verschiedene Termine
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     T. Stiefken
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="5_Sto2">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     5
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://www.stochastik.uni-freiburg.de/de/lehre/ss-2024/vorlesung-stochastik-2-ss-2024">
+      Stochastik II
+     </a>
+    </td>
+    <td rowspan="2">
+     E. A. v. Hammerstein
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Fr 10-12, HS Weismann-Haus,
+     <a href="https://www.openstreetmap.org/?mlat=48.00170\&amp;mlon=7.84946\#map=19/48.00170/7.84946">
+      Albertstr. 21a
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig, 14-täglich): verschiedene Termine
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     T. Enger
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Pflicht im B.Sc.-Studiengang nach PO 2012; Wahlpflicht (5 ECTS) im B.Sc.-Studiengang nach PO 2021. Im M.Sc.-Studiengang nicht verwendbar.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h3>
+     1b. Weiterführende vierstündige Vorlesungen
+    </h3>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="7_algTop2">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/geometrie/lehre/ss2024/AlgTop2/">
+      Algebraische Topologie II
+     </a>
+    </td>
+    <td rowspan="2">
+     S. Goette
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Di 14-16, Fr 10-12, SR 125,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     J. Schnitzer
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="7_DG2">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/ngrosse/teaching/Vorlesungen/DiffGeoII.html">
+      Differentialgeometrie II – Vektorbündel
+     </a>
+    </td>
+    <td rowspan="2">
+     N. Große
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Di, Do 10-12, SR 404,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     J. Reuß
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="7_FA">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/analysis/2024_SoSe_Funktionalanalysis/">
+      Funktionalanalysis
+     </a>
+    </td>
+    <td rowspan="2">
+     E. Kuwert
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Mo, Mi 14-16, HS II,
+     <a href="https://www.openstreetmap.org/?mlat=48.00233\&amp;mlon=7.84788\#map=19/48.00233/7.84788">
+      Albertstr. 23b
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     F. Johne
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="7_kommA">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="http://home.mathematik.uni-freiburg.de/arithgeom/lehre.html">
+      Kommutative Algebra und Einführung in die algebraische Geometrie
+     </a>
+    </td>
+    <td rowspan="2">
+     A. Huber-Klawitter
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Di, Do 8-10, HS II,
+     <a href="https://www.openstreetmap.org/?mlat=48.00233\&amp;mlon=7.84788\#map=19/48.00233/7.84788">
+      Albertstr. 23b
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     Ch. Brackenhofer
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="7_KuF">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/analysis/2024_SoSe_Kurven_und_Flaechen/">
+      Kurven und Flächen
+     </a>
+    </td>
+    <td rowspan="2">
+     Ch. Ketterer
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Mo, Mi 10-12, HS II,
+     <a href="https://www.openstreetmap.org/?mlat=48.00233\&amp;mlon=7.84788\#map=19/48.00233/7.84788">
+      Albertstr. 23b
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     Ch. Schmidt
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="7_MLSto4">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://www.stochastik.uni-freiburg.de/de/lehre/ss-2024/vorlesung-maschinelles-lernen-ss-2024">
+      Maschinelles Lernen aus Stochastischer Sicht
+     </a>
+    </td>
+    <td rowspan="2">
+     T. Schmidt
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Do 12-14, SR 404,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+     , Fr 10-12, SR 226,
+     <a href="https://www.openstreetmap.org/?mlat=48.00351\&amp;mlon=7.84815\#map=19/48.00351/7.84815">
+      Hermann-Herder-Str. 10
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung: Mi 10-12, SR 226,
+     <a href="https://www.openstreetmap.org/?mlat=48.00351\&amp;mlon=7.84815\#map=19/48.00351/7.84815">
+      Hermann-Herder-Str. 10
+     </a>
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     M. Ritter
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="7_Logik">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/mildenberger/veranstaltungen/ss24/logik.html">
+      Mathematische Logik
+     </a>
+    </td>
+    <td rowspan="2">
+     H. Mildenberger
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Di, Do 10-12, HS II,
+     <a href="https://www.openstreetmap.org/?mlat=48.00233\&amp;mlon=7.84788\#map=19/48.00233/7.84788">
+      Albertstr. 23b
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     H. Jakob
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="7_Top">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/ren/ss24/topology/">
+      Topology
+     </a>
+    </td>
+    <td rowspan="2">
+     A. Martín Pizarro
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Di, Do 12-14, HS II,
+     <a href="https://www.openstreetmap.org/?mlat=48.00233\&amp;mlon=7.84788\#map=19/48.00233/7.84788">
+      Albertstr. 23b
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     X. Ren
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="7_WT">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     9
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://pfaffelh.github.io/hp/2024ss_wtheorie.html">
+      Wahrscheinlichkeitstheorie
+     </a>
+    </td>
+    <td rowspan="2">
+     P. Pfaffelhuber
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Mo 12-14, HS II,
+     <a href="https://www.openstreetmap.org/?mlat=48.00233\&amp;mlon=7.84788\#map=19/48.00233/7.84788">
+      Albertstr. 23b
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung: Mi 16-18, SR 127,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     S. Adeosun
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Die Veranstaltung findet hybrid statt: Ein Teil der Vorlesung wird über Videos abgedeckt.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h3>
+     1c. Weiterführende zweistündige Vorlesungen
+    </h3>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="8_ASTAT">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     Applications of Set Theory in Algebra and in Topology
+    </td>
+    <td rowspan="2">
+     M. Levine
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Mi 12-14, SR 127,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="8_geoVP">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/analysis/2024_SoSe_Geometric_variational_problems/index.html">
+      Geometrische Variationsprobleme
+     </a>
+    </td>
+    <td rowspan="2">
+     E. Kuwert
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Di 14-16, SR 127,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     X. Mei
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="8_ODE">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/analysis/2024_SoSe_ODE/">
+      Gewöhnliche Differentialgleichungen
+     </a>
+    </td>
+    <td rowspan="2">
+     F. Johne
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Do 14-16, SR 226,
+     <a href="https://www.openstreetmap.org/?mlat=48.00351\&amp;mlon=7.84815\#map=19/48.00351/7.84815">
+      Hermann-Herder-Str. 10
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="8_MIDL">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://aam.uni-freiburg.de/agsa/lehre/ss24/deepl/index.html">
+      Mathematical Introduction to Deep Learning
+     </a>
+    </td>
+    <td rowspan="2">
+     D. Salimova
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Di 12-14, SR 226,
+     <a href="https://www.openstreetmap.org/?mlat=48.00351\&amp;mlon=7.84815\#map=19/48.00351/7.84815">
+      Hermann-Herder-Str. 10
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     P. Tscherner
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="8_MaMod">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://aam.uni-freiburg.de/agru/lehre/ss24/math_modd/modellierung.html">
+      Mathematische Modellierung
+     </a>
+    </td>
+    <td rowspan="2">
+     M. Růžička
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Mo 10-12, SR 404,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): Termin wird noch festgelegt
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     S. Andres
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h3>
+     1d. Lehrexportveranstaltungen
+    </h3>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="9_M2Inf">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     <a href="https://www.stochastik.uni-freiburg.de/de/lehre/ss-2024/mathematik-ii-fuer-studierende-der-informatik">
+      Mathematik II für Studierende der Informatik
+     </a>
+    </td>
+    <td rowspan="2">
+     E. A. v. Hammerstein
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung (4-stündig): Mo, Mi 10-12, HS 00-026,
+     <a href="https://www.openstreetmap.org/?mlat=48.01251&amp;mlon=7.83492#map=19/48.01251/7.83492">
+      Geb. 101, Georges-Köhler-Allee
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): verschiedene Termine
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     S. Glaffig
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="9_M2Ing">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/geometrie/lehre/ss2024/Mathe2/">
+      Mathematik II für Studierende der Ingenieurwissenschaften
+     </a>
+    </td>
+    <td rowspan="2">
+     S. Goette
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung (4-stündig): Mo 12-14, Fr 14-16, HS Rundbau,
+     <a href="https://www.openstreetmap.org/?mlat=48.00156\&amp;mlon=7.84931\#map=19/48.00156/7.84931">
+      Albertstr. 21
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): verschiedene Termine
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     V. Jackisch
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="9_M2NW">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Mathematik II für Studierende der Naturwissenschaften
+    </td>
+    <td rowspan="2">
+     S. Knies
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Di, Do 10-12, HS Rundbau,
+     <a href="https://www.openstreetmap.org/?mlat=48.00156\&amp;mlon=7.84931\#map=19/48.00156/7.84931">
+      Albertstr. 21
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): verschiedene Termine
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     M. Hoferichter
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="9_StInf">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Stochastik für Studierende der Informatik
+    </td>
+    <td rowspan="2">
+     D. Criens
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung (2-stündig): Mo 10-12, HS 00-036,
+     <a href="https://www.openstreetmap.org/?mlat=48.01251&amp;mlon=7.83492#map=19/48.01251/7.83492">
+      Geb. 101, Georges-Köhler-Allee
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): verschiedene Termine
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     T. Enger
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h2>
+     2. Praxisorientierte Veranstaltungen
+    </h2>
+   </td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    <h3>
+     2a. Begleitveranstaltungen
+    </h3>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="10_LdL">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     3
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/ldl/index1.html">
+      Lernen durch Lehren
+     </a>
+    </td>
+    <td>
+     <i>
+      Organisation:
+     </i>
+     S. Knies
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="10_B">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     0
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     Betreutes Rechnen
+    </td>
+    <td>
+     <i>
+      Organisation:
+     </i>
+     Fachschaft
+    </td>
+   </tr>
+   <tr>
+    <td colspan="2">
+     <i>
+      Tutoren helfen bei Fragen zu Übungsaufgaben und Vorlesungen. Freiwilliges Angebot, typischerweise für Drittsemester-Vorlesungen.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h3>
+     2b. Fachdidaktik
+    </h3>
+   </td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    Bitte beachten Sie die im Kommentierten Vorlesungsverzeichnis veröffentlichten Voranmeldefristen, die teilweise schon zu Ende der Vorlesungszeit des Wintersemesters liegen können.
+   </td>
+  </tr>
+  <tr>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="11_EFD">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Einführung in die Fachdidaktik der Mathematik
+    </td>
+    <td rowspan="2">
+     K. Böcherer-Linder
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung mit Übung: Mo 10-12, SR 226,
+     <a href="https://www.openstreetmap.org/?mlat=48.00351\&amp;mlon=7.84815\#map=19/48.00351/7.84815">
+      Hermann-Herder-Str. 10
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Tutorat (2-stündig):  Do, Fr 8-10, SR 127
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Der Besuch des Didaktischen Seminars (einzelne Termine dienstags 18:30 Uhr) wird erwartet!
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="11_FD-FA">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Didaktik der Funktionen und der Analysis
+    </td>
+    <td rowspan="2">
+     R. Erens
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mi 15-18, SR 404,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="11_FD-SA">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Didaktik der Stochastik und der Algebra
+    </td>
+    <td rowspan="2">
+     K. Böcherer-Linder
+    </td>
+   </tr>
+   <tr>
+    <td>
+     2-stündig in zwei Gruppen: Do 8-10, Do 10-12, SR 226,
+     <a href="https://www.openstreetmap.org/?mlat=48.00351\&amp;mlon=7.84815\#map=19/48.00351/7.84815">
+      Hermann-Herder-Str. 10
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="11_FDS">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Fachdidaktikseminar: Mathe
+     <sub>
+      Unterricht
+     </sub>
+     = Mathe
+     <sub>
+      Studium
+     </sub>
+     ± x
+    </td>
+    <td rowspan="2">
+     H. Dietz
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mi 9-12, Raum B 106, Seminar für Ausbildung und Fortbildung der Lehrkräfte Freiburg,
+     <a href="https://www.openstreetmap.org/?mlat=47.98021\&amp;mlon=7.82836\#map=19/47.98021/7.82836">
+      Oltmannstraße 22
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Für das Modul "Fachdidaktische Entwicklung" in den M.Ed.-Studiengängen.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="11_FD-Kury">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Fachdidaktische Entwicklung: Gleichungen
+    </td>
+    <td rowspan="2">
+     J. Kury
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Di 14-18, Kleines Auditorium 003, Pädagogische Hochschule
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Für das Modul "Fachdidaktische Entwicklung" in den M.Ed.-Studiengängen.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="11_FDSPH">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Fachdidaktikseminare der PH Freiburg
+    </td>
+    <td>
+     Dozent:inn:en der PH Freiburg
+    </td>
+   </tr>
+   <tr>
+    <td colspan="2">
+     <i>
+      Sofern Studienplätze zur Verfügung stehen, können auch geeignete Veranstaltungen der PH Freiburg für das Modul "Fachdidaktische Entwicklung" in den M.Ed.-Studiengängen absolviert werden.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="11_FF-E">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Fachdidaktische Forschung, Teil 1: Fachdidaktische Entwicklungsforschung zu ausgewählten Schwerpunkten
+    </td>
+    <td rowspan="2">
+     F. Reinhold
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mo 14-16, Raum noch nicht bekannt, -
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Teilnahme nur nach persönlicher Anmeldung wie im Kommentierten Vorlesungsverzeichnis beschrieben.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="11_FF-M">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Fachdidaktische Forschung, Teil 2: Methoden der mathematikdidaktischen Forschung
+    </td>
+    <td rowspan="2">
+     F. Reinhold
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mo 10-13, Raum noch nicht bekannt, -
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      In der zweiten Semesterhälfte, 17.06.–15.07.2024.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="11_FF-S">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Fachdidaktische Forschung, Teil 3: Entwicklung und Optimierung eines fachdidaktischen Forschungsprojekts
+    </td>
+    <td>
+     Dozent:inn:en der PH Freiburg
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Termine nach Vereinbarung
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h3>
+     2c. Praktische Übungen
+    </h3>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="12_CKurs">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://aam.uni-freiburg.de/agdo/lehre/ss24/prog/index.html">
+      Einführung in die Programmierung für Studierende der Naturwissenschaften
+     </a>
+    </td>
+    <td rowspan="2">
+     L. Striet
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Vorlesung: Mo 16-18, HS Weismann-Haus,
+     <a href="https://www.openstreetmap.org/?mlat=48.00170\&amp;mlon=7.84946\#map=19/48.00170/7.84946">
+      Albertstr. 21a
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Übung (2-stündig): verschiedene Termine
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Im B.Sc.-Studiengang verpflichtender BOK-Kurs; Belegung innerhalb der Belegfrist des ZfS.
+     </i>
+     <br/>
+     <i>
+      Im 2-Hf-Bachelor- und im M.Ed.-Studiengang verwendbar für das Modul
+"Praktische Übung" bzw. "Mathematische Ergänzung" (bei gleichen Anforderungen wie im B.Sc.-Studiengang). Belegung für diese Studiengänge über das entsprechende Modul im Studienplaner und nicht als BOK-Kurs!
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="12_PrNum">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     3
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     Praktische Übung zu „Numerik“
+    </td>
+    <td>
+     A. Gazca
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Übung (2-stündig, 14-täglich): verschiedene Termine, Computerpool R 201, Hermann-Herder-Str. 10
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Assistenz
+    </td>
+    <td>
+     T. Stiefken
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      2. Teil der zweisemestrigen Veranstaltung
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="12_PrSto2">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     3
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://www.stochastik.uni-freiburg.de/de/lehre/ss-2024/prakueb-stochastik-ss-2024">
+      Praktische Übung zu „Stochastik“
+     </a>
+    </td>
+    <td rowspan="2">
+     E. A. v. Hammerstein
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Di 14-16, Computerpool R -100,
+     <a href="https://www.openstreetmap.org/?mlat=48.00351\&amp;mlon=7.84815\#map=19/48.00351/7.84815">
+      Hermann-Herder-Str. 10
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Pflicht im B.Sc.-Studiengang nach PO 2012; Wahlmodul (3 ECTS) im B.Sc.-Studiengang nach PO 2021. Im M.Sc.-Studiengang nicht verwendbar.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="12_Mathematica">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     5
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://www.physik.uni-freiburg.de/studium/vorlesungsverzeichnis/kmvrls24.htm#Mathematica">
+      Einführung in Mathematica
+     </a>
+    </td>
+    <td rowspan="2">
+     R. Brüser
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mo, Mi 14-16, CIP-Pool 2, Gustav-Mie-Haus
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Angebot des Physikalischen Instituts. Kann als Praktische Übung verwendet werden.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h2>
+     3. Seminare
+    </h2>
+   </td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    <h3>
+     3a. Proseminare
+    </h3>
+   </td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    Die Seminarplätze werden am Ende der Vorlesungszeit des Wintersemesters vergeben. Im Kommentierten Vorlesungsverzeichnis wird für jedes Proseminar beschrieben, ob und wie eine Voranmeldung erfolgen muss und wann die Vorbesprechung stattfindet.
+Sofern Sie einen Platz in einem Proseminar erhalten haben, müssen Sie sich noch online zur Prüfung anmelden; der Anmeldezeitraum läuft voraussichtlich vom 1. März bis 10. April 2024.
+   </td>
+  </tr>
+  <tr>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="13_PS-Do">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     3
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     Proseminar: Eindimensionale Variationsrechnung
+    </td>
+    <td rowspan="2">
+     P. Dondl
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Di 10-12, SR 226,
+     <a href="https://www.openstreetmap.org/?mlat=48.00351\&amp;mlon=7.84815\#map=19/48.00351/7.84815">
+      Hermann-Herder-Str. 10
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Tutorium zum Seminar (Termine nach Vereinbarung)
+    </td>
+    <td>
+     H. Keller
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Vorbesprechung: Dienstag 6. Februar 2024, 16 Uhr, Raum 216 (Hermann-Herder-Str. 10)
+     </i>
+     <br/>
+     <i>
+      Voranmeldung: siehe Kommentiertes Vorlesungsverzeichnis
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="13_PS-Ju">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     3
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     Proseminar: Kombinatorik
+    </td>
+    <td rowspan="2">
+     M. Junker
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mi 10-12, SR 404,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Tutorium zum Proseminar (Termine nach Vereinbarung)
+    </td>
+    <td>
+     Ch. Bartnick
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Vorbesprechung: Montag 5. Februar 2024, 13:00–14:00 Uhr, SR 404
+     </i>
+     <br/>
+     <i>
+      Voranmeldung: siehe Kommentiertes Vorlesungsverzeichnis
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="13_PS-Kn">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     3
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/knies/lehre/ss24/index.html">
+      Proseminar: Unendlichdimensionale Vektorräume
+     </a>
+    </td>
+    <td rowspan="2">
+     S. Knies
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Do 14-16, SR 127,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Tutorium zum Proseminar (Termine nach Vereinbarung)
+    </td>
+    <td>
+     V. Vogelmann
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Vorbesprechung: Donnerstag, 8. Februar 2024, 12 Uhr, SR 125
+     </i>
+     <br/>
+     <i>
+      Voranmeldung: siehe Kommentiertes Vorlesungsverzeichnis
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h3>
+     3b. Seminare
+    </h3>
+   </td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    Die Seminarplätze werden in der Regel am Ende der Vorlesungszeit des Wintersemesters vergeben. Im Kommentierten Vorlesungsverzeichnis wird für jedes Seminar beschrieben, ob und wie eine Voranmeldung erfolgen muss und wann die Vorbesprechung stattfindet.
+Sofern Sie einen Platz in einem Seminar erhalten haben, müssen Sie sich noch online zur Prüfung anmelden; der Anmeldezeitraum läuft voraussichtlich vom 1. März bis 10. April 2024.
+   </td>
+  </tr>
+  <tr>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="14_S-Mi">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/mildenberger/veranstaltungen/ss24/prikry.html">
+      Seminar: Prikry-Forcing
+     </a>
+    </td>
+    <td rowspan="2">
+     H. Mildenberger
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mo 10-12, SR 125,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Tutorium zum Seminar (Termine nach Vereinbarung)
+    </td>
+    <td>
+     H. Jakob
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="14_S-Ke">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/demleitner/funktionenkoerper_sose24.html">
+      Seminar: Funktionenkörper
+     </a>
+    </td>
+    <td rowspan="2">
+     A. Demleitner
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Do 14-16, SR 404,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Tutorium zum Seminar (Termine nach Vereinbarung)
+    </td>
+    <td>
+     A. Demleitner
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Vorbesprechung: Dienstag, 6. Februar 2024, 16:00 Uhr, SR 318
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="14_Sr-Kr">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://home.mathematik.uni-freiburg.de/geometrie/lehre/ss2024/Fol/">
+      Seminar: Die Geometrie von Blätterungen
+     </a>
+    </td>
+    <td rowspan="2">
+     Ch. Ketterer, J. Schnitzer
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mi 10-12, SR 125,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Tutorium zum Seminar (Termine nach Vereinbarung)
+    </td>
+    <td>
+     Ch. Ketterer, J. Schnitzer
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Vorbesprechung: Donnerstag, 8. Februar 2024, 14:15 Uhr, SR 414
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="14_S-Ba">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     Seminar: Numerik partieller Differentialgleichungen
+    </td>
+    <td rowspan="2">
+     S. Bartels
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mi 14-16, SR 226,
+     <a href="https://www.openstreetmap.org/?mlat=48.00351\&amp;mlon=7.84815\#map=19/48.00351/7.84815">
+      Hermann-Herder-Str. 10
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Tutorium zum Seminar (Termine nach Vereinbarung)
+    </td>
+    <td>
+     V. Jackisch
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Vorbesprechung: Dienstag, 6. Februar 2024, 12:00 Uhr, Raum 209 (Hermann-Herder-Straße 10)
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="14_S-Ro">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://www.stochastik.uni-freiburg.de/de/lehre/ss-2024/seminar-uniforme-zentrale-grenzwertsaetze-ss-2024">
+      Seminar: Uniforme zentrale Grenzwertsätze für stochastische Prozesse (Uniform central limit theorems for stochastic processes)
+     </a>
+    </td>
+    <td>
+     A. Rohde
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Geplant als Blockseminar im Schwarzwald.
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td>
+     Tutorium zum Seminar (Termine nach Vereinbarung)
+    </td>
+    <td>
+     J. Brutsche
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Vorbesprechung: Freitag, 9. Februar 2024, 11:00 Uhr, Raum 232
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="14_S-Bi">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     Seminar: Medical Data Science
+    </td>
+    <td rowspan="2">
+     H. Binder
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mi 10-11:30, HS Medizinische Biometrie,
+     <a href="https://www.openstreetmap.org/?mlat=48.00248\&amp;mlon=7.84681\#map=19/48.00248/7.84681">
+      Stefan-Meier-Str. 26
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Vorbesprechung:  Mittwoch, 7. Februar 2024, 10:15 Uhr, IMBI
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="14_SPhys">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     4
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://www.physik.uni-freiburg.de/studium/vorlesungsverzeichnis/kmvrls24.htm#Sem2">
+      Seminar: Einführung in Maschinelles Lernen
+     </a>
+    </td>
+    <td rowspan="2">
+     M. Böhler
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Fr 14-16: Fr 14-16, SR II, Physik-Hochhaus
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Angeboten vom Physikalischen Institut, kann in den Bachelor-Studiengängen als Mathematisches Seminar verwendet werden.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="14_S-LK">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     6
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     <a href="https://www.finance.uni-freiburg.de/studium-und-lehre/sose2024/siqfsose24?set_language=de">
+      Seminar: Credit Risk
+     </a>
+    </td>
+    <td>
+     E. Lütkebohmert-Holtz
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Blockseminar 6. bis 17. Mai
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Anmeldung bis 31. März an roberta.janosi@finance.uni-freiburg.de
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="14_S-Ju">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+     5
+     <small>
+      ECTS
+     </small>
+    </td>
+    <td>
+     Seminar: Die Mathematik und das Göttliche
+    </td>
+    <td rowspan="2">
+     A. Henn, M. Junker
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Di 16-18, R 206,
+     <a href="https://www.openstreetmap.org/?mlat=47.99252\&amp;mlon=7.84775\#map=19/47.99252/7.84775">
+      Breisacher Tor
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Kann nicht als Mathematisches Seminar verwendet werden, sondern im B.Sc. und M.Sc. Mathematik als Wahlmodul. Voranmeldung per E-Mail erwünscht.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h2>
+     4. Oberseminare, Projektseminare und Kolloquien
+    </h2>
+   </td>
+  </tr>
+  <tr>
+   <td colspan="3">
+    <h3>
+     4a. Projektseminare und Lesekurse
+    </h3>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="16_LKWA">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Lesekurse „Wissenschaftliches Arbeiten“
+    </td>
+    <td>
+     Alle Professor:inn:en und Privatdozent:inn:en des Mathematischen Instituts
+    </td>
+   </tr>
+   <tr>
+    <td colspan="2">
+     <i>
+      Nach persönlicher Absprache. Nähere Informationen siehe Kommentiertes Vorlesungsverzeichnis.s
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="16_Pj-GA">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Projektseminar: Geometrische Analysis
+    </td>
+    <td rowspan="2">
+     E. Kuwert
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Di 16-18, SR 127,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="16_Pj-Ru">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Projektseminar: Nicht-Newtonsche Flüssigkeiten
+    </td>
+    <td rowspan="2">
+     M. Růžička
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Fr 10-12, SR 127,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="16_Pj-Ba">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Projektseminar: Numerische Analysis
+    </td>
+    <td>
+     S. Bartels
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Termine nach Vereinbarung
+    </td>
+    <td>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h3>
+     4b. Oberseminare
+    </h3>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="15_OS-A">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Oberseminar: Algebra, Zahlentheorie und algebraische Geometrie
+    </td>
+    <td rowspan="2">
+     A. Huber-Klawitter
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Fr 10-12, SR 404,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="15_OS-AM">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Oberseminar: Angewandte Mathematik
+    </td>
+    <td rowspan="2">
+     S. Bartels, P. Dondl, M. Růžička, D. Salimova
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Di 14-16, SR 226,
+     <a href="https://www.openstreetmap.org/?mlat=48.00351\&amp;mlon=7.84815\#map=19/48.00351/7.84815">
+      Hermann-Herder-Str. 10
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="15_OS-DG">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Oberseminar: Differentialgeometrie
+    </td>
+    <td rowspan="2">
+     S. Goette, N. Große, Ch. Ketterer
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mo 16-18, SR 125,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="15_OS-ML">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     <a href=" https://wochenprogramm.mathematik.uni-freiburg.de/v.html?V=OS-ML">
+      Oberseminar: Mathematische Logik
+     </a>
+    </td>
+    <td rowspan="2">
+     A. Martín Pizarro, H. Mildenberger
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Di 14:30-16:00, SR 404,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="15_OS-MS">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Oberseminar: Stochastik
+    </td>
+    <td rowspan="2">
+     D. Criens, P. Pfaffelhuber, A. Rohde, T. Schmidt
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mi 16-17, HS II,
+     <a href="https://www.openstreetmap.org/?mlat=48.00233\&amp;mlon=7.84788\#map=19/48.00233/7.84788">
+      Albertstr. 23b
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="15_OS-Med">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Oberseminar: Medizinische Statistik
+    </td>
+    <td rowspan="2">
+     H. Binder
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Mi 11:30-13, HS Medizinische Biometrie,
+     <a href="https://www.openstreetmap.org/?mlat=48.00248\&amp;mlon=7.84681\#map=19/48.00248/7.84681">
+      Stefan-Meier-Str. 26
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tr>
+   <td colspan="3">
+    <h3>
+     4c. Kolloquien und weitere Veranstaltungen
+    </h3>
+   </td>
+  </tr>
+  <tbody class="course_snip" id="17_DidS">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Didaktisches Seminar
+    </td>
+    <td rowspan="2">
+     K. Böcherer-Linder, E. Kuwert
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Di 18:30-20:00, HS II,
+     <a href="https://www.openstreetmap.org/?mlat=48.00233\&amp;mlon=7.84788\#map=19/48.00233/7.84788">
+      Albertstr. 23b
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Etwa ein Termin pro Monat; Programm siehe Webseite.
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="17_Koll">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Kolloquium der Mathematik
+    </td>
+    <td rowspan="2">
+     <i>
+      Organisation:
+     </i>
+     N. Große, A. Martín Pizarro
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Do 15-16, HS II,
+     <a href="https://www.openstreetmap.org/?mlat=48.00233\&amp;mlon=7.84788\#map=19/48.00233/7.84788">
+      Albertstr. 23b
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Zwei Termine im Sommer: 2. Mai und 27. Juni. Nähere Ankündigung per Aushang im Institut!
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="17_KMSc">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Mathematisches Kolloquium für Studierende
+    </td>
+    <td rowspan="2">
+     <i>
+      Organisation:
+     </i>
+     A. Huber-Klawitter, M. Junker, A. Martín Pizarro
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Do 14-15, HS II,
+     <a href="https://www.openstreetmap.org/?mlat=48.00233\&amp;mlon=7.84788\#map=19/48.00233/7.84788">
+      Albertstr. 23b
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+    </td>
+    <td colspan="2">
+     <i>
+      Vortragsreihe für Master-Studierende, fortgeschrittene Bachelor-Studierende und Doktorand:inn:en. Geplante Termine im Sommer: 6. Juni und 4. Juli. Nähere Informationen folgen noch!
+     </i>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+  <tbody class="course_snip" id="17_FDM">
+   <tr>
+    <td rowspan="2">
+     <div style="white-space: nowrap">
+     </div>
+    </td>
+    <td>
+     Seminar über Datenanalyse und Modellbildung
+    </td>
+    <td rowspan="2">
+     H. Binder, P. Pfaffelhuber, A. Rohde, T. Schmidt, J. Timmer
+    </td>
+   </tr>
+   <tr>
+    <td>
+     Fr 12-13, SR 404,
+     <a href="https://www.openstreetmap.org/?mlat=48.00065\&amp;mlon=7.84591\#map=19/48.00065/7.84591">
+      Ernst-Zermelo-Straße 1
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td colspan="3">
+    </td>
+   </tr>
+  </tbody>
+ </table>
 </div>
