@@ -50,3 +50,13 @@ Gerne mit Links zu konkreten Fragen im FAQ!
 
 
 
+Lehrveranstaltungen:
+
+Button oben für "Übersicht über vergangene Semester", "Kommentare (de/en")
+
+für jede Veranstaltung:
+Button für Inhalt
+Button für Vorkenntnisse + Verwenbar ist folgenden Modulen
+
+MSc Studiengänge gehen gerade nicht.
+FAQ linksbündig

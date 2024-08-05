@@ -78,7 +78,7 @@
                   style="{{ item['image'][0]['stylemonitor'] }}"
                 />
               </div>
-              {% endif %} {% else %} {% if item['image']['file'] != '' %}
+              {% endif %} {% else %} {% if item['image'] != [] %}
               <div class="col-sm-{{ item['image'][0]['widthmonitor']}} text-left">
                 <img
                   src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
