@@ -360,7 +360,7 @@ def showmitfaq(lang, show =""):
 
 @app.route("/<lang>/lehrende/<unterseite>")
 @app.route("/<lang>/lehrende/<unterseite>/<anchor>")
-@fortivpn()
+#@fortivpn()
 def showlehrende(lang, unterseite ="", anchor = ""):
     if unterseite == "zertifikat":
         anchor = "what"
