@@ -49,152 +49,152 @@ endblock %} {% block content %} {% if lang == "de" %}
       </a>
     </div>
   </div>
-  {% else %}
-  <div class="container" id="inhalt">
-    <h1>FAQ</h1>
-    <p>
-      The FAQ consists of questions that are repeatedly asked in the counseling
-      of the study programs at the Mathematical Institute. Should further
-      questions arise, you are welcome to contact the
-      <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
-        Student Advisory Service of the Institute of Mathematics </a
-      >. Here are a few keywords:
-    </p>
-  </div>
+</div>
+{% else %}
+<div class="container" id="inhalt">
+  <h1>FAQ</h1>
+  <p>
+    The FAQ consists of questions that are repeatedly asked in the counseling of
+    the study programs at the Mathematical Institute. Should further questions
+    arise, you are welcome to contact the
+    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+      Student Advisory Service of the Institute of Mathematics </a
+    >. Here are a few keywords:
+  </p>
+</div>
 
-  <div class="container text-end">
-    <div class="row">
-      <div class="col">
-        <a
-          href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6b"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Registering for my exam does not work
-        </a>
-        <a
-          href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f84"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Orientation achievement
-        </a>
-        <a
-          href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f7e"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Exam registration
-        </a>
-        <a
-          href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6c"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Exam and sickness
-        </a>
-      </div>
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <a
+        href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6b"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Registering for my exam does not work
+      </a>
+      <a
+        href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f84"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Orientation achievement
+      </a>
+      <a
+        href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f7e"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Exam registration
+      </a>
+      <a
+        href="/en/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6c"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Exam and sickness
+      </a>
     </div>
+  </div>
+</div>
+{% endif %}
+<div class="container">
+  <div class="row g-0 py-1 row-cols-4 row-cols-lg-6">
+    <!-- <div class="dropdown">
+    <button
+      class="btn btn-primary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      style="background-color: #344a9a"
+    >
+      {% if lang == "de" %}Studiengang{% else %}Study program{% endif %}
+    </button>
+  </div>-->
+    {% if show != 'all' %}
+    <a
+      class="action"
+      href="{{ url_for('showstufaq', lang = lang, show = 'all') }}"
+    >
+      <button class="btn btn-primary" style="background-color: #344a9a">
+        {% if lang == "de" %}Alles ausklappen{% else %} Expand all {% endif %}
+      </button></a
+    >
+    {% else %}
+    <a
+      class="action"
+      href="{{ url_for('showstufaq', lang = lang, show = '') }}"
+    >
+      <button class="btn btn-primary">
+        {% if lang == "de" %}Alles einklappen{% else %} Collapse all {% endif %}
+      </button></a
+    >
     {% endif %}
-    <div class="container">
-      <div class="row g-0 py-1 row-cols-4 row-cols-lg-6">
-        <!-- <div class="dropdown">
+  </div>
+</div>
+<div class="container">
+  <div class="accordion" id="accordionFAQtags">
+    {% for cat_id in cat_ids %}
+    <div class="accordion-item">
+      <h3 class="accordion-header">
         <button
-          class="btn btn-primary dropdown-toggle"
+          aria-controls="{{cat_id}}"
+          aria-expanded="{% if showcat == 'all' or showcat == cat_id %}true{% else %}false{% endif %}"
+          class="accordion-button {% if showcat != 'all' and showcat != cat_id %}collapsed{% endif %}"
+          data-bs-target="#{{cat_id}}"
+          data-bs-toggle="collapse"
           type="button"
-          id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          style="background-color: #344a9a"
         >
-          {% if lang == "de" %}Studiengang{% else %}Study program{% endif %}
+          <h3 class="h5">{{ names_dict[cat_id] }}</h3>
         </button>
-      </div>-->
-        {% if show != 'all' %}
-        <a
-          class="action"
-          href="{{ url_for('showstufaq', lang = lang, show = 'all') }}"
-        >
-          <button class="btn btn-primary" style="background-color: #344a9a">
-            {% if lang == "de" %}Alles ausklappen{% else %} Expand all {% endif
-            %}
-          </button></a
-        >
-        {% else %}
-        <a
-          class="action"
-          href="{{ url_for('showstufaq', lang = lang, show = '') }}"
-        >
-          <button class="btn btn-primary">
-            {% if lang == "de" %}Alles einklappen{% else %} Collapse all {%
-            endif %}
-          </button></a
-        >
-        {% endif %}
-      </div>
-    </div>
-    <div class="accordion" id="accordionFAQtags">
-      {% for cat_id in cat_ids %}
-      <div class="accordion-item">
-        <h3 class="accordion-header">
-          <button
-            aria-controls="{{cat_id}}"
-            aria-expanded="{% if showcat == 'all' or showcat == cat_id %}true{% else %}false{% endif %}"
-            class="accordion-button {% if showcat != 'all' and showcat != cat_id %}collapsed{% endif %}"
-            data-bs-target="#{{cat_id}}"
-            data-bs-toggle="collapse"
-            type="button"
-          >
-            <h3 class="h5">{{ names_dict[cat_id] }}</h3>
-          </button>
-        </h3>
-        <div
-          aria-labelledby="{{cat_id}}"
-          class="accordion-collapse collapse {% if showcat == 'all' or showcat == cat_id %}show{% endif %}"
-          data-bs-parent="#accordionFAQtags"
-          id="{{cat_id}}"
-        >
-          <div class="accordion-body">
-            <div class="accordion" id="accordion{{cat_id}}">
-              {% for qa in qa_pairs[cat_id] %}
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button
-                    aria-controls="{{qa[0]}}"
-                    aria-expanded="{% if show == 'all' or show == qa[0] %}true{% else %}false{% endif %}"
-                    class="accordion-button {% if show != 'all' and show != qa[0] %}collapsed{% endif %}"
-                    data-bs-target="#{{qa[0]}}"
-                    data-bs-toggle="collapse"
-                    type="button"
-                  >
-                    <h3 class="h5" id="{{qa[0]}}_q">{{ qa[1]|markdown }}</h3>
-                  </button>
-                </h3>
-                <div
-                  aria-labelledby="{{qa[0]}}"
-                  class="accordion-collapse collapse {% if show == 'all' or show == qa[0] %}show{% endif %}"
-                  data-bs-parent="#accordion{{cat_id}}"
-                  id="{{qa[0]}}"
+      </h3>
+      <div
+        aria-labelledby="{{cat_id}}"
+        class="accordion-collapse collapse {% if showcat == 'all' or showcat == cat_id %}show{% endif %}"
+        data-bs-parent="#accordionFAQtags"
+        id="{{cat_id}}"
+      >
+        <div class="accordion-body">
+          <div class="accordion" id="accordion{{cat_id}}">
+            {% for qa in qa_pairs[cat_id] %}
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="{{qa[0]}}"
+                  aria-expanded="{% if show == 'all' or show == qa[0] %}true{% else %}false{% endif %}"
+                  class="accordion-button {% if show != 'all' and show != qa[0] %}collapsed{% endif %}"
+                  data-bs-target="#{{qa[0]}}"
+                  data-bs-toggle="collapse"
+                  type="button"
                 >
-                  <div class="accordion-body">{{ qa[2]|markdown }}</div>
-                </div>
+                  <h3 class="h5" id="{{qa[0]}}_q">{{ qa[1]|markdown }}</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="{{qa[0]}}"
+                class="accordion-collapse collapse {% if show == 'all' or show == qa[0] %}show{% endif %}"
+                data-bs-parent="#accordion{{cat_id}}"
+                id="{{qa[0]}}"
+              >
+                <div class="accordion-body">{{ qa[2]|markdown }}</div>
               </div>
-              {% endfor %}
             </div>
+            {% endfor %}
           </div>
         </div>
       </div>
-      {% endfor %}
     </div>
+    {% endfor %}
   </div>
-  {% endblock %} {% block js %}
-  <script>
-    var element = document.getElementById("{{show}}_q");
-    element.scrollIntoView();
-  </script>
-  {% endblock %}
 </div>
+{% endblock %} {% block js %}
+<script>
+  var element = document.getElementById("{{show}}_q");
+  element.scrollIntoView();
+</script>
+{% endblock %}

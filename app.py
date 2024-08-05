@@ -327,9 +327,9 @@ def showstudiendekanat(lang, unterseite = ""):
 #####################################
 
 # show ist entweder "", oder "all" oder eine id für ein qa-Paar
-@app.route("/<lang>/intern/")
-@app.route("/<lang>/intern/faq/")
-@app.route("/<lang>/intern/faq/<show>")
+@app.route("/<lang>/lehrende/")
+@app.route("/<lang>/lehrende/faq/")
+@app.route("/<lang>/lehrende/faq/<show>")
 def showmitfaq(lang, show =""):
     try:
         cat_ids, names_dict, qa_pairs = util_faq.get_mit_faq(lang)
@@ -344,12 +344,20 @@ def showmitfaq(lang, show =""):
         showcat = util_faq.get_mit_cat(show)
     return render_template("lehrende/index.html", lang=lang, cat_ids = cat_ids, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
 
+@app.route("/<lang>/lehrende/<unterseite>")
+@app.route("/<lang>/lehrende/<unterseite>/<anchor>")
+def showlehrende(lang, unterseite ="", anchor = ""):
+    if unterseite == "zertifikat":
+        anchor = "what"
+        filenames = ["lehrende/zertifikat-hochschullehre.html"]
+    return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
 
 
 ###############
 ## Downloads ##
 ###############
 
+# anchor kann sein: formulare_mitarbeiter
 @app.route("/<lang>/downloads/")
 @app.route("/<lang>/downloads/<anchor>")
 def showdownloads(lang, anchor=""):

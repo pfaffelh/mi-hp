@@ -30,7 +30,7 @@
           FAQ
         </a>
         <a
-          href="{{ url_for('showpruefungsamt', lang=lang, unterseite='modulplan', anchor='mscdata') }}"
+          href="{{ url_for('showstudiendekanat', unterseite = 'modulplan', lang=lang, anchor='mscdata') }}"
           class="btn btn-primary"
           role="button"
           aria-disabled="true"
@@ -173,7 +173,7 @@
         id="modulplanContent"
       >
         <div class="accordion-body" id="modulplan">
-          {% include "/studiendekanat/belegung_mscdata.html" %}
+          {% include "/studiendekanat/modulplan_mscdata.html" %}
         </div>
       </div>
     </div>

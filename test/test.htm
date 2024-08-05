@@ -1,0 +1,2328 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+       Mathematisches Institut, Universität Freiburg, e 
+    </title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      id="unitheme-style-css"
+      href="/static/css/vorlesungsverzeichnis.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="unitheme-style-css"
+      href="/static/css/unitheme.css?ver=2.0.02"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="/static/css/ufr-colors.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script></script>
+    <link href="/static/css/ufr-colors.css" type="text/css" media="all" />
+    <script>
+      $('[data-toggle="tooltip"]').tooltip({
+        template:
+          '<div class="tooltip tooltip-custom"><div class="title">Test</div><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+      });
+    </script>
+    <style>
+      body {
+        font-size: 16px;
+        line-height: 1.94;
+        hyphens: auto;
+      }
+      .nav-link {
+        display: block;
+        white-space: nowrap;
+      }
+      .no-envelope::before {
+        content: "" !important;
+      }
+      .btn:focus {
+        outline: none;
+        box-shadow: none;
+      }
+      @media (min-width: 768px) {
+        .container-small {
+          width: 300px;
+        }
+        .container-large {
+          width: 970px;
+        }
+      }
+      @media (min-width: 992px) {
+        .container-small {
+          width: 500px;
+        }
+        .container-large {
+          width: 1170px;
+        }
+      }
+      @media (min-width: 1200px) {
+        .container-small {
+          width: 700px;
+        }
+        .container-large {
+          width: 1500px;
+        }
+      }
+      .container-small,
+      .container-large {
+        max-width: 100%;
+      }
+      .carousel-image {
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+      }
+
+      .navbar-nav li:hover > ul.dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-submenu {
+        position: relative;
+      }
+
+      .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -6px;
+      }
+
+      /* rotate caret on hover */
+      .dropdown-menu > li > a:hover:after {
+        text-decoration: underline;
+        transform: rotate(-45deg);
+      }
+      .dropdown-submenu.btn:focus-within {
+        background-color: white;
+      }
+      .dropdown-toggle::after {
+        display: inline-block;
+        width: 0.5em;
+        height: 0.5em;
+        margin: -0.3em 0 0 0.4em;
+        vertical-align: middle;
+        content: "";
+        border: 0.3em solid;
+        border-width: 0 0.15em 0.15em 0;
+        transform: rotateZ(45deg);
+      }
+      .accordion-button::after {
+        background-image: url("/static/images/plus-svgrepo-com.svg");
+      }
+      .accordion-button:not(.collapsed)::after {
+        background-image: url("/static/images/cross-svgrepo-com.svg");
+      }
+      .accordion-button:not(.collapsed) {
+        background-color: #fffae5;
+        color-scheme: #fffae5;
+      }
+      .accordion-button:hover {
+        background-color: #fffae5;
+        outline: none;
+      }
+      .table-borderless td,
+      .table-borderless th {
+        border: 0;
+      }
+      .btn-primary,
+      .btn-primary:hover,
+      .btn-primary:active,
+      .btn-primary:visited {
+        background-color: #344a9a !important;
+        color: white !important;
+      }
+    </style>
+    
+    <!-- Add additional styles here -->
+    
+  </head>
+
+  <body class="bg-white">
+    <header class="bg-ufr-darkblue">
+      <nav
+        id="site-navigation"
+        class="navbar navbar-expand-xl flex"
+        aria-label="Oberes Menü"
+      >
+        <div class="container-fluid">
+          <div class="d-flex flex-grow-1">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-white me-4" href="#"></a>
+              </li>
+              <li class="nav-item d-flex align-items-center">
+                <a class="navbar-brand" href="#">
+                  <img
+                    src="/static/images/ufr-logo-white.svg"
+                    alt="Albert-Ludwigs-Universität Freiburg"
+                    width="339"
+                    height="55"
+                  />
+                </a>
+              </li>
+              <li class="nav-item d-none d-xl-block align-self-center">
+                <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
+              </li>
+              <li class="nav-item d-none d-xl-block mr-4">
+                <h2>
+                  <a
+                    href="https://www.math.uni-freiburg.de"
+                    class="nav-link text-white"
+                    href="#"
+                  >
+                    Mathematisches Institut</a
+                  >
+                </h2>
+              </li>
+              <li class="nav-item d-none d-xl-block align-self-center">
+                <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
+              </li>
+              <li class="nav-item d-none d-xl-block mr-4">
+                <h2>
+                  <a
+                    href="/de/"
+                    class="nav-link text-white"
+                    href="#"
+                  >
+                    Studium und Lehre</a
+                  >
+                </h2>
+              </li>
+              <li class="nav-item d-none d-xl-block align-self-center">
+                <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
+              </li>
+            </ul>
+            <div
+              class="align-self-center justify-content-end"
+              id="navbarSupportedContentRight"
+            >
+              <ul class="navbar-nav">
+                <li class="nav-item d-flex align-items-center">
+                  
+                  <div class="text-white fw-bold ms-2 me-2">deutsch</div>
+                  
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                  <a
+                    class="text-white ms-2 me-2"
+                    href='/en/studiendekanat/faq/'
+                    >englisch</a
+                  >
+                  
+                </li>
+                <li><div>" "</div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+     <header class="navbar navbar-expand-xl bg-ufr-blue">
+  <nav class="navbar navbar-dark flex">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link text-white me-4" href="#"></a>
+          </li>
+          <li class="nav-item px-4">
+            <div>
+              <a
+                class="nav-link text-white me-4"
+                role="button"
+                href="/de/interesse/"
+              >
+                <button
+                  class="text-black bg-ufr-yellow-60"
+                  style="border-color: #004a99; border-radius: 12px"
+                >
+                  <i
+                    class="fa fa-circle-right fa-4 text-black"
+                    aria-hidden="true"
+                  ></i>
+                  Studieninteressierte
+                </button></a
+              >
+            </div>
+          </li>
+          <li class="nav-item">
+            <div>
+              <a
+                class="nav-link text-white me-4"
+                role="button"
+                href="/de/anfang/"
+              >
+                <button
+                  class="text-black bg-ufr-yellow-60"
+                  style="border-color: #004a99; border-radius: 12px"
+                >
+                  <i
+                    class="fa fa-circle-right fa-4 text-black"
+                    aria-hidden="true"
+                  ></i>
+                  Studienanfänger
+                </button></a
+              >
+            </div>
+          </li>
+          <li class="nav-item dropdown px-3">
+            <a
+              class="nav-link dropdown-toggle active"
+              href="/de/studiengaenge/aktuell"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Studiengänge</a
+            >
+            <ul class="dropdown-menu" data-bs-theme="light">
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiengaenge/bsc/"
+                  >Bachelor of Science Mathematik</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiengaenge/2hfb/"
+                  >Zwei-Hauptfächer Bachelor</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiengaenge/msc/"
+                  >Master of Science Mathematik</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiengaenge/msc_data/"
+                  ><!-- <button type="button" class="btn btn-primary btn-sm">
+                    NEU
+                  </button>-->
+                  Master of Science Mathematics in Data and Technology</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiengaenge/med/"
+                  >Master of Education</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiengaenge/med_erw/"
+                  >Master of Education Erweiterungsfach</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiengaenge/med_dual/news/"
+                  ><!-- <button type="button" class="btn btn-primary btn-sm">
+                    NEU
+                  </button>-->
+                  Masterstudiengang Lehramt Gymnasium – dual</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiengaenge/promotion/"
+                  >Promotion</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown px-3">
+            <a
+              class="nav-link dropdown-toggle active"
+              href="/de/lehrveranstaltungen/"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Lehrveranstaltungen</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              
+              <li class="dropdown-submenu">
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/lehrveranstaltungen/2024SS"
+                  > laufendes Semester</a
+                >
+              </li>
+               
+              <li class="dropdown-submenu">
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/lehrveranstaltungen/2024WS"
+                  >kommendes Semester</a
+                >
+              </li>
+              
+            </ul>
+          </li>
+          <li class="nav-item dropdown px-3">
+            <a
+              class="nav-link dropdown-toggle active"
+              href="/de/studiendekanat/faq/"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Prüfungsamt und Studienberatung</a
+            >
+            <ul class="dropdown-menu" data-bs-theme="light">
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/"
+                  >Studienberatung</a
+                >
+              </li>
+              <!--              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/warum_mathematik/"
+                  >Warum Mathematik?</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/matheinfreiburg/"
+                  >Mathematik in Freiburg</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/schwerpunktgebiete/"
+                  >Schwerpunktgebiete</a
+                >
+              </li>-->
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/pruefungsamt/"
+                  >Prüfungsamt</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/termine/"
+                  >Fristen und Termine</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/calendar/"
+                  >Prüfungskalender</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/downloads/pruefungsamt"
+                  >Formulare und Anträge</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/ausland/"
+                  >Studieren im Ausland</a
+                >
+              </li>
+            </ul>
+          </li>
+          <!--              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/modulhandbuecher/"
+                  >Modulhandbücher</a
+                >
+              </li>
+          <li class="nav-item px-3">
+            <a
+              class="nav-link text-white"
+              href="/de/studiendekanat/faq/"
+              >FAQ</a
+            >
+          </li>-->
+          <li class="nav-item px-3">
+            <a
+              class="nav-link dropdown-toggle active"
+              href="/de/intern/faq/"
+              id="navbarDropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >für Lehrende</a
+            >
+            <ul class="dropdown-menu" data-bs-theme="light">
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/"
+                  >Lehrorganisation</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/de/studiendekanat/"
+                  >Lehrzertifikat</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item px-3">
+            <a
+              class="nav-link text-white"
+              href="/de/downloads/"
+              >Downloads</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header> 
+    <br />
+     
+<div class="container" id="inhalt">
+  <h1>FAQ</h1>
+  <p>
+    Das FAQ besteht aus Fragen, die immer wieder in der Beratung der
+    Studiengänge des Mathematischen Instituts gestellt werden. Sollten weitere
+    Fragen auftauchen, können Sie sich gerne an die
+    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+      Studienberatung des Mathematischen Instituts
+    </a>
+    wenden. Hier sind ein paar Stichworte:
+  </p>
+</div>
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <a
+        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6b"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Prüfungsanmeldung funktioniert nicht
+      </a>
+      <a
+        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f84"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Orientierungsleistung
+      </a>
+      <a
+        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f7e"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Prüfungsanmeldung
+      </a>
+      <a
+        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6c"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Krankheit bei Prüfung
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row g-0 py-1 row-cols-4 row-cols-lg-6">
+    <!-- <div class="dropdown">
+    <button
+      class="btn btn-primary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      style="background-color: #344a9a"
+    >
+      Studiengang
+    </button>
+  </div>-->
+    
+    <a
+      class="action"
+      href="/de/studiendekanat/faq/all"
+    >
+      <button class="btn btn-primary" style="background-color: #344a9a">
+        Alles ausklappen
+      </button></a
+    >
+    
+  </div>
+</div>
+<div class="container">
+  <div class="accordion" id="accordionFAQtags">
+    
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          aria-controls="stu_kat_66ae8e6510f040b07f8c7f5f"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#stu_kat_66ae8e6510f040b07f8c7f5f"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Allgemeines</h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="stu_kat_66ae8e6510f040b07f8c7f5f"
+        class="accordion-collapse collapse "
+        data-bs-parent="#accordionFAQtags"
+        id="stu_kat_66ae8e6510f040b07f8c7f5f"
+      >
+        <div class="accordion-body">
+          <div class="accordion" id="accordionstu_kat_66ae8e6510f040b07f8c7f5f">
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f89"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f89"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f89_q"><p>Wie sind die aktuellen und kommenden Vorlesungszeiten?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f89"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f5f"
+                id="qa_66ae8e6510f040b07f8c7f89"
+              >
+                <div class="accordion-body"><p>Diese Information finden Sie auf den Seiten der Universität: <a href="https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten">Link</a></p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f6f"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f6f"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f6f_q"><p>Was ist eine Studienleistung, was ist eine Prüfungsleistung?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f6f"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f5f"
+                id="qa_66ae8e6510f040b07f8c7f6f"
+              >
+                <div class="accordion-body"><p>In allen Prüfungsordnungen wird zwischen diesen beiden Kategorien unterschieden. Meist ist es so, dass Prüfungsleistungen klassische Prüfungsformate wie <em>Klausur</em>, <em>mündliche Prüfung</em>, <em>Vortrag</em> haben. Studienleistungen sind meist etwas niederschwellig, etwa <em>Erreichen von mindestens 50% der maximal auf den Übungsblättern zu erzielenden Punkte</em>. </p>
+
+<p>Studienleistungen müssen bestanden werden, um ein Modul abzuschließen, gehen jedoch nicht in die Benotung ein. Die Noten der Prüfungsleistungen werden auf der Leistungsübersicht in HISInOne angezeigt.</p>
+</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          aria-controls="stu_kat_66ae8e6510f040b07f8c7f65"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#stu_kat_66ae8e6510f040b07f8c7f65"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">HisInOne</h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="stu_kat_66ae8e6510f040b07f8c7f65"
+        class="accordion-collapse collapse "
+        data-bs-parent="#accordionFAQtags"
+        id="stu_kat_66ae8e6510f040b07f8c7f65"
+      >
+        <div class="accordion-body">
+          <div class="accordion" id="accordionstu_kat_66ae8e6510f040b07f8c7f65">
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f6b"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f6b"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f6b_q"><p>Ich will mich zu einer Prüfung in x in HISInOne anmelden, aber es funktioniert nicht. Was kann ich tun?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f6b"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f65"
+                id="qa_66ae8e6510f040b07f8c7f6b"
+              >
+                <div class="accordion-body"><p>Testen Sie stets rechtzeitig (d.h. spätestens zwei Wochen vor Ende der Anmeldefrist), ob die Anmeldung funktioniert, und wenden Sie sich andernfalls umgehend an das <a href="pr">Prüfungsamt</a> oder die Studiengangkoordination. Typische Schwierigkeiten:</p>
+
+<ul>
+<li>Gehen Sie zur Anmeldung von Prüfungen und Registrierung von Studienleistungen über den Studienplaner, nicht über das Vorlesungsverzeichnis!</li>
+<li>Die Möglichkeit der Registrierung von Studienleistungen in fachfremden Wahlmodulen wird nur nach Bedarf eingerichtet, ebenso Anmeldung bzw. Registrierung in Sondersituationen. Wenden Sie sich rechtzeitig an die Studiengangkoordination bzw. das Prüfungsamt!</li>
+<li>Falls eine Veranstaltung in mehreren Modulen verwendet werden kann, muss die Anmeldemöglichkeit ggf. erst eingeblendet werden. Die Belegung einer Veranstaltung in einem Modul blockiert zudem die Prüfungsanmeldung bzw. Studienleistungsregistrierung anderer Veranstaltungen in diesem Modul.</li>
+</ul>
+</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          aria-controls="stu_kat_66ae8e6510f040b07f8c7f60"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#stu_kat_66ae8e6510f040b07f8c7f60"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Belegung von Veranstaltungen</h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="stu_kat_66ae8e6510f040b07f8c7f60"
+        class="accordion-collapse collapse "
+        data-bs-parent="#accordionFAQtags"
+        id="stu_kat_66ae8e6510f040b07f8c7f60"
+      >
+        <div class="accordion-body">
+          <div class="accordion" id="accordionstu_kat_66ae8e6510f040b07f8c7f60">
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f8f"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f8f"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f8f_q"><p>Wiederholung von Veranstaltungen</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f8f"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f60"
+                id="qa_66ae8e6510f040b07f8c7f8f"
+              >
+                <div class="accordion-body"><p>Vorlesungen und Übungen dürfen beliebig oft besucht werden; eine Belegung im Vorsemester verhindert normalerweise nicht eine erneute Belegung. Falls dies doch der Fall sein sollte, melden Sie sich bitte bei der Studiengangkoordination!</p>
+
+<p>Übungen dürfen auch wiederholt werden, wenn die Studienleistung in den Übungen berets bestanden ist. Als Vorbereitung für eine Klausur ist dies – insbesondere im Wiederholungsfall – sogar sehr zu raten. </p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f8e"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f8e"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f8e_q"><p>&quot;Ent-Belegung&quot; von Veranstaltungen</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f8e"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f60"
+                id="qa_66ae8e6510f040b07f8c7f8e"
+              >
+                <div class="accordion-body"><p>Während der Belegphase kann man auf gleichem Weg eine Belegung wieder rückgängig machen. Da eine Belegung im Regelfall keine negativen Auswirkungen hat, gibt es darüber hinaus kein formalisiertes Verfahren, um eine Belegung rückgängig zu machen.</p>
+
+<p>Eine Ausnahme stellen BOK-Kurse dar: Belegungen ohne Teilnahme können hier zu Sperrungen führen. Beachten Sie für diesen Fall die <a href="https://www.zfs.uni-freiburg.de/de/bok-sq-mpk-teilnahmeinformationen-und-bedingungen/bok-sq-mpk-teilnahmeinformationen-und-bedingungen">Teilnahmebedingungen</a> des ZfS und die Hinweise zur <a href="https://www.zfs.uni-freiburg.de/de/belegung-und-abmeldung">Abmeldung</a>.</p>
+
+<p>Bei kleinen Veranstaltungen (wie auch Tutoraten) ist es allerdings ein Gebot der Höflichkeit, den Dozenten/die Dozentin darüber zu informieren, wennn man sich im laufenden Lehrbetrieb entscheidet, die Veranstaltung nicht mehr zu besuchen.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f8d"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f8d"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f8d_q"><p>Verpflichte ich mich mit der Belegung einer Veranstaltung zu einer Leistung?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f8d"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f60"
+                id="qa_66ae8e6510f040b07f8c7f8d"
+              >
+                <div class="accordion-body"><p>Die Belegung einer Veranstaltung ist lediglich die Äußerung des Wunsches, daran teilzunehmen. Sie verpflichtet nicht dazu, dies auch zu tun. Bei ZfS-Kursen kann die Nicht-Teilnahme allerdings zu zeitweiser Sperrung führen, siehe Teilnahmebedingungen des ZfS.</p>
+
+<p>In manchen Veranstaltungen ist eine Belegung erwünscht oder sogar erforderlich, um an der Veranstaltung teilnehmen zu dürfen. Belegungen sind außerdem nötig für:
+- die Verteilung auf Übungsgruppen;
+- die Teilnahme an der online-Evaluation von Veranstaltungen;
+- ggf. um automatisch in einen ILIAS-Kurs zur Veranstaltung übernommen zu werden.</p>
+
+<p>Falls die Veranstaltung in einem Studiengang in mehreren Modulen verwendet werden kann, muss für die Belegung bereits ein Modul ausgesucht werden. Dieses gewählte Modul ist dann in der Regel durch die Belegung für die Anmeldung von Prüfungen bzw. Registrierung von Studienleistungen anderer Veranstaltungen blockiert. Im M.Sc.-Studiengang ist daher ein eigene &quot;Belegkonto&quot; für Belegungen eingerichtet, um sich nicht bei der Belegung bereits auf ein Modul festlegen zu müssen. In anderen Fällen können Sie sich an die Studiengangkoordination oder das Prüfungsamt wenden, um Belegungen umzubuchen.</p>
+
+<p>Im B.Sc. wird durch Belegungen noch kein (Standard-)Anwendungsfach festgelegt, sondern erst durch Anmeldungen von Prüfungen oder Registrieren von Studienleistungen. Belegungen können durch die Studiengangkoordination oder das Prüfungsamt umgebucht werden. </p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f8c"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f8c"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f8c_q"><p>Was ist der Unterschied zwischen einer Veranstaltung und Studien-/Prüfungsleistungen?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f8c"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f60"
+                id="qa_66ae8e6510f040b07f8c7f8c"
+              >
+                <div class="accordion-body"><p>Veranstaltungen werden <em>belegt</em>, Prüfungsleistungen <em>angemeldet</em> und Studienleistungen <em>registriert</em>. </p>
+
+<p>Der Status einer Veranstaltung erscheint nicht auf der Leistungsübersicht, kann aber online im HISinOne-Account eingesehen werden: 
+BW steht für &#39;Belegwunsch abgegeben &#39;, TA für &#39;Teilnahme akzeptiert &#39;, TNA für &#39;Teilnahme abgelehnt &#39;. </p>
+
+<p>Die Nummern von Mathematik-Veranstaltungen in HISinOne beginnen mit 07LE23V- (Vorlesungen), 07LE23Ü- (Übungen), 07LE23PÜ- (Praktische Übungen) bzw. 07LE23S- (Seminare u.Ä.). </p>
+
+<p>Zum Belegen in HISinOne einloggen, über &quot;Studienangebot &gt; Veranstaltungen suchen&quot; zur Veranstaltung gehen, dort findet sich im Normalfall der Belegbutton. Veranstaltungen, die nur für spezifische Studiengänge freigegeben sind, kann man nur über den Studienplaner belegen (Anleitung im HISinOne-Wiki).</p>
+
+<p>Für (Pro-)Seminare sind normalerweise keine Belegungen vorgesehen und möglich; häufig auch für Übungen zu kleinen Vorlesungen nicht. </p>
+
+<p><em>Eine Veranstaltungsbelegung ersetzt nicht die Prüfungsanmeldung oder Studienleistungsregistrierung!</em></p>
+</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          aria-controls="stu_kat_66ae8e6510f040b07f8c7f61"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#stu_kat_66ae8e6510f040b07f8c7f61"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Studien- und Prüfungsleistungen</h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="stu_kat_66ae8e6510f040b07f8c7f61"
+        class="accordion-collapse collapse "
+        data-bs-parent="#accordionFAQtags"
+        id="stu_kat_66ae8e6510f040b07f8c7f61"
+      >
+        <div class="accordion-body">
+          <div class="accordion" id="accordionstu_kat_66ae8e6510f040b07f8c7f61">
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f8b"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f8b"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f8b_q"><p>Welche Anmeldefristen gibt es?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f8b"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f8b"
+              >
+                <div class="accordion-body"></div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f8a"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f8a"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f8a_q"><p>Ich studiere Lehramt nach GymPO – Infos und Terminpläne des Landeslehrerprüfungsamtes</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f8a"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f8a"
+              >
+                <div class="accordion-body"><p>Alle verbeamteten Professoren des Mathematischen Instituts sind als Prüfer für das Staatsexamen im Fach Mathematik zugelassen. Die Staatsexamensprüfung wird von zwei oder drei Prüfern abgenommen, die Sie sich im Rahmen der Kapazitäten der einzelnen Prüfer selbst aussuchen können (frühzeitige Absprache ist sinnvoll). Den Vorsitz der Prüfungskommission übernimmt ein Vertreter des Landeslehrerprüfungsamts.</p>
+
+<p>Die Prüfung richtet sich nach den <a href="https://www.math.uni-freiburg.de/lehre/dokumente/GymPO-2010-Mathematik.pdf">Bestimmungen der GymPO zum Fach Mathematik (pdf)</a>. Als Grundlagen- und Überblickswissen wird über die Grundvorlesungen Analysis I und II und Lineare Algebra I und II geprüft. Darüber hinaus müssen pro gewähltem Schwerpunktgebiet (drei im Hauptfach, zwei im Beifach) 4 SWS an Vorlesungsstoff gewählt werden. Bei den meisten typischerwesie als Prüfungsstoff in Frage kommenden 4-stündigen Vorlesungen ergibt sich die Zuordnung zu einem der fünf Teilbereiche aus dem Vorlesungstitel. Außerdem gelten die folgenden Regeln:</p>
+
+<ul>
+<li>&quot;Funktionentheorie&quot; als Schwerpunktgebiet zählt zum Teilbereich &quot;Analysis&quot;, &quot;Mathematische Logik&quot; zu &quot;Algebra&quot;, &quot;Topologie&quot; wahlweise zu &quot;Algebra&quot;, &quot;Analysis&quot; oder &quot;Geometrie&quot;.</li>
+<li>&quot;Elementargeometrie&quot; und &quot;Mehrfachintegrale&quot; können zusammen als Schwerpunktgebiet im Bereich &quot;Geometrie&quot; geprüft werden.</li>
+<li>Im Erweiterungsbeifach kann auch &quot;Stochastik Teil 1&quot; mit &quot;Mehrfachintegrale&quot; oder mit &quot;Elementargeometrie&quot; zusammen als ein Schwerpunktgebiet geprüft werden.</li>
+</ul>
+
+<p>Das &quot;Grundlagen- und Überblickswissen&quot; wird dabei von allen Prüfern gleichermaßen geprüft, d.h. im Hauptfach (oder Beifach) bekommt ein Prüfer pro Schwerpunktgebiet 20 Minuten (bzw. 22,5 Minuten) Prüfungszeit, von denen jeweils ein Drittel auf das Grundlagen- und Überblickswissen entfällt.</p>
+
+<p>Zuständig für die Staatsexamensprüfung ist das <a href="https://llpa.kultus-bw.de/,Lde/Startseite/Aussenstellen+des+LLPA/beim+Regierungspraesidium+Freiburg">Landeslehrerprüfungsamt</a>, auf dessen Internetseiten Sie auch die Anmeldeformulare und die Anmeldefristen finden.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f86"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f86"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f86_q"><p>Wo finde ich die Prüfungsordnung für meinem Studiengang? </p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f86"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f86"
+              >
+                <div class="accordion-body"><ul>
+<li>Bachelor of Science: <a href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/303#collapse-Satzungen">PO 2021</a></li>
+<li>Polyvalenter Zwei-Hauptfäcerh-Bachelor: <a href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/671#collapse-Satzungen">PO 2021</a></li>
+<li>Master of Science : <a href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/363#collapse-Satzungen">PO 2014</a></li>
+<li>Master of Science Data and Technology: PO 2024 (in Kürze)</li>
+<li>Master of Education : <a href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/715#collapse-Satzungen">PO 2018</a></li>
+<li>M.Ed. als Erweiterungs-„bei“-fach mit 90 ECTS-Punkten: <a href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/747#collapse-Satzungen">PO 2021</a></li>
+<li>M.Ed. als Erweiterungs-„haupt“-fach mit 120 ECTS-Punkten: <a href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/747#collapse-Satzungen">PO 2021</a></li>
+</ul>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f85"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f85"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f85_q"><p>Was passiert, wenn ich die Orientierungsleistung nicht rechtzeitig geschafft habe? (BSc Mathematik, Zwei-Hauptfächer-Bachelor)</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f85"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f85"
+              >
+                <div class="accordion-body"><p>Wenn die Leistungen nicht bis zum Ende des 3. Semesters bestanden sind, werden Sie zwangsexmatrikuliert und können im betroffenen Studiengang  nicht weiter Mathematik studieren.</p>
+
+<p>In begründeten Ausnahmefällen kann ein Antrag auf Verlängerung der Orientierungsprüfungsfrist gestellt werden. Begründete Ausnahmen sind z.B. länger anhaltende Krankheiten oder andere Einschränkungen. Der Antrag wird an den Prüfungsausschuss gestellt und beim Prüfungsamt eingereicht. Die Begründung sollte immer plausibel und nachvollziehbar sein und immer belegt werden können, z.B. mit ärztlichen Attesten.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f84"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f84"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f84_q"><p>Was ist die Orientierungsprüfung im Bachelor of Scinece und Polyvalenten Bachelor? (BSc Mathematik, Zwei-Hauptfächer-Bachelor)</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f84"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f84"
+              >
+                <div class="accordion-body"><h6>Im B.Sc.:</h6>
+
+<p>Die beiden Klausuren zu Analysis I und zu Lineare Algebra I müssen als Orientierungsleistung am Ende des 3. Fachsemesters bestanden sein.</p>
+
+<h6>Im Polyvalenten Bachelor:</h6>
+
+<p>Mindestens eine der beiden Klausuren zu Analysis I oder Lineare Algebra I muss spätestens am Ende des 3. Fachsemesters bestanden sein. Dies gilt auch für Studierende in der Kombination mit Musik / Bildender Kunst, die den Studienplan auf 8 Semester strecken können.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f83"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f83"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f83_q"><p>Wo finde ich die Termine für Klausuren?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f83"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f83"
+              >
+                <div class="accordion-body"><p>Die Klausurtermine werden i.d.R. in der Veranstaltung in HISinOne eingegeben und können dort eingesehen werden. In HISinOne sollten Sie bei Ihren Prüfungen das Datum sehen können, sonst wenden Sie sich bitte ans Prüfungsamt. Eine Übersicht über alle Klausuren eines Semesters finden Sie <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt//klausurliste_oeff.html">hier</a></p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f82"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f82"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f82_q"><p>Kann ich auch aus anderen Gründen als Krankheit von einer Prüfung zurücktreten?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f82"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f82"
+              >
+                <div class="accordion-body"><p>Der Antrag auf Rücktritt von der Prüfung sollte unmittelbar nach Bekanntwerden der Rücktrittsgründe gestellt werden. Zur Genehmigung eines Rücktritts von einer Prüfungsleistung muss ein begründeter Antrag an den Fachprüfungsausschuss gestellt werden, mit geeignetem Nachweis der Gründe. Hierzu wird das Formular <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/formulare/formular-ruecktritt.pdf">„Rücktritt“</a> beim Prüfungsamt eingereicht.</p>
+
+<ul>
+<li>Ausreichende Gründe sind z.B. Krankheit, Beurlaubung wegen Auslandsstudiums, Gleichzeitigkeit mit einer anderen Prüfung.</li>
+<li>Nicht ausreichende Gründe sind z.B. mangelnde Vorbereitung, andere Prüfungen im zeitlichen Umfeld der Prüfung, private Reisen oder Familienfeiern, unspezifische private Probleme, Auslandsstudium innerhalb von Europa ohne Beurlaubung.</li>
+</ul>
+
+<p>Nach einem Rücktritt muss man die Prüfung zum nächstmöglichen Zeitpunkt absolvieren (in der Regel im Folgesemester). Die Anmeldung zum nächsten Prüfungstermin wird vom Prüfungssamt vorgenommen. Über jeden Rücktritt gibt es einen Bescheid per Post.</p>
+
+<p>Studienleistungen fallen nicht unter diese Regelung. Sie können in den meisten Fällen beliebig oft wiederholt werden.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f81"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f81"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f81_q"><p>Wie gebe ich Prüferwünsche für die mündlichen Prüfungen in Analysis und Linearer Algebra ab? (BSc Mathematik, Zwei-Hauptfächer-Bachelor)</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f81"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f81"
+              >
+                <div class="accordion-body"><p>Prüferwünsche für diese Prüfung können auf der dieser <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/prueferwuensche.html">Webseite</a> eingetragen werden. Die Freischaltung für ddie Stimmabgabe erfolgt meist 2-3 Monate vor dem Prüfungszeitraum. Die Prüfzeiträume der einzelnen PrüferInnen werden auf dieser Webseite bekanntgegeben. </p>
+
+<p>Achtung: Die Abgabe der Prüferwünsche über dieses Formular ersetzt nicht die Prüfungsanmeldung über das Campus-Management-System HISinOne. Ohne zugehörige Prüfungsanmeldung werden die hier abgegebenen Prüferwünsche nicht berücksichtigt! </p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f80"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f80"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f80_q"><p>Wie melde ich mich von einer Prüfung ab?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f80"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f80"
+              >
+                <div class="accordion-body"><p>Grundsätzlich gilt: Die Abmeldemöglichkeit besteht nur für den Erstversuch, nicht für Wiederholungsversuche! (Ein genehmigter Rücktritt zählt nicht als Erstversuch, eine nicht angetretene Prüfung ohne genehmigten Rücktritt aber schon.)</p>
+
+<p>Bei Online-Anmeldungen gilt, dass man sich während des <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html">Anmeldezeitraums</a> selbstständig in HISinOne abmelden kann.</p>
+
+<p>Eine Abmeldung ist noch bis 7 Tage vor Prüfungstermin schriftlich im Prüfungsamt möglich, dabei gelten die grundsätzlichen Regeln sowie die Ausnahmen unten.</p>
+
+<p>Die schriftliche Abmeldung muss spätestens am letzten Arbeitstag, der sieben Tage vor der Prüfung liegt, im Prüfungsamt Mathematik eingegangen sein. Als Arbeitstage zählen Montag bis Freitag (ohne Feiertage).</p>
+
+<p>Eine Abmeldung ist nicht möglich bei
+- den mündlichen Modulprüfungen in den Master-Studiengängen (im M.Ed. als Erweiterungsfach nur im Modul   &quot;Mathematische Vertiefung&quot; bzw. &quot;Wissenschaftliches Arbeiten&quot;)
+- Anmeldungen zu einer Abschlussarbeit
+- Seminaren und Proseminaren (Abmeldung nur im vorgezogenen <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html">Anmeldezeitraum</a> möglich)</p>
+
+<p>Eine Abmeldung setzt in den Stand zurück, als wäre man nie angemeldet gewesen. Möchte man die Prüfung zu einem späteren Zeitpunkt ablegen, muss man sich erneut und zu den vorgesehenen Fristen anmelden. Eine Teilnahme an einer Wiederholungsprüfung ist typischerweise nicht möglich.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f7f"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f7f"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f7f_q"><p>Welche Studien- und Prüfungsleistungen müssen wie angemeldet werden?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f7f"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f7f"
+              >
+                <div class="accordion-body"><p>Diese Informationen finden Sie auf den Informationsseiten der einzelnen Studiengänge unter „Studienlan“:</p>
+
+<ul>
+<li><p><a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2021.html">Bachelor of Science PO 2021</a></p></li>
+<li><p><a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/bsc-2012.html">Bachelor of Science PO 2012</a></p></li>
+<li><p><a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/2hfb-2021.html">Polyvalenter Zwei-Hauptfächer-Bachelor PO 2021</a></p></li>
+<li><p><a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html">Master of Science PO 2014</a></p></li>
+<li><p>Master of Science Data and Technology PO 2024: in Kürze verfügbar</p></li>
+<li><p><a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-2018.html">Master of Education PO 2018</a></p></li>
+<li><p><a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/med-erweiterung-2021.html">Master of Education als Erweiterungsfach PO 2021</a></p></li>
+</ul>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f7e"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f7e"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f7e_q"><p>Wie melde ich mich für eine Prüfung an - Kurzanleitung</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f7e"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f7e"
+              >
+                <div class="accordion-body"><p>In der Regel muss man sich zu den Prüfungen in HISinOne anmelden. Eine kurze Anleitung mit weiterführenden Links und den häufigsten Fehlerquellen gibt es <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html#anleitung">hier</a>. Im <a href="https://wiki.uni-freiburg.de/campusmanagement/doku.php?id=hisinone:studieren:pruefung">HISinOne Wiki</a> wird alles Schritt für Schritt erklärt.
+Ausnahmen sind:
+- mündliche Abschlussprüfungen in den Master-Studiengängen: schriftliche Anmeldung über das jeweilige Formular (<a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/formulare/formular-muendliche_pruefung_msc.pdf">MSc</a>, <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/formulare/formular-muendliche_pruefung_med.pdf">MEd</a>) ans Prüfungsamt Mathematik
+- Prüfungen in den Sonderanwendungsfächern im B.Sc.:  Schriftliche Anmeldung über das <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/formulare/formular-pruefungsanmeldung_sonderanwendungsfach.pdf">Formular</a> ans Prüfungsamt Mathematik</p>
+
+<p>Vor jeder Prüfung muss man sich (rechtzeitig!) zu dieser Prüfung anmelden: <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html">Anmeldefristen</a>
+Falls eine Online-Anmeldung oder -Registrierung vorgesehen, aber nicht möglich ist oder nicht funktioniert, wenden Sie sich frühzeitig und unbedingt unter Wahrung der Anmeldefrist an das zuständige Prüfungsamt!</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f6e"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f6e"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f6e_q"><p>Wie oft darf ich eine Prüfung wiederholen?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f6e"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f6e"
+              >
+                <div class="accordion-body"><h4>Studienleistungen:</h4>
+
+<p>Mit Ausnahme der Klausuren zu &quot;Analysis I&quot; und &quot;Lineare Algebra I&quot; können alle Studienleistungen beliebig oft wiederholt werden. Wiederholungen bestandener Leistungen zur Notenverbesserung sind ausgeschlossen.</p>
+
+<h4>Prüfungsleistungen:</h4>
+
+<p>Prüfungsleistungen können prinzipiell einmal wiederholt werden, manche auch zweimal, gemäß den im Folgenden beschriebenen Regelungen der einzelnen Prüfungsordnungen. Wiederholungen bestandener Leistungen zur Notenverbesserung sind ausgeschlossen.</p>
+
+<h5>Zwei-Hauptfächer-Bachelor (Stand: 1. März 2023)</h5>
+
+<ul>
+<li>Eine der beiden Klausuren zu &quot;Analysis I&quot; und &quot;Lineare Algebra I&quot; muss als Orientierugsleistung bis zum Ende des 3. Fachsemesters bestanden sein und kann daher nur begrenzt oft wiederholt werden.</li>
+<li>Die mündlichen Prüfungen in &quot;Analysis&quot; und in &quot;Lineare Algebra&quot;, die Prüfung im Proseminar und die Bachelor-Arbeit dürfen nur einmal wiederholt werden.
+Die Prüfungen in &quot;Algebra und Zahlentheorie&quot;, &quot;Elementargeometrie&quot;, &quot;Numerik&quot; und &quot;Stochastik&quot; dürfen zweimal wiederholt werden.</li>
+</ul>
+
+<h5>Bachelor of Science (PO 2021) (Stand: 1. März 2023)</h5>
+
+<ul>
+<li>Die beiden Klausuren zu &quot;Analysis I&quot; und &quot;Lineare Algebra I&quot; müssen als Orientierugsleistung bis zum Ende des 3. Fachsemesters bestanden sein und können daher nur begrenzt oft wiederholt werden.</li>
+<li>Die mündlichen Prüfungen in &quot;Analysis I und II&quot; und in &quot;Lineare Algebra&quot;, die Klausur in &quot;Analysis III&quot;, die Prüfungen im Proseminar und im Seminar und die Bachelor-Arbeit dürfen nur einmal wiederholt werden.</li>
+<li>Die Prüfungen in &quot;Numerik&quot;, &quot;Stochastik I&quot; und in den Wahlpflichtmodulen in Mathematik dürfen zweimal wiederholt werden.</li>
+<li>Bis zu zwei Mal kann in den Wahlpflichtmodulen in Mathematik anstelle einer Wiederholungsprüfung (auf fristgerechten Antrag hin) auch eine andere Veranstaltung gewählt werden. Es gibt dann drei Prüfungsversuche über die neue Veranstaltung.</li>
+<li>Die Prüfungen im Anwendungsfach dürfen einmal wiederholt werden; maximal eine Prüfung im Anwendungsfach auch ein zweites Mal.</li>
+<li>Anstelle einer zweiten Prüfungswiederholung im Anwendungsfach kann das Anwendungsfach auch (auf fristgerechten Antrag hin) einmalig gewechselt werden. Im neuen Anwendungfach gilt ebenfalls, dass eine Prüfungsleistung zweimal wiederholt werden darf. Ein erneuter Wechsel des Anwendungsfachs ist ausgeschlossen.</li>
+</ul>
+
+<h5>Master of Education (Stand: 15. März 2019)</h5>
+
+<ul>
+<li>Die Prüfung im Modul &quot;Mathematische Vertiefung&quot; bzw. &quot;Wissenschaftliches Arbeiten&quot; und die Master-Arbeit dürfen einmal wiederholt werden.
+Die Prüfungen in den Modulen &quot;Erweiterung der Analysis&quot; und &quot;Fachdidaktik der mathematischen Teilgebiete&quot; dürfen zweimal wiederholt werden.
+Anstelle der Wiederholungsprüfung im Modul &quot;Mathematische Vertiefung&quot; darf (auf fristgerechten Antrag hin) auch einmalig die Veranstaltung, über die geprüft wird, gewechselt werden. Es gibt dann zwei Prüfungsversuche über die neue Veranstaltung.</li>
+</ul>
+
+<h5>Master of Education als Erweiterungsfach : Informationen folgen noch!</h5>
+
+<h5>Master of Education -- dual : Informationen folgen noch!</h5>
+
+<h5>Master of Science (Stand: 15. März 2019)</h5>
+
+<ul>
+<li>Die Prüfungen in Seminar A, und Seminar B und die Master-Arbeit dürfen einmal wiederholt werden.</li>
+<li>Die Prüfungen in den Modulen &quot;Angewandte Mathematik&quot;, &quot;Reine Mathematik&quot;, &quot;Mathematik&quot; und im Vertiefungsmodul dürfen einmal wiederholt werden; maximal eine davon auch ein zweites Mal.</li>
+</ul>
+
+<h5>Master of Science Mathematics in Data and Technology : Informationen folgen noch!</h5>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f6d"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f6d"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f6d_q"><p>Ich habe eine Prüfung nicht bestanden. Was muss ich jetzt tun?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f6d"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f6d"
+              >
+                <div class="accordion-body"><p>Bei nicht bestandenen Prüfungsleistungen erhalten Sie einen Bescheid mit einem <a href="http://gateway.mathematik.uni-freiburg.de/de/downloads/formulare">Merkblatt zur Wiederolungsprüfung</a> , das Sie bitte sorgfälig durchlesen. </p>
+
+<p>Prinzipiell spielt es eine wichtige Rolle, ob es sich bei der nicht bestandenen Prüfung um eine Prüfungs- oder Studienleistung handelt:</p>
+
+<h3>Prüfungsleistungen:</h3>
+
+<ul>
+<li><p>Zu Wiederholungsprüfungen meldet das Prüfungsamt an; eine Online-Anmeldung für Wiederholungsprüfungen ist nicht vorgesehen. Nicht bestandene Prüfungsleistungen dürfen ein oder zwei Mal wiederholt werden. Die Wiederholung einer bestandenen Prüfung zur Notenverbesserung ist nicht möglich. Wiederholungsprüfungen müssen grundsätzlich zum nächstmöglichen Zeitpunkt erfolgen, d.h. in der Regel im Folgesemester. Vor dem letzten Prüfungsversuch hat man auf (formlosen) Antrag hin das Recht, die Veranstaltung erneut zu besuchen.  </p></li>
+<li><p>Ausnahme sind Wiederholungsprüfungen in einem Sonder-Anwendugnsfach, die Sie erneut über das entsprechende Anmeldeformular anmelden.
+Bitte kontrollieren Sie auf HISInOne stets, ob die Anmeldung tatsächlich erfolgt ist, und wenden Sie sich andernfalls rechtzeitig an das Prüfungsamt des Mathematischen Instituts.</p></li>
+<li><p>Im Falle der Wiederholung eines Proseminars oder Seminars müssen Sie dem Prüfungsamt melden, in welchem (Pro-)Seminar Sie die Wiederholungsprüfung ablegen.</p></li>
+<li><p>Falls Sie eine Wiederholungsprüfung nicht oder nicht zum nächsten Termin wahrnehmen wollen, weil es sich um den letzten Prüfungsversuch handelt und Sie die Veranstaltung erneut hören wollen oder Sie die Veranstaltung (B.Sc., M.Ed.) bzw. das Anwendungsfach (B.Sc.) wechseln möchten, müssen Sie dies rechtzeitig, d.h. vor der eigentlichen Prüfung, und schriftlich beim Prüfungsamt beantragen.</p></li>
+<li><p>Zur Wiederholung einer mündlichen Prüfung in einem der Master-Studiengänge  vereinbaren Sie mit dem Prüfer einen neuen Termin, der frühestens vier Wochen später und spätestens am Ende des Folgesemesters liegen muss. Im M.Sc. Mathematik kann weder Prüfungsstoff noch Prüfer gewechselt werden; im M.Ed. besteht einmal die Möglichkeit, die Vorlesung zu wechseln, über die geprüft wird.</p></li>
+</ul>
+
+<h3>Studienleistungen:</h3>
+
+<ul>
+<li>Studienleistungen können prinzipiell beliebig oft wiederholt werden. (Achtung: Die Frist für die Ablegung der Orientierungsleistungen im BSc Mathematik und im 2-Hf-B müssen trotzdem eingehalten werden.) </li>
+<li>Für weitere Versuche von Studienleistungen müssen Sie sich selbstständig in HISinOne anmelden.</li>
+</ul>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f6c"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f6c"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f6c_q"><p>Ich habe eine Prüfung und bin krank. Was muss ich tun? Alles zum Thema Rücktritt.</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f6c"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f61"
+                id="qa_66ae8e6510f040b07f8c7f6c"
+              >
+                <div class="accordion-body"><p>Der Antrag auf Rücktritt von der Prüfung sollte unmittelbar nach Bekanntwerden der Rücktrittsgründe gestellt werden. Im Krankheitsfall muss der Arztbesuch muss spätestens am Tag der Prüfung erfolgen, der Antrag samt Attest (keine Arbeitsunfähigkeitsbescheinigung) muss spätestens am dritten Tag nach der Prüfung im Prüfungsamt eingehen. Wenn der Antrag per E-Mail geschickt wird, muss das Originalattest innerhalb einer Woche beim Prüfungsamt eingereicht werden (persönliche Abgabe oder per Post). </p>
+
+<p><a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/formulare/formular-ruecktritt.pdf">Formular für Rücktritt</a></p>
+
+<p>Achtung: Wenn sich jemand krank fühlt und dennoch eine Prüfung antritt, zählt der Prüfungsversuch in jedem Fall. Eine nachträgliche Krankmeldung hat keine Auswirkungen! Ein Rücktritt nach absolvierter, nicht-bestandener Prüfung ist nur in extremen Ausnahmefällen genehmigungsfähig! </p>
+
+<p>Studienleistungen fallen nicht unter diese Regelung. Sie können in den meisten Fällen beliebig oft wiederholt werden.</p>
+</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          aria-controls="stu_kat_66ae8e6510f040b07f8c7f62"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#stu_kat_66ae8e6510f040b07f8c7f62"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Abschlussarbeiten</h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="stu_kat_66ae8e6510f040b07f8c7f62"
+        class="accordion-collapse collapse "
+        data-bs-parent="#accordionFAQtags"
+        id="stu_kat_66ae8e6510f040b07f8c7f62"
+      >
+        <div class="accordion-body">
+          <div class="accordion" id="accordionstu_kat_66ae8e6510f040b07f8c7f62">
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f88"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f88"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f88_q"><p>Wie kann ich das Gutachten zu meiner Abschlussarbeit einsehen?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f88"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f88"
+              >
+                <div class="accordion-body"><p>Das Gutachten kann im Prüfungsamt eingesehen werden (Frist?). Ein Termin zur Einsicht muss per E-Mail an das Prüfungsamt beantragt werden .</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f87"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f87"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f87_q"><p>Wie beantrage ich eine Verlängerung der Arbeitszeit? </p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f87"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f87"
+              >
+                <div class="accordion-body"><p>Sie müssen den Antrag formlos per Brief mit Originalunterschrift beim Prüfungsamt einreichen. 
+Sie erhalten einen Bescheid mit der Post.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f6a"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f6a"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f6a_q"><p>Welche Voraussetzungen muss ich erfüllen, um meine Abschlussarbeit beginnen zu können?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f6a"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f6a"
+              >
+                <div class="accordion-body"><table>
+<thead>
+<tr>
+<th>Studiengang</th>
+<th>Voraussetzung</th>
+<th>Bearbeitungszeit</th>
+<th>ECTS</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Zwei-Hauptfächer-Bachelor</td>
+<td>60 ECTS-Punkte im Fach der Arbeit sind absolviert</td>
+<td>3 Monate</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Bachelor of Science</td>
+<td>80 ECTS-Punkte im Pflicht- und Wahlpflichtbereich Mathematik (inkl. internem BOK) sind absolviert</td>
+<td>3 Monate</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Master of Education (auch Erweiterungsmaster)</td>
+<td>60 ECTS-Punkte im Studiengang sind absolviert</td>
+<td>4 Monate</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Master of Science</td>
+<td>60 ECTS-Punkte im Studiengang sind absolviert</td>
+<td>6 Monate</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f70"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f70"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f70_q"><p>Welche Dozent*innen dürfen Abschlussarbeiten betreuen?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f70"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f70"
+              >
+                <div class="accordion-body"><h5>Betreuung am Mathematischen Institut:</h5>
+
+<p>Die Betreuung von Bachelor- und Master-Arbeiten übernehmen in erster Linie die Professorinnen und Professoren (inklusive Juniorprofessor/innen) und Privatdozentinnen und -dozenten des Mathematischen Instituts. Diese sind mit Ihren Forschungs- und Interessensgebieten auf der Seite <a href="https://www.math.uni-freiburg.de/forschung/index.html">Dozenten und Forschungsgebiete</a> aufgeführt.</p>
+
+<p>Nicht-habilitierte wissenschaftliche Mitarbeiterinnen und Mitarbeiter (die also nicht den Titel &quot;Privatdozent/in&quot; oder &quot;Dr. habil.&quot; führen), dürfen nur dann Bachelor- oder Master-Arbeiten offiziell betreuen, wenn ihnen die Berechtigung dazu erteilt wurde. Dies muss man im Zweifelsfall erfragen.</p>
+
+<p>Es kann durchaus sein, dass die Arbeit de facto von einem/einer Wissenschaftlichen Mitarbeiter/in betreut wird. Dies spielt aber juristisch keine Rolle – mit <em>Betreuer/in</em> ist hier immer die für die Betreuung der Arbeit offiziell bestimmte und verantwortliche Person gemeint.</p>
+
+<h5>Externe Betreuungen:</h5>
+
+<p>Das Recht zur Betreuung mathematischer Abschlussarbeiten haben auch die kooptierten Professorinnen und Professoren: Dies sind in der Regel Mathematikerinnen und Mathematiker, die eine Professur an einer anderen Fakultät haben, durch die Kooptierung aber innerhalb der Mathematik prüfungsberechtigt sind. Sie sind ebenfalls auf der Seite Dozenten und Forschungsgebiete aufgeführt.</p>
+
+<p>In Ausnahmefällen kann eine Arbeit auch von einer Professorin / einem Professor oder einer Privatdozentin / einem Privatdozenten einer anderen Fakultät oder einer anderen Hochschule betreut werden, wenn dies in Einvernehmen mit einer Professorin / einem Professor bzw. einer Privatdozentin / einem Privatdozenten des Mathematischen Instituts der Universität Freiburg geschieht. Eine solche externe Betreuung über das Anmeldeformular der Arbeit beantragt und vom Fachprüfungsausschuss genehmigt werden.</p>
+
+<p>Eine Bachelor- oder Master-Arbeit kann auch in Zusammenarbeit mit einem Unternehmen geschrieben werden. Dann findet aber entweder die offizielle Betreuung am Mathematischen Institut statt oder die Ansprechperson im Unternehmen ist zufälligerweise habilitiert oder gar Professor/in und die im vorherigen Abschnitt beschriebene Ausnaheregelung ist möglich. Im ersten Fall ist erfahrungsgemäß eine gründliche Absprache zwischen dem/der offiziellen Betreuer/in der Arbeit und dem/der de-facto-Betreuer/in im Unternehmen notwendig.</p>
+
+<h5>Master-of-Education-Arbeiten in Fachdidaktik Mathematik</h5>
+
+<p>Diese können nur extern betreut werden, in der Regel von Mathematik-Professorinnen und -Professoren der Pädagogischen Hochschule Freiburg. Dies ist im Rahmen der Betreuungskapazität der Pädagogischen Hochschule möglich und setzt die Absolvierung des Moduls <em>Fachdidaktische Forschung</em> voraus. Bitte melden Sie Ihr Interesse bei der <a href="http://home.mathematik.uni-freiburg.de/didaktik/index.html">Abteilung für Didaktik der Mathematik</a> an.</p>
+
+<p>Für das Einvernehmen mit einem Professor / einer Professorin des Mathematischen Instituts der Universität Freiburg wenden Sie sich entweder an jemanden, der dem Thema der Arbeit fachlich nahe steht, oder an die Abteilung für Didaktik der Mathematik.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f66"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f66"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f66_q"><p>Wie bekomme ich das Thema für meine Abschlussarbeit? (MSc Mathematik)</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f66"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f66"
+              >
+                <div class="accordion-body"><p>Am besten ist es, wenn Sie bereits eine Vorstellung davon haben, in welche Richtung Ihre Arbeit gehen soll bzw. in welchem Schwerpunktgebiet Sie Ihre Arbeit schreiben wollen. Dann können Sie gezielt Dozentinnen oder Dozenten ansprechen, die in dieser Richtung arbeiten oder in diesem Schwerpunktgebiet tätig sind. Schauen Sie dazu auf die Seiten <a href="https://www.math.uni-freiburg.de/forschung/index.html">Dozenten und Forschungsgebiete</a> und <a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/schwerpunkte.html">Typische Studienabläufe in den Schwerpunktgebieten</a>. Am besten machen Sie einen Sprechstundentermin aus. Dozentinnen oder Dozenten, bei denen Sie gerade eine Vorlesung hören oder ein Seminar besuchen, können Sie natürlich gerne am Rande der Veranstaltung ansprechen.</p>
+
+<p>Falls Sie auf diesem Weg niemanden für die Betreuung Ihrer Arbeit finden, können Sie einen Antrag an das Prüfungsamt auf Zuteilung eine Betreuerin / eines Betreuers stellen. Dies ist aber eher ungewöhnlich.</p>
+
+<p><strong>Zwei-Hauptfächer-Bachelor</strong>:<br>
+Dadurch, dass der Studienplan wenig Wahlmöglichkeiten lässt, sind die Themen für Bachelor-Arbeiten etwas eingeschränkt. Sie können an die weiterführenden Vorlesungen in Algebra und Zahlentheorie, Elementargeometrie, Numerik oder Stochastik anschließen, eventuell auch an die Thematik des Proseminars, das Sie besucht haben. Manche Dozentinnen und Dozenten vergeben auch Themen, die auf den Grundvorlesungen in Analysis und Linearer Algebra aufbauen. Scheuen Sie sich nicht, Dozentinnen und Dozenten anzusprechen; nutzen Sie die Sprechstunden! Falls Sie Ihre Arbeit gerne in Mathematik schreiben wollen, aber keine rechte Vorstellung haben, wer Ihre Arbeit betreuen sollte, kann auch ein Gespräch mit der Studienberatung des Mathematischen Instituts sinnvoll sein.</p>
+
+<p><strong>Bachelor of Science</strong>:<br>
+Im Laufe des Studiums entwickeln Sie durch Ihre Pflicht- und Wahlpflichtveranstaltungen in der Regel eine Vorstellung davon, in welchem Schwerpunktgebiete Ihre Arbeit angesiedelt sein sollte. In diesem Bereich sollten Sie dann idealerweise auch eine vertiefte Vorlesung hören und ein Seminar besuchen. Hilfreich ist die Seite <a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/schwerpunkte.html">Typische Studienabläufe in den Schwerpunktgebieten</a>. Sprechen Sie gerne frühzeitig die Dozentinnen und Dozenten dieses Schwerpunktgebiets an. Es bietet sich unter Umständen an (wie in der alten Prüfungsordnung von 2012 noch verpflichtend vorgesehen), die Arbeit aufbauend auf einen Seminarvortrag zu schreiben. Dies muss aber keinswegs sein; vor allem, wenn kein passendes Seminar angeboten wird.</p>
+
+<p><strong>Master of Education</strong>:<br>
+Ihre Master-Arbeit können Sie in einem der beiden Fächer in Fachwissenschaft oder Fachdidaktik oder in den Bildungswissenschaften schreiben. Auch interdisziplinäre Arbeiten oder Arbeiten, die fachwissenschaftliche und fachdidaktische Aspekte verbinden, sind möglich. (Zeitweise gab es das Gerücht, man müsse die Master-Arbeit in dem anderen Fach als die Bachelor-Arbeit schreiben; dies stimmt nicht.)<br>
+Falls Sie Ihre Arbeit in Mathematik schreiben wollen, ist die Entscheidung wichtig, ob es in Fachdidaktik oder Fachwissenschaft sein soll, weil davon der Studienplan abhängt:</p>
+
+<ul>
+<li>  Für eine Arbeit in Fachdidakitk der Mathematik müssen Sie das Modul &quot;Fachdidaktische Forschung&quot; an der PH Freiburg absolvieren. Im Rahmen dieses Seminars werden Sie dann auch Ihre Betreuerin / Ihren Betreuer finden.</li>
+<li>  Eine fachwissenschaftliche Arbeit kann gut auf der vertieften Vorlesung oder auf einem im Modul &quot;Mathematische Ergänzung&quot; absolvierten Seminar aufbauen. Falls Sie schon wissen, in welchem Schwerpunktgebiet Sie Ihre Arbeit schreiben möchten, lohnt es sich, die Dozentinnen und Dozenten dieses Gebiets anzusprechen: Dann können Sie anstelle des vertieften Vorlesung das Modul &quot;Wissenschaftliches Arbeiten&quot; absolvieren, in dem Sie sich in die Thematik der Master-Arbeit einarbeiten können.</li>
+</ul>
+
+<p><strong>Master of Education als Erweiterungsfach</strong>:<br>
+In der &quot;Hauptfachvariante&quot; mit 120 ECTS-Punkten ist eine Master-Arbeit in Fachwissenschaft oder Fachdidaktik möglich; es gilt ansonsten das Gleiche wie für den M.Ed.-Studiengang.<br>
+In der &quot;Nebenfachvariante&quot; mit 90 ECTS-Punkten ist eine rein fachdidaktische Arbeit nicht erlaubt. Man kann sich hierfür an den Angaben zum Zwei-Hauptfächer-Bacheor orientieren.</p>
+
+<p><strong>Master of Science</strong>:<br>
+Studierende im Master of Science haben üblicherweise bereits einen guten Einblick in die Mathematik und eine Vorstellung davon, in welchem Schwerpunktgebiet sie sich spezialisieren wollen. Sinnvoll ist ein Blick auf die Seite <a href="https://www.math.uni-freiburg.de/lehre/studiengaenge/schwerpunkte.html">Typische Studienabläufe in den Schwerpunktgebieten</a>. Sprechen Sie gerne Dozentinnen und Dozenten am Rande von Vorlesungen und Seminaren an. Idealerweise arbeitet man sich im Vertiefungsmodul oder im Wahlmodul in einem Lesekurs &quot;Wissenschaftliches Arbeiten&quot; in die Thematik der Master-Arbeit ein.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f72"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f72"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f72_q"><p>Ist es möglich mein Thema zurückzugeben und ein anderes Thema zu bekommen?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f72"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f72"
+              >
+                <div class="accordion-body"><p>Ein Thema für eine Abschlussarbeit kann einmalig durch ein neues Thema ersetzt werden, ohne dass es als Fehlversuch zählt, wenn die &quot;Rückgabe des Themas&quot; innerhalb der folgenden Fristen geschieht:</p>
+
+<ul>
+<li>  2-Hf.-Bachelor: zwei Wochen</li>
+<li>  B.Sc.: zwei Wochen</li>
+<li>  M.Ed. (auch Erweiterungsfach): vier Wochen</li>
+<li>  M.Sc.: zwei Monate</li>
+</ul>
+
+<p>Die Rückgabe des Themas muss fristgerecht schriftlich dem Prüfungsamt mitgeteilt werden (und natürlich sollte das unbedingt vorher mit der Betreuerin / dem Betreuer besprochen werden). Ein neues Thema muss dann innerhalb von vier Wochen vergeben werden; die Bearbeitungszeit beginnt dann neu.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f74"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f74"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f74_q"><p>Wie wird eine Abschlussarbeit betreut?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f74"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f74"
+              >
+                <div class="accordion-body"><p>In Mathematik ist die Bachelor-Arbeit typischerweise die erste größere Ausarbeitung, die im Studium vorkommt – im M.Ed.-Studiengang kann es auch die Master-Arbeit sein. Daher ist eine gute Betreuung besonders wichtig. Regelmäßige Betreuungsgespräche während der Anfertigung der Arbeit sollten selbstverständlich sein, und Sie sollten diese auch einfordern, falls der Betreuer / die Betreuerin nicht sowieso darauf besteht. Dies gilt natürlich ebenfalls für eine Master-Arbeit, falls Sie schon eine Bachelor-Arbeit in Mathematik geschrieben haben.</p>
+
+<p>Ziel einer Abschlussarbeit ist es, ein Thema nach &quot;wissenschaftlichen Methoden zu bearbeiten und die Ergebnisse sachgerecht darzustellen&quot;. Dabei müssen die &quot;Regeln guter wissenschaftlicher Praxis&quot; beachtet werden, wie sie u.a. in der <a href="https://uni-freiburg.de/forschung/wp-content/uploads/sites/2/2020/10/Uni-Freiburg-Ordnung-Redlichkeit-in-der-Wissenschaft.pdf">Redlichkeitsordnung der Universität</a> beschrieben sind. Insbesondere hat man &quot;nach den anerkannten Regeln (<em>lege artis</em>)&quot; des Faches zu arbeiten. Es ist Aufgabe des Betreuers / der Betreuerin, Ihnen diese Regeln zu vermitteln.</p>
+
+<p>Insbesondere muss Ihnen dabei vermittelt werden, wie und wann mathematische Ergebnisse, die nicht von Ihnen selbst erzielt wurden, zitiert werden. Bitte beachten Sie, dass dafür weder die Art, wie mit der Bearbeitung von Übungsaufgaben in den Tutoraten zu Vorlesungen umgegangen wird, noch Vorlesungsskripte geeignete Vorbilder sind. Hinweise zum Zitieren in mathematischen Arbeiten finden Sie auf der <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#AbisZ">Prüfungsamtsseite</a> unter &quot;A bis Z&quot;, Stichwort &quot;Regeln wissenschaftlicher Redlichkeit&quot;. Zweifelsfälle sollten Sie mit dem Betreuer / der Betreuerin Ihrer Arbeit besprechen (und im Zweifelsfall lieber mehr als weniger zitieren).</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f7c"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f7c"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f7c_q"><p>Wie lange habe ich für die Bearbeitung der Abschlussarbeit Zeit?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f7c"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f7c"
+              >
+                <div class="accordion-body"><p>Die Bearbeitungszeit beginnt an dem Tag, an dem das Thema offiziell vergeben wird. Die folgende Tabelle liefert die in den Prüfungsordnungen festgelegten Bearbeitungszeiten. Dabei handelt es sich jeweils um die Zeit, die zwischen Anmeldung der Arbeit und Abgabe maximal vergehen darf.  Beachten Sie auch die (eingeschränkte) Möglichkeit zur Verlängerung der Bearbeitungszeit.</p>
+
+<table>
+<thead>
+<tr>
+<th>Studiengang</th>
+<th>Bearbeitungszeit</th>
+<th>ECTS</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Zwei-Hauptfächer-Bachelor</td>
+<td></td>
+<td>3 Monate</td>
+</tr>
+<tr>
+<td>Bachelor of Science</td>
+<td>3 Monate</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Master of Education (auch Erweiterungsmaster)</td>
+<td>4 Monate</td>
+<td>15</td>
+</tr>
+<tr>
+<td>MSc Mathematik</td>
+<td>6 Monate</td>
+<td>30</td>
+</tr>
+<tr>
+<td>MSc Mathematics in Data and Technology</td>
+<td>6 Monate</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f75"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f75"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f75_q"><p>In welcher Sprache muss/kann ich meine Abschlussarbeit schreiben?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f75"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f75"
+              >
+                <div class="accordion-body"><h4>MSc Mathematics in Data and Technology</h4>
+
+<p>Abschlussarbeiten müssen auf Deutsch oder Englisch geschrieben werden. </p>
+
+<h4>Alle anderen Studiengänge</h4>
+
+<p>Abschlussarbeiten müssen prinzipiell auf Deutsch geschrieben werden. Man kann jedoch bei der Anmeldung der Arbeit mit Zustimmung der Betreuerin / des Betreuers beantragen, die Arbeit in einer anderen Sprache zu schreiben. (Dies kann auf dem Anmeldeformular angegeben werden.) Die Arbeit muss in diesem Fall eine deutsche Zusammenfassung enthalten.  </p>
+
+<h5>Andere Sprachen</h5>
+
+<p>Es ist eventuell möglich, die Abschlussarbeit in Französischzuverfassen, alle anderen Sprachen sind vermutlich schwierig. Die Begutachtung muss sichergestellt sein. Der Antrag wird mit der Prüfungsanmeldung eingereicht und vom Fachprüfungsausschuss entschieden. </p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f76"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f76"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f76_q"><p>Gibt es Vorgaben an die Formatierung der Arbeit?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f76"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f76"
+              >
+                <div class="accordion-body"><p>Die Prüfungsordnung macht keine Vorgaben an den Seitenumfang oder die Formatierung einer Arbeit (also Schriftgröße, Zeilenabstand, Größe des Rands, Zitierstil, etc.). Bitte besprechen Sie alle diese Punkte mit der Betreuerin / dem Betreuer Ihrer Arbeit. Abhängig vom Thema gibt es sicher Vorstellungen der Betreuerin / des Betreuers über den Umfang der Arbeit; Formatierungsfragen sind erfahrungsgemäß dagegen eher zweitrangig. Üblich ist es allerdings, die Arbeit im DIN-A4-Format zu erstellen und das mathematische Textverarbeitungsprogramm LaTeX zu verwenden. (LaTeX ist nicht vorgeschrieben, macht das Leben aber leichter.)</p>
+
+<p>Das Titelblatt sollte folgende Informationen enthalten: Name des Kandidaten/der Kandidatin, Titel, Art der Arbeit, Fach, Universität, Semester (der Einreichung). Weitere Angaben wie z.B. der Name des Betreuers/der Betreuerin sind fakultätaiv.<br>
+Für das Titelblatt kann <a href="formulare/Muster-Titelblatt.pdf">dieses Muster</a> verwendet werden. Im (neuen) <a href="https://cd.uni-freiburg.de/buerovorlagen/#titelbild">Corporate Design</a> gibt es eine Vorlage für ein Titelblatt, die aber (Stand 07.03.2023) nicht brauchbar ist, da wichtige Informationen fehlen und nicht angegeben ist, was man ändern darf und was nicht.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f71"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f71"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f71_q"><p>Wie läuft das mit der Anmeldung der Abschlussarbeit?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f71"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f71"
+              >
+                <div class="accordion-body"><p>Die Anmeldung erfolgt schriftlich im Prüfungsamt mit dem dafür vorgesehenen Formular (auf der <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#form">Prüfungsamtsseite</a> unter &quot;Formulare und Merkblätter&quot; online verfügbar). Das Formular muss auch von der Betreuerin / dem Betreuer der Arbeit unterschrieben werden und danach beim Prüfungsamt abgegeben werden (Briefkasten vor dem Prüfungsamt oder per E-Mail), und zwar spätestens zwei Wochen, nachdem das Thema gestellt wurde. Der Fachprüfungsausschuss vergibt dann offiziell das Thema. Mit dieser Vergabe beginnt die Bearbeitungszeit.</p>
+
+<p>Im B.Sc.-Studiengang Mathematik nach &quot;alter&quot; Prüfungsordnung von 2012 muss die Anmeldung der Arbeit spätestens am Tag des Vortrags im Bachelor-Seminar erfolgen. In die umgekehrte Richtung gibt es keine Vorgaben: Der Vortrag kann beliebig lange nach Anmeldung der Arbeit erfolgen.<br>
+Im B.Sc.-Studiengang Mathematik nach &quot;neuer&quot; Prüfungsordnung von 2021 gibt es kein Bachelor-Seminar mehr. Sie müssen zwar ein Seminar absolvieren, das aber in keinem Zusammenhang zur Bachelor-Arbeit stehen muss.</p>
+
+<p>Bei der Anmeldung einer Bachelor- oder Master-Arbeit muss man bestätigen, mit den <em>Regeln guter wissenschaftlicher Praxis</em> vertraut zu sein. Eine Einführung in diese Regeln ist auf der <a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#AbisZ">Prüfungsamtsseite</a> unter &quot;A bis Z&quot;, Stichwort &quot;Regeln wissenschaftlicher Redlichkeit&quot; nachzulesen.</p>
+
+<p>Bei der Anmeldung wird das <em>Thema der Arbeit</em> festgelegt, der dazu angegebene <em>Arbeitstitel</em> kann später angepasst werden. Das Thema darf innerhalb gewisser Fristen einmalig geändert werden (siehe unter &quot;Neues Thema&quot;).</p>
+
+<p>Bei der Anmeldung der Arbeit können Sie mit Einverständnis der Betreuerin / des Betreuers beantragen, die Arbeit auf Englisch (oder einer anderen Sprache) zu schreiben.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f73"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f73"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f73_q"><p>Kann die Bearbeitungszeit der Abschlussarbeit verlängert werden?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f73"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f73"
+              >
+                <div class="accordion-body"><p>In begründeten Fällen kann der Fachprüfungsausschuss auf Antrag die Bearbeitungszeit verlängern, und zwar um folgende Maximalzeiten:</p>
+
+<ul>
+<li>  2-Hf.-Bachelor: maximal sechs Wochen</li>
+<li>  B.Sc.: maximal anderthalb Monate</li>
+<li>  M.Ed.: maximal acht Wochen</li>
+<li>  M.Ed. als Erweiterungsfach: maximal sechs Wochen (im Entwurf der Prüfungsordnung)</li>
+<li>  M.Sc.: maximal drei Monate</li>
+</ul>
+
+<p>Wird die Verlängerung wegen Erkrankung beantragt, muss ein ärztliches Attest vorgelegt werden, &quot;das die für die Beurteilung nötigen medizinischen Befundtatsachen enthält&quot;. Wird die Verlängerung beantragt, weil das Thema für die eigentlich vorgesehen Zeit zu umfangreich ist, muss die Betreuerin / der Betreuer ein Votum dazu abgeben.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f79"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f79"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f79_q"><p>Wie wird meine Abschlussarbeit begutachtet/bewertet? </p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f79"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f79"
+              >
+                <div class="accordion-body"><p>Eine Abschlussarbeit wird von dem/der offiziellen Betreuer/in begutachtet und bewertet. In machen Fällen gibt es auch eine/n zweite/n Gutachter/in, und zwar immer in den M.Sc.-Studiengängen und in Ausnahmefällen im M.Ed.<br>
+(Diese Ausnahmefälle sind: bei interdisziplinären Arbeiten; bei Arbeiten mit externer Betreuung, es sei denn, es handelt sich um eine an der PH Freiburg betreute fachdidaktische Arbeit, für die es nur ein Gutachten gibt).<br>
+Der/die Zweitgutachter/in wird vom zuständigen Prüfungsamt bestellt, in der Regel auf Vorschlag der Betreuerin / des Betreuers – darum muss man sich als Studierende/r nicht kümmern.</p>
+
+<p>Die Dauer der Begutachtung sollte sechs Wochen nicht überschreiten. Wenn Sie das Gutachten eilig brauchen (z.B. wegen Einschreibung in einen Master-Studiengang oder Antritt einer Arbeitsstelle), besprechen Sie dies bitte möglichst frühzeitig mit der Betreuerin / dem Betreuer. Sollte sich die Begutachtung verzögern, sprechen Sie bitte Ihre Betreuerin / Ihrem Betreuer und das Prüfungsamt an.</p>
+
+<p>Falls es nur ein Gutachten gibt und dieses die Arbeit als bestanden wertet, ist die Note des Gutachtens die Note für die Arbeit. Bewertet das Gutachten die Arbeit als nicht bestanden, wird vom Fachprüfungsausschuss ein Zweitgutachten bestellt. Bewertet das Zweitgutachten die Arbeit ebenfalls als nicht bestanden, ist die Arbeit nicht bestanden. Bewertet das Zweitgutachten die Arbeit als bestanden mit Note x, wird vom Fachprüfungsausschuss ein Drittgutachten bestellt, das die endgültige Note y mit x ≤ y ≤ 5,0 festlegt und damit insbesondere festlegt, ob die Arbeit bestanden ist oder nicht.<br>
+Falls es zwei Gutachten gibt, ist das auf eine Nachkommastelle abgerundete arithmetische Mittel der beiden Einzelnoten die Note für die Arbeit, es sei denn, die beiden Einzelnoten x1 und x2 weichen um mindestens zwei Notenstufen voneinander ab. (Notenstufen sind &quot;<em>sehr gut</em>&quot;, &quot;<em>gut</em>&quot;, etc. – es geht also nicht um die Differenz der beiden Noten.) In diesem Fall wird vom Fachprüfungsausschuss ein Drittgutachten bestellt, das die endgültige Note y mit min{x1,x2} ≤ y ≤ max{x1,x2} festlegt und ggf. damit insbesondere festlegt, ob die Arbeit bestanden ist oder nicht.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f78"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f78"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f78_q"><p>Muss ich die Ergebnisse meiner Abschlussarbeit in einem Vortrag präsentieren?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f78"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f78"
+              >
+                <div class="accordion-body"><p>Eine Präsentation der Bachelor-Arbeit ist nur im Studiengang <em>B.Sc Mathematik</em> vorgeschrieben; eine Präsentation der Master-Arbeit im Studiengang <em>MSc Mathematik</em>. Die Präsentationen sind unbenotete Studienleistungen über 1 ECTS-Punkt im B.Sc.-Studiengang und 3 ECTS-Punkte im M.Sc.-Studiengang. Im Studiengang <em>MSc Mathematics in Data and Technology</em> werden Konzepte der Abschlussarbeit in der <em>Graduate Speaker Series</em> vorgestellt.</p>
+
+<p>Eine separate Anmeldng zur Präsentation ist weder schriftlich noch über HISinOne vorgesehen.</p>
+
+<p>Die Präsentation der Bachelor-Arbeit sollte etwa 30 Minuten lang sein, kann im gegenseitigen Einvernehmen aber auch länger dauern. Darüber hinaus gibt es keine formalen und zeitlichen Vorgaben, insbesondere nicht für die Präsentation von Master-Arbeiten. Eine Präsentation darf schon vor Ende der Abgabe einer Arbeit stattfinden (sinnvollerweise nicht zu früh) und sollte nicht zu spät danach erfolgen. Der äußere Rahmen kann sehr variabel sein: von einem Gespräch mit Betreuer/in und Beisitzer/in in einem Büro bis hin zu einem Vortrag vor Publikum in einem Ober- oder Projektseminar. Sowohl der Termin als auch die näheren Umstände müssen mit der Betreuerin / dem Betreuer abgesprochen werden.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f77"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f77"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f77_q"><p>In welcher Form muss ich meine Arbeit wo abgeben?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f77"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f77"
+              >
+                <div class="accordion-body"><p>Die Arbeit ist fristgerecht in <em>zwei</em> – bzw. im M.Sc.-Studiengang Mathematik in <em>drei</em> – gedruckten und gebundenen Exemplaren beim Prüfungsamt des Mathematischen Instituts abzugeben (persönlich, in den Briefkasten vorm Prüfungsamt oder per Post – dann gilt das Datum des Poststempels als Zeitpunkt der Einreichung).  Zusätzlich muss die Arbeit (vorzugsweise per E-Mail) als pdf-Datei abgegeben werden. In der Regel möchte auch die Betreuerin / der Betreuer die abschließende Version der Arbeit als pdf-Datei per E-Mail haben.</p>
+
+<p>Zur Fristwahrung reicht die elektronische Abgabe; die gedruckten Exemplare müssen dann innerhalb der nächsten zwei Wochen nachgeliefert werden zusammen mit einer schriftlichen Versicherung, dass die gedruckte Version mit der pdf-Version übereinstimmt.</p>
+
+<p>Bei der Einreichung der Arbeit muss man auf einem separaten Blatt (nicht in die Arbeit einbinden!) schriftlich versichern,</p>
+
+<ol>
+<li> dass man die eingereichte Arbeit selbständig verfasst hat,</li>
+<li> dass man keine anderen als die angegebenen Quellen und Hilfsmittel benutzt und alle wörtlich oder sinngemäß aus anderen Werken übernommenen Inhalte als solche kenntlich gemacht hat</li>
+<li> und dass die eingereichte Arbeit weder vollständig noch in wesentlichen Teilen Gegenstand eines anderen Prüfungsverfahrens ist oder war.</li>
+</ol>
+
+<p>Lesen Sie genauen Anforderungen und den genauern Wortlaut unbedingt in der aktuellen Version des allgemeinen Teils des Prüfungsordnung nach; Änderungen sind möglich! (Die Prüfungsordnungen sind auf den <a href="https://www.math.uni-freiburg.de/lehre/index.html#aktuell">Informationsseiten zu den Studiengängen</a> verlinkt.)</p>
+
+<p>Enthält die Arbeit einen Programmierteil, muss der zugehörige Programmiercode mit der Abgabe der Arbeit als separate Datei elektronisch eingereicht werden. Vorab sollte man mit der Betreuerin / dem Betreuer klären, ob dies ausreichend ist, oder ob ein Ausdruck des Programmiercodes (ggf. als Teil der Arbeit) erforderlich ist.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f7a"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f7a"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f7a_q"><p>Kann ich die Abschlussarbeit wiederholen?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f7a"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f7a"
+              >
+                <div class="accordion-body"><p>Eine Abschlussarbeit kann im Falle des Nichtbestehens genau einmal wiederholt werden. Dazu muss man spätestens zwei Monate nach dem Bescheid über das Nichtbestehen die Wiederholungsarbeit anmelden oder einen Antrag auf Vergabe eines neuen Themas stellen.</p>
+
+<p>Der Wiederholungsversuch kann von einer anderen Person betreut werden und das Thema kann aus einem anderen Schwerpunktgebiet der Mathematik stammen. Die Wiederholung einer Arbeit im 2-Hf.-Bachelor bzw. M.Ed. muss allerdings im gleichen Fach erfolgen.</p>
+
+<p>Eine Rückgabe des Themas ist im Wiederholungsfall nur erlaubt, wenn von dieser Möglichkeit im Erstversuch noch nicht Gebrauch gemacht wurde. Das Thema kann dann  auch aus einem anderen Schwerpunktgebiet der Mathematik stammen. Die Wiederholung einer Arbeit im 2-Hf.-Bachelor bzw. M.Ed. muss allerdings im gleichen Fach erfolgen.</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f7b"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f7b"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f7b_q"><p>Kann ich mein Master-Studium beginnen, obwohl meine Bachelor-Arbeit noch nicht bewertet ist?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f7b"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f62"
+                id="qa_66ae8e6510f040b07f8c7f7b"
+              >
+                <div class="accordion-body"><h4>Master an der Universität Freiburg</h4>
+
+<p>Generell gilt an der Universität Freiburg, dass für die <em>Bewerbung</em> für einen Master-Studiengang der zugrundeliegende Bachelor-Studiengang noch nicht abgeschlossen sein muss. Wichtig: Die <em>Bewerbungsfrist</em> (in Mathematik 15. September bzw. 15. März) darf keinesfalls verpasst werden, völlig unabhängig vom Stand der Bachelor-Arbeit!<br>
+Für die <em>Einschreibung</em> muss das Bachelor-Studium allerdings abgeschlossen sein. Für Freiburger Bachelor-Absolvent:inn:en reicht es, wenn der Abschluss des Bachelor-Studiums in HISinOne dokumentiert ist; das Zeugnis muss noch nicht unbedingt vorliegen. (Auswärtige Bewerber:innen brauchen zur Einschreibung das Zeugnis.)<br>
+Für die Einschreibung wird normalerweise eine Frist Anfang Oktober für das Winter- bzw. Anfang April für das Sommersemester gesetzt. Diese Frist kann aber in Absprache mit dem Studierendensekrektariat bis etwa Ende der zweiten Vorlesungswoche verlängert werden, wenn zum Beispiel die Gutachten der Bachelor-Arbeit noch ausstehen.  </p>
+
+<p>Konkret bedeutet dies für Freiburger Studierende, die an der Uni Freiburg einen Master-Studiengang anschließen wollen: Wenn es knapp wird, sollte man sich zum Folgesemester in den Bachelor-Studiengang rückmelden und die Anmeldung der Bachelor-Arbeit so planen, dass das Gutachten spätestens zu Beginn der Vorlesungszeit vorliegt, um sich dann in den Master umschreiben zu können. Wieviel Zeit der/die Betreuer:in für das Gutachten braucht, sollte man mit ihr/ihm vorher absprechen. Das Prüfungsamt braucht in der Regel nur einen Tag, um die Note in HISinOne einzutragen, ist aber möglicherweise nicht täglich besetzt.<br>
+Möchte man die Arbeit zum Beispiel in den Monaten Juni bis August schreiben, reichen die für das Gutachten vorgesehenen sechs Wochen, um sich anschließend Mitte Oktober in den Master umschreiben zu können. Möchte man die Arbeit dagegen in den Monaten Juli bis September schreiben, muss das Gutachten innerhalb von zwei bis drei Wochen erstellt werden, damit noch eine rechtzeitige Ein- bzw. Umschreibung erfolgen kann: Das geht nur nach vorheriger Absprache mit dem/der Betreuer:in!</p>
+
+<h4>Master an anderen Hochschulen</h4>
+
+<p>Für eine Einschreibung an anderen Hochschulen muss in der Regel das Zeugnis vorliegen und es müssen natürlich die Bewerbungs- und Einschreibefristen der jeweiligen Hochschule beachtet werden, die möglicherweise deutlich früher enden. Man kann daher schwerlich einen allgemeinen Zeitplan angeben. Außerdem braucht auch das Prüfungsamt Zeit, um das Zeugnis zu erstellen und unterschreiben zu lassen, insbesondere wenn die typische Sommerferienzeit betroffen ist. Einige wenige Hochschule ermöglichen eine Einschreibung unter Vorbehalt; das muss man aber mit der Hochschule klären.</p>
+</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          aria-controls="stu_kat_66ae8e6510f040b07f8c7f63"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#stu_kat_66ae8e6510f040b07f8c7f63"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Sonstiges</h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="stu_kat_66ae8e6510f040b07f8c7f63"
+        class="accordion-collapse collapse "
+        data-bs-parent="#accordionFAQtags"
+        id="stu_kat_66ae8e6510f040b07f8c7f63"
+      >
+        <div class="accordion-body">
+          <div class="accordion" id="accordionstu_kat_66ae8e6510f040b07f8c7f63">
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f7d"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f7d"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f7d_q"><p>Wie beantrage ich einen Nachteilsausgleich?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f7d"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f63"
+                id="qa_66ae8e6510f040b07f8c7f7d"
+              >
+                <div class="accordion-body"><p><a href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/dokumente/Informationen_zum_Nachteilsausgleich-2022.07.08.pdf">https://www.math.uni-freiburg.de/lehre/pruefungsamt/dokumente/Informationen_zum_Nachteilsausgleich-2022.07.08.pdf</a></p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f67"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f67"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f67_q"><p>Wie funktioniert ein Auslandssemester?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f67"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f63"
+                id="qa_66ae8e6510f040b07f8c7f67"
+              >
+                <div class="accordion-body"><p><a href="%7B%7Burl_for(&#x27;studienberatungbase&#x27;)%7D%7D">Studienberatung</a> International Office der Universität Freiburg: </p>
+
+<p>Fahnenbergplatz, 79085 Freiburg 
+ Kurzinformation (pdf)<br>
+ <a href="https://www.international.uni-freiburg.de/">Webseite</a> 
+ Prof. Dr. Patrick Dondl 
+ <em>Auslandsbeautragter des Mathematischen Instituts</em>
+ <a href="https://home.mathematik.uni-freiburg.de/erasmus">Internetseite des Auslandsbeauftragten</a> Hermann-Herder-Straße 10, Raum 217 Tel. +49 761 203-5642 E-Mail: <a href="mailto:erasmus@math.uni-freiburg.de">erasmus@math.uni-freiburg.de</a> Sprechstunde: Mo 12:15–13:45 Uhr</p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f68"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f68"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f68_q"><p>Wie melde ich mich zu einer Prüfung an?</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f68"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f63"
+                id="qa_66ae8e6510f040b07f8c7f68"
+              >
+                <div class="accordion-body"><p>Kurzanleitung: 
+1. In <a href="https://campus.uni-freiburg.de/">HISinOne</a> <em>&#39;Mein Studium &gt; Studienplaner mit Modulplan&#39;</em> (ggf. mit richtigem Studiengang) auswählen.
+2. Links oben das richtige Semester auswählen und rechts oben bei Veranstaltungen <em>&#39;keine&#39;</em> und bei Prüfungs-/Studienleistungen <em>&#39;alle&#39;</em> anklicken. 
+3. Dann in der Liste das gewünschte Modul bzw. die gewünschte Veranstaltung suchen. 
+4. Auf <em>&#39;Prüfung anmelden&#39;</em> bzw. <em>&#39;Studienleistung registrieren&#39;</em> gehen. 
+5. Gegebenenfalls noch die richtige Gruppe auswählen. </p>
+</div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="qa_66ae8e6510f040b07f8c7f69"
+                  aria-expanded="false"
+                  class="accordion-button collapsed"
+                  data-bs-target="#qa_66ae8e6510f040b07f8c7f69"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="qa_66ae8e6510f040b07f8c7f69_q"><p>Wer ist das LLPA? (MEd Mathematik, MEd Mathematik Erweiterungsfach)</p>
+</h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="qa_66ae8e6510f040b07f8c7f69"
+                class="accordion-collapse collapse "
+                data-bs-parent="#accordionstu_kat_66ae8e6510f040b07f8c7f63"
+                id="qa_66ae8e6510f040b07f8c7f69"
+              >
+                <div class="accordion-body"><p>Das Landeslehrerprüfungsamt!</p>
+</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+     
+
+    <div><br /></div>
+    <div><br /></div>
+
+    <div class="container">
+      <footer class="text-center text-white" style="background-color: #004a99">
+        <div class="container">
+          <section class="mt-2">
+            <div
+              class="row text-center d-flex justify-content-center pt-4 pb-4"
+            >
+              <div class="col-md-2">
+                <h6 class="text-uppercase font-weight-bold">
+                  <a
+                    href="/de/bildnachweis/"
+                    class="text-white"
+                    >Bildnachweis</a
+                  >
+                </h6>
+              </div>
+              <div class="col-md-2">
+                <h6 class="text-uppercase font-weight-bold">
+                  <a
+                    href="/de/impressum/"
+                    class="text-white"
+                    >Impressum</a
+                  >
+                </h6>
+              </div>
+              <div class="col-md-2">
+                <h6 class="text-uppercase font-weight-bold">
+                  <a
+                    href="/de/datenschutz/"
+                    class="text-white"
+                    >Datenschutz</a
+                  >
+                </h6>
+              </div>
+              <div class="col-md-2">
+                <h6 class="text-uppercase font-weight-bold">
+                  <a
+                    href="/de/tools"
+                    class="text-white"
+                    >Tools</a
+                  >
+                </h6>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="text-center p-3" style="background-color: #143669">
+          © 2024 Copyright:
+          <a class="text-white" href="https://math.uni-freiburg.de/"
+            >Mathematisches Institut, Universität Freiburg</a
+          >
+        </div>
+      </footer>
+    </div>
+    <script>
+      if (location.hash !== null && location.hash !== "") {
+        $(location.hash + ".collapse").collapse("show");
+      }
+    </script>
+    <script>
+      var x = window.location.search.replace("?", "_");
+      var element = document.getElementById(x);
+      element.classList.add("show");
+      element.scrollIntoView();
+      var element = document.querySelector("[aria-controls=" + x + "]");
+      element.classList.remove("collapsed");
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script>
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+      });
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    
+<script>
+  var element = document.getElementById("_q");
+  element.scrollIntoView();
+</script>
+
+  </body>
+</html>

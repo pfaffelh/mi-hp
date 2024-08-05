@@ -28,14 +28,18 @@ files = [
     #     "source": "https://www.math.uni-freiburg.de/lehre/index.html",
     #     "target": "templates/index.html"
     # },
+    #{
+    #    "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-meh-2021.html",
+    #    "target": "templates/studiengaenge/med_erw/studienverlauf-meh-2021.html"
+    #},
+    #{
+    #    "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-meb-2021#.html",
+    #    "target": "templates/studiengaenge/med_erw/studienverlauf-meb-2021.html"
+    #}
     {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-meh-2021.html",
-        "target": "templates/studiengaenge/med_erw/studienverlauf-meh-2021.html"
+        "source": "https://www.math.uni-freiburg.de/lehre/zertifikat-hochschullehre.html",
+        "target": "templates/lehrende/zertifikat-hochschullehre.html"
     },
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-meb-2021.html",
-        "target": "templates/studiengaenge/med_erw/studienverlauf-meb-2021.html"
-    }
     #{
     #    "source": "https://www.math.uni-freiburg.de/lehre/promotion.html",
     #    "target": "templates/studiengaenge/promotion/index.html"
@@ -177,7 +181,7 @@ for file in files:
 
 
 
-    with open(file["target"], "w") as file:
+    with open(f"../{file['target']}", "w") as file:
         file.write(content.prettify())
 
 

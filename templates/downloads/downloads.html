@@ -2,7 +2,7 @@
   <h1>Downloads</h1>
   <p>
     Hier finden Sie die meisten Dokumente, die wir zum Download anbieten. Das
-    kommentierte Vorlesungsverzeichnis ist <a href="">hier</a>.
+    kommentierte Vorlesungsverzeichnis ist <a href={{url_for('showlehrveranstaltungenbase', lang=lang)}}>hier</a>.
   </p>
 
   <div id="accordion"></div>
@@ -17,7 +17,9 @@
           aria-expanded="{% if anchor == 'pruefungsamt' %}true{% else %}false{% endif %}"
           data-bs-toggle="collapse"
         >
-          <h3 class="h5">Formulare und Merkblätter des Prüfungsamtes</h3>
+          <h3 class="h5">
+            Formulare und Merkblätter für Studierende
+          </h3>
         </button>
       </h4>
       <div
@@ -65,13 +67,6 @@
               <a href="/static/pdf/pruefungsamt/Muster-Titelblatt.pdf">
                 alle Studiengänge
               </a>
-              <br />
-              – Bestätigung der erfolgreichen Präsentation
-              <a
-                href="/static/pdf/pruefungsamt/formular-praesentation_abschlussarbeit.pdf"
-              >
-                B.Sc. // M.Sc.
-              </a>
             </li>
             <li>
               <b> Absolvent:inn:enfeier </b>
@@ -113,14 +108,6 @@
               //
               <a href="/static/pdf/pruefungsamt/formular-anerkennung-msc.pdf">
                 M.Sc.
-              </a>
-              <br />
-              – Dokumentation erbrachter Studienleistungen für fachfremde
-              Wahlmodule
-              <a
-                href="/static/pdf/pruefungsamt/formular-dokumentation_studienleistungen.pdf"
-              >
-                B.Sc. // M.Sc.
               </a>
             </li>
             <li>
@@ -175,6 +162,23 @@
               </a>
             </li>
             <li>
+              <b> Nachzuholende Leistungen im Master of Education: </b>
+              <br />
+              – Antrag Überprüfung nachzuholende Leistungen
+              <a
+                href="/static/pdf/pruefungsamt/formular-antrag_nachzuholende-leistungen_med.pdf"
+              >
+                (MEd)
+              </a>
+              <br />
+              – Bescheinigung nachgeholte Leistungen
+              <a
+                href="/static/pdf/pruefungsamt/bescheinigung-nachgeholte_leistungen_med.pdf"
+              >
+                (MEd)
+              </a>
+            </li>
+            <li>
               <b> Prüfungen im Master </b>
               <br />
               – Zulassung zu den Prüfungen
@@ -198,14 +202,6 @@
               </a>
             </li>
             <li>
-              <b> Protokoll von Prüfungen</b>
-              <br />
-              – leeres Protokoll einer mündlichen Prüfung
-              <a href="/static/pdf/pruefungsamt/blankoprotokoll.pdf">
-                alle Studiengänge
-              </a>
-            </li>
-            <li>
               <b> Prüfungen per Video-Konferenz </b>
               <br />
               –
@@ -226,14 +222,6 @@
             <li>
               <b> Rücktritt aus Krankheitsgründen </b>
               siehe "Abmeldung und Rücktritt von Prüfungen"
-            </li>
-            <li>
-              <b> Vorbehaltserklärung bei fehlender Klausuranmeldung </b>
-              <br />
-              – Formular
-              <a href="/static/pdf/pruefungsamt/vorbehaltserklaerung.pdf">
-                alle Studiengänge
-              </a>
             </li>
             <li>
               <b> Vorgezogene mündliche Prüfung </b>
@@ -293,6 +281,109 @@
         </div>
       </div>
     </div>
+
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button {% if anchor != 'formulare_mitarbeiter' %}collapsed{% endif %}"
+          data-bs-target="#formulareMContent"
+          aria-controls="formulareMContent"
+          aria-expanded="{% if anchor == 'pruefungsamt' %}true{% else %}false{% endif %}"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">Formulare und Merkblätter für Lehrende</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="formulareMContent"
+        class="accordion-collapse collapse {% if anchor == 'pruefungsamt' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="formulareMContent"
+      >
+        <div class="accordion-body" id="pruefungsamt">
+          <ul>
+            <li>
+              <b> Abschlussarbeit </b>
+              <br />
+              – Bestätigung der erfolgreichen Präsentation
+              <a
+                href="/static/pdf/lehrende/formular-praesentation_abschlussarbeit.pdf"
+              >
+                B.Sc. // M.Sc.
+              </a>
+            </li>
+            <li>
+              <b> Dokumentation </b>
+              <br />
+              – Dokumentation erbrachter Studienleistungen für fachfremde
+              Wahlmodule
+              <a
+                href="/static/pdf/lehrende/formular-dokumentation_studienleistungen.pdf"
+              >
+                B.Sc. // M.Sc.
+              </a>
+              <br />
+              – Dokumentation bestandener Übungen
+              <a
+                href="/static/pdf/lehrende/formular-dokumentation_uebungen.pdf"
+              >
+                B.Sc. // M.Sc.
+              </a>
+              <br />
+              – Klausurprotokoll
+              <a href="/static/pdf/lehrende/klausurprotokoll.pdf">
+                B.Sc. // M.Sc.
+              </a>
+            </li>
+            <li>
+              <b> Habilitaation</b>
+              <br />
+              – 
+              <a href="/static/pdf/lehrende/HabilOmathphys-02-12-03_Aend_01-10-06-Druckvorlage.pdf">
+                Habilitationsordnung
+              </a> 1.10.2006
+            </li>
+            <li>
+              <b> Protokoll von Prüfungen</b>
+              <br />
+              – leeres Protokoll einer mündlichen Prüfung
+              <a href="/static/pdf/lehrende/blankoprotokoll.pdf">
+                alle Studiengänge
+              </a>
+            </li>
+            <li>
+              <b> Vorbehaltserklärung bei fehlender Klausuranmeldung </b>
+              <br />
+              – Formular
+              <a href="/static/pdf/lehrende/vorbehaltserklaerung.pdf">
+                alle Studiengänge
+              </a>
+            </li>
+            <li>
+              <b> Prüfungsbefugnis</b>
+              <br />
+              –
+              <a href="/static/pdf/lehrende/Prüfungsbefugnis.pdf">
+                Übertragung der Prüfungsbefugnis
+              </a>
+            </li>
+            <li>
+              <b> Zertifikat Hochschullehre</b>
+              <br />
+              –
+              <a href="/static/pdf/lehrende/Satzung-Zertifikat_Hochschullehre.deutsch.pdf">
+                deutsch (offiziell)
+              </a>
+              <a href="/static/pdf/lehrende/Satzung-Zertifikat_Hochschullehre.englisch.pdf">
+                englisch
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <div class="accordion-item">
       <h4 class="accordion-header">
         <button
@@ -532,6 +623,161 @@
       >
         <div class="accordion-body" id="promotion">
           {% include "/studiengaenge/promotion/downloads.html" %}
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button {% if anchor != 'gesetz' %}collapsed{% endif %}"
+          data-bs-target="#gesetzContent"
+          aria-controls="gesetzContent"
+          aria-expanded="{% if anchor == 'gesetz' %}true{% else %}false{% endif %}"
+          data-bs-toggle="collapse"
+        >
+          <h3 class="h5">Gesetze, Ordnungen, Satzungen, ...</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="gesetzContent"
+        class="accordion-collapse collapse {% if anchor == 'gesetz' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="gesetzContent"
+      >
+        <div class="accordion-body" id="gesetz">
+          <p style="text-align: right">
+            <i>Letzte Änderung: 04.11.2022</i>
+          </p>
+          Die Uni Freiburg hat leider keine Seite, auf der alle relevanten
+          Gesetze, Prüfungsordnungen, Satzungen etc. versammelt wären. Sehr
+          hilfreich ist
+          <a href="https://search.tf.uni-freiburg.de/"
+            >Hannah Basts Suchmaschine</a
+          >, die u.a. BSc- und MSc-Rahmenordnung, Corona-Satzung der Uni,
+          Lehramts-Rahmenverordnung und LHG enthält.
+          <ul>
+            <li>
+              Satzungen und Ordnungen der Universität Freiburg:
+              <a
+                href="https://www.jsl.uni-freiburg.de/Rechtsgrundlagen_Satzungen"
+                >Überblicksseite</a
+              >
+              und insbesondere
+              <ul>
+                <li>
+                  <a
+                    href="https://www.jsl.uni-freiburg.de/Rechtsgrundlagen/corona-satzung"
+                    >Corona-Satzung</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.jsl.uni-freiburg.de/Rechtsgrundlagen/links%20zu%20pdf/Links/ab-2018-61.pdf"
+                    >Grundordnung</a
+                  >, 26.10.2022
+                </li>
+                <li>
+                  <a
+                    href="https://www.jsl.uni-freiburg.de/Rechtsgrundlagen/links%20zu%20pdf/Links/11_2015_verfahrensordnung.pdf"
+                    >Verfahrensordnung</a
+                  >, 28.07.2022
+                </li>
+                <li>
+                  <a
+                    href="https://www.jsl.uni-freiburg.de/resolveuid/1b4275100fd66e8b9ae40124a47d25cd"
+                    >Hausordnung</a
+                  >, 20.09.2010
+                </li>
+
+                <li>
+                  <a
+                    href="https://www.jsl.uni-freiburg.de/Rechtsgrundlagen/links%20zu%20pdf/Links/ab-2020-13.pdf"
+                    >Qualitätssicherungssatzung</a
+                  >, 29.10.2021
+                </li>
+                <li>
+                  <a
+                    href="https://intranet.uni-freiburg.de/public/downloads/amtlbek/ab-2022-31.pdf"
+                    >Redlichkeitsordnung</a
+                  >
+                  (Ordnung zur Sicherung der Redlichkeit in der Wissenschaft),
+                  02.06.2022
+                </li>
+                <li>
+                  <a
+                    href="https://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/zulassungsordnungen/zimmo.pdf"
+                    >Zulassungs- und Immatrikulationsordnung </a
+                  >, 26.05.2023
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="https://uni-freiburg.de/zuv/service/amtliche-bekanntmachungen/"
+                >Amtliche Bekanntmachungen der Universität Freiburg</a
+              >
+            </li>
+            <li>
+              Landesrecht:
+              <a href="https://www.landesrecht-bw.de">Startseite</a> und
+              insbesondere
+              <ul>
+                <li>
+                  <a
+                    href="https://www.landesrecht-bw.de/jportal/portal/t/ewt/page/bsbawueprod.psml?doc.hl=1&doc.id=jlr-KapVOBW2002rahmen&documentnumber=1&numberofresults=6&doctyp=Norm&showdoccase=1&doc.part=X&paramfromHL=true#focuspoint"
+                    >Kapazitätsverordnung (KapVO VII)</a
+                  >, 28.06.2016, als
+                  <a
+                    href="https://www.landesrecht-bw.de/jportal/portal/t/ewv/page/bsbawueprod.psml/screen/JWPDFScreen/filename/KapVO_BW_2002.pdf"
+                    >pdf</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.landesrecht-bw.de/jportal/portal/t/did/page/bsbawueprod.psml?doc.hl=1&doc.id=jlr-HSchulGBWV28IVZ&documentnumber=2&numberofresults=121&doctyp=Norm&showdoccase=1&doc.part=S&paramfromHL=true#focuspoint"
+                    >Landeshochschulgesetz (LHG)</a
+                  >, 07.02.2023, als
+                  <a
+                    href="https://www.landesrecht-bw.de/jportal/recherche3doc/HSchulG_BW.pdf?json=%7B%22format%22%3A%22pdf%22%2C%22params%22%3A%7B%22fixedPart%22%3A%22true%22%7D%2C%22docPart%22%3A%22X%22%2C%22docId%22%3A%22jlr-HSchulGBWrahmen%22%2C%22portalId%22%3A%22bsbw%22%7D&_=%2FHSchulG_BW.pdf"
+                    >pdf</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.landesrecht-bw.de/jportal/portal/t/dwb/page/bsbawueprod.psml?doc.hl=1&doc.id=jlr-LVerpflVBW2016rahmen&documentnumber=2&numberofresults=15&doctyp=Norm&showdoccase=1&doc.part=R&paramfromHL=true#focuspoint"
+                    >Lehrverpflichtungsverordnung (LVVO)</a
+                  >, 03.09.2016, als
+                  <a
+                    href="https://www.landesrecht-bw.de/jportal/portal/t/dx0/page/bsbawueprod.psml/screen/JWPDFScreen/filename/LVerpflV_BW_2016.pdf"
+                    >pdf</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.landesrecht-bw.de/jportal/portal/t/dzy/page/bsbawueprod.psml?pid=Dokumentanzeige&showdoccase=1&js_peid=Trefferliste&documentnumber=1&numberofresults=2&fromdoctodoc=yes&doc.id=jlr-LehrRahmenVBWrahmen&doc.part=X&doc.price=0.0&doc.hl=1#focuspoint"
+                    >Rahmenvorgabenverordnung Lehramtsstudiengänge
+                    (RahmenVO-KM)</a
+                  >, 27.04.2015, als
+                  <a
+                    href="https://www.landesrecht-bw.de/jportal/portal/t/dzz/page/bsbawueprod.psml/screen/JWPDFScreen/filename/LehrRahmenV_BW.pdf"
+                    >pdf</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="http://www.landesrecht-bw.de/jportal/portal/t/dz5/page/bsbawueprod.psml?pid=Dokumentanzeige&showdoccase=1&js_peid=Trefferliste&documentnumber=1&numberofresults=2&fromdoctodoc=yes&doc.id=jlr-HSchulQSAkkrRglVBWrahmen&doc.part=X&doc.price=0.0&doc.hl=1#focuspoint"
+                    >Studienakkreditierungsverordnung (StAkkrVO)</a
+                  >, 18.04.2018, als
+                  <a
+                    href="https://www.landesrecht-bw.de/jportal/portal/t/dz6/page/bsbawueprod.psml/screen/JWPDFScreen/filename/HSchulQSAkkrRglV_BW.pdf"
+                    >pdf</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
