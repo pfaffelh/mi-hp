@@ -320,7 +320,7 @@ def showstudiendekanat(lang, unterseite = ""):
         filenames = ["studiendekanat/termine.html"]
     if unterseite == "calendar":
         events = get_caldav_calendar_events(calendar)
-        return render_template("studiendekanat/calendar.html", events=events, lang=lang)
+        return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = False)
     if unterseite == "anmeldung":
         filenames = ["studiendekanat/anmeldung.html"]
     if unterseite == "modulplan":
@@ -359,8 +359,22 @@ def showmitfaq(lang, show =""):
 
 @app.route("/<lang>/lehrende/<unterseite>")
 @app.route("/<lang>/lehrende/<unterseite>/<anchor>")
-#@fortivpn()
 def showlehrende(lang, unterseite ="", anchor = ""):
+    filenames = []
+    if unterseite == "zertifikat":
+        anchor = "what"
+        filenames = ["lehrende/zertifikat-hochschullehre.html"]
+    if unterseite == "calendar":
+        events = get_caldav_calendar_events(calendar)
+        return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = True)
+        
+    return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
+
+@app.route("/<lang>/lehrendevpn/<unterseite>")
+@app.route("/<lang>/lehrendevpn/<unterseite>/<anchor>")
+@fortivpn()
+def showlehrendevpn(lang, unterseite ="", anchor = ""):
+    filenames = []
     if unterseite == "zertifikat":
         anchor = "what"
         filenames = ["lehrende/zertifikat-hochschullehre.html"]

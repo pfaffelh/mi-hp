@@ -18,13 +18,56 @@
     margin-bottom: 0px;
   }
 </style>
-{% endblock %} {% block navbar %} {% include 'navbar.html' %} {% endblock %} 
-{% block content %}
+{% endblock %} {% block navbar %} {% include 'navbar.html' %} {% endblock %} {%
+block content %} {% if lehrende %}
+<div class="container">
+  <h3>Liebe Dozent*innen und Assistent*innen</h3>
+  <p>
+    Bitte teilen Sie dem Prüfungsamt spätestens in der zweiten Semesterwoche die
+    Klausurtermine Ihrer Veranstaltungen mit.
+  </p>
+</div>
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <div class="feature-icon bg-gradient text-end">
+        <a
+          href="/{{lang}}/lehrveranstaltungen/{{laufendes_semester}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          Lehrveranstaltungen des laufenden Semesters</a
+        >
+
+        {% if show_kommendes_semester %}
+        <a
+          href="/{{lang}}/lehrveranstaltungen/{{kommendes_semester}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          Lehrveranstaltungen des kommenden Semesters
+        </a>
+        {% endif %}
+        <a
+          href="{{ url_for('showmitfaq', lang=lang)}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          FAQ</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
 
 <br />
-<br />
 
-<div class="container" style = "max-width: 140vh;">
+<div class="container" style="max-width: 140vh">
   <div id="calendar"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>

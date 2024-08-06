@@ -285,21 +285,21 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              >{% if lang == "de" %}für Lehrende{% else %}for teaching staff{% endif %}</a
+              >{% if lang == "de" %}Für Lehrende{% else %}for teaching staff{% endif %}</a
             >
             <ul class="dropdown-menu" data-bs-theme="light">
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudiendekanat', lang=lang) }}"
-                  >{% if lang == "de" %}Lehrorganisation{% else %}Organisition of Teaching{% endif %}</a
+                  href="{{ url_for('showlehrende', unterseite = 'calendar', lang=lang) }}"
+                  >{% if lang == "de" %}Prüfungskalender{% else %}Calendar for exams{% endif %}</a
                 >
               </li>
               {% if vpn %}
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showlehrende', unterseite = 'zertifikat', lang=lang) }}"
+                  href="/{{lang}}/lehrendevpn/zertifikat"
                   >{% if lang == "de" %}Lehrzertifikat{% else %}Certificate Teaching{% endif %}</a
                 >
               </li>
