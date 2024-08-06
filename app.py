@@ -26,11 +26,14 @@ app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
 
 # Durch diese Funktion werden mit @fortivpn gekennzeichnete Routen nur vom vpn aus erreicht.
+def forti_bool_or_localhost(network = '10.23.0.0/16'):
+    ip = IPv4Address(request.remote_addr)
+    return ip in ip_network(network) or ip_network('127.0.0.1')
+
 def fortivpn(network = '10.23.0.0/16'):
     def decorator(f):
         def wrapper(*args, **kwargs):
-            ip = IPv4Address(request.remote_addr)
-            if ip in ip_network(network):
+            if forti_bool_or_localhost(network):
                 return f(*args, **kwargs)
             else:
                 abort(403)
@@ -46,7 +49,8 @@ def handle_context():
         "msc": vvz.get_showanmeldung("msc"),
         "mscdata": vvz.get_showanmeldung("mscdata")
         }
-    return dict(os=os, 
+    vpn = forti_bool_or_localhost()
+    return dict(vpn=vpn, os=os, 
                 showanmeldung = showanmeldung, 
                 laufendes_semester = cur,
                 kommendes_semester = vvz.next_semester_kurzname(cur),
@@ -179,17 +183,12 @@ def showstudiengang(lang, studiengang, anchor=""):
         filenames = ["studiengaenge/med/index-2018.html"]
     if studiengang == "med_erw":
         filenames = ["studiengaenge/med_erw/index-2021.html"]
-    if studiengang == "promotion":
-        filenames = ["studiengaenge/promotion/index.html"]
-    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
-
-@app.route("/<lang>/studiengaenge/<studiengang>/news/")
-def showstudiengangnews(lang, studiengang):
-    if studiengang == "msc_data":
-        filenames = ["studiengaenge/msc_data/carousel.html", "studiengaenge/msc_data/news.html"]
     if studiengang == "med_dual":
         filenames = ["studiengaenge/med_dual/index-2024.html"]
-    return render_template("home.html", filenames=filenames, lang=lang)
+    if studiengang == "promotion":
+        filenames = ["studiengaenge/promotion/index.html"]
+
+    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
 
 @app.route("/<lang>/studiengaenge/<studiengang>/verlauf/")
 def showstudienverlauf(lang, studiengang):

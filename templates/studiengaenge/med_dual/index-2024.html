@@ -1,112 +1,174 @@
-<div class="container" id="featured-3">
-  <h1>Masterstudiengang Lehramt Gymnasium – dual</h1>
-  <div class="container px-4 py-1" id="featured-3">
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-      <div class="feature col">
-        <div class="feature-icon bg-gradient text-center">
-          <!--               <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
-          <h2>Geplanter Start</h2>
-        </div>
-        <div class="text-center">
-          <p>Wintersemester 2024/25</p>
-        </div>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-gradient text-center">
-          <!--               <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
+<div class="container" id="inhalt">
+  <h1>Masterstudiengang Lehramt Gymnasium - dual (PO 2024)</h1>
+  <p>
+    Bei Fragen der Studienorganisation (Belegung, Prüfungsanmeldung,
+    detaillierter Modulplan, etc) wenden Sie sich bitte an die
+    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+      Studiengangkoordination Duales Lehramt
+    </a>
+    <a href="mailto:lehramt-dual@zv.uni-freiburg.de"> </a>. Einige Fragen
+    beantwortet auch das
+    <a href="{{ url_for('showstufaq', lang=lang) }}">FAQ</a>.
+  </p>
 
-          <a
-            href="#"
-            class="btn btn-primary disabled"
-            role="button"
-            aria-disabled="true"
-          >
-            <h2>Zur Bewerbung</h2></a
-          >
-        </div>
-        <div class="py-3 text-center">
-          <p>Coming soon...</p>
-        </div>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-gradient text-center">
-          <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>
-          <h2>Kurzbeschreibung</h2>
-        </div>
-        <div>
-          <p>
-            Der Studiengang ist erster Bestandteil einer dreijährigen Ausbildung
-            zum Informatik/Mathematik bzw. Physik/Mathematik-Lehrer*in. Nach dem
-            Master-Abschluss nach zwei Jahren folgt eine vom SAL Freiburg
-            verantwortete Ausbildungsphase. Studierende befinden sich in einem
-            vergüteten Ausbildungsverhältnis.
-          </p>
-        </div>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-gradient text-center">
-          <h2><i class="fa fa-person fa-4" aria-hidden="true"></i></h2>
-          <h2>Zielgruppe</h2>
-        </div>
-        <div>
-          <p>
-            Hier werden ausschließlich Absolvierende eines BSc Informatik oder
-            BSc Physik zugelassen, die gymansiale*r Mathematik-Lehrer*in werden
-            wollen. Der Masterstudiengang kann nur zum Wintersemester
-            aufgenommen werden.
-          </p>
-        </div>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-gradient text-center">
-          <h2><i class="fa fa-keyboard fa-4" aria-hidden="true"></i></h2>
-          <h2>Curriculum</h2>
-        </div>
-        <div>
-          <p>
-            Das Studium umfasst die Fachdidaktik (10 ECTS) des ersten Faches
-            (Physik bzw. Informatik), fachdidaktische (10 ECTS) und
-            fachwissenschaftliche (27 ECTS) Anteile des Faches Mathematik,
-            Bildungswissenschaften (25 ECTS), schulpraktische Elemente (33 ECTS)
-            und eine Master-Arbeit (15 ECTS).
-          </p>
-        </div>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-gradient text-center">
-          <h2><i class="fa fa-paintbrush fa-4" aria-hidden="true"></i></h2>
-          <h2>Schulpraxis</h2>
-        </div>
-        <div>
-          <p>
-            Studierende sind für drei Jahre einem Gymnasium im Freiburger Raum
-            zugeteilt. Sie werden bereits während des Masterstudiums praktisch
-            ausgebilet (vier Wochen Schulpraktikum vor Studienbeginn, verstärkte
-            Praxisphasen in Semester 3 und 4). Diese Studieninhalte werden vom
-            <a href="https://gym-fr.seminare-bw.de/Startseite"
-              >Studienseminar Freiburg
-            </a>
-            organisiert und durchgeführt.
-          </p>
-        </div>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-gradient text-center">
-          <h2><i class="fa fa-link fa-4" aria-hidden="true"></i></h2>
-          <h2>Links</h2>
-        </div>
-        <div>
-          <p></p>
-          <ul>
-            <li>
-              <a href="">Studienberatung Lehramt der Universität Freiburg</a>
-            </li>
-            <li>
-              <a href="">Informationen zum Ausbildungsverhältnis</a>
-            </li>
-          </ul>
-        </div>
+  <div class="container text-end">
+    <div class="row">
+      <div class="col">
+        <a
+          href="{{ url_for('showstufaq', lang=lang) }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          FAQ
+        </a>
+        <a
+          href="mailto:studienberatung@math.uni-freiburg.de"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Studienberatung
+        </a>
+        <a
+          href="https://www.face-freiburg.de/studium-lehre/vor-studium/angebot-uni/masterstudiengang-lehramt-gymnasium-dual/"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          Freiburg Advanced Center of Education
+        </a>
       </div>
     </div>
   </div>
+
+  <div class="accordion accordion-flush" id="accordionExample">
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="kurzContent"
+          aria-expanded="{% if anchor == 'kurz' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'kurz' %}collapsed{% endif %}"
+          data-bs-target="#kurzContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Kurzbeschreibung des Studiengangs</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="kurzContent"
+        class="accordion-collapse collapse {% if anchor == 'kurz' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="kurzContent"
+      >
+        <div class="accordion-body" id="kurzContent">
+          {% include "/studiengaenge/med_dual/kurz.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="vorContent"
+          aria-expanded="{% if anchor == 'hintergrund' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'hintergrund' %}collapsed{% endif %}"
+          data-bs-target="#vorContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Hintergrund</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="vorContent"
+        class="accordion-collapse collapse {% if anchor == 'hintergrund' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="vorContent"
+      >
+        <div class="accordion-body">
+          {% include "studiengaenge/med_dual/hintergrund.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="dokumenteContent"
+          aria-expanded="{% if anchor == 'dokumente' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'dokumente' %}collapsed{% endif %}"
+          data-bs-target="#dokumenteContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">
+            {% if lang == "de" %}Dokumente{% else %}Documents {% endif %}
+          </h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="dokumenteContent"
+        class="accordion-collapse collapse {% if anchor == 'dokumente' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="dokumenteContent"
+      >
+        <div class="accordion-body">
+          {% include "studiengaenge/med_dual/dokumente.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          aria-controls="verlaufContent"
+          aria-expanded="{% if anchor == 'studienverlauf' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'studienverlauf' %}collapsed{% endif %}"
+          data-bs-target="#verlaufContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">
+            Studienverlauf
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="verlaufContent"
+        class="accordion-collapse collapse {% if anchor == 'studienverlauf' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="verlaufContent"
+      >
+        <div class="accordion-body" id="studienverlauf">
+          {% include "/studiengaenge/med_dual/studienverlauf.html" %}
+        </div>
+      </div>
+    </div>
+    <!--<div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="modulplanContent"
+          aria-expanded="{% if anchor == 'modulplan' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'modulplan' %}collapsed{% endif %}"
+          data-bs-target="#modulplanContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">
+            {% if lang == 'de' %}Modulplan{% else %}Plan of modules{% endif %}
+          </h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="modulplanContent"
+        class="accordion-collapse collapse {% if anchor == 'modulplan' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="modulplanContent"
+      >
+        <div class="accordion-body" id="modulplan">
+          {% include "/studiendekanat/modulplan_mscdata.html" %}
+        </div>
+      </div>
+    </div> -->
+  </div>
 </div>
+

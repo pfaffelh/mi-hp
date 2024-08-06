@@ -125,7 +125,7 @@
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="{{ url_for('showstudiengangnews', studiengang='med_dual', lang = lang) }}"
+                  href="{{ url_for('showstudiengang', studiengang='med_dual', lang = lang) }}"
                   ><!-- <button type="button" class="btn btn-primary btn-sm">
                     NEU
                   </button>-->
@@ -295,6 +295,7 @@
                   >{% if lang == "de" %}Lehrorganisation{% else %}Organisition of Teaching{% endif %}</a
                 >
               </li>
+              {% if vpn %}
               <li>
                 <a
                   class="dropdown-item text-black"
@@ -302,6 +303,7 @@
                   >{% if lang == "de" %}Lehrzertifikat{% else %}Certificate Teaching{% endif %}</a
                 >
               </li>
+              {% endif %}
             </ul>
           </li>
           <li class="nav-item px-3">
