@@ -28,7 +28,7 @@ Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
 # Durch diese Funktion werden mit @fortivpn gekennzeichnete Routen nur vom vpn aus erreicht.
 def forti_bool_or_localhost(network = '10.23.0.0/16'):
     ip = IPv4Address(request.remote_addr)
-    return ip in ip_network(network) or ip_network('127.0.0.1')
+    return ip in ip_network(network) or ip in ip_network('127.0.0.1')
 
 def fortivpn(network = '10.23.0.0/16'):
     def decorator(f):
