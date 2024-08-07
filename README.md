@@ -1,79 +1,110 @@
+### Allgemeines
+
+Dies ist das Repository der [Lehre-Seiten des Mathematischen Instituts der Universität Freiburg](https://www.math.uni-freiburg.de/lehre/). Es handelt sich um eine Flask-App (also python), die mit einer lokalen Datenbank verbunden ist.
+
+#### Aufbau der URLs
+
+Der Aufbau der URLs ist immer `https://ww.math.uni-freiburg.de/lehre/<lang>/unterpunkt/unterseite/anchor`,
+wobei `lang == de` oder `lang == en` die Sprache angibt. Die Templates der Unterpunkte
+
+- interesse
+- anfang
+- studiengaenge
+- lehrveranstaltungen
+- studiendekanat
+- lehrende
+- downloads
+  sind dabei in den entsprechenden Unterordnern von `template` zu finden. `unterseite` ist meist eine eigene html-Datei, `anchor` meist eine `id` innerhalb der html-Datei.
+
+#### monitor
+
+#### Steuerung eines Requests
+
+Wird die Seite aufgerufen, so steuert `app.py`, was genau passiert. Hier werden auch Routen definiert, die steuern, welche Funktion aufgerufen wird, wenn ein request verarbeitet wird.
+
+#### Angabe von Links
+
+In einer Flask-App kann man interne Links auf zwei verschiedene Arten und Weisen angeben. Entweder wir gewohnt durch Angabe von `<a href="/link/zur/seite">`, alternativ aber auch z.B. mit `<a href="{{ url_for('showdownloads', lang=lang) }}">Downloads</a> `. Hier wird also die Funktion aus `app.py` angegeben, die den Aufruf steuern soll.
+
+#### Verbindung zu einer Datenbank
+
+Die im Footer unter _TOOLS_ verlinkten Apps [mi-faq]() (für die ), [mi-vvz]() und [mi-news]() geben die Möglichkeit, Daten in einer Datenbank zu verändern, die dann hier wieder ausgelesen werden. 
+
 ### Struktur einer json-Datei
 
 Einträge in einer json-Datei sind Paare "key": "value". Dabei ist "key" immer ein String, d.h. hier werden Anführungszeichen benötigt, aber "value" kann alles mögliche sein, z.B.:
-* String: wie bei "key"
-* Zahl: klar
-* Dict: Das ist wieder eine in {} geklammerte Aufzählung von key-value-Paaren
-* List: Eine Liste, geschrieben z.B. als [1,2], oder z.B. eine Liste von Dicts, oder...
+
+- String: wie bei "key"
+- Zahl: klar
+- Dict: Das ist wieder eine in {} geklammerte Aufzählung von key-value-Paaren
+- List: Eine Liste, geschrieben z.B. als [1,2], oder z.B. eine Liste von Dicts, oder...
 
 ### Ändern von index.html
 
-Alle Daten, die für index.html benötigt werden, sind in index.json abgespeichert. 
+Alle Daten, die für index.html benötigt werden, sind in index.json abgespeichert.
 Da die Datei aus einem Carousel, Karten, und xxx aufgebaut ist, hat die json-Datei die Struktur
 {
-    "carousel": [
-        {
-            Daten für Item 1
-        },
-        {
-            Daten für Item 2
-        },
-        etc        
-    ],
-    "news": [
-        {
-            Daten für Karte 1
-        },
-        {
-            Daten für Karte 2
-        },
-        {
-            Daten für Karte 3
-        }        
-    ]
+"carousel": [
+{
+Daten für Item 1
+},
+{
+Daten für Item 2
+},
+etc
+ ],
+"news": [
+{
+Daten für Karte 1
+},
+{
+Daten für Karte 2
+},
+{
+Daten für Karte 3
+}
+ ]
 }
 
 Der erste Eintrag ist dabei jeweils "show": true/false, je nachdem ob das entsprechende Objekt angezeigt werden soll oder nicht.
 
-
-
-
-
 # mi-hp
 
-* Großer Wahlbereich (aufzählen von Disziplinen)
-* Numerik + Stochastik
-* Praktikum als Wahlpflicht (Sick, Baloise, LBBW, Allianz, Fraunhofer, Bosch)
-* für Absolventen von Informatik, Ingenieure, ...
+- Großer Wahlbereich (aufzählen von Disziplinen)
+- Numerik + Stochastik
+- Praktikum als Wahlpflicht (Sick, Baloise, LBBW, Allianz, Fraunhofer, Bosch)
+- für Absolventen von Informatik, Ingenieure, ...
 
-* sollte der Studiengang nicht zum WS24 eingerichtet sein, besteht die Möglichkeit, vorab Sachen hören und später anzuerkennen.
+- sollte der Studiengang nicht zum WS24 eingerichtet sein, besteht die Möglichkeit, vorab Sachen hören und später anzuerkennen.
 
-* Keywords für Studiengangbeschreibung: Mathematik, Data Science, Artificial Intelligence, Machine Learning, Deep Learning
+- Keywords für Studiengangbeschreibung: Mathematik, Data Science, Artificial Intelligence, Machine Learning, Deep Learning
 
 Standortvorteile:
-* schöne Stadt
-* Verbindungen zu KI?
-* theoretische Grundlagen
 
-* Homepage sollte heißen:
-https://www.math.uni-freiburg.de/lehre/studiengaenge/mscdata-2024.html
+- schöne Stadt
+- Verbindungen zu KI?
+- theoretische Grundlagen
+
+- Homepage sollte heißen:
+  https://www.math.uni-freiburg.de/lehre/studiengaenge/mscdata-2024.html
 
 Todo:
-* Modulhandbuch (Ernst August)
-* Postkarte machen?
-* Poster machen?
-* Möglichkeiten für zentrale Werbemaßnahmen der Uni herausfinden (Thorsten)
-* Homepage machen (Peter)
-* Portale (Anne, nach März)
+
+- Modulhandbuch (Ernst August)
+- Postkarte machen?
+- Poster machen?
+- Möglichkeiten für zentrale Werbemaßnahmen der Uni herausfinden (Thorsten)
+- Homepage machen (Peter)
+- Portale (Anne, nach März)
 
 Bilder für Homepage:
-* Freikon (Peter)
-* Fachschaft anfragen (Peter)
-* Dietmar Strömungsbilder (Thorsten)
-* von Harald, Kellmeyer, Moritz (Thorsten)
-* von Patrick (Sören)
+
+- Freikon (Peter)
+- Fachschaft anfragen (Peter)
+- Dietmar Strömungsbilder (Thorsten)
+- von Harald, Kellmeyer, Moritz (Thorsten)
+- von Patrick (Sören)
 
 gelbe Farben aus Uni-Farbgebung
 
 Farbgestaltung
-

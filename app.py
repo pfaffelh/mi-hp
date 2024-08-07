@@ -135,7 +135,7 @@ def showtools(lang):
 def showinteresse(lang, anchor=""):
     with app.open_resource('static/data/interesse.json') as f:
         data = json.load(f)
-    filenames = ["studieninteresse/interesse_prefix.html", "studieninteresse/interesse_content.html"]
+    filenames = ["interesse/interesse_prefix.html", "interesse/interesse_content.html"]
     return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
 @app.route("/<lang>/weiterbildung/")
@@ -153,7 +153,7 @@ def showweiterbildung(lang, anchor=""):
 @app.route("/<lang>/anfang/")
 @app.route("/<lang>/anfang/<anchor>")
 def showanfang(lang, anchor=""):
-    filenames = ["studienanfang/studienanfang.html"]
+    filenames = ["anfang/studienanfang.html"]
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
 ###################
