@@ -243,7 +243,8 @@ def get_data_stundenplan(sem_shortname, lang="de"):
                     "start": t["start"],
                     "ende": t["ende"],
                     "zeit": zeit,
-                    "veranstaltung": f"{v[name]}" if url == "" else f"<a href='{url}'>{v[name]}</a>",
+                    "veranstaltung": v[name],
+                    "veranstaltung_mit_link": f"{v[name]}" if url == "" else f"<a href='{url}'>{v[name]}</a>",
                     "dozent": ", ".join([vorname_name(p) for p in v["dozent"]]),
                     "raum": get_html(t["raum"])
                 })
@@ -263,6 +264,5 @@ def get_data_stundenplan(sem_shortname, lang="de"):
             zeitprevious = z
                         
         res[t] = data_loc
-    res["semester"] = semester_name_de(sem_shortname)
     return res
 
