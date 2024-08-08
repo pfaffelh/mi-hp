@@ -2,6 +2,8 @@ import pymongo
 from datetime import datetime
 from collections import OrderedDict
 from .config import *
+from operator import itemgetter
+
 
 #from .util_logging import logger
 
@@ -192,7 +194,6 @@ def get_data(sem_shortname):
             code_dict["name"] = code["name"]
             code_dict["beschreibung"] = code["beschreibung_de"]
             data["code"].append(code_dict)
-    print(data["code"])
 
     for rubrik in rubriken:
         r_dict = {}
@@ -219,4 +220,49 @@ def get_data(sem_shortname):
         data["rubrik"].append(r_dict)
         #print(data)
     return data
+
+def get_data_stundenplan(sem_shortname, lang="de"):
+
+    name = f'name_{lang}'
+    sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
+    ver = vvz_veranstaltung.find({"semester" : sem_id})
+    data = []
+    for v in ver:
+        for t in v["woechentlicher_termin"]:
+            if t["start"]:
+                zeit = f"{str(t['start'].hour)}{': '+str(t['start'].minute) if t['start'].minute > 0 else ''}"
+                if t['ende'] is not None:
+                    zeit = zeit + f"-{str(t['ende'].hour)}{': '+str(t['ende'].minute) if t['ende'].minute > 0 else ''}"
+                zeit = zeit + " Uhr"
+            else:
+                zeit == ""
+            if zeit != "":
+                url = v["url"]
+                data.append({
+                    "wochentag": t["wochentag"],
+                    "start": t["start"],
+                    "ende": t["ende"],
+                    "zeit": zeit,
+                    "veranstaltung": f"{v[name]}" if url == "" else f"<a href='{url}'>{v[name]}</a>",
+                    "dozent": ", ".join([vorname_name(p) for p in v["dozent"]]),
+                    "raum": get_html(t["raum"])
+                })
+
+    wt = wochentage.keys()
+    res = {}
+    for t in wt:
+        data_loc = [d for d in data if d["wochentag"] == t]
+        data_loc = sorted(data_loc, key = itemgetter('start', 'ende', 'veranstaltung'))
+        
+        # Delete entry zeit if it coincides with the previous entry
+        zeitprevious = ""
+        for d in data_loc:
+            z = d["zeit"]
+            if d["zeit"] == zeitprevious:
+                d["zeit"] = ""
+            zeitprevious = z
+                        
+        res[t] = data_loc
+    res["semester"] = semester_name_de(sem_shortname)
+    return res
 

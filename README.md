@@ -38,3 +38,9 @@ Die im Footer unter _TOOLS_ verlinkten Apps [mi-faq](http://mi-faq1.mathematik.p
 Der Monitor im EG der EZ1 stellt [diese Seite](http://www.math.uni-freiburg.de/lehre/monitor/) dar. Er enthält News, genau wie die [Startseite](http://www.math.uni-freiburg.de/lehre/). Beide Seiten gibt es auch in Testversionen, nämlich [hier für die deutsche Startseite](http://www.math.uni-freiburg.de/lehre/de/test), [hier für die englische Startseite](http://www.math.uni-freiburg.de/lehre/de/test),und [hier für den Monitor]([hier für die deutsche Startseite](http://www.math.uni-freiburg.de/lehre/monitortest). 
 
 
+#### TODOs
+
+* mi-hp: Ansicht Stundenplan
+* mi-news, mi-faq: User eintragen, der eine News oder einen FAQ-Eintrag zuletzt bearbeitet hat.
+* mi-vvz: Zukünftige Planung, Deputate?
+

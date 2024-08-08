@@ -91,6 +91,16 @@ bewerbungsdaten = {
     "mscdata": [{"start": "01.06.", "end": "15.09."}]
 }
 
+wochentage = {
+    "Montag": "Monday",
+    "Dienstag": "Tuesday",
+    "Mittwoch": "Wednesday",
+    "Donnerstag": "Thursday",
+    "Freitag": "Friday",
+    "Samstag": "Saturday",
+    "Sonntag": "Sunday"
+}
+
 
 
 #    qa_pairs = {}
