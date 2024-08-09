@@ -40,7 +40,7 @@ Der Monitor im EG der EZ1 stellt [diese Seite](http://www.math.uni-freiburg.de/l
 
 #### TODOs
 
-* mi-hp: Ansicht Stundenplan
 * mi-news, mi-faq: User eintragen, der eine News oder einen FAQ-Eintrag zuletzt bearbeitet hat.
 * mi-vvz: Zukünftige Planung, Deputate?
-
+* mi-hp: Ansicht Lehrveranstaltungen mit row, nicht mit table
++ mi-faq: Bewerbungsphasen für Studiengänge eintragen

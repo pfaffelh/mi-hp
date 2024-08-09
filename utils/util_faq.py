@@ -29,6 +29,7 @@ def get_stu_faq(lang):
     cats = list(stu_category.find({"kurzname": {"$ne": "unsichtbar"}}, sort=[("rang", pymongo.ASCENDING)]))
     q = f"q_{lang}"
     a = f"a_{lang}"
+    bearbeitet = f"bearbeitet_{lang}"
     name = f"name_{lang}"
 
     cat_ids = [f"stu_kat_{cat['_id']}" for cat in cats]
@@ -36,7 +37,7 @@ def get_stu_faq(lang):
     qa_pairs = {}
     for cat in cats:
         y = list(stu_qa.find({"category": cat["_id"]}, sort=[("rang", pymongo.ASCENDING)]))
-        qa_pairs[f"stu_kat_{cat['_id']}"] = [ (f"qa_{str(x['_id'])}", x[q]  + (f" ({', '.join([s[name] for s in list(studiengang.find({'_id': { '$in' : x['studiengang']}}))])})" if x['studiengang'] != [] else "") , x[a]) for x in y]
+        qa_pairs[f"stu_kat_{cat['_id']}"] = [ (f"qa_{str(x['_id'])}", x[q]  + (f" ({', '.join([s[name] for s in list(studiengang.find({'_id': { '$in' : x['studiengang']}}))])})" if x['studiengang'] != [] else "") , x[a], x[bearbeitet]) for x in y]
         #print(qa_pairs[cat_id])
     return cat_ids, names_dict, qa_pairs
 
