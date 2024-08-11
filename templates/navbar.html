@@ -295,12 +295,19 @@
                   >{% if lang == "de" %}Prüfungskalender{% else %}Calendar for exams{% endif %}</a
                 >
               </li>
-              {% if vpn %}
               <li>
                 <a
                   class="dropdown-item text-black"
                   href="/{{lang}}/lehrendevpn/zertifikat"
                   >{% if lang == "de" %}Lehrzertifikat{% else %}Certificate Teaching{% endif %}</a
+                >
+              </li>
+              {% if vpn %}
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="/{{lang}}/lehrendevpn/{{laufendes_semester}}/planung/"
+                  >{% if lang == "de" %}Lehrplanung Zukunft{% else %}Teaching in future semesters{% endif %}</a
                 >
               </li>
               {% endif %}

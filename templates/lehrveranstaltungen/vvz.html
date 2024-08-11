@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block navbar %} {% include 'navbar.html' %} {%
-endblock %} {% block content %} 
+endblock %} {% block content %}
 <div class="container text-end">
   <div class="row">
     <div class="col">
@@ -9,7 +9,8 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} Zum Stundenplan {% else %} Timetable for all courses {% endif %}
+        {% if lang == "de" %} Zum Stundenplan {% else %} Timetable for all
+        courses {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
@@ -25,95 +26,73 @@ endblock %} {% block content %}
 </div>
 
 <div class="container" id="inhalt">
-  <h2>Lehrveranstaltungen im {{data['semester']['name_de']}}</h2>
-  {% if data['semester']['prefix_de'] != "" %}
-  <p>{{ data['semester']['prefix_de'] | markdown }}</p>
-  {% endif %} {% if data["code"] != [] %}
+  <h2>{% if lang == "de" %}Lehrveranstaltungen im{% else %}Course program in {% endif %} {{data['semester']['name']}}</h2>
+  {% if data['semester']['prefix'] != "" %} {{ data['semester']['prefix']
+  | markdown }} {% endif %} {% if data["code"] != [] %}
   <h2>Codes</h2>
-  <table class="table table-borderless table-sm">
-    {% for c in data["code"] %}
-    <tr>
-      <td style="vertical-align: top">{{ c['name']|markdown }}</td>
-      <td>{{ c['beschreibung']|markdown }}</td>
-    </tr>
-    {% endfor %}
-  </table>
-  {% endif %}
-
-  <table class="vlverz table table-borderless">
-    {% set ns = namespace(i = 1) %} {% for r in data["rubrik"] %}
-    <tr>
-      <td colspan="3">
-        {% if r['titel'] != "" %}
-        <h2>{{ r['titel'] }}</h2>
-        {% endif %}
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3">
-        {% if r['untertitel'] != "" %}
-        <h4>{{ r['untertitel']|markdown }}</h4>
-        {% endif %}
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3">
-        {% if r['prefix'] != "" %}
-        <p>{{ r['prefix']|markdown }}</p>
-        {% endif %}
-      </td>
-    </tr>
-    {% for v in r["veranstaltung"] %}
-    <tbody class="course_snip">
-      <tr {% if ns.i % 2 %} class="bg-light" {% endif %}>
-        <td rowspan="1">
-          <div style="white-space: nowrap"></div>
-          {{i}}{{ v["code"] }}
-        </td>
-        <td>
-          <h5>
-            {% if v['link'] != "" %}
-            <a href="{{ v['link'] | safe}}"> {{ v['titel']|markdown }} </a>
-            {% else %} {{ v['titel']|markdown }} {% endif %}
-          </h5>
-        </td>
-        <td rowspan="{{ 1 + v['raumzeit'] | length }}">
-          {{ v['dozent']|markdown }}
-        </td>
-      </tr>
-      {% for line in v["raumzeit"] %}
-      <tr {% if ns.i % 2 %} class="bg-light" {% endif %}>
-        <td></td>
-        <td>{{ line|markdown }}</td>
-      </tr>
-      {% endfor %} {% if v["assistent"] %}
-      <tr {% if ns.i % 2 %} class="bg-light" {% endif %}>
-        <td></td>
-        <td>Assistenz</td>
-        <td>{{ v["assistent"]|markdown }}</td>
-      </tr>
-      {% endif %} {% if v["kommentar"] %}
-      <tr {% if ns.i % 2 %} class="bg-light" {% endif %}>
-        <td></td>
-        <td>{{ v["kommentar"]|markdown }}</td>
-      </tr>
+  {% for c in data["code"] %}
+  <div class="row">
+    <div class="col-sm-1">{{ c['name'] }}</div>
+    <div class="col-sm-6">{{ c['beschreibung'] }}</div>
+  </div>
+  {% endfor %} {% endif %} {% for r in data["rubrik"] %} {% if r['titel'] != ""
+  %}
+  <h2>{{ r['titel'] }}</h2>
+  {% endif %} {% if r['untertitel'] != "" %}
+  <h4>{{ r['untertitel']|markdown }}</h4>
+  {% endif %} {% if r['prefix'] != "" %}
+  <p>{{ r['prefix']|markdown }}</p>
+  {% endif %} {% for v in r["veranstaltung"] %}
+  <div class="row">
+    <div class="col-sm-1 text-end">{{ v["code"] }}</div>
+    <div class="col-sm-6">
+      <strong>
+        {% if v['link'] != "" %}
+        <a href="{{ v['link'] | safe}}"> {{ v['titel'] }} </a>
+        {% else %} {{ v['titel'] }} {% endif %}
+      </strong>
+      {% for line in v["raumzeit"] %} <br />{{ line|safe }} {% endfor %} {% if
+      v["kommentar"] %} {{ v["kommentar"]|markdown }} {% endif %}
+    </div>
+    <div class="col-sm-3">
+      {{ v['dozent']}} <br />
+      {% if v["assistent"] %} Assistenz: {{ v["assistent"] }} {% endif %}
+    </div>
+    <div class="col-sm-2">
+      {% if v['inhalt'] != "" %}
+      <button
+        type="button"
+        class="btn btn-outline-primary active bg-white"
+        data-bs-trigger="focus"
+        data-bs-toggle="popover"
+        data-bs-html="true"
+        style="color: #004a99"
+        title="Inhalt"
+        data-bs-content="{{ v['inhalt']|markdown }}"
+      >
+        <i class="fa-solid fa-info" style="color: #004a99"></i>
+      </button>
       {% endif %}
-      <tr {% if ns.i % 2 %} class="bg-light" {% endif %}>
-        <td colspan="3"></td>
-      </tr>
-      <tr>
-        <td colspan="3"></td>
-      </tr>
-    </tbody>
-    {% set ns.i = ns.i-1 %} {% endfor %}
-    <tr>
-      <td colspan="3">
-        {% if r['suffix'] != "" %}
-        <p>{{ r['suffix']|markdown }}</p>
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
+      {% if v['verwendbarkeit'] != "" or v['vorkenntnisse']%}
+      <button
+        type="button"
+        class="btn btn-outline-primary active bg-white"
+        data-bs-trigger="focus"
+        data-bs-toggle="popover"
+        data-bs-html="true"
+        style="color: #004a99"
+        title=""
+        data-bs-content="{% if v['vorkenntnisse'] != '' %}{% if lang == 'de' %}Vorkenntnisse: {% else %}Previous knowledge:{% endif %}{{ v['vorkenntnisse']|markdown }}<br>{% endif %} {% if v['verwendbarkeit'] != '' %}{% if lang == 'de' %}Verwendbarkeit: {% else %}Usability:{% endif %} {{ v['verwendbarkeit']|markdown }} {% endif %}"
+      >
+        <i class="fa-solid fa-book" style="color: #004a99"></i>
+      </button>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %} {% if r['suffix'] != "" %}
+  <div class="row">
+    <div class="col-sm-12">{{ r['suffix']|markdown }}</div>
+  </div>
+  {% endif %} {% endfor %}
 </div>
 {% endblock %}

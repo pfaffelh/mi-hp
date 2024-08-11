@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block navbar %} {% include 'navbar.html' %} {%
+endblock %} {% block content %}
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <a
+        href="{{url_for('showlehrveranstaltungen', semester = semester, lang=lang)}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {% if lang == "de" %} Zurück zur Lehrveranstaltungsliste {% else %} Back
+        to the list of all courses {% endif %}
+      </a>
+      <a
+        href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {% if lang == "de" %} Übersicht aller Semester {% else %} Overview of
+        all semesters {% endif %}
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="inhalt">
+  <h2>Längerfristige Lehrveranstaltungsplanung</h2>
+  <div class="row">
+    <div class="col-1 mx-3" style="background: #f5c2ed; color:  #f5c2ed; ">d</div>
+    <div class="col-4">Dozent steht noch nicht fest</div>
+  </div>
+  <br>
+  <div class="container">
+    <table class="table table-striped table-hover">
+      <thead style="position: sticky;top: 0">
+        <tr>
+          <th scope="col">Veranstaltung</th>
+          <th class="text-end">SWS</th>
+          {% for s in sems %}
+          <th>{{ s }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+        <tr>
+          <th>{{ item["name"]}}</th>
+          <th class="text-end">{{ item["sws"]}}</th>
+          {% for s in sems %}
+          <th
+            style="background: {% if item[s] == 'offen' %} #f5c2ed;{% endif %} !important;"
+          >
+            {% if item[s] != 'offen' and item[s] != '-' %} {{ item[s] }} {%
+            endif %}
+          </th>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endblock %}
+</div>

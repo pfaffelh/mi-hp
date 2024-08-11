@@ -31,8 +31,8 @@ endblock %} {% block content %}
   <div class="container">
     <h3>{{ t }}</h3>
     {% for item in data[t] %}
-    <div class="row">
-      <div class="col-sm-1 text-end">
+        <div class="row">
+        <div class="col-sm-1 text-end">
         {{ item["zeit"] | safe }}
       </div>
       <div class="col-sm-4">

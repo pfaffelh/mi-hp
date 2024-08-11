@@ -1,0 +1,119 @@
+{% extends 'base.html' %} {% block navbar %} {% include 'navbar.html' %} {%
+endblock %} {% block content %} 
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <a
+        href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {% if lang == "de" %} Zum Stundenplan {% else %} Timetable for all courses {% endif %}
+      </a>
+      <a
+        href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {% if lang == "de" %} Übersicht aller Semester {% else %} Overview of
+        all semesters {% endif %}
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="inhalt">
+  <h2>Lehrveranstaltungen im {{data['semester']['name_de']}}</h2>
+  {% if data['semester']['prefix_de'] != "" %}
+  <p>{{ data['semester']['prefix_de'] | markdown }}</p>
+  {% endif %} {% if data["code"] != [] %}
+  <h2>Codes</h2>
+  <table class="table table-borderless table-sm">
+    {% for c in data["code"] %}
+    <tr>
+      <td style="vertical-align: top">{{ c['name']|markdown }}</td>
+      <td>{{ c['beschreibung']|markdown }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  <table class="vlverz table table-borderless">
+    {% set ns = namespace(i = 1) %} {% for r in data["rubrik"] %}
+    <tr>
+      <td colspan="3">
+        {% if r['titel'] != "" %}
+        <h2>{{ r['titel'] }}</h2>
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        {% if r['untertitel'] != "" %}
+        <h4>{{ r['untertitel']|markdown }}</h4>
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        {% if r['prefix'] != "" %}
+        <p>{{ r['prefix']|markdown }}</p>
+        {% endif %}
+      </td>
+    </tr>
+    {% for v in r["veranstaltung"] %}
+    <tbody class="course_snip">
+      <tr {% if ns.i % 2 %} class="bg-light" {% endif %}>
+        <td rowspan="1">
+          <div style="white-space: nowrap"></div>
+          {{i}}{{ v["code"] }}
+        </td>
+        <td>
+          <h5>
+            {% if v['link'] != "" %}
+            <a href="{{ v['link'] | safe}}"> {{ v['titel']|markdown }} </a>
+            {% else %} {{ v['titel']|markdown }} {% endif %}
+          </h5>
+        </td>
+        <td rowspan="{{ 1 + v['raumzeit'] | length }}">
+          {{ v['dozent']|markdown }}
+        </td>
+      </tr>
+      {% for line in v["raumzeit"] %}
+      <tr {% if ns.i % 2 %} class="bg-light" {% endif %}>
+        <td></td>
+        <td>{{ line|markdown }}</td>
+      </tr>
+      {% endfor %} {% if v["assistent"] %}
+      <tr {% if ns.i % 2 %} class="bg-light" {% endif %}>
+        <td></td>
+        <td>Assistenz</td>
+        <td>{{ v["assistent"]|markdown }}</td>
+      </tr>
+      {% endif %} {% if v["kommentar"] %}
+      <tr {% if ns.i % 2 %} class="bg-light" {% endif %}>
+        <td></td>
+        <td>{{ v["kommentar"]|markdown }}</td>
+      </tr>
+      {% endif %}
+      <tr {% if ns.i % 2 %} class="bg-light" {% endif %}>
+        <td colspan="3"></td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+      </tr>
+    </tbody>
+    {% set ns.i = ns.i-1 %} {% endfor %}
+    <tr>
+      <td colspan="3">
+        {% if r['suffix'] != "" %}
+        <p>{{ r['suffix']|markdown }}</p>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

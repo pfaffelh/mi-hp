@@ -253,13 +253,14 @@ def showlehrveranstaltungen(lang, semester):
         filenames = [f"lehrveranstaltungen/{semester}.html"]
         return render_template("home.html", filenames = filenames, lang=lang, semester=semester)
     else:
-        data = vvz.get_data(semester)
+        data = vvz.get_data(semester, lang)
         return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=semester)
 
 @app.route("/<lang>/lehrveranstaltungen/<semester>/stundenplan/")
 def showlehrveranstaltungenstundenplan(lang, semester):
-    data = vvz.get_data_stundenplan(semester)
+    data = vvz.get_data_stundenplan(semester, lang)
     return render_template("lehrveranstaltungen/vvz_stundenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester))
+
 
 
 #####################################
@@ -382,10 +383,13 @@ def showlehrende(lang, unterseite ="", anchor = ""):
 #@fortivpn()
 def showlehrendevpn(lang, unterseite ="", anchor = ""):
     filenames = []
-    if unterseite == "zertifikat":
-        anchor = "what"
-        filenames = ["lehrende/zertifikat-hochschullehre.html"]
     return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
+
+#@fortivpn()
+@app.route("/<lang>/lehrendevpn/<semester>/planung/")
+def showlehrveranstaltungenplanung(lang, semester):
+    sems, data = vvz.get_data_planung(semester)
+    return render_template("lehrveranstaltungen/vvz_planung.html", lang=lang, data = data, semester=semester, sems=sems)
 
 
 ###############

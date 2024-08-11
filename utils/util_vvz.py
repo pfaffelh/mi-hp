@@ -3,7 +3,7 @@ from datetime import datetime
 from collections import OrderedDict
 from .config import *
 from operator import itemgetter
-
+import latex2markdown
 
 #from .util_logging import logger
 
@@ -24,6 +24,8 @@ try:
     vvz_studiengang = mongo_db_vvz["studiengang"]
     vvz_terminart = mongo_db_vvz["terminart"]
     vvz_veranstaltung = mongo_db_vvz["veranstaltung"]
+    vvz_planungveranstaltung = mongo_db_vvz["planungveranstaltung"]
+    vvz_planung = mongo_db_vvz["planung"]
 except:
     pass
     # logger.warning("No connection to Database 1")
@@ -92,6 +94,21 @@ def vorname_name(person_id):
     p = vvz_person.find_one({"_id": person_id})
     return f"{p['vorname']} {p['name']}"
 
+def name(person_id):
+    p = vvz_person.find_one({"_id": person_id})
+    return f"{p['name']}"
+
+def makemodulname(modul_id, lang = "de", alter = True):
+    otherlang = "de" if "lang" == "en" else "en"
+    m = vvz_modul.find_one({"_id": modul_id})
+    mname = m[f"name_{lang}"]
+    if alter and mname == "":
+        mname = m[f"name_{otherlang}"]    
+    s = ", ".join([x["kurzname"] for x in list(vvz_studiengang.find({"_id": { "$in" : m["studiengang"]}, }))])
+    return f"{mname} ({s})"
+
+
+
 # Die Funktion fasst zB Mo, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21 \n 
 # zusammen in
 # Mo, Mi, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21
@@ -100,7 +117,7 @@ def make_raumzeit(veranstaltung, lang = "de"):
     for termin in veranstaltung["woechentlicher_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})
         if ta["hp_sichtbar"]:
-            ta = ta["name_de"]
+            ta = ta[f"name_{lang}"]
             if termin['wochentag'] !="":
                 # key, raum, zeit, person, kommentar
                 key = f"{ta}:" if ta != "" else ""
@@ -112,14 +129,14 @@ def make_raumzeit(veranstaltung, lang = "de"):
                     zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}"
                     if termin['ende'] is not None:
                         zeit = zeit + f"-{str(termin['ende'].hour)}{': '+str(termin['ende'].minute) if termin['ende'].minute > 0 else ''}"
-                    zeit = zeit + " Uhr"
+                    zeit = zeit + (" Uhr" if lang == "de" else "h")
                 else:
                     zeit = ""
                 # zB Mo, 8-10
                 tag = weekday[termin['wochentag']]
                 # person braucht man, wenn wir dann die Datenbank geupdated haben.
                 #person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
-                kommentar = rf"\newline{termin['kommentar_de']}" if termin['kommentar_de'] != "" else ""
+                kommentar = rf"\newline{termin[f'kommentar_{lang}']}" if termin[f'kommentar_{lang}'] != "" else ""
                 new = [key, tag, zeit, raum, kommentar]
                 if key in [x[0] for x in res]:
                     new.pop(0)
@@ -133,7 +150,7 @@ def make_raumzeit(veranstaltung, lang = "de"):
     for termin in veranstaltung["einmaliger_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})
         if ta["hp_sichtbar"]:
-            ta = ta["name_de"]
+            ta = ta[f"name_{lang}"]
             # Raum und Gebäude mit Url.
             raeume = list(vvz_raum.find({ "_id": { "$in": termin["raum"]}}))
             raum = ", ".join([get_html(r["_id"]) for r in raeume])
@@ -158,7 +175,7 @@ def make_raumzeit(veranstaltung, lang = "de"):
                 zeit = ""
             # person braucht man, wenn wir dann die Datenbank geupdated haben.
             # person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
-            kommentar = rf"{termin['kommentar_de']}" if termin['kommentar_de'] != "" else ""
+            kommentar = rf"{termin[f'kommentar_{lang}']}" if termin[f'kommentar_{lang}'] != "" else ""
             new = [ta, datum, zeit, raum, kommentar]
             res.append(new)
     res = [f"{x[0]} {(', '.join([z for z in x if z !='' and x.index(z)!=0]))}" for x in res]
@@ -174,7 +191,7 @@ def make_codes(sem_id, veranstaltung_id):
         res = ", ".join([c["name"] for c in code_list])
     return res
 
-def get_data(sem_shortname):
+def get_data(sem_shortname, lang = "de"):
     sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
 
     rubriken = list(vvz_rubrik.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
@@ -185,6 +202,9 @@ def get_data(sem_shortname):
 
     data = {}
     data["semester"] = vvz_semester.find_one({"kurzname": sem_shortname})
+    data["semester"]["name"] = data["semester"][f"name_{lang}"] 
+    data["semester"]["prefix"] = data["semester"][f"prefix_{lang}"] 
+    
     data["rubrik"] = []
     data["code"] = []
 
@@ -192,37 +212,41 @@ def get_data(sem_shortname):
         if vvz_veranstaltung.find_one({"semester": sem_id, "code" : { "$elemMatch" : { "$eq": code["_id"]}}}):
             code_dict = {}
             code_dict["name"] = code["name"]
-            code_dict["beschreibung"] = code["beschreibung_de"]
+            code_dict["beschreibung"] = code[f"beschreibung_{lang}"]
             data["code"].append(code_dict)
 
     for rubrik in rubriken:
         r_dict = {}
-        r_dict["titel"] = rubrik["titel_de"]
-        r_dict["untertitel"] = rubrik["untertitel_de"]
-        r_dict["prefix"] = rubrik["prefix_de"]
-        r_dict["suffix"] = rubrik["suffix_de"]
+        r_dict["titel"] = rubrik[f"titel_{lang}"]
+        r_dict["untertitel"] = rubrik[f"untertitel_{lang}"]
+        r_dict["prefix"] = rubrik[f"prefix_{lang}"]
+        r_dict["suffix"] = rubrik[f"suffix_{lang}"]
         # print(r_dict["titel"])
         r_dict["veranstaltung"] = []
         veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
             v_dict = {}
             v_dict["code"] = make_codes(sem_id, veranstaltung["_id"])            
-            v_dict["titel"] = veranstaltung["name_de"]
-            v_dict["kommentar"] = veranstaltung["kommentar_html_de"]
+            v_dict["titel"] = veranstaltung[f"name_{lang}"]
+            v_dict["kommentar"] = veranstaltung[f"kommentar_html_{lang}"]
             v_dict["link"] = veranstaltung["url"]
             v_dict["dozent"] = ", ".join([vorname_name(x) for x in veranstaltung["dozent"]])
             v_dict["assistent"] = ", ".join([vorname_name(x) for x in veranstaltung["assistent"]])
             # raumzeit ist der Text, der unter der Veranstaltung steht.
             # print(v_dict["titel"])
-            v_dict["raumzeit"] = make_raumzeit(veranstaltung)
+            v_dict["raumzeit"] = make_raumzeit(veranstaltung, lang=lang)
+            v_dict["inhalt"] = latex2markdown.LaTeX2Markdown(veranstaltung[f"inhalt_{lang}"]).to_markdown()
+            v_dict["vorkenntnisse"] = veranstaltung[f"vorkenntnisse_{lang}"]
+            v_dict["verwendbarkeit"] = "<br>".join([makemodulname(x, lang, True)for x in veranstaltung["verwendbarkeit_modul"]])
+            print(v_dict["inhalt"])
             r_dict["veranstaltung"].append(v_dict)
 
         data["rubrik"].append(r_dict)
+    print(data["rubrik"])
         #print(data)
     return data
 
 def get_data_stundenplan(sem_shortname, lang="de"):
-
     name = f'name_{lang}'
     sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
     ver = vvz_veranstaltung.find({"semester" : sem_id})
@@ -233,23 +257,24 @@ def get_data_stundenplan(sem_shortname, lang="de"):
                 zeit = f"{str(t['start'].hour)}{': '+str(t['start'].minute) if t['start'].minute > 0 else ''}"
                 if t['ende'] is not None:
                     zeit = zeit + f"-{str(t['ende'].hour)}{': '+str(t['ende'].minute) if t['ende'].minute > 0 else ''}"
-                zeit = zeit + " Uhr"
+                zeit = (zeit + " Uhr") if lang == "de" else (zeit + "h")
             else:
                 zeit == ""
             if zeit != "":
                 url = v["url"]
-                data.append({
-                    "wochentag": t["wochentag"],
-                    "start": t["start"],
-                    "ende": t["ende"],
-                    "zeit": zeit,
-                    "veranstaltung": v[name],
-                    "veranstaltung_mit_link": f"{v[name]}" if url == "" else f"<a href='{url}'>{v[name]}</a>",
-                    "dozent": ", ".join([vorname_name(p) for p in v["dozent"]]),
-                    "raum": get_html(t["raum"])
-                })
+                if t["wochentag"] in wochentage.keys():
+                    data.append({
+                        "wochentag": t["wochentag"] if lang=="de" else wochentage[t["wochentag"]],
+                        "start": t["start"],
+                        "ende": t["ende"],
+                        "zeit": zeit,
+                        "veranstaltung": v[name],
+                        "veranstaltung_mit_link": f"{v[name]}" if url == "" else f"<a href='{url}'>{v[name]}</a>",
+                        "dozent": ", ".join([vorname_name(p) for p in v["dozent"]]),
+                        "raum": get_html(t["raum"])
+                    })
 
-    wt = wochentage.keys()
+    wt = wochentage.keys() if lang == "de" else wochentage.values()
     res = {}
     for t in wt:
         data_loc = [d for d in data if d["wochentag"] == t]
@@ -265,4 +290,36 @@ def get_data_stundenplan(sem_shortname, lang="de"):
                         
         res[t] = data_loc
     return res
+
+def nextsemester(sem_shortname):
+    if sem_shortname[4:6] == "WS":
+        res = f"{int(sem_shortname[0:4])+1}SS"
+    else:
+        res = f"{int(sem_shortname[0:4])}WS"
+    return res
+
+def is_WS(sem_shortname):
+    return sem_shortname[4:6] == "WS"
+
+def get_data_planung(sem_shortname, lang="de"):
+    sems = [nextsemester(sem_shortname)]
+    for i in range(5):
+        sems.append(nextsemester(sems[-1]))
+        
+    planungveranstaltung = list(vvz_planungveranstaltung.find({}, sort=[("rang", pymongo.ASCENDING)]))
+    planung = list(vvz_planung.find({"sem" : { "$in" : sems }}))
+        
+    data = []
+    for pv in planungveranstaltung:
+        loc1 = {key: "-" for key in sems}
+        loc2 = loc3 = {}
+        for s in sems:
+            if pv["regel"] == "Jedes Semester" or (is_WS(s) and pv["regel"] == "Jedes Wintersemester") or (not is_WS(s) and pv["regel"] == "Jedes Sommersemester"):
+                loc2[s] = "offen"                
+        for p in planung: #[p in planung if p["veranstaltung"] == pv] :
+            if p["veranstaltung"] == pv["_id"]:
+                loc3[p["sem"]] = ", ".join([name(x) for x in p["dozent"]] + ([p["kommentar"]] if p["kommentar"] != "" else []))
+        data.append({"name" : pv["name"], "sws" : pv["sws"] } | loc1 | loc2 | loc3)
+    print(data)
+    return sems, data
 

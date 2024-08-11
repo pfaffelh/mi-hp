@@ -11,5 +11,5 @@ zipp==3.17.0
 pymongo==4.6.2
 misaka==2.1.1
 xmltodict==0.13.0
-
+latex2markdown==0.2.1
 
