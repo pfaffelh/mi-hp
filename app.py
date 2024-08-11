@@ -378,15 +378,15 @@ def showlehrende(lang, unterseite ="", anchor = ""):
         
     return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
 
-@app.route("/<lang>/lehrendevpn/<unterseite>")
-@app.route("/<lang>/lehrendevpn/<unterseite>/<anchor>")
+@app.route("/vpn/<lang>/lehrende/<unterseite>")
+@app.route("/vpn/<lang>/lehrende/<unterseite>/<anchor>")
 #@fortivpn()
 def showlehrendevpn(lang, unterseite ="", anchor = ""):
     filenames = []
     return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
 
 #@fortivpn()
-@app.route("/<lang>/lehrendevpn/<semester>/planung/")
+@app.route("/vpn/<lang>/lehrende/<semester>/planung/")
 def showlehrveranstaltungenplanung(lang, semester):
     sems, data = vvz.get_data_planung(semester)
     return render_template("lehrveranstaltungen/vvz_planung.html", lang=lang, data = data, semester=semester, sems=sems)
