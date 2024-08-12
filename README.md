@@ -1,8 +1,8 @@
-### Allgemeines
+## Allgemeines
 
 Dies ist das Repository der [Lehre-Seiten des Mathematischen Instituts der Universität Freiburg](https://www.math.uni-freiburg.de/nlehre/). Es handelt sich um eine Flask-App (also python), die mit einer lokalen Datenbank verbunden ist.
 
-#### Aufbau der URLs
+## Aufbau der URLs
 
 Der Aufbau der URLs ist fast immer `https://www.math.uni-freiburg.de/nlehre/<lang>/unterpunkt/unterseite/anchor`, wobei `lang == de` oder `lang == en` die Sprache angibt. Die Templates der Unterpunkte
 
@@ -19,11 +19,11 @@ Eine Ausnahme sind die Seiten, die mit
 `https://www.math.uni-freiburg.de/nlehre/vpn/`
 beginnen. Diese sind nur innerhalb des vpn bzw an Institutsrechnern zugänglich. In diesem Fall bleibt der Aufbau der URL derselbe.
 
-#### Steuerung eines Requests
+## Steuerung eines Requests
 
 Wird die Seite aufgerufen, so steuert `app.py`, was genau passiert. Hier werden auch Routen definiert, die steuern, welche Funktion aufgerufen wird, wenn ein request verarbeitet wird.
 
-##### Änderungen an der Seite
+## Änderungen an der Seite
 
 Personen, die als Collaborator des Repositories in [github](https://github.com/pfaffelh/mi-hp) eingetragen sind, können das Repository ändern. Hier eine kurze Anleitung, wie man die neue "Lehre"-Seite ändern kann:
 
@@ -62,25 +62,25 @@ Etwas speziell sind noch die Seiten
 * `<lang>/weiterbildung/`
 Diese Daten dieser Seiten sind in `/static/data/interesse.json` und `/static/data/weiterbildung.json` gespeichert (bis auf den Vorspann). 
 
-##### Beschreibung der beiden Möglichkeiten, Inhalte zu ändern
+### Beschreibung der beiden Möglichkeiten, Inhalte zu ändern
 * (Technisch einfacher): Der von github bereitgestellte [Editor](https://github.dev/pfaffelh/mi-hp) zeigt alle Daten des Repositories an. (Etwas genauer hat er noch eine eigene Version des Repositories, deshalb immer zunächst alles "synchronisieren".) Hier kann man Dinge ändern, und speichern. Wenn man fertig ist, muss man das Repository des Editors mit dem auf github synchronisieren. (Oder seine Änderungen 'commit'ten.) Hierzu das Symbol unter der 🔎 in der linken Leiste clicken "Source control"), eine Message ungefähre Nachricht eingeben, woraus die durchgeführte Änderung besteht, und "Commit and Push" drücken. Nach ein paar Minuten synchronisiert sich der Webserver des Instituts, und die Änderungen werden angezeigt.
 * (Etwas komplizierter, deshalb nur eine ganz knappe Beschreibung): Um die Änderungen im Master-Branch des Repositories durchzuführen, kann man das Repositorie auch lokal clonen (`git clone https://github.com/pfaffelh/mi-hp`), Änderungen hier durchführen, und von hier aus committen. Der Vorteil dieser Variante besteht darin, dass der zu grunde liegende python-Code dann ebenfalls lokal vorhanden ist, und man diesen (nach `python -m venv venv`, danach `pip install -r requirements.txt` und `flask run --debug`) ebenfalls anzeigen kann. (Im Browser [localhost](127.0.0.1:5000) aufrufen.) Dann sieht man direkt -- ohne commit -- die durchgeführten Änderungen.
 
 
-#### Angabe von Links auf der Homeapge
+### Angabe von Links auf der Homeapge
 
 In einer Flask-App kann man interne Links auf zwei verschiedene Arten und Weisen angeben. Entweder wie gewohnt durch Angabe von `<a href="/link/zur/seite">`, alternativ aber auch z.B. mit `<a href="{{ url_for('showdownloads', lang=lang) }}">Downloads</a> `. Hier wird also die Funktion aus `app.py` angegeben, die den Aufruf steuern soll.
 
-#### Statistsche Files
+### Statistsche Files
 
 (Das sind etwa verlinkte pdfs, oder Bilder, etc.) Diese sind im Ordner `/static/` zu finden, die Ordnerstruktur ist hoffentlich intuitiv. Hier gibt es den Ordner `/data`, in dem `.json`-Dateien zu finden sind. Die Dateien `anfang.json`, `interesse.json` und `weiterbildung.json` sind die Datengrundlage der Seiten _Studieninteresse_ und _Weiterbildung_.
 
-#### Verbindung zu einer Datenbank
+### Verbindung zu einer Datenbank
 
 Die im Footer unter _TOOLS_ verlinkten Apps [mi-faq](http://mi-faq1.mathematik.privat/) (für die Seiten [Studierenden-FAQ](http://www.math.uni-freiburg.de/nlehre/de/studiendekanat/faq/) und [Mitarbeiter*innen-FAQ](http://www.math.uni-freiburg.de/nlehre/de/lehrende/faq/), aber auch [hier](http://www.math.uni-freiburg.de/nlehre/studiendekanat/pruefungsamt/) und [hier](http://www.math.uni-freiburg.de/nlehre/de/studiendekanat/studienberatung/)), [mi-vvz](http://mi-vvz1.mathematik.privat/) (für die [Veranstaltungsplanung](http://www.math.uni-freiburg.de/nlehre/de/lehrveranstaltungen/)) und [mi-news](http://mi-news1.mathematik.privat/) (für die News [hier](http://www.math.uni-freiburg.de/nlehre/) und [hier](http://www.math.uni-freiburg.de/nlehre/monitor/)) geben die Möglichkeit, Daten in einer Datenbank zu verändern, die dann hier wieder ausgelesen werden.
 
 
-#### monitor und news auf /nlehre/
+### monitor und news auf /nlehre/
 
 Der Monitor im EG der EZ1 stellt [diese Seite](http://www.math.uni-freiburg.de/nlehre/monitor/) dar. Er enthält News, genau wie die [Startseite](http://www.math.uni-freiburg.de/nlehre/). Beide Seiten gibt es auch in Testversionen, nämlich [hier für die deutsche Startseite](http://www.math.uni-freiburg.de/nlehre/de/test), [hier für die englische Startseite](http://www.math.uni-freiburg.de/nlehre/de/test),und [hier für den Monitor]([hier für die deutsche Startseite](http://www.math.uni-freiburg.de/lehre/monitortest). Weiter kann man sich den Stand der News zu einem bestimmten Zeitpunkt (zB der 1.7.2024 um 10 Uhr) anseehen, siehe [hier](http://www.math.uni-freiburg.de/nlehre/de/202407011000) bzw. [hier](http://www.math.uni-freiburg.de/nlehre/monitor/202407011000).
 
