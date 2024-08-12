@@ -1,10 +1,10 @@
 ### Allgemeines
 
-Dies ist das Repository der [Lehre-Seiten des Mathematischen Instituts der Universität Freiburg](https://www.math.uni-freiburg.de/lehre/). Es handelt sich um eine Flask-App (also python), die mit einer lokalen Datenbank verbunden ist.
+Dies ist das Repository der [Lehre-Seiten des Mathematischen Instituts der Universität Freiburg](https://www.math.uni-freiburg.de/nlehre/). Es handelt sich um eine Flask-App (also python), die mit einer lokalen Datenbank verbunden ist.
 
 #### Aufbau der URLs
 
-Der Aufbau der URLs ist fast immer `https://www.math.uni-freiburg.de/lehre/<lang>/unterpunkt/unterseite/anchor`, wobei `lang == de` oder `lang == en` die Sprache angibt. Die Templates der Unterpunkte
+Der Aufbau der URLs ist fast immer `https://www.math.uni-freiburg.de/nlehre/<lang>/unterpunkt/unterseite/anchor`, wobei `lang == de` oder `lang == en` die Sprache angibt. Die Templates der Unterpunkte
 
 - interesse
 - anfang
@@ -16,7 +16,7 @@ Der Aufbau der URLs ist fast immer `https://www.math.uni-freiburg.de/lehre/<lang
   sind dabei in den entsprechenden Unterordnern von `template` zu finden. `unterseite` ist meist eine eigene html-Datei, `anchor` meist eine `id` innerhalb der html-Datei.
 
 Eine Ausnahme sind die Seiten, die mit 
-https://www.math.uni-freiburg.de/lehre/vpn/
+`https://www.math.uni-freiburg.de/nlehre/vpn/`
 beginnen. Diese sind nur innerhalb des vpn bzw an Institutsrechnern zugänglich. In diesem Fall bleibt der Aufbau der URL derselbe.
 
 #### Steuerung eines Requests
@@ -27,28 +27,28 @@ Wird die Seite aufgerufen, so steuert `app.py`, was genau passiert. Hier werden 
 
 Personen, die als Collaborator des Repositories in [github](https://github.com/pfaffelh/mi-hp) eingetragen sind, können das Repository ändern. Hier eine kurze Anleitung, wie man die neue "Lehre"-Seite ändern kann:
 
-Die oben beschrieben muss man verstehen, dass ein `flask`-Skript (ein python-Web-Framework) die ganze Seite steuert. Weiter ist es so, dass einige Inhalte (welche das sind: siehe unten) durch andere Apps befüllt und hier nur noch ausgelesen werden. Anders als bei der restlichen Homepage des Instituts ist die "Lehre-Seite" ein "repository" auf github, das dann zwischen verschiedenen Rechnern synchronisiert wird. Die Version, die auf dem Webserver des Instituts liegt, wird angezeigt. Der Webserver sieht alle paar Minuten nach, ob sein Repository mit dem auf [github](https://github.com/pfaffelh/mi-hp) übereinstimmt. (Etwas genauer: Der Branch "Master" des Repositories wird angezeigt.) Tut es das nicht, synchronisiert er sich. Das bedeutet, dass man das Repository auf github verändern muss, damit Änderungen zum tragen kommen. Hierzu gibt es zwei Möglichkeiten, wie ganz unten beschrieben und erklärt. Die einfachere der beiden ergibt folgenden Arbeitsablauf:
+Wie oben beschrieben muss man verstehen, dass ein `flask`-Skript (ein python-Web-Framework) die ganze Seite steuert. Weiter ist es so, dass einige Inhalte (welche das sind: siehe unten) durch andere Apps befüllt und hier nur noch ausgelesen werden. Anders als bei der restlichen Homepage des Instituts ist die "Lehre-Seite" ein "repository" auf github, das dann zwischen verschiedenen Rechnern synchronisiert wird. Die Version, die auf dem Webserver des Instituts liegt, wird angezeigt. Der Webserver sieht zu allen ganzen 5 Minuten nach, ob sein Repository mit dem auf [github](https://github.com/pfaffelh/mi-hp) übereinstimmt. (Etwas genauer: Der Branch "Master" des Repositories wird angezeigt.) Tut es das nicht, synchronisiert er sich. Das bedeutet, dass man das Repository auf github verändern muss, damit Änderungen zum tragen kommen. Hierzu gibt es zwei Möglichkeiten, wie ganz unten beschrieben und erklärt. Die einfachere der beiden ergibt folgenden Arbeitsablauf:
 
 1. Den [vscode-Editor](https://github.dev/pfaffelh/mi-hp) von github öffnen.
 2. Änderungen durchführen und speichern.
 3. Die Änderungen durch clicken auf das Symbol **unter** 🔎 in der linken Leiste und Eingabe einer ungefähren Beschreibung, woraus die Änderungen bestehen, "committen".
-4. Nach ein paar Minuten sollten die Änderungen auf der [Homepage](www.math.uni-freiburg.de/lehre) sichtbar sein.
+4. Nach ein paar Minuten sollten die Änderungen auf der [Homepage](www.math.uni-freiburg.de/nlehre/) sichtbar sein.
 
 Folgende Inhalte greifen auf eine Datenbank zu, so dass sie nicht innerhalb dieses Repositories geändert werden können, sondern mittels der entsprechenden App, die für die Änderungen der Datenbank programmiert wurden. Hierbei gibt es Variablen bei der URL, wiefolgt:
 * <lang> ist de oder en
 * <semester> wird in der Form 2024WS eingegeben. (Andere Formate, etwa ss23, kommen auch vor, aber dann werden die angezeigten Daten nicht aus dem mi-vvz generiert.)
 Es geht um folgende Apps bzw Unterseiten:
 * Die News der Startseite, sowie die des Monitors, also die Seiten:
-  * <lang>/
-  * /test/<lang>
-  * monitor/
-  * monitortest/
-  Diese Seiten werden von der App mi-news aus befüllt.
+  * `/nlehre/<lang>/`
+  * `/nlehre/test/<lang>`
+  * `monitor/`
+  * `monitortest/`
+  Diese Seiten werden von der App *mi-news* aus befüllt; siehe [hier](http://mi-news1.mathematik.privat/).
 * Alle Details zu Veranstaltungen, also die Seiten
   * `<lang>/lehrveranstaltungen/<semester>/` (das übliche Vorlesungsverzeichnis)
   * `<lang>/lehrveranstaltungen/<semester>/stundenplan/` (dasselbe, aber sortiert nach Zeiten)
   * `/vpn/<lang>/lehrende/<semester>/planung/` (Planung für künftige Semester, nur erreichbar aus dem vpn-Netz)
-  Diese Seiten werden von mi-vvz aus befüllt.
+  Diese Seiten werden von mi-vvz aus befüllt; siehe [hier](http://mi-vvz1.mathematik.privat/).
 * Alle Details von FAQs, also die Seiten:
   * `<lang>>/studiendekanat/faq/` (FAQ für Studierende)
   * `<lang>/lehrende/faq/` (FAQ für Mitarbeiter*innen)
@@ -56,7 +56,7 @@ Es geht um folgende Apps bzw Unterseiten:
 * Details zu Sprechstunden im Studiendekanaat, also
   * `<lang>/studiendekanat/` 
   * `<lang>/studiendekanat/pruefungsamt/`
-  Diese Seiten werden ebenfalls von mi-faq aus befüllt.
+  Diese Seiten werden ebenfalls von mi-faq aus befüllt; siehe [hier](http://mi-faq1.mathematik.privat/)
 Etwas speziell sind noch die Seiten
 * `<lang>/interesse/`
 * `<lang>/weiterbildung/`
@@ -73,16 +73,16 @@ In einer Flask-App kann man interne Links auf zwei verschiedene Arten und Weisen
 
 #### Statistsche Files
 
-(Das sind etwa verlinkte pdfs, oder Bilder, etc.) Diese sind im Ordner `/static/` zu finden, die Ordnerstruktur ist hoffentlich intuitiv. Hier gibt es den Ordner `/data`, in dem `.json`-Dateien zu finden sind. Die Dateien `anfang.json`, `interesse.json` und `weiterbildung.json` sind die Datengrundlage der Seiten _Studienanfang_, _Studieninteresse_ und _Weiterbildung_ (momentan nicht verlinkt).
+(Das sind etwa verlinkte pdfs, oder Bilder, etc.) Diese sind im Ordner `/static/` zu finden, die Ordnerstruktur ist hoffentlich intuitiv. Hier gibt es den Ordner `/data`, in dem `.json`-Dateien zu finden sind. Die Dateien `anfang.json`, `interesse.json` und `weiterbildung.json` sind die Datengrundlage der Seiten _Studieninteresse_ und _Weiterbildung_.
 
 #### Verbindung zu einer Datenbank
 
-Die im Footer unter _TOOLS_ verlinkten Apps [mi-faq](http://mi-faq1.mathematik.privat/) (für die Seiten [Studierenden-FAQ](http://www.math.uni-freiburg.de/lehre/de/studiendekanat/faq/) und [Mitarbeiter*innen-FAQ](http://www.math.uni-freiburg.de/lehre/de/lehrende/faq/), aber auch [hier](http://www.math.uni-freiburg.de/lehre/studiendekanat/pruefungsamt/) und [hier](http://www.math.uni-freiburg.de/lehre/de/studiendekanat/studienberatung/)), [mi-vvz](http://mi-vvz1.mathematik.privat/) (für die [Veranstaltungsplanung](http://www.math.uni-freiburg.de/lehre/de/lehrveranstaltungen/)) und [mi-news](http://mi-news1.mathematik.privat/) (für die News [hier](http://www.math.uni-freiburg.de/lehre/) und [hier](http://www.math.uni-freiburg.de/lehre/monitor/)) geben die Möglichkeit, Daten in einer Datenbank zu verändern, die dann hier wieder ausgelesen werden.
+Die im Footer unter _TOOLS_ verlinkten Apps [mi-faq](http://mi-faq1.mathematik.privat/) (für die Seiten [Studierenden-FAQ](http://www.math.uni-freiburg.de/nlehre/de/studiendekanat/faq/) und [Mitarbeiter*innen-FAQ](http://www.math.uni-freiburg.de/nlehre/de/lehrende/faq/), aber auch [hier](http://www.math.uni-freiburg.de/nlehre/studiendekanat/pruefungsamt/) und [hier](http://www.math.uni-freiburg.de/nlehre/de/studiendekanat/studienberatung/)), [mi-vvz](http://mi-vvz1.mathematik.privat/) (für die [Veranstaltungsplanung](http://www.math.uni-freiburg.de/nlehre/de/lehrveranstaltungen/)) und [mi-news](http://mi-news1.mathematik.privat/) (für die News [hier](http://www.math.uni-freiburg.de/nlehre/) und [hier](http://www.math.uni-freiburg.de/nlehre/monitor/)) geben die Möglichkeit, Daten in einer Datenbank zu verändern, die dann hier wieder ausgelesen werden.
 
 
-#### monitor und news auf /lehre
+#### monitor und news auf /nlehre/
 
-Der Monitor im EG der EZ1 stellt [diese Seite](http://www.math.uni-freiburg.de/lehre/monitor/) dar. Er enthält News, genau wie die [Startseite](http://www.math.uni-freiburg.de/lehre/). Beide Seiten gibt es auch in Testversionen, nämlich [hier für die deutsche Startseite](http://www.math.uni-freiburg.de/lehre/de/test), [hier für die englische Startseite](http://www.math.uni-freiburg.de/lehre/de/test),und [hier für den Monitor]([hier für die deutsche Startseite](http://www.math.uni-freiburg.de/lehre/monitortest). 
+Der Monitor im EG der EZ1 stellt [diese Seite](http://www.math.uni-freiburg.de/nlehre/monitor/) dar. Er enthält News, genau wie die [Startseite](http://www.math.uni-freiburg.de/nlehre/). Beide Seiten gibt es auch in Testversionen, nämlich [hier für die deutsche Startseite](http://www.math.uni-freiburg.de/nlehre/de/test), [hier für die englische Startseite](http://www.math.uni-freiburg.de/nlehre/de/test),und [hier für den Monitor]([hier für die deutsche Startseite](http://www.math.uni-freiburg.de/lehre/monitortest). Weiter kann man sich den Stand der News zu einem bestimmten Zeitpunkt (zB der 1.7.2024 um 10 Uhr) anseehen, siehe [hier](http://www.math.uni-freiburg.de/nlehre/de/202407011000) bzw. [hier](http://www.math.uni-freiburg.de/nlehre/monitor/202407011000).
 
 Es folgen Beschreibungen der Apps _mi-vvz, _mi-faq_, und _mi-news_. 
 
@@ -111,13 +111,23 @@ Diese App dient aller Vorgänge, die mit Lehrplanung (auf Dozentenseite) zu tun 
 Hier werden nicht die die Studierenden-, und Mitarbeiter-FAQs verwaltet, sondern auch noch kleinere Inhalte auf der Homepage, insbesondere Sprechstunden von Prüfungsamt und Studienberatung.
 
 Mit dieser App werden unter anderem die FAQs unter
-* <lang>>/studiendekanat/faq/ (FAQ für Studierende)
-* <lang>/lehrende/faq/ (FAQ für Mitarbeiter*innen)
+* `<lang>/studiendekanat/faq/` (FAQ für Studierende)
+* `<lang>/lehrende/faq/` (FAQ für Mitarbeiter*innen)
 generiert. 
 
 
 
 ## mi-news
+
+Hier werden News verwaltet, inklusive deren Bilder und eventueller Bildrechte. Die App biete einen eingeschränkten Umfang der Bildbearbeitung, etwa die Verringerung der Bildqualität um auf eine kleinere Dateigröße zu kommen.
+
+
+
+#### Vorschläge
+
+* Würde es Sinn machen, das vvz um Einträge zu Deputaten zu ergänzen? Hier könnte man zB Absprachen (irgendjemand bekommt zB 4 statt 2 SWS eintragen, und mit einer Entshceidungsgrundlage versehen.)
+* Würde es Sinn machen, bei den Sprechstunden ein eigenes Feld "Neuigkeiten" zu haben, bei dem man -- mit einem Ablaufdatum versehen -- etwas reinschreiben kann wie "Sprechstunde fällt am xxx aus"?
+
 
 
 #### TODOs
@@ -126,13 +136,5 @@ generiert.
 * mi-faq: Bewerbungsphasen für Studiengänge eintragen, Eintrag "news" für die Sprechstunden. faq für Studienkoordinatoren anlegen?
 * mi-hp: Bildnachweise generieren, interesse und weiterbildung auch in Datenbank faq?
 * Allgemein: Interne Seiten in mit-faq eintragen
-
-
-
-Vorschläge:
-
-* Würde es Sinn machen, das vvz um Einträge zu Deputaten zu ergänzen? Hier könnte man zB Absprachen (irgendjemand bekommt zB 4 statt 2 SWS eintragen, und mit einer Entshceidungsgrundlage versehen.)
-* Würde es Sinn machen, bei den Sprechstunden ein eigenes Feld "Neuigkeiten" zu haben, bei dem man -- mit einem Ablaufdatum versehen -- etwas reinschreiben kann wie "Sprechstunde fällt am xxx aus"?
-
 
 
