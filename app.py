@@ -280,10 +280,6 @@ def showlehrveranstaltungenstundenplan(lang, semester):
 
 # which can Werte 'all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw', 'meddual' annehmen
 # show ist entweder "", oder "all" oder eine id für ein qa-Paar
-@app.route("/neu/")
-def showneu():
-    return "Hello world!"
-
 @app.route("/nlehre/<lang>/studiendekanat/faq/")
 @app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
 def showstufaq(lang, show =""):
