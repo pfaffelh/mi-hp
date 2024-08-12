@@ -435,10 +435,10 @@ def get_mensaplan_text(url, date):
         ausgabe = ""
     return ausgabe
 
-@app.route("/monitor/")
-@app.route("/monitortest/")
-@app.route("/monitor/<dtstring>")
-@app.route("/monitortest/<dtstring>")
+@app.route("/nlehre/monitor/")
+@app.route("/nlehre/monitortest/")
+@app.route("/nlehre/monitor/<dtstring>")
+@app.route("/nlehre/monitortest/<dtstring>")
 def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     # determine if only shown on test
     testorpublic = "_public" if request.endpoint.split(".")[0] == 'monitor' else "test"
