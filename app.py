@@ -25,9 +25,11 @@ from bson import ObjectId
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
 
+# Die nächsten beiden Funktionen werden benötigt, wenn der Webserver neu aufgesetzt ist, und wir unterscheiden können woher die request kommt.
 # Durch diese Funktion werden mit @fortivpn gekennzeichnete Routen nur vom vpn aus erreicht.
 def forti_bool_or_localhost(network = '10.23.0.0/16'):
     ip = IPv4Address(request.remote_addr)
+# Die näcshten beiden Zeilen sind nach der Umstellung zu ändern.
     return True
 #    return ip in ip_network(network) or ip in ip_network('127.0.0.1')
 
@@ -380,14 +382,13 @@ def showlehrende(lang, unterseite ="", anchor = ""):
         
     return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
 
+@fortivpn()
 @app.route("/nlehre/vpn/<lang>/lehrende/<unterseite>")
 @app.route("/nlehre/vpn/<lang>/lehrende/<unterseite>/<anchor>")
-#@fortivpn()
 def showlehrendevpn(lang, unterseite ="", anchor = ""):
     filenames = []
     return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
 
-#@fortivpn()
 @app.route("/nlehre/vpn/<lang>/lehrende/<semester>/planung/")
 def showlehrveranstaltungenplanung(lang, semester):
     sems, data = vvz.get_data_planung(semester)

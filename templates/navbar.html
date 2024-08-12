@@ -158,7 +158,7 @@
               <li class="dropdown-submenu">
                 <a
                   class="dropdown-item text-black"
-                  href="/{{lang}}/lehrveranstaltungen/{{laufendes_semester}}"
+                  href="{{ url_for('showlehrveranstaltungen', lang=lang, semester = laufendes_semester) }}"
                   >{% if lang == "de" %} laufendes Semester{% else %}current
                   semester{% endif %}</a
                 >
@@ -167,7 +167,7 @@
               <li class="dropdown-submenu">
                 <a
                   class="dropdown-item text-black"
-                  href="/{{lang}}/lehrveranstaltungen/{{kommendes_semester}}"
+                  href="{{ url_for('showlehrveranstaltungen', lang=lang, semester = kommendes_semester) }}"
                   >{% if lang == "de" %}kommendes Semester{% else %}upcoming
                   semester{% endif %}</a
                 >
@@ -298,7 +298,7 @@
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="/{{lang}}/lehrende/zertifikat"
+                  href="{{ url_for('showlehrende', unterseite = 'zertifikat', lang=lang) }}"
                   >{% if lang == "de" %}Lehrzertifikat{% else %}Certificate Teaching{% endif %}</a
                 >
               </li>
@@ -306,7 +306,7 @@
               <li>
                 <a
                   class="dropdown-item text-black"
-                  href="/vpn/{{lang}}/lehrende/{{laufendes_semester}}/planung/"
+                  href="{{ url_for('showlehrveranstaltungenplanung', lang=lang, semester = laufendes_semester) }}"
                   >{% if lang == "de" %}Lehrplanung Zukunft{% else %}Teaching in future semesters{% endif %}</a
                 >
               </li>
