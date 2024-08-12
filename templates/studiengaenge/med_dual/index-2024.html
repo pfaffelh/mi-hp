@@ -31,7 +31,7 @@
           Studienberatung
         </a>
         <a
-          href="https://www.face-freiburg.de/studium-lehre/vor-studium/angebot-uni/masterstudiengang-lehramt-gymnasium-dual/"
+          href="https://www.face-freiburg.de/"
           class="btn btn-primary"
           role="button"
           aria-disabled="true"
@@ -102,7 +102,7 @@
           type="button"
         >
           <h3 class="h5">
-            {% if lang == "de" %}Dokumente{% else %}Documents {% endif %}
+            Dokumente
           </h3>
         </button>
       </h4>
@@ -114,6 +114,32 @@
       >
         <div class="accordion-body">
           {% include "studiengaenge/med_dual/dokumente.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="rechtsverhaeltnisContent"
+          aria-expanded="{% if anchor == 'rechtsverhaeltnis' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'rechtsverhaeltnis' %}collapsed{% endif %}"
+          data-bs-target="#rechtsverhaeltnisContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">
+            Vergütetes Rechtsverhältnis
+          </h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="rechtsverhaeltnisContent"
+        class="accordion-collapse collapse {% if anchor == 'rechtsverhaeltnis' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="rechtsverhaeltnisContent"
+      >
+        <div class="accordion-body">
+          {% include "studiengaenge/med_dual/rechtsverhaeltnis.html" %}
         </div>
       </div>
     </div>
