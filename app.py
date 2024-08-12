@@ -73,12 +73,12 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 ## Home page ##
 ###############
 
-@app.route("/test/")
-@app.route("/test/<lang>/")
-@app.route("/test/<lang>/<dtstring>")
-@app.route("/")
-@app.route("/<lang>/")
-@app.route("/<lang>/<dtstring>")
+@app.route("/nlehre/test/")
+@app.route("/nlehre/test/<lang>/")
+@app.route("/nlehre/test/<lang>/<dtstring>")
+@app.route("/nlehre/")
+@app.route("/nlehre/<lang>/")
+@app.route("/nlehre/<lang>/<dtstring>")
 def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     testorpublic = "_public" if request.endpoint.split(".")[0] == 'monitor' else "test"
     date_format_no_space = '%Y%m%d%H%M'
@@ -104,24 +104,24 @@ def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 ## footer ##
 ############
 
-@app.route("/<lang>/bildnachweis/")
+@app.route("/nlehre/<lang>/bildnachweis/")
 def showbildnachweis(lang):
     with app.open_resource('static/data/bildnachweis.json') as f:
         data = json.load(f)    
     filenames = ["footer/bildnachweis.html"]
     return render_template("home.html", filenames = filenames, data = data, lang=lang)
 
-@app.route("/<lang>/impressum/")
+@app.route("/nlehre/<lang>/impressum/")
 def showimpressum(lang):
     filenames = ["footer/impressum.html"]
     return render_template("home.html", filenames = filenames, lang=lang)
 
-@app.route("/<lang>/datenschutz/")
+@app.route("/nlehre/<lang>/datenschutz/")
 def showdatenschutz(lang):
     filenames = ["footer/datenschutz.html"]
     return render_template("home.html", filenames = filenames, lang=lang)
 
-@app.route("/<lang>/tools")
+@app.route("/nlehre/<lang>/tools")
 def showtools(lang):
     filenames = ["footer/tools.html"]
     return render_template("home.html", filenames = filenames, lang=lang)
@@ -130,16 +130,17 @@ def showtools(lang):
 ## Studieninteressierte ## 
 ##########################
 
-@app.route("/<lang>/interesse/")
-@app.route("/<lang>/interesse/<anchor>")
-def showinteresse(lang, anchor=""):
+@app.route("/nlehre/studieninformation.html")
+@app.route("/nlehre/<lang>/interesse/")
+@app.route("/nlehre/<lang>/interesse/<anchor>")
+def showinteresse(lang = "de", anchor=""):
     with app.open_resource('static/data/interesse.json') as f:
         data = json.load(f)
     filenames = ["interesse/interesse_prefix.html", "interesse/interesse_content.html"]
     return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
-@app.route("/<lang>/weiterbildung/")
-@app.route("/<lang>/weiterbildung/<anchor>")
+@app.route("/nlehre/<lang>/weiterbildung/")
+@app.route("/nlehre/<lang>/weiterbildung/<anchor>")
 def showweiterbildung(lang, anchor=""):
     with app.open_resource('static/data/weiterbildung.json') as f:
         data = json.load(f)
@@ -150,8 +151,8 @@ def showweiterbildung(lang, anchor=""):
 ## Studienanfänger      ## 
 ##########################
 
-@app.route("/<lang>/anfang/")
-@app.route("/<lang>/anfang/<anchor>")
+@app.route("/nlehre/<lang>/anfang/")
+@app.route("/nlehre/<lang>/anfang/<anchor>")
 def showanfang(lang, anchor=""):
     filenames = ["anfang/studienanfang.html"]
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
@@ -160,15 +161,16 @@ def showanfang(lang, anchor=""):
 ## Studiengaenge ##
 ###################
 
-@app.route("/<lang>/studiengaenge/")
-@app.route("/<lang>/studiengaenge/<anchor>")
-def showstudiengaenge(lang, anchor="aktuell"):
+@app.route("nlehre/studiengaenge/index.html") # für Links zur alten Homepage
+@app.route("/nlehre/<lang>/studiengaenge/")
+@app.route("/nlehre/<lang>/studiengaenge/<anchor>")
+def showstudiengaenge(lang = "de", anchor="aktuell"):
     filenames = ["studiengaenge/index.html"]
     return render_template("home.html", filenames = filenames, lang=lang, anchor=anchor)
 
-@app.route("/<lang>/studiengaenge/<anchor>")
-@app.route("/<lang>/studiengaenge/<studiengang>/")
-@app.route("/<lang>/studiengaenge/<studiengang>/<anchor>")
+@app.route("/nlehre/<lang>/studiengaenge/<anchor>")
+@app.route("/nlehre/<lang>/studiengaenge/<studiengang>/")
+@app.route("/nlehre/<lang>/studiengaenge/<studiengang>/<anchor>")
 def showstudiengang(lang, studiengang, anchor=""):
     if studiengang == "bsc":
         filenames = ["studiengaenge/bsc/index-2021.html"]
@@ -191,7 +193,7 @@ def showstudiengang(lang, studiengang, anchor=""):
 
     return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
 
-@app.route("/<lang>/studiengaenge/<studiengang>/verlauf/")
+@app.route("/nlehre/<lang>/studiengaenge/<studiengang>/verlauf/")
 def showstudienverlauf(lang, studiengang):
     if studiengang == "bsc":
         filenames = ["studiengaenge/studienverlauf-bsc-2021.html"]
@@ -210,8 +212,8 @@ def showstudienverlauf(lang, studiengang):
 ## Lehrveranstaltungen ##
 #########################
 
-@app.route("/v/")
-@app.route("/<lang>/lehrveranstaltungen/")
+@app.route("/nlehre/v/")  # für Links zur alten Homepage
+@app.route("/nlehre/<lang>/lehrveranstaltungen/")
 def showlehrveranstaltungenbase(lang="de"):
     filenames = ["lehrveranstaltungen/index.html"]
     a = [x["kurzname"] for x in list(vvz.vvz_semester.find({"hp_sichtbar": True}))]
@@ -246,7 +248,7 @@ def showlehrveranstaltungenbase(lang="de"):
 
     return render_template("home.html", filenames=filenames, lang=lang, semester_dict=semester_dict_2, semester_dict_old=semester_dict_old)
 
-@app.route("/<lang>/lehrveranstaltungen/<semester>/")
+@app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/")
 def showlehrveranstaltungen(lang, semester):
     semesterliste_alt = ["ws0607", "ss07", "ws0708", "ss08", "ws0809", "ss09", "ws0910", "ss10", "ws1011", "ss11", "ws1112", "ss12", "ws1213", "ss13", "ws1314", "ss14", "ws1415", "ss15", "ws1516", "ss16", "ws1617", "ss17", "ws1718", "ss18", "ws1819", "ss19", "ws1920", "ss20", "ws2021", "ss21", "ws2122", "ss22", "ws2223", "ss23", "ws2324", "ss24"]
     if semester in semesterliste_alt:
@@ -256,7 +258,7 @@ def showlehrveranstaltungen(lang, semester):
         data = vvz.get_data(semester, lang)
         return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=semester)
 
-@app.route("/<lang>/lehrveranstaltungen/<semester>/stundenplan/")
+@app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/stundenplan/")
 def showlehrveranstaltungenstundenplan(lang, semester):
     data = vvz.get_data_stundenplan(semester, lang)
     return render_template("lehrveranstaltungen/vvz_stundenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester))
@@ -267,7 +269,7 @@ def showlehrveranstaltungenstundenplan(lang, semester):
 ## Prüfungsamt und Studienberatung ##
 #####################################
 
-#@app.route("/<lang>/studiendekanat/")
+#@app.route("/nlehre/<lang>/studiendekanat/")
 #def showstudiendekanatbase(lang):
 #    with app.open_resource('static/data/studiendekanat.json') as f:
 #        data = json.load(f)    
@@ -276,8 +278,8 @@ def showlehrveranstaltungenstundenplan(lang, semester):
 
 # which can Werte 'all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw', 'meddual' annehmen
 # show ist entweder "", oder "all" oder eine id für ein qa-Paar
-@app.route("/<lang>/studiendekanat/faq/")
-@app.route("/<lang>/studiendekanat/faq/<show>")
+@app.route("/nlehre/<lang>/studiendekanat/faq/")
+@app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
 def showstufaq(lang, show =""):
     try:
         cat_ids, names_dict, qa_pairs = util_faq.get_stu_faq(lang)
@@ -292,8 +294,8 @@ def showstufaq(lang, show =""):
         showcat = util_faq.get_stu_cat(show)
     return render_template("studiendekanat/index.html", lang=lang, cat_ids = cat_ids, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
 
-@app.route("/<lang>/studiendekanat/")
-@app.route("/<lang>/studiendekanat/<unterseite>/")
+@app.route("/nlehre/<lang>/studiendekanat/")
+@app.route("/nlehre/<lang>/studiendekanat/<unterseite>/")
 def showstudiendekanat(lang, unterseite = ""):
     data = {}
     if unterseite == "":
@@ -347,9 +349,9 @@ def showstudiendekanat(lang, unterseite = ""):
 #####################################
 
 # show ist entweder "", oder "all" oder eine id für ein qa-Paar
-@app.route("/<lang>/lehrende/")
-@app.route("/<lang>/lehrende/faq/")
-@app.route("/<lang>/lehrende/faq/<show>")
+@app.route("/nlehre/<lang>/lehrende/")
+@app.route("/nlehre/<lang>/lehrende/faq/")
+@app.route("/nlehre/<lang>/lehrende/faq/<show>")
 def showmitfaq(lang, show =""):
     try:
         cat_ids, names_dict, qa_pairs = util_faq.get_mit_faq(lang)
@@ -365,8 +367,8 @@ def showmitfaq(lang, show =""):
     return render_template("lehrende/index.html", lang=lang, cat_ids = cat_ids, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
 
 
-@app.route("/<lang>/lehrende/<unterseite>")
-@app.route("/<lang>/lehrende/<unterseite>/<anchor>")
+@app.route("/nlehre/<lang>/lehrende/<unterseite>")
+@app.route("/nlehre/<lang>/lehrende/<unterseite>/<anchor>")
 def showlehrende(lang, unterseite ="", anchor = ""):
     filenames = []
     if unterseite == "zertifikat":
@@ -378,15 +380,15 @@ def showlehrende(lang, unterseite ="", anchor = ""):
         
     return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
 
-@app.route("/vpn/<lang>/lehrende/<unterseite>")
-@app.route("/vpn/<lang>/lehrende/<unterseite>/<anchor>")
+@app.route("/nlehre/vpn/<lang>/lehrende/<unterseite>")
+@app.route("/nlehre/vpn/<lang>/lehrende/<unterseite>/<anchor>")
 #@fortivpn()
 def showlehrendevpn(lang, unterseite ="", anchor = ""):
     filenames = []
     return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
 
 #@fortivpn()
-@app.route("/vpn/<lang>/lehrende/<semester>/planung/")
+@app.route("/nlehre/vpn/<lang>/lehrende/<semester>/planung/")
 def showlehrveranstaltungenplanung(lang, semester):
     sems, data = vvz.get_data_planung(semester)
     return render_template("lehrveranstaltungen/vvz_planung.html", lang=lang, data = data, semester=semester, sems=sems)
@@ -397,8 +399,8 @@ def showlehrveranstaltungenplanung(lang, semester):
 ###############
 
 # anchor kann sein: formulare_mitarbeiter
-@app.route("/<lang>/downloads/")
-@app.route("/<lang>/downloads/<anchor>")
+@app.route("/nlehre/<lang>/downloads/")
+@app.route("/nlehre/<lang>/downloads/<anchor>")
 def showdownloads(lang, anchor=""):
     filenames = ["downloads/downloads.html"]
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
