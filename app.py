@@ -161,7 +161,7 @@ def showanfang(lang, anchor=""):
 ## Studiengaenge ##
 ###################
 
-@app.route("nlehre/studiengaenge/index.html") # für Links zur alten Homepage
+@app.route("/nlehre/studiengaenge/index.html") # für Links zur alten Homepage
 @app.route("/nlehre/<lang>/studiengaenge/")
 @app.route("/nlehre/<lang>/studiengaenge/<anchor>")
 def showstudiengaenge(lang = "de", anchor="aktuell"):
