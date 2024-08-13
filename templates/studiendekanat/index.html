@@ -16,7 +16,7 @@ endblock %} {% block content %} {% if lang == "de" %}
   <div class="row">
     <div class="col">
       <a
-        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6b"
+      href="{{ url_for('showstufaq', lang = lang, show = 'qa_66ae8e6510f040b07f8c7f6b') }}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -24,7 +24,7 @@ endblock %} {% block content %} {% if lang == "de" %}
         Prüfungsanmeldung funktioniert nicht
       </a>
       <a
-        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f84"
+        href="{{ url_for('showstufaq', lang = lang, show = 'qa_66ae8e6510f040b07f8c7f84') }}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -32,7 +32,7 @@ endblock %} {% block content %} {% if lang == "de" %}
         Orientierungsleistung
       </a>
       <a
-        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f7e"
+      href="{{ url_for('showstufaq', lang = lang, show = 'qa_66ae8e6510f040b07f8c7f7e') }}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -40,7 +40,7 @@ endblock %} {% block content %} {% if lang == "de" %}
         Prüfungsanmeldung
       </a>
       <a
-        href="/de/studiendekanat/faq/qa_66ae8e6510f040b07f8c7f6c"
+        href="{{ url_for('showstufaq', lang = lang, show = 'qa_66ae8e6510f040b07f8c7f6c') }}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
