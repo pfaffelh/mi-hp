@@ -289,7 +289,7 @@
           class="accordion-button {% if anchor != 'formulare_mitarbeiter' %}collapsed{% endif %}"
           data-bs-target="#formulareMContent"
           aria-controls="formulareMContent"
-          aria-expanded="{% if anchor == 'pruefungsamt' %}true{% else %}false{% endif %}"
+          aria-expanded="{% if anchor == 'formulare_mitarbeiter' %}true{% else %}false{% endif %}"
           data-bs-toggle="collapse"
         >
           <h3 class="h5">Formulare und Merkblätter für Lehrende</h3>
@@ -297,11 +297,11 @@
       </h4>
       <div
         aria-labelledby="formulareMContent"
-        class="accordion-collapse collapse {% if anchor == 'pruefungsamt' %}show{% endif %}"
+        class="accordion-collapse collapse {% if anchor == 'formulare_mitarbeiter' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="formulareMContent"
       >
-        <div class="accordion-body" id="pruefungsamt">
+        <div class="accordion-body" id="formulare_mitarbeiter">
           <ul>
             <li>
               <b> Abschlussarbeit </b>

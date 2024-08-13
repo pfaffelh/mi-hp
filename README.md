@@ -123,18 +123,3 @@ Hier werden News verwaltet, inklusive deren Bilder und eventueller Bildrechte. D
 
 
 
-#### Vorschläge
-
-* Würde es Sinn machen, das vvz um Einträge zu Deputaten zu ergänzen? Hier könnte man zB Absprachen (irgendjemand bekommt zB 4 statt 2 SWS eintragen, und mit einer Entshceidungsgrundlage versehen.)
-* Würde es Sinn machen, bei den Sprechstunden ein eigenes Feld "Neuigkeiten" zu haben, bei dem man -- mit einem Ablaufdatum versehen -- etwas reinschreiben kann wie "Sprechstunde fällt am xxx aus"?
-
-
-
-#### TODOs
-
-* mi-vvz: Deputate?
-* mi-faq: Bewerbungsphasen für Studiengänge eintragen, Eintrag "news" für die Sprechstunden. faq für Studienkoordinatoren anlegen?
-* mi-hp: Bildnachweise generieren, interesse und weiterbildung auch in Datenbank faq?
-* Allgemein: Interne Seiten in mit-faq eintragen
-
-

@@ -36,10 +36,10 @@ files = [
     #    "source": "https://www.math.uni-freiburg.de/lehre/studiengaenge/studienverlauf-meb-2021#.html",
     #    "target": "templates/studiengaenge/med_erw/studienverlauf-meb-2021.html"
     #}
-    {
-        "source": "https://www.math.uni-freiburg.de/lehre/zertifikat-hochschullehre.html",
-        "target": "templates/lehrende/zertifikat-hochschullehre.html"
-    },
+    #{
+    #    "source": "https://www.math.uni-freiburg.de/lehre/zertifikat-hochschullehre.html",
+    #    "target": "templates/lehrende/zertifikat-hochschullehre.html"
+    #},
     #{
     #    "source": "https://www.math.uni-freiburg.de/lehre/promotion.html",
     #    "target": "templates/studiengaenge/promotion/index.html"
@@ -60,10 +60,10 @@ files = [
     #    "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html",
     #    "target": "templates/pruefungsamt/termine.html"
     #},
-    # {
-    #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html",
-    #     "target": "templates/pruefungsamt/pruefungen.html"
-    # },
+     {
+         "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html",
+         "target": "templates/studiendekanat/pruefungen.html"
+     },
     # {
     #     "source": "https://www.math.uni-freiburg.de/lehre/pruefungsamt/abschlussarbeiten.html",
     #     "target": "templates/pruefungsamt/abschlussarbeiten.html"

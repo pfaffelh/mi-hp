@@ -337,6 +337,8 @@ def showstudiendekanat(lang, unterseite = ""):
         filenames = ["studiendekanat/anmeldung.html"]
     if unterseite == "modulplan":
         filenames = ["studiendekanat/modulplan.html"]
+    if unterseite == "pruefungen":
+        filenames = ["studiendekanat/pruefungen.html"]
     if unterseite == "termine":
         filenames = ["studiendekanat/termine.html"]
     if unterseite == "modulhandbuecher":
@@ -399,7 +401,7 @@ def showlehrveranstaltungenplanung(lang, semester):
 ## Downloads ##
 ###############
 
-# anchor kann sein: formulare_mitarbeiter
+# anchor kann sein: formulare_mitarbeiter, pruefungsamt, studiendokumente, promotion, gesetz, bericht
 @app.route("/nlehre/<lang>/downloads/")
 @app.route("/nlehre/<lang>/downloads/<anchor>")
 def showdownloads(lang, anchor=""):
