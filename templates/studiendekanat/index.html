@@ -16,12 +16,12 @@ endblock %} {% block content %} {% if lang == "de" %}
   <div class="row">
     <div class="col">
       <a
-      href="{{ url_for('showstufaq', lang = lang, show = 'qa_66ae8e6510f040b07f8c7f6b') }}"
+      href="{{ url_for('showstudiendekanat', unterseite = 'termine', lang = lang) }}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
       >
-        Prüfungsanmeldung funktioniert nicht
+        Termine und Fristen
       </a>
       <a
         href="{{ url_for('showstufaq', lang = lang, show = 'qa_66ae8e6510f040b07f8c7f84') }}"
