@@ -1,5 +1,92 @@
 # Für Dozent*innen
 
+1.
+## Wie kann ich  in HisInONE einen verantwortlichen Dozenten hinzufügen?
+
+Um Verantwortliche Dozent*innen zu einer Veranstaltung (etwa den/die Assistent*in) hinzuzufügen, gehen Sie wie folgt vor:
+
+1.  In HISinOne einloggen und rechts oben die Rolle "_Lehrperson_" auswählen.
+2.  Menüpunkt "Meine Veranstaltungen, Prüfungen und Studienleistungen" aufrufen (via Suche im Feld "_Menü durchsuchen_" oder über den Pfad "_Lehrorganisation > Meine Veranstaltungen,..._").
+3.  Ggf. ins richtige Semester wechseln und bei der richtigen Veranstaltung auf das Stift-Symbol klicken.
+4.  Den Reiter "Semesterunhängige Angaben" auswählen und auf das blaue "Personensymbol mit Stern" klicken.
+5.  Es erscheint ein Fenster mit einer Liste auswählbarer Lehrpersonen\* des Mathematischen Instituts. Bei den gewünschten Personen\* ein Häkchen setzen und unten auf "Speichern und schließen" klicken.
+6.  **Wenn Personen\* in der Liste fehlen** haben diese entweder nicht die nötige Rolle _Lehrperson_ (dann bitte Frau Zier oder Markus Junker kontaktieren, damit die Rolle zugewiesen wird) oder gehören nicht zum Mathematischen Institut (dann die Organisationseinheit in der Suchliste löschen und nach Namen suchen).
+
+## Wie buche ich Räume?
+
+Siehe bei den Assistenten xxx
+
+2.
+## Darf ich das eigentlich selber machen (prüfen, betreuen, ...)?
+
+**Prüfungsbefugt „a priori“** sind (gemäß Prüfungsordnungen)
+
+*   Hochschullehrer\* (d.h. Professoren\*, Juniorprofessoren\*, Hochschuldozenzten\* im Sinne des LHG)
+*   Privatdozenten\* und außerplanmäßige Professoren\*
+*   Entpflichtete Professoren\* und Professoren\* im Ruhestand
+*   Lehrbeauftragte\*, Gastprofessoren\* und Honorarprofessoren\*
+
+sowohl der Universität Freiburg als auch der EUCOR-Hochschulen.
+
+(_Professoren\*, die die Universität verlassen, verlieren ihre Prüfungsbefugnis. Die Promotionsordnung regelt explizit Übergangsfristen für die "Zu-Ende-Betreuung" angefangener Dissertationen. Vergleichbare Regelungen für Bachelor- oder Master-Arbeiten gibt es nicht; Konsens sollte allerdings sein, dass angemeldete Arbeiten zu Ende betreut werden dürfen. Noch nicht angemeldete Arbeiten müssen über die Regelungen der Prüfungsordnungen zu externen Betreuungen abgewickelt werden._)
+
+**Akademischen Mitarbeitern\*** (_auch der PH Freiburg und der EUCOR-Hochschulen_) kann auf Antrag vom Rektorat die Prüfungsbefugnis verliehen werden. Der Antrag muss über das Dekanat laufen und wird zunächst in der Dozentenversammlung und im Fakultätsrat besprochen.
+
+*   Informationen zu den Anforderungen und Antragsformulare [auf dieser Intranet-Seite](https://intranet.uni-freiburg.de/sazs/uebertr-pruefungsbefug).
+*   [Vorlage für die Anlage](http://www.math.uni-freiburg.de/lehre/pruefungsamt/dokumente/Anlage_Beiblatt.xlsx)
+
+Das Recht, Bachelor- und Master-Arbeiten zu betreuuen, muss separat beantragt werden!
+
+(_Akademische Mitarbeiter\*, die an anderen Hochschulen habilitiert sind, benötigen laut E-Mail von Frau Kupferschmit vom 20.09.2018 keine Übertragung der Prüfungsbefugnis._)
+
+**Hochschullehrern\* der PH Freiburg** kann der jeweilie Fachprüfungsausschuss die Prüfungsbefugnis übertragen.
+
+3.
+## Was ist formal bei Abschlussarbeiten, Klausuren, mündlichen Prüfungen zu beachten?
+
+_Letzte Änderung: 03.09.2021_
+
+### Abschlussarbeiten
+Für den Seitenumfang von Abschlussarbeiten gibt es keine Vorgaben. In folgender Tabelle sind die jeweiligen Bearbeitungszeiten. 
+
+|     |     |     |     |     |
+| --- | --- | --- | --- | --- |
+| **Studiengang** | **Bearbeitungsdauer** | **ECTS-Punkte** | **Bearbeitungszeit** | **Bemerkung** |
+| Zwei-Hauptfächer-Bachelor | 3 Monate | 10  | 300 Stunden | kein Bachelor-Seminar |
+| Bachelor of Science, PO 2021 | 3 Monate | 12  | 360 Stunden | plus Präsentation  <br>kein Bachelor-Seminar |
+| Bachelor of Science, PO 2012 | 3 Monate | 12  | 360 Stunden | plus Bachelor-Seminar |
+| Master of Education  <br>auch Erweiterungsmaster | 4 Monate | 15  | 450 Stunden | keine Präsentation |
+| Master of Science | 6 Monate | 30  | 900 Stunden | plus Präsentation |
+
+Für die Dauer der Präsentation der Master-Arbeit im M.Sc. gibt es keine Vorgaben.
+
+### Klausuren
+Klausuren sollen laut Prüfungsordnung **mindestens 60 und höchstens 240 Minuten** dauern. Innerhalb dieses Rahmens kann die Dauer vom Prüfer\* frei gewählt werden.
+
+### Mündliche Prüfungen
+Für die Dauer von mündlichen Prüfungen geben die Prüfungsordnungen als allgemeinen Rahmen je Prüfling\* **mindestens 10 und höchstens 30 Minuten**, bei Modulabschlussprüfungen **höchstens 45 Minuten** vor. Bei der gleichen Prüfung (_gleiche Veranstaltung, gleicher Prüfungszeitraum_) sollten sich die Prüfungsdauern von Prüfling\* zu Prüfling\* aus Gerechtigkeitsgründen aber nicht substantiell unterscheiden.  
+Wir haben uns institutsintern auf folgende regelhafte Dauern geeinigt (was aber nicht bedeutet, dass diese minutengenau eingehalten werden muss):
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+| **Studiengang** | **Modul** | **Dauer** | **Bemerkung** |
+| BSc / 2-Hf-B / Erweiterungsmaster | Analysis  <br>Lineare Algebra | 30 Minuten | bei Analysis I–III auch etwas länger |
+| MEd / Erweiterungsmaster | Mathematische Vertiefung  <br>Wissenschaftliches Arbeiten | 30 Minuten |     |
+| MSc | Reine Mathematik  <br>Angewandte Mathematik  <br>Mathematik | 30 Minuten |     |
+| Vertiefungsmodul | 45 Minuten |     |
+| BSc / Erweiterungsmaster | andere mündliche Prüfungen | frei wählbar innerhalb des Rahmens | 10 Minuten scheinen für eine Benotung allerdings zu kurz |
+
+### Vorträge in Seminaren
+Für die Dauer von Seminarvorträgen (im Terminus der Prüfungsordnungen: _mündliche Präsentationen_) gibt es keine Vorgaben in den Rahmenprüfungsordnungen.
+
+|     |     |     |     |
+| --- | --- | --- | --- |
+| **Studiengang** | **Modul** | **Dauer** | **Bemerkung** |
+| BSc / 2-Hf-B / Erweiterungsmaster | Proseminar | 45 bis 90 Minuten | am Institut übliche Dauer |
+| BSc / MSc | Seminar (A/B) | 90 Minuten | Vorgabe der M.Sc.-Prüfungsordnung |
+
+Für die Dauer der Präsentation der Master-Arbeit gibt es keine Vorgaben.
+
 ## Wie bekomme ich einen Schlüssel für den Hörsaal?
 
 xxx siehe Wiki
@@ -23,98 +110,17 @@ Für weitere Räume (Seminarräume oder Büros) in der Ernst-Zermelo-Straße 1 
 *   
 
 
-## Wie kann ich  in HisInONE einen verantwortlichen Dozenten hinzufügen?
 
-Um Verantwortliche Dozent*innen zu einer Veranstaltung (etwa den/die Assistent*in) hinzuzufügen, gehen Sie wie folgt vor:
-
-1.  In HISinOne einloggen und rechts oben die Rolle "_Lehrperson_" auswählen.
-2.  Menüpunkt "Meine Veranstaltungen, Prüfungen und Studienleistungen" aufrufen (via Suche im Feld "_Menü durchsuchen_" oder über den Pfad "_Lehrorganisation > Meine Veranstaltungen,..._").
-3.  Ggf. ins richtige Semester wechseln und bei der richtigen Veranstaltung auf das Stift-Symbol klicken.
-4.  Den Reiter "Semesterunhängige Angaben" auswählen und auf das blaue "Personensymbol mit Stern" klicken.
-5.  Es erscheint ein Fenster mit einer Liste auswählbarer Lehrpersonen\* des Mathematischen Instituts. Bei den gewünschten Personen\* ein Häkchen setzen und unten auf "Speichern und schließen" klicken.
-6.  **Wenn Personen\* in der Liste fehlen** haben diese entweder nicht die nötige Rolle _Lehrperson_ (dann bitte Frau Zier oder Markus Junker kontaktieren, damit die Rolle zugewiesen wird) oder gehören nicht zum Mathematischen Institut (dann die Organisationseinheit in der Suchliste löschen und nach Namen suchen).
-
-## Darf ich das eigentlich selber machen (prüfen, betreuen, ...)?
-
-**Prüfungsbefugt „a priori“** sind (gemäß Prüfungsordnungen)
-
-*   Hochschullehrer\* (d.h. Professoren\*, Juniorprofessoren\*, Hochschuldozenzten\* im Sinne des LHG)
-*   Privatdozenten\* und außerplanmäßige Professoren\*
-*   Entpflichtete Professoren\* und Professoren\* im Ruhestand
-*   Lehrbeauftragte\*, Gastprofessoren\* und Honorarprofessoren\*
-
-sowohl der Universität Freiburg als auch der EUCOR-Hochschulen.
-
-(_Professoren\*, die die Universität verlassen, verlieren ihre Prüfungsbefugnis. Die Promotionsordnung regelt explizit Übergangsfristen für die "Zu-Ende-Betreuung" angefangener Dissertationen. Vergleichbare Regelungen für Bachelor- oder Master-Arbeiten gibt es nicht; Konsens sollte allerdings sein, dass angemeldete Arbeiten zu Ende betreut werden dürfen. Noch nicht angemeldete Arbeiten müssen über die Regelungen der Prüfungsordnungen zu externen Betreuungen abgewickelt werden._)
-
-**Akademischen Mitarbeitern\*** (_auch der PH Freiburg und der EUCOR-Hochschulen_) kann auf Antrag vom Rektorat die Prüfungsbefugnis verliehen werden. Der Antrag muss über das Dekanat laufen und wird zunächst in der Dozentenversammlung und im Fakultätsrat besprochen.
-
-*   Informationen zu den Anforderungen und Antragsformulare [auf dieser Intranet-Seite](https://intranet.uni-freiburg.de/sazs/uebertr-pruefungsbefug).
-*   [Vorlage für die Anlage](http://www.math.uni-freiburg.de/lehre/pruefungsamt/dokumente/Anlage_Beiblatt.xlsx)
-
-Das Recht, Bachelor- und Master-Arbeiten zu betreuuen, muss am Ende der Anlage separat beantragt werden!
-
-(_Akademische Mitarbeiter\*, die an anderen Hochschulen habilitiert sind, benötigen laut E-Mail von Frau Kupferschmit vom 20.09.2018 keine Übertragung der Prüfungsbefugnis._)
-
-**Hochschullehrern\* der PH Freiburg** kann der jeweilie Fachprüfungsausschuss die Prüfungsbefugnis übertragen.
-
-### Prüfungsdauern und -umfang, Bearbeitungszeit von Abschlussarbeiten
-
-_Letzte Änderung: 03.09.2021_
-
-**ABSCHLUSSARBEITEN**  
-Für den Seitenumfang von Abschlussarbeiten gibt es keine Vorgaben.  
-
-|     |     |     |     |     |
-| --- | --- | --- | --- | --- |
-| **Studiengang** | **Bearbeitungsdauer** | **ECTS-Punkte** | **Bearbeitungszeit** | **Bemerkung** |
-| Zwei-Hauptfächer-Bachelor | 3 Monate | 10  | 300 Stunden | kein Bachelor-Seminar |
-| Bachelor of Science, PO 2021 | 3 Monate | 12  | 360 Stunden | plus Präsentation  <br>kein Bachelor-Seminar |
-| Bachelor of Science, PO 2012 | 3 Monate | 12  | 360 Stunden | plus Bachelor-Seminar |
-| Master of Education  <br>auch Erweiterungsmaster | 4 Monate | 15  | 450 Stunden | keine Präsentation |
-| Master of Science | 6 Monate | 30  | 900 Stunden | plus Präsentation |
-
-Für die Dauer der Präsentation der Master-Arbeit im M.Sc. gibt es keine Vorgaben.
-
-**KLAUSUREN**  
-Klausuren sollen laut Prüfungsordnung **mindestens 60 und höchstens 240 Minuten** dauern. Innerhalb dieses Rahmens kann die Dauer vom Prüfer\* frei gewählt werden.
-
-**MÜNDLICHE PRÜFUNGEN**  
-Für die Dauer von mündlichen Prüfungen geben die Prüfungsordnungen als allgemeinen Rahmen je Prüfling\* **mindestens 10 und höchstens 30 Minuten**, bei Modulabschlussprüfungen **höchstens 45 Minuten** vor. Bei der gleichen Prüfung (_gleiche Veranstaltung, gleicher Prüfungszeitraum_) sollten sich die Prüfungsdauern von Prüfling\* zu Prüfling\* aus Gerechtigkeitsgründen aber nicht substantiell unterscheiden.  
-Wir haben uns institutsintern auf folgende regelhafte Dauern geeinigt (was aber nicht bedeutet, dass diese minutengenau eingehalten werden muss):
-
-|     |     |     |     |
-| --- | --- | --- | --- |
-| **Studiengang** | **Modul** | **Dauer** | **Bemerkung** |
-| BSc / 2-Hf-B / Erweiterungsmaster | Analysis  <br>Lineare Algebra | 30 Minuten | bei Analysis I–III auch etwas länger |
-| MEd / Erweiterungsmaster | Mathematische Vertiefung  <br>Wissenschaftliches Arbeiten | 30 Minuten |     |
-| MSc | Reine Mathematik  <br>Angewandte Mathematik  <br>Mathematik | 30 Minuten |     |
-| Vertiefungsmodul | 45 Minuten |     |
-| BSc / Erweiterungsmaster | andere mündliche Prüfungen | frei wählbar innerhalb des Rahmens | 10 Minuten scheinen für eine Benotung allerdings zu kurz |
-
-**VORTRÄGE IN SEMINAREN**  
-Für die Dauer von Seminarvorträgen (im Terminus der Prüfungsordnungen: _mündliche Präsentationen_) gibt es keine Vorgaben in den Rahmenprüfungsordnungen.
-
-|     |     |     |     |
-| --- | --- | --- | --- |
-| **Studiengang** | **Modul** | **Dauer** | **Bemerkung** |
-| BSc / 2-Hf-B / Erweiterungsmaster | Proseminar | 45 bis 90 Minuten | am Institut übliche Dauer |
-| BSc / MSc | Seminar (A/B) | 90 Minuten | Vorgabe der M.Sc.-Prüfungsordnung |
-
-Für die Dauer der Präsentation der Master-Arbeit gibt es keine Vorgaben.
-
-
-## Was ist bei Abschlussarbeiten zu beachten?
-
-xxx
 
 
 # Für Studierende
 
+1.
 ## Welche Fristen darf ich nicht verpassen?
 
-Siehe Webpage!
+Für die Prüfungsanmeldung: Siehe [Termine und Fristen](https://www.math.uni-freiburg.de/nlehre/de/studiendekanat/termine/).
 
+Für die Vergabe für Plätzen in den Übungsgruppen:
 *   Die Verfahren laufen in der ersten Vorlesungswoche von Mittwoch 12 Uhr bis Freitag 14 Uhr.
 *   Für die großen Vorlesungen _Analyis I, II; Lineare Algebra I, II und Mathematik I, II für Studierende der Naturwissenschaften_ werden eigene Fristen eingerichtet (bitte rechtzeitig mitteilen!). Aufgrund des Aufwands ist dies für andere Vorlesungen nur in begründeten Ausnahmefällen möglich.
 *   Für die Lehrexportvorlesungen an die Technische Fakultät gelten deren Verfahren und Fristen.
@@ -130,13 +136,13 @@ Siehe Webpage!
 * Hier können Räume gebucht werden. 
 * Lehrdeputate 
 
-### Ilias
+### [Ilias](https://ilias.uni-freiburg.de/login.php)
 * Hier können einzelne Seite für Kurse angelegt werden, auf denen dann Materialien zur Verfügung gestellt werden. Man kann hier etwa auch Selbsttests implementieren, oder ein Forum für die Studierenden einrichten.
 
 **Es ist wichtig**, dies aus HISinOne zu machen, damit die Liste der Teilnehmer direkt von dort automatisch exportiert wird. Die Studierenden die sich über HISinOne registriert haben, werden die entsprechende ILIAS Seite sehen, sobald diese online gestellt wird.
 \n  
 Um sicherzustellen, dass die Teilnehmenden nur von HISinOne kommen, wählen Sie bitte „Kein selbstständiger Beitritt" aus.
-1. Bearbeiten Sie die ILIAS Homepage entsprechend. Hier können Sie den Titel bearbeiten und die Kursbeschreibung hinzufügen. Diese finden Sie im aktuellen „Kommentierten Vorlesungsverzeichnis“ [https://www.math.uni-freiburg.de/lehre/v/index.html.](https://www.math.uni-freiburg.de/nlehre/lehrveranstaltungen/)
+1. Bearbeiten Sie die ILIAS Homepage entsprechend. Hier können Sie den Titel bearbeiten und die Kursbeschreibung hinzufügen. Diese finden Sie im aktuellen [Kommentierten Vorlesungsverzeichnis](https://www.math.uni-freiburg.de/nlehre/de/lehrveranstaltungen/)
 2. Zusätzlich können Sie hier weitere Tools wie
 * einen Big Blue Button Raum, in dem Studierende sich austauschen können,
 * ein Forum zum Fragen stellen,
@@ -161,8 +167,6 @@ Die Testeinstellungen können nicht mehr geändert werden, sobald ein Studierend
 
 Jedem/r Assistent*in und jedem*r Dozent*in steht es frei, für die eigene Veranstaltung eine Webpage zu generieren. Dies kann entwerden institutsintern sein (bitte bei den Systemadministratoren melden), oder woanders.
 
-
-## Wie buche ich Räume?
 
 ## Ich betreue eine Vorlesung. Was muss ich genau tun?
 
@@ -1005,7 +1009,7 @@ Achtung: zweimal im Jahr gibt es eine neue HISinOne-Version, die teils Änderung
 
 _Letzte Änderung: 28.10.2022_
 
-Seit Juli 2022 müssen Veranstaltungen freigegeben werden, damit sie öffentlich einsehbar in den Ruamplänen erscheinen. Nicht freigebenen Raumnreservierungen sieht man nur, wenn man in HISinOne eingeloggt ist!
+Seit Juli 2022 müssen Veranstaltungen freigegeben werden, damit sie öffentlich einsehbar in den Ruamplänen erscheinen. Nicht freigebenen Raumreservierungen sieht man nur, wenn man in HISinOne eingeloggt ist!
 
 Bei den Raumplänen in HISinOne muss man ggf. noch das richtige Semester auswählen und man kann zwischen Wochenauswahl, Semester- und Vorlesungszeitansicht wechseln.  
 Rechts oben unter  ![](i/H1-Symbol_cog.svg) Weitere Anzeigeoptionen kann man einstellen, welche Informationen angezeigt werden.
@@ -1034,6 +1038,8 @@ Aufgrund von Klappsitzen, Sitzen ohne Tisch u.Ä. ist die Anzahl der offiziellen
 [HS Rundbau](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=203&roomType=3&currentTermId=2461&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (383) ∗ [HS Weismann-Haus](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=209&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (174) ∗ [HS II](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=343&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (82) ∗ [SR 119](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=151&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (16) ∗ [SR 125](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=149&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (25) ∗ [SR 127](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=150&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (25) ∗ [SR 218](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=152&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (16) ∗ [SR 226](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=196&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (40) ∗ [SR 318](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=153&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (16) ∗ [SR 404](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=155&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (aus Brandschutzgründen 15, nur nach Absprache)
 
 [HS Anatomie](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=407&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (386) ∗ [GHS Biologie](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=166&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (462) ∗ [GHS Chemie](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=267&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (350) ∗ [HS Otto-Krayer-Haus](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=276&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (200) ∗ [Paulussaal + -kirche](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=3212267&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (?) ∗ [GHS Physik](https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=roomSchedule-flow&roomId=262&roomType=3&currentTermId=2561&time=-1&navigationPosition=organisation,hisinoneFacilities,hisinoneroomschedule) (320)
+
+
 
 ### Räume reservieren
 
