@@ -87,11 +87,13 @@
                 {% if item['tel_de'] !='' %} Tel.: {{ item['tel_de'] | safe }} {% endif %}<br>
                 {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
                 {% if item['sprechstunde_de'] !='' %} Sprechstunde: {{ item['sprechstunde_de'] | safe }} {% endif %}<br>
+                {% if item['shownews'] and item['news_de'] !='' %} <strong>Achtung:</strong> {{ item['news_de'] | safe }} {% endif %}<br>
                 {% else %}
                 {% if item['raum_en'] !='' %} Room: {{ item['raum_de'] | safe }} {% endif %} <br>
                 {% if item['tel_en'] !='' %} Tel.: {{ item['tel_en'] | safe }} {% endif %}<br>
                 {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
                 {% if item['sprechstunde_en'] !='' %} Office hours: {{ item['sprechstunde_en'] | safe }} {% endif %}<br>
+                {% if item['shownews'] and item['news_en'] !='' %} <strong>Achtung:</strong> {{ item['news_en'] | safe }} {% endif %}<br>
                 {% endif %}
             <p align="right">
               <button

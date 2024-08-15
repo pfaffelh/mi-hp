@@ -2,7 +2,8 @@
   <h1>Downloads</h1>
   <p>
     Hier finden Sie die meisten Dokumente, die wir zum Download anbieten. Das
-    kommentierte Vorlesungsverzeichnis ist <a href={{url_for('showlehrveranstaltungenbase', lang=lang)}}>hier</a>.
+    kommentierte Vorlesungsverzeichnis ist
+    <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">hier</a>.
   </p>
 
   <div id="accordion"></div>
@@ -17,9 +18,7 @@
           aria-expanded="{% if anchor == 'pruefungsamt' %}true{% else %}false{% endif %}"
           data-bs-toggle="collapse"
         >
-          <h3 class="h5">
-            Formulare und Merkblätter für Studierende
-          </h3>
+          <h3 class="h5">Formulare und Merkblätter für Studierende</h3>
         </button>
       </h4>
       <div
@@ -330,19 +329,41 @@
               >
                 alle Studiengänge
               </a>
-              <br />
-              – Klausurprotokoll
-              <a href="/static/pdf/lehrende/klausurprotokoll.pdf">
-                alle Studiengänge
-              </a>
             </li>
             <li>
               <b> Habilitation</b>
               <br />
-              – 
-              <a href="/static/pdf/lehrende/HabilOmathphys-02-12-03_Aend_01-10-06-Druckvorlage.pdf">
+              –
+              <a
+                href="/static/pdf/lehrende/HabilOmathphys-02-12-03_Aend_01-10-06-Druckvorlage.pdf"
+              >
                 Habilitationsordnung
-              </a> 1.10.2006
+              </a>
+              1.10.2006
+            </li>
+            <li>
+              <b>Klausuren:</b> <br />
+              – Klausurprotokoll
+              <a href="/static/pdf/lehrende/klausurprotokoll.pdf">
+                alle Studiengänge
+              </a>
+              <br />
+              – Formular Vorbehaltserklärung
+              <a href="/static/pdf/lehrende/vorbehaltserklaerung.pdf">
+                alle Studiengänge
+              </a>
+              <br>
+              – Formular Nachkorrektur
+              <a href="/static/pdf/lehrende/Nachkorrektur.pdf">
+                alle Studiengänge
+              </a>
+              <br>
+              – Hinweise von D5 zur Durchführung von Klausuren
+              <a
+                href="/static/pdf/lehrende/Hinweise_zur_Durchfuehrung_von_Klausuren-D5-2022.pdf"
+              >
+                alle Studiengänge
+              </a>
             </li>
             <li>
               <b> Protokoll von Prüfungen</b>
@@ -361,21 +382,17 @@
               </a>
             </li>
             <li>
-              <b> Vorbehaltserklärung bei fehlender Klausuranmeldung </b>
-              <br />
-              – Formular
-              <a href="/static/pdf/lehrende/vorbehaltserklaerung.pdf">
-                alle Studiengänge
-              </a>
-            </li>
-            <li>
               <b> Zertifikat Hochschullehre</b>
               <br />
               –
-              <a href="/static/pdf/lehrende/Satzung-Zertifikat_Hochschullehre.deutsch.pdf">
+              <a
+                href="/static/pdf/lehrende/Satzung-Zertifikat_Hochschullehre.deutsch.pdf"
+              >
                 deutsch (offiziell)
               </a>
-              <a href="/static/pdf/lehrende/Satzung-Zertifikat_Hochschullehre.englisch.pdf">
+              <a
+                href="/static/pdf/lehrende/Satzung-Zertifikat_Hochschullehre.englisch.pdf"
+              >
                 englisch
               </a>
             </li>

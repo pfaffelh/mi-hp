@@ -309,6 +309,8 @@ def showstudiendekanat(lang, unterseite = ""):
             logger.warning("No connection to Database FAQ")
 
         data = list(studiendekanat.find({"showstudienberatung" : True}, sort=[("rang", pymongo.ASCENDING)]))
+        for item in data:
+            item["shownews"] = (datetime.now() < item["news_ende"])
         filenames = ["studiendekanat/studienberatung.html"]
     if unterseite == "pruefungsamt":
         try:
@@ -318,7 +320,8 @@ def showstudiendekanat(lang, unterseite = ""):
         except:
             logger.warning("No connection to Database FAQ")
         data = list(studiendekanat.find({"showpruefungsamt" : True}, sort=[("rang", pymongo.ASCENDING)]))
-        print(data)
+        for item in data:
+            item["shownews"] = (datetime.now() < item["news_ende"])
         filenames = ["studiendekanat/pruefungsamt.html"]        
     if unterseite == "studienanfang":
         filenames = ["studiendekanat/studienanfang.html"]
