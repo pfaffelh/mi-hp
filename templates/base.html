@@ -352,6 +352,12 @@
         return new bootstrap.Popover(popoverTriggerEl);
       });
     </script>
-    {% block js %} {% endblock %}
+    {% block js %}
+    <script>
+      var element = document.getElementById("{{show}}_q");
+      element.scrollIntoView();
+    </script>
+
+    {% endblock %}
   </body>
 </html>

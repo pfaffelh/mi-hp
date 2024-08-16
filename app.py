@@ -379,7 +379,8 @@ def showmitfaq(lang, show =""):
 def showlehrende(lang, unterseite ="", anchor = ""):
     filenames = []
     if unterseite == "zertifikat":
-        anchor = "what"
+        if anchor == "":
+            anchor = "what"
         filenames = ["lehrende/zertifikat-hochschullehre.html"]
     if unterseite == "calendar":
         events = get_caldav_calendar_events(calendar)
@@ -404,7 +405,7 @@ def showlehrveranstaltungenplanung(lang, semester):
 ## Downloads ##
 ###############
 
-# anchor kann sein: formulare_mitarbeiter, pruefungsamt, studiendokumente, promotion, gesetz, bericht
+# anchor kann sein: lehrende, pruefungsamt, studiendokumente, promotion, gesetz, bericht
 @app.route("/nlehre/<lang>/downloads/")
 @app.route("/nlehre/<lang>/downloads/<anchor>")
 def showdownloads(lang, anchor=""):
