@@ -4,20 +4,25 @@
       <div class="feature-icon bg-gradient"></div>
       <div>
         <header class="entry-header">
-          <h3>Bildnachweis</h3>
+          <h3>
+            {% if lang == "de" %}Bildnachweis{% else %}Photo credits{% endif %}
+          </h3>
         </header>
+        {% for d in data %}
+        <h4>{{ d['titel'] }}</h4>
         <div class="entry-content">
-          {% for key, value in data.items() %}
+          {% for v in d['data'] %}
           <p>
             <img
-              src="{{ key }}"
+              src="data:image/{{ v['mime'] }};base64, {{ v['bild'] }}"
               class="px-4"
               style="width: 10vw; height: auto"
             />
-            {{ value }}
+            {{ v['bildnachweis'] }}
           </p>
           {% endfor %}
         </div>
+        {% endfor %}
       </div>
     </div>
   </div>

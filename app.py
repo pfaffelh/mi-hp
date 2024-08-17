@@ -29,7 +29,7 @@ Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
 # Durch diese Funktion werden mit @fortivpn gekennzeichnete Routen nur vom vpn aus erreicht.
 def forti_bool_or_localhost(network = '10.23.0.0/16'):
     ip = IPv4Address(request.remote_addr)
-# Die näcshten beiden Zeilen sind nach der Umstellung zu ändern.
+# Die nächsten beiden Zeilen sind nach der Umstellung zu ändern.
     return True
 #    return ip in ip_network(network) or ip in ip_network('127.0.0.1')
 
@@ -83,21 +83,8 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 @app.route("/nlehre/<lang>/<dtstring>")
 def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     testorpublic = "_public" if request.endpoint.split(".")[0] == 'monitor' else "test"
-    date_format_no_space = '%Y%m%d%H%M'
-    dt = datetime.strptime(dtstring, date_format_no_space)
-
-    data = {}
-    if testorpublic == "test":
-        data["news"] =  list(news.news.find({ "home.fuerhome": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))
-    else:
-        data["news"] =  list(news.news.find({ "_public": True, "home.fuerhome": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}))        
-    for item in data["news"]:
-        if item["image"] != []:
-            item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
-
-    for item in data['news']:
-        item['today'] = True if (item["showlastday"] and dt.date() == item['home']['end'].date()) else False
-
+    print(request.endpoint)
+    data = news.data_for_base(lang, dtstring, testorpublic)
     filenames = ["index.html"]
     return render_template("home.html", filenames=filenames, data = data, lang=lang)
 
@@ -108,8 +95,8 @@ def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 
 @app.route("/nlehre/<lang>/bildnachweis/")
 def showbildnachweis(lang):
-    with app.open_resource('static/data/bildnachweis.json') as f:
-        data = json.load(f)    
+    # Bilder von "News und "Monitor"
+    data = news.data_for_bildnachweis(lang)
     filenames = ["footer/bildnachweis.html"]
     return render_template("home.html", filenames = filenames, data = data, lang=lang)
 
@@ -123,7 +110,7 @@ def showdatenschutz(lang):
     filenames = ["footer/datenschutz.html"]
     return render_template("home.html", filenames = filenames, lang=lang)
 
-@app.route("/nlehre/<lang>/tools")
+@app.route("/nlehre/vpn/<lang>/tools")
 def showtools(lang):
     filenames = ["footer/tools.html"]
     return render_template("home.html", filenames = filenames, lang=lang)

@@ -24,11 +24,11 @@
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title">
-                  {% if lang == "de" %} {{ item['title_de'] | safe}} {% else %}
-                  {{ item['title_en'] | safe }} {% endif %}
+                  {% if lang == "de" %} {{ item['title_de'] | markdown}} {% else %}
+                  {{ item['title_en'] | markdown }} {% endif %}
                 </h5>
-                {% if lang == "de" %} {{ item['text_de'] | safe }} {% else %} {{
-                item['text_en'] | safe }} {% endif %}
+                {% if lang == "de" %} {{ item['text_de'] | markdown }} {% else %} {{
+                item['text_en'] | markdown }} {% endif %}
               </div>
             </div>
           </div>
@@ -65,12 +65,12 @@
         </center>
         <div class="card-body">
           <h3 class="h5">
-            {% if lang == 'de' %}{{ item['home']['title_de'] | safe }}{% else %}{{
-            item['home']['title_en'] | safe}} {% endif %}
+            {% if lang == 'de' %}{{ item['home']['title_de']|markdown }}{% else %}{{
+            item['home']['title_en']|markdown}} {% endif %}
           </h3>
           <div class="card-text">
-            {% if lang == 'de' %}{{ item['home']['text_de'] | safe}}{% else %}{{
-            item['home']['text_en'] | safe }} {% endif %}
+            {% if lang == 'de' %}{{ item['home']['text_de']|markdown}}{% else %}{{
+            item['home']['text_en']|markdown }} {% endif %}
             <p align="right">
               {% if item['home']['popover_title_de']!= '' or item['home']['popover_text_de']!=
               '' %}
@@ -81,8 +81,8 @@
                 data-bs-toggle="popover"
                 data-bs-html="true"
                 style="color: #004a99"
-                title="{% if lang == 'de' %}{{ item['home']['popover_title_de'] | safe }}{% else %}{{ item['home']['popover_title_en'] | safe }}{% endif %}"
-                data-bs-content="{% if lang == 'de' %}{{ item['home']['popover_text_de'] | safe }}{% else %}{{ item['home']['popover_text_en'] | safe }}{% endif %}"
+                title="{% if lang == 'de' %}{{ item['home']['popover_title_de']|markdown }}{% else %}{{ item['home']['popover_title_en']|markdown }}{% endif %}"
+                data-bs-content="{% if lang == 'de' %}{{ item['home']['popover_text_de']|markdown }}{% else %}{{ item['home']['popover_text_en']|markdown }}{% endif %}"
               >
                 <i class="fa-solid fa-info" style="color: #004a99"></i>
               </button>
