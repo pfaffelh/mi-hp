@@ -1,6 +1,7 @@
 <div class="container" id="inhalt">
   <h1>Master of Science in Mathematik (PO 2014)</h1>
 
+  {% if lang == "de" %}
   <p>
     <br />
     Der Master of Science Mathematik bereitet sowohl auf die Arbeitswelt einer
@@ -13,17 +14,46 @@
     <br />
     Fragen der Studienorganisation (Belegung, Prüfungsanmeldung, etc) finden Sie
     auf den Seiten des
-    <a href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}">Prüfungsamts</a>.
+    <a
+      href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}"
+      >Prüfungsamts</a
+    >.
 
     <br />
     Einige Fragen beantwortet das
-    <a href="{{ url_for('showstufaq', lang=lang) }}"> FAQ</a>. Falls Fragen offen
-    bleiben, wenden Sie sich gerne an die
+    <a href="{{ url_for('showstufaq', lang=lang) }}"> FAQ</a>. Falls Fragen
+    offen bleiben, wenden Sie sich gerne an die
     <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
       Studienberatung des Mathematischen Instituts
     </a>
   </p>
+  {% else %}
+  <p>
+    <br />
+    The Master of Science in Mathematics prepares students both for the working
+    world of a mathematician, and for making research in mathematics, for
+    example in the context of a
+    <a
+      href="{{ url_for('showstudiengang', studiengang='promotion', lang = lang) }}"
+      >PhD</a
+    >.
+    <br />
+    Questions regarding the organisation of your studies (enrolment, exam
+    registration, etc.) can be found on the pages of the
+    <a
+      href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}"
+      >Examinations Office</a
+    >.
 
+    <br />
+    Some questions are answered by the
+    <a href="{{ url_for('showstufaq', lang=lang) }}"> FAQ</a>. For remaining
+    questions, please contact the
+    <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
+      Student Advisory Service of the Institute of Mathematics
+    </a>
+  </p>
+  {% endif %}
   <div class="container text-end">
     <div class="row">
       <div class="col">
@@ -50,7 +80,7 @@
           role="button"
           aria-disabled="true"
         >
-          Promotion
+          {% if lang == "de" %} Promotion{% else %} PhD{% endif %}
         </a>
         <a
           href="mailto:studienberatung@math.uni-freiburg.de"
@@ -58,7 +88,8 @@
           role="button"
           aria-disabled="true"
         >
-          Studienberatung
+          {% if lang == "de" %} Studienberatung{% else %}Academic advise {%
+          endif %}
         </a>
       </div>
     </div>

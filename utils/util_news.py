@@ -20,6 +20,8 @@ except:
     pass
     # logger.warning("No connection to Database 1")
 
+# Daten für /nlehre/
+
 def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
     date_format_no_space = '%Y%m%d%H%M'
 
