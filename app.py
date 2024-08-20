@@ -75,10 +75,6 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 ## Home page ##
 ###############
 
-@app.route("/")
-def showverybase():
-    return "Hello, world!"
-
 @app.route("/nlehre/test/")
 @app.route("/nlehre/test/<lang>/")
 @app.route("/nlehre/test/<lang>/<dtstring>")
