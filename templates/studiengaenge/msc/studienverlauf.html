@@ -1,3 +1,4 @@
+{% if lang == "de" %}
 <p>
   Das Studium umfasst 120 ECTS-Punkte (Regelstudienzeit 4 Semester) und gliedert
   sich in die Teile:
@@ -169,3 +170,176 @@ In der Spezialisierung Finanzmathematik sind die Wahlmodule bis auf
     </table>
   </div>
 </div>
+{% else %}
+<p>
+  The programme comprises 120 ECTS credits (standard period of study 4
+  semesters) and is divided into into the following parts:
+</p>
+<ul>
+  <li>
+    <b> Lecture modules </b>
+    with final oral examinations (54 ECTS)
+  </li>
+  <li>
+    <b> Seminars </b>
+    (12 points)
+  </li>
+  <li>
+    <b> Elective modules in mathematics </b>
+    (9 to 21 ECTS)
+  </li>
+  <li>
+    <b> elective modules from other subjects </b>
+    (0 to 12 ECTS)
+  </li>
+  <li>
+    <b> Master's thesis </b>
+    with presentation (33 ECTS)
+  </li>
+</ul>
+In the Financial Mathematics specialisation, the elective modules are replaced
+by 3 ECTS credits are replaced by specialisation modules in economics.
+
+<div>
+  <h3 class="h5">Example study programme</h3>
+</div>
+<p>
+  This plan is
+  <b> only a guide! </b>
+  There are no specifications for specific semesters and no requirements for the
+  maths courses, apart from the admission criteria for the admission criteria
+  for the Master's thesis (60 ECTS points acquired in the ECTS points). Of
+  course, the content requirements of the selected courses courses must be
+  observed.
+</p>
+<div class="row">
+  <div class="col-8">
+    <p style="margin-top: 30px"></p>
+    <table
+      border="1"
+      cellpadding="5"
+      cellspacing="5"
+      class="bg-white table-responsive"
+    >
+      <!--style="transform:scale(0.9);">-->
+      <tr class="bg-ufr-blue-20">
+        <td align="centre" style="width: 5%; height: 50px" valign="bottom">
+          sem
+        </td>
+        <td align="centre" colspan="3" style="width: 72%">
+          <b> Mathematics </b>
+          <br />
+          (at least 75 points + 33 points Master's thesis incl. presentation)
+        </td>
+        <td align="centre" style="width: 23%">
+          <b> Elective modules </b>
+          <br />
+          (non-specialised up to 12 points)
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5"></td>
+      </tr>
+      <tr>
+        <td align="centre" class="bg-ufr-blue-20" style="height: 70px">4</td>
+        <td align="centre" class="thesis" colspan="2">
+          <b> Master's thesis </b>
+        </td>
+        <td align="centre" class="praesentation-abschlussarbeit">
+          <b>
+            Presentation of the
+            <br />
+            Master thesis
+          </b>
+        </td>
+        <td align="centre"></td>
+      </tr>
+      <tr>
+        <td align="centre" class="bg-ufr-blue-20" style="height: 70px">3</td>
+        <td align="centre" class="mathematics" rowspan="2" style="width: 24%">
+          <b> Specialisation module </b>
+        </td>
+        <td align="centre" style="width: 24%"></td>
+        <td align="centre" class="seminar" style="width: 24%">
+          <b> Seminar B </b>
+        </td>
+        <td align="centre" class="elective module">
+          <b> Elective module </b>
+        </td>
+      </tr>
+      <tr>
+        <td align="centre" class="bg-ufr-blue-20" style="height: 70px">2</td>
+        <td align="centre" class="mathematics">
+          <b> Mathematics </b>
+        </td>
+        <td align="centre" class="seminar">
+          <b> Seminar A </b>
+        </td>
+        <td align="centre" class="elective module">
+          <b> Elective module </b>
+        </td>
+      </tr>
+      <tr>
+        <td align="centre" class="bg-ufr-blue-20" style="height: 70px">1</td>
+        <td align="centre" class="mathematics">
+          <b>
+            Pure
+            <br />
+            Mathematics
+          </b>
+        </td>
+        <td align="centre" class="mathematics">
+          <b>
+            Applied
+            <br />
+            mathematics
+          </b>
+        </td>
+        <td align="centre"></td>
+        <td align="centre" class="elective module">
+          <b> Elective module </b>
+        </td>
+      </tr>
+    </table>
+    <p></p>
+    <table border="0" cellspacing="20" style="width: 100%">
+      <tr>
+        <td colspan="6">
+          <b> Legend </b>
+        </td>
+      </tr>
+      <tr>
+        <td>Points</td>
+        <td>=</td>
+        <td>ECTS points</td>
+        <td>Sem</td>
+        <td>=</td>
+        <td>Semester</td>
+      </tr>
+      <tr>
+        <td class="mathematics"></td>
+        <td>=</td>
+        <td>Compulsory module with elective lectures</td>
+        <td class="final thesis"></td>
+        <td>=</td>
+        <td>Master's thesis</td>
+      </tr>
+      <tr>
+        <td class="seminar"></td>
+        <td>=</td>
+        <td>Mandatory module with seminar</td>
+        <td class="praesentation-abschlussarbeit"></td>
+        <td>=</td>
+        <td>Presentation</td>
+      </tr>
+      <tr>
+        <td class="wahlmodul"></td>
+        <td>=</td>
+        <td colspan="4">
+          Elective modules (maths or non-subject, any type of course)
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+{% endif %}

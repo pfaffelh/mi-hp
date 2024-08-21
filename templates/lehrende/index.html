@@ -87,7 +87,10 @@ endblock %} {% block content %}
                 data-bs-parent="#accordion{{cat_id}}"
                 id="{{qa[0]}}"
               >
-                <div class="accordion-body">{{ qa[2]|markdown }}</div>
+                <div class="accordion-body">
+                  <div class = "text-end">{{ qa[3]|markdown }} </div>
+                  {{ qa[2]|markdown }}
+                </div>
               </div>
             </div>
             {% endfor %}

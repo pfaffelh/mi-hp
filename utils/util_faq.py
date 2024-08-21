@@ -46,6 +46,7 @@ def get_mit_faq(lang):
     cats = list(mit_category.find({"kurzname": {"$ne": "unsichtbar"}}, sort=[("rang", pymongo.ASCENDING)]))
     q = f"q_{lang}"
     a = f"a_{lang}"
+    bearbeitet = f"bearbeitet_{lang}"
     name = f"name_{lang}"
 
     cat_ids = [f"mit_kat_{cat['_id']}" for cat in cats]
@@ -53,7 +54,7 @@ def get_mit_faq(lang):
     qa_pairs = {}
     for cat in cats:
         y = list(mit_qa.find({"category": cat["_id"]}, sort=[("rang", pymongo.ASCENDING)]))
-        qa_pairs[f"mit_kat_{cat['_id']}"] = [ (f"qa_{str(x['_id'])}", x[q] , x[a]) for x in y]
+        qa_pairs[f"mit_kat_{cat['_id']}"] = [ (f"qa_{str(x['_id'])}", x[q] , x[a], x[bearbeitet]) for x in y]
     return cat_ids, names_dict, qa_pairs
 
 def get_stu_cat(qa_id):

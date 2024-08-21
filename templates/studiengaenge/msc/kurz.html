@@ -1,3 +1,4 @@
+{% if lang == "de" %}
 <div class="container px-4 py-1" id="featured-3">
   <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
     <div class="feature col">
@@ -42,7 +43,7 @@
       <div class="py-5">
         {% if showanmeldung['msc'] %}
         <p>
-          Application closes 15.3./15.9. For application until mid 
+          Application closes 15.3./15.9. For application until mid
           February/July, admission will be end of February/July.<br />
           A detailed description of the application process can be found below.
         </p>
@@ -110,3 +111,114 @@
     </div>
   </div>
 </div>
+{% else %}
+<div class="container px-4 py-1" id="featured-3">
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+    <div class="feature col">
+      <div class="feature-icon bg-gradient text-centre">
+        <h2><i class="fa fa-person fa-4" aria-hidden="true"></i></h2>
+        <h2>Short profile</h2>
+      </div>
+      <div>
+        <ul>
+          <li>
+            For BSc graduates in mathematics and in the two-major degree
+            programme with mathematics.
+          </li>
+          <li>
+            Provides in-depth knowledge in several mathematical sub-areas.
+          </li>
+          <li>
+            Two seminars, oral module examinations during the programme, one
+            Master's thesis.
+          </li>
+          <li>Languages: German and English</li>
+          <li>Start of programme: every semester</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature col">
+      <div class="feature-icon bg-gradient text-centre">
+        <!-- <h2><i class="fa fa-pencil fa-4" aria-hidden="true"></i></h2>-->
+        <a
+          href="https://campus.uni-freiburg.de"
+          class="btn btn-primary {% if showanmeldung['msc'] %} {% else %} disabled {% endif %}"
+          role="button"
+          aria-disabled="true"
+        >
+          <h2>Apply now</h2></a
+        >
+      </div>
+      <div class="py-5">
+        {% if showanmeldung["msc"] %}
+        <p>
+          Application closes 15.3./15.9. For application until mid
+          February/July, admission will be end of February/July.<br />
+          A detailed description of the application process can be found below.
+        </p>
+        {% else %} Applications reopen 1.1./1.6. {% endif %}
+      </div>
+    </div>
+
+    <div class="feature col">
+      <div class="feature-icon bg-gradient text-centre">
+        <h2><i class="fa fa-book fa-4" aria-hidden="true"></i></h2>
+        <h2>Study specialisations</h2>
+      </div>
+      <div>
+        <p>
+          Depending on their own interests, students can specialise in one of
+          our
+          <a
+            href="{{url_for('showstudiendekanat', unterseite='schwerpunktgebiete', lang=lang)}}"
+            >Focal areas</a
+          >
+          deepen:
+        </p>
+        <div class="row row-cols-1 row-cols-lg-2">
+          <div class="feature col">
+            <ul>
+              <li>Algebra and number theory,</li>
+              <li>Analysis,</li>
+              <li>Applied analysis and numerics,</li>
+            </ul>
+          </div>
+          <div class="feature col">
+            <ul>
+              <li>Geometry and Topology,</li>
+              <li>Mathematical logic,</li>
+              <li>Mathematical stochastics</li>
+              .
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature col">
+      <div class="feature-icon bg-gradient text-centre">
+        <h2><i class="fa fa-language fa-4" aria-hidden="true"></i></h2>
+        <h2>Language</h2>
+      </div>
+      <div>
+        <p>
+          The languages of instruction are German and English. For enrolment the
+          <u
+            data-bs-toggle="tooltip"
+            title="One of these requirements can be made up in the first year of study."
+            >levels B2 (German) and B1 (English) are required</u
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="feature col">
+      <div class="feature-icon bg-gradient text-centre">
+        <h2><i class="fa fa-compass fa-4" aria-hidden="true"></i></h2>
+        <h2>Freiburg</h2>
+      </div>
+      <div>{% include "studiengaenge/freiburg.html" %}</div>
+    </div>
+  </div>
+</div>
+{% endif %}

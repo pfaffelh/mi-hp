@@ -1,6 +1,5 @@
-{% if lang == "de" %}{% else %}{% endif %}
+{% if lang == "de" %}
 <div class="py-3 g-4">
-  {% if lang == "de" %}{% else %}{% endif %}
   Noch mehr relevante Dokumente findet man
   <a
     href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/363#collapseSatzungen"
@@ -28,7 +27,8 @@
         <div class="card-text">
           <p>
             Diese Ordnung regelt das Bewerbungsverfahren, wie
-            <a href="{{url_for('showstudiengang', studiengang='msc', lang=lang, anchor='bewerbung')}}"
+            <a
+              href="{{url_for('showstudiengang', studiengang='msc', lang=lang, anchor='bewerbung')}}"
               >oben</a
             >
             beschrieben.
@@ -104,3 +104,110 @@
     </div>
   </div>
 </div>
+{% else %}
+<div class="py-3 g-4">
+  You can find even more relevant documents
+  <a
+    href="https://www.studium.uni-freiburg.de/de/studienangebot/studienfaecher/info/363#collapseSatzungen"
+    >here</a
+  >
+</div>
+<div class="row row-cols-md-3 row-cols-sm-2 row-cols-xs-1 g-5">
+  <div class="col">
+    <div class="card h-100">
+      <centre>
+        <img
+          src="/static/images/zulassungsordnung.jpg"
+          class="card-img-fluid"
+          alt="..."
+          style="height: 15vw; object-fit: cover"
+        />
+      </centre>
+
+      <div class="card-body">
+        <a
+          href="http://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/zulassungsordnungen/zulassungsordnung_m_sc__mathematik_05_03_2012.pdf"
+        >
+          <h3 class="h5">Authorisation regulations</h3></a
+        >
+        <div class="card-text">
+          <p>
+            These regulations govern the application procedure, such as
+            <a
+              href="{{url_for('showstudiengang', studiengang='msc', lang=lang, anchor='bewerbung')}}"
+              >above</a
+            >
+            described.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <center>
+        <img
+          src="/static/images/order.jpg"
+          class="card-img-fluid"
+          alt="..."
+          style="height: 15vw; object-fit: cover"
+        />
+      </center>
+
+      <div class="card-body">
+        <h3 class="h5">Examination regulations</h3>
+        <div class="card-text">
+          <ul>
+            <li>
+              In the
+              <a
+                href="http://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/pruefungsordnungen/master_of_science/m_sc__pruefungsordnung_aktuell_rahmenordnung.pdf"
+              >
+                <i>Framework examination regulations</i></a
+              >
+              set out the rules that apply to all MSc degree programmes.
+            </li>
+            <li>
+              The
+              <a
+                href="http://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/pruefungsordnungen/master_of_science/m_sc__prufungsordnung_03_06_2014_mathematik.pdf"
+              >
+                <i>subject-specific part</i></a
+              >
+              regulates the special regulations listed above.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <center>
+        <img
+          src="/static/images/modulhandbuch.jpg"
+          class="card-img-fluid"
+          alt="..."
+          style="height: 15vw; object-fit: cover"
+        />
+      </center>
+      <div class="card-body">
+        <a
+          href="{{url_for('static', filename='studiengaenge/msc/Modulhandbuch-Mathematik-MSc14-2022.05.21.pdf')}}"
+        >
+          <h3 class="h5">Module handbook</h3></a
+        >
+        <p class="card-text">
+          The individual modules are described here. In addition
+          semester-by-semester current options in the
+          <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
+            Supplements to the module handbooks
+          </a>
+          are described. The information can be found in compact form in the
+          utilisation tables
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

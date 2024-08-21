@@ -285,10 +285,10 @@
       <h4 class="accordion-header">
         <button
           type="button"
-          class="accordion-button {% if anchor != 'formulare_mitarbeiter' %}collapsed{% endif %}"
+          class="accordion-button {% if anchor != 'lehrende' %}collapsed{% endif %}"
           data-bs-target="#formulareMContent"
           aria-controls="formulareMContent"
-          aria-expanded="{% if anchor == 'formulare_mitarbeiter' %}true{% else %}false{% endif %}"
+          aria-expanded="{% if anchor == 'lehrende' %}true{% else %}false{% endif %}"
           data-bs-toggle="collapse"
         >
           <h3 class="h5">Formulare und Merkblätter für Lehrende</h3>
@@ -296,11 +296,11 @@
       </h4>
       <div
         aria-labelledby="formulareMContent"
-        class="accordion-collapse collapse {% if anchor == 'formulare_mitarbeiter' %}show{% endif %}"
+        class="accordion-collapse collapse {% if anchor == 'lehrende' %}show{% endif %}"
         data-bs-parent="#accordionExample"
         id="formulareMContent"
       >
-        <div class="accordion-body" id="formulare_mitarbeiter">
+        <div class="accordion-body" id="lehrende">
           <ul>
             <li>
               <b> Abschlussarbeit </b>
@@ -366,8 +366,13 @@
               </a>
             </li>
             <li>
-              <b> Protokoll von Prüfungen</b>
+              <b> Mündliche Prüfungen</b>
               <br />
+              – Handreichung des Dezernats Recht zur Durchführungen von mündlichen Prüfungenn
+              <a href="/static/pdf/lehrende/Hinweise_zur_Durchfuehrung_muendlicher_Praesenzpruefungen-D5-2022.pdf">
+                alle Studiengänge
+              </a>
+              <br>
               – leeres Protokoll einer mündlichen Prüfung
               <a href="/static/pdf/lehrende/blankoprotokoll.pdf">
                 alle Studiengänge
@@ -384,7 +389,7 @@
             <li>
               <b> Zertifikat Hochschullehre</b>
               <br />
-              –
+              – Satzung 
               <a
                 href="/static/pdf/lehrende/Satzung-Zertifikat_Hochschullehre.deutsch.pdf"
               >
@@ -393,8 +398,10 @@
               <a
                 href="/static/pdf/lehrende/Satzung-Zertifikat_Hochschullehre.englisch.pdf"
               >
-                englisch
-              </a>
+                englisch              </a>
+                <br>
+                – Formular zur Vergabe 
+                <a href="/static/pdf/lehrende/nachweise-zertifikat-stufe1.pdf">Level 1</a> / <a href="/static/pdf/lehrende/nachweise-zertifikat-stufe2.pdf">Level 2</a> 
             </li>
           </ul>
         </div>

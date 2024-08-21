@@ -11,18 +11,15 @@
    * Deputate?
 2. mi-faq: 
    * Bewerbungsphasen für Studiengänge eintragen 
-   * Eintrag "news" für die Sprechstunden. 
    * faq für Studienkoordinatoren anlegen?
    * Alle Einträge auf alte Links durchgehen
    * Allgemein: Interne Seiten in mit-faq eintragen
 
 3. mi-hp: 
-   * Bildnachweise generieren, 
    * interesse und weiterbildung auch in Datenbank faq?
    * Monitor: Wetter im Carousel; 
    * Monitor: Mensa im Carousel
    * Links zu Fachschaft, Studienberatung, Prüfungsamt, Studierendenportal etc werden Karten unterhalb den News auf der Homepage
-
 
 
 ### Interne Seiten, die ins mit-faq müssen

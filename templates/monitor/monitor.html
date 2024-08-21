@@ -21,7 +21,7 @@
           class="carousel-caption d-none d-md-block"
           style="left:{{ item['left'] }}; right:{{ item['right'] }}; bottom:{{ item['bottom'] }}; background-color: white;"
         >
-          <h2>{{ item['text'] | safe}}</h2>
+          <h2>{{ item['text']|markdown}}</h2>
         </div>
       </div>
       {% endif %}
@@ -46,12 +46,12 @@
         </center>
         <div class="card-body">
           <h1>
-            {% if lang == 'de' %}{{ item['title_de'] | safe }}{% else %}{{
-            item['title_en'] | safe}} {% endif %}
+            {% if lang == 'de' %}{{ item['title_de']|markdown }}{% else %}{{
+            item['title_en']|markdown}} {% endif %}
           </h1>
           <div class="card-text"><font size='+2'>
-            {% if lang == 'de' %}{{ item['text_de'] | safe}}{% else %}{{
-            item['text_en'] | safe }} {% endif %}</font>
+            {% if lang == 'de' %}{{ item['text_de']|markdown}}{% else %}{{
+            item['text_en']|markdown }} {% endif %}</font>
             <p align="right">
               <!--              {% if item['popover_title_de']!= '' or item['popover_text_de']!=
               '' %}
@@ -62,8 +62,8 @@
                 data-bs-toggle="popover"
                 data-bs-html="true"
                 style="color: #004a99"
-                title="{% if lang == 'de' %}{{ item['popover_title_de'] | safe }}{% else %}{{ item['popover_title_en'] | safe }}{% endif %}"
-                data-bs-content="{% if lang == 'de' %}{{ item['popover_text_de'] | safe }}{% else %}{{ item['popover_text_en'] | safe }}{% endif %}"
+                title="{% if lang == 'de' %}{{ item['popover_title_de']|markdown }}{% else %}{{ item['popover_title_en']|markdown }}{% endif %}"
+                data-bs-content="{% if lang == 'de' %}{{ item['popover_text_de']|markdown }}{% else %}{{ item['popover_text_en']|markdown }}{% endif %}"
               >
                 <i class="fa-solid fa-info" style="color: #004a99"></i>
               </button>
