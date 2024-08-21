@@ -434,7 +434,7 @@ def get_mensaplan_text(url, date):
 @app.route("/nlehre/monitortest/<dtstring>")
 def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     # determine if only shown on test
-    testorpublic = "_public" if request.endpoint.split(".")[0] == 'monitor' else "test"
+    testorpublic = "_public" if request.endpoint.split(".")[1] == 'monitor' else "test"
     # the date format for <dtstring>
     date_format_no_space = '%Y%m%d%H%M'
     dt = datetime.strptime(dtstring, date_format_no_space)
