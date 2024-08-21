@@ -454,9 +454,9 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     data = {}
     # Daten für das Carousel
     if testorpublic == "test":
-        data["carouselnews"] = list(news.carouselnews.find({"start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))
+        data["carouselnews"] = list(news.carouselnews.find({"start" : { "$lte" : dt }, "end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))
     else:
-        data["carouselnews"] = list(news.carouselnews.find({"_public" :True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }}))        
+        data["carouselnews"] = list(news.carouselnews.find({"_public" :True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))  
 
     for item in data["carouselnews"]:
         item["image"] = base64.b64encode(news.bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
@@ -464,9 +464,9 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 
     # Daten für die News
     if testorpublic == "test":
-        data["news"] =  list(news.news.find({ "monitor.fuermonitor": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))
+        data["news"] =  list(news.news.find({ "monitor.fuermonitor": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))
     else:
-        data["news"] =  list(news.news.find({ "_public": True, "monitor.fuermonitor": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }}))        
+        data["news"] =  list(news.news.find({ "_public": True, "monitor.fuermonitor": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))  
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
