@@ -82,7 +82,7 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 @app.route("/nlehre/<lang>/")
 @app.route("/nlehre/<lang>/<dtstring>")
 def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
-    testorpublic = "_public" if request.endpoint.split(".")[0] == 'monitor' else "test"
+    testorpublic = "test" if "test" in request.path.split("/") else "_public"
     print(request.endpoint)
     data = news.data_for_base(lang, dtstring, testorpublic)
     filenames = ["index.html"]
@@ -434,7 +434,8 @@ def get_mensaplan_text(url, date):
 @app.route("/nlehre/monitortest/<dtstring>")
 def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     # determine if only shown on test
-    testorpublic = "_public" if request.endpoint.split(".")[0] == 'monitor' else "test"
+    testorpublic = "test" if "monitortest" in request.path.split("/") else "_public" 
+
     # the date format for <dtstring>
     date_format_no_space = '%Y%m%d%H%M'
     dt = datetime.strptime(dtstring, date_format_no_space)
@@ -448,7 +449,6 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 
     for item in data["carouselnews"]:
         item["image"] = base64.b64encode(news.bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
-        print((item["image"][0:100]))
 
     # Daten für die News
     if testorpublic == "test":
