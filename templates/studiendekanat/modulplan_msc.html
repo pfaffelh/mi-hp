@@ -4,7 +4,7 @@
     <br style="margin-bottom: 10px" />
     Alle hier im Überblick gegebenen Informationen finden sich ausführlicher im
     <a
-      href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
+      href="{{ url_for('showdownloads', anchor = 'studiendokumente', lang=lang)}}"
     >
       Modulhandbuch
     </a>
@@ -64,7 +64,7 @@
       <td colspan="4">
         Die notwendigen Vorkenntnissen hängen von der gewählten Vorlesung ab,
         siehe
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Kommentiertes Vorlesungs­verzeichnis
         </a>
         .
@@ -122,7 +122,7 @@
       <td rowspan="2">
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -155,7 +155,7 @@
         Anmeldung spätestens drei Wochen vor Prüfung schriftlich im Prüfungs­amt
         (
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+          href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
         >
           Formular
         </a>
@@ -173,19 +173,15 @@
           <li>
             Welche Vorlesungen zur Reinen Mathematik gezählt werden und für das
             Modul zugelassen sind, ist im
-            <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Kommentierten Vorlesungs­verzeichnis
             </a>
             und in den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-            >
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               aktuellen Ergänzungen der Modulhandbücher
             </a>
             beschrieben. Kompakt findet sich die Information in den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-            >
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Verwendungstabellen
             </a>
             .
@@ -229,7 +225,7 @@
       <td colspan="4">
         Die notwendigen Vorkenntnissen hängen von der gewählten Vorlesung ab,
         siehe
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Kommentiertes Vorlesungs­verzeichnis
         </a>
         .
@@ -287,7 +283,7 @@
       <td rowspan="2">
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -320,7 +316,7 @@
         Anmeldung spätestens drei Wochen vor Prüfung schriftlich im Prüfungs­amt
         (
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+          href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
         >
           Formular
         </a>
@@ -338,19 +334,15 @@
           <li>
             Welche Vorlesungen zur Angewandten Mathematik gezählt werden und für
             das Modul zugelassen sind, ist im
-            <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Kommentierten Vorlesungs­verzeichnis
             </a>
             und in den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-            >
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               aktuellen Ergänzungen der Modulhandbücher
             </a>
             beschrieben. Kompakt findet sich die Information in den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-            >
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Verwendungstabellen
             </a>
             .
@@ -394,7 +386,7 @@
       <td colspan="4">
         Die notwendigen Vorkenntnissen hängen von der gewählten Vorlesung ab,
         siehe
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Kommentiertes Vorlesungs­verzeichnis
         </a>
         , oder vom konkreten Lesekurs. Lesekurse werden in individueller
@@ -460,7 +452,7 @@
       <td rowspan="2">
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -493,7 +485,7 @@
         Anmeldung spätestens drei Wochen vor Prüfung schriftlich im Prüfungs­amt
         (
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+          href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
         >
           Formular
         </a>
@@ -510,19 +502,15 @@
         <ul>
           <li>
             Welche Vorlesungen zur Kategorie III zählen, ist im
-            <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Kommentierten Vorlesungs­verzeichnis
             </a>
             und in den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-            >
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               aktuellen Ergänzungen der Modulhandbücher
             </a>
             beschrieben. Kompakt findet sich die Information in den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-            >
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Verwendungstabellen
             </a>
             .
@@ -566,7 +554,7 @@
       <td colspan="4">
         Die notwendigen Vorkenntnissen hängen von den gewählten Vorlesungen ab,
         siehe
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Kommentiertes Vorlesungs­verzeichnis
         </a>
         , oder von den konkreten Lesekursen. Lesekurse werden in individueller
@@ -632,7 +620,7 @@
       <td rowspan="2">
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -665,7 +653,7 @@
         Anmeldung spätestens drei Wochen vor Prüfung schriftlich im Prüfungs­amt
         (
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+          href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
         >
           Formular
         </a>
@@ -682,19 +670,15 @@
         <ul>
           <li>
             Welche Vorlesungen zur Kategorie III zählen, ist im
-            <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Kommentierten Vorlesungs­verzeichnis
             </a>
             und in den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-            >
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               aktuellen Ergänzungen der Modulhandbücher
             </a>
             beschrieben. Kompakt findet sich die Information in den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-            >
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Verwendungstabellen
             </a>
             .
@@ -772,7 +756,7 @@
     <tr valign="top">
       <td colspan="4">
         Die notwendigen Vorkenntnissen hängen vom gewählten Seminar ab, siehe
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Kommentiertes Vorlesungs­verzeichnis
         </a>
         .
@@ -795,7 +779,7 @@
       <td>jedes Semester</td>
       <td>
         Voranmeldung nach Angaben im
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Komm. Vorlesungsverzeichnis
         </a>
         ; Sudienplatzvergabe bei der Vorbesprechung am Ende des Vorsemesters
@@ -828,7 +812,7 @@
       <td>
         Prüfungsanmeldung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis Mittwoch vor Vorlesungsbeginn"
         >
           Fristende
@@ -907,7 +891,7 @@
       <td>
         Anmeldung schriftlich im Prüfungsamt (
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+          href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
         >
           Formular
         </a>
@@ -939,9 +923,7 @@
     </tr>
     <tr valign="top">
       <td colspan="4">
-        <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/abschlussarbeiten.html"
-        >
+        <a href="{{ url_for('showstufaq', lang=lang)}}">
           detaillierte Informationen zu Abschlussarbeiten
         </a>
         in Mathematik
@@ -1010,7 +992,7 @@
       <td colspan="4">
         Die notwendigen Vorkenntnissen hängen von der gewählten Veranstaltung
         ab, siehe
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Kommentiertes Vorlesungs­verzeichnis
         </a>
         .
@@ -1074,7 +1056,7 @@
       <td>jedes Semester</td>
       <td>
         Voranmeldung nach Angaben im
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Komm. Vorlesungsverzeichnis
         </a>
         ; Sudienplatzvergabe bei der Vorbesprechung am Ende des Vorsemesters
@@ -1109,7 +1091,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis Mittwoch vor Vorlesungsbeginn"
         >
           Fristende
@@ -1134,7 +1116,7 @@
       <td rowspan="2">
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -1168,19 +1150,15 @@
           <li>
             Welche Vorlesungen und Praktischen Übungen als Wahlmodule zugelassen
             sind, ist im
-            <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Kommentierten Vorlesungs­verzeichnis
             </a>
             und in den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-            >
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               aktuellen Ergänzungen der Modulhandbücher
             </a>
             beschrieben. Kompakt findet sich die Information in den
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-            >
+            <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
               Verwendungstabellen
             </a>
             .
@@ -1291,7 +1269,7 @@
         Die Möglichkeit der Online-Registrierung wird bei Bedarf eingerichtet;
         dazu ist eine
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
         >
           rechtzeitige
         </a>

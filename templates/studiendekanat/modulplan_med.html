@@ -4,7 +4,7 @@
     <br style="margin-bottom: 10px" />
     Alle hier im Überblick gegebenen Informationen finden sich ausführlicher im
     <a
-      href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
+      href="{{ url_for('showdownloads', anchor = 'studiendokumente', lang=lang)}}"
     >
       Modulhandbuch
     </a>
@@ -103,7 +103,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -127,7 +127,7 @@
       <td>
         Anmeldung der Prüfung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -157,7 +157,7 @@
       <td colspan="4">
         Die notwendigen Vorkenntnissen hängen von der gewählten Veranstaltung
         ab, siehe
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Kommentiertes Vorlesungs­verzeichnis
         </a>
       </td>
@@ -186,7 +186,7 @@
       </td>
       <td>
         Voranmeldung nach Angaben im
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Komm. Vorlesungsverzeichnis
         </a>
         ; Sudienplatzvergabe bei der Vorbesprechung am Ende des Vorsemesters
@@ -226,9 +226,7 @@
       <td bgcolor="#dddddd" colspan="4">
         <b> Studienleistungen </b>
         (genaue Anforderungen siehe
-        <a
-          href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-        >
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           aktuelle Ergänzungen der Modulhandbücher
         </a>
         )
@@ -245,7 +243,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis Mittwoch vor Vorlesungsbeginn"
         >
           Fristende
@@ -264,7 +262,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -283,7 +281,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -349,7 +347,7 @@
       <td colspan="4">
         Die notwendigen Vorkenntnissen hängen von der gewählten Vorlesung ab,
         siehe
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Kommentiertes Vorlesungs­verzeichnis
         </a>
         .
@@ -451,7 +449,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -476,7 +474,7 @@
         Anmeldung spätestens drei Wochen vor Prüfung schriftlich im Prüfungs­amt
         (
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+          href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
         >
           Formular
         </a>
@@ -543,7 +541,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -568,7 +566,7 @@
         Anmeldung spätestens drei Wochen vor Prüfung schriftlich im Prüfungs­amt
         (
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+          href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
         >
           Formular
         </a>
@@ -673,7 +671,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -688,7 +686,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -712,7 +710,7 @@
       <td>
         Anmeldung der Prüfung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -767,7 +765,7 @@
       <td>jedes Semester</td>
       <td>
         Anmeldung zur Veranstaltung siehe
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Kommentiertes Vorlesungs­verzeichnis
         </a>
       </td>
@@ -782,9 +780,7 @@
         Hängen vom gewählten Fachdidaktikseminar ab;
         <br />
         siehe
-        <a
-          href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
-        >
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           aktuelle Ergänzungen der Modulhandbücher
         </a>
       </td>
@@ -793,7 +789,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -866,7 +862,7 @@
       </td>
       <td rowspan="3">
         Voranmeldung per E-Mail wie im
-        <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+        <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
           Kommentierten Vorlesungs­verzeichnis
         </a>
         angegeben für alle, die neu an dem Modul teilnemen möchten
@@ -906,7 +902,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -921,7 +917,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -939,7 +935,7 @@
       <td>
         Registrierung bis
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
           title="in der Regel bis etwa zwei Wochen vor Vorlesungsende"
         >
           Fristende
@@ -1002,7 +998,7 @@
       <td>
         in Mathematik: Anmeldung schriftlich im Prüfungsamt (
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+          href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
         >
           Formular
         </a>
@@ -1018,9 +1014,7 @@
       <td colspan="4">
         <ul>
           <li>
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/abschlussarbeiten.html"
-            >
+            <a href="{{ url_for('showstufaq', lang=lang)}}">
               detaillierte Informationen zu Abschlussarbeiten
             </a>
             in Mathematik

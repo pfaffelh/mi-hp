@@ -35,7 +35,7 @@
         <br />
         <br />
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
         >
           Fristende
         </a>
@@ -253,7 +253,7 @@
       </td>
       <td>
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html#analinalg"
+          href="https://www.math.uni-freiburg.de/nlehre/de/studiendekanat/anmeldung/"
         >
           mündliche Prüfung
         </a>
@@ -267,7 +267,7 @@
         ;
         <br />
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
         >
           Fristende
         </a>
@@ -282,7 +282,7 @@
       </td>
       <td>
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html#analinalg"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}"
         >
           mündliche Prüfung
         </a>
@@ -306,7 +306,7 @@
         ;
         <br />
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
         >
           Fristende
         </a>
@@ -386,7 +386,7 @@
         ;
         <br />
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/termine.html"
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='termine')}}"
         >
           Fristende
         </a>
@@ -402,7 +402,7 @@
       </td>
       <td>
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/pruefungen.html#muendlichmastes"
+          href="https://www.math.uni-freiburg.de/nlehre/de/studiendekanat/anmeldung/"
         >
           mündliche Prüfung
         </a>
@@ -413,7 +413,7 @@
       <td>
         Anmeldung schriftlich über das Prüfungsamt (
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+          href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
         >
           Formular
         </a>
@@ -422,9 +422,7 @@
     </tr>
     <tr>
       <td>
-        <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/abschlussarbeiten.html"
-        >
+        <a href="{{ url_for('showstufaq', lang=lang)}}">
           <b> Master-Arbeit </b>
         </a>
         **
@@ -438,7 +436,7 @@
       <td>
         Anmeldung schriftlich über das Prüfungsamt (
         <a
-          href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+          href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
         >
           Formular
         </a>
@@ -454,7 +452,7 @@
   <br style="margin-bottom: 5px" />
   Zusätzlich zur Prüfungsanmeldung können gegen Ende der Anmeldefrist
   <a
-    href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/prueferwuensche.html"
+    href="{{ url_for('showstufaq', show = 'qa_66da158e9e0180e85ac50fcb', lang=lang)}}"
   >
     Prüferwünsche
   </a>
@@ -467,9 +465,7 @@
   Mit der Anmeldung der Arbeit beginnt die viermonatige Bearbeitungszeit.
   <br style="margin-bottom: 5px" />
   (***) Für den Fall, dass die Arbeit in Mathematik geschrieben wird (
-  <a
-    href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/abschlussarbeiten.html"
-  >
+  <a href="{{ url_for('showstufaq', lang=lang)}}">
     weitere Informationen zur Abschlussarbeit
   </a>
   ).

@@ -25,11 +25,13 @@
   </p>
   <p>
     Bei Rückfragen oder Problemen können Sie sich gerne an die
-    <a href="https://www.math.uni-freiburg.de/lehre/studienberatung.html">
+    <a href="{{ url_for('showstudiendekanat', lang=lang)}}">
       Studienberatung
     </a>
     oder das
-    <a href="https://home.mathematik.uni-freiburg.de/pruefungsamt/index.html">
+    <a
+      href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang)}}"
+    >
       Prüfungsamt
     </a>
     wenden. Geben Sie dabei grundsätzlich Ihren Studiengang und Ihre
@@ -176,7 +178,7 @@
             <br />
             Sie erhalten einen Bescheid mit einem
             <a
-              href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+              href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
             >
               Merkblatt zur Wiederolungsprüfung
             </a>
@@ -560,7 +562,7 @@
             Wirtschaftswissenschaften absolviert werden. Nähere Informationen,
             insbesondere über die zulässigen Module, auf der
             <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/msc-2014.html#finanz"
+              href="{{ url_for('showstudiengang', studiengang = 'msc', anchor = 'finanz', lang=lang)}}"
             >
               Informationsseite zur Proffilline
             </a>
@@ -707,7 +709,7 @@
             Studiums absolviert werden. Dazu vereinbaren Sie einen individuellen
             Prüfungstermin mit dem Prüfer, lassen ihn das
             <a
-              href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+              href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
             >
               Anmeldeformular
             </a>
@@ -894,7 +896,7 @@
             <li>
               Gegen Ende des Vorsemesters melden Sie Ihr Interesse an der
               Teilnahme an einem Proseminar bzw. Seminar nach der im
-              <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+              <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
                 kommentierten Vorlesungverzeichnis
               </a>
               angegebenen Weise an. Üblicherweise gibt ea dazu eine von der
@@ -1113,7 +1115,7 @@
             abhängig von Studiengang und Modul gefordert werden, ist für das
             Fach Mathematik semesterweise in den
             <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
+              href="{{ url_for('showdownloads', anchor = 'studiendokumente', lang=lang)}}"
             >
               Ergänzungen der Modulhandbücher
             </a>
@@ -1528,7 +1530,9 @@
               geschickt wird, muss das Originalattest innerhalb einer Woche beim
               Prüfungsamt eingereicht werden (persönliche Abgabe oder per Post).
               <br style="margin-bottom: 5px" />
-              <a href="index.html#formulare">
+              <a
+                href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
+              >
                 Formulare für den Rücktritt aus Krankheitsgründen
               </a>
               .
@@ -1628,7 +1632,9 @@
             </li>
           </ul>
           Beachten Sie auch die
-          <a href="index.html#formulare">
+          <a
+            href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}"
+          >
             Merkblätter zur Wiederholungsprüfung
           </a>
           !
