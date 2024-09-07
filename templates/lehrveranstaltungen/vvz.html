@@ -43,22 +43,23 @@ endblock %} {% block content %}
   {% endif %} {% if r['prefix'] != "" %}
   <p>{{ r['prefix']|markdown }}</p>
   {% endif %} {% for v in r["veranstaltung"] %}
-  <div class="row">
-    <div class="col-sm-1 text-end">{{ v["code"] }}</div>
-    <div class="col-sm-6">
+  <div class="row g-4">
+    <div class="col-sm-1 text-end g-5">{{ v["code"] }}</div>
+    <div class="col-sm-6 g-5">
       <strong>
         {% if v['link'] != "" %}
         <a href="{{ v['link'] | safe}}"> {{ v['titel'] }} </a>
         {% else %} {{ v['titel'] }} {% endif %}
       </strong>
       {% for line in v["raumzeit"] %} <br />{{ line|safe }} {% endfor %} {% if
-      v["kommentar"] %} {{ v["kommentar"]|markdown }} {% endif %}
+      v["kommentar"] %} <i>{{ v["kommentar"]|markdown }}</i> {% endif %}
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-3 g-5">
       {{ v['dozent']}} <br />
-      {% if v["assistent"] %} Assistenz: {{ v["assistent"] }} {% endif %}
+      {% if v["assistent"] %} Assistenz: {{ v["assistent"] }} <br /> {% endif %}
+      {% if v["organisation"] %} Organisation: {{ v["organisation"] }} {% endif %}
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-2 g-5">
       {% if v['inhalt'] != "" %}
       <button
         type="button"

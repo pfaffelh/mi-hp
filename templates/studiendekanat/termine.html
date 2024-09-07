@@ -28,13 +28,12 @@
         Auf welche Art die Prüfungsanmeldungen jeweils erfolgen und welche
         Studienleistungen registriert werden müssen steht auf den
         Informationsseiten zu den einzelnen
-        <a href="https://www.math.uni-freiburg.de/lehre/index.html">
+        <a href="{{ url_for('showstudiengaenge', lang=lang )}}">
           Studiengängen
         </a>
         . Allgemeine Informationen zu Prüfungen und Studienleistungen erfahren
         Sie auf der Seite
-        <a
-          href="https://home.mathematik.uni-freiburg.de/pruefungsamt/pruefungen.html"
+        <a href = "{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}"
         >
           Informationen zur Prüfungsanmeldung
         </a>

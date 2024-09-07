@@ -4,12 +4,15 @@
   <p>
     Fragen der Studienorganisation (Belegung, Prüfungsanmeldung, etc) finden Sie
     auf den Seiten des
-    <a href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}">Prüfungsamts</a>.
+    <a
+      href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}"
+      >Prüfungsamts</a
+    >.
 
     <br />
     Einige Fragen beantwortet das
-    <a href="{{ url_for('showstufaq', lang=lang) }}"> FAQ</a>. Falls Fragen offen
-    bleiben, wenden Sie sich gerne an die
+    <a href="{{ url_for('showstufaq', lang=lang) }}"> FAQ</a>. Falls Fragen
+    offen bleiben, wenden Sie sich gerne an die
     <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
       Studienberatung des Mathematischen Instituts
     </a>
@@ -275,10 +278,7 @@
               )
             </li>
           </ul>
-          <p>
-            Beispielhafter Studienverlauf:
-            <!--  (siehe auch die <a href="https://www.math.uni-freiburg.de/lehre/dokumente/uebersicht-bsc2021-studienplan.pdf">detailiertere Übersicht</a>): -->
-          </p>
+          <p>Beispielhafter Studienverlauf:</p>
           {% include "studiengaenge/bsc/studienverlauf-bsc-2021.html" %}
           <p>
             Dieser Plan ist
@@ -299,7 +299,7 @@
               Die Veranstaltungen haben inhaltliche Voraussetzungen (beschrieben
               im
               <a
-                href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/modulhandbuecher.html"
+                href="{{ url_for('showdownloads', anchor = 'studiendokumente', lang=lang)}}"
               >
                 Modulhandbuch
               </a>
@@ -369,7 +369,7 @@
             anbietet, zustimmt und einen passenden Studienplan erstellt, der
             mindestens 15 und höchstens 22 ECTS-Punkten umfasst. (Siehe auch das
             <a
-              href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/merkblaetter/Merkblatt-Sonderanwendungsfaecher.pdf"
+              href="/static/pdf/pruefungsamt/Merkblatt-Sonderanwendungsfaecher.pdf"
             >
               Merkblatt für Sonder-Anwendungsfächer
             </a>

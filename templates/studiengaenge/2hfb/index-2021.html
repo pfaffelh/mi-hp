@@ -10,12 +10,15 @@
     <br />
     Fragen der Studienorganisation (Belegung, Prüfungsanmeldung, etc) finden Sie
     auf den Seiten des
-    <a href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}">Prüfungsamts</a>.
+    <a
+      href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}"
+      >Prüfungsamts</a
+    >.
 
     <br />
     Einige Fragen beantwortet das
-    <a href="{{ url_for('showstufaq', lang=lang) }}"> FAQ</a>. Falls Fragen offen
-    bleiben, wenden Sie sich gerne an die
+    <a href="{{ url_for('showstufaq', lang=lang) }}"> FAQ</a>. Falls Fragen
+    offen bleiben, wenden Sie sich gerne an die
     <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
       Studienberatung des Mathematischen Instituts
     </a>
@@ -274,15 +277,13 @@
             Semester, in denen sie angeboten werden, verteilen (unter Beachtung
             der im
             <a
-              href="https://www.math.uni-freiburg.de/lehre/studiengaenge/modulhandbuecher.html"
+              href="{{ url_for('showdownloads', anchor = 'studiendokumente', lang=lang)}}"
             >
               Modulhandbuch
             </a>
             beschriebenen notwendigen Vorkenntnisse). Individuelle Verläufe
             können gerne mit der
-            <a
-              href="https://www.math.uni-freiburg.de/lehre/studienberatung.html"
-            >
+            <a href="{{ url_for('showstudiendekanat', lang=lang)}}">
               Studienberatung
             </a>
             besprochen werden.

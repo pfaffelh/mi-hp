@@ -232,6 +232,7 @@ def get_data(sem_shortname, lang = "de"):
             v_dict["link"] = veranstaltung["url"]
             v_dict["dozent"] = ", ".join([vorname_name(x) for x in veranstaltung["dozent"]])
             v_dict["assistent"] = ", ".join([vorname_name(x) for x in veranstaltung["assistent"]])
+            v_dict["organisation"] = ", ".join([vorname_name(x) for x in veranstaltung["organisation"]])
             # raumzeit ist der Text, der unter der Veranstaltung steht.
             # print(v_dict["titel"])
             v_dict["raumzeit"] = make_raumzeit(veranstaltung, lang=lang)
