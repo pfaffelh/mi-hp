@@ -252,6 +252,11 @@ def showlehrveranstaltungenstundenplan(lang, semester):
     data = vvz.get_data_stundenplan(semester, lang)
     return render_template("lehrveranstaltungen/vvz_stundenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester))
 
+@app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/personenplan/")
+def showlehrveranstaltungenpersonenplan(lang, semester):
+    data = vvz.get_data_personenplan(semester, lang)
+    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester))
+
 
 
 #####################################

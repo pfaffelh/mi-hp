@@ -13,6 +13,15 @@ endblock %} {% block content %}
         courses {% endif %}
       </a>
       <a
+        href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {% if lang == "de" %} Zum Personenplan {% else %} Courses of all
+        persons {% endif %}
+      </a>
+      <a
         href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
@@ -83,7 +92,7 @@ endblock %} {% block content %}
         data-bs-html="true"
         style="color: #004a99"
         title=""
-        data-bs-content="{% if v['vorkenntnisse'] != '' %}{% if lang == 'de' %}Vorkenntnisse: {% else %}Previous knowledge:{% endif %}{{ v['vorkenntnisse']|markdown }}<br>{% endif %} {% if v['verwendbarkeit'] != '' %}{% if lang == 'de' %}Verwendbarkeit: {% else %}Usability:{% endif %} {{ v['verwendbarkeit']|markdown }} {% endif %}"
+        data-bs-content="{% if v['vorkenntnisse'] != '' %}{% if lang == 'de' %}<strong>Vorkenntnisse:</strong> {% else %}<strong>Previous knowledge:</strong>{% endif %}{{ v['vorkenntnisse']|markdown }}<br>{% endif %} {% if v['verwendbarkeit'] != '' %}{% if lang == 'de' %}<strong>Verwendbarkeit:</strong> {% else %}<strong>Usability:</strong>{% endif %} {{ v['verwendbarkeit']|markdown }} {% endif %}"
       >
         <i class="fa-solid fa-book" style="color: #004a99"></i>
       </button>

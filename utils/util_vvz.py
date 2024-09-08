@@ -94,6 +94,10 @@ def vorname_name(person_id):
     p = vvz_person.find_one({"_id": person_id})
     return f"{p['vorname']} {p['name']}"
 
+def name_vorname(person_id):
+    p = vvz_person.find_one({"_id": person_id})
+    return f"{p['name']}, {p['vorname']}"
+
 def name(person_id):
     p = vvz_person.find_one({"_id": person_id})
     return f"{p['name']}"
@@ -291,6 +295,87 @@ def get_data_stundenplan(sem_shortname, lang="de"):
                         
         res[t] = data_loc
     return res
+
+def name_termine(ver_id, lang="de"):
+    name = f'name_{lang}'
+    v = vvz_veranstaltung.find_one({"_id" : ver_id})
+    url = v["url"]
+    
+    termine = []
+    for t in v["woechentlicher_termin"]:
+        if t["start"]:
+            zeit = f"{str(t['start'].hour)}{': '+str(t['start'].minute) if t['start'].minute > 0 else ''}"
+            if t['ende'] is not None:
+                zeit = zeit + f"-{str(t['ende'].hour)}{': '+str(t['ende'].minute) if t['ende'].minute > 0 else ''}"
+            zeit = (zeit + " Uhr") if lang == "de" else (zeit + "h")
+        else:
+            zeit = ""
+        if zeit != "":
+            termine.append((t["wochentag"] if lang=="de" else wochentage[t["wochentag"]]) + ", " + zeit)
+            
+    for t in v["einmaliger_termin"]:
+        ta = vvz_terminart.find_one({"_id": t['key']})
+        if ta["hp_sichtbar"]:
+            ta = ta[f"name_{lang}"]
+            if t['enddatum'] is None:
+                t['enddatum'] = t['startdatum']
+            if t['startdatum'] is not None:
+                startdatum = t['startdatum'].strftime("%d.%m.")
+                if t['startdatum'] != t['enddatum']:
+                    enddatum = t['enddatum'].strftime("%d.%m.")
+                    datum = " bis ".join([startdatum, enddatum]) if startdatum != enddatum else startdatum
+                else:
+                    datum = startdatum
+            else:
+                datum = ""
+            if t['startzeit'] is not None:
+                zeit = f"{str(t['startzeit'].hour)}{': '+ str(t['startzeit'].minute) if t['startzeit'].minute > 0 else ''}"
+                if t['endzeit'] is not None:
+                    zeit = zeit + f"-{str(t['endzeit'].hour)}{': '+str(t['endzeit'].minute) if t['endzeit'].minute > 0 else ''}"
+                zeit = zeit + " Uhr"
+            else:
+                zeit = ""
+            termine.append(": ".join([x for x in [ta, ", ".join([x for x in [datum, zeit] if x != ""])] if x != ""]))
+    res = (f"<strong>{v[name]}</strong>" if url == "" else f"<strong><a href='{url}'>{v[name]}</a></strong>")
+    if termine != []:
+        res = res + "<br>" + "; ".join(termine)
+    return res
+    
+def get_data_personenplan(sem_shortname, lang="de"):
+    sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
+    ver = vvz_veranstaltung.find({"semester" : sem_id})
+
+    data = []
+    for v in ver:
+        nt = name_termine(v["_id"], lang)
+        for p in v["dozent"]:
+            data.append({
+                "person": f"<strong>{name_vorname(p)}</strong>",
+                "veranstaltung": nt,
+                "rolle": "Dozent*in"
+                })
+        for p in v["assistent"]:
+            data.append({
+                "person": f"<strong>{name_vorname(p)}</strong>",
+                "veranstaltung": nt,
+                "rolle": "Assistent*in"
+                })
+            
+        for p in v["organisation"]:
+            data.append({
+                "person": f"<strong>{name_vorname(p)}</strong>",
+                "veranstaltung": nt,
+                "rolle": "Organisation"
+                })
+
+    data = sorted(data, key = itemgetter('person', 'veranstaltung'))
+    personprevious = ""
+    for d in data:
+        z = d["person"]
+        if d["person"] == personprevious:
+            d["person"] = ""
+        personprevious = z
+    return data
 
 def nextsemester(sem_shortname):
     if sem_shortname[4:6] == "WS":
