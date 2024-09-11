@@ -98,6 +98,11 @@ def name_vorname(person_id):
     p = vvz_person.find_one({"_id": person_id})
     return f"{p['name']}, {p['vorname']}"
 
+def name_terminart(terminart_id, lang):
+    name = f"name_{lang}"
+    ta = vvz_terminart.find_one({"_id": terminart_id})
+    return ta[name]
+
 def name(person_id):
     p = vvz_person.find_one({"_id": person_id})
     return f"{p['name']}"
@@ -340,7 +345,7 @@ def name_termine(ver_id, lang="de"):
     if termine != []:
         res = res + "<br>" + "; ".join(termine)
     return res
-    
+
 def get_data_personenplan(sem_shortname, lang="de"):
     sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
     ver = vvz_veranstaltung.find({"semester" : sem_id})
@@ -352,21 +357,41 @@ def get_data_personenplan(sem_shortname, lang="de"):
             data.append({
                 "person": f"<strong>{name_vorname(p)}</strong>",
                 "veranstaltung": nt,
-                "rolle": "Dozent*in"
+                "rolle": "Dozent*in",
+                "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
                 })
         for p in v["assistent"]:
             data.append({
                 "person": f"<strong>{name_vorname(p)}</strong>",
                 "veranstaltung": nt,
-                "rolle": "Assistent*in"
+                "rolle": "Assistent*in",
+                "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
                 })
             
         for p in v["organisation"]:
             data.append({
                 "person": f"<strong>{name_vorname(p)}</strong>",
                 "veranstaltung": nt,
-                "rolle": "Organisation"
+                "rolle": "Organisation",
+                "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
                 })
+
+        for t in v["woechentlicher_termin"]:
+            for p in t["person"]:
+                data.append({
+                    "person": f"<strong>{name_vorname(p)}</strong>",
+                    "veranstaltung": nt,
+                    "rolle": name_terminart(t["key"], lang),
+                    "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+                    })
+        for t in v["einmaliger_termin"]:
+            for p in t["person"]:
+                data.append({
+                    "person": f"<strong>{name_vorname(p)}</strong>",
+                    "veranstaltung": nt,
+                    "rolle": name_terminart(t["key"], lang),
+                    "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+                    })
 
     data = sorted(data, key = itemgetter('person', 'veranstaltung'))
     personprevious = ""
