@@ -8,7 +8,7 @@
 #### TODOs
 
 1. mi-vvz: 
-   * Deputate?
+   * Check, was bei kopieren von Veranstaltungen oder Neuanlegen eines Semesters passiert. 
 2. mi-faq: 
    * Bewerbungsphasen für Studiengänge eintragen 
    * faq für Studienkoordinatoren anlegen?
@@ -22,14 +22,7 @@
    * Monitor: Wetter im Carousel; 
    * Monitor: Mensa im Carousel
    * Links zu Fachschaft, Studienberatung, Prüfungsamt, Studierendenportal etc werden Karten unterhalb den News auf der Homepage
-   * Text zum FDM-Seminar: Hier wird aktuelle, interdisziplinäre Forschung vorgestellt, in der Mathematische Modelle das Verständnis von natur- und Sozialwissenschaftlichen Fragestellungen ermöglicht.
-   * Codes: Hier wollten wir, glaube ich, nur D/E statt DE/EN schreiben.
-   * Ein etwas größerer Abstand zwischen den einzelnen Veranstaltungen wäre schön. Wenn bei den Grunddaten ein Kommentar eingefügt ist, gibt es so einen Extraabstand. ok
-   * Diese Kommentare könnten vielleicht kursiv gesetzt werden? Dann heben sie sich besser vom Rest ab. ok
-   * Im Abschnitt "2b. Fachdidaktik! ist der Einführungstext "Bitte beachten Sie ..." zu groß. steht vermutlich als "Untertitel", muss aber als "prefix"
-   * Personen, die unter "Organisation" eingetragen sind, erscheinen nicht auf der Webseite. check!
-
-
+   
 
 ### Interne Seiten, die ins mit-faq müssen
 

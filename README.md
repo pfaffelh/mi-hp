@@ -23,6 +23,30 @@ beginnen. Diese sind nur innerhalb des vpn bzw an Institutsrechnern zugänglich.
 
 Wird die Seite aufgerufen, so steuert `app.py`, was genau passiert. Hier werden auch Routen definiert, die steuern, welche Funktion aufgerufen wird, wenn ein request verarbeitet wird.
 
+### Hier ein paar Beispiele, wie Inhalte angesteuert werden
+
+Das folgende ist in den Templates etwa so zu verwenden: 
+
+<a href="{{ url_for('showstudiendekanat', lang=lang)}}">Studienberatung</a>
+
+* Homepage: `{{ url_for('showbase', lang=lang)}}`
+* Studienberatung: `{{ url_for('showstudiendekanat', lang=lang)}}`
+* Prüfungsamt: `{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang)}}`
+* Prüfungskalender: `{{ url_for('showstudiendekanat', unterseite = 'calendar', lang=lang)}}`
+* Termine und Fristen: `{{ url_for('showstudiendekanat', unterseite = 'termine', lang=lang)}}`
+* Für Studieninteressierte: `{{ url_for('showinteresse', lang=lang)}}`
+* Für Studienanfänger: `{{ url_for('showanfang', lang=lang)}}`
+* Alle Studiengänge: `{{ url_for('showstudiengaenge', lang=lang)}}`
+* BSc Studiengang: `{{ url_for('showstudiengand', studiengang = 'bsc', lang=lang)}}` (andere sind msc, msc_data, 2hfb, med, med_erw, med_dual, promotion)
+* Alle Lehrveranstaltungen: `{{ url_for('showlehrveranstaltungenbase', lang=lang)}}`
+* Mitarbeiter-FAQ: `{{ url_for('showmitfaq', lang=lang)}}`
+* Lehrzertifikat: `{{ url_for('showlehrende', unterseite = 'zertifikat', lang=lang)}}`
+* Prüfungskalender, Lehrenden-Ansicht: `{{ url_for('showlehrende', unterseite = 'calendar', lang=lang)}}`
+* Downloads: `{{ url_for('showdownloads', lang=lang)}}`
+* Downloads Formulare: `{{ url_for('showdownloads', anchor = pruefungsamt, lang=lang)}}` 
+* Downloads Modulhandbücher: `{{ url_for('showdownloads', anchor = studiendokumente, lang=lang)}}` (anchor kann auch sein: lehrende, pruefungsamt, studiendokumente, promotion, gesetz, bericht)
+
+
 ## Änderungen an der Seite
 
 Personen, die als Collaborator des Repositories in [github](https://github.com/pfaffelh/mi-hp) eingetragen sind, können das Repository ändern. Hier eine kurze Anleitung, wie man die neue "Lehre"-Seite ändern kann:

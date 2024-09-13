@@ -133,7 +133,7 @@ def showinteresse(lang = "de", anchor=""):
 def showweiterbildung(lang, anchor=""):
     with app.open_resource('static/data/weiterbildung.json') as f:
         data = json.load(f)
-    filenames = ["studieninteresse/interesse_content.html"]
+    filenames = ["interesse/interesse_content.html"]
     return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
 ##########################

@@ -9,7 +9,7 @@
           <a href="https://campus.uni-freiburg.de"> HISinOne </a>
           , teils schriftlich über das
           <a
-            href="https://home.mathematik.uni-freiburg.de/pruefungsamt/index.html"
+            href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang)}}"
           >
             Prüfungsamt des Mathematischen Instituts
           </a>
@@ -33,7 +33,8 @@
         </a>
         . Allgemeine Informationen zu Prüfungen und Studienleistungen erfahren
         Sie auf der Seite
-        <a href = "{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}"
+        <a
+          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}"
         >
           Informationen zur Prüfungsanmeldung
         </a>
@@ -53,8 +54,8 @@
           Anleitung Prüfungsanmeldung
         </a>
         <a
-          href="#calendar"
-          class="btn btn-primary  bg-ufr-blue link-dark"
+          href="{{ url_for('showstudiendekanat', unterseite = 'calendar', lang=lang)}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
           role="button"
           aria-disabled="true"
         >
@@ -62,7 +63,7 @@
         </a>
         <a
           href="https://campus.uni-freiburg.de/"
-          class="btn btn-primary  bg-ufr-blue link-dark"
+          class="btn btn-primary bg-ufr-blue link-dark"
           role="button"
           aria-disabled="true"
         >
@@ -547,7 +548,7 @@
 </div> -->
   </div>
   <div class="accordion accordion-flush" id="accordionExample">
-    <div class="accordion-item" id="_ws23">
+    <!-- <div class="accordion-item" id="_ws23">
       <h4 class="accordion-header" id="header_ws23">
         <button
           aria-controls="_ws23Content"
@@ -557,7 +558,7 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          <h3 class = "h5">Anmeldefristen im Wintersemester 2023/24</h3>
+          <h3 class="h5">Anmeldefristen im Wintersemester 2023/24</h3>
         </button>
       </h4>
       <div
@@ -567,9 +568,6 @@
         id="_ws23Content"
       >
         <div class="accordion-body" id="ws23Content">
-          <!--<p>  
-  <b style="color:#c1002a;">NOCH OHNE GEWÄHR!</b> 
-</p> -->
           <p>
             <b> Proseminare und fachwissenschaftliche Seminare </b>
             :
@@ -679,7 +677,7 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          <h3 class = "h5">Anmeldefristen im Sommersemester 2024</h3>
+          <h3 class="h5">Anmeldefristen im Sommersemester 2024</h3>
         </button>
       </h4>
       <div
@@ -689,10 +687,6 @@
         id="_ss24Content"
       >
         <div class="accordion-body" id="ss24Content">
-          <!--<p>  
-  <b style="color:#c1002a;">NOCH OHNE GEWÄHR!</b> 
-  <b style="color:#c1002a;">NOCH In ARBEIT!</b> 
-</p>-->
           <p>
             <b> Proseminare und fachwissenschaftliche Seminare </b>
             :
@@ -793,6 +787,125 @@
           </ul>
         </div>
       </div>
+    </div> -->
+    <div class="accordion-item" id="_ws24">
+      <h4 class="accordion-header" id="header_ws24">
+        <button
+          aria-controls="_ws24Content"
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          data-bs-target="#_ws24Content"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Anmeldefristen im Wintersemester 2024/25</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="_ws23Content"
+        class="accordion-collapse collapse"
+        data-bs-parent="#accordionExample"
+        id="_ws24Content"
+      >
+        <div class="accordion-body" id="ws23Content">
+          <p>
+            <b style="color: #c1002a">NOCH OHNE GEWÄHR!</b>
+          </p>
+          -
+          <p>
+            <b> Proseminare und fachwissenschaftliche Seminare </b>
+            :
+          </p>
+          <ul>
+            <li>
+              Online-Prüfungsanmeldung von 01. 09. 2024
+              <span style="color: #c1002a"> bis 11. 10. 2024 </span>
+              nach Studienplatzzuteilung und verbindlicher Teilnahmezusage in
+              der Vorbesprechung.
+            </li>
+          </ul>
+          <p>
+            <b> Mündliche Prüfungen im M.Sc. und M.Ed.: </b>
+          </p>
+          <ul>
+            <li>
+              Schriftliche Anmeldung im Prüfungsamt
+              <span style="color: #c1002a">
+                bis spätestens drei Wochen vor der Prüfung
+              </span>
+              nach individueller Terminvereinbarung mit dem Prüfer.
+            </li>
+          </ul>
+          <p>
+            <b>
+              Andere Mathematik-Veranstaltungen (inkl. Seminare in
+              Fachdidaktik):
+            </b>
+            <br style="margin-bottom: 3px" />
+            (einschließlich der mündlichen Prüfungen in Analysis und in Linearer
+            Algebra und der Lesekurse)
+          </p>
+          <ul>
+            <li>
+              Online-Prüfungsanmeldung bzw. -Studienleistungsregistrierung von
+              16. 10. 2024
+              <span style="color: #c1002a"> bis 26. 01. 2024 </span>
+              .
+            </li>
+            <li>
+              Die
+              <a href="https://www.math.uni-freiburg.de/aktuell/studinfo/">
+                aktuellen Informationen für Studierende
+              </a>
+              informieren ggf. über den genauen Stand: Für einzelne Prüfungen
+              werden Anmeldemöglichkeiten ggf. erst ab einem späteren
+              Starttermin eingerichtet.
+            </li>
+            <li>
+              Kontrolle, ob alle gewünschten Anmeldemöglichkeiten eingerichtet
+              sind, und andernfalls Mitteilung an die Studiengangkoordination:
+              <span style="color: #c1002a"> bis spätestens 09. 01. 2025 </span>
+              .
+            </li>
+            <li>
+              <a href="#"> Abgabe der Prüferwünsche </a>
+              für die mündliche Prüfungen in Analysis bzw. Linearer Algebra:
+              voraussichtlich Ende Januar 2025. Die Abgabe der Prüferwünsche
+              ersetzt nicht die Prüfungsanmeldung!
+            </li>
+          </ul>
+          <p>
+            <b> Module anderer Fächer und Einrichtungen: </b>
+          </p>
+          <ul>
+            <li>
+              Mitteilung von fachfremden Wahlmodulen, für die Studienleistungen
+              über das Campus-Management-System angemeldet werden sollen
+              <span style="color: #c1002a">
+                bis spätestens Ende November 2024
+              </span>
+              an die Studiengangkoordination.
+            </li>
+            <li>
+              Für Module des Anwendungsfachs im B.Sc. und für fachfremde
+              Wahlmodule im B.Sc. und M.Sc. gelten die Anmeldefristen des
+              jeweiligen Faches. Zuständig ist trotzdem das Prüfungsamt des
+              Mathematischen Institut:
+              <span style="color: #c1002a">
+                Wenden Sie sich bei Problemen nicht an das Prüfungsamt des
+                anderen Faches!
+              </span>
+            </li>
+            <li>
+              Für das andere Fach im 2-Hauptfächer-Bachelor oder M.Ed. gelten
+              die Anmeldefristen des jeweiligen Faches. Für externe BOK-Kurse
+              gelten die Fristen des ZfS. Für lehramtsspezifische
+              Studienelemente (Bildungswissenschaft, Schulpraxis) jeweils die
+              Fristen der zuständigen Einrichtung.
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="accordion-item" id="abmeldung">
       <h4 class="accordion-header" id="headerabmeldung">
@@ -804,7 +917,7 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          <h3 class = "h5">Abmeldefristen</h3>
+          <h3 class="h5">Abmeldefristen</h3>
         </button>
       </h4>
       <div
@@ -814,25 +927,6 @@
         id="abmeldungContent"
       >
         <div class="accordion-body" id="abmeldungContent">
-          <p>
-            Hinweis: Die verkürzten Abmelde- und Rücktrittsregelungen der
-            <a
-              href="https://www.jsl.uni-freiburg.de/Rechtsgrundlagen/corona-satzung"
-            >
-              Corona-Satzung
-            </a>
-            gelten seit 01.04.2023 nicht mehr!
-          </p>
-          <!--  <p>
-    Besondere Regelungen für die
-      <a href="Dokumente/Corona-Regelungen_Pruefungen_im_Wintersemester-202122-2022.02.10.pdf">Prüfungen zwischen 01.02. und 30.09.2022</a> (pdf),
-    insbesondere Freiversuchsregelung.
-     
-  </p> -->
-          <!--  <p>
-    Zum Unterschied zwischen Abmeldung und Rücktritt siehe die <a href="anmelden.html">Allgemeinen Informationen zur Prüfungsanmeldung</a>.
-    
-  </p> -->
           <p>
             <b> 1) Fristen für einen Rücktritt von einer Prüfung </b>
           </p>
@@ -855,11 +949,11 @@
           </ul>
           Hinweise zu akzeptierten und nicht akzeptierten Rücktrittsgründen
           finden Sie unter den
-          <a href="anmelden.html">
+          <a href="{{ url_for('showstudiendekanat', unterseite = 'anmeldung', lang=lang)}}">
             Allgemeinen Informationen zur Prüfungsanmeldung
           </a>
           , Formulare zum Antrag auf Rücktritt wegen Krankheit auf der
-          <a href="index.html"> Prüfungsamtsseite </a>
+          <a href="{{ url_for('showdownloads', anchor = pruefungsamt, lang=lang)}}"> Download-Seite</a>
           .
           <p>
             <b> 2a) Fristen für die Abmeldung von einer Prüfung </b>
@@ -917,7 +1011,7 @@
             <li>
               Die schriftliche Abmeldung muss spätestens am letzten Arbeitstag,
               der sieben Tage vor der Prüfung liegt, im
-              <a href="index.html">
+              <a href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang)}}">
                 Prüfungsamt des Mathematischen Instituts
               </a>
               eingegangen sein. Als Arbeitstage zählen Montag bis Freitag (ohne
@@ -953,7 +1047,7 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          <h3 class = "h5">Prüfungstermine</h3>
+          <h3 class="h5">Prüfungstermine</h3>
         </button>
       </h4>
       <div
@@ -978,12 +1072,9 @@
               die letzten drei Augustwochen).
             </li>
             <li>
-              <a href="klausurliste_oeff.html">
-                Klausurplanung des laufenden Semesters
+              <a href="{{ url_for('showstudiendekanat', unterseite = 'calendar', lang=lang)}}">
+                Prüfungsplan des laufenden Semesters
               </a>
-              <!-- (öffentlich) und
-	<a href="https://home.mathematik.uni-freiburg.de/intern/pruefungsamt/klausurliste.html">weitere Klausurplanung</a>
-	(intern). -->
             </li>
           </ul>
           <p>
@@ -999,7 +1090,7 @@
               hat einen eigenen Prüfungszeitraum von etwa einer Woche, der auf
               der
               <a
-                href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html"
+                href="#"
               >
                 Seite der Prüfer:innen:wünsche
               </a>

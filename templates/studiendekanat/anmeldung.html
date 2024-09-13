@@ -150,8 +150,7 @@
     Prüfungsordnung.
   </p>
   <p></p>
-  <div id="accordion">
-  </div>
+  <div id="accordion"></div>
   <div class="accordion accordion-flush" id="accordionExample">
     <div class="accordion-item" id="_anleitung">
       <h4 class="accordion-header" id="header_anleitung">
@@ -509,54 +508,6 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item" id="_details">
-      <h4
-        class="accordion-header"
-        id="header_details"
-        style="background-color: #f4f3f3; margin-top: 10px; margin-bottom: 5px"
-      >
-        <button
-          aria-controls="_detailsContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_detailsContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <h3 class="h5">Details zu speziellen Prüfungen</h3>
-        </button>
-      </h4>
-      <div
-        aria-labelledby="_detailsContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_detailsContent"
-      >
-        <div class="accordion-body" id="detailsContent"></div>
-      </div>
-    </div>
-    <div class="accordion-item" id="_arbeit">
-      <h4 class="accordion-header" id="header_arbeit">
-        <button
-          aria-controls="_arbeitContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_arbeitContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <h3 class="h5">Abschlussarbeiten (alle Studiengänge)</h3>
-        </button>
-      </h4>
-      <div
-        aria-labelledby="_arbeitContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_arbeitContent"
-      >
-        <div class="accordion-body" id="arbeitContent"></div>
-      </div>
-    </div>
     <div class="accordion-item" id="_fwm">
       <h4 class="accordion-header" id="header_fwm">
         <button
@@ -713,7 +664,7 @@
       </div>
     </div>
     <div class="accordion-item" id="_analinalg">
-      <h3 class="accordion-header" id="header_analinalg">
+      <h4 class="accordion-header" id="header_analinalg">
         <button
           aria-controls="_analinalgContent"
           aria-expanded="false"
@@ -722,10 +673,10 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          Mündliche Prüfungen in Analysis / Linearer Algebra   (2-Hf.-B. / B.Sc.
-          / M.Ed. Erweiterungsfach)
+          <h3 class="h5">Mündliche Prüfungen in Analysis / Linearer Algebra   (2-Hf.-B. / B.Sc.
+          / M.Ed. Erweiterungsfach)</h3>
         </button>
-      </h3>
+      </h4>
       <div
         aria-labelledby="_analinalgContent"
         class="accordion-collapse collapse"
@@ -786,7 +737,7 @@
             <li>
               Sie können über eine eigene
               <a
-                href="https://home.mathematik.uni-freiburg.de/pruefungsamt/prueferwuensche.html"
+                href="#"
               >
                 Webseite
               </a>
@@ -1585,7 +1536,7 @@
                 Woche beim Prüfungsamt eingereicht werden (persönliche Abgabe
                 oder per Post).
                 <br style="margin-bottom: 5px" />
-                <a href="index.html#formulare">
+                <a href="{{ url_for('showdownloads', anchor='pruefungsamt', lang=lang) }}">
                   Formulare für den Rücktritt aus Krankheitsgründen
                 </a>
                 .
@@ -2135,7 +2086,7 @@
                 >
                   Bachelor of Science
                 </a>
-                (PO 2021) 
+                (PO 2021)
               </li>
               <li>
                 <a

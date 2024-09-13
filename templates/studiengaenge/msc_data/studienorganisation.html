@@ -17,7 +17,7 @@
     Studienpätze für Seminare werden bei der Vorbesprechung am Ende der
     Vorsemesters vergeben. Die Termine dafür und ggf. die Art der Voranmeldung
     sind im
-    <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+    <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
       Kommentierten Vorlesungsverzeichnis
     </a>
     angegeben.
@@ -47,7 +47,7 @@
     Vor der Anmeldung der ersten Prüfungsleistung müssen Sie beim Prüfungsamt
     einen
     <a
-      href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+      href="{{ url_for('showdownloads', anchor = pruefungsamt, lang=lang)}}"
     >
       Antrag auf Zulassung zu den studienbegleitenden Prüfungen im Master
     </a>
@@ -74,7 +74,7 @@
     Slots for seminars are allocated at the preliminary meeting at the end of
     the preceeding semester. The dates for this and, if applicable, the type of
     pre-registration are listed in the
-    <a href="https://www.math.uni-freiburg.de/lehre/v/index.html">
+    <a href="{{ url_for('showlehrveranstaltungenbase', lang=lang)}}">
       course catalog </a
     >.
     <br />
@@ -105,7 +105,7 @@
     Before registering for the first examination, you must apply to the
     Examination Office an
     <a
-      href="https://www.math.uni-freiburg.de/lehre/pruefungsamt/index.html#formulare"
+      href="{{ url_for('showdownloads', anchor = pruefungsamt, lang=lang)}}"
     >
       application for admission to the examinations during the Master's program
     </a>
