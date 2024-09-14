@@ -8,6 +8,7 @@ import requests
 from utils.config import *
 from utils.util_logging import logger
 from utils.util_calendar import calendar, get_caldav_calendar_events
+from apscheduler.schedulers.background import BackgroundScheduler
 
 import utils.util_faq as util_faq
 
@@ -315,14 +316,10 @@ def showstudiendekanat(lang, unterseite = ""):
         for item in data:
             item["shownews"] = (datetime.now() < item["news_ende"])
         filenames = ["studiendekanat/pruefungsamt.html"]        
-    if unterseite == "studienanfang":
-        filenames = ["studiendekanat/studienanfang.html"]
     if unterseite == "schwerpunktgebiete":
         filenames = ["studiendekanat/schwerpunktgebiete.html"]
     if unterseite == "warum_mathematik":
         filenames = ["studiendekanat/warum_mathematik.html"]
-    if unterseite == "matheinfreiburg":
-        filenames = ["studiendekanat/mathestudium_in_freiburg.html"]
     if unterseite == "termine":
         filenames = ["studiendekanat/termine.html"]
     if unterseite == "calendar":
@@ -336,8 +333,6 @@ def showstudiendekanat(lang, unterseite = ""):
         filenames = ["studiendekanat/pruefungen.html"]
     if unterseite == "termine":
         filenames = ["studiendekanat/termine.html"]
-    if unterseite == "modulhandbuecher":
-        filenames = ["studiendekanat/modulhandbuecher.html"]    
     if unterseite == "ausland":
         filenames = ["studiendekanat/ausland.html"]
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
@@ -495,22 +490,7 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 #            },
 #   )
 
-# Mensaplan
-#    date = datetime(2024, 6, 24).date()
-#    date = dt.date()
-#    if dt.hour < 14:
-#        text = "" # get_mensaplan_text(mensaplan_url, date)
-#        if text != "":
-#            data['carouselmonitor'].append(
-#                        {
-#                        "interval": "15000",
-#                        "image": "/static/images/buffet.jpg",
-#                        "left": "15%",
-#                        "right": "15%",
-#                        "bottom": "50%" if text == "<h2>Heute ist die Mensa zu!</h2>" else "2%",
-#                        "text": text
-#                        }
-#                )
+
 
 #    os.system('textimg -i "$(curl de.wttr.in/Freiburg?1pQ | tail -n 20 -q | head -n 18 -q)" -o static/images/wetter.png')
 #    os.system("convert static/images/wetter.png -resize 2000x500 static/images/wetter_cropped.png")
@@ -525,3 +505,15 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 #            },
 #    )
 
+
+scheduler = BackgroundScheduler(timezone="Europe/Rome")
+# Runs from Monday to Sunday at 05:30 
+scheduler.add_job(
+    func=news.writetonews_mensaplan_text,
+    trigger="cron",
+    max_instances=1,
+    day_of_week='mon-sun',
+    hour=5,
+    minute=30
+)
+scheduler.start()

@@ -1,0 +1,279 @@
+{'plan': {'ort': {'@id': '620', 'mensa': 'Mensa Institutsviertel', 'tagesplan': [
+                {'@datum': '16.09.2024', 'menue': [
+                        {'@art': 'Schneller Teller', '@zusatz': 'auf Wunsch vegan', 'name': 'Gazpacho Bio-Räuchertofu Geriebener Mozzarella', 'nameMitUmbruch': 'Gazpacho<br>Bio-Räuchertofu<br>Geriebener Mozzarella', 'kennzeichnungen': 'bio: Bio DE-ÖKO-007', 'allergene': 'So: Soja,Sf: Schwefeldioxid/Sulfite,ML: Milch /-erzeugnisse,GlW: Weizen,GlG: Gerste,Gl: GLUTENHALTIGES Getreide', 'preis': {'studierende': '2,
+                                50€', 'angestellte': '4,
+                                40€', 'gaeste': '6,
+                                30€', 'schueler': '2,
+                                50€'
+                            }
+                        },
+                        {'@art': 'Essen 1', '@zusatz': 'vegetarisch', 'name': 'Grönsaksbullar Tomaten-Basilikumragout Kräuter-Käsespätzle Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Grönsaksbullar<br>Tomaten-Basilikumragout<br>Kräuter-Käsespätzle<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': None, 'allergene': 'Ei: Eier,Gl: GLUTENHALTIGES Getreide,GlW: Weizen,ML: Milch /-erzeugnisse,Sn: Senf', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Essen 2', 'name': 'Schweinesteak Kräuterbutter Kräuter-Joghurtdip Ofenkartoffel, Butter-Maiskolben Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Schweinesteak<br>Kräuterbutter<br>Kräuter-Joghurtdip<br>Ofenkartoffel, Butter-Maiskolben<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': 'sch: mit Schwein', 'allergene': 'Sn: Senf,ML: Milch /-erzeugnisse', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Wochenangebot', 'name': 'Dicke Fritten Chili con Carne Knoblauchöl, Peperoniöl Geriebener Mozzarella Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Dicke Fritten<br>Chili con Carne<br>Knoblauchöl, Peperoniöl<br>Geriebener Mozzarella<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': 'ri: mit Rindfleisch', 'allergene': 'ML: Milch /-erzeugnisse,Se: Sellerie,Sn: Senf', 'preis': {'studierende': '4,
+                                25€', 'angestellte': '5,
+                                90€', 'gaeste': '8,
+                                50€', 'schueler': '4,
+                                25€'
+                            }
+                        },
+                        {'@art': 'Buffet', '@zusatz': 'auf Wunsch vegan', 'name': 'Hähnchenkeule gebraten mit frischen Champignons Breite Pommes frites Zur Wahl: Fleisch-, Fisch- und vegane Spezialitäten Pasta-, Reis und Kartoffelvariationen, Gemüse', 'nameMitUmbruch': 'Hähnchenkeule gebraten<br>mit frischen Champignons<br>Breite Pommes frites<br>Zur Wahl: Fleisch-, Fisch- und vegane Spezialitäten<br>Pasta-, Reis und Kartoffelvariationen, Gemüse', 'kennzeichnungen': None, 'allergene': 'Gl: GLUTENHALTIGES Getreide,GlW: Weizen,ML: Milch /-erzeugnisse', 'preis': {'studierende': '1,
+                                10€ pro 100g', 'angestellte': '1,
+                                30€ pro 100g', 'gaeste': '1,
+                                60€ pro 100g', 'schueler': '1,
+                                10€ pro 100g'
+                            }
+                        },
+                        {'@art': 'Abendessen 1', '@zusatz': 'vegetarisch', 'name': 'Auberginen-Tomatenmasala Joghurt-Gurkendip Curryreis Fladenbrot Beilagensalat vom Buffet', 'nameMitUmbruch': 'Auberginen-Tomatenmasala<br>Joghurt-Gurkendip<br>Curryreis<br>Fladenbrot<br>Beilagensalat vom Buffet', 'kennzeichnungen': None, 'allergene': 'Sn: Senf,Sa: Sesam,GlW: Weizen,Gl: GLUTENHALTIGES Getreide,ML: Milch /-erzeugnisse', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Abendessen 2', 'name': 'Shawarma-Hähnchenfleisch Pommes frites Beilagensalat vom Buffet', 'nameMitUmbruch': 'Shawarma-Hähnchenfleisch<br>Pommes frites<br>Beilagensalat vom Buffet', 'kennzeichnungen': None, 'allergene': 'Sn: Senf', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        }
+                    ]
+                },
+                {'@datum': '17.09.2024', 'menue': [
+                        {'@art': 'Schneller Teller', 'name': 'Bunter Salatteller Gebratene Putenbruststreifen Baguette', 'nameMitUmbruch': 'Bunter Salatteller<br>Gebratene Putenbruststreifen<br>Baguette', 'kennzeichnungen': None, 'allergene': 'Gl: GLUTENHALTIGES Getreide,GlW: Weizen,Sf: Schwefeldioxid/Sulfite,Sn: Senf', 'preis': {'studierende': '2,
+                                50€', 'angestellte': '4,
+                                40€', 'gaeste': '6,
+                                30€', 'schueler': '2,
+                                50€'
+                            }
+                        },
+                        {'@art': 'Essen 1', '@zusatz': 'vegetarisch', 'name': 'Auberginen-Tomatenmasala Joghurtdip Gewürzreis Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Auberginen-Tomatenmasala<br>Joghurtdip<br>Gewürzreis<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': None, 'allergene': 'ML: Milch /-erzeugnisse,Sn: Senf', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Essen 2', 'name': 'Geflügel Saté-Spieß Erdnusssauce Basmatireis Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Geflügel Saté-Spieß<br>Erdnusssauce<br>Basmatireis<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': '18: enthält eine Phenylalaninquelle', 'allergene': 'Gl: GLUTENHALTIGES Getreide,ML: Milch /-erzeugnisse,Sn: Senf,So: Soja,GlW: Weizen,Fi: Fisch,Er: Erdnüsse', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Wochenangebot', 'name': 'Dicke Fritten Chili con Carne Knoblauchöl, Peperoniöl Geriebener Mozzarella Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Dicke Fritten<br>Chili con Carne<br>Knoblauchöl, Peperoniöl<br>Geriebener Mozzarella<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': 'ri: mit Rindfleisch', 'allergene': 'Sn: Senf,ML: Milch /-erzeugnisse,Se: Sellerie', 'preis': {'studierende': '4,
+                                25€', 'angestellte': '5,
+                                90€', 'gaeste': '8,
+                                50€', 'schueler': '4,
+                                25€'
+                            }
+                        },
+                        {'@art': 'Buffet', '@zusatz': 'auf Wunsch vegan', 'name': 'Piccata vom Steinbeißer Tomaten-Olivenragout Spaghetti, chili-scharf Zur Wahl: Fleisch-, Fisch- und vegane Spezialitäten Pasta-, Reis und Kartoffelvariationen, Gemüse', 'nameMitUmbruch': 'Piccata vom Steinbeißer<br>Tomaten-Olivenragout<br>Spaghetti, chili-scharf<br>Zur Wahl: Fleisch-, Fisch- und vegane Spezialitäten<br>Pasta-, Reis und Kartoffelvariationen, Gemüse', 'kennzeichnungen': '5: mit Antioxidationsmittel', 'allergene': 'ML: Milch /-erzeugnisse,Gl: GLUTENHALTIGES Getreide,Fi: Fisch,Ei: Eier,GlW: Weizen', 'preis': {'studierende': '1,
+                                10€ pro 100g', 'angestellte': '1,
+                                30€ pro 100g', 'gaeste': '1,
+                                60€ pro 100g', 'schueler': '1,
+                                10€ pro 100g'
+                            }
+                        },
+                        {'@art': 'Abendessen 1', '@zusatz': 'vegetarisch', 'name': 'Gemüse-Spätzlepfanne Tomatenragout Beilagensalat vom Buffet', 'nameMitUmbruch': 'Gemüse-Spätzlepfanne<br>Tomatenragout<br>Beilagensalat vom Buffet', 'kennzeichnungen': None, 'allergene': 'Sn: Senf,Se: Sellerie,ML: Milch /-erzeugnisse,GlW: Weizen,GlD: Dinkel,Ei: Eier,Gl: GLUTENHALTIGES Getreide', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Abendessen 2', 'name': 'Glasiertes Schäufele Kartoffelbrei Beilagensalat vom Buffet', 'nameMitUmbruch': 'Glasiertes Schäufele<br>Kartoffelbrei<br>Beilagensalat vom Buffet', 'kennzeichnungen': 'sch: mit Schwein', 'allergene': 'ML: Milch /-erzeugnisse,Sn: Senf,Sa: Sesam', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        }
+                    ]
+                },
+                {'@datum': '18.09.2024', 'menue': [
+                        {'@art': 'Schneller Teller', '@zusatz': 'vegan', 'name': 'Aglio Spaghetti mit getrockneten Tomaten', 'nameMitUmbruch': 'Aglio Spaghetti<br>mit getrockneten Tomaten', 'kennzeichnungen': '5: mit Antioxidationsmittel', 'allergene': 'Gl: GLUTENHALTIGES Getreide,GlW: Weizen,Sf: Schwefeldioxid/Sulfite', 'preis': {'studierende': '2,
+                                50€', 'angestellte': '4,
+                                40€', 'gaeste': '6,
+                                30€', 'schueler': '2,
+                                50€'
+                            }
+                        },
+                        {'@art': 'Essen 1', '@zusatz': 'vegetarisch', 'name': 'Blätterteigschnitte mit Hetaxkäse und Spinat Kräuter-Joghurtdip Gemüsepaella Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Blätterteigschnitte<br>mit Hetaxkäse und Spinat<br>Kräuter-Joghurtdip<br>Gemüsepaella<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': None, 'allergene': 'Nu: SCHALENFRÜCHTE/Nüsse,Gl: GLUTENHALTIGES Getreide,ML: Milch /-erzeugnisse,Sn: Senf,Se: Sellerie,Ei: Eier', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Essen 2', '@zusatz': 'vegan', 'name': 'Sojagyros Gurkendip Indischer Gewürzreis Weißkraut-Karottensalat', 'nameMitUmbruch': 'Sojagyros<br>Gurkendip<br>Indischer Gewürzreis<br>Weißkraut-Karottensalat', 'kennzeichnungen': None, 'allergene': 'So: Soja,Sn: Senf', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Wochenangebot', 'name': 'Dicke Fritten Chili con Carne Knoblauchöl, Peperoniöl Geriebener Mozzarella Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Dicke Fritten<br>Chili con Carne<br>Knoblauchöl, Peperoniöl<br>Geriebener Mozzarella<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': 'ri: mit Rindfleisch', 'allergene': 'Sn: Senf,ML: Milch /-erzeugnisse,Se: Sellerie', 'preis': {'studierende': '4,
+                                25€', 'angestellte': '5,
+                                90€', 'gaeste': '8,
+                                50€', 'schueler': '4,
+                                25€'
+                            }
+                        },
+                        {'@art': 'Buffet', '@zusatz': 'auf Wunsch vegan', 'name': 'Gekochtes Rindfleisch mit Wurzelgemüse Meerrettichsauce Bouillonkartoffeln , Rote-Bete-Salat Zur Wahl: Fleisch-, Fisch- und vegane Spezialitäten Pasta-, Reis und Kartoffelvariationen, Gemüse', 'nameMitUmbruch': 'Gekochtes Rindfleisch mit Wurzelgemüse<br>Meerrettichsauce<br>Bouillonkartoffeln , Rote-Bete-Salat<br>Zur Wahl: Fleisch-, Fisch- und vegane Spezialitäten<br>Pasta-, Reis und Kartoffelvariationen, Gemüse', 'kennzeichnungen': '9: mit Süßungsmittel,
+                            7: geschwefelt,
+                            5: mit Antioxidationsmittel, o: Hauptzutat der bio-gekennzeich. Komponente ist bio, bio: Bio DE-ÖKO-007, ri: mit Rindfleisch', 'allergene': 'Sn: Senf,Sf: Schwefeldioxid/Sulfite,Se: Sellerie,GlW: Weizen,Gl: GLUTENHALTIGES Getreide,ML: Milch /-erzeugnisse', 'preis': {'studierende': '1,
+                                10€ pro 100g', 'angestellte': '1,
+                                30€ pro 100g', 'gaeste': '1,
+                                60€ pro 100g', 'schueler': '1,
+                                10€ pro 100g'
+                            }
+                        },
+                        {'@art': 'Abendessen 1', '@zusatz': 'vegetarisch', 'name': 'Sojageschnetzeltes mit frischen Champignons Penne Beilagensalat vom Buffet', 'nameMitUmbruch': 'Sojageschnetzeltes<br>mit frischen Champignons<br>Penne<br>Beilagensalat vom Buffet', 'kennzeichnungen': None, 'allergene': 'Sn: Senf,ML: Milch /-erzeugnisse,So: Soja,Gl: GLUTENHALTIGES Getreide,GlW: Weizen', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Abendessen 2', 'name': 'Geschnetzelte Putenbrust mit frischen Champignons Penne Beilagensalat vom Buffet', 'nameMitUmbruch': 'Geschnetzelte Putenbrust<br>mit frischen Champignons<br>Penne<br>Beilagensalat vom Buffet', 'kennzeichnungen': None, 'allergene': 'Gl: GLUTENHALTIGES Getreide,GlW: Weizen,ML: Milch /-erzeugnisse,Sn: Senf', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        }
+                    ]
+                },
+                {'@datum': '19.09.2024', 'menue': [
+                        {'@art': 'Schneller Teller', 'name': 'Wurstsalat Kräuterquark Bratkartoffeln', 'nameMitUmbruch': 'Wurstsalat<br>Kräuterquark<br>Bratkartoffeln', 'kennzeichnungen': '9: mit Süßungsmittel,
+                            8: mit Phosphat,
+                            6: mit Konservierungsstoff,
+                            3: mit Geschmacksverstärker, sch: mit Schwein, ri: mit Rindfleisch,
+                            5: mit Antioxidationsmittel', 'allergene': 'Se: Sellerie,ML: Milch /-erzeugnisse,Sf: Schwefeldioxid/Sulfite,Sn: Senf', 'preis': {'studierende': '2,
+                                50€', 'angestellte': '4,
+                                40€', 'gaeste': '6,
+                                30€', 'schueler': '2,
+                                50€'
+                            }
+                        },
+                        {'@art': 'Essen 1', '@zusatz': 'vegan', 'name': 'Spaghetti Weizen-Gemüsebolognese Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Spaghetti<br>Weizen-Gemüsebolognese<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': None, 'allergene': 'Sn: Senf,Se: Sellerie,GlW: Weizen,Gl: GLUTENHALTIGES Getreide', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Essen 2', 'name': 'Bifteki vom Bio-Rind Zaziki Ajvar Gemüsereis Karotten-Krautsalat', 'nameMitUmbruch': 'Bifteki vom Bio-Rind<br>Zaziki<br>Ajvar<br>Gemüsereis<br>Karotten-Krautsalat', 'kennzeichnungen': 'bio: Bio DE-ÖKO-007, ri: mit Rindfleisch, o: Hauptzutat der bio-gekennzeich. Komponente ist bio', 'allergene': 'Sn: Senf,So: Soja,Sf: Schwefeldioxid/Sulfite,Se: Sellerie,ML: Milch /-erzeugnisse', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Wochenangebot', 'name': 'Dicke Fritten Chili con Carne Knoblauchöl, Peperoniöl Geriebener Mozzarella Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Dicke Fritten<br>Chili con Carne<br>Knoblauchöl, Peperoniöl<br>Geriebener Mozzarella<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': 'ri: mit Rindfleisch', 'allergene': 'ML: Milch /-erzeugnisse,Sn: Senf,Se: Sellerie', 'preis': {'studierende': '4,
+                                25€', 'angestellte': '5,
+                                90€', 'gaeste': '8,
+                                50€', 'schueler': '4,
+                                25€'
+                            }
+                        },
+                        {'@art': 'Buffet', '@zusatz': 'auf Wunsch vegan', 'name': 'Schweinefleischspieß Paprikasauce Kartoffelgratin Zur Wahl: Fleisch-, Fisch- und vegane Spezialitäten Pasta-, Reis und Kartoffelvariationen, Gemüse', 'nameMitUmbruch': 'Schweinefleischspieß<br>Paprikasauce<br>Kartoffelgratin<br>Zur Wahl: Fleisch-, Fisch- und vegane Spezialitäten<br>Pasta-, Reis und Kartoffelvariationen, Gemüse', 'kennzeichnungen': 'sch: mit Schwein,
+                            5: mit Antioxidationsmittel,
+                            6: mit Konservierungsstoff', 'allergene': 'Sn: Senf,GlW: Weizen,ML: Milch /-erzeugnisse,Gl: GLUTENHALTIGES Getreide', 'preis': {'studierende': '1,
+                                10€ pro 100g', 'angestellte': '1,
+                                30€ pro 100g', 'gaeste': '1,
+                                60€ pro 100g', 'schueler': '1,
+                                10€ pro 100g'
+                            }
+                        },
+                        {'@art': 'Abendessen 1', '@zusatz': 'vegetarisch', 'name': 'Gemüsebratling Erbsenhummus Gebratener Gemüsereis Nasi Goreng Beilagensalat vom Buffet', 'nameMitUmbruch': 'Gemüsebratling<br>Erbsenhummus<br>Gebratener Gemüsereis Nasi Goreng<br>Beilagensalat vom Buffet', 'kennzeichnungen': 'alc: mit Alkohol,
+                            4: mit Farbstoff,
+                            5: mit Antioxidationsmittel', 'allergene': 'Sn: Senf,So: Soja,Gl: GLUTENHALTIGES Getreide,Ei: Eier,GlW: Weizen,Sf: Schwefeldioxid/Sulfite,Se: Sellerie,Sa: Sesam', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Abendessen 2', 'name': 'Cordon bleu vom Schwein Zitronenjus Kartoffelkroketten Beilagensalat vom Buffet', 'nameMitUmbruch': 'Cordon bleu vom Schwein<br>Zitronenjus<br>Kartoffelkroketten<br>Beilagensalat vom Buffet', 'kennzeichnungen': '5: mit Antioxidationsmittel,
+                            6: mit Konservierungsstoff, sch: mit Schwein', 'allergene': 'Gl: GLUTENHALTIGES Getreide,GlW: Weizen,ML: Milch /-erzeugnisse,Sn: Senf', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        }
+                    ]
+                },
+                {'@datum': '20.09.2024', 'menue': [
+                        {'@art': 'Schneller Teller', '@zusatz': 'auf Wunsch vegan', 'name': 'Milchreis auf Wunsch vegan + 0,
+                            50 € Birnenkompott Zimtzucker', 'nameMitUmbruch': 'Milchreis<br>auf Wunsch vegan + 0,
+                            50 €<br>Birnenkompott<br>Zimtzucker', 'kennzeichnungen': None, 'allergene': 'ML: Milch /-erzeugnisse,So: Soja', 'preis': {'studierende': '2,
+                                50€', 'angestellte': '4,
+                                40€', 'gaeste': '6,
+                                30€', 'schueler': '2,
+                                50€'
+                            }
+                        },
+                        {'@art': 'Essen 1', '@zusatz': 'auf Wunsch vegan', 'name': 'Mediterrane Kräuter-Kichererbsenschnitte Ratatouille Schafskäse Topping Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Mediterrane Kräuter-Kichererbsenschnitte<br>Ratatouille<br>Schafskäse Topping<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': '5: mit Antioxidationsmittel', 'allergene': 'GlW: Weizen,Sn: Senf,Sf: Schwefeldioxid/Sulfite,ML: Milch /-erzeugnisse,Gl: GLUTENHALTIGES Getreide', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Essen 2', 'name': 'Pangasiusfilet Madagaskar Zitronensauce Rigatoni Gemüsestreifen Julienne Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Pangasiusfilet Madagaskar<br>Zitronensauce<br>Rigatoni<br>Gemüsestreifen Julienne<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': 'nF: aus nachhaltigem Fischfang,
+                            4: mit Farbstoff', 'allergene': 'Se: Sellerie,Sn: Senf,Fi: Fisch,Gl: GLUTENHALTIGES Getreide,GlW: Weizen,ML: Milch /-erzeugnisse', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Wochenangebot', 'name': 'Dicke Fritten Chili con Carne Knoblauchöl, Peperoniöl Geriebener Mozzarella Beilagensalat oder Regio-Apfel', 'nameMitUmbruch': 'Dicke Fritten<br>Chili con Carne<br>Knoblauchöl, Peperoniöl<br>Geriebener Mozzarella<br>Beilagensalat oder Regio-Apfel', 'kennzeichnungen': 'ri: mit Rindfleisch', 'allergene': 'Sn: Senf,ML: Milch /-erzeugnisse,Se: Sellerie', 'preis': {'studierende': '4,
+                                25€', 'angestellte': '5,
+                                90€', 'gaeste': '8,
+                                50€', 'schueler': '4,
+                                25€'
+                            }
+                        },
+                        {'@art': 'Buffet', '@zusatz': 'auf Wunsch vegan', 'name': 'Lachs-Spinatburger Dicke Fritten Kartoffelgratin Zur Wahl: Fleisch-, Fisch- und vegane Spezialitäten Pasta-, Reis und Kartoffelvariationen, Gemüse', 'nameMitUmbruch': 'Lachs-Spinatburger<br>Dicke Fritten<br>Kartoffelgratin<br>Zur Wahl: Fleisch-, Fisch- und vegane Spezialitäten<br>Pasta-, Reis und Kartoffelvariationen, Gemüse', 'kennzeichnungen': None, 'allergene': 'ML: Milch /-erzeugnisse,Fi: Fisch,GlW: Weizen,Gl: GLUTENHALTIGES Getreide', 'preis': {'studierende': '1,
+                                10€ pro 100g', 'angestellte': '1,
+                                30€ pro 100g', 'gaeste': '1,
+                                60€ pro 100g', 'schueler': '1,
+                                10€ pro 100g'
+                            }
+                        },
+                        {'@art': 'Abendessen 1', '@zusatz': 'vegetarisch', 'name': 'Vegetarische Lasagne Tomatenragout Pesto Beilagensalat vom Buffet', 'nameMitUmbruch': 'Vegetarische Lasagne<br>Tomatenragout<br>Pesto<br>Beilagensalat vom Buffet', 'kennzeichnungen': None, 'allergene': 'Gl: GLUTENHALTIGES Getreide,ML: Milch /-erzeugnisse,So: Soja,Se: Sellerie,GlW: Weizen,Sn: Senf', 'preis': {'studierende': '3,
+                                90€', 'angestellte': '5,
+                                55€', 'gaeste': '8,
+                                50€', 'schueler': '3,
+                                90€'
+                            }
+                        },
+                        {'@art': 'Abendessen 2', 'name': 'Lasagne mit Käsekruste Tomatenragout Pesto Beilagensalat vom Buffet', 'nameMitUmbruch': 'Lasagne mit Käsekruste<br>Tomatenragout<br>Pesto<br>Beilagensalat vom Buffet', 'kennzeichnungen': 'bio: Bio DE-ÖKO-007, o: Hauptzutat der bio-gekennzeich. Komponente ist bio, ri: mit Rindfleisch', 'allergene': 'Se: Sellerie,ML: Milch /-erzeugnisse,GlW: Weizen,Sn: Senf,Gl: GLUTENHALTIGES Getreide', 'preis': {'studierende': '4,
+                                60€', 'angestellte': '6,
+                                25€', 'gaeste': '9,
+                                20€', 'schueler': '4,
+                                60€'
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

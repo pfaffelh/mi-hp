@@ -1,8 +1,11 @@
 from flask import Flask
 import pymongo
-from datetime import datetime
+import requests
+import xmltodict
+from datetime import datetime, timedelta
 from .config import *
 import base64, json
+
 
 app = Flask(__name__)
 
@@ -82,3 +85,68 @@ def data_for_bildnachweis(lang="de"):
             }
     ]
     return data
+
+def get_mensaplan_text(url, date):
+    response = requests.get(url)
+    if response.status_code == 200:
+        mensaplan_xml = response.text
+        mensaplan = xmltodict.parse(mensaplan_xml)
+        date_format = '%d.%m.%Y'
+        tagesplan = mensaplan["plan"]["ort"]["tagesplan"]
+        tagesplan = [t["menue"] for t in tagesplan if t["@datum"] == datetime.now().strftime('%d.%m.%Y')]
+        print(tagesplan)
+        if tagesplan != []:
+            tagesplan = tagesplan[0]
+            ausgabe = f"<h2>Mensaplan am {date.strftime('%d.%m.')}</h2>"
+            # Abendessen wird nicht ausgegeben
+            for t in [t for t in tagesplan if t["@art"][0:10] != "Abendessen"]: 
+                art = t["@art"]
+                name = t["name"]
+                if len(t["name"]) > 60:
+                    name = name[0:59] + "..."
+                ausgabe = ausgabe + f"<h4>{art}: {name}</h4>"
+        else:
+            ausgabe = "<h2>Heute ist die Mensa zu!</h2>"
+    else: 
+        ausgabe = ""
+    return ausgabe
+
+def writetonews_mensaplan_text(url = mensaplan_url):
+    print("Enter writetonews_mensaplan_text")
+    print(url)
+    response = requests.get(url)
+    if response.status_code == 200:
+        print("Response status is 200")
+        mensaplan_xml = response.text
+        mensaplan = xmltodict.parse(mensaplan_xml)
+        date_format = '%d.%m.%Y'
+        tagesplan = mensaplan["plan"]["ort"]["tagesplan"]
+        print(tagesplan)
+        
+        for t in tagesplan:
+            if carouselnews.find_one({"kommentar" : "Mensaplan", "start" : datetime.strptime(t["@datum"], date_format) }):
+                pass
+            else:
+                menue = t["menue"]
+                ausgabe = f"<h2>Mensaplan am {t['@datum']}</h2>"    
+                for m in [m for m in menue if m["@art"][0:10] != "Abendessen"]: 
+                    art = m["@art"]
+                    name = m["name"]
+                    if len(m["name"]) > 60:
+                        name = name[0:59] + "..."
+                    ausgabe = ausgabe + f"<h4>{art}: {name}</h4>"
+                carouselnews.insert_one({
+                    "_public" : True,
+                    "start" : datetime.strptime(t["@datum"], date_format),
+                    "end" : datetime.strptime(t["@datum"], date_format) + timedelta(hours=14),
+                    "interval" : 4000, 
+                    "left" : 15,
+                    "right" : 15,
+                    "bottom" : 2,
+                    "text" : ausgabe,
+                    "bearbeitet" : f"Automatisch generiert am {datetime.now().strftime('%d.%m.%Y um %H:%M:%S.')}.",
+                    "kommentar" : "Mensaplan",
+                    "rang": max([x["rang"] for x in list(carouselnews.find())])+1,
+                    "image_id" : bild.find_one({"titel" : "Mensa Rempartstraße"})["_id"]
+                })                                     
+
