@@ -5,15 +5,29 @@
   data-bs-ride="carousel"
 >
   <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="4000">
+      <img
+        src="https://morgenwirdes.de/api/v3/gif6.php?plz=77889&delay=50&type=1&zoomlvl=2&bar=0&map=1&textcol=ffffff&bgcol=8393c9"
+        alt="Regenradar"
+        style="
+          width: 2000px;
+          height: 360px;
+          object-fit: cover;
+          object-position: 100% 77%;
+        "
+      />
+    </div>
+
     {% for item in data["carouselnews"] %}
-    <div
+    <!--    <div
       class="carousel-item {% if loop.index0 == 0 %} active {% endif %}"
       data-bs-interval="{{ item['interval'] }}"
-    >
+    >-->
+    <div class="carousel-item" data-bs-interval="{{ item['interval'] }}">
       <img
         class="carousel-image"
         src="data:image/{{ item['mime'] }};base64, {{ item['image'] }}"
-        alt = "Red dot"
+        alt="Red dot"
         class="d-block w-100"
         alt="..."
       />
@@ -37,13 +51,15 @@
     {% for item in data["news"] %}
     <div class="col row-cols-1">
       <div
-        class="card h-100 {% if item['today']  and item['monitor']['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
+        class="card h-100 {% if item['today'] and item['monitor']['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
       >
         <div class="g-0">
           <div class="card-body py-0 px-0">
             <div class="row py-0 px-0">
               {% if loop.index0 %2 == 0 %}
-              <div class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4">
+              <div
+                class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
+              >
                 <h3 class="card-title">
                   {{ item['monitor']['title'] | markdown }}
                 </h3>
@@ -69,31 +85,37 @@
                 </p>
               </div>
               {% if item['image'] != [] %}
-              <div class="col-sm-{{ item['image'][0]['widthmonitor']}} text-right">
+              <div
+                class="col-sm-{{ item['image'][0]['widthmonitor']}} text-right"
+              >
                 <img
-                  src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}" 
-                  alt = "Red dot"
+                  src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
+                  alt="Red dot"
                   class="float-end"
                   alt="..."
                   style="{{ item['image'][0]['stylemonitor'] }}"
                 />
               </div>
               {% endif %} {% else %} {% if item['image'] != [] %}
-              <div class="col-sm-{{ item['image'][0]['widthmonitor']}} text-left">
+              <div
+                class="col-sm-{{ item['image'][0]['widthmonitor']}} text-left"
+              >
                 <img
                   src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
-                  alt = "Red dot"
+                  alt="Red dot"
                   class="float-start"
                   style="{{ item['image'][0]['stylemonitor'] }}"
                 />
               </div>
               {% endif %}
-              <div class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4">
+              <div
+                class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
+              >
                 <h3 class="card-title">
                   {{ item['monitor']['title'] | markdown }}
                 </h3>
                 <p
-                  class="card-text {% if item['today']  and item['monitor']['showlastday'] %} watermark-today {% endif %}"
+                  class="card-text {% if item['today'] and item['monitor']['showlastday'] %} watermark-today {% endif %}"
                 >
                   {% if item['link']!= '' %}
                   <img
