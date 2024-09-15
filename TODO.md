@@ -1,28 +1,37 @@
 #### Vorschläge
-
-* Würde es Sinn machen, das vvz um Einträge zu Deputaten zu ergänzen? Hier könnte man zB Absprachen (irgendjemand bekommt zB 4 statt 2 SWS eintragen, und mit einer Entshceidungsgrundlage versehen.)
-* Würde es Sinn machen, bei den Sprechstunden ein eigenes Feld "Neuigkeiten" zu haben, bei dem man -- mit einem Ablaufdatum versehen -- etwas reinschreiben kann wie "Sprechstunde fällt am xxx aus"?
-
+   * Archiv von Nachrichten einrichten?
+   * Links zu Fachschaft, Studienberatung, Prüfungsamt, Studierendenportal etc werden Karten unterhalb den News auf der Homepage?
+   * Bewerbungsphasen für Studiengänge in mi-faq eintragen? 
 
 
 #### TODOs
 
 1. mi-vvz: 
-   * Check, was bei kopieren von Veranstaltungen oder Neuanlegen eines Semesters passiert. 
 2. mi-faq: 
-   * Bewerbungsphasen für Studiengänge eintragen 
    * faq für Studienkoordinatoren anlegen?
-   * Alle Einträge auf alte Links durchgehen
    * Allgemein: Interne Seiten in mit-faq eintragen
-
 3. mi-hp: 
    * interesse und weiterbildung auch in Datenbank faq?
    * noch mehr ins FAQ, zB Prüfungsanmeldung, Fristen zur Anmeldung
-   * Archiv von Nachrichten einrichten?
-   * Monitor: Wetter im Carousel; 
-   * Monitor: Mensa im Carousel
-   * Links zu Fachschaft, Studienberatung, Prüfungsamt, Studierendenportal etc werden Karten unterhalb den News auf der Homepage
    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Interne Seiten, die ins mit-faq müssen
 

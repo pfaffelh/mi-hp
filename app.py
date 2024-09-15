@@ -304,6 +304,8 @@ def showstudiendekanat(lang, unterseite = ""):
         data = list(studiendekanat.find({"showstudienberatung" : True}, sort=[("rang", pymongo.ASCENDING)]))
         for item in data:
             item["shownews"] = (datetime.now() < item["news_ende"])
+ #           item["text_de"] = item["text_de"].split("\n")
+ #           item["text_en"] = item["text_en"].split("\n")
         filenames = ["studiendekanat/studienberatung.html"]
     if unterseite == "pruefungsamt":
         try:

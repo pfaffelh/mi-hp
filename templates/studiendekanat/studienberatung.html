@@ -96,6 +96,7 @@
                 {% if item['shownews'] and item['news_en'] !='' %} <strong>Achtung:</strong> {{ item['news_en'] | safe }} {% endif %}<br>
                 {% endif %}
             <p align="right">
+              {% if lang == 'de' and item['text_de'] != '' %}
               <button
                 type="button"
                 class="btn btn-outline-primary active bg-white"
@@ -103,23 +104,21 @@
                 data-bs-html="true"
                 style="color: #004a99"
                 title="{{ item['name'] | safe }}"
-                data-bs-content="
-                {% if lang == 'de'  and item['text_de'] != [] %}
-                <ul>
-                {% for x in item['text_de'] %}
-                <li>{{ x|safe }}</li>
-                {% endfor %}
-                </ul>
-                {% elif lang == 'en' and item['text_en'] != [] %}
-                <ul>
-                {% for x in item['text_en'] %}
-                <li>{{ x|safe }}</li>
-                {% endfor %}
-                </ul>
-                {% endif %}"
-              >
+                data-bs-content="{{ item['text_de'] | markdown}}">
                 <i class="fa-solid fa-info" style="color: #004a99"></i>
               </button>
+              {% elif lang == 'en' and item['text_en'] != '' %}
+              <button
+                type="button"
+                class="btn btn-outline-primary active bg-white"
+                data-bs-toggle="popover"
+                data-bs-html="true"
+                style="color: #004a99"
+                title="{{ item['name'] | safe }}"
+                data-bs-content="{{ item['text_en'] | markdown}}">
+                <i class="fa-solid fa-info" style="color: #004a99"></i>
+              </button>
+              {% endif %}
               {% endif %} 
               <!-- {% if item['link']!= '' %}
               <a

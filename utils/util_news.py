@@ -112,11 +112,8 @@ def get_mensaplan_text(url, date):
     return ausgabe
 
 def writetonews_mensaplan_text(url = mensaplan_url):
-    print("Enter writetonews_mensaplan_text")
-    print(url)
     response = requests.get(url)
     if response.status_code == 200:
-        print("Response status is 200")
         mensaplan_xml = response.text
         mensaplan = xmltodict.parse(mensaplan_xml)
         date_format = '%d.%m.%Y'
@@ -144,9 +141,15 @@ def writetonews_mensaplan_text(url = mensaplan_url):
                     "right" : 15,
                     "bottom" : 2,
                     "text" : ausgabe,
-                    "bearbeitet" : f"Automatisch generiert am {datetime.now().strftime('%d.%m.%Y um %H:%M:%S.')}.",
+                    "bearbeitet" : f"Automatisch generiert am {datetime.now().strftime('%d.%m.%Y um %H:%M:%S.')}",
                     "kommentar" : "Mensaplan",
                     "rang": max([x["rang"] for x in list(carouselnews.find())])+1,
                     "image_id" : bild.find_one({"titel" : "Mensa Rempartstraße"})["_id"]
                 })                                     
+
+#def get_wettervorhersage():
+#    url = "https://de.wttr.in/Freiburg?1pQ"
+#    response = requests.get(url)
+#    if response.status_code == 200:
+#        wettervorhersage_text = response.text[2:-210]
 
