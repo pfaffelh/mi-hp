@@ -149,11 +149,12 @@ def make_raumzeit(veranstaltung, lang = "de"):
                 new = [key, tag, zeit, raum, kommentar]
                 if key in [x[0] for x in res]:
                     new.pop(0)
-                    if tag in [x[1] for x in res]:
-                        new.pop(0)
-                        if zeit in [x[2] for x in res]:
-                            new.pop(0)
                     i = [x[0] for x in res].index(key)
+                    print(res[i])
+                    if res[i][1] == tag:
+                        new.pop(0)
+                        if res[i][2] == zeit:
+                            new.pop(0)
                     res[i] = (res[i] + new)
                     res[i].reverse()
                     res[i] = list(OrderedDict.fromkeys(res[i]))
@@ -252,11 +253,11 @@ def get_data(sem_shortname, lang = "de"):
             v_dict["inhalt"] = latex2markdown.LaTeX2Markdown(veranstaltung[f"inhalt_{lang}"]).to_markdown()
             v_dict["vorkenntnisse"] = veranstaltung[f"vorkenntnisse_{lang}"]
             v_dict["verwendbarkeit"] = "<br>".join([makemodulname(x, lang, True)for x in veranstaltung["verwendbarkeit_modul"]])
-            print(v_dict["inhalt"])
+            # print(v_dict["inhalt"])
             r_dict["veranstaltung"].append(v_dict)
 
         data["rubrik"].append(r_dict)
-    print(data["rubrik"])
+    # print(data["rubrik"])
         #print(data)
     return data
 
@@ -435,6 +436,6 @@ def get_data_planung(sem_shortname, lang="de"):
             if p["veranstaltung"] == pv["_id"]:
                 loc3[p["sem"]] = ", ".join([name(x) for x in p["dozent"]] + ([p["kommentar"]] if p["kommentar"] != "" else []))
         data.append({"name" : pv["name"], "sws" : pv["sws"] } | loc1 | loc2 | loc3)
-    print(data)
+    # print(data)
     return sems, data
 
