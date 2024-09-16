@@ -144,11 +144,15 @@ def make_raumzeit(veranstaltung, lang = "de"):
                 # zB Mo, 8-10
                 tag = weekday[termin['wochentag']]
                 # person braucht man, wenn wir dann die Datenbank geupdated haben.
-                #person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
+                # person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
                 kommentar = rf"\newline{termin[f'kommentar_{lang}_html']}" if termin[f'kommentar_{lang}_html'] != "" else ""
                 new = [key, tag, zeit, raum, kommentar]
                 if key in [x[0] for x in res]:
                     new.pop(0)
+                    if tag in [x[1] for x in res]:
+                        new.pop(0)
+                        if zeit in [x[2] for x in res]:
+                            new.pop(0)
                     i = [x[0] for x in res].index(key)
                     res[i] = (res[i] + new)
                     res[i].reverse()

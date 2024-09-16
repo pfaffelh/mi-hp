@@ -13,3 +13,5 @@ misaka==2.1.1
 xmltodict==0.13.0
 latex2markdown==0.2.1
 apscheduler == 3.10.4
+bs4 == 0.0.2
+misaka == 2.1.1
