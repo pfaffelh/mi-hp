@@ -4,25 +4,18 @@
     <p>
       Sie haben sich für ein Mathematikstudium in Freiburg entschieden und haben
       sich in einen der beiden Bachelor-Studiengänge in Mathematik
-      eingeschrieben (
-      <a
-        href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
-      >
-        Bachelor of Science
-      </a>
+      eingeschrieben (<a href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">
+        Bachelor of Science</a>
       oder
       <a
         href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
       >
-        2-Hauptfächer-Bachelor
-      </a>
-      ) oder in den
+        2-Hauptfächer-Bachelor</a>) oder in den
       <a
         href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
       >
-        Master of Ecucation als Erweiterungsfach
-      </a>
-      . Was müssen Sie vor Studienbeginn nun tun?
+        Master of Ecucation als Erweiterungsfach </a>. 
+      Was müssen Sie vor Studienbeginn nun tun?
     </p>
     <p>
       Die kurze Antwort lautet: Kommen Sie bei Bedarf zum Vorkurs und unbedingt
@@ -35,14 +28,12 @@
       des Mathematischen Instituts oder die Studierenden der
       <a href="https://fachschaft-mathe-freiburg.de/">
         Fachschaft Mathematik
-      </a>
-      .
+      </a>.
     </p>
     {% else %}
     <p>
       You have decided to study mathematics in Freiburg and have enrolled in one
-      of two bachelor's degree programs in mathematics (
-      <a
+      of two bachelor's degree programs in mathematics (<a
         href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
       >
         Bachelor of Science
@@ -52,14 +43,12 @@
         href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
       >
         Two-Major Bachelor
-      </a>
-      ) or in the
+      </a>) or in the
       <a
         href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
       >
         Master of Ecucation as an extension subject
-      </a>
-      . What do you need to do before starting your studies?
+      </a>. What do you need to do before starting your studies?
     </p>
     <p>
       The short answer is: come to the preliminary course if necessary and
@@ -72,8 +61,7 @@
       of the Institute of Mathematics or the students of the
       <a href="https://fachschaft-mathe-freiburg.de/">
         Mathematics student council
-      </a>
-      .
+      </a>.
     </p>
     {% endif %}
   </div>
