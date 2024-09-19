@@ -4,8 +4,8 @@
     <p>
       Sie haben sich für ein Mathematikstudium in Freiburg entschieden und haben
       sich in einen der beiden Bachelor-Studiengänge in Mathematik
-      eingeschrieben (<a href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">
-        Bachelor of Science</a>
+      eingeschrieben (<a href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">Bachelor 
+        of Science</a>
       oder
       <a href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}">
         2-Hauptfächer-Bachelor</a>) oder in den
@@ -14,29 +14,24 @@
       Was müssen Sie vor Studienbeginn nun tun?
     </p>
     <p>
-      Die kurze Antwort lautet: Kommen Sie bei Bedarf zum Vorkurs und unbedingt
-      zur Einführungswoche, vorher müssen Sie in der Regel nichts tun. Einige
-      typische Fragen zum Studienstart werden auch hier beantwortet; weitere Fragen beantwortet
+      Die kurze Antwort lautet: Kommen Sie zur Einführungswoche und bei Bedarf zum Vorkurs;
+      in der Regel müssen Sie vorher nichts Weiteres tun. Einige
+      typische Fragen zum Studienstart werden auch schon hier beantwortet; weitere Fragen beantwortet
       bei Bedarf die
       <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
         Studienberatung
       </a>
       des Mathematischen Instituts oder die Studierenden der
-      <a href="https://fachschaft-mathe-freiburg.de/">
-        Fachschaft Mathematik
-      </a>.
+      <a href="https://fachschaft-mathe-freiburg.de/">Fachschaft Mathematik</a>.
     </p>
     {% else %}
     <p>
       You have decided to study mathematics in Freiburg and have enrolled in one
       of our two bachelor degree programmes (<a
-        href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">
-        Bachelor of Science
-      </a>
+        href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">Bachelor of Science</a>
       or
       <a href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}">
-        Two-Major Bachelor
-      </a>) or in the
+        Two-Major Bachelor</a>) or in the
       <a href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}">
         Master of Ecucation as additional subject
       </a>. What do you need to do before starting your studies?
@@ -51,7 +46,7 @@
       </a>
       of the Mathematical Institute or the students of the
       <a href="https://fachschaft-mathe-freiburg.de/">
-        Mathematics student council
+        Mathematics Student Council
       </a>.
     </p>
     {% endif %}
