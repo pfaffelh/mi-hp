@@ -7,14 +7,10 @@
       eingeschrieben (<a href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">
         Bachelor of Science</a>
       oder
-      <a
-        href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
-      >
+      <a href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}">
         2-Hauptfächer-Bachelor</a>) oder in den
-      <a
-        href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
-      >
-        Master of Ecucation als Erweiterungsfach </a>. 
+      <a href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}">
+        Master of Ecucation als Erweiterungsfach </a>.
       Was müssen Sie vor Studienbeginn nun tun?
     </p>
     <p>
@@ -34,19 +30,14 @@
     <p>
       You have decided to study mathematics in Freiburg and have enrolled in one
       of two bachelor's degree programs in mathematics (<a
-        href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
-      >
+        href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">
         Bachelor of Science
       </a>
       or
-      <a
-        href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
-      >
+      <a href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}">
         Two-Major Bachelor
       </a>) or in the
-      <a
-        href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
-      >
+      <a href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}">
         Master of Ecucation as an extension subject
       </a>. What do you need to do before starting your studies?
     </p>
@@ -69,45 +60,24 @@
   <div class="container text-end">
     <div class="row">
       <div class="col">
-        <a
-          href="{{ url_for('showstudiengaenge', lang=lang, anchor = 'bachelor') }}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{ url_for('showstudiengaenge', lang=lang, anchor = 'bachelor') }}" class="btn btn-primary"
+          role="button" aria-disabled="true">
           Bachelor
         </a>
-        <a
-          href="{{ url_for('showstudiengaenge', lang=lang, anchor = 'master') }}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{ url_for('showstudiengaenge', lang=lang, anchor = 'master') }}" class="btn btn-primary" role="button"
+          aria-disabled="true">
           Master
         </a>
-        <a
-          href="{{ url_for('showstudiengaenge', lang=lang, anchor = 'lehramt') }}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{ url_for('showstudiengaenge', lang=lang, anchor = 'lehramt') }}" class="btn btn-primary"
+          role="button" aria-disabled="true">
           {% if lang == "de" %} Lehramt{% else %}Teacher's education{% endif %}
         </a>
-        <a
-          href="{{ url_for('showstudiendekanat', lang=lang)}}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{ url_for('showstudiendekanat', lang=lang)}}" class="btn btn-primary" role="button"
+          aria-disabled="true">
           {% if lang == "de" %} Studienberatung{% else %}Academic advice
           office{% endif %}
         </a>
-        <a
-          href="https://fachschaft-mathe-freiburg.de/"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="https://fachschaft-mathe-freiburg.de/" class="btn btn-primary" role="button" aria-disabled="true">
           {% if lang == "de" %} Fachschaft{% else %}Student council{% endif %}
         </a>
       </div>
@@ -118,26 +88,16 @@
   <div class="accordion accordion-flush" id="accordionExample">
     <div class="accordion-item" id="_vorbereitung">
       <h4 class="accordion-header" id="header_vorbereitung">
-        <button
-          aria-controls="_vorbereitungContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_vorbereitungContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
+        <button aria-controls="_vorbereitungContent" aria-expanded="false" class="accordion-button collapsed"
+          data-bs-target="#_vorbereitungContent" data-bs-toggle="collapse" type="button">
           <h3 class="h5">
             {% if lang == "de" %}Vor dem Studium{% else %}Before study{% endif
             %}
           </h3>
         </button>
       </h4>
-      <div
-        aria-labelledby="_vorbereitungContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_vorbereitungContent"
-      >
+      <div aria-labelledby="_vorbereitungContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+        id="_vorbereitungContent">
         <div class="accordion-body" id="vorbereitungContent">
           {% if lang == "de" %}
           <p>
@@ -164,9 +124,7 @@
             <br style="margin-bottom: 7px" />
             Wer sich vor Vorlesungsbeginn schon ein wenig mit Mathematik und dem
             Mathematikstudium beschäftigen möchte, findet
-            <a
-              href="{{url_for('showanfang', lang = lang, anchor = 'literatur', _anchor='literatur')}}"
-            >
+            <a href="{{url_for('showanfang', lang = lang, anchor = 'literatur', _anchor='literatur')}}">
               unten auf dieser Seite
             </a>
             einige Buchempfehlungen.
@@ -188,8 +146,7 @@
             <li>
               für alle universitären Lehrveranstaltungen im
               <a
-                href="https://campus.uni-freiburg.de/qisserver/pages/cm/exa/coursecatalog/showCourseCatalog.xhtml?_flowId=showCourseCatalog-flow"
-              >
+                href="https://campus.uni-freiburg.de/qisserver/pages/cm/exa/coursecatalog/showCourseCatalog.xhtml?_flowId=showCourseCatalog-flow">
                 Vorlesungsverzeichnis der Universität
               </a>
               in HISinOne.
@@ -197,8 +154,7 @@
             <li>
               Wenn Sie nach einer konkreten Lehrveranstaltung suchen, ist die
               <a
-                href="https://campus.uni-freiburg.de/qisserver/pages/startFlow.xhtml?_flowId=searchCourseNonStaff-flow&amp;_flowExecutionKey=e3s1"
-              >
+                href="https://campus.uni-freiburg.de/qisserver/pages/startFlow.xhtml?_flowId=searchCourseNonStaff-flow&amp;_flowExecutionKey=e3s1">
                 Veranstaltungssuche
               </a>
               hilfreicher.
@@ -206,38 +162,36 @@
           </ul>
           </p>
           </p>
-            Alle Mathematik-Studiengänge bauen auf den Grundvorlesungen in
-            Analysis und Linearer Algebra auf:
-            <br />
-            <i>Analysis I</i> und <i>Lineare Algebra I</i> werden jedes Wintersemester, 
-            <i>Analysis II</i> und <i>Lineare Algebra II</i> jedes Sommersemester angeboten. 
-            Jede dieser Veranstaltungen besteht aus einer vierstündigen Vorlesung und einem zweistündigen
-            Tutorat.
-            <br />
-            Die Vorlesung
-            <i> Lineare Algebra I </i>
-            findet in der Regel montags und donnerstags und die Vorlesung
-            <i> Analysis I </i>
-            dienstags und mittwochs, jeweils von 8:15 bis 10 Uhr statt. Für die
-            Tutorate gibt es eine Vielzahl von Terminen; die Anmeldung erfolgt
-            in der Regel in der ersten Vorlesungswoche, wo man sich abhängig vom
-            restlichen Stundenplan für ein passendes Tutorat eintragen kann. Die
-            Tutorate werden von der Assistenz der Vorlesung organisiert, an die
-            Sie sich bei Terminschwierigkeiten wenden können. (Wer Assistent:in
-            ist, finden Sie im
-            <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
-              Vorlesungsverzeichnis Mathematik
-            </a>, die Kontaktdaten in unserem
-            <a href="https://home.mathematik.uni-freiburg.de/personen/list">
-              Personenverzeichnis
-            </a>.)
+          Alle Mathematik-Studiengänge bauen auf den Grundvorlesungen in
+          Analysis und Linearer Algebra auf:
+          <br />
+          <i>Analysis I</i> und <i>Lineare Algebra I</i> werden jedes Wintersemester,
+          <i>Analysis II</i> und <i>Lineare Algebra II</i> jedes Sommersemester angeboten.
+          Jede dieser Veranstaltungen besteht aus einer vierstündigen Vorlesung und einem zweistündigen
+          Tutorat.
+          <br />
+          Die Vorlesung
+          <i> Lineare Algebra I </i>
+          findet in der Regel montags und donnerstags und die Vorlesung
+          <i> Analysis I </i>
+          dienstags und mittwochs, jeweils von 8:15 bis 10 Uhr statt. Für die
+          Tutorate gibt es eine Vielzahl von Terminen; die Anmeldung erfolgt
+          in der Regel in der ersten Vorlesungswoche, wo man sich abhängig vom
+          restlichen Stundenplan für ein passendes Tutorat eintragen kann. Die
+          Tutorate werden von der Assistenz der Vorlesung organisiert, an die
+          Sie sich bei Terminschwierigkeiten wenden können. (Wer Assistent:in
+          ist, finden Sie im
+          <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
+            Vorlesungsverzeichnis Mathematik
+          </a>, die Kontaktdaten in unserem
+          <a href="https://home.mathematik.uni-freiburg.de/personen/list">
+            Personenverzeichnis
+          </a>.)
           </p>
           <ul>
             <li>
               Im
-              <a
-                href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
-              >
+              <a href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">
                 <b>Bachelor-of-Science-Studiengang Mathematik</b>
               </a>
               starten Sie in das Mathematikstudium mit den beiden
@@ -252,19 +206,16 @@
             </li>
             <li>
               Studieren Sie Mathematik im
-              <a
-                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
-              >
+              <a href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}">
                 <b> Polyvalenten Zwei-Hauptfächer-Bachelor-Studiengang </b>
-              </a>, können Sie entweder mit beiden Veranstaltungen <i>Lineare Algebra I</i> und 
+              </a>, können Sie entweder mit beiden Veranstaltungen <i>Lineare Algebra I</i> und
               <i>Analysis I</i> anfangen oder nur mit einer von beiden – je nachdem, wann Ihre
               Veranstaltungen im zweiten Fach liegen und ob Sie am Anfang eher
               etwas mehr Mathematik machen möchten oder eher etwas mehr im Ihrem
               anderen Fach. (Hinweise zu den verschiedenen
               Studienverlaufsvarianten finden Sie
               <a
-                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}"
-              >
+                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}">
                 hier</a>.)
               <br style="margin-bottom: 5px" />
               Im Zwei-Hauptfächer-Studiengang kommen Pflichtveranstaltungen aus
@@ -273,9 +224,7 @@
             </li>
             <li>
               Der Studiengang
-              <a
-                href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
-              >
+              <a href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}">
                 <b> Master of Ecucation als Erweiterungsfach </b>
               </a>
               (Mathematik als Drittfach) beginnt ebenfalls mir den
@@ -283,11 +232,10 @@
               ihn am besten parallel zum Zwei-Hauptfächer-Bachelor-Studiengang
               in ihren beiden ersten Fächern, sobald Sie die
               Orientierungsprüfung hinter sich haben. Üblicherweise haben Sie
-              dann zunächst nur Zeit für eine der beiden Vorlesungen <i>Lineare Algebra I</i> und 
+              dann zunächst nur Zeit für eine der beiden Vorlesungen <i>Lineare Algebra I</i> und
               <i>Analysis I</i> und können sich an den Hinweisen zu den
               <a
-                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}"
-              >
+                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}">
                 Studienverlaufsvarianten für Mathematik im
                 Zwei-Hauptfächer-Bachelor-Studiengang
               </a>
@@ -325,8 +273,7 @@
             sollten Sie sich Gedanken über die Wahl des Anwendungsfachs machen.
             Informationen zum Anwendungsfach gibt es
             <a
-              href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'anwendungsfaecher', _anchor = 'anwendungsfaecher') }}"
-            >
+              href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'anwendungsfaecher', _anchor = 'anwendungsfaecher') }}">
               hier</a>. Falls Sie
           <ul>
             <li>
@@ -381,11 +328,8 @@
             <br style="margin-bottom: 7px" />
             If you would like to learn a little about mathematics and the study
             of mathematics before you find some book recommentations
-            <a
-              href="{{url_for('showanfang', lang = lang, anchor = 'literatur', _anchor='literatur')}}"
-            >
-              below on this page </a
-            >.
+            <a href="{{url_for('showanfang', lang = lang, anchor = 'literatur', _anchor='literatur')}}">
+              below on this page </a>.
           </p>
           <p>
             <b style="font-size: 105%"> How do I get the timetable? </b>
@@ -406,8 +350,7 @@
             <li>
               for all university courses in the
               <a
-                href="https://campus.uni-freiburg.de/qisserver/pages/cm/exa/coursecatalog/showCourseCatalog.xhtml?_flowId=showCourseCatalog-flow"
-              >
+                href="https://campus.uni-freiburg.de/qisserver/pages/cm/exa/coursecatalog/showCourseCatalog.xhtml?_flowId=showCourseCatalog-flow">
                 Course catalog of the university
               </a>
               in HISinOne.
@@ -415,8 +358,7 @@
             <li>
               If you are looking for a specific course, the
               <a
-                href="https://campus.uni-freiburg.de/qisserver/pages/startFlow.xhtml?_flowId=searchCourseNonStaff-flow&amp;_flowExecutionKey=e3s1"
-              >
+                href="https://campus.uni-freiburg.de/qisserver/pages/startFlow.xhtml?_flowId=searchCourseNonStaff-flow&amp;_flowExecutionKey=e3s1">
                 course search
               </a>
               might be more helpful.
@@ -458,9 +400,7 @@
           <ul>
             <li>
               Your studies in the
-              <a
-                href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
-              >
+              <a href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">
                 <b> Bachelor of Science degree course in Mathematics </b>
               </a>
               you start your mathematics studies with the two courses "
@@ -475,9 +415,7 @@
             </li>
             <li>
               For your study in the
-              <a
-                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
-              >
+              <a href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}">
                 <b> Polyvalent two-major Bachelor's degree program</b>
               </a>
               you can either study with both courses "
@@ -490,8 +428,7 @@
               subject. (Information on the different course variants can be
               found
               <a
-                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}"
-              >
+                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}">
                 here
               </a>
               .)
@@ -504,9 +441,7 @@
             </li>
             <li>
               The degree program
-              <a
-                href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
-              >
+              <a href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}">
                 <b> Master of Education as an extension subject </b>
               </a>
               (Mathematics as a third subject) also begins with the basic
@@ -519,8 +454,7 @@
               <i> Analysis I </i>
               " and can use the notes on the
               <a
-                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}"
-              >
+                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'studienverlauf', _anchor = 'studienverlauf') }}">
                 Study program options for mathematics in the two-major
                 bachelor's degree program
               </a>
@@ -557,8 +491,7 @@
             you should think about the choice of application subject.
             Information on the application subject can be found
             <a
-              href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'anwendungsfaecher', _anchor = 'anwendungsfaecher') }}"
-            >
+              href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'anwendungsfaecher', _anchor = 'anwendungsfaecher') }}">
               here
             </a>
             .
@@ -599,26 +532,15 @@
     </div>
     <div class="accordion-item" id="_vorkurs">
       <h4 class="accordion-header" id="header_vorkurs">
-        <button
-          aria-controls="_vorkursContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_vorkursContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
+        <button aria-controls="_vorkursContent" aria-expanded="false" class="accordion-button collapsed"
+          data-bs-target="#_vorkursContent" data-bs-toggle="collapse" type="button">
           <h3 class="h5">
-            {% if lang == "de" %}Vorkurs Mathematik{% else %}Preliminary course
-            in mathematics{% endif %}
+            {% if lang == "de" %}Vorkurs Mathematik{% else %}Precourse in mathematics{% endif %}
           </h3>
         </button>
       </h4>
-      <div
-        aria-labelledby="_vorkursContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_vorkursContent"
-      >
+      <div aria-labelledby="_vorkursContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+        id="_vorkursContent">
         <div class="accordion-body" id="vorkursContent">
           {% if lang == "de" %}
           <p>
@@ -637,38 +559,30 @@
               Der Vorkurs 2024 beginnt am Montag, 30.09.2024 um 9:15&nbsp;Uhr.
               <a href="https://home.mathematik.uni-freiburg.de/ngrosse/teaching/Vorlesungen/Vorkurs.html">
                 Informationen zum Vorkurs (weitere Zeiten und Räume)</a>.
-                 </li>
-              <li>
-                Um die Hörsäle zu finden, ist der
-              <a
-                href="https://uni-freiburg.de/lageplaene/#institutsviertel-naturwissenschaften-rektorat-2">
-                Lageplan des Institutsviertel
+            </li>
+            <li>
+              Um die Hörsäle zu finden, ist der
+              <a href="https://uni-freiburg.de/lageplaene/#institutsviertel-naturwissenschaften-rektorat-2">
+                Lageplan des Institutsviertels
               </a>
               hilfreich.
             </li>
           </ul>
           <p>
-            <b style="font-size: 105%"> Anmeldung </b>
+            <b style="font-size: 105%"> Anmeldung und Vorbereitung</b>
           </p>
           <ul>
             <li>
               Eine vorherige Anmeldung über
-              <a
-                href="https://kosmic.uni-freiburg.de/login.php?target=crs_16737&amp;cmd=force_login&amp;lang=de"
-              >
-              <i>kosmic</i>
+              <a href="https://kosmic.uni-freiburg.de/login.php?target=crs_16737&amp;cmd=force_login&amp;lang=de">
+                <i>kosmic</i>
               </a>
               ist erwünscht.
             </li>
-          </ul>
-          <p>
-            <b style="font-size: 105%"> Material </b>
-          </p>
-          <ul>
-            <li>Bitte bringen Sie Papier und Stift mit.</li>
+            <li>Bitte bringen Sie etwas zum Schreiben mit (Papier und Stift).</li>
           </ul>
           </p>
-            <!--      
+          <!--      
           <p>
             <b style="font-size: 105%">
               Materialien aus den Vorkursen vergangener Jahre
@@ -715,1261 +629,1122 @@
           </ul> -->
           </p>
 
-        <p>
-          <b style="font-size: 105%">
-            Mathematik-Vorkurse für andere Studiengänge
-          </b>
-          <br style="margin-bottom: 7px" />
-          Für Studierende anderer Studienfächer als Mathematik gibt es die
-          folgenden Vorkurse:
-        </p>
-        <ul>
-          <li>
-            <a
-              href="https://fachschaft.tf/de/studium/erstsemester/"
-            >
-              Informatik
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&unitId=116148&periodId=2483"
-            >
-              diverse Naturwissenschaften
-            </a>
-            (Biologie, Geowissenschaften, Umweltnaturwissenschaften)
-          </li>
-          <li>
-            <a
-              href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&amp;unitId=10268&amp;periodId=2483"
-            >
-              Physik
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&unitId=8443&periodId=2483&navigationPosition=studiesOffered,searchCourses"
-            >
-              Wirtschaftswissenschaften
-            </a>
-          </li>
-        </ul>
-        Studierende mit Fächerkombination Mathematik/Physik sollten vorzugsweise
-        den Vorkurs der Physik besuchen. {% else %}
-        <p>
-          The Institute of Mathematics offers a preliminary course for
-          first-year students in mathematics every winter semester (usually two
-          weeks before the start of lectures). This preliminary course is
-          intended to facilitate entry into the study of mathematics, but is not
-          a prerequisite for the study of mathematics.
-        </p>
-        <p>
-          <b style="font-size: 105%">Date 2022</b>:
-          <br style="margin-bottom: 7px" />
-          The 2022 preliminary course is scheduled to begin on Tuesday, October
-          4 and end on Friday October 7.
-        </p>
-        <p>
-          <!--            <b style="font-size: 105%"
-              >Materials from previous years&apos; prerequisite courses:</b
-            >
+          <p>
+            <b style="font-size: 105%">
+              Mathematik-Vorkurse für andere Studiengänge
+            </b>
             <br style="margin-bottom: 7px" />
-          </p>
-
-          <ul>
-            <li>
-              <a href="https://www.youtube.com/watch?v=Biod6FRh0VY">Videos</a>
-              (YouTube) from the winter semester 2021/22
-            </li>
-            <li>
-              <a
-                href="https://www.youtube.com/watch?v=eV2IJIchf8o&list=PLH2Mmq5HX7SzXN5shEwivl7c2LLg5nqSa"
-                >Videos</a
-              >
-              (YouTube) from winter term 2021/22
-            </li>
-            <li>
-              <a
-                href="https://www.stochastik.uni-freiburg.de/professoren/pfaffelhuber/inhalte/Vorkurs"
-                >Script</a
-              >
-              from winter term 2020/21
-            </li>
-            <li>
-              <a
-                href="https://www.stochastik.uni-freiburg.de/professoren/pfaffelhuber/vorkurs-ws2019-aufgaben/at_download/file"
-                >Exercises</a
-              >
-              from winter term 2019/20
-            </li>
-          </ul>-->
-
-          <b style="font-size: 105%"
-            >mathematics pre-courses for other degree programs:</b
-          ><br style="margin-bottom: 7px" />
-          The following prerequisite courses are available for students in
-          majors other than mathematics:
-        </p>
-
-        <ul>
-          <li>
-            <a
-              href="https://fachschaft.tf.uni-freiburg.de/erstsemester/mathevorkurs/mathevorkurs"
-              >Computer science</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&amp;unitId=116148&amp;periodId=2479"
-              >various Natural Sciences</a
-            >
-            (Biology, Earth Sciences, Environmental Sciences)
-          </li>
-          <li>
-            <a
-              href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&amp;unitId=10268&amp;periodId=2479"
-              >Physics</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&amp;unitId=8443&amp;periodId=2479"
-              >Economics</a
-            >
-          </li>
-        </ul>
-        Students with mathematics/physics subject combinations should preferably
-        take the physics preliminary course. {% endif %}
-      </div>
-    </div>
-    <div class="accordion-item" id="_einfuehrungswoche">
-      <h4 class="accordion-header" id="header_einfuehrungswoche">
-        <button
-          aria-controls="_einfuehrungswocheContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_einfuehrungswocheContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <h3 class="h5">
-            {% if lang == "de" %}Einführungswoche{% else %}Introduction week{%
-            endif %}
-          </h3>
-        </button>
-      </h4>
-      <div
-        aria-labelledby="_einfuehrungswocheContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_einfuehrungswocheContent"
-      >
-        <div class="accordion-body" id="einfuehrungswocheContent">
-          {% if lang == "de" %}
-          <p>
-            Die
-            <a href="https://fachschaft-mathe-freiburg.de/">
-              Fachschaft Mathematik
-            </a>
-            organisiert jährlich eine
-            <b> Einführungswoche </b>
-            für die Studienanfänger:innen in Mathematik. Sie findet in der Woche
-            vor Vorlesungsbeginn des Wintersemesters statt. In dieser Woche
-            können die neuen Mathematik-Studierenden sich untereinander
-            kennenlernen, aber auch Studierende in höheren Semester.
-            Die Dozent:inn:en der Erstsemestervorlesungen stellen sich vor, und
-            es gibt Führungen durch das Mathematische Institut, die Universität
-            und die Stadt Freiburg. Innerhalb der Einführungswoche bietet die
-            <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
-              Studienberatung
-            </a>
-            eine Informationsveranstaltung an, bei der offene Fragen zum Ablauf
-            des Studiums geklärt werden können. Die Teilnahme an der
-            Einführungswoche ist allen Studierenden im ersten Semester sehr
-            empfohlen.
-          </p>
-          <p>
-            Auch die
-            <b> neuen Master-Studierenden </b>
-            sind herzlich willkommen. Für die beiden Studiengänge „Master of
-            Education“ und „Master of Science“ gibt es ebenfalls
-            Informationsveranstaltungen:
+            Für Studierende anderer Studienfächer als Mathematik gibt es die
+            folgenden Vorkurse:
           </p>
           <ul>
             <li>
-              Master of Education Mathematik: Dienstag, 8. Oktober 2024, um 14:00 Uhr im SR 404
-            </li>
-            <li>
-              Master of Science Mathematik: Dienstag, 8. Oktober 2024, um 15:00 Uhr im SR 404
-            </li>
-            <li>
-              Master of Science <i>Mathematics in Data and Technology</i>: Begrüßung der neuen Studierenden am Montag, 14. Oktober 2024, um 11:00 Uhr im SR 404
-            </li>
-          </ul>
-          <p>
-            <b style="font-size: 105%"> Termin </b>
-          </p>
-          <ul>
-            <li>
-              Die Einführungswoche findet in der Woche vor
-              <a
-                href="https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten/"
-              >
-                Vorlesungsbeginn
-              </a>
-              statt und beginnt dieses Jahr am 7. Oktober 2024 um 9:00 Uhr.
-            </li>
-          </ul>
-          <p>
-            <b style="font-size: 105%"> Anmeldung </b>
-          </p>
-          <ul>
-            <li>Eine Anmeldung ist nicht erforderlich – einfach hingehen!</li>
-          </ul>
-          <p>
-            <b style="font-size: 105%"> Programm </b>
-          </p>
-          <ul>
-            <li>
-              Das genaue Programm wird kurzfristig
-              <a
-                href="https://fachschaft-mathe-freiburg.de/uncategorized/einfuehrungswoche-der-fachschaft-mathematik-fuer-neue-studierende/"
-              >
-                hier auf den Fachschaftsseiten
-              </a>
-              veröffentlicht
-            </li>
-            <li>
-              <a
-                href="/static/pdf/studienberatung/2023_Folien_SCS_Studienstart_Studiengänge.pdf"
-              >
-                Folien der Zentralen Studienberatung
-              </a>
-              (2023)
-            </li>
-            <li>
-              <a href="/static/pdf/studienberatung/ese2023.pdf">
-                Präsentation 2023
-              </a>
-              zur Einführung in die Studiengänge
-            </li>
-          </ul>
-          <p>
-            <b style="font-size: 105%"> Universitätsweite Aktionen </b>
-          </p>
-          <ul>
-            <li>
-              Sämtliche Angebote finden Sie auch in der
-              <a
-                href="https://www.studium.uni-freiburg.de/de/studierendenservices/studienanfaenger"
-              >
-                App „Studienstart – Uni Freiburg“
+              <a href="https://fachschaft.tf/de/studium/erstsemester/">
+                Informatik
               </a>
             </li>
             <li>
-              Unabhängig von der Einführungswoche der Mathematik gibt es mit dem
               <a
-                href=" https://www.studium.uni-freiburg.de/de/studierendenservices/studienanfaenger/erstsemestertag/erstsemestertag"
-              >
-                Erstsemestertag
+                href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&unitId=116148&periodId=2483">
+                diverse Naturwissenschaften
               </a>
-              eine zentrale Erstsemesterbegrüßung der Universität, dieses Jahr
-              am Freitag, 13. Oktober 2023 im Stadion des SC Freiburg.
+              (Biologie, Geowissenschaften, Umweltnaturwissenschaften)
             </li>
-            <li>
-              Am Donnerstag, 12. Oktober 2023, gibt es ein universitätsweites
-              Willkommen für die Lehramtsstudierenden: Begrüßungsveranstaltung
-              Bachelor, 16–18 Uhr im Paulussaal, und Begrüßungsveranstaltung
-              Master pof Education, 10–12 Uhr im HS 1221.
-            </li>
-            <!--	<li> Einführungen in den BOK-Bereich am Zentrum für Schlüsselqualifikationen gibt es für den Bachelor-of-Science-Studiengang
-	  am Donnerstag, 13.&nbsp;Oktober 2022 um 18:00 Uhr im HS&nbsp;00&thinsp;026 an der Technischen Fakultät
-	  und am Mittwoch 19.&nbsp;Oktober 2022 im Hörsaal&nbsp;I im Physik-Hochhaus; 
-	  für den Zwei-Hauptfächer-Bachelor ohne Lehramtsoption am Donnerstag 13.&nbsp;Oktober 2022 im HS&nbsp;1010 im KG&nbsp;I. </li> -->
-          </ul>
-          {% else %}
-
-          <p>
-            The
-            <a href="https://fachschaft-mathe-freiburg.de/"
-              >departmental student committee</a
-            >
-            organizes an annual <b>introductory week</b> for first-year students
-            in mathematics, which takes place in the week before lectures begin
-            in the winter semester. During this week, the new mathematics
-            students can get to know each other, but also students in higher
-            semesters. <br />The lecturers of the first-semester lectures
-            introduce themselves, and there are guided tours the Institute of
-            Mathematics, the university and the city of Freiburg.
-          </p>
-          <p>
-            In order to clarify open questions about the course of studies, the
-            Academic Advisory Service offers an information event during the
-            introductory week. 
-          </p>
-          <p>
-            Participation in the introductory week is highly recommended for all
-            first semester students.
-          </p>
-          <p>
-            <b style="font-size: 105%">Date</b>
-            <br style="margin-bottom: 7px" />
-            The introductory week takes place in the week before
-            <a
-              href="https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten/"
-              >start of lectures</a
-            >
-            and usually starts on Tuesdays, i.e. from October 11 to 15, 2022.
-          </p>
-          <b style="font-size: 105%">Programme</b>
-          <br style="margin-bottom: 7px" />
-          <ul>
             <li>
               <a
-                href="https://fachschaft-mathe-freiburg.de/uncategorized/einfuehrungswoche-der-fachschaft-mathematik-fuer-neue-studierende/"
-                >here</a
-              >
+                href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&amp;unitId=10268&amp;periodId=2483">
+                Physik
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&unitId=8443&periodId=2483&navigationPosition=studiesOffered,searchCourses">
+                Wirtschaftswissenschaften
+              </a>
             </li>
           </ul>
-
-          <b style="font-size: 105%">Documents from 2021</b>
-          <br style="margin-bottom: 7px" />
+          Studierende mit Fächerkombination Mathematik/Physik sollten vorzugsweise
+          den Vorkurs der Physik besuchen. {% else %}
+          <p>
+            The Institute of Mathematics offers a precourse for
+            first-year students in mathematics every winter semester (usually two
+            weeks before the start of lectures). This precourse is
+            intended to facilitate entry into the study of mathematics, but is not
+            a prerequisite for the study of mathematics.
+          </p>
+          <p>
+            <b style="font-size: 105%">Date and location</b>
           <ul>
             <li>
-              <a href="dokumente/ese2021.pdf"
-                >Slides of the introduction to the bachelor&apos;s degree
-                programs.</a
-              >
+              The 2024 precourse is scheduled to begin on Monday,September 30th.
+              <a href="https://home.mathematik.uni-freiburg.de/ngrosse/teaching/Vorlesungen/Vorkurs.html">Further
+                information</a>.
             </li>
             <li>
-              <a href="dokumente/Infoblatt_OSP_WS2122.pdf"
-                >Information sheet on the orientation internship in WS
-                2021/22</a
-              >
+              To find the lecture halls, please use the
+              <a href="https://uni-freiburg.de/lageplaene/#institutsviertel-naturwissenschaften-rektorat-2">university
+                map</a>
             </li>
           </ul>
+          <b style="font-size: 105%">Registration</b>
+          <ul>
+            <li>
+              Please register via <a href="https://kosmic.uni-freiburg.de"><i>kosmic</i>i></i></a>
+            </li>
+            <li>
+              Please bring something to write (paper and pen). 
+            </li>
+          </ul>
+          </p>
 
-          {% endif %}
+          <p>
+            <b style="font-size: 105%">
+              Mathematics precourses for other degree programmes
+            </b>
+            
+          <ul>
+            <li>
+              <a href="https://fachschaft.tf/de/studium/erstsemester/">
+                Computer Science
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&unitId=116148&periodId=2483">
+                various Sciences
+              </a>
+              (Biology, Earth Sciences, Environmental Sciences)
+            </li>
+            <li>
+              <a
+                href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&amp;unitId=10268&amp;periodId=2483">
+                Physics
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&unitId=8443&periodId=2483&navigationPosition=studiesOffered,searchCourses">
+                Economics
+              </a>
+            </li>
+          </ul>
+          Students with mathematics/physics subject combinations should preferably
+          take the physics preliminary course. {% endif %}
         </div>
       </div>
-    </div>
-
-    <div class="accordion-item" id="_beginn">
-      <h4 class="accordion-header" id="header_beginn">
-        <button
-          aria-controls="_beginnContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_beginnContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <h3 class="h5">
-            {% if lang == "de" %}Die ersten Wochen{% else %}The first weeks{%
-            endif %}
-          </h3>
-        </button>
-      </h4>
-      <div
-        aria-labelledby="_beginnContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_beginnContent"
-      >
-        <div class="accordion-body" id="beginnContent">
-          {% if lang == "de" %}
-          <p></p>
-          <p>
-            <b style="font-size: 105%">
-              Wann und wo geht es mit dem Studium los?
-            </b>
-            <br style="margin-bottom: 7px" />
-            Beginn und Ende der Vorlesungszeiten jedes Semesters finden Sie
-            <a
-              href="https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten/"
-            >
-              auf dieser Seite
-            </a>
-            .
-          </p>
-          <p>
-            Die Erstsemester-Vorlesungen in Mathematik –
-            <i> Analysis I </i>
-            und
-            <i> Lineare Algebra I </i>
-            – starten am Montag bzw. Dienstag der ersten Vorlesungswoche um
-            8:15 Uhr.
-            <!-- (wobei &bdquo;8&nbsp;Uhr&ldquo; im akademischen Sprachgebrauch bedeutet, dass die Veranstaltung üblicherweise um 8:15&nbsp;Uhr beginnt) -->
-            Hörsaal ist in der Regel der „Rundbau“ (Nr. 28 im
-            <a
-              href="https://www.uni-freiburg.de/universitaet/universitaet-im-ueberblick/kontakt-und-wegweiser/lageplaene/institutsviertel"
-            >
-              Lageplan
-            </a>
-            ).
-          </p>
-          <p>
-            Für die Vorlesungen ist keine Anmeldung erforderlich, eine vorherige
-            Belegung über das Campus-Managemenet-System HISinOne aber erwünscht.
-            In der jeweils ersten Vorlesungsstunde erhalten Sie alle relevanten
-            Informationen. Insbesondere wird mitgeteilt, wie die Anmeldung zu
-            den Übungen (Tutoraten) erfolgt. Für die Tutorate gibt es mehrere
-            Alternativtermine; die Verteilung erfolgt mit oder nach der
-            Anmeldung.
-          </p>
-          <p>
-            <b style="font-size: 105%">
-              Wo finden die Mathematik-Veranstaltungen statt?
-            </b>
-            <br style="margin-bottom: 7px" />
-            In den meisten Fällen in folgenden Räumen:
-          </p>
-          <table>
-            <tr>
-              <td>
-                <i> HS = Hörsaal, SR = Seminarrraum </i>
-              </td>
-              <td>
-                <i> Lageplan </i>
-              </td>
-              <td></td>
-              <td>
-                <i> Adresse </i>
-              </td>
-            </tr>
-            <tr>
-              <td>– HS Rundbau</td>
-              <td align="center">Nr. 28</td>
-              <td></td>
-              <td>Albertstr. 21a</td>
-            </tr>
-            <tr>
-              <td>– HS Weismann-Haus</td>
-              <td align="center">Nr. 29</td>
-              <td></td>
-              <td>Albertstr. 21</td>
-            </tr>
-            <tr>
-              <td>– HS II</td>
-              <td align="center">Nr. 13</td>
-              <td></td>
-              <td>Albertstr. 23b</td>
-            </tr>
-            <tr>
-              <td>– SR 119, 125, 127, 218, 318, 403, 404, 414</td>
-              <td align="center">Nr. 2</td>
-              <td></td>
-              <td>Ernst-Zermelo-Str. 1</td>
-            </tr>
-            <tr>
-              <td>– SR 226</td>
-              <td align="center">Nr. 16</td>
-              <td></td>
-              <td>Hermann-Herder-Str. 10</td>
-            </tr>
-          </table>
-          Zur Orientierung hilft der
-          <a
-            href="https://www.uni-freiburg.de/universitaet/universitaet-im-ueberblick/kontakt-und-wegweiser/lageplaene/institutsviertel"
-          >
-            Lageplan
-          </a>
-          des Institutsviertels. Die Adresse allein ist oft nicht sehr
-          hilfreich, da die Hörsäle nicht direkt an der Straße liegen.
-          <p>
-            <b style="font-size: 105%">
-              Wie funktioniert die Tutoratseinteilung und was kann man bei
-              Terminschwierigkeiten tun?
-            </b>
-            <br style="margin-bottom: 7px" />
-            Zu jeder Vorlesung gibt es einen Assistenten/eine Assistentin,
-            der/die sich um alle organisatorischen Fragen kümmert und an den/die
-            Sie sich bei Problemen wenden können, insbesondere wenn es
-            Terminschwierigkeiten bei den Tutoraten gibt. Wer Assistent:in ist,
-            ist im
-            <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
-              Vorlesungsverzeichnis des Mathematischen Instituts
-            </a>
-            bei jeder Vorlesung vermerkt.
-          </p>
-          <p>
-            Die Assistent:inn:en organisieren auch die Verteilung der
-            Studierenden auf die Übungsgruppen/Tutorate. Meistens wird dazu das
-            Campus-Management-System HISinOne benutzt, in dem Sie sich innerhalb
-            einer gewissen Frist online zu einem Wunschtermin anmelden können
-            ("belegen"), sofern noch Plätze in dem Tutorat frei sind. Die Frist
-            läuft in der Regel bis in die erste Vorlesungswoche hinein. Wenn Sie
-            nach Ende der Frist noch einen Tutoratsplatz brauchen (weil sich der
-            Studienbeginn aus irgenwelchen Gründen verzögert hat) oder wenn sich
-            nach erfolgter Zuteilung Terminschwierigkeiten bekommen haben (z.B.
-            wegen einer anderen Tutoratseinteilung), wenden Sie sich bitte an
-            den Assistenten/die Assistentin!
-          </p>
-          <p>
-            <b style="font-size: 105%">
-              Was sollte man während des Studiums beachten?
-            </b>
-            <br style="margin-bottom: 7px" />
-            Es gibt keine Anwesenheitspflicht in Vorlesungen, aber üblicherweise
-            in den Tutoraten (die oft erst in der zweiten Vorlesungswoche
-            beginnen). Die regelmäßige Teilnahme an den Vorlesungen ist aber
-            dringend angeraten, und ohne regelmäßige Vor- und Nachbereitung der
-            Vorlesungen ist ein erfolgreiches Studium kaum möglich. Es ist daher
-            unumgänglich, von Anfang an konzentriert mitzuarbeiten.
-          </p>
-          <p>
-            Es empfiehlt sich, die Vor- und Nachbereitung der Vorlesung und die
-            Bearbeitung der Übungsaufgaben teilweise alleine, teilweise in
-            Kleingruppen vorzunehmen, da Sie sowohl lernen sollen, mathematische
-            Aufgaben alleine zu bewältigen, als auch mathematische Zusammenhänge
-            zu erklären.
-          </p>
-          <p>
-            Studentische Arbeitsplätze / PC-Arbeitsplätze / Kommunikationsräume
-            finden Sie hier:
-          </p>
-          <ul>
-            <li>
-              Studentische Arbeitsräume im Erdgeschoss des Mathematischen
-              Instituts, Ernst-Zermelo-Str. 1;
-            </li>
-            <li>
-              Arbeitstische auf den Fluren in der Ernst-Zermelo-Straße 1 und in
-              der Hermann-Herder-Str. 10 (Abteilung für Angewandte
-              Mathematik/Rechenzentrum);
-            </li>
-            <li>
-              Stillarbeitsplätze in der Mathematikbibliotheks in der
-              Ernst-Zermelo-Str. 1;
-            </li>
-            <li>
-              studentische Arbeitsplätze in der
-              <a href="https://www.ub.uni-freiburg.de/">
-                Universitätsbibliothek;
-              </a>
-            </li>
-            <li>
-              PC-Pool des Mathematischen Instituts in der Ernst-Zermelo-Str. 1;
-            </li>
-            <li>
-              PC-Pool-Räume im
-              <a href="https://www.rz.uni-freiburg.de/services/pc">
-                Uni-Rechenzentrum
-              </a>
-              , Hermann-Herder-Str. 10;
-            </li>
-            <li>
-              Kommunikationsraum der
-              <a href="https://home.mathematik.uni-freiburg.de/didaktik/">
-                Abteilung für Mathematische Didaktik
-              </a>
-              im 1. OG der Ernst-Zermelo-Str. 1.
-            </li>
-          </ul>
-          <p>
-            <b style="font-size: 105%">
-              Bis wann müssen die ersten Leistungen erbracht sein und wie meldet
-              man sich zu den Klausuren an?
-            </b>
-            <br style="margin-bottom: 7px" />
-            In beiden Bachelor-Studiengängen gibt es „Orientierungsleistungen“,
-            die bis zum Ende des 3. Fachsemesters bestanden sein müssen:
-          </p>
-          <ul>
-            <li>
-              Im 1-Hauptfach-Studiengang „Bachelor of Science“ sind dies die
-              beiden Klausuren zu
-              <i> Analysis I </i>
-              und zu
-              <i> Lineare Algebra I </i>
-              .
-            </li>
-            <li>
-              Im 2-Hauptfächer-Bachelor muss eine der beiden Klausuren bis zum
-              Ende des 3. Fachsemesters bestanden sein, für die andere gibt es
-              dann keine Frist. Es kommt allerdings die
-              Orientierungsleistung/-prüfung im zweiten Fach hinzu.
-            </li>
-          </ul>
-          <p>
-            Bitte beachten Sie, dass Sie jeder der beiden Veranstaltungen
-            <i> Analysis I </i>
-            und
-            <i> Lineare Algebra I </i>
-            zwei separate Studienleistungen bestehen müssen: Übungen und
-            Klausur. Zu beiden müssen Sie sich
-            <a
-              href="{{ url_for('showstudiendekanat', unterseite='calendar', lang=lang) }}"
-            >
-              fristgerecht
-            </a>
-            über das Campus-Management-Systeme
-            <a href="https://campus.uni-freiburg.de"> HISinOne </a>
-            registrieren. Siehe hierzu auch die Informationen zu den Prüfungen
-            im
-            <a
-              href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'modulplan', _anchor = 'modulplan') }}"
-            >
-              Zwei-Hauptfächer-Bachelor </a
-            >, (bzw.
-            <a
-              href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'modulplan', _anchor = 'modulplan') }}"
-            >
-              BSc Mathematik </a
-            >, im
-            <a
-              href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'modulplanhf', _anchor = 'modulplanhf') }}"
-            >
-              MEd Erweiterungsfach (120 ECTS)</a
-            >, oder im
-            <a
-              href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'modulplanbf', _anchor = 'modulplanbf') }}"
-            >
-              MEd Erweiterungsfach (90 ECTS)</a
-            >.
-          </p>
-          {% else %}
-          <p>
-            <b style="font-size: 105%">
-              When and where do I start my studies?
-            </b>
-            <br style="margin-bottom: 7px" />
-            You can find the start and end of the lecture periods of each
-            semester
-            <a
-              href="https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten/"
-            >
-              on this page
-            </a>
-            .
-          </p>
-          <p>
-            The first semester lectures in mathematics -
-            <i> Analysis I </i>
-            and
-            <i> Linear Algebra I </i>
-            - start on Monday and Tuesday of the first week of lectures at 8:15
-            am. The lecture hall is usually the "Rundbau" (no. 28 in the
-            <a
-              href="https://www.uni-freiburg.de/universitaet/universitaet-im-ueberblick/kontakt-und-wegweiser/lageplaene/institutsviertel"
-            >
-              site plan
-            </a>
-            ).
-          </p>
-          <p>
-            No registration is required for the lectures, but prior booking via
-            the HISinOne campus management system. You will receive all relevant
-            information in the first lecture. In particular, you will be told
-            how to register for exercises (tutorials). There are several
-            alternative dates; they are distributed with or after registration.
-          </p>
-          <p>
-            <b style="font-size: 105%">
-              Where do the mathematics courses take place?
-            </b>
-            <br style="margin-bottom: 7px" />
-            In most cases in the following rooms:
-          </p>
-          <table>
-            <tr>
-              <td>
-                <i> HS = Hörsaal = lecture hall, SR = seminar room </i>
-              </td>
-              <td>
-                <i> Site plan </i>
-              </td>
-              <td></td>
-              <td>
-                <i> Address </i>
-              </td>
-            </tr>
-            <tr>
-              <td>- HS Rundbau</td>
-              <td align="center">No. 28</td>
-              <td></td>
-              <td>Albertstr. 21a</td>
-            </tr>
-            <tr>
-              <td>- HS Weismannhaus</td>
-              <td align="center">No. 29</td>
-              <td></td>
-              <td>Albertstr. 21</td>
-            </tr>
-            <tr>
-              <td>- HS II</td>
-              <td align="center">No. 13</td>
-              <td></td>
-              <td>Albertstr. 23b</td>
-            </tr>
-            <tr>
-              <td>- SR 119, 125, 127, 218, 318, 403, 404, 414</td>
-              <td align="center">No. 2</td>
-              <td></td>
-              <td>Ernst-Zermelo-Str. 1</td>
-            </tr>
-            <tr>
-              <td>- SR 226</td>
-              <td align="center">No. 16</td>
-              <td></td>
-              <td>Hermann-Herder-Str. 10</td>
-            </tr>
-          </table>
-          For orientation the
-          <a
-            href="https://www.uni-freiburg.de/universitaet/universitaet-im-ueberblick/kontakt-und-wegweiser/lageplaene/institutsviertel"
-          >
-            site plan
-          </a>
-          of the institute quarter. The address alone is often not very helpful,
-          as the lecture halls are not directly on the street.
-          <p>
-            <b style="font-size: 105%">
-              How does the tutoring system work and what can you do if you have
-              difficulties with appointments?
-            </b>
-            <br style="margin-bottom: 7px" />
-            There is an assistant for every lecture, who takes care of all
-            organizational issues and to whom you can turn in case of problems,
-            especially if there are scheduling difficulties with the tutorials.
-            The name of the assistant is in the
-            <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
-              Course catalog of the Institute of Mathematics
-            </a>
-            as noted for each lecture.
-          </p>
-          <p>
-            The assistants also organize the distribution of the students to the
-            exercise groups/tutoring sessions. They usually use the HISinOne
-            campus management system, in which you can register online for a
-            desired date within a certain period of time ("belegen"), provided
-            there are still places available in the tutorial. The deadline
-            usually runs until the first week of lectures. If you still need a
-            place in a tutorial after the deadline (because the start of your
-            studies has been delayed for any reason) or if there are scheduling
-            difficulties after you have been allocated a place (e.g. because of
-            a different tutorial allocation), please contact the assistant!
-          </p>
-          <p>
-            <b style="font-size: 105%">
-              What should I keep in mind during my studies?
-            </b>
-            <br style="margin-bottom: 7px" />
-            There is no compulsory attendance in lectures, but usually in
-            tutorials (which often only start in the second week of lectures).
-            However, regular participation in the lectures is strongly
-            recommended, and without regular preparation and follow-up work
-            lectures is hardly possible. It is therefore essential to work hard
-            from the very beginning.
-          </p>
-          <p>
-            It is advisable to prepare for and follow up on the lecture and work
-            on the exercises partly on your own, partly in small groups, as you
-            should learn both how to master mathematical tasks on your own, as
-            well as to explain mathematical relationships.
-          </p>
-          <p>
-            Student workstations / PC workstations / communication rooms can be
-            found here:
-          </p>
-          <ul>
-            <li>
-              Student workspaces on the first floor of the Mathematical
-              Institute, Ernst-Zermelo-Str. 1;
-            </li>
-            <li>
-              Work tables in the corridors at Ernst-Zermelo-Str. 1 and at
-              Hermann-Herder-Str. Hermann-Herder-Str. 10 (Department of Applied
-              Mathematics/Computing Center);
-            </li>
-            <li>
-              Quiet workstations in the mathematics library at
-              Ernst-Zermelo-Str. 1;
-            </li>
-            <li>
-              Student workstations in the
-              <a href="https://www.ub.uni-freiburg.de/">
-                University Library;
-              </a>
-            </li>
-            <li>
-              PC pool of the Institute of Mathematics at Ernst-Zermelo-Str. 1;
-            </li>
-            <li>
-              PC pool rooms in the
-              <a href="https://www.rz.uni-freiburg.de/services/pc">
-                University Computer Center
-              </a>
-              , Hermann-Herder-Str. 10;
-            </li>
-            <li>
-              Communication room of the
-              <a href="https://home.mathematik.uni-freiburg.de/didaktik/">
-                Department for Mathematical Didactics
-              </a>
-              on the 1st floor of Ernst-Zermelo-Str. 1.
-            </li>
-          </ul>
-          <p>
-            <b style="font-size: 105%">
-              By when do the first exams have to be completed and how do
-              register for the exams?
-            </b>
-            <br style="margin-bottom: 7px" />
-            There are "orientation achievements" in both Bachelor's degree
-            programs, which must be passed by the end of the 3rd semester:
-          </p>
-          <ul>
-            <li>
-              In the (1-major) "Bachelor of Science" degree program, these are
-              the two written exams on
-              <i> Analysis I </i>
-              and to
-              <i> Linear Algebra I </i>
-              .
-            </li>
-            <li>
-              In the 2-major Bachelor's degree, one of the two exams must be
-              passed by the the end of the 3rd semester, for the other there is
-              no deadline. However, the orientation performance/examination in
-              the second subject is added.
-            </li>
-          </ul>
-          <p>
-            Please note that you must take each of the two courses
-            <i> Analysis I </i>
-            and
-            <i> Linear Algebra I </i>
-            and you must pass two separate course assessments: Exercises and
-            written exam. You must register for both
-            <a
-              href="{{ url_for('showstudiendekanat', unterseite='calendar', lang=lang) }}"
-            >
-              in due time
-            </a>
-            via the campus management systems
-            <a href="https://campus.uni-freiburg.de"> HISinOne </a>. See also
-            the information on examinations in the
-            <a
-              href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'modulplan', _anchor = 'modulplan') }}"
-            >
-              Two-major Bachelor </a
-            >, (resp
-            <a
-              href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'modulplan', _anchor = 'modulplan') }}"
-            >
-              BSc Mathematics </a
-            >, in the
-            <a
-              href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'modulplanhf', _anchor = 'modulplanhf') }}"
-            >
-              MEd extension subject (120 ECTS)</a
-            >, or in the
-            <a
-              href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'modulplanbf', _anchor = 'modulplanbf') }}"
-            >
-              MEd extension subject (90 ECTS)</a
-            >.)
-          </p>
-          {% endif %}
-        </div>
-      </div>
-      <div class="accordion-item" id="_beratung">
-        <h4 class="accordion-header" id="header_beratung">
-          <button
-            aria-controls="_beratungContent"
-            aria-expanded="false"
-            class="accordion-button collapsed"
-            data-bs-target="#_beratungContent"
-            data-bs-toggle="collapse"
-            type="button"
-          >
+      <div class="accordion-item" id="_einfuehrungswoche">
+        <h4 class="accordion-header" id="header_einfuehrungswoche">
+          <button aria-controls="_einfuehrungswocheContent" aria-expanded="false" class="accordion-button collapsed"
+            data-bs-target="#_einfuehrungswocheContent" data-bs-toggle="collapse" type="button">
             <h3 class="h5">
-              {% if lang == "de" %}Weitere Informationen und Beratung{% else
-              %}More information and advice{% endif %}
+              {% if lang == "de" %}Einführungswoche{% else %}Introduction week{%
+              endif %}
             </h3>
           </button>
         </h4>
-        <div
-          aria-labelledby="_beratungContent"
-          class="accordion-collapse collapse"
-          data-bs-parent="#accordionExample"
-          id="_beratungContent"
-        >
-          <div class="accordion-body" id="beratungContent">
+        <div aria-labelledby="_einfuehrungswocheContent" class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample" id="_einfuehrungswocheContent">
+          <div class="accordion-body" id="einfuehrungswocheContent">
             {% if lang == "de" %}
             <p>
-              Weitere Informationen zu den einzelnen Studiengängen, nützliche
-              Links und Studiendokumente wie Modulhandbücher und
-              Prüfungsordnugnen finden Sie auf den Informationsseiten der
-              einzelnen Studiengänge:
+              Die
+              <a href="https://fachschaft-mathe-freiburg.de/">
+                Fachschaft Mathematik
+              </a>
+              organisiert jährlich eine
+              <b> Einführungswoche </b>
+              für die Studienanfänger:innen in Mathematik. Sie findet in der Woche
+              vor Vorlesungsbeginn des Wintersemesters statt. In dieser Woche
+              können die neuen Mathematik-Studierenden sich untereinander
+              kennenlernen, aber auch Studierende in höheren Semester.
+              Die Dozent:inn:en der Erstsemestervorlesungen stellen sich vor, und
+              es gibt Führungen durch das Mathematische Institut, die Universität
+              und die Stadt Freiburg. Innerhalb der Einführungswoche bietet die
+              <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
+                Studienberatung
+              </a>
+              eine Informationsveranstaltung an, bei der offene Fragen zum Ablauf
+              des Studiums geklärt werden können. Die Teilnahme an der
+              Einführungswoche ist allen Studierenden im ersten Semester sehr
+              empfohlen.
+            </p>
+            <p>
+              Auch die
+              <b> neuen Master-Studierenden </b>
+              sind herzlich willkommen. Für die beiden Studiengänge „Master of
+              Education“ und „Master of Science“ gibt es ebenfalls
+              Informationsveranstaltungen:
             </p>
             <ul>
               <li>
-                Studiengänge für Studienanfänger:innen in Mathematik:
-                <ul>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
-                    >
-                      Bachelor of Science
-                    </a>
-                    (1-Hauptfach-Bachelor)
-                  </li>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
-                    >
-                      Polyvalenter Zwei-Hauptfächer-Bachelor
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
-                    >
-                      Master of Education als Erweiterungsfach
-                    </a>
-                  </li>
-                </ul>
+                Master of Education Mathematik: Dienstag, 8. Oktober 2024, um 14:00 Uhr im SR 404
               </li>
               <li>
-                Studiengänge für das Weiterstudium:
-                <ul>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}"
-                    >
-                      Master of Education
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='msc', lang = lang) }}"
-                    >
-                      Master of Science
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='msc_data', lang = lang) }}"
-                    >
-                      Master of Science Mathematics in Data and Technology
-                    </a>
-                  </li>
-                </ul>
+                Master of Science Mathematik: Dienstag, 8. Oktober 2024, um 15:00 Uhr im SR 404
+              </li>
+              <li>
+                Master of Science <i>Mathematics in Data and Technology</i>: Begrüßung der neuen Studierenden am Montag,
+                14. Oktober 2024, um 11:00 Uhr im SR 404
               </li>
             </ul>
-            Für Fragen und Problemen finden Sie hier eine Liste der Beratungs-
-            und Anlaufstellen:
+            <p>
+              <b style="font-size: 105%"> Termin </b>
+            </p>
             <ul>
               <li>
-                <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
-                  Beratung und Anlaufstellen
+                Die Einführungswoche findet in der Woche vor
+                <a
+                  href="https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten/">
+                  Vorlesungsbeginn
                 </a>
+                statt und beginnt dieses Jahr am 7. Oktober 2024 um 9:00 Uhr.
               </li>
             </ul>
-            Im Zweifelsfall können Sie sich immer an die allgemeine
-            Studienberatung des Mathematischen Instituts wenden, die Sie ggf. an
-            die richtige Stelle wetierverweisen wird!
-            <p>Weitere nützliche LInks:</p>
+            <p>
+              <b style="font-size: 105%"> Anmeldung </b>
+            </p>
+            <ul>
+              <li>Eine Anmeldung ist nicht erforderlich – einfach hingehen!</li>
+            </ul>
+            <p>
+              <b style="font-size: 105%"> Programm </b>
+            </p>
             <ul>
               <li>
-                Welcome guide for international students:
+                Das genaue Programm wird kurzfristig
                 <a
-                  href="https://www.studium.uni-freiburg.de/de/beratung/welcome-guide-for-international-students"
-                >
-                  Deutsch
+                  href="https://fachschaft-mathe-freiburg.de/uncategorized/einfuehrungswoche-der-fachschaft-mathematik-fuer-neue-studierende/">
+                  hier auf den Fachschaftsseiten
                 </a>
-                ,
-                <a
-                  href="https://www.studium.uni-freiburg.de/en/counseling/welcome-guide-for-international-students"
-                >
-                  English
+                veröffentlicht
+              </li>
+              <li>
+                <a href="/static/pdf/studienberatung/2023_Folien_SCS_Studienstart_Studiengänge.pdf">
+                  Folien der Zentralen Studienberatung
+                </a>
+                (2023)
+              </li>
+              <li>
+                <a href="/static/pdf/studienberatung/ese2023.pdf">
+                  Präsentation 2023
+                </a>
+                zur Einführung in die Studiengänge
+              </li>
+            </ul>
+            <p>
+              <b style="font-size: 105%"> Universitätsweite Aktionen </b>
+            </p>
+            <ul>
+              <li>
+                Sämtliche Angebote finden Sie auch in der
+                <a href="https://www.studium.uni-freiburg.de/de/studierendenservices/studienanfaenger">
+                  App „Studienstart – Uni Freiburg“
                 </a>
               </li>
+              <li>
+                Unabhängig von der Einführungswoche der Mathematik gibt es mit dem
+                <a
+                  href=" https://www.studium.uni-freiburg.de/de/studierendenservices/studienanfaenger/erstsemestertag/erstsemestertag">
+                  Erstsemestertag
+                </a>
+                eine zentrale Erstsemesterbegrüßung der Universität, dieses Jahr
+                am Freitag, 13. Oktober 2023 im Stadion des SC Freiburg.
+              </li>
+              <li>
+                Am Donnerstag, 12. Oktober 2023, gibt es ein universitätsweites
+                Willkommen für die Lehramtsstudierenden: Begrüßungsveranstaltung
+                Bachelor, 16–18 Uhr im Paulussaal, und Begrüßungsveranstaltung
+                Master pof Education, 10–12 Uhr im HS 1221.
+              </li>
+              <!--	<li> Einführungen in den BOK-Bereich am Zentrum für Schlüsselqualifikationen gibt es für den Bachelor-of-Science-Studiengang
+	  am Donnerstag, 13.&nbsp;Oktober 2022 um 18:00 Uhr im HS&nbsp;00&thinsp;026 an der Technischen Fakultät
+	  und am Mittwoch 19.&nbsp;Oktober 2022 im Hörsaal&nbsp;I im Physik-Hochhaus; 
+	  für den Zwei-Hauptfächer-Bachelor ohne Lehramtsoption am Donnerstag 13.&nbsp;Oktober 2022 im HS&nbsp;1010 im KG&nbsp;I. </li> -->
             </ul>
             {% else %}
+
             <p>
-              Further information on the individual degree programs, useful
-              links and study documents such as module handbooks and examination
-              regulations can be found on the information pages of the
-              individual degree programs:
+              The
+              <a href="https://fachschaft-mathe-freiburg.de/">departmental student committee</a>
+              organizes an annual <b>introductory week</b> for first-year students
+              in mathematics, which takes place in the week before lectures begin
+              in the winter semester. During this week, the new mathematics
+              students can get to know each other, but also students in higher
+              semesters. <br />The lecturers of the first-semester lectures
+              introduce themselves, and there are guided tours the Institute of
+              Mathematics, the university and the city of Freiburg.
             </p>
+            <p>
+              In order to clarify open questions about the course of studies, the
+              Academic Advisory Service offers an information event during the
+              introductory week.
+            </p>
+            <p>
+              Participation in the introductory week is highly recommended for all
+              first semester students.
+            </p>
+            <p>
+              <b style="font-size: 105%">Date</b>
+              <br style="margin-bottom: 7px" />
+              The introductory week takes place in the week before
+              <a
+                href="https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten/">start
+                of lectures</a>
+              and usually starts on Tuesdays, i.e. from October 11 to 15, 2022.
+            </p>
+            <b style="font-size: 105%">Programme</b>
+            <br style="margin-bottom: 7px" />
             <ul>
               <li>
-                Degree programs for first-year students in mathematics:
-                <ul>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
-                    >
-                      Bachelor of Science
-                    </a>
-                    (1-Major Bachelor)
-                  </li>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
-                    >
-                      Two-major Bachelor's degree
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
-                    >
-                      Master of Education as an extension subject
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                Study programs for further studies:
-                <ul>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}"
-                    >
-                      Master of Education
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='msc', lang = lang) }}"
-                    >
-                      Master of Science
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="{{ url_for('showstudiengang', studiengang='msc_data', lang = lang) }}"
-                    >
-                      Master of Science Mathematics in Data and Technology
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            For questions and problems, you can find a list of advice and
-            contact points here:
-            <ul>
-              <li>
-                <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
-                  Advice and contact points
-                </a>
-              </li>
-            </ul>
-            If you are in doubt, you can always contact the general student
-            advisory service of the Institute of Mathematics, who will direct
-            you to the right place!
-            <p>More useful links:</p>
-            <ul>
-              <li>
-                Welcome guide for international students:
                 <a
-                  href="https://www.studium.uni-freiburg.de/de/beratung/welcome-guide-for-international-students"
-                >
-                  German
-                </a>
-                ,
-                <a
-                  href="https://www.studium.uni-freiburg.de/en/counseling/welcome-guide-for-international-students"
-                >
-                  English
-                </a>
+                  href="https://fachschaft-mathe-freiburg.de/uncategorized/einfuehrungswoche-der-fachschaft-mathematik-fuer-neue-studierende/">here</a>
               </li>
             </ul>
+
+            <b style="font-size: 105%">Documents from 2021</b>
+            <br style="margin-bottom: 7px" />
+            <ul>
+              <li>
+                <a href="dokumente/ese2021.pdf">Slides of the introduction to the bachelor&apos;s degree
+                  programs.</a>
+              </li>
+              <li>
+                <a href="dokumente/Infoblatt_OSP_WS2122.pdf">Information sheet on the orientation internship in WS
+                  2021/22</a>
+              </li>
+            </ul>
+
             {% endif %}
           </div>
         </div>
       </div>
-      <div class="accordion-item" id="_ausblick">
-        <h4 class="accordion-header" id="header_ausblick">
-          <button
-            aria-controls="_ausblickContent"
-            aria-expanded="false"
-            class="accordion-button collapsed"
-            data-bs-target="#_ausblickContent"
-            data-bs-toggle="collapse"
-            type="button"
-          >
+
+      <div class="accordion-item" id="_beginn">
+        <h4 class="accordion-header" id="header_beginn">
+          <button aria-controls="_beginnContent" aria-expanded="false" class="accordion-button collapsed"
+            data-bs-target="#_beginnContent" data-bs-toggle="collapse" type="button">
             <h3 class="h5">
-              {% if lang == "de" %}Ausblick{% else %}Outlook{% endif %}
+              {% if lang == "de" %}Die ersten Wochen{% else %}The first weeks{%
+              endif %}
             </h3>
           </button>
         </h4>
-        <div
-          aria-labelledby="_ausblickContent"
-          class="accordion-collapse collapse"
-          data-bs-parent="#accordionExample"
-          id="_ausblickContent"
-        >
-          <div class="accordion-body" id="ausblickContent">
+        <div aria-labelledby="_beginnContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+          id="_beginnContent">
+          <div class="accordion-body" id="beginnContent">
             {% if lang == "de" %}
             <p></p>
             <p>
               <b style="font-size: 105%">
-                Wie ist der weitere Verlauf im 2-Hauptfächer-Bachelor?
+                Wann und wo geht es mit dem Studium los?
               </b>
               <br style="margin-bottom: 7px" />
-              Im 2. Fachsemester schließen sich die zweiten Teile
-              <i> Analysis II </i>
-              und/oder
-              <i> Lineare Algebra II </i>
-              an das 1. Fachsemester an. Beide enden mit einer mündlichen
-              Prüfung über
-              <i> Analysis I und II </i>
-              bzw.
-              <i> Lineare Algebra I und II </i>. Für diese Prüfungen gibt es
-              zwei Prüfungszeiträume im Jahr: April und Oktober (genauer:
-              jeweils etwa drei Wochen vor Vorlesungsbeginn und die erste
-              Vorlesungswoche). Sie können diese beiden Prüfungen auf
-              verschiedene Semester aufteilen, auch wenn Sie beide
-              Grundvorlesungen gleichzeitig gehört haben.
+              Beginn und Ende der Vorlesungszeiten jedes Semesters finden Sie
+              <a
+                href="https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten/">
+                auf dieser Seite
+              </a>
+              .
             </p>
             <p>
-              Falls Sie die Lehramtsoption wählen, bietet es sich an, zwischen
-              dem 1. und dem 2. Fachsemester das Orientierungspraktikum (samt
-              Vor- und Nachbereitung) abzulegen. Voraussetzung ist, dass Sie im
-              1. Fachsemester bereits die Veranstaltung
-              <i> Einführung in die Bildungswissenschaften </i>
-              besucht haben.
+              Die Erstsemester-Vorlesungen in Mathematik –
+              <i> Analysis I </i>
+              und
+              <i> Lineare Algebra I </i>
+              – starten am Montag bzw. Dienstag der ersten Vorlesungswoche um
+              8:15 Uhr.
+              <!-- (wobei &bdquo;8&nbsp;Uhr&ldquo; im akademischen Sprachgebrauch bedeutet, dass die Veranstaltung üblicherweise um 8:15&nbsp;Uhr beginnt) -->
+              Hörsaal ist in der Regel der „Rundbau“ (Nr. 28 im
+              <a
+                href="https://www.uni-freiburg.de/universitaet/universitaet-im-ueberblick/kontakt-und-wegweiser/lageplaene/institutsviertel">
+                Lageplan
+              </a>
+              ).
             </p>
             <p>
-              Für den weiteren Verlauf sind die Veranstaltungen im Fach
-              Mathematik weitgehend vorgeschrieben. Wahlmöglichkeiten haben Sie
-              bei der Praktischen Übung und beim Proseminar:
+              Für die Vorlesungen ist keine Anmeldung erforderlich, eine vorherige
+              Belegung über das Campus-Managemenet-System HISinOne aber erwünscht.
+              In der jeweils ersten Vorlesungsstunde erhalten Sie alle relevanten
+              Informationen. Insbesondere wird mitgeteilt, wie die Anmeldung zu
+              den Übungen (Tutoraten) erfolgt. Für die Tutorate gibt es mehrere
+              Alternativtermine; die Verteilung erfolgt mit oder nach der
+              Anmeldung.
+            </p>
+            <p>
+              <b style="font-size: 105%">
+                Wo finden die Mathematik-Veranstaltungen statt?
+              </b>
+              <br style="margin-bottom: 7px" />
+              In den meisten Fällen in folgenden Räumen:
+            </p>
+            <table>
+              <tr>
+                <td>
+                  <i> HS = Hörsaal, SR = Seminarrraum </i>
+                </td>
+                <td>
+                  <i> Lageplan </i>
+                </td>
+                <td></td>
+                <td>
+                  <i> Adresse </i>
+                </td>
+              </tr>
+              <tr>
+                <td>– HS Rundbau</td>
+                <td align="center">Nr. 28</td>
+                <td></td>
+                <td>Albertstr. 21a</td>
+              </tr>
+              <tr>
+                <td>– HS Weismann-Haus</td>
+                <td align="center">Nr. 29</td>
+                <td></td>
+                <td>Albertstr. 21</td>
+              </tr>
+              <tr>
+                <td>– HS II</td>
+                <td align="center">Nr. 13</td>
+                <td></td>
+                <td>Albertstr. 23b</td>
+              </tr>
+              <tr>
+                <td>– SR 119, 125, 127, 218, 318, 403, 404, 414</td>
+                <td align="center">Nr. 2</td>
+                <td></td>
+                <td>Ernst-Zermelo-Str. 1</td>
+              </tr>
+              <tr>
+                <td>– SR 226</td>
+                <td align="center">Nr. 16</td>
+                <td></td>
+                <td>Hermann-Herder-Str. 10</td>
+              </tr>
+            </table>
+            Zur Orientierung hilft der
+            <a
+              href="https://www.uni-freiburg.de/universitaet/universitaet-im-ueberblick/kontakt-und-wegweiser/lageplaene/institutsviertel">
+              Lageplan
+            </a>
+            des Institutsviertels. Die Adresse allein ist oft nicht sehr
+            hilfreich, da die Hörsäle nicht direkt an der Straße liegen.
+            <p>
+              <b style="font-size: 105%">
+                Wie funktioniert die Tutoratseinteilung und was kann man bei
+                Terminschwierigkeiten tun?
+              </b>
+              <br style="margin-bottom: 7px" />
+              Zu jeder Vorlesung gibt es einen Assistenten/eine Assistentin,
+              der/die sich um alle organisatorischen Fragen kümmert und an den/die
+              Sie sich bei Problemen wenden können, insbesondere wenn es
+              Terminschwierigkeiten bei den Tutoraten gibt. Wer Assistent:in ist,
+              ist im
+              <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
+                Vorlesungsverzeichnis des Mathematischen Instituts
+              </a>
+              bei jeder Vorlesung vermerkt.
+            </p>
+            <p>
+              Die Assistent:inn:en organisieren auch die Verteilung der
+              Studierenden auf die Übungsgruppen/Tutorate. Meistens wird dazu das
+              Campus-Management-System HISinOne benutzt, in dem Sie sich innerhalb
+              einer gewissen Frist online zu einem Wunschtermin anmelden können
+              ("belegen"), sofern noch Plätze in dem Tutorat frei sind. Die Frist
+              läuft in der Regel bis in die erste Vorlesungswoche hinein. Wenn Sie
+              nach Ende der Frist noch einen Tutoratsplatz brauchen (weil sich der
+              Studienbeginn aus irgenwelchen Gründen verzögert hat) oder wenn sich
+              nach erfolgter Zuteilung Terminschwierigkeiten bekommen haben (z.B.
+              wegen einer anderen Tutoratseinteilung), wenden Sie sich bitte an
+              den Assistenten/die Assistentin!
+            </p>
+            <p>
+              <b style="font-size: 105%">
+                Was sollte man während des Studiums beachten?
+              </b>
+              <br style="margin-bottom: 7px" />
+              Es gibt keine Anwesenheitspflicht in Vorlesungen, aber üblicherweise
+              in den Tutoraten (die oft erst in der zweiten Vorlesungswoche
+              beginnen). Die regelmäßige Teilnahme an den Vorlesungen ist aber
+              dringend angeraten, und ohne regelmäßige Vor- und Nachbereitung der
+              Vorlesungen ist ein erfolgreiches Studium kaum möglich. Es ist daher
+              unumgänglich, von Anfang an konzentriert mitzuarbeiten.
+            </p>
+            <p>
+              Es empfiehlt sich, die Vor- und Nachbereitung der Vorlesung und die
+              Bearbeitung der Übungsaufgaben teilweise alleine, teilweise in
+              Kleingruppen vorzunehmen, da Sie sowohl lernen sollen, mathematische
+              Aufgaben alleine zu bewältigen, als auch mathematische Zusammenhänge
+              zu erklären.
+            </p>
+            <p>
+              Studentische Arbeitsplätze / PC-Arbeitsplätze / Kommunikationsräume
+              finden Sie hier:
             </p>
             <ul>
               <li>
-                Jährlich werden (mindestens) drei Praktische Übungen angeboten:
-                der Programmierkurs
+                Studentische Arbeitsräume im Erdgeschoss des Mathematischen
+                Instituts, Ernst-Zermelo-Str. 1;
+              </li>
+              <li>
+                Arbeitstische auf den Fluren in der Ernst-Zermelo-Straße 1 und in
+                der Hermann-Herder-Str. 10 (Abteilung für Angewandte
+                Mathematik/Rechenzentrum);
+              </li>
+              <li>
+                Stillarbeitsplätze in der Mathematikbibliotheks in der
+                Ernst-Zermelo-Str. 1;
+              </li>
+              <li>
+                studentische Arbeitsplätze in der
+                <a href="https://www.ub.uni-freiburg.de/">
+                  Universitätsbibliothek;
+                </a>
+              </li>
+              <li>
+                PC-Pool des Mathematischen Instituts in der Ernst-Zermelo-Str. 1;
+              </li>
+              <li>
+                PC-Pool-Räume im
+                <a href="https://www.rz.uni-freiburg.de/services/pc">
+                  Uni-Rechenzentrum
+                </a>
+                , Hermann-Herder-Str. 10;
+              </li>
+              <li>
+                Kommunikationsraum der
+                <a href="https://home.mathematik.uni-freiburg.de/didaktik/">
+                  Abteilung für Mathematische Didaktik
+                </a>
+                im 1. OG der Ernst-Zermelo-Str. 1.
+              </li>
+            </ul>
+            <p>
+              <b style="font-size: 105%">
+                Bis wann müssen die ersten Leistungen erbracht sein und wie meldet
+                man sich zu den Klausuren an?
+              </b>
+              <br style="margin-bottom: 7px" />
+              In beiden Bachelor-Studiengängen gibt es „Orientierungsleistungen“,
+              die bis zum Ende des 3. Fachsemesters bestanden sein müssen:
+            </p>
+            <ul>
+              <li>
+                Im 1-Hauptfach-Studiengang „Bachelor of Science“ sind dies die
+                beiden Klausuren zu
+                <i> Analysis I </i>
+                und zu
+                <i> Lineare Algebra I </i>
+                .
+              </li>
+              <li>
+                Im 2-Hauptfächer-Bachelor muss eine der beiden Klausuren bis zum
+                Ende des 3. Fachsemesters bestanden sein, für die andere gibt es
+                dann keine Frist. Es kommt allerdings die
+                Orientierungsleistung/-prüfung im zweiten Fach hinzu.
+              </li>
+            </ul>
+            <p>
+              Bitte beachten Sie, dass Sie jeder der beiden Veranstaltungen
+              <i> Analysis I </i>
+              und
+              <i> Lineare Algebra I </i>
+              zwei separate Studienleistungen bestehen müssen: Übungen und
+              Klausur. Zu beiden müssen Sie sich
+              <a href="{{ url_for('showstudiendekanat', unterseite='calendar', lang=lang) }}">
+                fristgerecht
+              </a>
+              über das Campus-Management-Systeme
+              <a href="https://campus.uni-freiburg.de"> HISinOne </a>
+              registrieren. Siehe hierzu auch die Informationen zu den Prüfungen
+              im
+              <a
+                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'modulplan', _anchor = 'modulplan') }}">
+                Zwei-Hauptfächer-Bachelor </a>, (bzw.
+              <a
+                href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'modulplan', _anchor = 'modulplan') }}">
+                BSc Mathematik </a>, im
+              <a
+                href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'modulplanhf', _anchor = 'modulplanhf') }}">
+                MEd Erweiterungsfach (120 ECTS)</a>, oder im
+              <a
+                href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'modulplanbf', _anchor = 'modulplanbf') }}">
+                MEd Erweiterungsfach (90 ECTS)</a>.
+            </p>
+            {% else %}
+            <p>
+              <b style="font-size: 105%">
+                When and where do I start my studies?
+              </b>
+              <br style="margin-bottom: 7px" />
+              You can find the start and end of the lecture periods of each
+              semester
+              <a
+                href="https://www.studium.uni-freiburg.de/de/fristen-und-veranstaltungen/semester-und-vorlesungszeiten/">
+                on this page
+              </a>
+              .
+            </p>
+            <p>
+              The first semester lectures in mathematics -
+              <i> Analysis I </i>
+              and
+              <i> Linear Algebra I </i>
+              - start on Monday and Tuesday of the first week of lectures at 8:15
+              am. The lecture hall is usually the "Rundbau" (no. 28 in the
+              <a
+                href="https://www.uni-freiburg.de/universitaet/universitaet-im-ueberblick/kontakt-und-wegweiser/lageplaene/institutsviertel">
+                site plan
+              </a>
+              ).
+            </p>
+            <p>
+              No registration is required for the lectures, but prior booking via
+              the HISinOne campus management system. You will receive all relevant
+              information in the first lecture. In particular, you will be told
+              how to register for exercises (tutorials). There are several
+              alternative dates; they are distributed with or after registration.
+            </p>
+            <p>
+              <b style="font-size: 105%">
+                Where do the mathematics courses take place?
+              </b>
+              <br style="margin-bottom: 7px" />
+              In most cases in the following rooms:
+            </p>
+            <table>
+              <tr>
+                <td>
+                  <i> HS = Hörsaal = lecture hall, SR = seminar room </i>
+                </td>
+                <td>
+                  <i> Site plan </i>
+                </td>
+                <td></td>
+                <td>
+                  <i> Address </i>
+                </td>
+              </tr>
+              <tr>
+                <td>- HS Rundbau</td>
+                <td align="center">No. 28</td>
+                <td></td>
+                <td>Albertstr. 21a</td>
+              </tr>
+              <tr>
+                <td>- HS Weismannhaus</td>
+                <td align="center">No. 29</td>
+                <td></td>
+                <td>Albertstr. 21</td>
+              </tr>
+              <tr>
+                <td>- HS II</td>
+                <td align="center">No. 13</td>
+                <td></td>
+                <td>Albertstr. 23b</td>
+              </tr>
+              <tr>
+                <td>- SR 119, 125, 127, 218, 318, 403, 404, 414</td>
+                <td align="center">No. 2</td>
+                <td></td>
+                <td>Ernst-Zermelo-Str. 1</td>
+              </tr>
+              <tr>
+                <td>- SR 226</td>
+                <td align="center">No. 16</td>
+                <td></td>
+                <td>Hermann-Herder-Str. 10</td>
+              </tr>
+            </table>
+            For orientation the
+            <a
+              href="https://www.uni-freiburg.de/universitaet/universitaet-im-ueberblick/kontakt-und-wegweiser/lageplaene/institutsviertel">
+              site plan
+            </a>
+            of the institute quarter. The address alone is often not very helpful,
+            as the lecture halls are not directly on the street.
+            <p>
+              <b style="font-size: 105%">
+                How does the tutoring system work and what can you do if you have
+                difficulties with appointments?
+              </b>
+              <br style="margin-bottom: 7px" />
+              There is an assistant for every lecture, who takes care of all
+              organizational issues and to whom you can turn in case of problems,
+              especially if there are scheduling difficulties with the tutorials.
+              The name of the assistant is in the
+              <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">
+                Course catalog of the Institute of Mathematics
+              </a>
+              as noted for each lecture.
+            </p>
+            <p>
+              The assistants also organize the distribution of the students to the
+              exercise groups/tutoring sessions. They usually use the HISinOne
+              campus management system, in which you can register online for a
+              desired date within a certain period of time ("belegen"), provided
+              there are still places available in the tutorial. The deadline
+              usually runs until the first week of lectures. If you still need a
+              place in a tutorial after the deadline (because the start of your
+              studies has been delayed for any reason) or if there are scheduling
+              difficulties after you have been allocated a place (e.g. because of
+              a different tutorial allocation), please contact the assistant!
+            </p>
+            <p>
+              <b style="font-size: 105%">
+                What should I keep in mind during my studies?
+              </b>
+              <br style="margin-bottom: 7px" />
+              There is no compulsory attendance in lectures, but usually in
+              tutorials (which often only start in the second week of lectures).
+              However, regular participation in the lectures is strongly
+              recommended, and without regular preparation and follow-up work
+              lectures is hardly possible. It is therefore essential to work hard
+              from the very beginning.
+            </p>
+            <p>
+              It is advisable to prepare for and follow up on the lecture and work
+              on the exercises partly on your own, partly in small groups, as you
+              should learn both how to master mathematical tasks on your own, as
+              well as to explain mathematical relationships.
+            </p>
+            <p>
+              Student workstations / PC workstations / communication rooms can be
+              found here:
+            </p>
+            <ul>
+              <li>
+                Student workspaces on the first floor of the Mathematical
+                Institute, Ernst-Zermelo-Str. 1;
+              </li>
+              <li>
+                Work tables in the corridors at Ernst-Zermelo-Str. 1 and at
+                Hermann-Herder-Str. Hermann-Herder-Str. 10 (Department of Applied
+                Mathematics/Computing Center);
+              </li>
+              <li>
+                Quiet workstations in the mathematics library at
+                Ernst-Zermelo-Str. 1;
+              </li>
+              <li>
+                Student workstations in the
+                <a href="https://www.ub.uni-freiburg.de/">
+                  University Library;
+                </a>
+              </li>
+              <li>
+                PC pool of the Institute of Mathematics at Ernst-Zermelo-Str. 1;
+              </li>
+              <li>
+                PC pool rooms in the
+                <a href="https://www.rz.uni-freiburg.de/services/pc">
+                  University Computer Center
+                </a>
+                , Hermann-Herder-Str. 10;
+              </li>
+              <li>
+                Communication room of the
+                <a href="https://home.mathematik.uni-freiburg.de/didaktik/">
+                  Department for Mathematical Didactics
+                </a>
+                on the 1st floor of Ernst-Zermelo-Str. 1.
+              </li>
+            </ul>
+            <p>
+              <b style="font-size: 105%">
+                By when do the first exams have to be completed and how do
+                register for the exams?
+              </b>
+              <br style="margin-bottom: 7px" />
+              There are "orientation achievements" in both Bachelor's degree
+              programs, which must be passed by the end of the 3rd semester:
+            </p>
+            <ul>
+              <li>
+                In the (1-major) "Bachelor of Science" degree program, these are
+                the two written exams on
+                <i> Analysis I </i>
+                and to
+                <i> Linear Algebra I </i>
+                .
+              </li>
+              <li>
+                In the 2-major Bachelor's degree, one of the two exams must be
+                passed by the the end of the 3rd semester, for the other there is
+                no deadline. However, the orientation performance/examination in
+                the second subject is added.
+              </li>
+            </ul>
+            <p>
+              Please note that you must take each of the two courses
+              <i> Analysis I </i>
+              and
+              <i> Linear Algebra I </i>
+              and you must pass two separate course assessments: Exercises and
+              written exam. You must register for both
+              <a href="{{ url_for('showstudiendekanat', unterseite='calendar', lang=lang) }}">
+                in due time
+              </a>
+              via the campus management systems
+              <a href="https://campus.uni-freiburg.de"> HISinOne </a>. See also
+              the information on examinations in the
+              <a
+                href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang, anchor = 'modulplan', _anchor = 'modulplan') }}">
+                Two-major Bachelor </a>, (resp
+              <a
+                href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang, anchor = 'modulplan', _anchor = 'modulplan') }}">
+                BSc Mathematics </a>, in the
+              <a
+                href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'modulplanhf', _anchor = 'modulplanhf') }}">
+                MEd extension subject (120 ECTS)</a>, or in the
+              <a
+                href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang, anchor = 'modulplanbf', _anchor = 'modulplanbf') }}">
+                MEd extension subject (90 ECTS)</a>.)
+            </p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="accordion-item" id="_beratung">
+          <h4 class="accordion-header" id="header_beratung">
+            <button aria-controls="_beratungContent" aria-expanded="false" class="accordion-button collapsed"
+              data-bs-target="#_beratungContent" data-bs-toggle="collapse" type="button">
+              <h3 class="h5">
+                {% if lang == "de" %}Weitere Informationen und Beratung{% else
+                %}More information and advice{% endif %}
+              </h3>
+            </button>
+          </h4>
+          <div aria-labelledby="_beratungContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+            id="_beratungContent">
+            <div class="accordion-body" id="beratungContent">
+              {% if lang == "de" %}
+              <p>
+                Weitere Informationen zu den einzelnen Studiengängen, nützliche
+                Links und Studiendokumente wie Modulhandbücher und
+                Prüfungsordnugnen finden Sie auf den Informationsseiten der
+                einzelnen Studiengänge:
+              </p>
+              <ul>
+                <li>
+                  Studiengänge für Studienanfänger:innen in Mathematik:
+                  <ul>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">
+                        Bachelor of Science
+                      </a>
+                      (1-Hauptfach-Bachelor)
+                    </li>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}">
+                        Polyvalenter Zwei-Hauptfächer-Bachelor
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}">
+                        Master of Education als Erweiterungsfach
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Studiengänge für das Weiterstudium:
+                  <ul>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}">
+                        Master of Education
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='msc', lang = lang) }}">
+                        Master of Science
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='msc_data', lang = lang) }}">
+                        Master of Science Mathematics in Data and Technology
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              Für Fragen und Problemen finden Sie hier eine Liste der Beratungs-
+              und Anlaufstellen:
+              <ul>
+                <li>
+                  <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
+                    Beratung und Anlaufstellen
+                  </a>
+                </li>
+              </ul>
+              Im Zweifelsfall können Sie sich immer an die allgemeine
+              Studienberatung des Mathematischen Instituts wenden, die Sie ggf. an
+              die richtige Stelle wetierverweisen wird!
+              <p>Weitere nützliche LInks:</p>
+              <ul>
+                <li>
+                  Welcome guide for international students:
+                  <a href="https://www.studium.uni-freiburg.de/de/beratung/welcome-guide-for-international-students">
+                    Deutsch
+                  </a>
+                  ,
+                  <a href="https://www.studium.uni-freiburg.de/en/counseling/welcome-guide-for-international-students">
+                    English
+                  </a>
+                </li>
+              </ul>
+              {% else %}
+              <p>
+                Further information on the individual degree programs, useful
+                links and study documents such as module handbooks and examination
+                regulations can be found on the information pages of the
+                individual degree programs:
+              </p>
+              <ul>
+                <li>
+                  Degree programs for first-year students in mathematics:
+                  <ul>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">
+                        Bachelor of Science
+                      </a>
+                      (1-Major Bachelor)
+                    </li>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}">
+                        Two-major Bachelor's degree
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}">
+                        Master of Education as an extension subject
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Study programs for further studies:
+                  <ul>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}">
+                        Master of Education
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='msc', lang = lang) }}">
+                        Master of Science
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ url_for('showstudiengang', studiengang='msc_data', lang = lang) }}">
+                        Master of Science Mathematics in Data and Technology
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              For questions and problems, you can find a list of advice and
+              contact points here:
+              <ul>
+                <li>
+                  <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
+                    Advice and contact points
+                  </a>
+                </li>
+              </ul>
+              If you are in doubt, you can always contact the general student
+              advisory service of the Institute of Mathematics, who will direct
+              you to the right place!
+              <p>More useful links:</p>
+              <ul>
+                <li>
+                  Welcome guide for international students:
+                  <a href="https://www.studium.uni-freiburg.de/de/beratung/welcome-guide-for-international-students">
+                    German
+                  </a>
+                  ,
+                  <a href="https://www.studium.uni-freiburg.de/en/counseling/welcome-guide-for-international-students">
+                    English
+                  </a>
+                </li>
+              </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" id="_ausblick">
+          <h4 class="accordion-header" id="header_ausblick">
+            <button aria-controls="_ausblickContent" aria-expanded="false" class="accordion-button collapsed"
+              data-bs-target="#_ausblickContent" data-bs-toggle="collapse" type="button">
+              <h3 class="h5">
+                {% if lang == "de" %}Ausblick{% else %}Outlook{% endif %}
+              </h3>
+            </button>
+          </h4>
+          <div aria-labelledby="_ausblickContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+            id="_ausblickContent">
+            <div class="accordion-body" id="ausblickContent">
+              {% if lang == "de" %}
+              <p></p>
+              <p>
+                <b style="font-size: 105%">
+                  Wie ist der weitere Verlauf im 2-Hauptfächer-Bachelor?
+                </b>
+                <br style="margin-bottom: 7px" />
+                Im 2. Fachsemester schließen sich die zweiten Teile
+                <i> Analysis II </i>
+                und/oder
+                <i> Lineare Algebra II </i>
+                an das 1. Fachsemester an. Beide enden mit einer mündlichen
+                Prüfung über
+                <i> Analysis I und II </i>
+                bzw.
+                <i> Lineare Algebra I und II </i>. Für diese Prüfungen gibt es
+                zwei Prüfungszeiträume im Jahr: April und Oktober (genauer:
+                jeweils etwa drei Wochen vor Vorlesungsbeginn und die erste
+                Vorlesungswoche). Sie können diese beiden Prüfungen auf
+                verschiedene Semester aufteilen, auch wenn Sie beide
+                Grundvorlesungen gleichzeitig gehört haben.
+              </p>
+              <p>
+                Falls Sie die Lehramtsoption wählen, bietet es sich an, zwischen
+                dem 1. und dem 2. Fachsemester das Orientierungspraktikum (samt
+                Vor- und Nachbereitung) abzulegen. Voraussetzung ist, dass Sie im
+                1. Fachsemester bereits die Veranstaltung
+                <i> Einführung in die Bildungswissenschaften </i>
+                besucht haben.
+              </p>
+              <p>
+                Für den weiteren Verlauf sind die Veranstaltungen im Fach
+                Mathematik weitgehend vorgeschrieben. Wahlmöglichkeiten haben Sie
+                bei der Praktischen Übung und beim Proseminar:
+              </p>
+              <ul>
+                <li>
+                  Jährlich werden (mindestens) drei Praktische Übungen angeboten:
+                  der Programmierkurs
+                  <i>
+                    Einführung in die Programmierung für Studierende der
+                    Naturwissenschaften
+                  </i>
+                  , die Praktische Übung Numerik (jährliche Veranstaltung
+                  beginnend im Wintersemester) und die Praktische Übung Stochastik
+                  (derzeit jedes Semester).
+                  <br />
+                  (siehe auch:
+                  <a href="https://fachschaft-mathe-freiburg.de/praktische-informationen-zur-praktischen-ubung/">
+                    Informationen der Fachschaft
+                  </a>
+                  zu den Wahlmöglichkeiten).
+                </li>
+                <li>
+                  Jedes Semester werden etwa vier Proseminare zu unterschiedlichen
+                  Themen angeboten. Die Anmeldung zu einem Proseminar erfolgt
+                  gegen Ende des Vorsemesters; bitte beachten Sie dazu die in den
+                  Kommentaren zu den Lehrveranstaltungen veröffentlichten
+                  Modalitäten.
+                </li>
+              </ul>
+              <p>
+                Nach den Grundvorlesungen
+                <i> Analysis I, II </i>
+                bzw.
+                <i> Lineare Algebra I, II </i>
+                können Sie die übrigen Pflichtveranstaltungen in Mathematik
+                beliebig auf die verbleibenden Semester verteilen. Die Praktische
+                Übung sollte allerdings nicht vor der zugehörigen Vorlesung
+                besucht werden, sondern am besten gleichzeitig. Einzelne der
+                angebotenen Proseminare setzen u.U. weitere Vorlesungen als nur
+                die Grundvorlesungen voraus.
+              </p>
+              <p>
+                Denken Sie bitte stets an die rechtzeitige Anmeldung von Prüfungen
+                und Registrierung von Studienleistungen!
+              </p>
+              <p>
+                <b style="font-size: 105%">
+                  Wie ist der weitere Verlauf im Bachelor of Science
+                  (1-Hauptfach-Bachelor)?
+                </b>
+                <br style="margin-bottom: 7px" />
+                Im 2. Fachsemester schließen sich die zweiten Teile
+                <i> Analysis II </i>
+                und
+                <i> Lineare Algebra II </i>
+                an das 1. Fachsemester an. Beide enden mit einer mündlichen
+                Prüfung über
+                <i> Analysis I und II </i>
+                bzw.
+                <i> Lineare Algebra I und II </i>
+                . Für diese Prüfungen gibt es zwei Prüfungszeiträume im Jahr:
+                April und Oktober (genauer: jeweils etwa drei Wochen vor
+                Vorlesungsbeginn und die erste Vorlesungswoche). Sie können diese
+                beiden Prüfungen auf verschiedene Semester aufteilen, Im
+                3. Fachsemester folgt dann
+                <i> Analysis III </i>
+                ,
+                <i> Numerik I </i>
+                und
+                <i> Stochastik I </i>
+                als Pflichtvorlesungen.
+              </p>
+              <p>
+                Ebenfalls für das 2. Fachsemester ist der Programmierkurs
                 <i>
                   Einführung in die Programmierung für Studierende der
                   Naturwissenschaften
                 </i>
-                , die Praktische Übung Numerik (jährliche Veranstaltung
-                beginnend im Wintersemester) und die Praktische Übung Stochastik
-                (derzeit jedes Semester).
-                <br />
-                (siehe auch:
-                <a
-                  href="https://fachschaft-mathe-freiburg.de/praktische-informationen-zur-praktischen-ubung/"
-                >
-                  Informationen der Fachschaft
+                am
+                <a href="https://www.zfs.uni-freiburg.de">
+                  Zentrum für Schlüsselqualifikationen
                 </a>
-                zu den Wahlmöglichkeiten).
-              </li>
-              <li>
-                Jedes Semester werden etwa vier Proseminare zu unterschiedlichen
-                Themen angeboten. Die Anmeldung zu einem Proseminar erfolgt
-                gegen Ende des Vorsemesters; bitte beachten Sie dazu die in den
-                Kommentaren zu den Lehrveranstaltungen veröffentlichten
-                Modalitäten.
-              </li>
-            </ul>
-            <p>
-              Nach den Grundvorlesungen
-              <i> Analysis I, II </i>
-              bzw.
-              <i> Lineare Algebra I, II </i>
-              können Sie die übrigen Pflichtveranstaltungen in Mathematik
-              beliebig auf die verbleibenden Semester verteilen. Die Praktische
-              Übung sollte allerdings nicht vor der zugehörigen Vorlesung
-              besucht werden, sondern am besten gleichzeitig. Einzelne der
-              angebotenen Proseminare setzen u.U. weitere Vorlesungen als nur
-              die Grundvorlesungen voraus.
-            </p>
-            <p>
-              Denken Sie bitte stets an die rechtzeitige Anmeldung von Prüfungen
-              und Registrierung von Studienleistungen!
-            </p>
-            <p>
-              <b style="font-size: 105%">
-                Wie ist der weitere Verlauf im Bachelor of Science
-                (1-Hauptfach-Bachelor)?
-              </b>
-              <br style="margin-bottom: 7px" />
-              Im 2. Fachsemester schließen sich die zweiten Teile
-              <i> Analysis II </i>
-              und
-              <i> Lineare Algebra II </i>
-              an das 1. Fachsemester an. Beide enden mit einer mündlichen
-              Prüfung über
-              <i> Analysis I und II </i>
-              bzw.
-              <i> Lineare Algebra I und II </i>
-              . Für diese Prüfungen gibt es zwei Prüfungszeiträume im Jahr:
-              April und Oktober (genauer: jeweils etwa drei Wochen vor
-              Vorlesungsbeginn und die erste Vorlesungswoche). Sie können diese
-              beiden Prüfungen auf verschiedene Semester aufteilen, Im
-              3. Fachsemester folgt dann
-              <i> Analysis III </i>
-              ,
-              <i> Numerik I </i>
-              und
-              <i> Stochastik I </i>
-              als Pflichtvorlesungen.
-            </p>
-            <p>
-              Ebenfalls für das 2. Fachsemester ist der Programmierkurs
-              <i>
-                Einführung in die Programmierung für Studierende der
-                Naturwissenschaften
-              </i>
-              am
-              <a href="https://www.zfs.uni-freiburg.de">
-                Zentrum für Schlüsselqualifikationen
-              </a>
-              (ZfS) vorgesehen, der Teil des BOK-Bereichs bildet. Bitte beachten
-              Sie die Anmeldefristen des ZfS, die Ende März/Anfang April liegen!
-            </p>
-            <p>
-              Etwa ab dem 3. Fachsemester können Sie zu den vorgesehenen
-              Pflichtveranstaltungen weiterführende Wahlvorlesungen nach Ihren
-              Interessen hinzunehmen; eine Übersicht über das regelmäßige
-              Angebot an geeigneten Vorlesungen finden Sie
-              <a href="/static/pdf/studienberatung/uebersicht-vorlesungen.pdf">
-                hier (pdf)
-              </a>
-              . Schauen Sie sich vor Semesterbeginn das Vorlesungsverzeichnis
-              an; am besten auch in der online-Version, da kurzfristig
-              interessante und für Bachelor-Studierende geeignete zweistündige
-              Vorlesungen hinzukommen können. Beachten Sie bei der Auswahl der
-              Wahlveranstaltungen auch die nötigen Vorkenntnisse, die im
-              Modulhandbuch bzw. im Kommentierten Vorlesungsverzeichnis
-              beschrieben sind.
-            </p>
-            <p>
-              Am besten im 3. oder 4. Fachsemester sollten Sie das Proseminar
-              absolvieren. Jedes Semester werden etwa vier Proseminare zu
-              unterschiedlichen Themen angeboten. Die Anmeldung zu einem
-              Proseminar erfolgt gegen Ende des Vorsemesters; bitte beachten Sie
-              dazu die in den Kommentaren zu den Lehrveranstaltungen
-              veröffentlichten Modalitäten.
-            </p>
-            <p>
-              Gerne können Sie Ihre Studienpläne mit der Studienberatung oder
-              einem/einer der Dozent:inn:en besprechen. In unregemäßigen
-              Abständen gibt es auch Informationsveranstaltung, in der die
-              verschiedenen Schwerpunktgebiete sich vorstellen und Wege zu einer
-              Bachelor-Arbeit aufgezeigt werden.
-            </p>
-            <p>
-              Denken Sie bitte stets an die rechtzeitige Anmeldung von Prüfungen
-              und Registrierung von Studienleistungen!
-            </p>
-            <p>
-              Beachten Sie bei der Studienplanung auch die Bedingungen an die
-              ECTS-Punkte für die einzelnen Bereiche: mindestens 132 ECTS-Punkte
-              in Mathematik (inklusive Bachelor-Arbeit und dem „internen
-              BOk-Bereich“, also Praktische Übung Numerik, Proseminar und
-              Seminar); mindestens 8 und maximal 16 BOK-Punkte am ZfS (davon in
-              der Regel 6 durch den Programmierkurs); abgeschlossenes
-              Anwendungsfach und 0 bis maximal 20 anrechenbare ECTS-Punkte im
-              Wahlbereich.
-            </p>
-            <!--
+                (ZfS) vorgesehen, der Teil des BOK-Bereichs bildet. Bitte beachten
+                Sie die Anmeldefristen des ZfS, die Ende März/Anfang April liegen!
+              </p>
+              <p>
+                Etwa ab dem 3. Fachsemester können Sie zu den vorgesehenen
+                Pflichtveranstaltungen weiterführende Wahlvorlesungen nach Ihren
+                Interessen hinzunehmen; eine Übersicht über das regelmäßige
+                Angebot an geeigneten Vorlesungen finden Sie
+                <a href="/static/pdf/studienberatung/uebersicht-vorlesungen.pdf">
+                  hier (pdf)
+                </a>
+                . Schauen Sie sich vor Semesterbeginn das Vorlesungsverzeichnis
+                an; am besten auch in der online-Version, da kurzfristig
+                interessante und für Bachelor-Studierende geeignete zweistündige
+                Vorlesungen hinzukommen können. Beachten Sie bei der Auswahl der
+                Wahlveranstaltungen auch die nötigen Vorkenntnisse, die im
+                Modulhandbuch bzw. im Kommentierten Vorlesungsverzeichnis
+                beschrieben sind.
+              </p>
+              <p>
+                Am besten im 3. oder 4. Fachsemester sollten Sie das Proseminar
+                absolvieren. Jedes Semester werden etwa vier Proseminare zu
+                unterschiedlichen Themen angeboten. Die Anmeldung zu einem
+                Proseminar erfolgt gegen Ende des Vorsemesters; bitte beachten Sie
+                dazu die in den Kommentaren zu den Lehrveranstaltungen
+                veröffentlichten Modalitäten.
+              </p>
+              <p>
+                Gerne können Sie Ihre Studienpläne mit der Studienberatung oder
+                einem/einer der Dozent:inn:en besprechen. In unregemäßigen
+                Abständen gibt es auch Informationsveranstaltung, in der die
+                verschiedenen Schwerpunktgebiete sich vorstellen und Wege zu einer
+                Bachelor-Arbeit aufgezeigt werden.
+              </p>
+              <p>
+                Denken Sie bitte stets an die rechtzeitige Anmeldung von Prüfungen
+                und Registrierung von Studienleistungen!
+              </p>
+              <p>
+                Beachten Sie bei der Studienplanung auch die Bedingungen an die
+                ECTS-Punkte für die einzelnen Bereiche: mindestens 132 ECTS-Punkte
+                in Mathematik (inklusive Bachelor-Arbeit und dem „internen
+                BOk-Bereich“, also Praktische Übung Numerik, Proseminar und
+                Seminar); mindestens 8 und maximal 16 BOK-Punkte am ZfS (davon in
+                der Regel 6 durch den Programmierkurs); abgeschlossenes
+                Anwendungsfach und 0 bis maximal 20 anrechenbare ECTS-Punkte im
+                Wahlbereich.
+              </p>
+              <!--
 	<p><b>Mentorenprogramms des Mathematischen Instituts</b></p>
     <p>
       Zu Ende Ihres 3.&nbsp;Fachsemesters wird Ihnen ein Professor oder eine Professorin 
@@ -1985,183 +1760,179 @@
       zu nutzen.
     </p>
     -->
-            <p>
-              <b style="font-size: 105%"> Studium im Ausland </b>
-              <br style="margin-bottom: 7px" />
-              Mit den Planungen für ein eventuelles
-              Auslandssemester/Auslandsjahr während des Bachelor-Studiums sollte
-              spätestens Ende des 2. Fachsemesters/Beginn des 3. Fachsemesters
-              begonnen werden. Näheres dazu auf der Webseite des
-              <a
-                href="{{ url_for('showstufaq', unterseite = 'ausland', lang=lang) }}"
-              >
-                Auslandsbeauftragten des Mathematischen Instituts
-              </a>
-              und des
-              <a href="https://www.international.uni-freiburg.de/">
-                International Office
-              </a>
-              der Universität Freiburg.
-            </p>
-            {% else %}
-            <p>
-              <b style="font-size: 105%">
-                What does the 2-major Bachelor's degree continue?
-              </b>
-              <br style="margin-bottom: 7px" />
-              The second parts of
-              <i> Analysis II </i>
-              and/or
-              <i> Linear Algebra II </i>
-              follow on from the 1st semester. Both end with an oral examination
-              on
-              <i> Analysis I and II </i>
-              and
-              <i> Linear Algebra I and II </i>. For these examinations there are
-              two examination periods in the year: April and October (more
-              precisely: about three weeks before the start of lectures and the
-              first week of lectures). You can split these two exams over
-              different semesters, even if you have attended both basic lectures
-              at the same time.
-            </p>
-            <p>
-              If you choose the teaching degree option, it is advisable to
-              complete the orientation internship between the 1st and 2nd
-              semester the orientation internship (including preparation and
-              follow-up work). The prerequisite is that you have already
-              attended the course
-              <i> Introduction to the educational sciences </i>.
-            </p>
-            <p>
-              For the rest of the program, the courses in mathematics are are
-              largely prescribed. You have options for the practical exercise
-              and the proseminar:
-            </p>
-            <ul>
-              <li>
-                (At least) three practical exercises are offered each year: the
-                programming course
+              <p>
+                <b style="font-size: 105%"> Studium im Ausland </b>
+                <br style="margin-bottom: 7px" />
+                Mit den Planungen für ein eventuelles
+                Auslandssemester/Auslandsjahr während des Bachelor-Studiums sollte
+                spätestens Ende des 2. Fachsemesters/Beginn des 3. Fachsemesters
+                begonnen werden. Näheres dazu auf der Webseite des
+                <a href="{{ url_for('showstufaq', unterseite = 'ausland', lang=lang) }}">
+                  Auslandsbeauftragten des Mathematischen Instituts
+                </a>
+                und des
+                <a href="https://www.international.uni-freiburg.de/">
+                  International Office
+                </a>
+                der Universität Freiburg.
+              </p>
+              {% else %}
+              <p>
+                <b style="font-size: 105%">
+                  What does the 2-major Bachelor's degree continue?
+                </b>
+                <br style="margin-bottom: 7px" />
+                The second parts of
+                <i> Analysis II </i>
+                and/or
+                <i> Linear Algebra II </i>
+                follow on from the 1st semester. Both end with an oral examination
+                on
+                <i> Analysis I and II </i>
+                and
+                <i> Linear Algebra I and II </i>. For these examinations there are
+                two examination periods in the year: April and October (more
+                precisely: about three weeks before the start of lectures and the
+                first week of lectures). You can split these two exams over
+                different semesters, even if you have attended both basic lectures
+                at the same time.
+              </p>
+              <p>
+                If you choose the teaching degree option, it is advisable to
+                complete the orientation internship between the 1st and 2nd
+                semester the orientation internship (including preparation and
+                follow-up work). The prerequisite is that you have already
+                attended the course
+                <i> Introduction to the educational sciences </i>.
+              </p>
+              <p>
+                For the rest of the program, the courses in mathematics are are
+                largely prescribed. You have options for the practical exercise
+                and the proseminar:
+              </p>
+              <ul>
+                <li>
+                  (At least) three practical exercises are offered each year: the
+                  programming course
+                  <i>
+                    Introduction to programming for students of natural sciences
+                  </i>
+                  the Practical Exercise in Numerics (annual event starting in the
+                  winter semester) and the practical exercise in stochastics
+                  (currently every semester).
+                  <br />
+                  (see also:
+                  <a href="https://fachschaft-mathe-freiburg.de/praktische-informationen-zur-praktischen-ubung/">
+                    Information from the student council
+                  </a>
+                  on the elective options).
+                </li>
+                <li>
+                  Each semester, around four proseminars are offered on different
+                  topics. Registration for a proseminar takes place towards end of
+                  the previous semester; please note the information published in
+                  the comments on the courses.
+                </li>
+              </ul>
+              <p>
+                After the basic lectures
+                <i> Analysis I, II </i>
+                resp.
+                <i> Linear Algebra I, II </i>
+                you can spread the remaining compulsory courses in mathematics as
+                you wish over the remaining semesters. The practical exercise
+                however, should not be attended before the corresponding lecture
+                but preferably at the same time. Some of the offered seminars may
+                require further lectures than just the basic lectures.
+              </p>
+              <p>
+                Please always remember to register for examinations in good time
+                and registration of coursework in good time!
+              </p>
+              <p>
+                <b style="font-size: 105%">
+                  What does the Bachelor of Science (1-major Bachelor's degree)
+                  continue?
+                </b>
+                <br style="margin-bottom: 7px" />
+                The second parts
+                <i> Analysis II </i>
+                and
+                <i> Linear Algebra II </i>
+                are completed in the 2nd semester and follow on from the 1st
+                semester. Both end with an oral examination on
+                <i> Analysis I and II </i>
+                and
+                <i> Linear Algebra I and II </i>
+                . There are two examination periods per year for these
+                examinations: April and October (more precisely: about three weeks
+                before the start of each lecture and the first week of lectures).
+                You can split these two exams to different semesters, in the 3rd
+                semester then follows
+                <i> Analysis III </i>
+                ,
+                <i> Numerics I </i>
+                and
+                <i> Stochastics I </i>
+                as compulsory lectures.
+              </p>
+              <p>
+                Also for the 2nd semester is the programming course
                 <i>
                   Introduction to programming for students of natural sciences
                 </i>
-                the Practical Exercise in Numerics (annual event starting in the
-                winter semester) and the practical exercise in stochastics
-                (currently every semester).
-                <br />
-                (see also:
-                <a
-                  href="https://fachschaft-mathe-freiburg.de/praktische-informationen-zur-praktischen-ubung/"
-                >
-                  Information from the student council
+                on
+                <a href="https://www.zfs.uni-freiburg.de">
+                  Center for Key Qualifications
                 </a>
-                on the elective options).
-              </li>
-              <li>
-                Each semester, around four proseminars are offered on different
-                topics. Registration for a proseminar takes place towards end of
-                the previous semester; please note the information published in
+                (ZfS), which forms part of the BOK area. Please note the ZfS
+                application deadlines, which are at the end of March/beginning of
+                April!
+              </p>
+              <p>
+                From around the 3rd semester onwards, you will be able to take
+                elective courses in addition to the compulsory courses according
+                to your interests; an overview of the regular range of suitable of
+                suitable lectures can be found
+                <a href="/static/pdf/studienberatung/uebersicht-vorlesungen.pdf">
+                  here (pdf)
+                </a>
+                . Take a look at the course catalog before the start of the
+                semester; preferably also in the online version, as there may be
+                interesting two-hour lectures suitable for Bachelor students may
+                be added at short notice. When selecting the the required prior
+                knowledge, which can be found in the module handbook or in the
+                annotated course catalog are described.
+              </p>
+              <p>
+                It is best to complete the proseminar in the 3rd or 4th semester.
+                Each semester, around four proseminars on different topics are
+                offered. Registration for a Proseminar takes place towards the end
+                of the previous semester; please note the modalities published in
                 the comments on the courses.
-              </li>
-            </ul>
-            <p>
-              After the basic lectures
-              <i> Analysis I, II </i>
-              resp.
-              <i> Linear Algebra I, II </i>
-              you can spread the remaining compulsory courses in mathematics as
-              you wish over the remaining semesters. The practical exercise
-              however, should not be attended before the corresponding lecture
-              but preferably at the same time. Some of the offered seminars may
-              require further lectures than just the basic lectures.
-            </p>
-            <p>
-              Please always remember to register for examinations in good time
-              and registration of coursework in good time!
-            </p>
-            <p>
-              <b style="font-size: 105%">
-                What does the Bachelor of Science (1-major Bachelor's degree)
-                continue?
-              </b>
-              <br style="margin-bottom: 7px" />
-              The second parts
-              <i> Analysis II </i>
-              and
-              <i> Linear Algebra II </i>
-              are completed in the 2nd semester and follow on from the 1st
-              semester. Both end with an oral examination on
-              <i> Analysis I and II </i>
-              and
-              <i> Linear Algebra I and II </i>
-              . There are two examination periods per year for these
-              examinations: April and October (more precisely: about three weeks
-              before the start of each lecture and the first week of lectures).
-              You can split these two exams to different semesters, in the 3rd
-              semester then follows
-              <i> Analysis III </i>
-              ,
-              <i> Numerics I </i>
-              and
-              <i> Stochastics I </i>
-              as compulsory lectures.
-            </p>
-            <p>
-              Also for the 2nd semester is the programming course
-              <i>
-                Introduction to programming for students of natural sciences
-              </i>
-              on
-              <a href="https://www.zfs.uni-freiburg.de">
-                Center for Key Qualifications
-              </a>
-              (ZfS), which forms part of the BOK area. Please note the ZfS
-              application deadlines, which are at the end of March/beginning of
-              April!
-            </p>
-            <p>
-              From around the 3rd semester onwards, you will be able to take
-              elective courses in addition to the compulsory courses according
-              to your interests; an overview of the regular range of suitable of
-              suitable lectures can be found
-              <a href="/static/pdf/studienberatung/uebersicht-vorlesungen.pdf">
-                here (pdf)
-              </a>
-              . Take a look at the course catalog before the start of the
-              semester; preferably also in the online version, as there may be
-              interesting two-hour lectures suitable for Bachelor students may
-              be added at short notice. When selecting the the required prior
-              knowledge, which can be found in the module handbook or in the
-              annotated course catalog are described.
-            </p>
-            <p>
-              It is best to complete the proseminar in the 3rd or 4th semester.
-              Each semester, around four proseminars on different topics are
-              offered. Registration for a Proseminar takes place towards the end
-              of the previous semester; please note the modalities published in
-              the comments on the courses.
-            </p>
-            <p>
-              You are welcome to discuss your study plans with the Academic
-              advisory office or one of the lecturers. At irregular intervals
-              there are also information events in which the various
-              specializations focus areas are introduced and ways to complete a
-              Bachelor's thesis are shown.
-            </p>
-            <p>
-              Please always remember to register for examinations in good time
-              and registration of coursework in good time!
-            </p>
-            <p>
-              When planning your studies, please also note the requirements for
-              the ECTS points for the individual areas: at least 132 ECTS points
-              in mathematics (including Bachelor's thesis and the "internal BOK
-              area", i.e. practical numerical exercise, proseminar and seminar);
-              a minimum of 8 and a maximum of 16 BOK points at the ZfS (of which
-              usually 6 of these through the programming course); completed
-              application subject and 0 to a maximum of 20 creditable ECTS
-              points in the elective area.
-            </p>
-            <!--
+              </p>
+              <p>
+                You are welcome to discuss your study plans with the Academic
+                advisory office or one of the lecturers. At irregular intervals
+                there are also information events in which the various
+                specializations focus areas are introduced and ways to complete a
+                Bachelor's thesis are shown.
+              </p>
+              <p>
+                Please always remember to register for examinations in good time
+                and registration of coursework in good time!
+              </p>
+              <p>
+                When planning your studies, please also note the requirements for
+                the ECTS points for the individual areas: at least 132 ECTS points
+                in mathematics (including Bachelor's thesis and the "internal BOK
+                area", i.e. practical numerical exercise, proseminar and seminar);
+                a minimum of 8 and a maximum of 16 BOK points at the ZfS (of which
+                usually 6 of these through the programming course); completed
+                application subject and 0 to a maximum of 20 creditable ECTS
+                points in the elective area.
+              </p>
+              <!--
 	<p><b>Mentoring program of the Institute of Mathematics</b></p>
     <p>
       At the end of your 3rd semester, you will be assigned a professor from the 
@@ -2177,137 +1948,112 @@
       to make use of them.
     </p>
     -->
-            <p>
-              <b style="font-size: 105%"> Studying abroad </b>
-              <br style="margin-bottom: 7px" />
-              Planning for a possible semester/year abroad during your
-              Bachelor's degree program should begin at the end of the 2nd
-              semester/beginning of the 3rd semester at the latest. More
-              information can be found on the website of the
-              <a
-                href="{{ url_for('showstufaq', subpage = 'ausland', lang=lang) }}"
-              >
-                International representative of the Institute of Mathematics
-              </a>
-              and the
-              <a href="https://www.international.uni-freiburg.de/">
-                International Office
-              </a>
-              of the University of Freiburg.
-            </p>
-            {% endif %}
+              <p>
+                <b style="font-size: 105%"> Studying abroad </b>
+                <br style="margin-bottom: 7px" />
+                Planning for a possible semester/year abroad during your
+                Bachelor's degree program should begin at the end of the 2nd
+                semester/beginning of the 3rd semester at the latest. More
+                information can be found on the website of the
+                <a href="{{ url_for('showstufaq', subpage = 'ausland', lang=lang) }}">
+                  International representative of the Institute of Mathematics
+                </a>
+                and the
+                <a href="https://www.international.uni-freiburg.de/">
+                  International Office
+                </a>
+                of the University of Freiburg.
+              </p>
+              {% endif %}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <h4 class="accordion-header">
-          <button
-            aria-controls="_literaturContent"
-            aria-expanded="{% if anchor == 'literatur' %}true{% else %}false{% endif %}"
-            class="accordion-button {% if anchor != 'literatur' %}collapsed{% endif %}"
-            data-bs-target="#_literaturContent"
-            data-bs-toggle="collapse"
-            type="button"
-          >
-            <h3 class="h5">
-              {% if lang == "de" %}Literaturhinweise{% else %}Literature{% endif
-              %}
-            </h3>
-          </button>
-        </h4>
-        <div
-          aria-labelledby="_literaturContent"
-          class="accordion-collapse collapse {% if anchor == 'literatur' %}show{% endif %}"
-          data-bs-parent="#accordionExample"
-          id="_literaturContent"
-        >
-          <div class="accordion-body" id="literatur">
-            {% if lang == "de" %}
-            <b>Als Vorbereitung aufs Studium:</b>
-            <ul>
-              <li>
-                Kevin Houston <i>„Wie man mathematisch denkt“</i>, Springer
-                Spektrum 2012. <br />
-                (Beschreibung siehe
-                <a
-                  href="https://www.mathematik.de/leseecke-article/1289-wie-man-mathematisch-denkt"
-                  >Rezension auf der DMV-Seite</a
-                >)
-              </li>
-              <li>
-                Lara Alcock
-                <i>„Wie man erfolgreich Mathematik studiert“</i>, Springer
-                Spektrum 2017. <br />
-                (Beschreibung siehe
-                <a href="https://rdcu.be/braBb"
-                  >Rezension in den Mathematischen Semesterberichten</a
-                >)
-              </li>
-              <li>
-                Tobias Glasauer
-                <i
-                  >„(Hoch)Schulmathmatik. Ein Sprungbrett vom Gymnasium an die
-                  Uni“</i
-                >, Springer Spektrum 2015.
-              </li>
-            </ul>
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button aria-controls="_literaturContent"
+              aria-expanded="{% if anchor == 'literatur' %}true{% else %}false{% endif %}"
+              class="accordion-button {% if anchor != 'literatur' %}collapsed{% endif %}"
+              data-bs-target="#_literaturContent" data-bs-toggle="collapse" type="button">
+              <h3 class="h5">
+                {% if lang == "de" %}Literaturhinweise{% else %}Literature{% endif
+                %}
+              </h3>
+            </button>
+          </h4>
+          <div aria-labelledby="_literaturContent"
+            class="accordion-collapse collapse {% if anchor == 'literatur' %}show{% endif %}"
+            data-bs-parent="#accordionExample" id="_literaturContent">
+            <div class="accordion-body" id="literatur">
+              {% if lang == "de" %}
+              <b>Als Vorbereitung aufs Studium:</b>
+              <ul>
+                <li>
+                  Kevin Houston <i>„Wie man mathematisch denkt“</i>, Springer
+                  Spektrum 2012. <br />
+                  (Beschreibung siehe
+                  <a href="https://www.mathematik.de/leseecke-article/1289-wie-man-mathematisch-denkt">Rezension auf der
+                    DMV-Seite</a>)
+                </li>
+                <li>
+                  Lara Alcock
+                  <i>„Wie man erfolgreich Mathematik studiert“</i>, Springer
+                  Spektrum 2017. <br />
+                  (Beschreibung siehe
+                  <a href="https://rdcu.be/braBb">Rezension in den Mathematischen Semesterberichten</a>)
+                </li>
+                <li>
+                  Tobias Glasauer
+                  <i>„(Hoch)Schulmathmatik. Ein Sprungbrett vom Gymnasium an die
+                    Uni“</i>, Springer Spektrum 2015.
+                </li>
+              </ul>
 
-            <b>Begleitend zum Studium:</b>
-            <ul>
-              <li>
-                Oliver Deiser et. al.
-                <i>„12 x 12 Schlüsselkonzepte zur Mathematik“</i>, Springer
-                Spektrum 2012. <br />
-                (Beschreibung siehe
-                <a
-                  href="https://ojs.didaktik-der-mathematik.de/index.php/mgdm/article/download/414/408"
-                  >Rezension in den Mitteilungen der GDM</a
-                >)
-              </li>
-              <li>
-                Markus Junker
-                <i
-                  >„<a
-                    href="https://home.mathematik.uni-freiburg.de/junker/skripte/Grundlagen-WS1011.pdf"
-                    >Einführung in Sprache und Grundbegriffe der Mathematik“</a
-                  ></i
-                >
-                (pdf), Wintersemester 2010/11 (mit minimalen Überarbeitungen
-                2017)
-              </li>
-            </ul>
+              <b>Begleitend zum Studium:</b>
+              <ul>
+                <li>
+                  Oliver Deiser et. al.
+                  <i>„12 x 12 Schlüsselkonzepte zur Mathematik“</i>, Springer
+                  Spektrum 2012. <br />
+                  (Beschreibung siehe
+                  <a href="https://ojs.didaktik-der-mathematik.de/index.php/mgdm/article/download/414/408">Rezension in
+                    den Mitteilungen der GDM</a>)
+                </li>
+                <li>
+                  Markus Junker
+                  <i>„<a href="https://home.mathematik.uni-freiburg.de/junker/skripte/Grundlagen-WS1011.pdf">Einführung
+                      in Sprache und Grundbegriffe der Mathematik“</a></i>
+                  (pdf), Wintersemester 2010/11 (mit minimalen Überarbeitungen
+                  2017)
+                </li>
+              </ul>
 
-            <b>Populärwissenschaftliche Bücher über mathematische Themen:</b>
-            <ul>
-              <li>
-                Günter M. Ziegler
-                <i>„Darf ich Zahlen? Geschichten aus der Mathematik"</i>; Piper
-                Taschenbuch, 2010.
-              </li>
-              <li>
-                Donal O’Shea
-                <i
-                  >„The Poincaré Conjecture: In Search of the Shape of the
-                  Universe“</i
-                >, Walker 2007. <br style="margin-bottom: 5px" />
-                Übersetzung von Hartmut Schickert:
-                <i
-                  >„Poincarés Vermutung. Die Geschichte eines mathematischen
-                  Abenteuers“</i
-                >, S. Fischer, 2007. Taschenbuchausgabe bei Fischer.
-              </li>
-              <li>
-                Simon Singh <i>„Fermat's Last Theorem“</i>, London 1997.
-                <br style="margin-bottom: 5px" />
-                Übersetzung von Klaus Fritz:
-                <i>„Fermats letzter Satz“</i>, Hanser 1998. Taschenbuchausgabe
-                bei dtv.
-              </li>
-            </ul>
-            {% else %}{% endif %}
+              <b>Populärwissenschaftliche Bücher über mathematische Themen:</b>
+              <ul>
+                <li>
+                  Günter M. Ziegler
+                  <i>„Darf ich Zahlen? Geschichten aus der Mathematik"</i>; Piper
+                  Taschenbuch, 2010.
+                </li>
+                <li>
+                  Donal O’Shea
+                  <i>„The Poincaré Conjecture: In Search of the Shape of the
+                    Universe“</i>, Walker 2007. <br style="margin-bottom: 5px" />
+                  Übersetzung von Hartmut Schickert:
+                  <i>„Poincarés Vermutung. Die Geschichte eines mathematischen
+                    Abenteuers“</i>, S. Fischer, 2007. Taschenbuchausgabe bei Fischer.
+                </li>
+                <li>
+                  Simon Singh <i>„Fermat's Last Theorem“</i>, London 1997.
+                  <br style="margin-bottom: 5px" />
+                  Übersetzung von Klaus Fritz:
+                  <i>„Fermats letzter Satz“</i>, Hanser 1998. Taschenbuchausgabe
+                  bei dtv.
+                </li>
+              </ul>
+              {% else %}{% endif %}
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
