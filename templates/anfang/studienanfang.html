@@ -41,13 +41,8 @@
       Usually, you do not have to do anything else beforehand. 
       Some typical questions you might have will already be answered here.
       For further questions, you might contact the
-      <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
-        Student Advisory Service
-      </a>
-      of the Mathematical Institute or the students of the
-      <a href="https://fachschaft-mathe-freiburg.de/">
-        Mathematics Student Council
-      </a>.
+      <a href="{{ url_for('showstudiendekanat', lang=lang) }}">Student Advisory Service</a>      
+      or the <a href="https://fachschaft-mathe-freiburg.de/">Student Council</a> of the Mathematical Institute.
     </p>
     {% endif %}
   </div>
@@ -844,24 +839,18 @@
             {% else %}
 
             <p>
-              The
-              <a href="https://fachschaft-mathe-freiburg.de/">departmental student committee</a>
-              organizes an annual <b>introductory week</b> for first-year students
-              in mathematics, which takes place in the week before lectures begin
-              in the winter semester. During this week, the new mathematics
-              students can get to know each other, but also students in higher
-              semesters. <br />The lecturers of the first-semester lectures
+              Every winter term, the <a href="https://fachschaft-mathe-freiburg.de/">Student Council</a>
+              organizes the <b>introductory week</b> for first-year students in mathematics. 
+              During this week, the new mathematics students can get to know each other, but also students in higher
+              semesters. The lecturers of the first-semester lectures
               introduce themselves, and there are guided tours the Institute of
               Mathematics, the university and the city of Freiburg.
-            </p>
-            <p>
               In order to clarify open questions about the course of studies, the
-              Academic Advisory Service offers an information event during the
-              introductory week.
-            </p>
-            <p>
+              <a href="{{ url_for('showstudiendekanat', lang=lang) }}">Student Advisory Service</a> 
+              offers an information event during the introductory week. <br />
               Participation in the introductory week is highly recommended for all
-              first semester students.
+              first semester students. The new Master's students are also invited &ndash; 
+              there are some special programme items for them. 
             </p>
             <p>
               <b style="font-size: 105%">Date</b>
