@@ -146,4 +146,17 @@ generiert.
 Hier werden News verwaltet, inklusive deren Bilder und eventueller Bildrechte. Die App biete einen eingeschränkten Umfang der Bildbearbeitung, etwa die Verringerung der Bildqualität um auf eine kleinere Dateigröße zu kommen.
 
 
+## Lokales Editieren der Homepage
+Will man nicht online auf der github-Seite, sondern lokal die Webpage editieren, so muss man sich etwas mehr mit git auseinandersetzen. Die wichtigsten Befehle sind:
+* `git clone <repo>`: Lädt ein Repository erstmals herunter
+* `git pull`: Updated ein vorhandenes Repository.
+* `git add --all; git commit -m "<message>; git push`: Lädt die lokalen Änderungen auf den github-Server.
+
+Um zu starten, gibt man in einem Terminal in dem Ordner, wo der Ordner mi-hp hin soll, `git clone https://github.com/pfaffelh/mi-hp` ein. (Das repository ist öffentlich, d.h. jeder kann es herunterladen, aber nicht jeder kann es ändern.) Dies lädt alle Dateien herunter. Nach `cd mi-hp` muss man zunächst seine Berechtigung zum Ändern des Repositories hinterlegen. Hierzu sollte das Tool `gh` installiert sein. Mittels `gh auth login` startet man die Hinterlegung der Berechtigung. (Eventuell muss man hier zunächst auf der github-Seite ein login-Token erzeugen, was dann hier das Passwort ist.) Ist dies geschafft, und hat man ein paar Dateien geändert, so ändert man das Repository mit
+```
+git add --all
+git commit -m "<message hier eingeben, was geändert worden ist>"
+git push
+```
+Achtung! Wenn man lokal anfängt zu arbeiten, empfliehlt es sich, zunächst immer ein `git pull` auszuführen, um Änderungen anderer Nutzer auch zu bekommen.
 

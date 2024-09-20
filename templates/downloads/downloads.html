@@ -1,10 +1,19 @@
+{% if lang == "de" %} {% else %} {% endif %}
 <div class="container" id="inhalt">
   <h1>Downloads</h1>
+  {% if lang == "de" %}
   <p>
     Hier finden Sie die meisten Dokumente, die wir zum Download anbieten. Das
     kommentierte Vorlesungsverzeichnis ist
     <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">hier</a>.
   </p>
+  {% else %}
+  <p>
+    You can find most of the documents that we offer for download here. The
+    annotated course catalogue is
+    <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}">here</a>.
+  </p>
+  {% endif %}
 
   <div id="accordion"></div>
   <div class="accordion accordion-flush" id="accordionExample">
@@ -18,7 +27,11 @@
           aria-expanded="{% if anchor == 'pruefungsamt' %}true{% else %}false{% endif %}"
           data-bs-toggle="collapse"
         >
+          {% if lang == "de" %}
           <h3 class="h5">Formulare und Merkblätter für Studierende</h3>
+          {% else %}
+          <h3 class="h5">Forms and information sheets for students</h3>
+          {% endif %}
         </button>
       </h4>
       <div
@@ -28,7 +41,9 @@
         id="formulareContent"
       >
         <div class="accordion-body" id="pruefungsamt">
+          {% if lang == "de" %} {% else %} {% endif %}
           <p>Bitte die Formulare nach Möglichkeit digital ausfüllen!</p>
+          {% if lang == "de" %}
           <ul>
             <li>
               <b> Abmeldung und Rücktritt von Prüfungen </b>
@@ -277,6 +292,243 @@
               </a>
             </li>
           </ul>
+          {% else %}
+          <ul>
+            <li>
+              <b>Application subjects in the B.Sc.</b>
+              <br />
+              –
+              <a href="/static/pdf/pruefungsamt/formular-anwendungsfach.pdf">
+                Application for special application subjects
+              </a>
+              <br />
+              –
+              <a
+                href="/static/pdf/pruefungsamt/Merkblatt-Sonderanwendungsfaecher.pdf"
+              >
+                Information Sheet on Special Application Subjects
+              </a>
+              <br />
+              –
+              <a href="/static/pdf/pruefungsamt/formular-anwendungsfach.pdf"
+                >Request for Change of Application Subject</a
+              >
+              <b>–</b>
+              <a href="/static/pdf/pruefungsamt/formular-anwendungsfach.pdf"
+                >Request for Examination in Special Application Subject
+              </a>
+              <br />
+              –
+              <a href="/static/pdf/pruefungsamt/formular-anwendungsfach.pdf">
+                Application to change the application subject
+              </a>
+              <br />
+            </li>
+            <li>
+              <b> BAföG certificates after the 4th semester: </b>
+              <br />
+              – Information sheet
+              <a href="/static/pdf/pruefungsamt/Merkblatt-BAfoeG.pdf">
+                2-Hf.-B. // B.Sc.
+              </a>
+            </li>
+            <li>
+              <b> Catch-up achievements in the Master of Education: </b>
+              <br />
+              – Request to review catch-up achievements
+              <a
+                href="/static/pdf/pruefungsamt/formular-antrag_nachzuholende-leistungen_med.pdf"
+              >
+                (MEd)
+              </a>
+              <br />
+              – Certificate of completed work
+              <a
+                href="/static/pdf/pruefungsamt/bescheinigung-nachgeholte_leistungen_med.pdf"
+              >
+              </a>
+            </li>
+            <li>
+              <b> Disadvantage compensation: </b>
+              – Information sheet
+              <a
+                href="/static/pdf/pruefungsamt/Informationen_zum_Nachteilsausgleich-2022.07.08.pdf"
+              >
+                (German)
+              </a>
+              <a
+                href="/static/pdf/pruefungsamt/Informationen_zum_Nachteilsausgleich-2022.09.30.engl.pdf"
+              >
+                (English)
+              </a>
+            </li>
+            <li>
+              <b> Early oral examination </b>
+              –
+              <a href="/static/pdf/formular-vorgezogene_pruefung.pdf"
+                >application form
+              </a>
+              <a href="/static/pdf/merkblatt-pruefungswiederholung-2hf-b21.pdf"
+                >2-Hf.-B. // B.Sc. // M.Ed. as an extension subject
+              </a>
+            </li>
+            <li>
+              <b>Examinations in the Master's degree</b>
+              <br />
+              – Admission to the examinations
+              <a
+                href="/static/pdf/pruefungsamt/formular-zulassung_pruefungen_master.pdf"
+              >
+                M.Ed. (also extension subject) // M.Sc.
+              </a>
+              <br />
+              – Registration form for oral examination
+              <a href=""> M.Ed. (also extension subject 120 ECTS) </a>
+              //
+              <a
+                href="/static/pdf/pruefungsamt/formular-muendliche_pruefung_msc.pdf"
+                >M.Sc.
+              </a>
+            </li>
+            <li>
+              <b>Examinations by video conference</b>
+              <br />
+              –
+              <a
+                href="/static/pdf/pruefungsamt/formular-alleStg-Datenschutzerklaerung_muendliche_Pruefung-2020.05.27.pdf"
+              >
+              </a>
+            </li>
+            <li>
+              <b> Final thesis </b>
+              <br />
+              – Registration form
+              <a
+                href="/static/pdf/pruefungsamt/formular-pruefungsamt_abschlussarbeit.pdf"
+              >
+                all degree programs
+              </a>
+              <br />
+              – Sample title page
+              <a href="/static/pdf/pruefungsamt/muster-titelblatt.pdf">
+                all degree programs
+              </a>
+            </li>
+            <li>
+              <b>Graduate Party</b>
+              <br />
+              <a
+                href="/static/pdf/pruefungsamt/formular-absolventinnenfeier.pdf"
+              >
+                participation form for all degree programs</a
+              >
+            </li>
+            <li>
+              <b> Repeat examination </b>
+              <br />
+              – Information sheet
+              <a
+                href="/static/pdf/pruefungsamt/Merkblatt-Pruefungswiederholung-2HfB21.pdf"
+              >
+                2-Hf.-B.
+              </a>
+              //
+              <a
+                href="/static/pdf/pruefungsamt/Merkblatt-Pruefungswiederholung-BSc21.pdf"
+              >
+                B.Sc. (PO 2021)
+              </a>
+              //
+              <a
+                href="/static/pdf/pruefungsamt/Merkblatt-Pruefungswiederholung-BSc12.pdf"
+              >
+                B.Sc. (PO 2012)
+              </a>
+              //
+              <a
+                href="/static/pdf/pruefungsamt/Merkblatt-Pruefungswiederholung-MEd18.pdf"
+              >
+                M.Ed.
+              </a>
+              // Extension subject (Erweiterungsfach)
+              <a
+                href="/static/pdf/pruefungsamt/Merkblatt-Pruefungswiederholung-MEH21.pdf"
+              >
+              </a>
+              //
+              <a
+                href="/static/pdf/pruefungsamt/Merkblatt-Pruefungswiederholung-MSc14.pdf"
+              >
+                M.Sc.
+              </a>
+            </li>
+
+            <li>
+              <b>Scientific Integrity</b>
+              –
+              <a
+                href="/static/pdf/pruefungsamt/Regeln_wiss_Redlichkeit.Mathematik.pdf"
+                >Information on scientific integrity in the study of mathematics
+              </a>
+            </li>
+            <li>
+              <b>Transfer of Credits: </b>
+              <br />
+              <br />
+              – Recognition Form
+              <a href="/static/pdf/pruefungsamt/formular-anerkennung-2hfb.pdf">
+                2-Hf.-B.
+              </a>
+              //
+              <a href="/static/pdf/pruefungsamt/formular-anerkennung-bsc.pdf">
+                B.Sc.
+              </a>
+              //
+              <a
+                href="/static/pdf/pruefungsamt/formulare/formular-anerkennung-med.pdf"
+              >
+                M.Ed.
+              </a>
+              //
+              <a
+                href="/static/pdf/pruefungsamt/formular-anerkennung-med120.pdf"
+              >
+                Extension subject 120 ECTS
+              </a>
+              //
+              <a href="/static/pdf/pruefungsamt/formular-anerkennung-med90.pdf">
+                90 ECTS
+              </a>
+              //
+              <a href="/static/pdf/pruefungsamt/formular-anerkennung-msc.pdf">
+                M.Sc.
+              </a>
+            </li>
+            <li>
+              <b>Withdrawal and resignation from examinations</b>
+              <br />
+              – Information sheet
+              <a
+                href="/static/pdf/pruefungsamt/Merkblatt-Pruefungsabmeldung_und_Ruecktritt.pdf"
+              >
+                all degree programs
+              </a>
+              <br />
+              – Withdrawal form
+              <a
+                href="/static/pdf/pruefungsamt/formular-pruefungsabmeldung.pdf"
+              >
+                all degree programs
+              </a>
+              <br />
+              – Request for approval of cancellation
+              <a href="/static/pdf/pruefungsamt/formular-ruecktritt.pdf">
+                all degree programs
+              </a>
+            </li>
+          </ul>
+
+          {% endif %}
         </div>
       </div>
     </div>
@@ -291,6 +543,7 @@
           aria-expanded="{% if anchor == 'lehrende' %}true{% else %}false{% endif %}"
           data-bs-toggle="collapse"
         >
+          {% if lang == "de" %} {% else %} {% endif %}
           <h3 class="h5">Formulare und Merkblätter für Lehrende</h3>
         </button>
       </h4>
@@ -301,6 +554,7 @@
         id="formulareMContent"
       >
         <div class="accordion-body" id="lehrende">
+          {% if lang == "de" %} {% else %} {% endif %}
           <ul>
             <li>
               <b> Abschlussarbeit </b>
@@ -352,12 +606,12 @@
               <a href="/static/pdf/lehrende/vorbehaltserklaerung.pdf">
                 alle Studiengänge
               </a>
-              <br>
+              <br />
               – Formular Nachkorrektur
               <a href="/static/pdf/lehrende/Nachkorrektur.pdf">
                 alle Studiengänge
               </a>
-              <br>
+              <br />
               – Hinweise von D5 zur Durchführung von Klausuren
               <a
                 href="/static/pdf/lehrende/Hinweise_zur_Durchfuehrung_von_Klausuren-D5-2022.pdf"
@@ -368,11 +622,14 @@
             <li>
               <b> Mündliche Prüfungen</b>
               <br />
-              – Handreichung des Dezernats Recht zur Durchführungen von mündlichen Prüfungenn
-              <a href="/static/pdf/lehrende/Hinweise_zur_Durchfuehrung_muendlicher_Praesenzpruefungen-D5-2022.pdf">
+              – Handreichung des Dezernats Recht zur Durchführungen von
+              mündlichen Prüfungenn
+              <a
+                href="/static/pdf/lehrende/Hinweise_zur_Durchfuehrung_muendlicher_Praesenzpruefungen-D5-2022.pdf"
+              >
                 alle Studiengänge
               </a>
-              <br>
+              <br />
               – leeres Protokoll einer mündlichen Prüfung
               <a href="/static/pdf/lehrende/blankoprotokoll.pdf">
                 alle Studiengänge
@@ -385,16 +642,18 @@
               <a href="/static/pdf/lehrende/Pruefungsbefugnis.pdf">
                 Übertragung der Prüfungsbefugnis
               </a>
-              <br>
+              <br />
               –
-              <a href="/static/pdf/lehrende/Pruefungsbefugnis_Anlage_vorausgefuellt.pdf">
+              <a
+                href="/static/pdf/lehrende/Pruefungsbefugnis_Anlage_vorausgefuellt.pdf"
+              >
                 Anlage zum Antrag, vorausgefüllt
               </a>
             </li>
             <li>
               <b> Zertifikat Hochschullehre</b>
               <br />
-              – Satzung 
+              – Satzung
               <a
                 href="/static/pdf/lehrende/Satzung-Zertifikat_Hochschullehre.deutsch.pdf"
               >
@@ -403,10 +662,17 @@
               <a
                 href="/static/pdf/lehrende/Satzung-Zertifikat_Hochschullehre.englisch.pdf"
               >
-                englisch              </a>
-                <br>
-                – Formular zur Vergabe 
-                <a href="/static/pdf/lehrende/nachweise-zertifikat-stufe1.pdf">Level 1</a> / <a href="/static/pdf/lehrende/nachweise-zertifikat-stufe2.pdf">Level 2</a> 
+                englisch
+              </a>
+              <br />
+              – Formular zur Vergabe
+              <a href="/static/pdf/lehrende/nachweise-zertifikat-stufe1.pdf"
+                >Level 1</a
+              >
+              /
+              <a href="/static/pdf/lehrende/nachweise-zertifikat-stufe2.pdf"
+                >Level 2</a
+              >
             </li>
           </ul>
         </div>
@@ -435,7 +701,9 @@
         id="studiendokumente"
       >
         <div class="accordion-body">
+          {% if lang == "de" %} {% else %} {% endif %}
           <h3>Modulhandbücher nach Studiengängen</h3>
+          {% if lang == "de" %} {% else %} {% endif %}
           <p>
             Soweit die genauen Anforderungen an Prüfungs- und Studienleistungen
             nicht schon in den Prüfungsordnungen festgelegt sind, werden sie pro
@@ -453,6 +721,7 @@
                 <th scope="col"></th>
                 <th scope="col">
                   <center>
+                    {% if lang == "de" %} {% else %} {% endif %}
                     <div>Prüfungs- und</div>
                     <div>Zulassungsordnungen</div>
                   </center>
@@ -460,6 +729,7 @@
                 <th scope="col">
                   <center>
                     <div></div>
+                    {% if lang == "de" %} {% else %} {% endif %}
                     <div>Modulhandbuch</div>
                   </center>
                 </th>
@@ -467,6 +737,7 @@
             </thead>
             <tbody>
               <tr>
+                {% if lang == "de" %} {% else %} {% endif %}
                 <th scope="row">Bachelor of Science Mathematik</th>
                 <td>
                   <center>
@@ -487,7 +758,8 @@
               </tr>
               <tr>
                 <th scope="row">
-                  Polyvalenter Zwei-Hauptfächer-Bachelor (PO 2021)
+                  {% if lang == "de" %} {% else %} {% endif %} Polyvalenter
+                  Zwei-Hauptfächer-Bachelor (PO 2021)
                 </th>
                 <td>
                   <center>
@@ -509,14 +781,18 @@
                     <div>
                       <a
                         href="/static/pdf/studiengaenge/2hfb/Modulhandbuch-Mathematik-2HfB21_Optionsbereich-2022.05.22.pdf"
-                        >Mathematikmodule im Optionsbereich - Stand Mai 2022</a
+                        >{% if lang == "de" %} {% else %} {% endif %}
+                        Mathematikmodule im Optionsbereich - Stand Mai 2022</a
                       >
                     </div>
                   </center>
                 </td>
               </tr>
               <tr>
-                <th scope="row">Master of Science Mathematik (PO 2014)</th>
+                <th scope="row">
+                  {% if lang == "de" %} {% else %} {% endif %} Master of Science
+                  Mathematik (PO 2014)
+                </th>
                 <td>
                   <center>
                     <a
@@ -536,7 +812,8 @@
               </tr>
               <tr>
                 <th scope="row">
-                  Master of Science Mathematics in Data and Technology (PO 2024)
+                  {% if lang == "de" %} {% else %} {% endif %} Master of Science
+                  Mathematics in Data and Technology (PO 2024)
                 </th>
                 <td>
                   <center>
@@ -556,7 +833,10 @@
                 </td>
               </tr>
               <tr>
-                <th scope="row">Master of Education (PO 2018)*</th>
+                <th scope="row">
+                  {% if lang == "de" %} {% else %} {% endif %} Master of
+                  Education (PO 2018)*
+                </th>
                 <td>
                   <center>
                     <a
@@ -576,8 +856,9 @@
               </tr>
               <tr>
                 <th scope="row">
-                  Master of Education als Erweiterungsbeifach mit 90
-                  ECTS-Punkten (PO 2021)
+                  {% if lang == "de" %} {% else %} {% endif %} Master of
+                  Education als Erweiterungsbeifach mit 90 ECTS-Punkten (PO
+                  2021)
                 </th>
                 <td>
                   <center>
@@ -598,8 +879,9 @@
               </tr>
               <tr>
                 <th scope="row">
-                  Master of Education als Erweiterungshauptfach mit 120
-                  ECTS-Punkten (PO 2021)
+                  {% if lang == "de" %} {% else %} {% endif %} Master of
+                  Education als Erweiterungshauptfach mit 120 ECTS-Punkten (PO
+                  2021)
                 </th>
                 <td>
                   <center>
@@ -621,6 +903,7 @@
             </tbody>
           </table>
 
+          {% if lang == "de" %} {% else %} {% endif %}
           <p>
             (*) Beim Modulhandbuch für den M.Ed.-Studiengang steht irrtümlich
             "(2. Fach bei Musik-/Kunsthochschule)". Das Modulhandbuch gilt auch
@@ -641,6 +924,7 @@
           aria-expanded="{% if anchor == 'promotion' %}true{% else %}false{% endif %}"
           data-bs-toggle="collapse"
         >
+          {% if lang == "de" %} {% else %} {% endif %}
           <h3 class="h5">Dokumente zur Promotion</h3>
         </button>
       </h4>
@@ -820,6 +1104,7 @@
           aria-expanded="{% if anchor == 'bericht' %}true{% else %}false{% endif %}"
           data-bs-toggle="collapse"
         >
+          {% if lang == "de" %} {% else %} {% endif %}
           <h3 class="h5">Berichtswesen und sonstige Dokumente</h3>
         </button>
       </h4>
@@ -830,6 +1115,7 @@
         id="berichtContent"
       >
         <div class="accordion-body" id="bericht">
+          {% if lang == "de" %} {% else %} {% endif %}
           <ul>
             <li>
               <a

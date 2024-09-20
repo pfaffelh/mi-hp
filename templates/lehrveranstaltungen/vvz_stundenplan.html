@@ -13,6 +13,15 @@ endblock %} {% block content %}
         to the list of all courses {% endif %}
       </a>
       <a
+        href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {% if lang == "de" %} Zum Personenplan {% else %} Courses of all
+        persons {% endif %}
+      </a>
+      <a
         href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
