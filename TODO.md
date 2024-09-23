@@ -6,6 +6,7 @@
 
 #### TODOs
 
+0. mi-hp: Übersetzung Anleitung zur Prüfungsanmeldung
 1. mi-vvz: 
 2. mi-faq: 
    * faq für Studienkoordinatoren anlegen?
