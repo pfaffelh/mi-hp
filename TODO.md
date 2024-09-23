@@ -14,7 +14,7 @@
 3. mi-hp: 
    * interesse und weiterbildung auch in Datenbank faq?
    * noch mehr ins FAQ, zB Prüfungsanmeldung, Fristen zur Anmeldung
-   * gendern vereinheitlichen (* nicht : oder ausschreiben)
+   * gendern vereinheitlichen:* verwenden, das ist das allgemein von der Uni verwendete, nicht : (oder aber ausschreiben)
    
 
 
