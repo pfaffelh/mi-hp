@@ -255,8 +255,15 @@ def showlehrveranstaltungenstundenplan(lang, semester):
 
 @app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/personenplan/")
 def showlehrveranstaltungenpersonenplan(lang, semester):
+    vpn = False
     data = vvz.get_data_personenplan(semester, lang)
-    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester))
+    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester), vpn = vpn)
+
+@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/<semester>/deputate/")
+def showlehrveranstaltungendeputate(lang, semester):
+    vpn = True
+    data = vvz.get_data_personenplan(semester, lang)
+    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester), vpn = vpn)
 
 
 

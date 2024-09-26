@@ -36,12 +36,39 @@ endblock %} {% block content %}
 
 <div class="container" id="inhalt">
   <h2>Lehrveranstaltungen im {{semester_lang}}</h2>
-  {% for item in data %}
+  {% if vpn %}
+  <div class="row">
+    <div class="col-sm-2 text-end"><h5>Name</h5></div>
+    <div class="col-sm-7"><h5>Veranstaltung</h5></div>
+    <div class="col-sm-2"><h5>Rolle</h5></div>
+    <div class="col-sm-1"><h5>Deputat</h5></div>
+  </div>
+  {% endif %} {% for item in data %}
   <div class="row">
     <div class="col-sm-2 text-end">{{ item["person"] | safe }}</div>
     <div class="col-sm-7">{{ item["veranstaltung"]|safe }}</div>
     <div class="col-sm-2">{{ item["rolle"] }}</div>
-    <div class="col-sm-1">{{ item["sws"] }}</div>
+    <div class="col-sm-1">
+      {% if vpn %}{{ item["sws"] }}{% else %} {% endif %}
+    </div>
   </div>
-  {% endfor %} {% endblock %}
+  {% endfor %}
 </div>
+{% if vpn == False %}
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <a
+        href="{{url_for('showlehrveranstaltungendeputate', semester = semester, lang=lang)}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        Deputate
+      </a>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}
