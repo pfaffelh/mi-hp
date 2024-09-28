@@ -1,5 +1,24 @@
 {% extends 'base.html' %} {% block navbar %} {% include 'navbar.html' %} {%
-endblock %} {% block content %}
+endblock %} {% block content %} {% if showdeputate == True %} {% for key, value
+in semester_dict.items() %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <a
+        href="{{url_for('showlehrveranstaltungendeputate', semester = key, lang=lang)}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {{value["name"]}}
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% else %}
+
 <div class="container text-end">
   <div class="row">
     <div class="col">
@@ -31,12 +50,13 @@ endblock %} {% block content %}
         all semesters {% endif %}
       </a>
     </div>
+    {% endif %}
   </div>
 </div>
 
 <div class="container" id="inhalt">
   <h2>Lehrveranstaltungen im {{semester_lang}}</h2>
-  {% if vpn %}
+  {% if showdeputate %}
   <div class="row">
     <div class="col-sm-2 text-end"><h5>Name</h5></div>
     <div class="col-sm-7"><h5>Veranstaltung</h5></div>
@@ -49,26 +69,10 @@ endblock %} {% block content %}
     <div class="col-sm-7">{{ item["veranstaltung"]|safe }}</div>
     <div class="col-sm-2">{{ item["rolle"] }}</div>
     <div class="col-sm-1">
-      {% if vpn %}{{ item["sws"] }}{% else %} {% endif %}
+      {% if showdeputate %}{{ item["sws"] }}{% else %} {% endif %}
     </div>
   </div>
   {% endfor %}
-</div>
-{% if vpn == False %}
-<div class="container text-end">
-  <div class="row">
-    <div class="col">
-      <a
-        href="{{url_for('showlehrveranstaltungendeputate', semester = semester, lang=lang)}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
-        Deputate
-      </a>
-    </div>
-  </div>
-  {% endif %}
 </div>
 
 {% endblock %}

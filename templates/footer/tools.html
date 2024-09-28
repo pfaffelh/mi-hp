@@ -1,5 +1,5 @@
 <div class="container px-4 py-5" id="featured-3">
-  <div class="row g-4 py-5 row-cols-1 row-cols-lg-1">
+  <div class="row g-4 py-2 row-cols-1 row-cols-lg-1">
     <div class="feature col">
       <div class="feature-icon bg-gradient"></div>
       <div>
@@ -31,6 +31,38 @@
                   aria-disabled="true"
                 >
                   VVZ
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row g-4 py-2 row-cols-1 row-cols-lg-1">
+    <div class="feature col">
+      <div class="feature-icon bg-gradient"></div>
+      <div>
+        <div class="entry-content">
+          <h3>Interne Webseiten</h3>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <a
+                  href="{{url_for('showmonitor')}}"
+                  class="btn btn-primary bg-ufr-blue link-dark"
+                  role="button"
+                  aria-disabled="true"
+                >
+                  Monitor
+                </a>
+                <a
+                  href="{{url_for('showlehrveranstaltungendeputate', lang=lang)}}"
+                  class="btn btn-primary bg-ufr-blue link-dark"
+                  role="button"
+                  aria-disabled="true"
+                >
+                  Deputate
                 </a>
               </div>
             </div>
