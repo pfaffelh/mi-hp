@@ -57,7 +57,7 @@ def get_showsemester(shortname):
 def get_current_semester_kurzname():
     if datetime.now().month < 4:
         res = f"{datetime.now().year-1}WS"
-    elif 3 < datetime.now().month and datetime.now().month < 11:
+    elif 3 < datetime.now().month and datetime.now().month < 10:
         res = f"{datetime.now().year}SS"
     else:
         res = f"{datetime.now().year}WS"
