@@ -8,7 +8,7 @@
           anmelden – teils über das Campus-Management-System
           <a href="https://campus.uni-freiburg.de">HISinOne</a>, teils schriftlich über das
           <a href="{{ url_for('showdownloads', anchor = 'formulare', lang=lang)}}">
-          Prüfungsamt des Mathematischen Instituts</a>.
+            Prüfungsamt des Mathematischen Instituts</a>.
           Studienleistungen, die man absolvieren möchte, muss man in der Regel
           über HISinOne registrieren, damit sie verbucht werden können.
           Die Belegung der betreffenden Veranstaltung reicht dafür nicht aus.
@@ -24,54 +24,33 @@
         Studienleistungen registriert werden müssen steht auf den
         Informationsseiten zu den einzelnen
         <a href="{{ url_for('showstudiengaenge', lang=lang )}}">
-          Studiengängen
-        </a>
-        . Allgemeine Informationen zu Prüfungen und Studienleistungen erfahren
+          Studiengängen</a>-
+        Allgemeine Informationen zu Prüfungen und Studienleistungen erfahren
         Sie auf der Seite
-        <a
-          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}"
-        >
-          Informationen zur Prüfungsanmeldung
-        </a>
-        .
+        <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}">
+          Informationen zur Prüfungsanmeldung</a>.
       </li>
     </ul>
   </div>
   <div class="container">
     <div class="row">
       <div class="col text-end">
-        <a
-          href="{{ url_for('showstudiendekanat', unterseite='anmeldung', lang=lang) }}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{ url_for('showstudiendekanat', unterseite='anmeldung', lang=lang) }}"
+          class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
           Anleitung Prüfungsanmeldung
         </a>
-        <a
-          href="{{ url_for('showstudiendekanat', unterseite = 'calendar', lang=lang)}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{ url_for('showstudiendekanat', unterseite = 'calendar', lang=lang)}}"
+          class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
           Prüfungskalender
         </a>
-        <a
-          href="https://campus.uni-freiburg.de/"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="https://campus.uni-freiburg.de/" class="btn btn-primary bg-ufr-blue link-dark" role="button"
+          aria-disabled="true">
           HISinOne
         </a>
       </div>
     </div>
   </div>
 
-  <!--
-  <div class="accordion" id="accordionExample">
-  <div id="accordion"></div>
-  -->
   <div class="accordion accordion-flush" id="accordionExample">
 
     <!--
@@ -198,23 +177,13 @@
     </div> -->
     <div class="accordion-item" id="_ws24">
       <h4 class="accordion-header" id="header_ws24">
-        <button
-          aria-controls="_ws24Content"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#_ws24Content"
-          data-bs-toggle="collapse"
-          type="button"
-        >
+        <button aria-controls="_ws24Content" aria-expanded="false" class="accordion-button collapsed"
+          data-bs-target="#_ws24Content" data-bs-toggle="collapse" type="button">
           <h3 class="h5">Anmeldefristen im Wintersemester 2024/25</h3>
         </button>
       </h4>
-      <div
-        aria-labelledby="_ws24Content"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="_ws24Content"
-      >
+      <div aria-labelledby="_ws24Content" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+        id="_ws24Content">
         <div class="accordion-body" id="ws24Content">
           <!--<p>
             <b style="color: #c1002a">NOCH OHNE GEWÄHR!</b>
@@ -234,7 +203,7 @@
           </p>
           <ul>
             <li>
-              Schriftliche Anmeldung im Prüfungsamt bis spätestens 
+              Schriftliche Anmeldung im Prüfungsamt bis spätestens
               <span style="color: #c1002a">
                 drei Wochen vor der Prüfung
               </span>
@@ -249,7 +218,7 @@
           </p>
           <ul>
             <li>
-              Prüfungsanmeldung bzw. Studienleistungsregistrierung über 
+              Prüfungsanmeldung bzw. Studienleistungsregistrierung über
               <a href="https://campus.uni-freiburg.de">HISinOne</a> von 14. 10. 2024 bis
               <span style="color: #c1002a">24. 01. 2024</span>.
             </li>
@@ -259,8 +228,8 @@
               bis spätestens <span style="color: #c1002a">09. 01. 2025</span>.
             </li>
             <li>
-              <a href="#"> Abgabe der Prüferwünsche</a> für die mündliche Prüfungen in Analysis bzw. Linearer Algebra: 
-              voraussichtlich Ende Januar 2025. 
+              <a href="#"> Abgabe der Prüferwünsche</a> für die mündliche Prüfungen in Analysis bzw. Linearer Algebra:
+              voraussichtlich Ende Januar 2025.
               Die Abgabe der Prüferwünsche ersetzt nicht die Prüfungsanmeldung!
             </li>
           </ul>
@@ -270,7 +239,7 @@
           <ul>
             <li>
               Mitteilung von fachfremden Wahlmodulen, für die Studienleistungen
-              über das Campus-Management-System angemeldet werden sollen bis spätestens 
+              über das Campus-Management-System angemeldet werden sollen bis spätestens
               <span style="color: #c1002a">Ende November 2024</span>
               an die Studiengangkoordination.
             </li>
@@ -297,23 +266,13 @@
     </div>
     <div class="accordion-item" id="abmeldung">
       <h4 class="accordion-header" id="headerabmeldung">
-        <button
-          aria-controls="abmeldungContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#abmeldungContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
+        <button aria-controls="abmeldungContent" aria-expanded="false" class="accordion-button collapsed"
+          data-bs-target="#abmeldungContent" data-bs-toggle="collapse" type="button">
           <h3 class="h5">Abmeldefristen</h3>
         </button>
       </h4>
-      <div
-        aria-labelledby="abmeldungContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="abmeldungContent"
-      >
+      <div aria-labelledby="abmeldungContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+        id="abmeldungContent">
         <div class="accordion-body" id="abmeldungContent">
           <p>
             <b> 1) Fristen für einen Rücktritt von einer Prüfung </b>
@@ -427,23 +386,13 @@
     </div>
     <div class="accordion-item" id="termine">
       <h4 class="accordion-header" id="headertermine">
-        <button
-          aria-controls="termineContent"
-          aria-expanded="false"
-          class="accordion-button collapsed"
-          data-bs-target="#termineContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
+        <button aria-controls="termineContent" aria-expanded="false" class="accordion-button collapsed"
+          data-bs-target="#termineContent" data-bs-toggle="collapse" type="button">
           <h3 class="h5">Prüfungstermine</h3>
         </button>
       </h4>
-      <div
-        aria-labelledby="termineContent"
-        class="accordion-collapse collapse"
-        data-bs-parent="#accordionExample"
-        id="termineContent"
-      >
+      <div aria-labelledby="termineContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+        id="termineContent">
         <div class="accordion-body" id="termineContent">
           <p>
             <b> Klausurtermine: </b>
@@ -477,9 +426,7 @@
               Wochen vor bis eine Woche nach Vorlesungsbeginn. Jede:r Prüfer:in
               hat einen eigenen Prüfungszeitraum von etwa einer Woche, der auf
               der
-              <a
-                href="#"
-              >
+              <a href="#">
                 Seite der Prüfer:innen:wünsche
               </a>
               angegeben wird.
@@ -527,9 +474,7 @@
             <li>
               Die Termine der wenigen verbliebenen Prüfungen werden im Rahmen
               der Vorgaben des
-              <a
-                href="https://llpa.kultus-bw.de/,Lde/Startseite/Aussenstellen/beim+Regierungspraesidium+Freiburg"
-              >
+              <a href="https://llpa.kultus-bw.de/,Lde/Startseite/Aussenstellen/beim+Regierungspraesidium+Freiburg">
                 Landeslehrerprüfungsamts
               </a>
               festgelegt.
