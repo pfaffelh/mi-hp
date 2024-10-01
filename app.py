@@ -202,7 +202,6 @@ def showstudienverlauf(lang, studiengang):
 ## Lehrveranstaltungen ##
 #########################
 
-@app.route("/nlehre/v/")  # für Links zur alten Homepage
 @app.route("/nlehre/<lang>/lehrveranstaltungen/")
 def showlehrveranstaltungenbase(lang="de"):
     filenames = ["lehrveranstaltungen/index.html"]
@@ -255,17 +254,19 @@ def showlehrveranstaltungenstundenplan(lang, semester):
 
 @app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/personenplan/")
 def showlehrveranstaltungenpersonenplan(lang, semester):
-    vpn = False
     data = vvz.get_data_personenplan(semester, lang)
-    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester), vpn = vpn)
+    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_dict = {}, semester_lang = vvz.semester_name_de(semester), showdeputate = False)
 
+@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/deputate/")
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/<semester>/deputate/")
-def showlehrveranstaltungendeputate(lang, semester):
-    vpn = True
+def showlehrveranstaltungendeputate(lang, semester = vvz.get_current_semester_kurzname()):
+    a = [x["kurzname"] for x in list(vvz.vvz_semester.find({"hp_sichtbar": True}))]
+    b = ["2024WS"] + [f"20{x}{s}S" for x in range(25,100) for s in ["S", "W"]]
+    acapb = [x for x in a if x in b]
+    acapb.reverse()
+    semester_dict = { x : {"name": vvz.semester_name_de(x)} for x in acapb }
     data = vvz.get_data_personenplan(semester, lang)
-    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester), vpn = vpn)
-
-
+    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_dict = semester_dict, semester_lang = vvz.semester_name_de(semester), showdeputate = True)
 
 #####################################
 ## Prüfungsamt und Studienberatung ##
