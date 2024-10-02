@@ -148,9 +148,9 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-              >
-                Lehrveranstaltungen</a
-              >
+              >{% if lang == "de" %}Lehrveranstaltungen{% else %}Courses{%
+                endif %}
+                </a>
               <ul
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
@@ -280,7 +280,7 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-                >{% if lang == "de" %}Für Lehrende{% else %}for teaching staff{%
+                >{% if lang == "de" %}Für Lehrende{% else %}For teaching staff{%
                 endif %}</a
               >
               <ul class="dropdown-menu" data-bs-theme="light">
