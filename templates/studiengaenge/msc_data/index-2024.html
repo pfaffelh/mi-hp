@@ -2,6 +2,9 @@
 
 <div class="container" id="inhalt">
   <h1>Master of Science Mathematics in Data and Technology (PO 2024)</h1>
+  {% if lang == "de" %}
+  <p>Für die Studierenden des neuen Master-Studiengangs gibt es am <b>Montag, dem 14.10.2024, von 11-12 Uhr</b>
+     eine <b>Begrüßungsveranstaltung im SR 404</b> des Mathematischen Instituts, Ernst-Zermelo-Str. 1.</p>
   <p>
     Fragen der Studienorganisation (Belegung, Prüfungsanmeldung, detaillierter
     Modulplan, etc) finden Sie auf den Seiten des Prüfungsamts.
@@ -17,6 +20,22 @@
     <a href="mailto:studienberatung@math.uni-freiburg.de"> </a>
     ) wenden.
   </p>
+  {% else %}
+  <p>A <b>welcome event</b> for students of the new master course will be held on <b>Monday, October 14, 2024, from 11-12 a.m.
+  in SR 404</b> of the Mathematical Institute, Ernst-Zermelo-Str. 1.</p>
+  <p>
+   Answers to questions concerning the organisation of studies (registration for courses, pass/fail assessments and exams,
+   detailed plan of modules etc) can be found on the web pages of the examination office. 
+   Some questions may alternatively be answered in the
+   <a href="{{ url_for('showstufaq', lang=lang) }}">FAQ</a>. For further inquiries you can contact the
+   <a href="{{ url_for('showstudiendekanat', lang=lang)}}">
+     student counseling of the Mathematical Institute
+   </a>
+   (
+   <a href="mailto:studienberatung@math.uni-freiburg.de"> </a>
+   ).
+  </p>
+  {% endif %}
 
   <div class="container text-end">
     <div class="row">
@@ -60,7 +79,8 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          <h3 class="h5">Kurzbeschreibung des Studiengangs</h3>
+          <h3 class="h5">
+            {% if lang == "de" %}Kurzbeschreibung des Studiengangs{% else %}Short description of the degree program {% endif %}</h3>
         </button>
       </h4>
       <div
@@ -84,7 +104,8 @@
           data-bs-toggle="collapse"
           type="button"
         >
-          <h3 class="h5">Studienbeginn, Bewerbung und Zulassung</h3>
+          <h3 class="h5">
+            {% if lang == "de" %}Studienbeginn, Bewerbung und Zulassung{% else %}Start of study, application and admission {% endif %}</h3>
         </button>
       </h4>
       <div

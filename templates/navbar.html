@@ -30,7 +30,7 @@
                       class="fa fa-circle-right fa-4 text-black"
                       aria-hidden="true"
                     ></i>
-                    {% if lang=="de" %}Studieninteressierte{% else %} Study with
+                    {% if lang=="de" %}Studieninteresse{% else %} Study with
                     us {% endif %}
                   </button></a
                 >
@@ -51,7 +51,7 @@
                       class="fa fa-circle-right fa-4 text-black"
                       aria-hidden="true"
                     ></i>
-                    {% if lang=="de" %}Studienanfänger{% else %} Start of
+                    {% if lang=="de" %}Studienanfang{% else %} Start of
                     studies {% endif %}
                   </button></a
                 >
@@ -148,9 +148,9 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-              >
-                Lehrveranstaltungen</a
-              >
+              >{% if lang == "de" %}Lehrveranstaltungen{% else %}Courses{%
+                endif %}
+                </a>
               <ul
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
@@ -280,7 +280,7 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-                >{% if lang == "de" %}Für Lehrende{% else %}for teaching staff{%
+                >{% if lang == "de" %}Für Lehrende{% else %}For teaching staff{%
                 endif %}</a
               >
               <ul class="dropdown-menu" data-bs-theme="light">

@@ -2,22 +2,21 @@
   <div class="row">
     {% if lang == "de" %}
     <p>
-      Sie haben sich für ein Mathematikstudium in Freiburg entschieden und haben
-      sich in einen der beiden Bachelor-Studiengänge in Mathematik
+      Sie haben sich für ein Mathematikstudium in Freiburg entschieden und in einen der beiden Bachelor-Studiengänge in Mathematik
       eingeschrieben (<a href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}">Bachelor
         of Science</a>
       oder
       <a href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}">
-        2-Hauptfächer-Bachelor</a>) oder in den
+        Polyvalenter Zwei-Hauptfächer-Bachelor</a>), oder in den
       <a href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}">
         Master of Ecucation als Erweiterungsfach</a>.
       Was müssen Sie vor Studienbeginn nun tun?
     </p>
     <p>
-      Die kurze Antwort lautet: Kommen Sie zur Einführungswoche und bei Bedarf zum Vorkurs;
-      in der Regel müssen Sie vorher nichts Weiteres tun. Einige
-      typische Fragen zum Studienstart werden auch schon hier beantwortet; weitere Fragen beantwortet
-      bei Bedarf die
+      Die kurze Antwort lautet: Kommen Sie zur Einführungswoche! 
+      Dort erhalten Sie alle wichtigen Informationen. In der Regel müssen Sie vorher nichts Weiteres tun. <br />
+      Einige typische Fragen zum Studienstart werden auch schon hier beantwortet; 
+      weitere Fragen beantwortet bei Bedarf die
       <a href="{{ url_for('showstudiendekanat', lang=lang) }}">
         Studienberatung
       </a>
@@ -37,8 +36,9 @@
       </a>. What do you need to do before starting your studies?
     </p>
     <p>
-      The short answer is: Come to the introductory week, and to the precourse if necessary.
-      Usually, you do not have to do anything else beforehand.
+      The short answer is: Come to the introductory week!
+      You will receive all the necessary information there.
+      Usually, you do not have to do anything else beforehand.<br />
       Some typical questions you might have will already be answered here.
       For further questions, you might contact the
       <a href="{{ url_for('showstudiendekanat', lang=lang) }}">Student Advisory Service</a>
@@ -794,17 +794,17 @@
                 </a>
                 veröffentlicht.
               </li>
-              <!--<li>
-                <a href="/static/pdf/studienberatung/2023_Folien_SCS_Studienstart_Studiengänge.pdf">
+              <li>
+                <a href="https://math.uni-freiburg.de/lehre/dokumente/ese2024.pdf">
+                  Präsentation 2024
+                </a>
+                zur Einführung in die Studiengänge
+              </li>
+              <li>
+                <a href="https://math.uni-freiburg.de/lehre/dokumente/2023_Folien_SCS_Studienstart_Studieng%C3%A4nge.pdf">
                   Folien der Zentralen Studienberatung
                 </a>
                 (2023)
-              </li> -->
-              <li>
-                <a href="/static/pdf/studienberatung/ese2023.pdf">
-                  Präsentation 2023
-                </a>
-                zur Einführung in die Studiengänge
               </li>
             </ul>
             </p>
