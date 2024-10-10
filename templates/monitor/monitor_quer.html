@@ -88,6 +88,7 @@
               <div
                 class="col-sm-{{ item['image'][0]['widthmonitor']}} text-right"
               >
+                {% if item['image'] %}
                 <img
                   src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
                   alt="Red dot"
@@ -95,6 +96,7 @@
                   alt="..."
                   style="{{ item['image'][0]['stylemonitor'] }}"
                 />
+                {% endif %}
               </div>
               {% endif %} {% else %} {% if item['image'] != [] %}
               <div
