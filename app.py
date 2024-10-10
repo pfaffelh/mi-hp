@@ -438,10 +438,10 @@ def get_mensaplan_text(url, date):
         ausgabe = ""
     return ausgabe
 
-@app.route("/nlehre/monitor/")
 @app.route("/nlehre/monitortest/")
-@app.route("/nlehre/monitor/<dtstring>")
 @app.route("/nlehre/monitortest/<dtstring>")
+@app.route("/nlehre/monitor/")
+@app.route("/nlehre/monitor/<dtstring>")
 def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     # determine if only shown on test
     testorpublic = "test" if "monitortest" in request.path.split("/") else "_public" 
@@ -461,10 +461,14 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
         item["image"] = base64.b64encode(news.bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
 
     # Daten für die News
+    query = { "monitor.fuermonitor": True, 
+             "monitor.start" : { "$lte" : dt }, 
+             "monitor.end" : { "$gte" : dt }}
     if testorpublic == "test":
-        data["news"] =  list(news.news.find({ "monitor.fuermonitor": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))
+        data["news"] = list(news.news.find(query ,sort=[("rang", pymongo.ASCENDING)]))
     else:
-        data["news"] =  list(news.news.find({ "_public": True, "monitor.fuermonitor": True, "monitor.start" : { "$lte" : dt }, "monitor.end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))  
+        query["_public"] = True
+        data["news"] = list(news.news.find(query, sort=[("rang", pymongo.ASCENDING)]))  
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
