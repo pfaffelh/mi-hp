@@ -24,13 +24,13 @@
     <link
       rel="stylesheet"
       id="unitheme-style-css"
-      href="{{url_for('static', filename =  'css/unitheme.css?ver=2.0.02') }}"
+      href="/static/css/unitheme.css?ver=2.0.02"
       type="text/css"
       media="all"
     />
     <link
       rel="stylesheet"
-      href="{{url_for('static', filename =  'css/ufr-colors.css') }}"
+      href="/static/css/ufr-colors.css"
       type="text/css"
       media="all"
     />
@@ -39,8 +39,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <script></script>
-    <link 
-    href="{{url_for('static', filename =  'css/ufr-colors.css') }}" type="text/css" media="all" 
+    <link
+      href="/static/css/ufr-colors.css"
+      type="text/css"
+      media="all"
+      type="text/css"
+      media="all"
     />
     <script>
       $('[data-toggle="tooltip"]').tooltip({
@@ -201,11 +205,11 @@
                   >
                 </h2>
               </li>
-              <li class="nav-item d-none d-xl-block align-self-center"> 
+              <li class="nav-item d-none d-xl-block align-self-center">
                 <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
               </li>
               <li class="nav-item d-flex align-items-center">
-              <!-- <li class="nav-item d-none d-xl-block mr-4"> -->
+                <!-- <li class="nav-item d-none d-xl-block mr-4"> -->
                 <h2>
                   <a
                     href="{{url_for('showbase', lang = lang) }}"

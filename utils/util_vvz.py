@@ -218,7 +218,11 @@ def get_data(sem_shortname, lang = "de", studiengang = ""):
     data["semester"] = vvz_semester.find_one({"kurzname": sem_shortname})
     data["semester"]["name"] = data["semester"][f"name_{lang}"] 
     data["semester"]["prefix"] = data["semester"][f"prefix_{lang}"] 
-    
+
+    if studiengang != "":
+        data["studiengang"] = vvz_studiengang.find_one({"kurzname": studiengang})
+        data["studiengang"]["name"] = data["studiengang"][f"name"]
+
     data["rubrik"] = []
     data["code"] = []
 

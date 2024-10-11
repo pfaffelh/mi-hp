@@ -58,7 +58,20 @@ endblock %} {% block content %}
 
 <div class="container py-4" id="inhalt">
   <h2>
-    {% if lang == "de" %}Lehrveranstaltungen im{% else %}Course program in {%
+    {% if lang == "de" %}
+      Lehrveranstaltungen 
+      {% if studiengang == "" %} 
+      {% else %}  
+      für den {{ data['studiengang']['name'] }} 
+      {% endif %} 
+      im 
+      {% else %}
+      Course program 
+      {% if studiengang == "" %} 
+      {% else %}  
+      for the {{ data['studiengang']['name'] }} 
+      {% endif %} 
+      in {%
     endif %} {{data['semester']['name']}}
   </h2>
   {% if data['semester']['prefix'] != "" %} {{ data['semester']['prefix'] |
