@@ -205,7 +205,7 @@ def make_codes(sem_id, veranstaltung_id):
         res = ", ".join([c["name"] for c in code_list])
     return res
 
-def get_data(sem_shortname, lang = "de"):
+def get_data(sem_shortname, lang = "de", studiengang = ""):
     sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
 
     rubriken = list(vvz_rubrik.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
@@ -237,7 +237,14 @@ def get_data(sem_shortname, lang = "de"):
         r_dict["suffix"] = rubrik[f"suffix_{lang}"]
         # print(r_dict["titel"])
         r_dict["veranstaltung"] = []
-        veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
+        
+        if studiengang != "":
+            s = vvz_studiengang.find_one({"kurzname" : studiengang})
+            mod_list = list(vvz_modul.find({ "studiengang" : { "$elemMatch" : { "$eq" : s["_id"] }}}))
+            veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], 
+                "$or" : [{ "verwendbarkeit_modul" : { "$elemMatch" : { "$eq" : m["_id"] }}} for m in mod_list ], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
+        else:
+            veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
             v_dict = {}
             v_dict["code"] = make_codes(sem_id, veranstaltung["_id"])            
@@ -252,11 +259,15 @@ def get_data(sem_shortname, lang = "de"):
             v_dict["raumzeit"] = make_raumzeit(veranstaltung, lang=lang)
             v_dict["inhalt"] = latex2markdown.LaTeX2Markdown(veranstaltung[f"inhalt_{lang}"]).to_markdown()
             v_dict["vorkenntnisse"] = veranstaltung[f"vorkenntnisse_{lang}"]
-            v_dict["verwendbarkeit"] = "<br>".join([makemodulname(x, lang, True)for x in veranstaltung["verwendbarkeit_modul"]])
-            # print(v_dict["inhalt"])
+            if studiengang == "":
+                mod_list_reduced = veranstaltung["verwendbarkeit_modul"]
+            else:
+                mod_list_reduced = [m["_id"] for m in mod_list if m["_id"] in veranstaltung["verwendbarkeit_modul"]]
+            v_dict["verwendbarkeit"] = "<br>".join([makemodulname(x, lang, True)for x in mod_list_reduced])
             r_dict["veranstaltung"].append(v_dict)
 
-        data["rubrik"].append(r_dict)
+        if r_dict["veranstaltung"] != []:
+            data["rubrik"].append(r_dict)
     # print(data["rubrik"])
         #print(data)
     return data

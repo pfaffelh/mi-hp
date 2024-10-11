@@ -1,8 +1,19 @@
 {% extends 'base.html' %} {% block navbar %} {% include 'navbar.html' %} {%
 endblock %} {% block content %}
-<div class="container text-end">
+<div class="container text-end py-4">
   <div class="row">
     <div class="col">
+      {% if studiengang == "" %}
+      <a
+        href="{{url_for('showlehrveranstaltungen', lang='en', semester = semester, studiengang = 'MScData24')}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {% if lang == "de" %} Courses for MSc Mathematics in Data and Technology
+        {% else %} Courses for MSc Mathematics in Data and Technology {% endif
+        %}
+      </a>
       <a
         href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
         class="btn btn-primary bg-ufr-blue link-dark"
@@ -18,8 +29,8 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} Zum Personenplan {% else %} Courses of all
-        persons {% endif %}
+        {% if lang == "de" %} Zum Personenplan {% else %} Courses of all persons
+        {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
@@ -30,14 +41,28 @@ endblock %} {% block content %}
         {% if lang == "de" %} Übersicht aller Semester {% else %} Overview of
         all semesters {% endif %}
       </a>
+      {% else %}
+      <a
+        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester)}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {% if lang == "de" %} Alle Lehrveranstaltungen {% else %} All courses {%
+        endif %}
+      </a>
+      {% endif %}
     </div>
   </div>
 </div>
 
-<div class="container" id="inhalt">
-  <h2>{% if lang == "de" %}Lehrveranstaltungen im{% else %}Course program in {% endif %} {{data['semester']['name']}}</h2>
-  {% if data['semester']['prefix'] != "" %} {{ data['semester']['prefix']
-  | markdown }} {% endif %} {% if data["code"] != [] %}
+<div class="container py-4" id="inhalt">
+  <h2>
+    {% if lang == "de" %}Lehrveranstaltungen im{% else %}Course program in {%
+    endif %} {{data['semester']['name']}}
+  </h2>
+  {% if data['semester']['prefix'] != "" %} {{ data['semester']['prefix'] |
+  markdown }} {% endif %} {% if data["code"] != [] %}
   <h2>Codes</h2>
   {% for c in data["code"] %}
   <div class="row">
@@ -65,8 +90,9 @@ endblock %} {% block content %}
     </div>
     <div class="col-sm-3 g-5">
       {{ v['dozent']}} <br />
-      {% if v["assistent"] %} Assistenz: {{ v["assistent"] }} <br /> {% endif %}
-      {% if v["organisation"] %} Organisation: {{ v["organisation"] }} {% endif %}
+      {% if v["assistent"] %} Assistenz: {{ v["assistent"] }} <br />
+      {% endif %} {% if v["organisation"] %} Organisation: {{ v["organisation"]
+      }} {% endif %}
     </div>
     <div class="col-sm-2 g-5">
       {% if v['inhalt'] != "" %}
@@ -82,8 +108,7 @@ endblock %} {% block content %}
       >
         <i class="fa-solid fa-info" style="color: #004a99"></i>
       </button>
-      {% endif %}
-      {% if v['verwendbarkeit'] != "" or v['vorkenntnisse']%}
+      {% endif %} {% if v['verwendbarkeit'] != "" or v['vorkenntnisse']%}
       <button
         type="button"
         class="btn btn-outline-primary active bg-white"

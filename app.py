@@ -215,7 +215,7 @@ def showlehrveranstaltungenbase(lang="de"):
     else:
         semester_dict_2 = { x : {"name": vvz.semester_name_en(x)} for x in acapb }
     semester_dict_2.update(semester_dict)
-
+    print(semester_dict_2)
     for key, value in semester_dict_2.items():
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/'+key+'.pdf')
@@ -238,14 +238,15 @@ def showlehrveranstaltungenbase(lang="de"):
     return render_template("home.html", filenames=filenames, lang=lang, semester_dict=semester_dict_2, semester_dict_old=semester_dict_old)
 
 @app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/")
-def showlehrveranstaltungen(lang, semester):
+@app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/<studiengang>")
+def showlehrveranstaltungen(lang, semester, studiengang = ""):
     semesterliste_alt = ["ws0607", "ss07", "ws0708", "ss08", "ws0809", "ss09", "ws0910", "ss10", "ws1011", "ss11", "ws1112", "ss12", "ws1213", "ss13", "ws1314", "ss14", "ws1415", "ss15", "ws1516", "ss16", "ws1617", "ss17", "ws1718", "ss18", "ws1819", "ss19", "ws1920", "ss20", "ws2021", "ss21", "ws2122", "ss22", "ws2223", "ss23", "ws2324", "ss24"]
     if semester in semesterliste_alt:
         filenames = [f"lehrveranstaltungen/{semester}.html"]
         return render_template("home.html", filenames = filenames, lang=lang, semester=semester)
     else:
-        data = vvz.get_data(semester, lang)
-        return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=semester)
+        data = vvz.get_data(semester, lang, studiengang)
+        return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=semester, studiengang = studiengang)
 
 @app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/stundenplan/")
 def showlehrveranstaltungenstundenplan(lang, semester):
