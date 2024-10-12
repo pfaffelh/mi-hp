@@ -107,14 +107,18 @@ def name(person_id):
     p = vvz_person.find_one({"_id": person_id})
     return f"{p['name']}"
 
-def makemodulname(modul_id, lang = "de", alter = True):
+def makemodulname(modul_id, lang = "de", alter = True, studiengang = ""):
     otherlang = "de" if "lang" == "en" else "en"
     m = vvz_modul.find_one({"_id": modul_id})
     mname = m[f"name_{lang}"]
     if alter and mname == "":
-        mname = m[f"name_{otherlang}"]    
+        mname = m[f"name_{otherlang}"]
     s = ", ".join([x["kurzname"] for x in list(vvz_studiengang.find({"_id": { "$in" : m["studiengang"]}, }))])
-    return f"{mname} ({s})"
+    if studiengang == "":
+        res = f"{mname} ({s})"
+    else:
+        res = mname
+    return res
 
 
 
@@ -205,7 +209,7 @@ def make_codes(sem_id, veranstaltung_id):
         res = ", ".join([c["name"] for c in code_list])
     return res
 
-def get_data(sem_shortname, lang = "de", studiengang = ""):
+def get_data(sem_shortname, lang = "de", studiengang = "", modul = ""):
     sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
 
     rubriken = list(vvz_rubrik.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
@@ -267,7 +271,7 @@ def get_data(sem_shortname, lang = "de", studiengang = ""):
                 mod_list_reduced = veranstaltung["verwendbarkeit_modul"]
             else:
                 mod_list_reduced = [m["_id"] for m in mod_list if m["_id"] in veranstaltung["verwendbarkeit_modul"]]
-            v_dict["verwendbarkeit"] = "<br>".join([makemodulname(x, lang, True)for x in mod_list_reduced])
+            v_dict["verwendbarkeit"] = "<br>".join([makemodulname(x, lang, True, studiengang)for x in mod_list_reduced])
             r_dict["veranstaltung"].append(v_dict)
 
         if r_dict["veranstaltung"] != []:
