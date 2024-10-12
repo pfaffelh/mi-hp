@@ -54,25 +54,50 @@ endblock %} {% block content %}
       {% endif %}
     </div>
   </div>
+  {% if studiengang != "" %}
+  <div class="row py-4">
+    <div class="col">
+      {% for m in data["studiengang"]["modul"] %} 
+      <a
+        href="{{url_for('showlehrveranstaltungen', lang='en', semester = semester, studiengang = studiengang, modul = m['kurzname'])}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {{m["name"]}}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
 </div>
 
 <div class="container py-4" id="inhalt">
   <h2>
-    {% if lang == "de" %}
+    {% if lang == "de" %} 
       Lehrveranstaltungen 
-      {% if studiengang == "" %} 
-      {% else %}  
-      für den {{ data['studiengang']['name'] }} 
+      {% if studiengang == "" %} {% else %} 
+        für 
+        {% if modul == "" %} 
+          den
+        {% else %}
+          das Modul {{ data["modul"]["name"] }} im Studiengang
+        {% endif %}
+         {{ data['studiengang']['name'] }} 
       {% endif %} 
       im 
-      {% else %}
+    {% else %}
       Course program 
-      {% if studiengang == "" %} 
-      {% else %}  
-      for the {{ data['studiengang']['name'] }} 
+      {% if studiengang == "" %} {% else %} 
+        for the 
+        {% if modul == "" %} {% else %}
+          module {{ data["modul"]["name"] }} in the study program 
+        {% endif %}
+        {{ data['studiengang']['name'] }} 
       {% endif %} 
-      in {%
-    endif %} {{data['semester']['name']}}
+      in 
+    {% endif %}
+    {{data['semester']['name']}}
   </h2>
   {% if data['semester']['prefix'] != "" %} {{ data['semester']['prefix'] |
   markdown }} {% endif %} {% if data["code"] != [] %}

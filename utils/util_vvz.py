@@ -226,7 +226,11 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = ""):
     if studiengang != "":
         data["studiengang"] = vvz_studiengang.find_one({"kurzname": studiengang})
         data["studiengang"]["name"] = data["studiengang"][f"name"]
-
+        mod = list(vvz_modul.find({"_id" : { "$in" : data["studiengang"]["modul"] } }, sort = [( f"name_{lang}", pymongo.ASCENDING)]))
+        data["studiengang"]["modul"] = [{ "kurzname" : m["kurzname"], "name" : m[f"name_{lang}"] } for m in mod]
+        if modul != "":
+            data["modul"] = vvz_modul.find_one({"kurzname": modul})
+            data["modul"]["name"] = data["modul"][f"name_{lang}"]
     data["rubrik"] = []
     data["code"] = []
 
@@ -248,7 +252,10 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = ""):
         
         if studiengang != "":
             s = vvz_studiengang.find_one({"kurzname" : studiengang})
-            mod_list = list(vvz_modul.find({ "studiengang" : { "$elemMatch" : { "$eq" : s["_id"] }}}))
+            if modul == "":
+                mod_list = list(vvz_modul.find({ "studiengang" : { "$elemMatch" : { "$eq" : s["_id"] }}}))
+            else:
+                mod_list = list(vvz_modul.find({ "kurzname" : modul}))
             veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], 
                 "$or" : [{ "verwendbarkeit_modul" : { "$elemMatch" : { "$eq" : m["_id"] }}} for m in mod_list ], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
         else:
