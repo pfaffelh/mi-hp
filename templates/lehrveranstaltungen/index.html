@@ -1,29 +1,49 @@
+{% if lang == 'de' %}{% else %}{% endif %}
 <div class="container" id="inhalt">
   <br />
   <div class="row">
     <div class="col-auto">
-      <h1>Lehrveranstaltungen</h1>
+      <h1>
+        {% if lang == 'de' %}Lehrveranstaltungen{% else %} Course program {%
+        endif %}
+      </h1>
       <table class="table table-lg table-striped table-hover table-borderless">
         <thead>
           <tr>
             <th scope="col"></th>
             <th scope="col">
               <center>
-                <div>Veranstaltungs-</div>
-                <div>verzeichnis</div>
-              </center>
-            </th>
-            <th scope="col">Kommentare</th>
-            <th scope="col">
-              <center>
-                <div>Ergänzungen zu den</div>
-                <div>Modulhandbüchern</div>
+                <div>
+                  {% if lang == 'de' %}Veranstaltungs-{% else %}Catalogue{%
+                  endif %}
+                </div>
+                <div>{% if lang == 'de' %}verzeichnis{% endif %}</div>
               </center>
             </th>
             <th scope="col">
+              {% if lang == 'de' %}Kommentare{% else %}Comments{% endif %}
+            </th>
+            <th scope="col">
               <center>
-                <div>Verwendbarkeits-</div>
-                <div>tabelle</div>
+                <div>
+                  {% if lang == 'de' %}Ergänzungen zu den{% else %}Supplements
+                  of the {% endif %}
+                </div>
+                <div>
+                  {% if lang == 'de' %}Modulhandbüchern{% else %}module
+                  handbooks{% endif %}
+                </div>
+              </center>
+            </th>
+            <th scope="col">
+              <center>
+                <div>
+                  {% if lang == 'de' %}Verwendbarkeits-{% else %}Usability-{%
+                  endif %}
+                </div>
+                <div>
+                  {% if lang == 'de' %}tabelle{% else %}table{% endif %}
+                </div>
               </center>
             </th>
           </tr>
@@ -72,7 +92,10 @@
         </tbody>
       </table>
       <br />
-      <h2>Ältere Semester</h2>
+      <h2>
+        {% if lang == 'de' %}Ältere Semester{% else %}More previous semesters{%
+        endif %}
+      </h2>
       {% for key, value in semester_dict_old.items() %}
       <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"
         >{{ value }}</a
