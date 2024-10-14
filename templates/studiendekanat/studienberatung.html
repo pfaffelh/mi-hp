@@ -7,13 +7,13 @@
 {% if lang == "de" %}
 {% if item['shownews'] and item['news_de'] !='' %} 
 <div class="container text-danger h5 py-4">
-<strong>Achtung: {{ item['rolle_de']|safe }}: {{ item['news_de'] | safe }}</strong>
+<strong>{{ item['rolle_de']|safe }}: {{ item['news_de'] | safe }}</strong>
 </div>
 {% endif %}
 {% else %}
 {% if item['shownews'] and item['news_en'] !='' %} 
 <div class="container text-danger h5 py-4">
-<strong>Attention: {{ item['rolle_en']|safe }}: {{ item['news_en'] | safe }}</strong>
+<strong>{{ item['rolle_en']|safe }}: {{ item['news_en'] | safe }}</strong>
 </div>
 {% endif %}
 {% endif %}
