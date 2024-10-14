@@ -249,6 +249,24 @@ def showlehrveranstaltungen(lang, semester, studiengang = "", modul = ""):
         data = vvz.get_data(semester, lang, studiengang, modul)
         return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=semester, studiengang = studiengang, modul = modul)
 
+@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/")
+@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/<studiengang>")
+@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/<studiengang>/<modul>")
+def showlehrveranstaltungennextsemester(lang, studiengang = "", modul = ""):
+    next_semester = vvz.next_semester_kurzname(vvz.get_current_semester_kurzname())
+    if vvz.get_showsemester(next_semester, hp_sichtbar = True):
+        filenames = ["message.html"]
+        message = f"<h1>Die Daten sind bereits <a href=/nlehre/de/lehrveranstaltungen/{next_semester}>hier</a> veröffentlicht.</h1>"
+        return render_template("home.html", filenames = filenames, lang=lang, message = message)
+    elif vvz.get_showsemester(next_semester, hp_sichtbar = False):
+        data = vvz.get_data(next_semester, lang, studiengang, modul, vpn = True)
+        return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=next_semester, studiengang = studiengang, modul = modul)
+    else:
+        filenames = ["message.html"]
+        m = "{{ url_for('showlehrveranstaltungen', lang=lang, semester = kommendes_semester) }}"
+        message = f"<h1>Es liegen noch keine Daten vor.</h1>"
+        return render_template("home.html", filenames = filenames, lang=lang, message = message)
+
 @app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/stundenplan/")
 def showlehrveranstaltungenstundenplan(lang, semester):
     data = vvz.get_data_stundenplan(semester, lang)

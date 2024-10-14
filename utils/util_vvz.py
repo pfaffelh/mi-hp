@@ -49,9 +49,9 @@ def get_showanmeldung(studiengang):
             res = True
     return res
 
-def get_showsemester(shortname):
+def get_showsemester(shortname, hp_sichtbar = True):
     # Gibt es ein sichtbares Semester mit shortname?
-    b = vvz_semester.find_one({"kurzname": shortname, "hp_sichtbar": True })
+    b = vvz_semester.find_one({"kurzname": shortname, "hp_sichtbar": hp_sichtbar })
     return (b != None)
 
 def get_current_semester_kurzname():
@@ -209,9 +209,14 @@ def make_codes(sem_id, veranstaltung_id):
         res = ", ".join([c["name"] for c in code_list])
     return res
 
-def get_data(sem_shortname, lang = "de", studiengang = "", modul = ""):
+# Falls vpn == True, werden auch nicht sichtbare Semester angezeigt
+def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = False):
     sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
-
+    if vpn:
+        rubriken = list(vvz_rubrik.find({"semester": sem_id}, sort=[("rang", pymongo.ASCENDING)]))
+    else:
+        rubriken = list(vvz_rubrik.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
+            
     rubriken = list(vvz_rubrik.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
 
     codekategorie = list(vvz_codekategorie.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
@@ -256,10 +261,16 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = ""):
                 mod_list = list(vvz_modul.find({ "studiengang" : { "$elemMatch" : { "$eq" : s["_id"] }}}))
             else:
                 mod_list = list(vvz_modul.find({ "kurzname" : modul}))
-            veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], 
-                "$or" : [{ "verwendbarkeit_modul" : { "$elemMatch" : { "$eq" : m["_id"] }}} for m in mod_list ], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
+
+            query = {"rubrik": rubrik["_id"], "$or" : [{ "verwendbarkeit_modul" : { "$elemMatch" : { "$eq" : m["_id"] }}} for m in mod_list ]}
+            if vpn == False:
+                query["hp_sichtbar"] = True
+            veranstaltungen = list(vvz_veranstaltung.find(query, sort=[("rang", pymongo.ASCENDING)]))
         else:
-            veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
+            if vpn:
+                veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"]}, sort=[("rang", pymongo.ASCENDING)]))                
+            else:
+                veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
             v_dict = {}
             v_dict["code"] = make_codes(sem_id, veranstaltung["_id"])            
