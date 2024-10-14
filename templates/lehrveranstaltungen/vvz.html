@@ -5,7 +5,7 @@ endblock %} {% block content %}
     <div class="col">
       {% if studiengang == "" %}
       <a
-        href="{{url_for('showlehrveranstaltungen', lang='en', semester = semester, studiengang = 'MScData24')}}"
+        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MScData24')}}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -59,7 +59,7 @@ endblock %} {% block content %}
     <div class="col">
       {% for m in data["studiengang"]["modul"] %} 
       <a
-        href="{{url_for('showlehrveranstaltungen', lang='en', semester = semester, studiengang = studiengang, modul = m['kurzname'])}}"
+        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = studiengang, modul = m['kurzname'])}}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
