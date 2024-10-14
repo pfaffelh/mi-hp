@@ -7,6 +7,21 @@
     <div class="row">
       <div class="col-lg-9 col-md-7 row-cols-sm-1">
         <ul>
+{% for item in data %}
+{% if lang == "de" %}
+{% if item['shownews'] and item['news_de'] !='' %} 
+<li class = "text-danger h5 py-4">
+<strong>Achtung: {{ item['rolle_de']|safe }}: {{ item['news_de'] | safe }}</strong>
+</li>
+{% endif %}
+{% else %}
+{% if item['shownews'] and item['news_en'] !='' %} 
+<li class = "text-danger h5 py-4">
+<strong>Attention: {{ item['rolle_en']|safe }}: {{ item['news_en'] | safe }}</strong>
+</li>
+{% endif %}
+{% endif %}
+{% endfor %}
           <li>
             Das Prüfungsamt ist zuständig für die Prüfungsverwaltung der
             Mathematik-Studiengänge. Darunter fallen etwa Angelegenheiten rund

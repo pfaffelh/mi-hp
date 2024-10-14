@@ -2,7 +2,26 @@
   <div>
     <h2>Studienberatung</h2>
   </div>
-  <div class="container g-3">
+
+{% for item in data %}
+{% if lang == "de" %}
+{% if item['shownews'] and item['news_de'] !='' %} 
+<div class="container text-danger h5 py-4">
+<strong>Achtung: {{ item['rolle_de']|safe }}: {{ item['news_de'] | safe }}</strong>
+</div>
+{% endif %}
+{% else %}
+{% if item['shownews'] and item['news_en'] !='' %} 
+<div class="container text-danger h5 py-4">
+<strong>Attention: {{ item['rolle_en']|safe }}: {{ item['news_en'] | safe }}</strong>
+</div>
+{% endif %}
+{% endif %}
+{% endfor %}
+
+
+
+  <div class="container g-3 py-4">
     Die allgemeine Studienberatung der Mathematik ist offen für alle Studierende der Mathematik-Studiengänge. 
   </div>
     <div class="container text-end">
