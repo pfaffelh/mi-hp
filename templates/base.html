@@ -14,6 +14,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link
       rel="stylesheet"
       id="unitheme-style-css"
@@ -349,6 +350,18 @@
       );
       var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        // Alle Popovers auf der Seite initialisieren
+        $('[data-bs-toggle="popover"]').popover();
+
+        // Event für das Anzeigen von Popovers abfangen
+        $(document).on("shown.bs.popover", function () {
+          MathJax.typesetPromise(); // MathJax für alle angezeigten Popovers anwenden
+        });
       });
     </script>
     <script>

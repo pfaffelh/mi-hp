@@ -134,8 +134,8 @@ endblock %} {% block content %}
     </div>
     <div class="col-sm-2 g-5">
       {% if v['inhalt'] != "" %}
-      <button
-        type="button"
+      <a tabindex = "0"
+        role = "button"
         class="btn btn-outline-primary active bg-white"
         data-bs-trigger="focus"
         data-bs-toggle="popover"
@@ -145,10 +145,10 @@ endblock %} {% block content %}
         data-bs-content="{{ v['inhalt']|markdown }}"
       >
         <i class="fa-solid fa-info" style="color: #004a99"></i>
-      </button>
+    </a>
       {% endif %} {% if v['verwendbarkeit'] != "" or v['vorkenntnisse']%}
-      <button
-        type="button"
+      <a tabindex="0"
+        role = "button"
         class="btn btn-outline-primary active bg-white"
         data-bs-trigger="focus"
         data-bs-toggle="popover"
@@ -158,7 +158,7 @@ endblock %} {% block content %}
         data-bs-content="{% if v['vorkenntnisse'] != '' %}{% if lang == 'de' %}<strong>Vorkenntnisse:</strong> {% else %}<strong>Previous knowledge:</strong>{% endif %}{{ v['vorkenntnisse']|markdown }}<br>{% endif %} {% if v['verwendbarkeit'] != '' %}{% if lang == 'de' %}<strong>Verwendbarkeit:</strong> {% else %}<strong>Usability:</strong>{% endif %} {{ v['verwendbarkeit']|markdown }} {% endif %}"
       >
         <i class="fa-solid fa-book" style="color: #004a99"></i>
-      </button>
+  </a>
       {% endif %}
     </div>
   </div>
