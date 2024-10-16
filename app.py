@@ -222,12 +222,23 @@ def showlehrveranstaltungenbase(lang="de"):
             semester_dict_2[key]["komm_exists"] = True
         except:
             semester_dict_2[key]["komm_exists"] = False
+        try:
+            app.open_resource('static/pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')
+            semester_dict_2[key]["komm_lang_exists"] = True
+        except:
+            semester_dict_2[key]["komm_lang_exists"] = False
 
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/'+key+'mh.pdf')
             semester_dict_2[key]["mh_exists"] = True
         except:
             semester_dict_2[key]["mh_exists"] =False
+
+        try:
+            app.open_resource('static/pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')
+            semester_dict_2[key]["mh_lang_exists"] = True
+        except:
+            semester_dict_2[key]["mh_lang_exists"] =False
 
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/'+key+'verw.pdf')
