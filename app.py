@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template, redirect, request, abort
+from flask import Flask, jsonify, url_for, render_template, redirect, request, abort
 from ipaddress import ip_network, IPv4Address
 import locale
 import json
@@ -509,47 +509,26 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
  
     return render_template("monitor/monitor_quer.html", data=data, lang="de")
 
-# Wetter vom DWD
+@app.route("/nlehre/api/news/")
+def get_news():
+    try:
+        cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
+        mongo_db_news = cluster["news"]
+        news = mongo_db_news["news"]
+    except:
+        pass
 
-#    data['carouselmonitor'].append(
-#            {
-#            "interval": "7000",
-#            "image": "https://morgenwirdes.de/api/v3/minimet.php?plz=79104",
-#            "left": "5%",
-#            "right": "40%",
-#            "bottom": "20%",
-#            "text": "",
-#            "style": "max-height: 10vw; object-fit: cover",
-#            },
-#   )
-
-#    data['carouselmonitor'].append(
-#            {
-#            "interval": "7000",
-#            "image": "https://morgenwirdes.de/api/v3/gif6.php?plz=79104&delay=70&type=1&zoomlvl=3&bar=1&map=0&textcol=ffffff&bgcol=8393c9",
-#            "left": "5%",
-#            "right": "40%",
-#            "bottom": "20%",
-#            "text": "",
-#            "style": "height: 10vw; object-fit: contain",
-#            },
-#   )
-
-
-
-#    os.system('textimg -i "$(curl de.wttr.in/Freiburg?1pQ | tail -n 20 -q | head -n 18 -q)" -o static/images/wetter.png')
-#    os.system("convert static/images/wetter.png -resize 2000x500 static/images/wetter_cropped.png")
-#    data['carouselmonitor'].append(
-#            {
-#            "interval": "7000",
-#            "image": "/static/images/wetter_cropped.png",
-#            "left": "5%",
-#            "right": "40%",
-#            "bottom": "20%",
-#            "text": ""
-#            },
-#    )
-
+    dt = datetime.now()
+    news =  list(news.find({ "_public": True, "home.fuerhome": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))  
+    news_reduced = []
+    for n in news:
+        news_reduced.append({"title_de" : n["home"]["title_de"],
+                             "title_en" : n["home"]["title_en"],
+                             "text_de" : n["home"]["text_de"],
+                             "text_en" : n["home"]["text_en"],
+                             "link" : n["link"]
+                             })
+    return jsonify(news_reduced)
 
 scheduler = BackgroundScheduler(timezone="Europe/Rome")
 # Runs from Monday to Sunday at 05:30 
@@ -562,3 +541,5 @@ scheduler.add_job(
     minute=30
 )
 scheduler.start()
+
+
