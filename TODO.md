@@ -17,6 +17,10 @@
    * gendern vereinheitlichen:* verwenden, das ist das allgemein von der Uni verwendete, nicht : (oder aber ausschreiben)
    
 
+Suchfunktion
+
+Komplette Liste Prüfungen
+
 
 
 

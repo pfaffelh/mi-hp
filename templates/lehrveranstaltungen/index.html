@@ -62,26 +62,26 @@
             </td>
             <td>
               <center>
-                {% if value["komm_exists"] %}
-                <a
-                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"
-                ></a>
-                {% elif value["komm_lang_exists"] %}
+                {% if value["komm_lang_exists"] %}
                 <a
                   href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')}}"
+                ></a>
+                {% elif value["komm_exists"] %}
+                <a
+                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"
                 ></a>
                 {% endif %}
               </center>
             </td>
             <td>
               <center>
-                {% if value["mh_exists"] %}
-                <a
-                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
-                ></a>
-                {% elif value["mh_lang_exists"] %}
+                {% if value["mh_lang_exists"] %}
                 <a
                   href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')}}"
+                ></a>
+                {% elif value["mh_exists"] %}
+                <a
+                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
                 ></a>
                 {% endif %}
               </center>
