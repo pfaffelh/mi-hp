@@ -16,6 +16,7 @@
    * noch mehr ins FAQ, zB Prüfungsanmeldung, Fristen zur Anmeldung
    * gendern vereinheitlichen:* verwenden, das ist das allgemein von der Uni verwendete, nicht : (oder aber ausschreiben)
    
+Links zu Kategoeirne im FAQ geht nicht.
 
 Suchfunktion
 

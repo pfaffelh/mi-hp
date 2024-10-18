@@ -154,7 +154,7 @@ def make_raumzeit(veranstaltung, lang = "de"):
                 if key in [x[0] for x in res]:
                     new.pop(0)
                     i = [x[0] for x in res].index(key)
-                    print(res[i])
+                    #print(res[i])
                     if res[i][1] == tag:
                         new.pop(0)
                         if res[i][2] == zeit:

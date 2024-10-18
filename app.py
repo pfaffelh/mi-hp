@@ -309,8 +309,6 @@ def showlehrveranstaltungendeputate(lang, semester = vvz.get_current_semester_ku
 #        data = json.load(f)    
 #    filenames = ["studiendekanat/index.html"]
 #    return render_template("home.html", data=data, filenames = filenames, lang=lang)
-
-# which can Werte 'all', 'bsc', '2hfb', 'msc', 'mscdata', 'med', 'mederw', 'meddual' annehmen
 # show ist entweder "", oder "all" oder eine id für ein qa-Paar
 @app.route("/nlehre/<lang>/studiendekanat/faq/")
 @app.route("/nlehre/<lang>/studiendekanat/faq/<show>")

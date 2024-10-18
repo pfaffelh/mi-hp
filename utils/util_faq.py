@@ -57,21 +57,31 @@ def get_mit_faq(lang):
         qa_pairs[f"mit_kat_{cat['_id']}"] = [ (f"qa_{str(x['_id'])}", x[q] , x[a], x[bearbeitet]) for x in y]
     return cat_ids, names_dict, qa_pairs
 
-def get_stu_cat(qa_id):
-    id = qa_id.split("_")[-1]
-    x = stu_qa.find_one({"_id" : ObjectId(id)})
-    if x:
-        res = f"stu_kat_{x['category']}"
-    else:
-        res = ""
+# id ist enweder eine qa-id oder eine cat-id
+def get_stu_cat(id):
+    id = id.split("_")[-1]
+    try:
+        x = stu_category.find_one({"_id" : ObjectId(id)})
+        res =f"stu_kat_{x['_id']}"
+    except:    
+        x = stu_qa.find_one({"_id" : ObjectId(id)})
+        if x:
+            res = f"stu_kat_{x['category']}"
+        else:
+            res = ""
     return res
 
-def get_mit_cat(qa_id):
-    id = qa_id.split("_")[-1]
-    x = mit_qa.find_one({"_id" : ObjectId(id)})
-    if x:
-        res = f"mit_kat_{x['category']}"
-    else:
-        res = ""
+# id ist enweder eine qa-id oder eine cat-id
+def get_mit_cat(id):
+    id = id.split("_")[-1]
+    try:
+        x = mit_category.find_one({"_id" : ObjectId(id)})
+        res =f"mit_kat_{x['_id']}"
+    except:    
+        x = mit_qa.find_one({"_id" : ObjectId(id)})
+        if x:
+            res = f"mit_kat_{x['category']}"
+        else:
+            res = ""
     return res
 
