@@ -335,7 +335,6 @@
       }
     </script>
     <script>
-      var x = window.location.search.replace("?", "_");
       var element = document.getElementById(x);
       element.classList.add("show");
       element.scrollIntoView();
@@ -374,10 +373,13 @@
     </script>
     {% block js %}
     <script>
+      var element = document.getElementById("{{showcat}}");
+      element.scrollIntoView();
+    </script>
+    <script>
       var element = document.getElementById("{{show}}_q");
       element.scrollIntoView();
     </script>
-
     {% endblock %}
   </body>
 </html>
