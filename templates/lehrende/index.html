@@ -4,13 +4,14 @@ endblock %} {% block content %}
 <div class="container" id="inhalt">
   <h1>FAQ</h1>
   <p>
-    {% if lang == "de" %} Diese FAQ besteht aus Fragen, die Mitarbeiter*innen des Mathematischen Instituts immer wieder stellen. 
-    {% else %} The FAQ consists of questions that staff at the mathematical institute askes frequently.
-    {% endif %}
+    {% if lang == "de" %} Diese FAQ besteht aus Fragen, die Mitarbeiter*innen
+    des Mathematischen Instituts immer wieder stellen. {% else %} The FAQ
+    consists of questions that staff at the mathematical institute askes
+    frequently. {% endif %}
   </p>
   <div class="container">
     <div class="row g-0 py-1 row-cols-4 row-cols-lg-6">
-    <!-- <div class="dropdown">
+      <!-- <div class="dropdown">
         <button
           class="btn btn-primary dropdown-toggle"
           type="button"
@@ -88,7 +89,7 @@ endblock %} {% block content %}
                 id="{{qa[0]}}"
               >
                 <div class="accordion-body">
-                  <div class = "text-end">{{ qa[3]|markdown }} </div>
+                  <div class="text-end">{{ qa[3]|markdown }}</div>
                   {{ qa[2]|markdown }}
                 </div>
               </div>
@@ -101,9 +102,4 @@ endblock %} {% block content %}
     {% endfor %}
   </div>
 </div>
-{% endblock %} {% block js %}
-<script>
-  var element = document.getElementById("{{show}}_q");
-  element.scrollIntoView();
-</script>
 {% endblock %}
