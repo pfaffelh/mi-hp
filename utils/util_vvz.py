@@ -4,6 +4,28 @@ from collections import OrderedDict
 from .config import *
 from operator import itemgetter
 import latex2markdown
+from markdown import markdown
+
+from markdown.treeprocessors import Treeprocessor
+from markdown.extensions import Extension
+import xml.etree.ElementTree as etree
+
+
+# Custom Treeprocessor to remove <p> tags
+class NoParagraphProcessor(Treeprocessor):
+    def run(self, root):
+        # Loop through all elements
+        for child in list(root):
+            if child.tag == 'p':
+                # Replace <p> with its children (effectively removing <p>)
+                root.remove(child)
+                root.extend(list(child))
+
+# Custom extension to add NoParagraphProcessor
+class NoParagraphExtension(Extension):
+    def extendMarkdown(self, md):
+        # Register the custom treeprocessor
+        md.treeprocessors.register(NoParagraphProcessor(md), 'noparagraph', 15)
 
 #from .util_logging import logger
 
@@ -80,7 +102,7 @@ def semester_name_en(kurzname):
     c = f"/{a+1}" if b == "WS" else ""
     return f"{'Winter term' if b == 'WS' else 'Summer term'} {a}{c}"
 
-def get_md(raum_id):
+def raum_mit_url(raum_id):
     r = vvz_raum.find_one({ "_id": raum_id})
     g = vvz_gebaeude.find_one({ "_id": r["gebaeude"]})
     gurl = g["url"]
@@ -88,7 +110,7 @@ def get_md(raum_id):
         raum = ", ".join([r["name_de"], g["name_de"]])
     else:
         raum = ", ".join([r['name_de'], f"[{g['name_de']}]({gurl})"])
-    return raum
+    return markdown(raum, extensions=[NoParagraphExtension()])
 
 def vorname_name(person_id):
     p = vvz_person.find_one({"_id": person_id})
@@ -99,7 +121,7 @@ def vorname_name_mit_url(person_id):
     p = vvz_person.find_one({"_id": person_id})
     if p["url"] != "":
         res = f"[{res}]({p['url']})"
-    return res
+    return markdown(res, extensions=[NoParagraphExtension()])
 
 def name_vorname(person_id):
     p = vvz_person.find_one({"_id": person_id})
@@ -110,7 +132,7 @@ def name_vorname_mit_url(person_id):
     res = f"{p['name']}, {p['vorname']}"
     if p["url"] != "":
         res = f"[{res}]({p['url']})"    
-    return res
+    return markdown(res, extensions=[NoParagraphExtension()])
 
 def name_terminart(terminart_id, lang):
     name = f"name_{lang}"
@@ -150,7 +172,7 @@ def make_raumzeit(veranstaltung, lang = "de"):
                 key = f"{ta}:" if ta != "" else ""
                 # Raum und Gebäude mit Url, zB Hs II.
                 r = vvz_raum.find_one({ "_id": termin["raum"]})
-                raum = get_md(r["_id"])
+                raum = raum_mit_url(r["_id"])
                 # zB Vorlesung: Montag, 8-10 Uhr, HSII, Albertstr. 23a
                 if termin['start'] is not None:
                     zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}"
@@ -185,7 +207,7 @@ def make_raumzeit(veranstaltung, lang = "de"):
             ta = ta[f"name_{lang}"]
             # Raum und Gebäude mit Url.
             raeume = list(vvz_raum.find({ "_id": { "$in": termin["raum"]}}))
-            raum = ", ".join([get_md(r["_id"]) for r in raeume])
+            raum = ", ".join([raum_mit_url(r["_id"]) for r in raeume])
             # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
             if termin['enddatum'] is None:
                 termin['enddatum'] = termin['startdatum']
@@ -338,7 +360,7 @@ def get_data_stundenplan(sem_shortname, lang="de"):
                         "veranstaltung": v[name],
                         "veranstaltung_mit_link": f"{v[name]}" if url == "" else f"<a href='{url}'>{v[name]}</a>",
                         "dozent": ", ".join([vorname_name_mit_url(p) for p in v["dozent"]]),
-                        "raum": get_md(t["raum"])
+                        "raum":raum_mit_url(t["raum"])
                     })
 
     wt = wochentage.keys() if lang == "de" else wochentage.values()
