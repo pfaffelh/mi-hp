@@ -80,23 +80,37 @@ def semester_name_en(kurzname):
     c = f"/{a+1}" if b == "WS" else ""
     return f"{'Winter term' if b == 'WS' else 'Summer term'} {a}{c}"
 
-def get_html(raum_id):
+def get_md(raum_id):
     r = vvz_raum.find_one({ "_id": raum_id})
     g = vvz_gebaeude.find_one({ "_id": r["gebaeude"]})
     gurl = g["url"]
     if gurl == "":
         raum = ", ".join([r["name_de"], g["name_de"]])
     else:
-        raum = ", ".join([r['name_de'], f"<a href = '{gurl}'>{g['name_de']}</a>"])
+        raum = ", ".join([r['name_de'], f"[{g['name_de']}]({gurl})"])
     return raum
 
 def vorname_name(person_id):
     p = vvz_person.find_one({"_id": person_id})
     return f"{p['vorname']} {p['name']}"
 
+def vorname_name_mit_url(person_id):
+    res = vorname_name(person_id)
+    p = vvz_person.find_one({"_id": person_id})
+    if p["url"] != "":
+        res = f"[{res}]({p['url']})"
+    return res
+
 def name_vorname(person_id):
     p = vvz_person.find_one({"_id": person_id})
     return f"{p['name']}, {p['vorname']}"
+
+def name_vorname_mit_url(person_id):
+    p = vvz_person.find_one({"_id": person_id})
+    res = f"{p['name']}, {p['vorname']}"
+    if p["url"] != "":
+        res = f"[{res}]({p['url']})"    
+    return res
 
 def name_terminart(terminart_id, lang):
     name = f"name_{lang}"
@@ -136,7 +150,7 @@ def make_raumzeit(veranstaltung, lang = "de"):
                 key = f"{ta}:" if ta != "" else ""
                 # Raum und Gebäude mit Url, zB Hs II.
                 r = vvz_raum.find_one({ "_id": termin["raum"]})
-                raum = get_html(r["_id"])
+                raum = get_md(r["_id"])
                 # zB Vorlesung: Montag, 8-10 Uhr, HSII, Albertstr. 23a
                 if termin['start'] is not None:
                     zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}"
@@ -171,7 +185,7 @@ def make_raumzeit(veranstaltung, lang = "de"):
             ta = ta[f"name_{lang}"]
             # Raum und Gebäude mit Url.
             raeume = list(vvz_raum.find({ "_id": { "$in": termin["raum"]}}))
-            raum = ", ".join([get_html(r["_id"]) for r in raeume])
+            raum = ", ".join([get_md(r["_id"]) for r in raeume])
             # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
             if termin['enddatum'] is None:
                 termin['enddatum'] = termin['startdatum']
@@ -277,9 +291,9 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = Fal
             v_dict["titel"] = veranstaltung[f"name_{lang}"]
             v_dict["kommentar"] = veranstaltung[f"kommentar_html_{lang}"]
             v_dict["link"] = veranstaltung["url"]
-            v_dict["dozent"] = ", ".join([vorname_name(x) for x in veranstaltung["dozent"]])
-            v_dict["assistent"] = ", ".join([vorname_name(x) for x in veranstaltung["assistent"]])
-            v_dict["organisation"] = ", ".join([vorname_name(x) for x in veranstaltung["organisation"]])
+            v_dict["dozent"] = ", ".join([vorname_name_mit_url(x) for x in veranstaltung["dozent"]])
+            v_dict["assistent"] = ", ".join([vorname_name_mit_url(x) for x in veranstaltung["assistent"]])
+            v_dict["organisation"] = ", ".join([vorname_name_mit_url(x) for x in veranstaltung["organisation"]])
             # raumzeit ist der Text, der unter der Veranstaltung steht.
             # print(v_dict["titel"])
             v_dict["raumzeit"] = make_raumzeit(veranstaltung, lang=lang)
@@ -323,8 +337,8 @@ def get_data_stundenplan(sem_shortname, lang="de"):
                         "zeit": zeit,
                         "veranstaltung": v[name],
                         "veranstaltung_mit_link": f"{v[name]}" if url == "" else f"<a href='{url}'>{v[name]}</a>",
-                        "dozent": ", ".join([vorname_name(p) for p in v["dozent"]]),
-                        "raum": get_html(t["raum"])
+                        "dozent": ", ".join([vorname_name_mit_url(p) for p in v["dozent"]]),
+                        "raum": get_md(t["raum"])
                     })
 
     wt = wochentage.keys() if lang == "de" else wochentage.values()
@@ -398,14 +412,16 @@ def get_data_personenplan(sem_shortname, lang="de"):
         nt = name_termine(v["_id"], lang)
         for p in v["dozent"]:
             data.append({
-                "person": f"<strong>{name_vorname(p)}</strong>",
+                "person": f"{name_vorname(p)}",
+                "person_mit_url": f"{name_vorname_mit_url(p)}",
                 "veranstaltung": nt,
                 "rolle": "Dozent*in",
                 "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
                 })
         for p in v["assistent"]:
             data.append({
-                "person": f"<strong>{name_vorname(p)}</strong>",
+                "person": f"{name_vorname(p)}",
+                "person_mit_url": f"{name_vorname_mit_url(p)}",
                 "veranstaltung": nt,
                 "rolle": "Assistent*in",
                 "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
@@ -413,7 +429,8 @@ def get_data_personenplan(sem_shortname, lang="de"):
             
         for p in v["organisation"]:
             data.append({
-                "person": f"<strong>{name_vorname(p)}</strong>",
+                "person": f"{name_vorname(p)}",
+                "person_mit_url": f"{name_vorname_mit_url(p)}",
                 "veranstaltung": nt,
                 "rolle": "Organisation",
                 "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
@@ -422,7 +439,8 @@ def get_data_personenplan(sem_shortname, lang="de"):
         for t in v["woechentlicher_termin"]:
             for p in t["person"]:
                 data.append({
-                    "person": f"<strong>{name_vorname(p)}</strong>",
+                    "person": f"{name_vorname(p)}",
+                    "person_mit_url": f"{name_vorname_mit_url(p)}",
                     "veranstaltung": nt,
                     "rolle": name_terminart(t["key"], lang),
                     "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
@@ -430,7 +448,8 @@ def get_data_personenplan(sem_shortname, lang="de"):
         for t in v["einmaliger_termin"]:
             for p in t["person"]:
                 data.append({
-                    "person": f"<strong>{name_vorname(p)}</strong>",
+                    "person": f"{name_vorname(p)}",
+                    "person_mit_url": f"{name_vorname_mit_url(p)}",
                     "veranstaltung": nt,
                     "rolle": name_terminart(t["key"], lang),
                     "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
@@ -439,9 +458,9 @@ def get_data_personenplan(sem_shortname, lang="de"):
     data = sorted(data, key = itemgetter('person', 'veranstaltung'))
     personprevious = ""
     for d in data:
-        z = d["person"]
-        if d["person"] == personprevious:
-            d["person"] = ""
+        z = d["person_mit_url"]
+        if d["person_mit_url"] == personprevious:
+            d["person_mit_url"] = ""
         personprevious = z
     return data
 

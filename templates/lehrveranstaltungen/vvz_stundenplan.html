@@ -42,16 +42,16 @@ endblock %} {% block content %}
     {% for item in data[t] %}
         <div class="row">
         <div class="col-sm-1 text-end">
-        {{ item["zeit"] | safe }}
+        {{ item["zeit"] }}
       </div>
       <div class="col-sm-4">
-        {{ item["veranstaltung_mit_link"]|safe }}
+        {{ item["veranstaltung_mit_link"]|markdown }}
       </div>
       <div class="col-sm-3">
-        {{ item["dozent"] }}
+        {{ item["dozent"] | markdown}}
       </div>
       <div class="col-sm-4">
-        {{ item["raum"]|safe}}
+        {{ item["raum"]|markdown}}
       </div>
     </div>
     {% endfor %}

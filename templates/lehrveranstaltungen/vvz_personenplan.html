@@ -65,7 +65,7 @@ in semester_dict.items() %}
   </div>
   {% endif %} {% for item in data %}
   <div class="row">
-    <div class="col-sm-2 text-end">{{ item["person"] | safe }}</div>
+    <div class="col-sm-2 text-end"><strong>{{ item["person_mit_url"] | markdown }}</strong></div>
     <div class="col-sm-7">{{ item["veranstaltung"]|safe }}</div>
     <div class="col-sm-2">{{ item["rolle"] }}</div>
     <div class="col-sm-1">
