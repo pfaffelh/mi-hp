@@ -1,7 +1,23 @@
 #### Vorschläge
-   * Archiv von Nachrichten einrichten?
-   * Links zu Fachschaft, Studienberatung, Prüfungsamt, Studierendenportal etc werden Karten unterhalb den News auf der Homepage?
-   * Bewerbungsphasen für Studiengänge in mi-faq eintragen? 
+* Archiv von Nachrichten einrichten?
+* News-App vereinfachen, zB gleicher Text für Monitor und Homepage.
+* News-App: True/False für "Erscheint auf der Instituts-Seite".
+* Links zu Fachschaft, Studienberatung, Prüfungsamt, Studierendenportal etc werden Karten unterhalb den News auf der Homepage?
+* Bewerbungsphasen für Studiengänge in mi-faq eintragen? 
+* Eigene App für die Organisation der Grundvorlesungs-Prürungen:
+  * Collection: zeitraum -> Grunddaten für einen Prügungszeitraum, etwa welche Prüfer prüfen, Beginn und Ende der Bewerbungsphase, Beginn und Ende der Prüfphase, angebotene Slots der Prüfer mit Start- und Endzeit. Hier kann man auch Parameter für den Algorithmus eingeben.
+  * Collection: plan -> die Webseite sammelt Daten der Studierenden (nur rz-Kennung, Immatrikulationsnummer, Vorname, Nachname, Studiengang, Fach (Ana, LA), 1.-3.-Wunsch); es gibt die Möglichkeit, Leute aus HisInOne, die keine Wünsche eingetragen haben, nachzutragen.
+  * Erstellung des Prüfungsplans: 
+    * Es wird nachgesehen, ob ein Studierender bereits einmal eine Prüfung hatte, und wird wenn möglich demselben Prüfer zugewiesen.
+    * Randdaten werden zuerst geprüft, zB gibt es überhaupt genug Slots?
+    * Es wird nach dem üblichen Verfahren verteilt.
+    * Diverse Checks, etwa keine zwei Prüfungen eines Studenten am gleichen Tag.
+    * Nach Fine-Tuning Ausgabe des Prüfungsplans in csv.
+    * Danach Eintragen in HisInOne und hier nicht mehr updaten.
+  * Webseite: 
+    * Grunddaten des Prüfungszeitraumes (Datum, Slots der Prüfer, welcher Prüfer prüft was?) werden angegeben.
+    * Login mit rz-Kennung, laden bisheriger Datensätze. Möglichkeit zum Löschen, hinzufügen oder Ändern eines Datensatzes. 
+
 
 
 #### TODOs

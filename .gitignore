@@ -2,3 +2,4 @@ __pycache__/
 venv/
 hp.log
 /static/pdf/alt/
+.netrc
