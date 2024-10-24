@@ -10,9 +10,9 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} Courses for MSc Mathematics in Data and Technology
-        {% else %} Courses for MSc Mathematics in Data and Technology {% endif
-        %}
+        {% if lang == "de" %} Courses for M.Sc. Mathematics in Data and
+        Technology {% else %} Courses for M.Sc. Mathematics in Data and
+        Technology {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
@@ -57,7 +57,7 @@ endblock %} {% block content %}
   {% if studiengang != "" %}
   <div class="row py-4">
     <div class="col">
-      {% for m in data["studiengang"]["modul"] %} 
+      {% for m in data["studiengang"]["modul"] %}
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = studiengang, modul = m['kurzname'])}}"
         class="btn btn-primary bg-ufr-blue link-dark"
@@ -74,98 +74,157 @@ endblock %} {% block content %}
 
 <div class="container py-4" id="inhalt">
   <h2>
-    {% if lang == "de" %} 
-      Lehrveranstaltungen 
-      {% if studiengang == "" %} {% else %} 
-        für 
-        {% if modul == "" %} 
-          den
-        {% else %}
-          das Modul {{ data["modul"]["name"] }} im Studiengang
-        {% endif %}
-         {{ data['studiengang']['name'] }} 
-      {% endif %} 
-      im 
-    {% else %}
-      Course program 
-      {% if studiengang == "" %} {% else %} 
-        for the 
-        {% if modul == "" %} {% else %}
-          module {{ data["modul"]["name"] }} in the study program 
-        {% endif %}
-        {{ data['studiengang']['name'] }} 
-      {% endif %} 
-      in 
-    {% endif %}
+    {% if lang == "de" %} Lehrveranstaltungen {% if studiengang == "" %} {% else
+    %} für {% if modul == "" %} den {% else %} das Modul {{
+    data["modul"]["name"] }} im Studiengang {% endif %} {{
+    data['studiengang']['name'] }} {% endif %} im {% else %} Course program {%
+    if studiengang == "" %} {% else %} for the {% if modul == "" %} {% else %}
+    module {{ data["modul"]["name"] }} in the study program {% endif %} {{
+    data['studiengang']['name'] }} {% endif %} in {% endif %}
     {{data['semester']['name']}}
   </h2>
   {% if data['semester']['prefix'] != "" %} {{ data['semester']['prefix'] |
-  markdown }} {% endif %} {% if data["code"] != [] %}
-  <h2>Codes</h2>
-  {% for c in data["code"] %}
-  <div class="row">
-    <div class="col-sm-1">{{ c['name'] }}</div>
-    <div class="col-sm-6">{{ c['beschreibung'] }}</div>
-  </div>
-  {% endfor %} {% endif %} {% for r in data["rubrik"] %} {% if r['titel'] != ""
-  %}
-  <h2>{{ r['titel'] }}</h2>
-  {% endif %} {% if r['untertitel'] != "" %}
-  <h4>{{ r['untertitel']|markdown }}</h4>
-  {% endif %} {% if r['prefix'] != "" %}
-  <p>{{ r['prefix']|markdown }}</p>
-  {% endif %} {% for v in r["veranstaltung"] %}
-  <div class="row g-4">
-    <div class="col-sm-1 text-end g-5">{{ v["code"] }}</div>
-    <div class="col-sm-6 g-5">
-      <strong>
-        {% if v['link'] != "" %}
-        <a href="{{ v['link'] | safe}}"> {{ v['titel'] }} </a>
-        {% else %} {{ v['titel'] }} {% endif %}
-      </strong>
-      {% for line in v["raumzeit"] %} <br />{{ line|safe }} {% endfor %} {% if
-      v["kommentar"] %} <i>{{ v["kommentar"]|markdown }}</i> {% endif %}
-    </div>
-    <div class="col-sm-3 g-5">
-      {{ v['dozent']|safe}} <br />
-      {% if v["assistent"] %} Assistenz: {{ v["assistent"]|safe }} <br />
-      {% endif %} {% if v["organisation"] %} Organisation: {{ v["organisation"]|safe
-      }} {% endif %}
-    </div>
-    <div class="col-sm-2 g-5">
-      {% if v['inhalt'] != "" %}
-      <a tabindex = "0"
-        role = "button"
-        class="btn btn-outline-primary active bg-white"
-        data-bs-trigger="focus"
-        data-bs-toggle="popover"
-        data-bs-html="true"
-        style="color: #004a99"
-        title="Inhalt"
-        data-bs-content="{{ v['inhalt']|markdown }}"
+  markdown }} {% endif %}
+
+  <!-- Loop über Rubriken.
+    Bsp.
+        1a. Einführende Pflichtvorlesungen,
+        1b. Weiterführende vierstündige Vorlesungen
+        ...
+   -->
+  {% for rubrik in data["rubrik"] %} {% if rubrik['titel'] != "" %}
+  <h3>{{ rubrik['titel'] }}</h3>
+  {% endif %}
+  <!-- {% if rubrik['untertitel'] != "" %} <h3>{{ rubrik['untertitel']|markdown }}</h3>{% endif %} -->
+  {% if rubrik['prefix'] != "" %}
+  <p>{{ rubrik['prefix']|markdown }}</p>
+  {% endif %}
+  <div class="container mt-1">
+    <div class="row button-grid">
+      <!-- Loop über Veranstaltungen: Erstelle Buttons -->
+      {% for course in rubrik["veranstaltung"] %}
+      <div class="col-12 d-flex align-items-stretch">
+        <button
+          type="button"
+          class="btn btn-primary w-100 h-100 lecture-module-button text-start"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-{{loop.index}}"
+        >
+            {% if course['link'] != "" %}
+            <a href="{{ course['link'] | safe}}">
+              {{ course['titel'] }}
+            </a>
+            {% else %} {{ course['titel'] }} {% endif %} {% if
+            course['dozent'] %} ({{course['dozent'] | safe}})
+          {% endif %}
+        </button>
+      </div>
+      {% endfor %}
+
+      <!-- Loop über Veranstaltungen: Erstelle Modals -->
+      {% for course in rubrik["veranstaltung"] %}
+      <div
+        class="modal fade"
+        id="modal-{{loop.index}}"
+        tabindex="-1"
+        aria-labelledby="modalLabel-{{loop.index}}"
+        style="display: none"
+        aria-hidden="true"
       >
-        <i class="fa-solid fa-info" style="color: #004a99"></i>
-    </a>
-      {% endif %} {% if v['verwendbarkeit'] != "" or v['vorkenntnisse']%}
-      <a tabindex="0"
-        role = "button"
-        class="btn btn-outline-primary active bg-white"
-        data-bs-trigger="focus"
-        data-bs-toggle="popover"
-        data-bs-html="true"
-        style="color: #004a99"
-        title=""
-        data-bs-content="{% if v['vorkenntnisse'] != '' %}{% if lang == 'de' %}<strong>Vorkenntnisse:</strong> {% else %}<strong>Previous knowledge:</strong>{% endif %}{{ v['vorkenntnisse']|markdown }}<br>{% endif %} {% if v['verwendbarkeit'] != '' %}{% if lang == 'de' %}<strong>Verwendbarkeit:</strong> {% else %}<strong>Usability:</strong>{% endif %} {{ v['verwendbarkeit']|markdown }} {% endif %}"
-      >
-        <i class="fa-solid fa-book" style="color: #004a99"></i>
-  </a>
-      {% endif %}
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+              <h4 class="modal-title" id="modalLabel-{{ loop.index }}">
+                {% if course['link'] != "" %}
+                <a href="{{ course['link'] | safe}}">
+                  {{ course['titel']|markdown }}
+                </a>
+                {% else %} {{ course['titel']|markdown }} {% endif %}
+              </h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+              <div>
+                {% if course['link'] != "" %}
+                <a href="{{ course['link'] | safe}}"> -> Homepage </a>
+                {% endif %} {% if course["raumzeit"]|length > 0 %}
+                <h5>Ort und Zeit</h5>
+                {% for line in course["raumzeit"] %}
+                <p>{{ line|safe }}</p>
+                {% endfor %} {% endif %} {% if course["kommentar"] %}
+                <i>{{ course["kommentar"]|markdown }}</i> {% endif %}
+              </div>
+
+              <div>
+                <h5>Dozent:in <br /></h5>
+                {{ course['dozent']|safe}} <br />
+                {% if course["assistent"] %}
+                <h5>Assistenz</h5>
+                <p>{{ course["assistent"]|safe }}</p>
+                {% endif %} {% if course["organisation"] %}
+                <h5>Organisation</h5>
+                <p>{{ course["organisation"]|safe }}</p>
+                {% endif %} {% if course['inhalt'] != "" %}
+                <h5>Inhalt</h5>
+                <p>{{ course['inhalt']|markdown }}</p>
+                {% endif %}
+              </div>
+            </div>
+
+            <!-- (Optional) Footer -->
+            {% if course['verwendbarkeit'] != "" or course['vorkenntnisse']%}
+            <div class="modal-footer">
+              <a
+                tabindex="0"
+                role="button"
+                class="btn btn-outline-primary active bg-white"
+                data-bs-trigger="focus"
+                data-bs-toggle="popover"
+                data-bs-html="true"
+                style="color: #004a99"
+                title=""
+                data-bs-content="{% if course['vorkenntnisse'] != '' %}
+                       {% if lang == 'de' %}<strong>Vorkenntnisse:</strong>
+                       {% else %}<strong>Previous knowledge:</strong>{% endif %}
+                       {{ course['vorkenntnisse']|markdown }}<br>{% endif %}
+                       {% if course['verwendbarkeit'] != '' %}{% if lang == 'de' %}<strong>Verwendbarkeit:</strong>
+                       {% else %}<strong>Usability:</strong>{% endif %}
+                       {{ course['verwendbarkeit']|markdown }}{% endif %}"
+              >
+                <i class="fa-solid fa-book" style="color: #004a99"></i>
+              </a>
+            </div>
+            {% endif %}
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Schließen
+          </button>
+        </div>
+      </div>
+      {% endfor %}
     </div>
+
+    <!-- Optional: Rubrik - Suffix -->
+    {% if rubrik['suffix'] != "" %}
+    <div class="row">
+      <div class="col-sm-12">{{ rubrik['suffix']|markdown }}</div>
+    </div>
+    {% endif %}
   </div>
-  {% endfor %} {% if r['suffix'] != "" %}
-  <div class="row">
-    <div class="col-sm-12">{{ r['suffix']|markdown }}</div>
-  </div>
-  {% endif %} {% endfor %}
+  {% endfor %}
 </div>
+
 {% endblock %}

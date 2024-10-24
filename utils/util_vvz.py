@@ -10,22 +10,11 @@ from markdown.treeprocessors import Treeprocessor
 from markdown.extensions import Extension
 import xml.etree.ElementTree as etree
 
-
-# Custom Treeprocessor to remove <p> tags
-class NoParagraphProcessor(Treeprocessor):
-    def run(self, root):
-        # Loop through all elements
-        for child in list(root):
-            if child.tag == 'p':
-                # Replace <p> with its children (effectively removing <p>)
-                root.remove(child)
-                root.extend(list(child))
-
-# Custom extension to add NoParagraphProcessor
-class NoParagraphExtension(Extension):
-    def extendMarkdown(self, md):
-        # Register the custom treeprocessor
-        md.treeprocessors.register(NoParagraphProcessor(md), 'noparagraph', 15)
+def remove_p(html):
+    if html.startswith('<p>') and html.endswith('</p>'):
+        return html[3:-4] 
+    else:
+        return html
 
 #from .util_logging import logger
 
@@ -110,18 +99,24 @@ def raum_mit_url(raum_id):
         raum = ", ".join([r["name_de"], g["name_de"]])
     else:
         raum = ", ".join([r['name_de'], f"[{g['name_de']}]({gurl})"])
-    return markdown(raum, extensions=[NoParagraphExtension()])
+    res = remove_p(markdown(raum))
+    return res
 
 def vorname_name(person_id):
     p = vvz_person.find_one({"_id": person_id})
     return f"{p['vorname']} {p['name']}"
 
-def vorname_name_mit_url(person_id):
-    res = vorname_name(person_id)
+def vorname_name_mit_url(person_id):    
     p = vvz_person.find_one({"_id": person_id})
     if p["url"] != "":
+        res = vorname_name(person_id)
         res = f"[{res}]({p['url']})"
-    return markdown(res, extensions=[NoParagraphExtension()])
+    else:
+        res = vorname_name(person_id)
+        print(res)
+    res = remove_p(markdown(res))
+    print(res)
+    return res
 
 def name_vorname(person_id):
     p = vvz_person.find_one({"_id": person_id})
@@ -132,7 +127,7 @@ def name_vorname_mit_url(person_id):
     res = f"{p['name']}, {p['vorname']}"
     if p["url"] != "":
         res = f"[{res}]({p['url']})"    
-    return markdown(res, extensions=[NoParagraphExtension()])
+    return remove_p(markdown(res))
 
 def name_terminart(terminart_id, lang):
     name = f"name_{lang}"
