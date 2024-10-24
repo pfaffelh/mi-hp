@@ -114,9 +114,7 @@ endblock %} {% block content %}
             <a href="{{ course['link'] | safe}}">
               {{ course['titel'] }}
             </a>
-            {% else %} {{ course['titel'] }} {% endif %} {% if
-            course['dozent'] %} ({{course['dozent'] | safe}})
-          {% endif %}
+            {% else %} {{ course['titel'] }} {% endif %} 
         </button>
       </div>
       {% endfor %}
