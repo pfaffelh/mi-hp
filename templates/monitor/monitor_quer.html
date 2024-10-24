@@ -51,7 +51,7 @@
     {% for item in data["news"] %}
     <div class="col row-cols-1">
       <div
-        class="card h-100 {% if item['today'] and item['monitor']['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
+        class="card h-100 {% if item['today'] and item['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
       >
         <div class="g-0">
           <div class="card-body py-0 px-0">
@@ -64,7 +64,7 @@
                   {{ item['monitor']['title'] | markdown }}
                 </h3>
                 <p
-                  class="card-text {% if item['today'] and item['monitor']['showlastday'] %} watermark-today {% endif %}"
+                  class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
                 >
                   {% if item['link']!= '' %}
                   <img
@@ -117,7 +117,7 @@
                   {{ item['monitor']['title'] | markdown }}
                 </h3>
                 <p
-                  class="card-text {% if item['today'] and item['monitor']['showlastday'] %} watermark-today {% endif %}"
+                  class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
                 >
                   {% if item['link']!= '' %}
                   <img
