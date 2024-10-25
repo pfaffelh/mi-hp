@@ -92,6 +92,7 @@ endblock %} {% block content %}
         1b. Weiterführende vierstündige Vorlesungen
         ...
    -->
+  {% set modal_index = namespace(value=0) %}
   {% for rubrik in data["rubrik"] %} {% if rubrik['titel'] != "" %}
   <h3>{{ rubrik['titel'] }}</h3>
   {% endif %}
@@ -101,31 +102,30 @@ endblock %} {% block content %}
   {% endif %}
   <div class="container mt-1">
     <div class="row button-grid">
-      <!-- Loop über Veranstaltungen: Erstelle Buttons -->
+      <!-- Loop über Veranstaltungen -->
+      <!-- Erstelle Buttons -->
       {% for course in rubrik["veranstaltung"] %}
       <div class="col-12 d-flex align-items-stretch">
         <button
           type="button"
           class="btn btn-primary w-100 h-100 lecture-module-button text-start"
           data-bs-toggle="modal"
-          data-bs-target="#modal-{{loop.index}}"
+          data-bs-target="#modal-{{modal_index.value}}"
         >
             {% if course['link'] != "" %}
             <a href="{{ course['link'] | safe}}">
               {{ course['titel'] }}
             </a>
-            {% else %} {{ course['titel'] }} {% endif %} 
+            {% else %} {{ course['titel'] }} {% endif %}
         </button>
       </div>
-      {% endfor %}
 
-      <!-- Loop über Veranstaltungen: Erstelle Modals -->
-      {% for course in rubrik["veranstaltung"] %}
+      <!-- Erstelle Modals -->
       <div
         class="modal fade"
-        id="modal-{{loop.index}}"
+        id="modal-{{modal_index.value}}"
         tabindex="-1"
-        aria-labelledby="modalLabel-{{loop.index}}"
+        aria-labelledby="modalLabel-{{modal_index.value}}"
         style="display: none"
         aria-hidden="true"
       >
@@ -133,7 +133,7 @@ endblock %} {% block content %}
           <div class="modal-content">
             <!-- Header -->
             <div class="modal-header">
-              <h4 class="modal-title" id="modalLabel-{{ loop.index }}">
+              <h4 class="modal-title" id="modalLabel-{{modal_index.value}}">
                 {% if course['link'] != "" %}
                 <a href="{{ course['link'] | safe}}">
                   {{ course['titel']|markdown }}
@@ -162,7 +162,7 @@ endblock %} {% block content %}
               </div>
 
               <div>
-                <h5>Dozent:in <br /></h5>
+                <h5>Dozent:in <br /> </h5>
                 {{ course['dozent']|safe}} <br />
                 {% if course["assistent"] %}
                 <h5>Assistenz</h5>
@@ -212,6 +212,7 @@ endblock %} {% block content %}
           </button>
         </div>
       </div>
+      {% set modal_index.value = modal_index.value + 1 %}
       {% endfor %}
     </div>
 
