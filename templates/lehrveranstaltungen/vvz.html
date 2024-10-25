@@ -92,51 +92,37 @@ endblock %} {% block content %}
         1b. Weiterführende vierstündige Vorlesungen
         ...
    -->
-  {% set modal_index = namespace(value=0) %}
-  {% for rubrik in data["rubrik"] %} {% if rubrik['titel'] != "" %}
+  {% set modal_index = namespace(value=0) %} {% for rubrik in data["rubrik"] %}
+  {% if rubrik['titel'] != "" %}
   <h3>{{ rubrik['titel'] }}</h3>
-  {% endif %}
-  {% if rubrik['untertitel'] != "" %} <h3>{{ rubrik['untertitel']|markdown }}</h3>{% endif %}
-  {% if rubrik['prefix'] != "" %}
+  {% endif %} {% if rubrik['untertitel'] != "" %}
+  <h3>{{ rubrik['untertitel']|markdown }}</h3>
+  {% endif %} {% if rubrik['prefix'] != "" %}
   <p>{{ rubrik['prefix']|markdown }}</p>
   {% endif %}
   <div class="container mt-1">
     <div class="row button-grid">
       <!-- Loop über Veranstaltungen -->
       {% for course in rubrik["veranstaltung"] %}
-
-
-      <!-- Veranstaltungstitel -->
-      <div>
-          <a href="#"
-             data-bs-toggle="modal"
-             data-bs-target="#modal-{{modal_index.value}}"
-               style="color:#344A9A; font-weight:bold; font-size:129%;"
-          >
-           {{ course['titel'] }}
-           {% if course['link'] != "" %}
-            <a href={{course['link']}}> &nbsp; <i class="fa-solid fa-link"></i></a>
-           {% endif %}
-          </a>
-
-      <!-- Kurzinfo -->
-        {% if course['dozent'] != "" %}
-        <p style="margin-bottom: 5px;"> <b> Dozent:in: </b> {{ course['dozent']|safe}}</p>
-        {% else %}
-        <p></p>
-        {% endif %}
-        {% if course["raumzeit"]|length > 0 %}
-          {% for line in course["raumzeit"] -%}
-            {% if "Vorlesung" in line or "Lecture" in line -%}
-              <p style="margin-bottom: 5px;"> <b> Ort und Zeit: </b> {{ line|safe }}</p>
-            {%- endif %}
-          {%- endfor %}
-        {% endif %}
-      <br />
-
+      <div
+        class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0"
+      >
+        <button
+          type="button"
+          class="btn btn-primary w-100 h-100 lecture-module-button text-start"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-{{modal_index.value}}"
+          style="font-size: 110%"
+        >
+          {{ course['titel'] }} {% if course['allepersonen'] != "" %}
+          <p style="margin-bottom: 5px">{{ course['allepersonen']|safe}}</p>
+          {% endif %} {% if course["raumzeit"]|length > 0 %} {% for line in
+          course["raumzeit"] -%} {% if "Vorlesung" in line or "Lecture" in line
+          -%}
+          <p style="margin-bottom: 5px">{{ line|safe }}</p>
+          {%- endif %} {%- endfor %} {% endif %}
+        </button>
       </div>
-
-
 
       <!-- Modals -->
       <div
@@ -147,17 +133,28 @@ endblock %} {% block content %}
         style="display: none"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <!-- Header -->
             <div class="modal-header">
               {% if course['link'] != "" %}
-                <h4 class="modal-title" id="modalLabel-{{modal_index.value}}">
-                  <a href="{{ course['link'] | safe}}" style="color:#344A9A"> {{ course['titel']|markdown }} </a>
-                </h4>
-                <a href={{course['link']}}> <i class="fa-solid fa-link"></i></a>
+              <h4 class="modal-title" id="modalLabel-{{modal_index.value}}">
+                <a href="{{ course['link'] | safe}}">
+                  {{ course['titel']|markdown }}
+                </a>
+              </h4>
+
+              <a
+                class="btn btn-outline-primary active bg-white"
+                style="border-color: #004a99"
+                href="{{ course['link'] }}"
+                role="button"
+              >
+                <i class="fa-solid fa-link" style="color: #004a99"></i>
+              </a>
+
               {% else %}
-                <h4 style="color:#344A9A"> {{ course['titel']|markdown }} </h4>
+              <h4 style="color: black">{{ course['titel']|markdown }}</h4>
               {% endif %}
               <!--
               <button
@@ -171,45 +168,58 @@ endblock %} {% block content %}
             <!-- Body -->
             <div class="modal-body">
               <div>
-                {% if course["raumzeit"]|length > 0 %}
+                {% if course["raumzeit_mit_url"]|length > 0 %}
                 <h5>Ort und Zeit</h5>
-                {% for line in course["raumzeit"] %}
-                <p>{{ line|safe }}</p>
-                {% endfor %} {% endif %} {% if course["kommentar"] %}
+                <p>
+                  {% for line in course["raumzeit_mit_url"] %} {{ line|safe }}
+                  <br />
+                  {% endfor %}
+                </p>
+                {% endif %} {% if course["kommentar"] %}
                 <i>{{ course["kommentar"]|markdown }}</i> {% endif %}
               </div>
 
               <div>
-                {% if course['dozent'] != "" %}
-                <h5>Dozent:in <br /> </h5>
-                {{ course['dozent']|safe}} <br />
-                {% endif %} {% if course["assistent"] %}
-                <h5>Assistenz</h5>
-                <p>{{ course["assistent"]|safe }}</p>
-                {% endif %} {% if course["organisation"] %}
-                <h5>Organisation</h5>
-                <p>{{ course["organisation"]|safe }}</p>
-                {% endif %} {% if course['inhalt'] != "" %}
-                <h5>Inhalt</h5>
+                <p>
+                  {% if course['dozent_mit_url'] != "" %}
+                  <span class="h5">Dozent:in: </span>
+                  {{ course['dozent_mit_url']|safe}} <br />
+                  {% endif %} {% if course["assistent_mit_url"] %}
+                  <span class="h5">Assistenz: </span>
+                  {{ course["assistent_mit_url"]|safe }} <br />{% endif %} {% if
+                  course["organisation_mit_url"] %}
+                  <span class="h5">Organisation: </span>
+                  {{ course["organisation_mit_url"]|safe }} <br />{% endif %} {%
+                  if course['inhalt'] != "" %}
+                </p>
+              </div>
+              <div>
+                {% for ck, c in course["code"].items() %}
+                <p><span class="h5">{{ ck }}: </span> {{ c }} </p>{% endfor %}
+              </div>
+              <div>
+                <h5 class="h5">Inhalt</h5>
                 <p>{{ course['inhalt']|markdown }}</p>
                 {% endif %}
               </div>
 
               <div>
-                {% if course['verwendbarkeit'] != "" or course['vorkenntnisse']%}
-                  {% if course['vorkenntnisse'] != '' %}
-                    {% if lang == 'de' %}<h5>Vorkenntnisse</h5>
-                    {% elif lang == 'en' %}<h5>Previous knowledge</h5>
-                    {% endif %}
-                    <p> {{ course['vorkenntnisse']|markdown }} </p>
-                  {% endif %}
-                  {% if course['verwendbarkeit'] != '' %}
-                    {% if lang == 'de' %}<h5>Verwendbarkeit:</h5>
-                    {% elif lang == 'en' %}<h5>Usability:</h5>
-                    {% endif %}
-                    <p> {{ course['verwendbarkeit']|markdown }}</p>
-                  {% endif %}
+                {% if course['verwendbarkeit'] != "" or
+                course['vorkenntnisse']%} {% if course['vorkenntnisse'] != '' %}
+                {% if lang == 'de' %}
+                <h5>Vorkenntnisse</h5>
+                {% elif lang == 'en' %}
+                <h5>Previous knowledge</h5>
                 {% endif %}
+                <p>{{ course['vorkenntnisse']|markdown }}</p>
+                {% endif %} {% if course['verwendbarkeit'] != '' %} {% if lang
+                == 'de' %}
+                <h5>Verwendbarkeit:</h5>
+                {% elif lang == 'en' %}
+                <h5>Usability:</h5>
+                {% endif %}
+                <p>{{ course['verwendbarkeit']|markdown }}</p>
+                {% endif %} {% endif %}
               </div>
             </div>
           </div>
@@ -223,8 +233,7 @@ endblock %} {% block content %}
           </button>
         </div>
       </div>
-      {% set modal_index.value = modal_index.value + 1 %}
-      {% endfor %}
+      {% set modal_index.value = modal_index.value + 1 %} {% endfor %}
     </div>
 
     <!-- Optional: Rubrik - Suffix -->
@@ -237,4 +246,22 @@ endblock %} {% block content %}
   {% endfor %}
 </div>
 
+{% endblock %} {% block js %}
+<script>
+  document
+    .getElementById("closeAllModals")
+    .addEventListener("click", function () {
+      // Alle Modals schließen
+      var modals = document.querySelectorAll(".modal");
+      modals.forEach(function (modal) {
+        var bootstrapModal = bootstrap.Modal.getInstance(modal); // Modal-Instanz abrufen
+        if (bootstrapModal) {
+          bootstrapModal.hide(); // Modal schließen
+        } else {
+          var newModal = new bootstrap.Modal(modal);
+          newModal.hide(); // Neu erstellen und schließen
+        }
+      });
+    });
+</script>
 {% endblock %}

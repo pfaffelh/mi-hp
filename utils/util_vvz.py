@@ -91,44 +91,32 @@ def semester_name_en(kurzname):
     c = f"/{a+1}" if b == "WS" else ""
     return f"{'Winter term' if b == 'WS' else 'Summer term'} {a}{c}"
 
-def raum_mit_url(raum_id):
+def get_raum(raum_id, url = True):
     r = vvz_raum.find_one({ "_id": raum_id})
     g = vvz_gebaeude.find_one({ "_id": r["gebaeude"]})
     gurl = g["url"]
-    if gurl == "":
+    if not url or gurl == "":
         raum = ", ".join([r["name_de"], g["name_de"]])
     else:
         raum = ", ".join([r['name_de'], f"[{g['name_de']}]({gurl})"])
     res = remove_p(markdown(raum))
     return res
 
-def vorname_name(person_id):
+def vorname_name(person_id, url = True):
     p = vvz_person.find_one({"_id": person_id})
-    return f"{p['vorname']} {p['name']}"
-
-def vorname_name_mit_url(person_id):    
-    p = vvz_person.find_one({"_id": person_id})
-    if p["url"] != "":
-        res = vorname_name(person_id)
+    res = f"{p['vorname']} {p['name']}"
+    if url and p["url"] != "":
         res = f"[{res}]({p['url']})"
-    else:
-        res = vorname_name(person_id)
-        print(res)
     res = remove_p(markdown(res))
-    print(res)
     return res
 
-def name_vorname(person_id):
-    p = vvz_person.find_one({"_id": person_id})
-    return f"{p['name']}, {p['vorname']}"
-
-def name_vorname_mit_url(person_id):
+def name_vorname(person_id, url = True):
     p = vvz_person.find_one({"_id": person_id})
     res = f"{p['name']}, {p['vorname']}"
-    if p["url"] != "":
+    if url and p["url"] != "":
         res = f"[{res}]({p['url']})"    
     return remove_p(markdown(res))
-
+    
 def name_terminart(terminart_id, lang):
     name = f"name_{lang}"
     ta = vvz_terminart.find_one({"_id": terminart_id})
@@ -156,7 +144,7 @@ def makemodulname(modul_id, lang = "de", alter = True, studiengang = ""):
 # Die Funktion fasst zB Mo, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21 \n 
 # zusammen in
 # Mo, Mi, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21
-def make_raumzeit(veranstaltung, lang = "de"):    
+def make_raumzeit(veranstaltung, lang = "de", url = True):    
     res = []
     for termin in veranstaltung["woechentlicher_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})
@@ -167,7 +155,7 @@ def make_raumzeit(veranstaltung, lang = "de"):
                 key = f"{ta}:" if ta != "" else ""
                 # Raum und Gebäude mit Url, zB Hs II.
                 r = vvz_raum.find_one({ "_id": termin["raum"]})
-                raum = raum_mit_url(r["_id"])
+                raum = get_raum(r["_id"], url)
                 # zB Vorlesung: Montag, 8-10 Uhr, HSII, Albertstr. 23a
                 if termin['start'] is not None:
                     zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}"
@@ -202,7 +190,7 @@ def make_raumzeit(veranstaltung, lang = "de"):
             ta = ta[f"name_{lang}"]
             # Raum und Gebäude mit Url.
             raeume = list(vvz_raum.find({ "_id": { "$in": termin["raum"]}}))
-            raum = ", ".join([raum_mit_url(r["_id"]) for r in raeume])
+            raum = ", ".join([get_raum(r["_id"], url) for r in raeume])
             # zB Vorlesung: Montag, 8-10, HSII, Albertstr. 23a
             if termin['enddatum'] is None:
                 termin['enddatum'] = termin['startdatum']
@@ -230,14 +218,16 @@ def make_raumzeit(veranstaltung, lang = "de"):
     res = [f"{x[0]} {(', '.join([z for z in x if z !='' and x.index(z)!=0]))}" for x in res]
     return res
 
-def make_codes(sem_id, veranstaltung_id):
-    res = ""
-    codekategorie_list = [x["_id"] for x in list(vvz_codekategorie.find({"semester": sem_id, "hp_sichtbar": True}))]
+def make_codes(sem_id, veranstaltung_id, lang):
+    res = {}
+    codekategorie_list = list(vvz_codekategorie.find({"semester": sem_id, "hp_sichtbar": True}))    
     v = vvz_veranstaltung.find_one({"_id": veranstaltung_id})
-    code_list = [vvz_code.find_one({"_id": c, "codekategorie": {"$in": codekategorie_list}}) for c in v["code"]]
-    code_list = [x for x in code_list if x is not None]
-    if len(code_list)>0:
-        res = ", ".join([c["name"] for c in code_list])
+
+    for ck in codekategorie_list:
+        code_list = [vvz_code.find_one({"_id": c, "codekategorie": ck["_id"]}) for c in v["code"]]
+        code_list = [x for x in code_list if x is not None]
+        if len(code_list)>0:
+            res[ck[f"name_{lang}"]] = ", ".join([c[f"beschreibung_{lang}"] for c in code_list])
     return res
 
 # Falls vpn == True, werden auch nicht sichtbare Semester angezeigt
@@ -304,16 +294,21 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = Fal
                 veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
             v_dict = {}
-            v_dict["code"] = make_codes(sem_id, veranstaltung["_id"])            
+            v_dict["code"] = make_codes(sem_id, veranstaltung["_id"], lang)
             v_dict["titel"] = veranstaltung[f"name_{lang}"]
             v_dict["kommentar"] = veranstaltung[f"kommentar_html_{lang}"]
             v_dict["link"] = veranstaltung["url"]
-            v_dict["dozent"] = ", ".join([vorname_name_mit_url(x) for x in veranstaltung["dozent"]])
-            v_dict["assistent"] = ", ".join([vorname_name_mit_url(x) for x in veranstaltung["assistent"]])
-            v_dict["organisation"] = ", ".join([vorname_name_mit_url(x) for x in veranstaltung["organisation"]])
+            v_dict["dozent_mit_url"] = ", ".join([vorname_name(x, True) for x in veranstaltung["dozent"]])
+            v_dict["dozent"] = ", ".join([vorname_name(x, False) for x in veranstaltung["dozent"]])
+            v_dict["allepersonen"] = ", ".join([vorname_name(x, False) for x in veranstaltung["dozent"] + veranstaltung["assistent"] + veranstaltung["organisation"]])
+            v_dict["assistent_mit_url"] = ", ".join([vorname_name(x, True) for x in veranstaltung["assistent"]])
+            v_dict["assistent"] = ", ".join([vorname_name(x, False) for x in veranstaltung["assistent"]])
+            v_dict["organisation_mit_url"] = ", ".join([vorname_name(x, True) for x in veranstaltung["organisation"]])
+            v_dict["organisation"] = ", ".join([vorname_name(x, False) for x in veranstaltung["organisation"]])
             # raumzeit ist der Text, der unter der Veranstaltung steht.
             # print(v_dict["titel"])
-            v_dict["raumzeit"] = make_raumzeit(veranstaltung, lang=lang)
+            v_dict["raumzeit_mit_url"] = make_raumzeit(veranstaltung, lang=lang, url = True)
+            v_dict["raumzeit"] = make_raumzeit(veranstaltung, lang=lang, url = False)
             v_dict["inhalt"] = latex2markdown.LaTeX2Markdown(veranstaltung[f"inhalt_{lang}"]).to_markdown()
             v_dict["vorkenntnisse"] = veranstaltung[f"vorkenntnisse_{lang}"]
             if studiengang == "":
