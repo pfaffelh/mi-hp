@@ -169,7 +169,7 @@ endblock %} {% block content %}
             <div class="modal-body">
               <div>
                 {% if course["raumzeit_mit_url"]|length > 0 %}
-                <h5>Ort und Zeit</h5>
+                <h5 class = "h5">{% if lang == "de" %}Ort und Zeit{% else %}Time and place{% endif %}</h5>
                 <p>
                   {% for line in course["raumzeit_mit_url"] %} {{ line|safe }}
                   <br />
@@ -182,10 +182,10 @@ endblock %} {% block content %}
               <div>
                 <p>
                   {% if course['dozent_mit_url'] != "" %}
-                  <span class="h5">Dozent:in: </span>
+                  <span class="h5">{% if lang == "de" %}Dozent:in: {% else %}Teacher: {% endif %} </span>
                   {{ course['dozent_mit_url']|safe}} <br />
                   {% endif %} {% if course["assistent_mit_url"] %}
-                  <span class="h5">Assistenz: </span>
+                  <span class="h5">{% if lang == "de" %}Assistenz: {% else %}Assistant: {% endif %} </span>
                   {{ course["assistent_mit_url"]|safe }} <br />{% endif %} {% if
                   course["organisation_mit_url"] %}
                   <span class="h5">Organisation: </span>
@@ -198,7 +198,7 @@ endblock %} {% block content %}
                 <p><span class="h5">{{ ck }}: </span> {{ c }} </p>{% endfor %}
               </div>
               <div>
-                <h5 class="h5">Inhalt</h5>
+                <h5 class="h5">{% if lang == "de" %}Inhalt{% else %}Content{% endif %}</h5>
                 <p>{{ course['inhalt']|markdown }}</p>
                 {% endif %}
               </div>

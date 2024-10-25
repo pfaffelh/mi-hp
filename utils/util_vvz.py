@@ -349,8 +349,8 @@ def get_data_stundenplan(sem_shortname, lang="de"):
                         "zeit": zeit,
                         "veranstaltung": v[name],
                         "veranstaltung_mit_link": f"{v[name]}" if url == "" else f"<a href='{url}'>{v[name]}</a>",
-                        "dozent": ", ".join([vorname_name_mit_url(p) for p in v["dozent"]]),
-                        "raum":raum_mit_url(t["raum"])
+                        "dozent": ", ".join([vorname_name(p, True) for p in v["dozent"]]),
+                        "raum":get_raum(t["raum"], True)
                     })
 
     wt = wochentage.keys() if lang == "de" else wochentage.values()
@@ -423,36 +423,48 @@ def get_data_personenplan(sem_shortname, lang="de"):
     for v in ver:
         nt = name_termine(v["_id"], lang)
         for p in v["dozent"]:
+            try :
+                sws = [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+            except:
+                sws = 0
             data.append({
-                "person": f"{name_vorname(p)}",
-                "person_mit_url": f"{name_vorname_mit_url(p)}",
+                "person": f"{name_vorname(p, False)}",
+                "person_mit_url": f"{name_vorname(p, True)}",
                 "veranstaltung": nt,
                 "rolle": "Dozent*in",
-                "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+                "sws": sws
                 })
         for p in v["assistent"]:
+            try :
+                sws = [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+            except:
+                sws = 0
             data.append({
-                "person": f"{name_vorname(p)}",
-                "person_mit_url": f"{name_vorname_mit_url(p)}",
+                "person": f"{name_vorname(p, False)}",
+                "person_mit_url": f"{name_vorname(p, True)}",
                 "veranstaltung": nt,
                 "rolle": "Assistent*in",
-                "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+                "sws": sws
                 })
             
         for p in v["organisation"]:
+            try :
+                sws = [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+            except:
+                sws = 0
             data.append({
-                "person": f"{name_vorname(p)}",
-                "person_mit_url": f"{name_vorname_mit_url(p)}",
+                "person": f"{name_vorname(p, False)}",
+                "person_mit_url": f"{name_vorname(p, True)}",
                 "veranstaltung": nt,
                 "rolle": "Organisation",
-                "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+                "sws": sws
                 })
 
         for t in v["woechentlicher_termin"]:
             for p in t["person"]:
                 data.append({
-                    "person": f"{name_vorname(p)}",
-                    "person_mit_url": f"{name_vorname_mit_url(p)}",
+                    "person": f"{name_vorname(p, False)}",
+                    "person_mit_url": f"{name_vorname(p, True)}",
                     "veranstaltung": nt,
                     "rolle": name_terminart(t["key"], lang),
                     "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
@@ -460,8 +472,8 @@ def get_data_personenplan(sem_shortname, lang="de"):
         for t in v["einmaliger_termin"]:
             for p in t["person"]:
                 data.append({
-                    "person": f"{name_vorname(p)}",
-                    "person_mit_url": f"{name_vorname_mit_url(p)}",
+                    "person": f"{name_vorname(p, False)}",
+                    "person_mit_url": f"{name_vorname(p, True)}",
                     "veranstaltung": nt,
                     "rolle": name_terminart(t["key"], lang),
                     "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
