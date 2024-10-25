@@ -175,32 +175,24 @@ endblock %} {% block content %}
                 <p>{{ course['inhalt']|markdown }}</p>
                 {% endif %}
               </div>
-            </div>
 
-            <!-- (Optional) Footer -->
-            {% if course['verwendbarkeit'] != "" or course['vorkenntnisse']%}
-            <div class="modal-footer">
-              <a
-                tabindex="0"
-                role="button"
-                class="btn btn-outline-primary active bg-white"
-                data-bs-trigger="focus"
-                data-bs-toggle="popover"
-                data-bs-html="true"
-                style="color: #004a99"
-                title=""
-                data-bs-content="{% if course['vorkenntnisse'] != '' %}
-                       {% if lang == 'de' %}<strong>Vorkenntnisse:</strong>
-                       {% else %}<strong>Previous knowledge:</strong>{% endif %}
-                       {{ course['vorkenntnisse']|markdown }}<br>{% endif %}
-                       {% if course['verwendbarkeit'] != '' %}{% if lang == 'de' %}<strong>Verwendbarkeit:</strong>
-                       {% else %}<strong>Usability:</strong>{% endif %}
-                       {{ course['verwendbarkeit']|markdown }}{% endif %}"
-              >
-                <i class="fa-solid fa-book" style="color: #004a99"></i>
-              </a>
+              <div>
+                {% if course['verwendbarkeit'] != "" or course['vorkenntnisse']%}
+                  {% if course['vorkenntnisse'] != '' %}
+                    {% if lang == 'de' %}<h5>Vorkenntnisse</h5>
+                    {% elif lang == 'en' %}<h5>Previous knowledge</h5>
+                    {% endif %}
+                    <p> {{ course['vorkenntnisse']|markdown }} </p>
+                  {% endif %}
+                  {% if course['verwendbarkeit'] != '' %}
+                    {% if lang == 'de' %}<h5>Verwendbarkeit:</h5>
+                    {% elif lang == 'en' %}<h5>Usability:</h5>
+                    {% endif %}
+                    <p> {{ course['verwendbarkeit']|markdown }}</p>
+                  {% endif %}
+                {% endif %}
+              </div>
             </div>
-            {% endif %}
           </div>
 
           <button
