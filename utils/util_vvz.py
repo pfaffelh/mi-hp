@@ -349,7 +349,7 @@ def get_data_stundenplan(sem_shortname, lang="de"):
                         "zeit": zeit,
                         "veranstaltung": v[name],
                         "veranstaltung_mit_link": f"{v[name]}" if url == "" else f"<a href='{url}'>{v[name]}</a>",
-                        "dozent": ", ".join([vorname_name(p, True) for p in v["dozent"]]),
+                        "dozent": ", ".join([vorname_name(p, True) for p in v["dozent"] + v["organisation"]]),
                         "raum":get_raum(t["raum"], True)
                     })
 
