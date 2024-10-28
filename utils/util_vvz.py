@@ -144,7 +144,7 @@ def makemodulname(modul_id, lang = "de", alter = True, studiengang = ""):
 # Die Funktion fasst zB Mo, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21 \n 
 # zusammen in
 # Mo, Mi, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21
-def make_raumzeit(veranstaltung, lang = "de", url = True):    
+def make_raumzeit_woechentlich(veranstaltung, lang = "de", url = True):    
     res = []
     for termin in veranstaltung["woechentlicher_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})
@@ -168,7 +168,7 @@ def make_raumzeit(veranstaltung, lang = "de", url = True):
                 tag = weekday[termin['wochentag']]
                 # person braucht man, wenn wir dann die Datenbank geupdated haben.
                 # person = ", ".join([f"{vvz_person.find_one({"_id": x})["vorname"]} {vvz_person.find_one({"_id": x})["name"]}"for x in termin["person"]])
-                kommentar = rf"\newline{termin[f'kommentar_{lang}_html']}" if termin[f'kommentar_{lang}_html'] != "" else ""
+                kommentar = rf"{termin[f'kommentar_{lang}_html']}" if termin[f'kommentar_{lang}_html'] != "" else ""
                 new = [key, tag, zeit, raum, kommentar]
                 if key in [x[0] for x in res]:
                     new.pop(0)
@@ -184,6 +184,11 @@ def make_raumzeit(veranstaltung, lang = "de", url = True):
                     res[i].reverse()
                 else:
                     res.append(new)
+    res = [f"{x[0]} {(', '.join([z for z in x if z !='' and x.index(z)!=0]))}" for x in res]
+    return res
+
+def make_raumzeit_einmalig(veranstaltung, lang = "de", url = True):    
+    res = []
     for termin in veranstaltung["einmaliger_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})
         if ta["hp_sichtbar"]:
@@ -307,8 +312,10 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = Fal
             v_dict["organisation"] = ", ".join([vorname_name(x, False) for x in veranstaltung["organisation"]])
             # raumzeit ist der Text, der unter der Veranstaltung steht.
             # print(v_dict["titel"])
-            v_dict["raumzeit_mit_url"] = make_raumzeit(veranstaltung, lang=lang, url = True)
-            v_dict["raumzeit"] = make_raumzeit(veranstaltung, lang=lang, url = False)
+            v_dict["raumzeit_woechentlich_mit_url"] = make_raumzeit_woechentlich(veranstaltung, lang=lang, url = True)
+            v_dict["raumzeit_woechentlich"] = make_raumzeit_woechentlich(veranstaltung, lang=lang, url = False)
+            v_dict["raumzeit_einmalig_mit_url"] = make_raumzeit_einmalig(veranstaltung, lang=lang, url = True)
+            v_dict["raumzeit_einmalig"] = make_raumzeit_einmalig(veranstaltung, lang=lang, url = False)
             v_dict["inhalt"] = latex2markdown.LaTeX2Markdown(veranstaltung[f"inhalt_{lang}"]).to_markdown()
             v_dict["vorkenntnisse"] = veranstaltung[f"vorkenntnisse_{lang}"]
             if studiengang == "":

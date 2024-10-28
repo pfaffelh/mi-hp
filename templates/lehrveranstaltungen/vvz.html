@@ -116,11 +116,10 @@ endblock %} {% block content %}
         >
           {{ course['titel'] }} {% if course['allepersonen'] != "" %}
           <p style="margin-bottom: 5px">{{ course['allepersonen']|safe}}</p>
-          {% endif %} {% if course["raumzeit"]|length > 0 %} {% for line in
-          course["raumzeit"] -%} {% if "Vorlesung" in line or "Lecture" in line
-          -%}
+          {% endif %} {% if course["raumzeit_woechentlich"]|length > 0 %} {% for line in
+          course["raumzeit_woechentlich"] %} 
           <p style="margin-bottom: 5px">{{ line|safe }}</p>
-          {%- endif %} {%- endfor %} {% endif %}
+          {% endfor %}{% endif %}
         </button>
       </div>
 
@@ -168,14 +167,23 @@ endblock %} {% block content %}
             <!-- Body -->
             <div class="modal-body">
               <div>
-                {% if course["raumzeit_mit_url"]|length > 0 %}
+                {% if course["raumzeit_woechentlich_mit_url"]|length > 0 %}
                 <h5 class = "h5">{% if lang == "de" %}Ort und Zeit{% else %}Time and place{% endif %}</h5>
                 <p>
-                  {% for line in course["raumzeit_mit_url"] %} {{ line|safe }}
+                  {% for line in course["raumzeit_woechentlich_mit_url"] %} {{ line|safe }}
                   <br />
                   {% endfor %}
                 </p>
-                {% endif %} {% if course["kommentar"] %}
+                {% endif %} 
+                {% if course["raumzeit_einmalig_mit_url"]|length > 0 %}
+                <h5 class = "h5">{% if lang == "de" %}Ort und Zeit{% else %}Time and place{% endif %}</h5>
+                <p>
+                  {% for line in course["raumzeit_einmalig_mit_url"] %} {{ line|safe }}
+                  <br />
+                  {% endfor %}
+                </p>
+                {% endif %} 
+                {% if course["kommentar"] %}
                 <i>{{ course["kommentar"]|markdown }}</i> {% endif %}
               </div>
 
