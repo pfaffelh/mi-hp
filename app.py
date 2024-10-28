@@ -84,7 +84,7 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 @app.route("/nlehre/<lang>/<dtstring>")
 def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     testorpublic = "test" if "test" in request.path.split("/") else "_public"
-    print(request.endpoint)
+    # print(request.endpoint)
     data = news.data_for_base(lang, dtstring, testorpublic)
     filenames = ["index.html"]
     return render_template("home.html", filenames=filenames, data = data, lang=lang)
@@ -215,7 +215,7 @@ def showlehrveranstaltungenbase(lang="de"):
     else:
         semester_dict_2 = { x : {"name": vvz.semester_name_en(x)} for x in acapb }
     semester_dict_2.update(semester_dict)
-    print(semester_dict_2)
+    # print(semester_dict_2)
     for key, value in semester_dict_2.items():
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/'+key+'.pdf')
@@ -450,7 +450,7 @@ def get_mensaplan_text(url, date):
         date_format = '%d.%m.%Y'
         tagesplan = mensaplan["plan"]["ort"]["tagesplan"]
         tagesplan = [t["menue"] for t in tagesplan if t["@datum"] == datetime.now().strftime('%d.%m.%Y')]
-        print(tagesplan)
+        # print(tagesplan)
         if tagesplan != []:
             tagesplan = tagesplan[0]
             ausgabe = f"<h2>Mensaplan am {date.strftime('%d.%m.')}</h2>"

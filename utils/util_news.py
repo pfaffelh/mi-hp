@@ -41,7 +41,7 @@ def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), t
 
     for item in data['news']:
         item['today'] = True if (item["showlastday"] and dt.date() == item['home']['end'].date()) else False
-    print(data)
+    # print(data)
     return data
 
 def data_for_bildnachweis(lang="de"):
@@ -94,7 +94,7 @@ def get_mensaplan_text(url, date):
         date_format = '%d.%m.%Y'
         tagesplan = mensaplan["plan"]["ort"]["tagesplan"]
         tagesplan = [t["menue"] for t in tagesplan if t["@datum"] == datetime.now().strftime('%d.%m.%Y')]
-        print(tagesplan)
+         #print(tagesplan)
         if tagesplan != []:
             tagesplan = tagesplan[0]
             ausgabe = f"<h2>Mensaplan am {date.strftime('%d.%m.')}</h2>"
@@ -118,7 +118,7 @@ def writetonews_mensaplan_text(url = mensaplan_url):
         mensaplan = xmltodict.parse(mensaplan_xml)
         date_format = '%d.%m.%Y'
         tagesplan = mensaplan["plan"]["ort"]["tagesplan"]
-        print(tagesplan)
+        # print(tagesplan)
         
         for t in tagesplan:
             if carouselnews.find_one({"kommentar" : "Mensaplan", "start" : datetime.strptime(t["@datum"], date_format) }):
