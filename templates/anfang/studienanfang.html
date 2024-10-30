@@ -78,15 +78,26 @@
   <div class="accordion accordion-flush" id="accordionExample">
     <div class="accordion-item" id="_vorbereitung">
       <h4 class="accordion-header" id="header_vorbereitung">
-        <button aria-controls="_vorbereitungContent" aria-expanded="false" class="accordion-button collapsed"
-          data-bs-target="#_vorbereitungContent" data-bs-toggle="collapse" type="button">
+        <a id ="_vorbereitung">
+        <button
+          aria-controls="_vorbereitungContent"
+          aria-expanded="false"
+          class="accordion-button {% if 'vorbereitung' not in request.path %}collapsed{% endif %}"
+          data-bs-target="#_vorbereitungContent"
+          data-bs-toggle="collapse"
+          type="button">
           <h3 class="h5">
             {% if lang == "de" %}Vor dem Studium{% else %}Before the start of your studies{% endif %}
           </h3>
         </button>
+        </a>
       </h4>
-      <div aria-labelledby="_vorbereitungContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
-        id="_vorbereitungContent">
+      <div
+        aria-labelledby="_vorbereitungContent"
+        class="accordion-collapse collapse {% if 'vorbereitung' in request.path %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="_vorbereitungContent"
+      >
         <div class="accordion-body" id="vorbereitungContent">
           {% if lang == "de" %}
           <p>
@@ -516,14 +527,22 @@
     </div>
     <div class="accordion-item" id="_vorkurs">
       <h4 class="accordion-header" id="header_vorkurs">
-        <button aria-controls="_vorkursContent" aria-expanded="false" class="accordion-button collapsed"
-          data-bs-target="#_vorkursContent" data-bs-toggle="collapse" type="button">
+        <button
+          aria-controls="_vorkursContent"
+          aria-expanded="false"
+          class="accordion-button {% if 'vorkurs' not in request.path %} collapsed {% endif %}"
+          data-bs-target="#_vorkursContent"
+          data-bs-toggle="collapse"
+          type="button">
           <h3 class="h5">
             {% if lang == "de" %}Vorkurs Mathematik{% else %}Precourse in mathematics{% endif %}
           </h3>
         </button>
       </h4>
-      <div aria-labelledby="_vorkursContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+      <div
+        aria-labelledby="_vorkursContent"
+        class="accordion-collapse collapse {% if 'vorkurs' in request.path %} show {% endif %}"
+        data-bs-parent="#accordionExample"
         id="_vorkursContent">
         <div class="accordion-body" id="vorkursContent">
           {% if lang == "de" %}
@@ -718,16 +737,26 @@
       </div>
       <div class="accordion-item" id="_einfuehrungswoche">
         <h4 class="accordion-header" id="header_einfuehrungswoche">
-          <button aria-controls="_einfuehrungswocheContent" aria-expanded="false" class="accordion-button collapsed"
-            data-bs-target="#_einfuehrungswocheContent" data-bs-toggle="collapse" type="button">
+          <button
+            class="accordion-button {% if 'einfuehrungswoche' not in request.path %}collapsed{% endif %}"
+            aria-controls="_einfuehrungswocheContent"
+            aria-expanded="false"
+            data-bs-target="#_einfuehrungswocheContent"
+            data-bs-toggle="collapse"
+            type="button"
+          >
             <h3 class="h5">
               {% if lang == "de" %}Einführungswoche{% else %}Welcome week{%
               endif %}
             </h3>
           </button>
         </h4>
-        <div aria-labelledby="_einfuehrungswocheContent" class="accordion-collapse collapse"
-          data-bs-parent="#accordionExample" id="_einfuehrungswocheContent">
+        <div
+          aria-labelledby="_einfuehrungswocheContent"
+          class="accordion-collapse collapse {% if 'einfuehrungswoche' in request.path %}show{% endif %}"
+          data-bs-parent="#accordionExample"
+          id="_einfuehrungswocheContent"
+        >
           <div class="accordion-body" id="einfuehrungswocheContent">
             {% if lang == "de" %}
             <p>
@@ -930,18 +959,23 @@
           </div>
         </div>
       </div>
-
       <div class="accordion-item" id="_beginn">
         <h4 class="accordion-header" id="header_beginn">
-          <button aria-controls="_beginnContent" aria-expanded="false" class="accordion-button collapsed"
-            data-bs-target="#_beginnContent" data-bs-toggle="collapse" type="button">
+          <button
+            aria-controls="_beginnContent"
+            aria-expanded="false" class="accordion-button {% if 'beginn' not in request.path %} collapsed {% endif %}"
+            data-bs-target="#_beginnContent"
+            data-bs-toggle="collapse" type="button">
             <h3 class="h5">
               {% if lang == "de" %}Die ersten Wochen{% else %}The first weeks{%
               endif %}
             </h3>
           </button>
         </h4>
-        <div aria-labelledby="_beginnContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+        <div
+          aria-labelledby="_beginnContent"
+          class="accordion-collapse collapse {% if 'beginn' in request.path %} show {% endif %}"
+          data-bs-parent="#accordionExample"
           id="_beginnContent">
           <div class="accordion-body" id="beginnContent">
             {% if lang == "de" %}
@@ -1399,15 +1433,23 @@
         </div>
         <div class="accordion-item" id="_beratung">
           <h4 class="accordion-header" id="header_beratung">
-            <button aria-controls="_beratungContent" aria-expanded="false" class="accordion-button collapsed"
-              data-bs-target="#_beratungContent" data-bs-toggle="collapse" type="button">
+            <button
+              aria-controls="_beratungContent"
+              aria-expanded="false"
+              class="accordion-button {% if 'beratung' not in request.path %} collapsed {% endif %}"
+              data-bs-target="#_beratungContent"
+              data-bs-toggle="collapse"
+              type="button">
               <h3 class="h5">
                 {% if lang == "de" %}Weitere Informationen und Beratung{% else
                 %}More information and advice{% endif %}
               </h3>
             </button>
           </h4>
-          <div aria-labelledby="_beratungContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+          <div
+            aria-labelledby="_beratungContent"
+            class="accordion-collapse collapse {% if 'beratung' in request.path %} show {% endif %}"
+            data-bs-parent="#accordionExample"
             id="_beratungContent">
             <div class="accordion-body" id="beratungContent">
               {% if lang == "de" %}
@@ -1563,14 +1605,22 @@
         </div>
         <div class="accordion-item" id="_ausblick">
           <h4 class="accordion-header" id="header_ausblick">
-            <button aria-controls="_ausblickContent" aria-expanded="false" class="accordion-button collapsed"
-              data-bs-target="#_ausblickContent" data-bs-toggle="collapse" type="button">
+            <button
+              aria-controls="_ausblickContent"
+              aria-expanded="false"
+              class="accordion-button {% if 'ausblick' in request.path %} collapsed {% endif %}"
+              data-bs-target="#_ausblickContent"
+              data-bs-toggle="collapse"
+              type="button">
               <h3 class="h5">
                 {% if lang == "de" %}Ausblick{% else %}Outlook{% endif %}
               </h3>
             </button>
           </h4>
-          <div aria-labelledby="_ausblickContent" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+          <div
+            aria-labelledby="_ausblickContent"
+            class="accordion-collapse collapse {% if 'ausblick' in request.path %} show {% endif %}"
+            data-bs-parent="#accordionExample"
             id="_ausblickContent">
             <div class="accordion-body" id="ausblickContent">
               {% if lang == "de" %}
@@ -1951,19 +2001,24 @@
         </div>
         <div class="accordion-item">
           <h4 class="accordion-header">
-            <button aria-controls="_literaturContent"
-              aria-expanded="{% if anchor == 'literatur' %}true{% else %}false{% endif %}"
-              class="accordion-button {% if anchor != 'literatur' %}collapsed{% endif %}"
-              data-bs-target="#_literaturContent" data-bs-toggle="collapse" type="button">
+            <button
+              aria-controls="_literaturContent"
+              aria-expanded="false"
+              class="accordion-button {% if 'literatur' not in request.path %} collapsed {% endif %}"
+              data-bs-target="#_literaturContent"
+              data-bs-toggle="collapse"
+              type="button">
               <h3 class="h5">
                 {% if lang == "de" %}Literaturhinweise{% else %}Literature{% endif
                 %}
               </h3>
             </button>
           </h4>
-          <div aria-labelledby="_literaturContent"
-            class="accordion-collapse collapse {% if anchor == 'literatur' %}show{% endif %}"
-            data-bs-parent="#accordionExample" id="_literaturContent">
+          <div
+            aria-labelledby="_literaturContent"
+            class="accordion-collapse collapse{% if 'literatur' in request.path %} show {% endif %}"
+            data-bs-parent="#accordionExample"
+            id="_literaturContent">
             <div class="accordion-body" id="literatur">
               {% if lang == "de" %}
               <b>Als Vorbereitung aufs Studium:</b>
@@ -2038,3 +2093,4 @@
       </div>
     </div>
   </div>
+</div>
