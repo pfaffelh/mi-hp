@@ -47,6 +47,12 @@
       media="all"
     />
     <link rel="icon" href="/static/images/favicon-32x32.png" type="image/png">
+    <script>
+      $('[data-toggle="tooltip"]').tooltip({
+        template:
+          '<div class="tooltip tooltip-custom"><div class="title">Test</div><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+      });
+    </script>
     <style>
       body {
         font-size: 16px;
@@ -139,6 +145,7 @@
       }
       .accordion-button:not(.collapsed) {
         background-color: #fffae5;
+        color-scheme: #fffae5;
       }
       .accordion-button:hover {
         background-color: #fffae5;
@@ -170,12 +177,13 @@
       }
       .modal-backdrop {
         display: none;
+        z-index: 1040 !important;
       }
       .modal-content {
         z-index: 1100 !important;
       }
       .h5 {
-        font-size: 1.25rem;
+        font-size: 1.25rem; 
       }
     </style>
 
@@ -379,6 +387,13 @@
         $(location.hash + ".collapse").collapse("show");
       }
     </script>
+    <script>
+      var element = document.getElementById(x);
+      element.classList.add("show");
+      element.scrollIntoView();
+      var element = document.querySelector("[aria-controls=" + x + "]");
+      element.classList.remove("collapsed");
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -387,6 +402,18 @@
       );
       var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        // Alle Popovers auf der Seite initialisieren
+        $('[data-bs-toggle="popover"]').popover();
+
+        // Event für das Anzeigen von Popovers abfangen
+        $(document).on("shown.bs.popover", function () {
+          MathJax.typesetPromise(); // MathJax für alle angezeigten Popovers anwenden
+        });
       });
     </script>
     <script>
@@ -407,8 +434,5 @@
       element.scrollIntoView();
     </script>
     {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </body>
 </html>
