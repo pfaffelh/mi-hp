@@ -58,6 +58,17 @@ in semester_dict.items() %}
   </div>
 </div>
 
+{% if vpn_nextsemester %}
+<div class="container">
+  <h3>
+    <span style="color: red"
+      >Diese Seite beinhaltet die Planung für das nächste Semester; die
+      Informationen hier sind vorläufig und haben noch keine Gültigkeit!</span
+    >
+  </h3>
+</div>
+{% endif %}
+
 <div class="container" id="inhalt">
   <h2>Lehrveranstaltungen im {{semester_lang}}</h2>
   {% if showdeputate %}

@@ -3,8 +3,7 @@ endblock %} {% block content %}
 <div class="container text-end py-4">
   <div class="row">
     <div class="col">
-      {% if studiengang == "" %}
-      {% if not vpn_nextsemester %}
+      {% if studiengang == "" %} {% if not vpn_nextsemester %}
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MScData24')}}"
         class="btn btn-primary bg-ufr-blue link-dark"
@@ -17,9 +16,18 @@ endblock %} {% block content %}
       </a>
       {% endif %}
       <a
-        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
-        {% else %} href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
-        {% endif %} 
+        {%
+        if
+        vpn_nextsemester
+        %}
+        href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
+        {%
+        else
+        %}
+        href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
+        {%
+        endif
+        %}
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -28,9 +36,18 @@ endblock %} {% block content %}
         courses {% endif %}
       </a>
       <a
-        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterpersonenplan', lang=lang)}}"
-        {% else %} href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}"
-        {% endif %} 
+        {%
+        if
+        vpn_nextsemester
+        %}
+        href="{{url_for('showlehrveranstaltungennextsemesterpersonenplan', lang=lang)}}"
+        {%
+        else
+        %}
+        href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}"
+        {%
+        endif
+        %}
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -49,10 +66,18 @@ endblock %} {% block content %}
       </a>
       {% else %}
       <a
-        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
-        {% else %} href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester)}}"
-        {% endif %} 
-
+        {%
+        if
+        vpn_nextsemester
+        %}
+        href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
+        {%
+        else
+        %}
+        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester)}}"
+        {%
+        endif
+        %}
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -80,6 +105,17 @@ endblock %} {% block content %}
   </div>
   {% endif %}
 </div>
+
+{% if vpn_nextsemester %}
+<div class="container">
+  <h3>
+    <span style="color: red"
+      >Diese Seite beinhaltet die Planung für das nächste Semester; die
+      Informationen hier sind vorläufig und haben noch keine Gültigkeit!</span
+    >
+  </h3>
+</div>
+{% endif %}
 
 <div class="container py-4" id="inhalt">
   <h2>
