@@ -4,6 +4,7 @@ endblock %} {% block content %}
   <div class="row">
     <div class="col">
       {% if studiengang == "" %}
+      {% if not vpn_nextsemester %}
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MScData24')}}"
         class="btn btn-primary bg-ufr-blue link-dark"
@@ -14,8 +15,11 @@ endblock %} {% block content %}
         Technology {% else %} Courses for M.Sc. Mathematics in Data and
         Technology {% endif %}
       </a>
+      {% endif %}
       <a
-        href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
+        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
+        {% endif %} 
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -24,7 +28,9 @@ endblock %} {% block content %}
         courses {% endif %}
       </a>
       <a
-        href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}"
+        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterpersonenplan', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}"
+        {% endif %} 
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -43,7 +49,10 @@ endblock %} {% block content %}
       </a>
       {% else %}
       <a
-        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester)}}"
+        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester)}}"
+        {% endif %} 
+
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -107,7 +116,7 @@ endblock %} {% block content %}
       <div
         class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0"
       >
-      <!-- Modal Buttons -->
+        <!-- Modal Buttons -->
         <button
           type="button"
           class="btn btn-primary w-100 h-100 lecture-module-button text-start"
@@ -117,10 +126,10 @@ endblock %} {% block content %}
         >
           <p style="font-weight: bold">{{ course['titel'] }}</p>
           {% if course['allepersonen'] != "" %}
-            <p style="margin-bottom: 5px">{{ course['allepersonen']|safe}}</p>
-          {% endif %} {% if course["raumzeit_woechentlich"]|length > 0 %}
-            {% for line in course["raumzeit_woechentlich"] %}
-            <p style="margin-bottom: 5px">{{ line|safe }}</p>
+          <p style="margin-bottom: 5px">{{ course['allepersonen']|safe}}</p>
+          {% endif %} {% if course["raumzeit_woechentlich"]|length > 0 %} {% for
+          line in course["raumzeit_woechentlich"] %}
+          <p style="margin-bottom: 5px">{{ line|safe }}</p>
           {% endfor %}{% endif %}
         </button>
       </div>
@@ -198,21 +207,19 @@ endblock %} {% block content %}
 
               <div>
                 <span class="h5">
-                  {% if lang == "de" %}Lehre
-                  {% else %}Teaching {% endif %}
+                  {% if lang == "de" %}Lehre {% else %}Teaching {% endif %}
                 </span>
                 <p>
-                  {% if course['dozent_mit_url'] != "" %}
-                    {% if lang == "de" %}Dozent:in: {% else %}Teacher: {% endif%}
-                    {{ course['dozent_mit_url']|safe}} <br />
-                  {% endif %} {% if course["assistent_mit_url"] %}
-                    {% if lang == "de" %}Assistenz: {% else %}Assistant: {% endif %}
-                    {{ course["assistent_mit_url"]|safe }} <br />
+                  {% if course['dozent_mit_url'] != "" %} {% if lang == "de"
+                  %}Dozent:in: {% else %}Teacher: {% endif%} {{
+                  course['dozent_mit_url']|safe}} <br />
+                  {% endif %} {% if course["assistent_mit_url"] %} {% if lang ==
+                  "de" %}Assistenz: {% else %}Assistant: {% endif %} {{
+                  course["assistent_mit_url"]|safe }} <br />
                   {% endif %} {% if course["organisation_mit_url"] %}
-                    Organisation: {{ course["organisation_mit_url"]|safe }} <br />
-                  {% endif %}
-                  {% for ck, c in course["code"].items() %}
-                    {{ ck }}: {{ c }} <br />
+                  Organisation: {{ course["organisation_mit_url"]|safe }} <br />
+                  {% endif %} {% for ck, c in course["code"].items() %} {{ ck
+                  }}: {{ c }} <br />
                   {% endfor %}
                 </p>
               </div>
@@ -222,47 +229,36 @@ endblock %} {% block content %}
                 <span class="h5">
                   {% if lang == "de" %}Inhalt{% else %}Content{% endif %}
                 </span>
-                <p>
-                  {{ course['inhalt']|markdown }}
-                </p>
+                <p>{{ course['inhalt']|markdown }}</p>
               </div>
-              {% endif %}
-
-              {% if course['vorkenntnisse'] != '' %}
+              {% endif %} {% if course['vorkenntnisse'] != '' %}
               <div>
                 <span class="h5">
-                  {% if lang == "de" %}Vorkenntnisse{% else %}Previous knowledge{% endif %}
+                  {% if lang == "de" %}Vorkenntnisse{% else %}Previous
+                  knowledge{% endif %}
                 </span>
-                <p>
-                  {{ course['vorkenntnisse']|markdown }}
-                </p>
+                <p>{{ course['vorkenntnisse']|markdown }}</p>
               </div>
-              {% endif %}
-
-              {% if course['verwendbarkeit'] != '' %}
+              {% endif %} {% if course['verwendbarkeit'] != '' %}
               <div>
                 <span class="h5">
-                  {% if lang == "de" %}Verwendbarkeit{% else %}Usability{% endif %}
+                  {% if lang == "de" %}Verwendbarkeit{% else %}Usability{% endif
+                  %}
                 </span>
-                <p>
-                  {{ course['verwendbarkeit']|markdown }}
-                </p>
+                <p>{{ course['verwendbarkeit']|markdown }}</p>
               </div>
               {% endif %}
             </div>
           </div>
 
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-            {% if lang == 'de' %}
-              Schließen
-            {% elif lang == 'en' %}
-              Close
-            {% endif %}
-            </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            {% if lang == 'de' %} Schließen {% elif lang == 'en' %} Close {%
+            endif %}
+          </button>
         </div>
       </div>
       {% set modal_index.value = modal_index.value + 1 %} {% endfor %}
@@ -278,34 +274,4 @@ endblock %} {% block content %}
   {% endfor %}
 </div>
 
-<div class="accordion accordion-flush" id="accordionExample">
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Accordion Item #1
-            </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                Content for the first item.
-            </div>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
-            </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                Content for the second item.
-            </div>
-        </div>
-    </div>
-</div>
-
-
-{% endblock %} {% block js %}
-{% endblock %}
-
+{% endblock %} {% block js %} {% endblock %}

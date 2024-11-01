@@ -22,9 +22,13 @@
 
 #### TODOs
 
-0. mi-hp: Übersetzung Anleitung zur Prüfungsanmeldung
-1. mi-vvz: 
+0. mi-hp:  
+   * Übersetzung Anleitung zur Prüfungsanmeldung;
+   * Darstellung einmaliger Termine als Liste
+   * Ansicht nur veröffentlichter Semester; 
+1. mi-vvz: Klausuren als einmalige Termine, 
 2. mi-faq: 
+   * 
    * faq für Studienkoordinatoren anlegen?
    * Allgemein: Interne Seiten in mit-faq eintragen
 3. mi-hp: 
@@ -32,12 +36,14 @@
    * noch mehr ins FAQ, zB Prüfungsanmeldung, Fristen zur Anmeldung
    * gendern vereinheitlichen:* verwenden, das ist das allgemein von der Uni verwendete, nicht : (oder aber ausschreiben)
    
-Links zu Kategoeirne im FAQ geht nicht.
 
-Suchfunktion
+Klausuren:
 
-Komplette Liste Prüfungen
-
+Komplette Liste Klausuren auf hp:
+* Eigene Veranstaltung "Sondertermine" anlegen, die nicht angezeigt wird;
+* Klausuren von Kalender in dieser Veranstaltung anlegen
+* Einmaliger Termin bekommt ein Feld "in Prüfungskalender anzeigen"
+* Suchfunktion vvz: Einmlaige Termine ausgeben
 
 
 

@@ -237,19 +237,19 @@ def make_codes(sem_id, veranstaltung_id, lang):
 
 # Falls vpn == True, werden auch nicht sichtbare Semester angezeigt
 def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = False):
-    sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
-    if vpn:
-        rubriken = list(vvz_rubrik.find({"semester": sem_id}, sort=[("rang", pymongo.ASCENDING)]))
-    else:
-        rubriken = list(vvz_rubrik.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
-            
+    query = {"kurzname": sem_shortname}
+    if not vpn:
+        query["hp_sichtbar"] = True
+    sem = vvz_semester.find_one(query)
+    sem_id = sem.get("_id", "")
+
+    data = {"vpn" : vpn}
+
     rubriken = list(vvz_rubrik.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
 
     codekategorie = list(vvz_codekategorie.find({"semester": sem_id, "hp_sichtbar": True}, sort=[("rang", pymongo.ASCENDING)]))
     codes = list(vvz_code.find({"semester": sem_id, "codekategorie": { "$in" : [c["_id"] for c in codekategorie] }}, sort=[("rang", pymongo.ASCENDING)]))
-    #print(codes)
 
-    data = {}
     data["semester"] = vvz_semester.find_one({"kurzname": sem_shortname})
     data["semester"]["name"] = data["semester"][f"name_{lang}"] 
     data["semester"]["prefix"] = data["semester"][f"prefix_{lang}"] 
@@ -288,15 +288,10 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = Fal
             else:
                 mod_list = list(vvz_modul.find({ "kurzname" : modul}))
 
-            query = {"rubrik": rubrik["_id"], "$or" : [{ "verwendbarkeit_modul" : { "$elemMatch" : { "$eq" : m["_id"] }}} for m in mod_list ]}
-            if vpn == False:
-                query["hp_sichtbar"] = True
+            query = {"rubrik": rubrik["_id"], "hp_sichtbar": True, "$or" : [{ "verwendbarkeit_modul" : { "$elemMatch" : { "$eq" : m["_id"] }}} for m in mod_list ]}
             veranstaltungen = list(vvz_veranstaltung.find(query, sort=[("rang", pymongo.ASCENDING)]))
         else:
-            if vpn:
-                veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"]}, sort=[("rang", pymongo.ASCENDING)]))                
-            else:
-                veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
+            veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
             v_dict = {}
             v_dict["code"] = make_codes(sem_id, veranstaltung["_id"], lang)
@@ -332,9 +327,14 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = Fal
         #print(data)
     return data
 
-def get_data_stundenplan(sem_shortname, lang="de"):
+def get_data_stundenplan(sem_shortname, lang="de", vpn = False):
+    query = {"kurzname": sem_shortname}
+    if not vpn:
+        query["hp_sichtbar"] = True
+    sem = vvz_semester.find_one(query)
+    sem_id = sem.get("_id", "")
+
     name = f'name_{lang}'
-    sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
     ver = vvz_veranstaltung.find({"semester" : sem_id})
     data = []
     for v in ver:
@@ -422,8 +422,12 @@ def name_termine(ver_id, lang="de"):
         res = res + "<br>" + "; ".join(termine)
     return res
 
-def get_data_personenplan(sem_shortname, lang="de"):
-    sem_id = vvz_semester.find_one({"kurzname": sem_shortname})["_id"]
+def get_data_personenplan(sem_shortname, lang="de", vpn = False):
+    query = {"kurzname": sem_shortname}
+    if not vpn:
+        query["hp_sichtbar"] = True
+    sem = vvz_semester.find_one(query)
+    sem_id = sem["_id"] if sem else ""
     ver = vvz_veranstaltung.find({"semester" : sem_id})
 
     data = []

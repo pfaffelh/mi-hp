@@ -258,7 +258,32 @@ def showlehrveranstaltungen(lang, semester, studiengang = "", modul = ""):
         return render_template("home.html", filenames = filenames, lang=lang, semester=semester)
     else:
         data = vvz.get_data(semester, lang, studiengang, modul)
-        return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=semester, studiengang = studiengang, modul = modul)
+        return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=semester, studiengang = studiengang, modul = modul, vpn_nextsemester = False)
+
+@app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/stundenplan/")
+def showlehrveranstaltungenstundenplan(lang, semester):
+    data = vvz.get_data_stundenplan(semester, lang)
+    return render_template("lehrveranstaltungen/vvz_stundenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester), vpn_nextsemester = False)
+
+@app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/personenplan/")
+def showlehrveranstaltungenpersonenplan(lang, semester):
+    data = vvz.get_data_personenplan(semester, lang)
+    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_dict = {}, semester_lang = vvz.semester_name_de(semester), showdeputate = False, vpn_nextsemester = False)
+
+@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/deputate/")
+@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/<semester>/deputate/")
+def showlehrveranstaltungendeputate(lang, semester = vvz.get_current_semester_kurzname()):
+    a = [x["kurzname"] for x in list(vvz.vvz_semester.find({"hp_sichtbar": True}))]
+    b = ["2024WS"] + [f"20{x}{s}S" for x in range(25,100) for s in ["S", "W"]]
+    acapb = [x for x in a if x in b]
+    acapb.reverse()
+    semester_dict = { x : {"name": vvz.semester_name_de(x)} for x in acapb }
+    data = vvz.get_data_personenplan(semester, lang)
+    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_dict = semester_dict, semester_lang = vvz.semester_name_de(semester), showdeputate = True, vpn_nextsemester = False)
+
+#################################
+## Nächsts Semester in Planung ##
+#################################
 
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/")
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/<studiengang>")
@@ -271,33 +296,24 @@ def showlehrveranstaltungennextsemester(lang, studiengang = "", modul = ""):
         return render_template("home.html", filenames = filenames, lang=lang, message = message)
     elif vvz.get_showsemester(next_semester, hp_sichtbar = False):
         data = vvz.get_data(next_semester, lang, studiengang, modul, vpn = True)
-        return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=next_semester, studiengang = studiengang, modul = modul)
+        return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=next_semester, studiengang = studiengang, modul = modul, vpn_nextsemester = True)
     else:
         filenames = ["message.html"]
         m = "{{ url_for('showlehrveranstaltungen', lang=lang, semester = kommendes_semester) }}"
         message = f"<h1>Es liegen noch keine Daten vor.</h1>"
         return render_template("home.html", filenames = filenames, lang=lang, message = message)
 
-@app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/stundenplan/")
-def showlehrveranstaltungenstundenplan(lang, semester):
-    data = vvz.get_data_stundenplan(semester, lang)
-    return render_template("lehrveranstaltungen/vvz_stundenplan.html", lang=lang, data = data, semester=semester, semester_lang = vvz.semester_name_de(semester))
+@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/stundenplan/")
+def showlehrveranstaltungennextsemesterstundenplan(lang):
+    next_semester = vvz.next_semester_kurzname(vvz.get_current_semester_kurzname())
+    data = vvz.get_data_stundenplan(next_semester, lang, vpn = True)
+    return render_template("lehrveranstaltungen/vvz_stundenplan.html", lang=lang, data = data, semester=next_semester, semester_lang = vvz.semester_name_de(next_semester), vpn_nextsemester = True)
 
-@app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/personenplan/")
-def showlehrveranstaltungenpersonenplan(lang, semester):
-    data = vvz.get_data_personenplan(semester, lang)
-    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_dict = {}, semester_lang = vvz.semester_name_de(semester), showdeputate = False)
-
-@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/deputate/")
-@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/<semester>/deputate/")
-def showlehrveranstaltungendeputate(lang, semester = vvz.get_current_semester_kurzname()):
-    a = [x["kurzname"] for x in list(vvz.vvz_semester.find({"hp_sichtbar": True}))]
-    b = ["2024WS"] + [f"20{x}{s}S" for x in range(25,100) for s in ["S", "W"]]
-    acapb = [x for x in a if x in b]
-    acapb.reverse()
-    semester_dict = { x : {"name": vvz.semester_name_de(x)} for x in acapb }
-    data = vvz.get_data_personenplan(semester, lang)
-    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_dict = semester_dict, semester_lang = vvz.semester_name_de(semester), showdeputate = True)
+@app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/personenplan/")
+def showlehrveranstaltungennextsemesterpersonenplan(lang):
+    next_semester = vvz.next_semester_kurzname(vvz.get_current_semester_kurzname())
+    data = vvz.get_data_personenplan(next_semester, lang, vpn = True)
+    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=next_semester, semester_dict = {}, semester_lang = vvz.semester_name_de(next_semester), showdeputate = False, vpn_nextsemester = True)
 
 #####################################
 ## Prüfungsamt und Studienberatung ##

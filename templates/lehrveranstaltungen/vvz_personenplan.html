@@ -23,7 +23,9 @@ in semester_dict.items() %}
   <div class="row">
     <div class="col">
       <a
-        href="{{url_for('showlehrveranstaltungen', semester = semester, lang=lang)}}"
+        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungen', semester = semester, lang=lang)}}"
+        {% endif %} 
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -32,7 +34,9 @@ in semester_dict.items() %}
         to the list of all courses {% endif %}
       </a>
       <a
-        href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
+        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
+        {% endif %} 
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
