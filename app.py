@@ -11,6 +11,7 @@ from utils.util_calendar import calendar, get_caldav_calendar_events
 from apscheduler.schedulers.background import BackgroundScheduler
 
 import utils.util_faq as util_faq
+import utils.util_accordion as util_acc
 
 import utils.fb as fb
 from flask_misaka import Misaka
@@ -341,6 +342,28 @@ def showstufaq(lang, show =""):
     else:
         showcat = util_faq.get_stu_cat(show)
     return render_template("studiendekanat/index.html", lang=lang, cat_ids = cat_ids, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
+
+@app.route("/nlehre/<lang>/studiendekanat/faq2/")
+@app.route("/nlehre/<lang>/studiendekanat/faq2/<show>")
+def showstufaq2(lang, show =""):
+    try:
+        data = util_acc.get_accordion_data("faqstud", lang)
+    except:
+        logger.warning("No connection to database")
+        data = { "kurzname" : "faqstud", "titel" : "", "prefix" : "", "suffix" : "", "bearbeitet" : "", "kinder" : []}
+
+    if show == "":
+        showcat = ""
+    elif show == "all":
+        showcat = "all"
+    else:
+        k = util_acc.knoten.find_one({"kurzname" : show})
+        p = util_acc.knoten.find_one({"kinder" : { "$elemMatch" : { "$eq": k["_id"]}}})
+        if p == util_acc.knoten.find_one({"kurzname" : "faqstud"}):
+            showcat = show
+        else:
+            showcat = p["kurzname"]
+    return render_template("studiendekanat/index2.html", lang=lang, data = data, showcat = showcat, show=show)
 
 @app.route("/nlehre/<lang>/studiendekanat/")
 @app.route("/nlehre/<lang>/studiendekanat/<unterseite>/")

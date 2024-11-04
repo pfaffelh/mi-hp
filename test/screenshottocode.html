@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universität Freiburg Navigation</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .fullscreen-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      display: none;
+      z-index: 1050;
+      padding: 2rem;
+    }
+    .fullscreen-menu.show {
+      display: block;
+    }
+    .fullscreen-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+    .fullscreen-menu ul li {
+      margin: 1rem 0;
+      font-size: 1.5rem;
+    }
+    .fullscreen-menu a {
+      color: white;
+      text-decoration: none;
+    }
+    .submenu {
+      list-style: none;
+      padding-left: 1.5rem;
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">Universität Freiburg</a>
+    <button class="navbar-toggler" type="button" onclick="toggleMenu()" aria-controls="fullscreenMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<div id="fullscreenMenu" class="fullscreen-menu" onclick="closeMenu(event)">
+  <ul>
+    <li><a href="#" onclick="toggleMenu()">Universität</a>
+      <ul class="submenu">
+        <li><a href="#" onclick="toggleMenu()">Geschichte</a></li>
+        <li><a href="#" onclick="toggleMenu()">Organisation</a></li>
+        <li><a href="#" onclick="toggleMenu()">Verwaltung</a></li>
+      </ul>
+    </li>
+    <li><a href="#" onclick="toggleMenu()">Studium</a>
+      <ul class="submenu">
+        <li><a href="#" onclick="toggleMenu()">Studiengänge</a></li>
+        <li><a href="#" onclick="toggleMenu()">Bewerbung</a></li>
+        <li><a href="#" onclick="toggleMenu()">Studienberatung</a></li>
+      </ul>
+    </li>
+    <li><a href="#" onclick="toggleMenu()">Forschung</a>
+      <ul class="submenu">
+        <li><a href="#" onclick="toggleMenu()">Institute</a></li>
+        <li><a href="#" onclick="toggleMenu()">Projekte</a></li>
+      </ul>
+    </li>
+    <li><a href="#" onclick="toggleMenu()">Lehre</a>
+      <ul class="submenu">
+        <li><a href="#" onclick="toggleMenu()">Kurse</a></li>
+        <li><a href="#" onclick="toggleMenu()">Lehrmethoden</a></li>
+      </ul>
+    </li>
+    <li><a href="#" onclick="toggleMenu()">Transfer</a>
+      <ul class="submenu">
+        <li><a href="#" onclick="toggleMenu()">Kooperationen</a></li>
+        <li><a href="#" onclick="toggleMenu()">Wissenstransfer</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('fullscreenMenu');
+    menu.classList.toggle('show');
+  }
+
+  function closeMenu(event) {
+    const menu = document.getElementById('fullscreenMenu');
+    // Close menu if click is outside the list or on a link
+    if (event.target.tagName === 'A' || !event.target.closest('ul')) {
+      menu.classList.remove('show');
+    }
+  }
+</script>
+</body>
+</html>
+
