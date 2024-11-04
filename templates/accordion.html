@@ -1,10 +1,12 @@
 {% extends 'base.html' %} {% block navbar %} {% include 'navbar.html' %} {%
 endblock %} {% block content %}
 <div class="container" id="inhalt">
-  <h1>{{ data["titel"]|markdown }}</h1>
-  {{ data["prefix"]|safe }}
-  {{ show }}
-  {{ showcat }}
+  <h1>
+    {% if data["titel_html"] %} {{ data["titel"]|safe }} {% else %} {{
+    data["titel"]|markdown }} {% endif %}
+  </h1>
+  {% if data["prefix_html"] %} {{ data["prefix"]|safe }} {% else %} {{
+  data["prefix"]|markdown }} {% endif %}
 </div>
 
 <div class="container">
@@ -44,7 +46,10 @@ endblock %} {% block content %}
           data-bs-toggle="collapse"
           type="button"
         >
-          <h3 class="h5">{{ k1["titel"] }}</h3>
+          <h3 class="h5">
+            {% if k1["titel_html"] %} {{ k1["titel"]|safe }} {% else %} {{
+            k1["titel"]|markdown }} {% endif %}
+          </h3>
         </button>
       </h3>
       <div
@@ -56,7 +61,8 @@ endblock %} {% block content %}
         <div class="accordion-body">
           <div class="accordion" id="accordion{{k1['kurzname']}}">
             <div class="text-end">{{ k1['bearbeitet']|markdown }}</div>
-            {{ k1["prefix"]|safe }} {% for k2 in k1["kinder"] %}
+            {% if k1["prefix_html"] %} {{ k1["prefix"]|safe }} {% else %} {{
+            k1["prefix"]|markdown }} {% endif %} {% for k2 in k1["kinder"] %}
             <div class="accordion-item">
               <h3 class="accordion-header">
                 <button
@@ -68,7 +74,8 @@ endblock %} {% block content %}
                   type="button"
                 >
                   <h3 class="h5" id="{{k2['kurzname']}}_q">
-                    {{ k2['titel']|markdown }}
+                    {% if k2["titel_html"] %} {{ k2["titel"]|safe }} {% else %}
+                    {{ k2["titel"]|markdown }} {% endif %}
                   </h3>
                 </button>
               </h3>
@@ -80,16 +87,21 @@ endblock %} {% block content %}
               >
                 <div class="accordion-body">
                   <div class="text-end">{{ k2['bearbeitet']|markdown }}</div>
-                  {{ k2['prefix']|markdown }} {{ k2['suffix']|markdown }}
+                  {% if k2["prefix_html"] %} {{ k2["prefix"]|safe }} {% else %}
+                  {{ k2["prefix"]|markdown }} {% endif %} {% if
+                  k2["suffix_html"] %} {{ k2["suffix"]|safe }} {% else %} {{
+                  k2["suffix"]|markdown }} {% endif %}
                 </div>
               </div>
             </div>
-            {% endfor %} {{ k1["suffix"] }}
+            {% endfor %} {% if k1["suffix_html"] %} {{ k1["suffix"]|safe }} {%
+            else %} {{ k1["suffix"]|markdown }} {% endif %}
           </div>
         </div>
       </div>
     </div>
-    {% endfor %} {{ data["suffix"] }}
+    {% endfor %} {% if data["suffix_html"] %} {{ data["suffix"]|safe }} {% else
+    %} {{ data["suffix"]|markdown }} {% endif %}
   </div>
 </div>
 {% endblock %}

@@ -327,9 +327,9 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
 #    filenames = ["studiendekanat/index.html"]
 #    return render_template("home.html", data=data, filenames = filenames, lang=lang)
 # show ist entweder "", oder "all" oder eine id für ein qa-Paar
-@app.route("/nlehre/<lang>/studiendekanat/faq/")
-@app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
-def showstufaq(lang, show =""):
+@app.route("/nlehre/<lang>/studiendekanat/faq2/")
+@app.route("/nlehre/<lang>/studiendekanat/faq2/<show>")
+def showstufaq2(lang, show =""):
     try:
         cat_ids, names_dict, qa_pairs = util_faq.get_stu_faq(lang)
     except:
@@ -343,27 +343,12 @@ def showstufaq(lang, show =""):
         showcat = util_faq.get_stu_cat(show)
     return render_template("studiendekanat/index.html", lang=lang, cat_ids = cat_ids, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
 
-@app.route("/nlehre/<lang>/studiendekanat/faq2/")
-@app.route("/nlehre/<lang>/studiendekanat/faq2/<show>")
-def showstufaq2(lang, show =""):
-    try:
-        data = util_acc.get_accordion_data("faqstud", lang)
-    except:
-        logger.warning("No connection to database")
-        data = { "kurzname" : "faqstud", "titel" : "", "prefix" : "", "suffix" : "", "bearbeitet" : "", "kinder" : []}
-
-    if show == "":
-        showcat = ""
-    elif show == "all":
-        showcat = "all"
-    else:
-        k = util_acc.knoten.find_one({"kurzname" : show})
-        p = util_acc.knoten.find_one({"kinder" : { "$elemMatch" : { "$eq": k["_id"]}}})
-        if p == util_acc.knoten.find_one({"kurzname" : "faqstud"}):
-            showcat = show
-        else:
-            showcat = p["kurzname"]
-    return render_template("studiendekanat/index2.html", lang=lang, data = data, showcat = showcat, show=show)
+@app.route("/nlehre/<lang>/studiendekanat/faq/")
+@app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
+def showstufaq(lang, show =""):
+    kurzname = "faqstud"
+    data, show, showcat = util_acc.get_accordion_data(kurzname, lang, show = show)
+    return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
 
 @app.route("/nlehre/<lang>/studiendekanat/")
 @app.route("/nlehre/<lang>/studiendekanat/<unterseite>/")
@@ -425,19 +410,9 @@ def showstudiendekanat(lang, unterseite = ""):
 @app.route("/nlehre/<lang>/lehrende/faq/")
 @app.route("/nlehre/<lang>/lehrende/faq/<show>")
 def showmitfaq(lang, show =""):
-    try:
-        cat_ids, names_dict, qa_pairs = util_faq.get_mit_faq(lang)
-    except:
-#        logger.warning("No connection to database")
-        cat_ids, names_dict, qa_pairs  = ["unsichtbar"], {"unsichtbar": "Unsichtbar"}, {"unsichtbar": []}
-    if show == "":
-        showcat = ""
-    elif show == "all":
-        showcat = "all"
-    else:
-        showcat = util_faq.get_mit_cat(show)
-    return render_template("lehrende/index.html", lang=lang, cat_ids = cat_ids, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
-
+    kurzname = "faqmit"
+    data, show, showcat = util_acc.get_accordion_data(kurzname, lang, show = show)
+    return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
 
 @app.route("/nlehre/<lang>/lehrende/<unterseite>")
 @app.route("/nlehre/<lang>/lehrende/<unterseite>/<anchor>")
