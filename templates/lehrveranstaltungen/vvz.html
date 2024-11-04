@@ -110,14 +110,11 @@ endblock %} {% block content %}
 <div class="container">
   <h3>
     <span style="color: red"
-      >{% if lang == "de" %}Diese Seite beinhaltet die Planung für das nächste Semester; die
-      Informationen hier sind vorläufig und haben noch keine Gültigkeit!
-      {% else %}
-      This page contains the plan for the next semester; the 
-      information here is preliminary and not yet valid!
-      {% endif %}
-      </span
-    >
+      >{% if lang == "de" %}Diese Seite beinhaltet die Planung für das nächste
+      Semester; die Informationen hier sind vorläufig und haben noch keine
+      Gültigkeit! {% else %} This page contains the plan for the next semester;
+      the information here is preliminary and not yet valid! {% endif %}
+    </span>
   </h3>
 </div>
 {% endif %}
@@ -228,17 +225,9 @@ endblock %} {% block content %}
                   {% for line in course["raumzeit_woechentlich_mit_url"] %} {{
                   line|safe }}
                   <br />
-                  {% endfor %}
-                </p>
-                {% endif %} {% if course["raumzeit_einmalig_mit_url"]|length > 0
-                %}
-                <h5 class="h5">
-                  {% if lang == "de" %}Ort und Zeit{% else %}Time and place{%
-                  endif %}
-                </h5>
-                <p>
-                  {% for line in course["raumzeit_einmalig_mit_url"] %} {{
-                  line|safe }}
+                  {% endfor %} {% endif %} {% if
+                  course["raumzeit_einmalig_mit_url"]|length > 0 %} {% for line
+                  in course["raumzeit_einmalig_mit_url"] %} {{ line|safe }}
                   <br />
                   {% endfor %}
                 </p>

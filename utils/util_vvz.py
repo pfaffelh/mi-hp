@@ -102,16 +102,20 @@ def get_raum(raum_id, url = True):
     res = remove_p(markdown(raum))
     return res
 
-def vorname_name(person_id, url = True):
+def vorname_name(person_id, url = True, lang = "de"):
     p = vvz_person.find_one({"_id": person_id})
+    if lang == "en" and p["name_en"] != "":
+        p["name"] = p["name_en"]
     res = f"{p['vorname']} {p['name']}"
     if url and p["url"] != "":
         res = f"[{res}]({p['url']})"
     res = remove_p(markdown(res))
     return res
 
-def name_vorname(person_id, url = True):
+def name_vorname(person_id, url = True, lang = "de"):
     p = vvz_person.find_one({"_id": person_id})
+    if lang == "en" and p["name_en"].strip() != "":
+        p["name"] = p["name_en"]
     res = f"{p['name']}, {p['vorname']}"
     if url and p["url"] != "":
         res = f"[{res}]({p['url']})"    
@@ -122,8 +126,10 @@ def name_terminart(terminart_id, lang):
     ta = vvz_terminart.find_one({"_id": terminart_id})
     return ta[name]
 
-def name(person_id):
+def name(person_id, lang = "de"):
     p = vvz_person.find_one({"_id": person_id})
+    if lang == "en" and p["name_en"].strip() != "":
+        p["name"] = p["name_en"]
     return f"{p['name']}"
 
 def makemodulname(modul_id, lang = "de", alter = True, studiengang = ""):
@@ -298,13 +304,13 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = Fal
             v_dict["titel"] = veranstaltung[f"name_{lang}"]
             v_dict["kommentar"] = veranstaltung[f"kommentar_html_{lang}"]
             v_dict["link"] = veranstaltung["url"]
-            v_dict["dozent_mit_url"] = ", ".join([vorname_name(x, True) for x in veranstaltung["dozent"]])
-            v_dict["dozent"] = ", ".join([vorname_name(x, False) for x in veranstaltung["dozent"]])
-            v_dict["allepersonen"] = ", ".join([vorname_name(x, False) for x in veranstaltung["dozent"] + veranstaltung["assistent"] + veranstaltung["organisation"]])
-            v_dict["assistent_mit_url"] = ", ".join([vorname_name(x, True) for x in veranstaltung["assistent"]])
-            v_dict["assistent"] = ", ".join([vorname_name(x, False) for x in veranstaltung["assistent"]])
-            v_dict["organisation_mit_url"] = ", ".join([vorname_name(x, True) for x in veranstaltung["organisation"]])
-            v_dict["organisation"] = ", ".join([vorname_name(x, False) for x in veranstaltung["organisation"]])
+            v_dict["dozent_mit_url"] = ", ".join([vorname_name(x, True, lang) for x in veranstaltung["dozent"]])
+            v_dict["dozent"] = ", ".join([vorname_name(x, False, lang) for x in veranstaltung["dozent"]])
+            v_dict["allepersonen"] = ", ".join([vorname_name(x, False, lang) for x in veranstaltung["dozent"] + veranstaltung["assistent"] + veranstaltung["organisation"]])
+            v_dict["assistent_mit_url"] = ", ".join([vorname_name(x, True, lang) for x in veranstaltung["assistent"]])
+            v_dict["assistent"] = ", ".join([vorname_name(x, False, lang) for x in veranstaltung["assistent"]])
+            v_dict["organisation_mit_url"] = ", ".join([vorname_name(x, True, lang) for x in veranstaltung["organisation"]])
+            v_dict["organisation"] = ", ".join([vorname_name(x, False, lang) for x in veranstaltung["organisation"]])
             # raumzeit ist der Text, der unter der Veranstaltung steht.
             # print(v_dict["titel"])
             v_dict["raumzeit_woechentlich_mit_url"] = make_raumzeit_woechentlich(veranstaltung, lang=lang, url = True)
@@ -439,8 +445,8 @@ def get_data_personenplan(sem_shortname, lang="de", vpn = False):
             except:
                 sws = 0
             data.append({
-                "person": f"{name_vorname(p, False)}",
-                "person_mit_url": f"{name_vorname(p, True)}",
+                "person": f"{name_vorname(p, False, lang)}",
+                "person_mit_url": f"{name_vorname(p, True, lang)}",
                 "veranstaltung": nt,
                 "rolle": "Dozent*in",
                 "sws": sws
@@ -451,8 +457,8 @@ def get_data_personenplan(sem_shortname, lang="de", vpn = False):
             except:
                 sws = 0
             data.append({
-                "person": f"{name_vorname(p, False)}",
-                "person_mit_url": f"{name_vorname(p, True)}",
+                "person": f"{name_vorname(p, False, lang)}",
+                "person_mit_url": f"{name_vorname(p, True, lang)}",
                 "veranstaltung": nt,
                 "rolle": "Assistent*in",
                 "sws": sws
@@ -464,8 +470,8 @@ def get_data_personenplan(sem_shortname, lang="de", vpn = False):
             except:
                 sws = 0
             data.append({
-                "person": f"{name_vorname(p, False)}",
-                "person_mit_url": f"{name_vorname(p, True)}",
+                "person": f"{name_vorname(p, False, lang)}",
+                "person_mit_url": f"{name_vorname(p, True, lang)}",
                 "veranstaltung": nt,
                 "rolle": "Organisation",
                 "sws": sws
@@ -474,8 +480,8 @@ def get_data_personenplan(sem_shortname, lang="de", vpn = False):
         for t in v["woechentlicher_termin"]:
             for p in t["person"]:
                 data.append({
-                    "person": f"{name_vorname(p, False)}",
-                    "person_mit_url": f"{name_vorname(p, True)}",
+                    "person": f"{name_vorname(p, False, lang)}",
+                    "person_mit_url": f"{name_vorname(p, True, lang)}",
                     "veranstaltung": nt,
                     "rolle": name_terminart(t["key"], lang),
                     "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
@@ -483,8 +489,8 @@ def get_data_personenplan(sem_shortname, lang="de", vpn = False):
         for t in v["einmaliger_termin"]:
             for p in t["person"]:
                 data.append({
-                    "person": f"{name_vorname(p, False)}",
-                    "person_mit_url": f"{name_vorname(p, True)}",
+                    "person": f"{name_vorname(p, False, lang)}",
+                    "person_mit_url": f"{name_vorname(p, True, lang)}",
                     "veranstaltung": nt,
                     "rolle": name_terminart(t["key"], lang),
                     "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
