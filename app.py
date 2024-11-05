@@ -16,7 +16,7 @@ import utils.util_accordion as util_acc
 import utils.fb as fb
 from flask_misaka import Misaka
 import socket
-from datetime import datetime
+from datetime import datetime, timedelta
 import utils.util_vvz as vvz
 import utils.util_news as news
 import xmltodict
@@ -423,7 +423,8 @@ def showlehrende(lang, unterseite ="", anchor = ""):
             anchor = "what"
         filenames = ["lehrende/zertifikat-hochschullehre.html"]
     if unterseite == "calendar":
-        events = get_caldav_calendar_events(calendar)
+#        events = get_caldav_calendar_events(calendar)
+        events = vvz.get_calendar_data(datetime.now() + timedelta(days = 180), datetime.now() + timedelta(days = -180), lang)
         return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = True)
         
     return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)

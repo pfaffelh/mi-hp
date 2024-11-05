@@ -92,3 +92,7 @@ def get_semester(date = datetime.now()):
         current_semester = f"ws{y}{y+1}"
         upcoming_semester = f"ss{y+1}"
     return current_semester, upcoming_semester
+
+def get_calendar_data(start, end):
+    ver = util.veranstaltung.find({"einmaliger_termin" : { "elemMatch" : { "startdatum" : { "$ge" : start}, "enddatum" : { "$le" : end }}}})
+    

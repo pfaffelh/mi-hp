@@ -1,10 +1,12 @@
+Anforderungen: Häkchen ob Anforderung gebraucht
+
 #### Vorschläge
 * Archiv von Nachrichten einrichten?
 * News-App vereinfachen, zB gleicher Text für Monitor und Homepage.
 * News-App: True/False für "Erscheint auf der Instituts-Seite".
 * Links zu Fachschaft, Studienberatung, Prüfungsamt, Studierendenportal etc werden Karten unterhalb den News auf der Homepage?
 * Bewerbungsphasen für Studiengänge in mi-faq eintragen? 
-* Eigene App für die Organisation der Grundvorlesungs-Prürungen:
+* Eigene App für die Organisation der Grundvorlesungs-Prüfungen:
   * Collection: zeitraum -> Grunddaten für einen Prügungszeitraum, etwa welche Prüfer prüfen, Beginn und Ende der Bewerbungsphase, Beginn und Ende der Prüfphase, angebotene Slots der Prüfer mit Start- und Endzeit. Hier kann man auch Parameter für den Algorithmus eingeben.
   * Collection: plan -> die Webseite sammelt Daten der Studierenden (nur rz-Kennung, Immatrikulationsnummer, Vorname, Nachname, Studiengang, Fach (Ana, LA), 1.-3.-Wunsch); es gibt die Möglichkeit, Leute aus HisInOne, die keine Wünsche eingetragen haben, nachzutragen.
   * Erstellung des Prüfungsplans: 
@@ -27,6 +29,8 @@
    * Darstellung einmaliger Termine als Liste
    * Ansicht nur veröffentlichter Semester; 
 1. mi-vvz: Klausuren als einmalige Termine, 
+Anforderungen -> Semester zeitlich sortieren
+
 2. mi-faq: 
    * 
    * faq für Studienkoordinatoren anlegen?
@@ -43,7 +47,7 @@ Komplette Liste Klausuren auf hp:
 * Eigene Veranstaltung "Sondertermine" anlegen, die nicht angezeigt wird;
 * Klausuren von Kalender in dieser Veranstaltung anlegen
 * Einmaliger Termin bekommt ein Feld "in Prüfungskalender anzeigen"
-* Suchfunktion vvz: Einmlaige Termine ausgeben
+* Suchfunktion vvz: Einmalage Termine ausgeben
 
 
 

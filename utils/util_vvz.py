@@ -1,5 +1,5 @@
 import pymongo
-from datetime import datetime
+from datetime import datetime, timedelta
 from collections import OrderedDict
 from .config import *
 from operator import itemgetter
@@ -145,7 +145,11 @@ def makemodulname(modul_id, lang = "de", alter = True, studiengang = ""):
         res = mname
     return res
 
-
+def repr_veranstaltung(v_id, lang):
+    v = vvz_veranstaltung.find_one(v_id)[f"name_{lang}"]
+    sem = vvz_semester.find_one({"_id" : v["semester"]})["kurzname"]
+    per = ", ".join([name(p, lang) for p in v["dozent"]])
+    return f"{v} ({per} -- {sem})"    
 
 # Die Funktion fasst zB Mo, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21 \n 
 # zusammen in
@@ -327,7 +331,7 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = Fal
             v_dict["verwendbarkeit"] = "<br>".join([makemodulname(x, lang, True, studiengang)for x in mod_list_reduced])
             r_dict["veranstaltung"].append(v_dict)
 
-        if r_dict["veranstaltung"] != []:
+        if studiengang == "" or r_dict["veranstaltung"] != []:
             data["rubrik"].append(r_dict)
     # print(data["rubrik"])
         #print(data)
@@ -537,3 +541,31 @@ def get_data_planung(sem_shortname, lang="de"):
     # print(data)
     return sems, data
 
+# Hier werden alle Termine ausgegeben, die zwischen anzeige_start und anzeige_ende liegen
+def get_calendar_data(anzeige_start, anzeige_ende, lang):
+    ter_list = [ta["_id"] for ta in list(vvz_terminart.find({"cal_sichtbar" : True}))]
+    print(ter_list)
+    ver = vvz_veranstaltung.find({"einmaliger_termin" : { "elemMatch" : { "key" : { "$in" : ter_list}, "startdatum" : { "$ge" : anzeige_start}, "enddatum" : { "$le" : anzeige_ende }}}})
+    all = []
+
+    for v in ver:
+        for t in v["einmaliger_termine"]:
+            if t["startdatum"] >= anzeige_start and t["enddatum"] <= anzeige_ende:
+                title = name_terminart(t["key"], lang) + ": " + repr_veranstaltung(v["_id"], lang)
+                if t["startzeit"] : 
+                    start = datetime.combine(t["startdatum"].date(), t["startzeit"].time())
+                    allDay = False
+                else:
+                    start = t["startdatum"]
+                    allDay = True
+                if t["endzeit"] : 
+                    ende = datetime.combine(t["enddatum"].date(), t["endzeit"].time())
+                else:
+                    ende = t["enddatum"]
+                    all.append({
+                        "start": start,
+                        "end": ende,
+                        "allDay": allDay,
+                        "title": title
+                    })
+    return all
