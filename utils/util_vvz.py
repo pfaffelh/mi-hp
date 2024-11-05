@@ -148,7 +148,7 @@ def makemodulname(modul_id, lang = "de", alter = True, studiengang = ""):
 def repr_veranstaltung(v_id, lang):
     v = vvz_veranstaltung.find_one({"_id": v_id})
     sem = vvz_semester.find_one({"_id" : v["semester"]})["kurzname"]
-    per = ", ".join([name(p, lang) for p in v["dozent"]])
+    per = ", ".join([name(p, lang) for p in v["dozent"]]) if v["dozent"] != [] else ""
     return f"{v[f"name_{lang}"]} ({per} - {sem})"    
 
 # Die Funktion fasst zB Mo, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21 \n 

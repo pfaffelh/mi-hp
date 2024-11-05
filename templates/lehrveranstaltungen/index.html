@@ -26,6 +26,9 @@
             <th scope="col">
               <center>
                 <div>
+                  {% if lang == 'de' %}Kommentare und {% else %}Comments and {% endif %}
+                </div>
+                <div>
                   {% if lang == 'de' %}Ergänzungen zu den{% else %}Supplements
                   of the {% endif %}
                 </div>
@@ -61,6 +64,7 @@
               </center>
             </td>
             <td>
+              {% if not value["mh_lang_exists"] %}
               <center>
                 {% if value["komm_lang_exists"] %}
                 <a
@@ -72,6 +76,7 @@
                 ></a>
                 {% endif %}
               </center>
+              {% endif %}
             </td>
             <td>
               <center>
