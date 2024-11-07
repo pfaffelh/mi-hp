@@ -105,8 +105,10 @@ def get_raum(raum_id, url = True):
 def vorname_name(person_id, url = True, lang = "de"):
     p = vvz_person.find_one({"_id": person_id})
     if lang == "en" and p["name_en"] != "":
-        p["name"] = p["name_en"]
-    res = f"{p['vorname']} {p['name']}"
+        res = p["name_en"]
+        print(res)
+    else:
+        res = f"{p['vorname']} {p['name']}"
     if url and p["url"] != "":
         res = f"[{res}]({p['url']})"
     res = remove_p(markdown(res))
@@ -115,8 +117,9 @@ def vorname_name(person_id, url = True, lang = "de"):
 def name_vorname(person_id, url = True, lang = "de"):
     p = vvz_person.find_one({"_id": person_id})
     if lang == "en" and p["name_en"].strip() != "":
-        p["name"] = p["name_en"]
-    res = f"{p['name']}, {p['vorname']}"
+        res = p["name_en"]
+    else:
+        res = f"{p['name']}, {p['vorname']}"
     if url and p["url"] != "":
         res = f"[{res}]({p['url']})"    
     return remove_p(markdown(res))
