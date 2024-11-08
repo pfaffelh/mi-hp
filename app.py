@@ -423,7 +423,7 @@ def showlehrende(lang, unterseite ="", anchor = ""):
             anchor = "what"
         filenames = ["lehrende/zertifikat-hochschullehre.html"]
     if unterseite == "calendar":
-        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -180), datetime.now() + timedelta(days = 180), lang)
+        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -180), lang)
         return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = True)
         
     return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
