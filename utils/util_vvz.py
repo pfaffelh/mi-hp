@@ -150,9 +150,12 @@ def makemodulname(modul_id, lang = "de", alter = True, studiengang = ""):
 
 def repr_veranstaltung(v_id, lang):
     v = vvz_veranstaltung.find_one({"_id": v_id})
-    sem = vvz_semester.find_one({"_id" : v["semester"]})["kurzname"]
     per = ", ".join([name(p, lang) for p in v["dozent"]]) if v["dozent"] != [] else ""
-    return f"{v[f'name_{lang}']} ({per} - {sem})"    
+    return f"{v[f'name_{lang}']} ({per})"
+
+def repr_semester(s_id, lang):
+    s = vvz_semester.find_one({"_id": s_id})
+    return s["kurzname"]
 
 # Die Funktion fasst zB Mo, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21 \n 
 # zusammen in
@@ -544,7 +547,7 @@ def get_data_planung(sem_shortname, lang="de"):
     # print(data)
     return sems, data
 
-# Hier werden alle Termine ausgegeben, die zwischen anzeige_start und anzeige_ende liegen
+# Hier werden alle Termine ausgegeben, die nach anzeige_start liegen
 def get_calendar_data(anzeige_start, lang):
     ter_list = [ta["_id"] for ta in list(vvz_terminart.find({"cal_sichtbar" : True}))]
     ver = list(vvz_veranstaltung.find({"einmaliger_termin" : { "$elemMatch" : {  "key" : { "$in" : ter_list},"startdatum" : { "$gte" : anzeige_start}}}}))
@@ -552,8 +555,8 @@ def get_calendar_data(anzeige_start, lang):
 
     for v in ver:
         for t in v["einmaliger_termin"]:
-            if t["startdatum"] >= anzeige_start and t["enddatum"] <= anzeige_ende:
-                title = name_terminart(t["key"], lang) + ": " + repr_veranstaltung(v["_id"], lang) + " " + t[f"kommentar_{lang}_html"]
+            if t["startdatum"] >= anzeige_start:
+                title = f"{name_terminart(t['key'], lang)}: {repr_veranstaltung(v['_id'], lang)} {t[f'kommentar_{lang}_html']}, {repr_semester(v['semester'], lang)}"
                 if t["startzeit"] : 
                     start = datetime.combine(t["startdatum"].date(), t["startzeit"].time())
                     allDay = 'false'
