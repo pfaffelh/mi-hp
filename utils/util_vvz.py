@@ -152,7 +152,7 @@ def repr_veranstaltung(v_id, lang):
     v = vvz_veranstaltung.find_one({"_id": v_id})
     per = ", ".join([name(p, lang) for p in v["dozent"]]) if v["dozent"] != [] else ""
     per = f"({per})" if per != "" else ""
-    return f"{v[f'name_{lang}']} ({per})"
+    return f"{v[f'name_{lang}']} {per}"
 
 def repr_semester(s_id, lang):
     s = vvz_semester.find_one({"_id": s_id})
