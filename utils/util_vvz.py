@@ -545,9 +545,9 @@ def get_data_planung(sem_shortname, lang="de"):
     return sems, data
 
 # Hier werden alle Termine ausgegeben, die zwischen anzeige_start und anzeige_ende liegen
-def get_calendar_data(anzeige_start, anzeige_ende, lang):
+def get_calendar_data(anzeige_start, lang):
     ter_list = [ta["_id"] for ta in list(vvz_terminart.find({"cal_sichtbar" : True}))]
-    ver = list(vvz_veranstaltung.find({"einmaliger_termin" : { "$elemMatch" : {  "key" : { "$in" : ter_list},"startdatum" : { "$gte" : anzeige_start}, "enddatum" : { "$lte" : anzeige_ende }}}}))
+    ver = list(vvz_veranstaltung.find({"einmaliger_termin" : { "$elemMatch" : {  "key" : { "$in" : ter_list},"startdatum" : { "$gte" : anzeige_start}}}}))
     all = []
 
     for v in ver:

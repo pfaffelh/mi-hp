@@ -386,7 +386,7 @@ def showstudiendekanat(lang, unterseite = ""):
     if unterseite == "termine":
         filenames = ["studiendekanat/termine.html"]
     if unterseite == "calendar":
-        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -365), datetime.now() + timedelta(days = 365), lang)
+        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -365), lang)
         return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = False)
     if unterseite == "anmeldung":
         filenames = ["studiendekanat/anmeldung.html"]
