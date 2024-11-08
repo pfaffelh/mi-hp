@@ -555,7 +555,7 @@ def get_calendar_data(anzeige_start, lang):
 
     for v in ver:
         for t in v["einmaliger_termin"]:
-            if t["startdatum"] >= anzeige_start:
+            if t["startdatum"] is not None and t["startdatum"] >= anzeige_start:
                 title = f"{name_terminart(t['key'], lang)}: {repr_veranstaltung(v['_id'], lang)} {t[f'kommentar_{lang}_html']}, {repr_semester(v['semester'], lang)}"
                 if t["startzeit"] : 
                     start = datetime.combine(t["startdatum"].date(), t["startzeit"].time())
