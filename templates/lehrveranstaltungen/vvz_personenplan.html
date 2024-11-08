@@ -23,9 +23,18 @@ in semester_dict.items() %}
   <div class="row">
     <div class="col">
       <a
-        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
-        {% else %} href="{{url_for('showlehrveranstaltungen', semester = semester, lang=lang)}}"
-        {% endif %} 
+        {%
+        if
+        vpn_nextsemester
+        %}
+        href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
+        {%
+        else
+        %}
+        href="{{url_for('showlehrveranstaltungen', semester = semester, lang=lang)}}"
+        {%
+        endif
+        %}
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -34,9 +43,18 @@ in semester_dict.items() %}
         to the list of all courses {% endif %}
       </a>
       <a
-        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
-        {% else %} href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
-        {% endif %} 
+        {%
+        if
+        vpn_nextsemester
+        %}
+        href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
+        {%
+        else
+        %}
+        href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
+        {%
+        endif
+        %}
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
@@ -62,14 +80,11 @@ in semester_dict.items() %}
 <div class="container">
   <h3>
     <span style="color: red"
-      >{% if lang == "de" %}Diese Seite beinhaltet die Planung für das nächste Semester; die
-      Informationen hier sind vorläufig und haben noch keine Gültigkeit!
-      {% else %}
-      This page contains the plan for the next semester; the 
-      information here is preliminary and not yet valid!
-      {% endif %}
-      </span
-    >
+      >{% if lang == "de" %}Diese Seite beinhaltet die Planung für das nächste
+      Semester; die Informationen hier sind vorläufig und haben noch keine
+      Gültigkeit! {% else %} This page contains the plan for the next semester;
+      the information here is preliminary and not yet valid! {% endif %}
+    </span>
   </h3>
 </div>
 {% endif %}
@@ -79,18 +94,24 @@ in semester_dict.items() %}
   {% if showdeputate %}
   <div class="row">
     <div class="col-sm-2 text-end"><h5>Name</h5></div>
-    <div class="col-sm-7"><h5>Veranstaltung</h5></div>
+    <div class="col-sm-5"><h5>Veranstaltung</h5></div>
     <div class="col-sm-2"><h5>Rolle</h5></div>
     <div class="col-sm-1"><h5>Deputat</h5></div>
+    <div class="col-sm-2"><h5>Kommentar</h5></div>
   </div>
   {% endif %} {% for item in data %}
   <div class="row">
-    <div class="col-sm-2 text-end"><strong>{{ item["person_mit_url"] | markdown }}</strong></div>
-    <div class="col-sm-7">{{ item["veranstaltung"]|safe }}</div>
+    <div class="col-sm-2 text-end">
+      <strong>{{ item["person_mit_url"] | markdown }}</strong>
+    </div>
+    <div class="col-sm-{% if showdeputate %}5{% else %}7{% endif %}">{{ item["veranstaltung"]|safe }}</div>
     <div class="col-sm-2">{{ item["rolle"] }}</div>
     <div class="col-sm-1">
       {% if showdeputate %}{{ item["sws"] }}{% else %} {% endif %}
     </div>
+    {% if showdeputate %}
+    <div class="col-sm-2">{{ item["kommentar"] }}</div>
+    {% else %} {% endif %}
   </div>
   {% endfor %}
 </div>

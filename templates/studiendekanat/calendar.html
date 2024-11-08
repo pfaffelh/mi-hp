@@ -19,12 +19,13 @@
   }
 </style>
 {% endblock %} {% block navbar %} {% include 'navbar.html' %} {% endblock %} {%
-block content %} {% if lehrende %}
+block content %} 
+{% if lehrende %}
 <div class="container">
   <h3>Liebe Dozent*innen und Assistent*innen</h3>
   <p>
     Bitte teilen Sie dem Prüfungsamt spätestens in der zweiten Semesterwoche die
-    Klausurtermine Ihrer Veranstaltungen mit.
+    Klausurtermine Ihrer Veranstaltungen mit. Beachten Sie außerdem, dass in Zweifelsfällen Angaben in HisInOne bindend sind. 
   </p>
 </div>
 <div class="container text-end">
@@ -62,7 +63,40 @@ block content %} {% if lehrende %}
     </div>
   </div>
 </div>
-
+{% else %}
+<div class="container">
+  {% if lang == "de" %}
+  <h3>Prüfungen und Fristen Mathematik</h3>
+  Die hier dargestellten Prüfungstermine und Fristen stellen eine Übersicht dar. Im Zweifelsfall entscheident sind jedoch immer Einträge in <a href="https://campus.uni-freiburg.de">HisInOne</a>.
+  {% else %}
+  <h3>Exams and dates</h3>
+  You find here an overview of examination dates and deadlines. In case of doubt, however, entries in <a href=‘https://campus.uni-freiburg.de’</a> are legally binding.
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <div class="feature-icon bg-gradient text-end">
+        <a
+          href="/{{lang}}/lehrveranstaltungen/{{laufendes_semester}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          Lehrveranstaltungen des laufenden Semesters</a
+        >
+        <a
+          href="{{ url_for('showstufaq', lang=lang)}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          FAQ</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+</div>
 {% endif %}
 
 <br />

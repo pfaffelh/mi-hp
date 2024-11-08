@@ -450,55 +450,31 @@ def get_data_personenplan(sem_shortname, lang="de", vpn = False):
     data = []
     for v in ver:
         nt = name_termine(v["_id"], lang)
-        for p in v["dozent"]:
+        for p in v["dozent"] + v["assistent"] + v["organisation"]:
+            rolle = "Dozent*in" if p in v["dozent"] else ("Assistent*in" if p in v["assistent"] else "Organisation")
             try :
                 sws = [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+                kommentar = [d["kommentar"] for d in v["deputat"] if d["person"] == p][0]
             except:
                 sws = 0
+                kommentar = ""
             data.append({
                 "person": f"{name_vorname(p, False, lang)}",
                 "person_mit_url": f"{name_vorname(p, True, lang)}",
                 "veranstaltung": nt,
-                "rolle": "Dozent*in",
-                "sws": sws
-                })
-        for p in v["assistent"]:
-            try :
-                sws = [d["sws"] for d in v["deputat"] if d["person"] == p][0]
-            except:
-                sws = 0
-            data.append({
-                "person": f"{name_vorname(p, False, lang)}",
-                "person_mit_url": f"{name_vorname(p, True, lang)}",
-                "veranstaltung": nt,
-                "rolle": "Assistent*in",
-                "sws": sws
-                })
-            
-        for p in v["organisation"]:
-            try :
-                sws = [d["sws"] for d in v["deputat"] if d["person"] == p][0]
-            except:
-                sws = 0
-            data.append({
-                "person": f"{name_vorname(p, False, lang)}",
-                "person_mit_url": f"{name_vorname(p, True, lang)}",
-                "veranstaltung": nt,
-                "rolle": "Organisation",
-                "sws": sws
+                "rolle": rolle,
+                "sws": sws,
+                "kommentar": kommentar
                 })
 
-        for t in v["woechentlicher_termin"]:
+        for t in v["woechentlicher_termin"] + v["einmaliger_termin"]:
             for p in t["person"]:
-                data.append({
-                    "person": f"{name_vorname(p, False, lang)}",
-                    "person_mit_url": f"{name_vorname(p, True, lang)}",
-                    "veranstaltung": nt,
-                    "rolle": name_terminart(t["key"], lang),
-                    "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
-                    })
-        for t in v["einmaliger_termin"]:
-            for p in t["person"]:
+                try :
+                    sws = [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+                    kommentar = [d["kommentar"] for d in v["deputat"] if d["person"] == p][0]
+                except:
+                    sws = 0
+                    kommentar = ""
                 data.append({
                     "person": f"{name_vorname(p, False, lang)}",
                     "person_mit_url": f"{name_vorname(p, True, lang)}",
@@ -556,9 +532,12 @@ def get_calendar_data(anzeige_start, lang):
 
     for v in ver:
         for t in v["einmaliger_termin"]:
-            if t["startdatum"] is not None and t["startdatum"] >= anzeige_start:
-                title = f"{name_terminart(t['key'], lang)}: {repr_veranstaltung(v['_id'], lang)} {t[f'kommentar_{lang}_html']}, {repr_semester(v['semester'], lang)}"
-                if t["startzeit"] : 
+            if t["startdatum"] is not None and t["startdatum"] >= anzeige_start and t["key"] in ter_list:
+                te = f"{name_terminart(t['key'], lang)}"
+                te = te + ": " if te != "" else ""
+                title = f"{te} {repr_veranstaltung(v['_id'], lang)} {t[f'kommentar_{lang}_html']}, {repr_semester(v['semester'], lang)}"
+                if t["startzeit"] and t["startzeit"].hour != 0 and t["startzeit"].minute != 0: 
+                    print(t["startzeit"])
                     start = datetime.combine(t["startdatum"].date(), t["startzeit"].time())
                     allDay = 'false'
                 else:
