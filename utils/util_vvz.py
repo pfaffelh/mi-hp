@@ -536,7 +536,7 @@ def get_calendar_data(anzeige_start, lang):
                 te = f"{name_terminart(t['key'], lang)}"
                 te = te + ": " if te != "" else ""
                 title = f"{te} {repr_veranstaltung(v['_id'], lang)} {t[f'kommentar_{lang}_html']}, {repr_semester(v['semester'], lang)}"
-                if t["startzeit"] and t["startzeit"].hour != 0 and t["startzeit"].minute != 0: 
+                if t["startzeit"] and (t["startzeit"].hour != 0 or t["startzeit"].minute != 0): 
                     print(t["startzeit"])
                     start = datetime.combine(t["startdatum"].date(), t["startzeit"].time())
                     allDay = 'false'
