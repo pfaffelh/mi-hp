@@ -283,7 +283,7 @@ def showlehrveranstaltungendeputate(lang, semester = vvz.get_current_semester_ku
     return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=semester, semester_dict = semester_dict, semester_lang = vvz.semester_name_de(semester), showdeputate = True, vpn_nextsemester = False)
 
 #################################
-## Nächsts Semester in Planung ##
+## Nächste Semester in Planung ##
 #################################
 
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/")
@@ -316,6 +316,24 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
     data = vvz.get_data_personenplan(next_semester, lang, vpn = True)
     return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=next_semester, semester_dict = {}, semester_lang = vvz.semester_name_de(next_semester), showdeputate = False, vpn_nextsemester = True)
 
+################################
+## Allgemeine Accordion-Seite ##
+################################
+@app.route("/nlehre/<lang>/page/<kurzname>")
+@app.route("/nlehre/<lang>/page/<kurzname>/<show>")
+def showaccordion(lang, kurzname, show =""):
+    vpn = False
+    data, show, showcat = util_acc.get_accordion_data(kurzname, lang, show = show)
+    return render_template("accordion.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
+
+@app.route("/nlehre/vpn/<lang>/page/<kurzname>")
+@app.route("/nlehre/vpn/<lang>/page/<kurzname>/<show>")
+def showvpnaccordion(lang, kurzname, show =""):
+    vpn = True
+    data, show, showcat = util_acc.get_accordion_data(kurzname, lang, show = show)
+    return render_template("accordion.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
+
+
 #####################################
 ## Prüfungsamt und Studienberatung ##
 #####################################
@@ -346,8 +364,7 @@ def showstufaq2(lang, show =""):
 @app.route("/nlehre/<lang>/studiendekanat/faq/")
 @app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
 def showstufaq(lang, show =""):
-    kurzname = "faqstud"
-    data, show, showcat = util_acc.get_accordion_data(kurzname, lang, show = show)
+    data, show, showcat = util_acc.get_accordion_data("faqstud", lang, show = show)
     return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
 
 @app.route("/nlehre/<lang>/studiendekanat/")

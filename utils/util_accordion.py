@@ -27,7 +27,6 @@ def get_accordion_data(kurzname, lang, show = ""):
 
     try:
         x = knoten.find_one({"kurzname" : kurzname, "sichtbar" : True})
-        print(x)
         data = { "kurzname" : x["kurzname"], "sichtbar" : x["sichtbar"], "titel" : x[titel], "titel_html" : x["titel_html"], "prefix" : x[prefix], "prefix_html" : x["prefix_html"], "suffix" : x[suffix], "suffix_html" : x["suffix_html"], "bearbeitet" : x[bearbeitet], "kinder" : []}
         for k1 in x["kinder"]:
             y = knoten.find_one({"_id" : k1})
