@@ -14,7 +14,7 @@ endblock %} {% block content %}
     {% if show != 'all' %}
     <a
       class="action"
-      href="{% if vpn %}{{ url_for('showvpnaccordion', kurzname = kurzname, lang = lang, show = 'all') }}{% else %}{{ url_for('showaccordion', kurzname = kurzname, lang = lang, show = 'all') }}{% endif %}"
+      href="{% if vpn %}{{ url_for('showvpnaccordion', kurzname = data['kurzname'], lang = lang, show = 'all') }}{% else %}{{ url_for('showaccordion', kurzname = data['kurzname'], lang = lang, show = 'all') }}{% endif %}"
     >
       <button class="btn btn-primary" style="background-color: #344a9a">
         {% if lang == "de" %}Alles ausklappen{% else %} Expand all {% endif %}
@@ -23,7 +23,7 @@ endblock %} {% block content %}
     {% else %}
     <a
       class="action"
-      href="{% if vpn %}{{ url_for('showvpnaccordion', kurzname = kurzname, lang = lang, show = '') }}{% else %}{{ url_for('showaccordion', kurzname = kurzname, lang = lang, show = '') }}{% endif %}"
+      href="{% if vpn %}{{ url_for('showvpnaccordion', kurzname = data['kurzname'], lang = lang, show = '') }}{% else %}{{ url_for('showaccordion', kurzname = data['kurzname'], lang = lang, show = '') }}{% endif %}"
     >
       <button class="btn btn-primary">
         {% if lang == "de" %}Alles einklappen{% else %} Collapse all {% endif %}

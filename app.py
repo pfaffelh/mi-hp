@@ -319,14 +319,14 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
 ################################
 ## Allgemeine Accordion-Seite ##
 ################################
-@app.route("/nlehre/<lang>/page/<kurzname>")
+@app.route("/nlehre/<lang>/page/<kurzname>/")
 @app.route("/nlehre/<lang>/page/<kurzname>/<show>")
 def showaccordion(lang, kurzname, show =""):
     vpn = False
     data, show, showcat = util_acc.get_accordion_data(kurzname, lang, show = show)
     return render_template("accordion.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
 
-@app.route("/nlehre/vpn/<lang>/page/<kurzname>")
+@app.route("/nlehre/vpn/<lang>/page/<kurzname>/")
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/<show>")
 def showvpnaccordion(lang, kurzname, show =""):
     vpn = True
