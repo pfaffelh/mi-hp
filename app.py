@@ -203,9 +203,20 @@ def showstudienverlauf(lang, studiengang):
     return render_template("home.html", filenames = filenames, studiengang=studiengang, lang=lang)
 
 
+####################
+## Wochenprogramm ##
+####################
+
+# Zeigt alle veröffentlichten Vorträge in der Vortragsreihe zwischen start und ende
+@app.route("/nlehre/wochenprogramm/<vortragsreihe>/")
+@app.route("/nlehre/wochenprogramm/<vortragsreihe>/<start>/<ende>/")
+
+
+
 #########################
 ## Lehrveranstaltungen ##
 #########################
+
 
 @app.route("/nlehre/<lang>/lehrveranstaltungen/")
 def showlehrveranstaltungenbase(lang="de"):
@@ -562,6 +573,47 @@ def get_news():
                              "link" : n["link"]
                              })
     return jsonify(news_reduced)
+
+@app.route("/nlehre/api/wochenprogramm/")
+@app.route("/nlehre/api/wochenprogramm/<anfang>/<ende>/")
+# Default ist: anfang ist Anfang dieser Woche, ende ist Ende dieser Woche
+def get_vortraege(anfang = (datetime.now() - timedelta(days=datetime.now().weekday())).strftime('%Y%m%d'), ende = (datetime.now() + timedelta(days=7-datetime.now().weekday())).strftime('%Y%m%d')):
+    try:
+        cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
+        mongo_db_news = cluster["news"]
+        vortrag = mongo_db_news["vortrag"]
+        vortragsreihe = mongo_db_news["vortragsreihe"]
+    except:
+        pass
+
+    anfang = datetime.strptime(anfang, "%Y%m%d")
+    ende = datetime.strptime(ende, "%Y%m%d")
+
+    vortraege =  list(vortrag.find({ "_public": True, "start" : { "$gte" : anfang }, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
+    vortraege_reduced = []
+    leer = vortragsreihe.find_one({"kurzname" : "alle"})
+    for v in vortraege:
+        reihe = list(vortragsreihe.find({"_id" : { "$in" : v["vortragsreihe"]}}))
+        print(reihe)
+        reihe = [item["title_de"] for item in reihe if item != leer]
+        print(reihe)
+        reihe = "" if reihe == [] else reihe[0]
+        print(reihe)
+        vortraege_reduced.append(
+            {
+                "vortragsreihe" : reihe,
+                "sprecher" : v["sprecher"],
+                "sprecher_affiliation" : v["sprecher_affiliation_de"],
+                "titel" : v["title_de"],
+                "abstract" : v["text_de"],
+                "ort" : v["ort_de"],
+                "url" : v["url"],
+                "datum" : v["start"].strftime('%d.%m.%Y'),
+                "startzeit" : v["start"].strftime('%H:%M'),
+                "endzeit" : v["end"].strftime('%H:%M'),
+                "kommentar" : v["kommentar_de"]
+            })
+    return jsonify(vortraege_reduced)
 
 scheduler = BackgroundScheduler(timezone="Europe/Rome")
 # Runs from Monday to Sunday at 05:30 
