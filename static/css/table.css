@@ -1,0 +1,10 @@
+table.has-fixed-layout {
+    width: 100%;
+    table-layout: fixed;
+}
+table.has-fixed-layout td:first-child {
+    width: 25%;  /* First column takes up 25% of the table width */
+}
+table.has-fixed-layout td:nth-child(2) {
+    width: 75%;  /* Second column takes up 75% of the table width */
+}
