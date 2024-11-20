@@ -19,6 +19,8 @@ try:
     bild = mongo_db_news["bild"]
     carouselnews = mongo_db_news["carouselnews"]
     news = mongo_db_news["news"]
+    vortrag = mongo_db_news["vortrag"]
+    vortragsreihe = mongo_db_news["vortragsreihe"]
 except:
     pass
     # logger.warning("No connection to Database 1")
@@ -147,9 +149,42 @@ def writetonews_mensaplan_text(url = mensaplan_url):
                     "image_id" : bild.find_one({"titel" : "Mensa Rempartstraße"})["_id"]
                 })                                     
 
-#def get_wettervorhersage():
-#    url = "https://de.wttr.in/Freiburg?1pQ"
-#    response = requests.get(url)
-#    if response.status_code == 200:
-#        wettervorhersage_text = response.text[2:-210]
+####################
+## Wochenprogramm ##
+####################
 
+def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
+    data = {}
+    tage_de = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+    tage_en = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    tage = tage_de if lang == "de" else tage_en
+
+    vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
+    data["reihe"] = vr[f"title_{lang}"]
+    data["prefix"] = vr[f"text_{lang}"]
+    vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("rang", pymongo.ASCENDING)]))
+    data["vortrag"] = []
+    for v in vo:
+        re = vortragsreihe.find_one({"_id" : { "$in": v["vortragsreihe"], "$ne" : vr["_id"]}, "_public" : True})
+        data["vortrag"].append(
+            {
+                "sprecher" : v["sprecher_de"] if (lang == "en" and v["sprecher"] == "") else v["sprecher"],
+                "sprecher_affiliation" : v[f"sprecher_affiliation_{lang}"],
+                "ort" : v[f"ort_{lang}"],
+                "title" : v[f"title_{lang}"],
+                "reihentitle" : "" if re is None else re[f"title_{lang}"],
+                "url" : v["url"],
+                "lang" : v["lang"],
+                "abstract" : v[f"text_{lang}"],
+                "datum" : v["start"].strftime('%d.%m.%Y'),
+                "tag" : tage[v["start"].weekday()],
+                "startzeit" : v["start"].strftime('%H:%M'),
+                "endzeit" : v["end"].strftime('%H:%M'),
+                "kommentar" : v[f"kommentar_{lang}"]
+            }
+        )
+    return data
+
+def get_event(kurzname="alle"):
+    data = get_wochenprogramm(kurzname, daysinpast = 100000)
+    

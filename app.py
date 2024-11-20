@@ -55,7 +55,7 @@ def handle_context():
         "mscdata": vvz.get_showanmeldung("mscdata")
         }
     vpn = forti_bool_or_localhost()
-    return dict(vpn=vpn, os=os, 
+    return dict(datetime =datetime, timedelta=timedelta, vpn=vpn, os=os, 
                 showanmeldung = showanmeldung, 
                 laufendes_semester = cur,
                 kommendes_semester = vvz.next_semester_kurzname(cur),
@@ -201,16 +201,6 @@ def showstudienverlauf(lang, studiengang):
     if studiengang == "med":
         filenames = ["studiengaenge/studienverlauf-med-2018.html"]       
     return render_template("home.html", filenames = filenames, studiengang=studiengang, lang=lang)
-
-
-####################
-## Wochenprogramm ##
-####################
-
-# Zeigt alle veröffentlichten Vorträge in der Vortragsreihe zwischen start und ende
-@app.route("/nlehre/wochenprogramm/<vortragsreihe>/")
-@app.route("/nlehre/wochenprogramm/<vortragsreihe>/<start>/<ende>/")
-
 
 
 #########################
@@ -484,6 +474,30 @@ def showdownloads(lang, anchor=""):
     filenames = ["downloads/downloads.html"]
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
+####################
+## Wochenprogramm ##
+####################
+
+# 
+@app.route("/nlehre/<lang>/vortragsreihe/")
+@app.route("/nlehre/<lang>/vortragsreihe/<kurzname>/")
+@app.route("/nlehre/<lang>/vortragsreihe/<kurzname>/<anfang>/")
+def showvortragsreihe(lang, kurzname="alle", anfang = (datetime.now() - timedelta(days=datetime.now().weekday())).strftime('%Y%m%d')):
+    anfangdate = datetime.strptime(anfang, '%Y%m%d')
+    anfangf = anfangdate.strftime('%d.%m.%Y')
+    anfanglastweekdate = anfangdate + timedelta(days=-7)
+    anfanglastweek = anfanglastweekdate.strftime('%Y%m%d')
+    enddate = anfangdate + timedelta(days=7)
+    end = enddate.strftime('%Y%m%d')
+    endf = enddate.strftime('%d.%m.%Y')
+    data = news.get_wochenprogramm(anfangdate, enddate, kurzname, lang)
+    data["anfang"] = anfang
+    data["end"] = end
+    data["anfangf"] = anfangf
+    data["endf"] = endf
+    data["anfanglastweek"] = anfanglastweek
+    return render_template("wochenprogramm/reihe.html", kurzname = kurzname, lang=lang, data = data)
+
 #################
 ## Monitor EG  ##
 #################
@@ -595,11 +609,8 @@ def get_vortraege(anfang = (datetime.now() - timedelta(days=datetime.now().weekd
     tage = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
     for v in vortraege:
         reihe = list(vortragsreihe.find({"_id" : { "$in" : v["vortragsreihe"]}}))
-        print(reihe)
         reihe = [item["title_de"] for item in reihe if item != leer]
-        print(reihe)
         reihe = "" if reihe == [] else reihe[0]
-        print(reihe)
         vortraege_reduced.append(
             {
                 "vortragsreihe" : reihe,
