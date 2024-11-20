@@ -256,5 +256,7 @@ def showmediathek(lang):
     filenames = ["mediathek.html"]
     return render_template("home.html", filenames=filenames, lang=lang)
 
-
-
+# A test field
+@app.route("/wordpress_index")
+def test_page():
+    return render_template("wordpress_index.html")
