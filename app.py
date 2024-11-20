@@ -592,6 +592,7 @@ def get_vortraege(anfang = (datetime.now() - timedelta(days=datetime.now().weekd
     vortraege =  list(vortrag.find({ "_public": True, "start" : { "$gte" : anfang }, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
     vortraege_reduced = []
     leer = vortragsreihe.find_one({"kurzname" : "alle"})
+    tage = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
     for v in vortraege:
         reihe = list(vortragsreihe.find({"_id" : { "$in" : v["vortragsreihe"]}}))
         print(reihe)
@@ -609,6 +610,7 @@ def get_vortraege(anfang = (datetime.now() - timedelta(days=datetime.now().weekd
                 "ort" : v["ort_de"],
                 "url" : v["url"],
                 "datum" : v["start"].strftime('%d.%m.%Y'),
+                "tag" : tage[v["start"].weekday()],
                 "startzeit" : v["start"].strftime('%H:%M'),
                 "endzeit" : v["end"].strftime('%H:%M'),
                 "kommentar" : v["kommentar_de"]
