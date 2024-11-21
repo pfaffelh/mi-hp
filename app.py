@@ -17,6 +17,7 @@ import utils.fb as fb
 from flask_misaka import Misaka
 import socket
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 import utils.util_vvz as vvz
 import utils.util_news as news
 import xmltodict
@@ -93,6 +94,7 @@ def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     data = news.data_for_base(lang, dtstring, testorpublic)
     filenames = ["index.html"]
     return render_template("home.html", filenames=filenames, data = data, lang=lang)
+
 
 
 ############
@@ -478,25 +480,108 @@ def showdownloads(lang, anchor=""):
 ## Wochenprogramm ##
 ####################
 
-# 
+def get_start_current_semester():
+    if datetime.now().month < 4:
+        res = datetime(datetime.now().year-1, 10,1)
+    elif 3 < datetime.now().month and datetime.now().month < 10:
+        res = datetime(datetime.now().year, 4,1)
+    else:
+        res = datetime(datetime.now().year, 10,1)
+    return res
+
+def get_start_previous_semester(date):
+    if date.month == 4:
+        res = datetime(date.year-1, 10,1)
+    else:
+        res = datetime(date.year, 4,1)
+    return res
+
+def get_start_next_semester(date):
+    if date.month == 4:
+        res = datetime(date.year, 10,1)
+    else:
+        res = datetime(date.year+1, 4,1)
+    return res
+
+def get_end_next_semester(date):
+    return get_start_next_semester(get_start_next_semester(date))
+
+def get_start_current_month():
+    date = datetime.now()
+    return datetime(date.year, date.month, 1)
+
+def get_start_next_month(date):
+    if date.month < 12:
+        res = datetime(date.year, date.month+1,1)
+    else:
+        res = datetime(date.year+1, 1,1)
+    return res
+
+def get_end_next_month(date):
+    return get_start_next_month(get_start_next_month(date))
+
+def get_start_previous_month(date):
+    if date.month > 1:
+        res = datetime(date.year, date.month-1,1)
+    else:
+        res = datetime(date.year-1, 12, 1)
+    return res
+
 @app.route("/nlehre/<lang>/vortragsreihe/")
 @app.route("/nlehre/<lang>/vortragsreihe/<kurzname>/")
-@app.route("/nlehre/<lang>/vortragsreihe/<kurzname>/<anfang>/")
-def showvortragsreihe(lang, kurzname="alle", anfang = (datetime.now() - timedelta(days=datetime.now().weekday())).strftime('%Y%m%d')):
+@app.route("/nlehre/<lang>/vortragsreihe/<kurzname>/<anfang>/<end>")
+def showvortragsreihe(lang, kurzname="alle", anfang = datetime(datetime.now().year, datetime.now().month, 1).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1)).strftime('%Y%m%d')):
     anfangdate = datetime.strptime(anfang, '%Y%m%d')
-    anfangf = anfangdate.strftime('%d.%m.%Y')
-    anfanglastweekdate = anfangdate + timedelta(days=-7)
-    anfanglastweek = anfanglastweekdate.strftime('%Y%m%d')
-    enddate = anfangdate + timedelta(days=7)
-    end = enddate.strftime('%Y%m%d')
-    endf = enddate.strftime('%d.%m.%Y')
+    enddate = datetime.strptime(end, '%Y%m%d')
+    diffmonth = abs(enddate.month - anfangdate.month)
+    if diffmonth == 1 or (anfangdate.month == 12 and enddate.month == 1):
+        monate_de = ['', 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+        monate_en = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        monate = monate_de if lang == "de" else monate_en
+        zeitraum = f"{monate[anfangdate.month]} {anfangdate.year}"
+        previousanfangdate = get_start_previous_month(anfangdate)
+        nextenddate = get_end_next_month(anfangdate)
+    elif diffmonth == 6:
+        sem_de = "Sommersemester" if anfangdate.month == 4 else "Wintersemester"
+        sem_en = "Summer term" if anfangdate.month == 4 else "Winter term"
+        sem = sem_de if lang == "de" else sem_en
+        zeitraum = f"{sem} {anfangdate.year}"
+        previousanfangdate = get_start_previous_semester(anfangdate)
+        nextenddate = get_end_next_semester(anfangdate)
+    else:
+        zeitraum = ""
+        previousanfangdate = anfangdate
+        nextenddate = enddate
+    reihen, events = news.get_events(lang)
+
+    previousanfang = previousanfangdate.strftime('%Y%m%d')
+    nextend = nextenddate.strftime('%Y%m%d')
+
     data = news.get_wochenprogramm(anfangdate, enddate, kurzname, lang)
     data["anfang"] = anfang
     data["end"] = end
-    data["anfangf"] = anfangf
-    data["endf"] = endf
-    data["anfanglastweek"] = anfanglastweek
-    return render_template("wochenprogramm/reihe.html", kurzname = kurzname, lang=lang, data = data)
+    data["previousanfang"] = previousanfang
+    data["nextend"] = nextend
+    data["zeitraum"] = zeitraum
+    data["anfangcurrentsemester"] = get_start_current_semester().strftime('%Y%m%d')
+    data["anfangnextsemester"] = get_start_next_semester(get_start_current_semester()).strftime('%Y%m%d')
+    data["anfangcurrentmonth"] = get_start_current_month().strftime('%Y%m%d')
+    data["anfangnextmonth"] = get_start_next_month(get_start_current_month()).strftime('%Y%m%d')
+    return render_template("wochenprogramm/reihe.html", reihen = reihen, events = events, kurzname = kurzname, lang=lang, data = data)
+
+@app.route("/nlehre/<lang>/event/<kurzname>/")
+def showevent(lang, kurzname="alle"):
+    reihen, events = news.get_events(lang)
+    data = news.get_event(kurzname, lang)
+    return render_template("wochenprogramm/event.html", reihen = reihen, events = events, kurzname = kurzname, lang=lang, data = data)
+
+@app.route("/nlehre/<lang>/newsarchiv/")
+def shownews(lang = "de"):
+    reihen, events = news.get_events(lang)
+    data = news.data_for_newsarchiv()
+    filenames = ["index.html"]
+    return render_template("home_news.html", filenames=filenames, reihen = reihen, events = events, data = data, lang=lang)
+
 
 #################
 ## Monitor EG  ##

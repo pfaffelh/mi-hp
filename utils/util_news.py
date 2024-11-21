@@ -26,6 +26,15 @@ except:
     # logger.warning("No connection to Database 1")
 
 # Daten für /nlehre/
+def get_events(lang = "de"):
+    reihen = []
+    events = []
+    for vr in list(vortragsreihe.find({"event": False, "sichtbar" : True, "_public" : True}, sort = [("rang", pymongo.ASCENDING)])):
+        reihen.append({"kurzname" : vr["kurzname"], "title" : vr[f"title_{lang}"]})
+
+    for vr in list(vortragsreihe.find({"event": True, "sichtbar" : True, "_public" : True}, sort = [("rang", pymongo.ASCENDING)])):
+        events.append({"kurzname" : vr["kurzname"], "title" : vr[f"title_{lang}"]})
+    return reihen, events
 
 def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
     date_format_no_space = '%Y%m%d%H%M'
@@ -43,6 +52,18 @@ def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), t
 
     for item in data['news']:
         item['today'] = True if (item["showlastday"] and dt.date() == item['home']['end'].date()) else False
+    # print(data)
+    return data
+
+def data_for_newsarchiv(lang="de"):
+    data = {}
+    data["news"] =  list(news.find({ "_public": True, "home.fuerhome": True}, sort=[("home.start", pymongo.DESCENDING)]))  
+    for item in data["news"]:
+        if item["image"] != []:
+            item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
+
+    for item in data['news']:
+        item['today'] = False
     # print(data)
     return data
 
@@ -162,8 +183,9 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
     vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
     data["reihe"] = vr[f"title_{lang}"]
     data["prefix"] = vr[f"text_{lang}"]
-    vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("rang", pymongo.ASCENDING)]))
+    vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("start", pymongo.ASCENDING)]))
     data["vortrag"] = []
+    previousdatum = ""
     for v in vo:
         re = vortragsreihe.find_one({"_id" : { "$in": v["vortragsreihe"], "$ne" : vr["_id"]}, "_public" : True})
         data["vortrag"].append(
@@ -183,8 +205,38 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
                 "kommentar" : v[f"kommentar_{lang}"]
             }
         )
+        previousdatum = v["start"]
     return data
 
-def get_event(kurzname="alle"):
-    data = get_wochenprogramm(kurzname, daysinpast = 100000)
+def get_event(kurzname, lang = "de"):
+    data = {}
+    tage_de = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+    tage_en = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    tage = tage_de if lang == "de" else tage_en
+
+    vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
+    data["reihe"] = vr[f"title_{lang}"]
+    data["prefix"] = vr[f"text_{lang}"]
+    vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True}, sort=[("start", pymongo.ASCENDING)]))
+    data["vortrag"] = []
+    previousdatum = ""
+    for v in vo:
+        data["vortrag"].append(
+            {
+                "sprecher" : v["sprecher_de"] if (lang == "en" and v["sprecher"] == "") else v["sprecher"],
+                "sprecher_affiliation" : v[f"sprecher_affiliation_{lang}"],
+                "ort" : v[f"ort_{lang}"],
+                "title" : v[f"title_{lang}"],
+                "url" : v["url"],
+                "lang" : v["lang"],
+                "abstract" : v[f"text_{lang}"],
+                "datum" : v["start"].strftime('%d.%m.%Y') if v["start"] != previousdatum else "",
+                "tag" : tage[v["start"].weekday()] if v["start"] != previousdatum else "",
+                "startzeit" : v["start"].strftime('%H:%M'),
+                "endzeit" : v["end"].strftime('%H:%M'),
+                "kommentar" : v[f"kommentar_{lang}"]
+            }
+        )
+        previousdatum = v["start"]
+    return data
     

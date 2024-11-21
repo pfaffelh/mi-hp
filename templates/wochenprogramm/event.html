@@ -1,66 +1,22 @@
-
-{% extends 'base_news.html' %} {% block navbar %} {% include 'navbar_news.html' %} {%
+{% extends 'base.html' %} {% block navbar %} {% include 'navbar_news.html' %} {%
 endblock %} {% block content %}
 
 <div class="container py-4" id="inhalt">
-  <div class="container py-4">
-    <div class="row">
-      <div class="col text-end">
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['previousanfang'], end = data['anfang'])}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          <<
-        </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['end'], end = data['nextend'])}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          >>
-        </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentsemester'], end = data['anfangnextsemester'])}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Semesteransicht
-        </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentmonth'], end = data['anfangnextmonth'])}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Monatsansicht
-        </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = 'alle', anfang = data['anfang'], end = data['end'])}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Alle Vorträge
-        </a>
-      </div>
-    </div>
-  </div>
   <h2>{{ data['reihe']}}</h2>
   {% if data['prefix'] != "" %}
   <p>{{ data['prefix']|markdown }}</p>
   {% endif %}
 
-  <h3>{{ data['zeitraum'] }}</h3>
   {% set modal_index = namespace(value=0) %}
   <div class="container mt-1">
     <div class="row button-grid">
       {% for v in data["vortrag"] %}
       <div
-        class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0"
+        class="col-md-2 col-sm-2 d-flex align-items-stretch justify-content-start px-0"
+      > {% if v["tag"] %}{{ v["tag"] }}, {{ v["datum"] }}{% else %}{% endif %}
+      </div>
+      <div
+        class="col-md-10 col-sm-10 d-flex align-items-stretch justify-content-start px-0"
       >
         <!-- Modal Buttons -->
         <button
@@ -78,7 +34,7 @@ endblock %} {% block content %}
             v["sprecher_affiliation"] }}){% endif %}: {{ v['title'] }}
           </p>
           <p style="margin-bottom: 2px">
-            {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if
+            {{ v["startzeit"] }}{% if
             v["endzeit"] != v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}, {{
             v["ort"] }}:
           </p>

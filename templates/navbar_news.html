@@ -1,0 +1,64 @@
+<header class="navbar navbar-expand-xxl bg-ufr-blue">
+  <nav class="navbar navbar-dark flex">
+    <div class="container-fluid">
+      <div class="d-flex flex-grow-1">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+            <li class="nav-item dropdown px-3 text-white ms-4">
+              {% if lang == "de" %}Vortragsreihen{% else %}Lecture series{%
+              endif %}
+              <ul class="dropdown-menu" data-bs-theme="light">
+                {% for reihe in reihen %}
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showvortragsreihe', kurzname = reihe['kurzname'], lang = lang) }}"
+                    >{{ reihe["title"] }}</a
+                  >
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+            <li class="nav-item dropdown px-3 text-white">
+              {% if lang == "de" %}Events{% else %}Events{% endif %}
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                {% for event in events %}
+                <li class="dropdown-submenu">
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showevent', lang=lang, kurzname = event['kurzname']) }}"
+                  >
+                    {{ event['title'] }}</a
+                  >
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+            <li>
+              <a
+                class="dropdown-item text-white px-4"
+                href="{{ url_for('shownews', lang=lang) }}"
+              >
+                News-Archiv</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
