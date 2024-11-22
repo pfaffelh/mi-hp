@@ -1,0 +1,83 @@
+<div class="container" id="inhalt">
+  <br />
+  <div class="container py-4">
+    <div class="row">
+      <div class="col text-end">
+        <a
+          href="{{url_for('shownews', lang=lang, anfang = data['previousanfang'], end = data['anfang'])}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          <<
+        </a>
+        <a
+          href="{{url_for('shownews', lang=lang, anfang = data['end'], end = data['nextend'])}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          >>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-4">
+    <h3>{{ data['zeitraum'] }}</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      {% for item in data["news"] %}
+      <div class="col">
+        <div
+          class="card h-100 flex-grow-1 {% if item['today'] and item['monitor']['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
+        >
+          <center>
+            <img
+              src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
+              class="card-img-fluid d-none d-md-block"
+              alt="..."
+              style="height: 15vw; {{ item['image'][0]['stylehome'] }};"
+            />
+          </center>
+          <div class="card-body">
+            <h3 class="h5">
+              {% if lang == 'de' %}{{ item['home']['title_de']|markdown }}{%
+              else %}{{ item['home']['title_en']|markdown}} {% endif %}
+            </h3>
+            <div class="card-text">
+              {% if lang == 'de' %}{{ item['home']['text_de']|markdown}}{% else
+              %}{{ item['home']['text_en']|markdown }} {% endif %}
+              <p align="right">
+                {% if item['home']['popover_title_de']!= '' or
+                item['home']['popover_text_de']!= '' %}
+                <button
+                  type="button"
+                  class="btn btn-outline-primary active bg-white"
+                  data-bs-trigger="focus"
+                  data-bs-toggle="popover"
+                  data-bs-html="true"
+                  style="color: #004a99"
+                  title="{% if lang == 'de' %}{{ item['home']['popover_title_de']|markdown }}{% else %}{{ item['home']['popover_title_en']|markdown }}{% endif %}"
+                  data-bs-content="{% if lang == 'de' %}{{ item['home']['popover_text_de']|markdown }}{% else %}{{ item['home']['popover_text_en']|markdown }}{% endif %}"
+                >
+                  <i class="fa-solid fa-info" style="color: #004a99"></i>
+                </button>
+                {% endif %} {% if item['link']!= '' %}
+                <a
+                  class="btn btn-outline-primary active bg-white"
+                  style="border-color: #004a99"
+                  href="{{ item['link'] }}"
+                  role="button"
+                >
+                  <i class="fa-solid fa-link" style="color: #004a99"></i>
+                </a>
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

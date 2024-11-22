@@ -34,6 +34,7 @@ def get_events(lang = "de"):
 
     for vr in list(vortragsreihe.find({"event": True, "sichtbar" : True, "_public" : True}, sort = [("rang", pymongo.ASCENDING)])):
         events.append({"kurzname" : vr["kurzname"], "title" : vr[f"title_{lang}"]})
+    print(f"Reihen: {reihen}")
     return reihen, events
 
 def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
@@ -55,9 +56,9 @@ def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), t
     # print(data)
     return data
 
-def data_for_newsarchiv(lang="de"):
+def data_for_newsarchiv(anfang, end, lang="de"):
     data = {}
-    data["news"] =  list(news.find({ "_public": True, "home.fuerhome": True}, sort=[("home.start", pymongo.DESCENDING)]))  
+    data["news"] =  list(news.find({ "_public": True, "home.fuerhome": True, "home.end" : { "$lte" : end, "$gte" : anfang }}, sort=[("home.start", pymongo.DESCENDING)]))
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
@@ -174,6 +175,60 @@ def writetonews_mensaplan_text(url = mensaplan_url):
 ## Wochenprogramm ##
 ####################
 
+def get_start_current_semester():
+    if datetime.now().month < 4:
+        res = datetime(datetime.now().year-1, 10,1)
+    elif 3 < datetime.now().month and datetime.now().month < 10:
+        res = datetime(datetime.now().year, 4,1)
+    else:
+        res = datetime(datetime.now().year, 10,1)
+    return res
+
+def get_start_previous_semester(date):
+    if date.month == 4:
+        res = datetime(date.year-1, 10,1)
+    else:
+        res = datetime(date.year, 4,1)
+    return res
+
+def get_start_next_semester(date):
+    if date.month == 4:
+        res = datetime(date.year, 10,1)
+    else:
+        res = datetime(date.year+1, 4,1)
+    return res
+
+def get_end_next_semester(date):
+    return get_start_next_semester(get_start_next_semester(date))
+
+def get_start_current_month():
+    date = datetime.now()
+    return datetime(date.year, date.month, 1)
+
+def get_start_next_month(date):
+    if date.month < 12:
+        res = datetime(date.year, date.month+1,1)
+    else:
+        res = datetime(date.year+1, 1,1)
+    return res
+
+def get_end_next_month(date):
+    return get_start_next_month(get_start_next_month(date))
+
+def get_start_previous_month(date):
+    if date.month > 1:
+        res = datetime(date.year, date.month-1,1)
+    else:
+        res = datetime(date.year-1, 12, 1)
+    return res
+
+def get_monat(n, lang="de"):
+    monate_de = ['', 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+    monate_en = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    monate = monate_de if lang == "de" else monate_en
+    return monate[n]
+
+
 def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
     data = {}
     tage_de = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
@@ -190,7 +245,7 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
         re = vortragsreihe.find_one({"_id" : { "$in": v["vortragsreihe"], "$ne" : vr["_id"]}, "_public" : True})
         data["vortrag"].append(
             {
-                "sprecher" : v["sprecher_de"] if (lang == "en" and v["sprecher"] == "") else v["sprecher"],
+                "sprecher" : v["sprecher_en"] if (lang == "en" and v["sprecher"] == "") else v["sprecher"],
                 "sprecher_affiliation" : v[f"sprecher_affiliation_{lang}"],
                 "ort" : v[f"ort_{lang}"],
                 "title" : v[f"title_{lang}"],
