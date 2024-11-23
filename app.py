@@ -11,6 +11,7 @@ from utils.util_calendar import calendar, get_caldav_calendar_events
 from apscheduler.schedulers.background import BackgroundScheduler
 
 import utils.util_faq as util_faq
+import utils.util_person as person
 import utils.util_accordion as util_acc
 
 import utils.fb as fb
@@ -476,6 +477,17 @@ def showdownloads(lang, anchor=""):
     filenames = ["downloads/downloads.html"]
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
+##############
+## Personen ##
+##############
+
+@app.route("/nlehre/<lang>/personen/")
+@app.route("/nlehre/<lang>/personen/<show>/")
+def showpersonen(show = "", lang = "de"):
+    data = person.get_person_data()
+    return render_template("personen/index.html", data = data, show=show, lang=lang)
+    
+    
 ####################
 ## Wochenprogramm ##
 ####################
