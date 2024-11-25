@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilevel Navigation</title>
+    <style>
+        /* Grundstruktur */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .fullscreen-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: white;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-link {
+            position: relative;
+            color: black;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: blue;
+        }
+
+        /* Submenus */
+        .submenu {
+            position: absolute;
+            top: 0;
+            left: 100%; /* Rechts vom Elternmenü */
+            display: none;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            z-index: 1000;
+            border: 1px solid #ddd;
+        }
+
+        .submenu a {
+            text-transform: none;
+            text-decoration: none;
+            color: black;
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        .submenu a:hover {
+            color: blue;
+        }
+
+        /* Mehrstufige Submenus */
+        .submenu .submenu {
+            left: 100%; /* Rechts vom übergeordneten Submenu */
+            top: 0;
+        }
+
+        /* Hover-Logik */
+        .nav-link:hover > .submenu,
+        .submenu a:hover > .submenu {
+            display: block; /* Submenu anzeigen */
+        }
+    </style>
+</head>
+<body>
+    <div class="fullscreen-navbar">
+        <!-- Navigation -->
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#about">Über uns
+            <!-- Submenu -->
+            <div class="submenu">
+                <a href="#history">Unsere Geschichte
+                    <!-- Subsubmenu -->
+                    <div class="submenu">
+                        <a href="#early-years">Frühe Jahre</a>
+                        <a href="#recent">Aktuelle Entwicklungen</a>
+                    </div>
+                </a>
+                <a href="#team">Unser Team</a>
+            </div>
+        </a>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#contact">Kontakt
+            <!-- Submenu -->
+            <div class="submenu">
+                <a href="#locations">Standorte</a>
+                <a href="#support">Support
+                    <!-- Subsubmenu -->
+                    <div class="submenu">
+                        <a href="#faq">FAQs</a>
+                        <a href="#contact-form">Kontaktformular</a>
+                    </div>
+                </a>
+            </div>
+        </a>
+    </div>
+</body>
+</html>

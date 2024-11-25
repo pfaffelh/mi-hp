@@ -1,0 +1,327 @@
+<header class="navbar navbar-expand-xxl bg-ufr-blue">
+  <nav class="navbar navbar-dark flex">
+    <div class="container-fluid">
+      <div class="d-flex flex-grow-1">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+            <li class="nav-item px-xl-4">
+              <div>
+                <a
+                  class="nav-link text-white me-4"
+                  role="button"
+                  href="{{url_for('showinteresse', lang = lang)}}"
+                >
+                  <button
+                    class="text-black bg-ufr-yellow-60"
+                    style="border-color: #004a99; border-radius: 12px"
+                  >
+                    <i
+                      class="fa fa-circle-right fa-4 text-black"
+                      aria-hidden="true"
+                    ></i>
+                    {% if lang=="de" %}Studieninteresse{% else %} Study with
+                    us {% endif %}
+                  </button></a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <div>
+                <a
+                  class="nav-link text-white me-4"
+                  role="button"
+                  href="{{url_for('showanfang', lang = lang)}}"
+                >
+                  <button
+                    class="text-black bg-ufr-yellow-60"
+                    style="border-color: #004a99; border-radius: 12px"
+                  >
+                    <i
+                      class="fa fa-circle-right fa-4 text-black"
+                      aria-hidden="true"
+                    ></i>
+                    {% if lang=="de" %}Studienanfang{% else %} Start of
+                    studies {% endif %}
+                  </button></a
+                >
+              </div>
+            </li>
+            <li class="nav-item dropdown px-3">
+              <a
+                class="nav-link dropdown-toggle active"
+                href="{{url_for('showstudiengaenge', lang = lang, anchor='aktuell')}}"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {% if lang == "de" %}Studiengänge{% else %}Study programs{%
+                endif %}</a
+              >
+              <ul class="dropdown-menu" data-bs-theme="light">
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiengang', studiengang='bsc', lang = lang) }}"
+                    >Bachelor of Science {% if lang == "de" %}Mathematik{% else
+                    %}Mathematics{% endif %}</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiengang', studiengang='2hfb', lang = lang) }}"
+                    >{% if lang == "de" %}Zwei-Hauptfächer Bachelor{% else
+                    %}Two-Major Bachelor{% endif %}</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiengang', studiengang='msc', lang = lang) }}"
+                    >Master of Science {% if lang == "de" %}Mathematik{% else
+                    %}Mathematics{% endif %}</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiengang', studiengang='msc_data', lang = lang) }}"
+                    ><!-- <button type="button" class="btn btn-primary btn-sm">
+                    NEU
+                  </button>-->
+                    Master of Science Mathematics in Data and Technology</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiengang', studiengang='med', lang = lang) }}"
+                    >Master of Education</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
+                    >Master of Education Erweiterungsfach</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiengang', studiengang='med_dual', lang = lang) }}"
+                    ><!-- <button type="button" class="btn btn-primary btn-sm">
+                    NEU
+                  </button>-->
+                    Masterstudiengang Lehramt Gymnasium – dual</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiengang', studiengang='promotion', lang = lang) }}"
+                    >{% if lang == "de" %}Promotion{% else %}PhD{% endif %}</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown px-3">
+              <a
+                class="nav-link dropdown-toggle active"
+                href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >{% if lang == "de" %}Lehrveranstaltungen{% else %}Courses{%
+                endif %}
+                </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                {% if show_laufendes_semester %}
+                <li class="dropdown-submenu">
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showlehrveranstaltungen', lang=lang, semester = laufendes_semester) }}"
+                    >{% if lang == "de" %} laufendes Semester{% else %}current
+                    semester{% endif %}</a
+                  >
+                </li>
+                {% endif %} {% if show_kommendes_semester %}
+                <li class="dropdown-submenu">
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showlehrveranstaltungen', lang=lang, semester = kommendes_semester) }}"
+                    >{% if lang == "de" %}kommendes Semester{% else %}upcoming
+                    semester{% endif %}</a
+                  >
+                </li>
+                {% endif %}
+              </ul>
+            </li>
+            <li class="nav-item dropdown px-3">
+              <a
+                class="nav-link dropdown-toggle active"
+                href="{{ url_for('showstufaq', lang=lang) }}"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {% if lang == "de" %}Prüfungsamt und Studienberatung{% else
+                %}Examination office and student counseling{% endif %}</a
+              >
+              <ul class="dropdown-menu" data-bs-theme="light">
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiendekanat', lang=lang) }}"
+                    >{% if lang == "de" %}Studienberatung{% else %}Student
+                    counceling{% endif %}</a
+                  >
+                </li>
+                <!--              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudiendekanat', unterseite='warum_mathematik', lang=lang) }}"
+                  >{% if lang == "de" %}Warum Mathematik?{% else %}{% endif %}</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudiendekanat', unterseite='schwerpunktgebiete', lang=lang) }}"
+                  >{% if lang == "de" %}Schwerpunktgebiete{% else %}Focus
+                  areas{% endif %}</a
+                >
+              </li>-->
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}"
+                    >{% if lang == "de" %}Prüfungsamt{% else %}Examination
+                    office{% endif %}</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiendekanat', unterseite='termine', lang=lang) }}"
+                    >{% if lang == "de" %}Fristen und Termine{% else %}Deadlines
+                    and dates{% endif %}</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiendekanat', unterseite='calendar', lang=lang) }}"
+                    >{% if lang == "de" %}Prüfungskalender{% else %}Calendar for
+                    exams{% endif %}</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showdownloads', anchor='pruefungsamt', lang=lang) }}"
+                    >{% if lang == "de" %}Formulare und Anträge{% else %}Forms
+                    and applications{% endif %}</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiendekanat', unterseite = 'ausland', lang=lang) }}"
+                    >{% if lang == "de" %}Studieren im Ausland{% else %}Study
+                    abroad{% endif %}</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <!--              <li>
+                <a
+                  class="dropdown-item text-black"
+                  href="{{ url_for('showstudiendekanat', unterseite='modulhandbuecher', lang=lang) }}"
+                  >{% if lang == "de" %}Modulhandbücher{% else %}Handbooks for
+                  modules{% endif %}</a
+                >
+              </li>
+          <li class="nav-item px-3">
+            <a
+              class="nav-link text-white"
+              href="{{ url_for('showstufaq', lang=lang) }}"
+              >FAQ</a
+            >
+          </li>-->
+            <li class="nav-item px-3">
+              <a
+                class="nav-link dropdown-toggle active"
+                href="{{ url_for('showmitfaq', lang=lang) }}"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >{% if lang == "de" %}Für Lehrende{% else %}For teaching staff{%
+                endif %}</a
+              >
+              <ul class="dropdown-menu" data-bs-theme="light">
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showlehrende', unterseite = 'calendar', lang=lang) }}"
+                    >{% if lang == "de" %}Prüfungskalender{% else %}Calendar for
+                    exams{% endif %}</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showlehrende', unterseite = 'zertifikat', lang=lang) }}"
+                    >{% if lang == "de" %}Lehrzertifikat{% else %}Certificate
+                    Teaching{% endif %}</a
+                  >
+                </li>
+                {% if vpn %}
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showlehrveranstaltungenplanung', lang=lang, semester = laufendes_semester) }}"
+                    >{% if lang == "de" %}Lehrplanung Zukunft{% else %}Teaching
+                    in future semesters{% endif %}</a
+                  >
+                </li>
+                {% endif %}
+              </ul>
+            </li>
+            <li class="nav-item px-3">
+              <a
+                class="nav-link text-white"
+                href="{{ url_for('showdownloads', lang=lang) }}"
+                >Downloads</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
