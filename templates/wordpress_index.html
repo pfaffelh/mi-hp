@@ -1,0 +1,2656 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container" id="news-carousel">
+    <div
+      id="carouselExampleControls"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      {% for item in most_recent_news %}
+
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="data:image/jpeg;base64,"
+                  class="d-block w-100"
+                  style="height: 20vw; object-fit: cover"
+                  alt="..."
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    item.title
+                  </h5>
+                  <p>
+                    item.text
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container" id="about-study-research" style="margin-top: 100px;">
+	<div class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute
+			[&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip
+			[.wp-block-ufr-section_&amp;]:bl-overflow-x-visible
+			bl-bg-transparent bl-text-inherit dark:bl-bg-transparent dark:bl-text-inherit
+			alignfull wp-block-ufr-section has-global-padding is-layout-constrained
+			wp-block-section-is-layout-constrained">
+
+    <div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-1 wp-block-columns-is-layout-flex">
+      <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+
+        <figure class="wp-block-image size-full is-resized">
+          <img
+              decoding="async"
+              width="360"
+              height="240"
+              src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus.jpg"
+              alt=""
+              class="wp-image-381"
+              style="aspect-ratio:16/9;object-fit:cover;width:auto;height:200px"
+              srcset="https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus.jpg 360w,
+            https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus-300x200.jpg 300w"
+              sizes="(max-width: 360px) 100vw, 360px"/>
+        </figure>
+        <h4 class="wp-block-heading">Über uns</h4>
+        <p>In der Mathematik streben wir nach Wahrheit, und suchen nach eleganten und schönen Beweisen. Wir widmen uns der Exzellenz in allen Aspekten der Forschung und Lehre von Logik bis maschinellen Lernen und KI. Mehr &#8230;</p>
+      </div>
+
+      <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+
+        <figure class="wp-block-image size-full is-resized">
+          <img
+            decoding="async" width="375" height="250"
+            src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg" alt=""
+            class="wp-image-639" style="box-shadow:none;aspect-ratio:16/9;object-fit:cover;width:auto;height:200px"
+            srcset="https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg 375w, https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2-300x200.jpg 300w"
+            sizes="(max-width: 375px) 100vw, 375px"/>
+        </figure>
+
+        <h4 class="wp-block-heading">Studium</h4>
+        <p>Freiburg bietet ein breites Spektrum an Vorlesungen und eine fundierte Lehre von reiner über angewandte Mathematik bis zu Data Science. Neu: Der Tech Data Master. <a href="https://www.math.uni-freiburg.de/nlehre/de/studiengaenge/">Bewerben Sie sich jetzt ! </a></p>
+        <div style="height:31px" aria-hidden="true" class="wp-block-spacer"></div>
+      </div>
+
+      <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+
+        <figure class="wp-block-image size-full is-resized">
+          <img
+            decoding="async" width="260" height="240"
+            src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/tafel.jpg"
+            alt="" class="wp-image-385"
+             style="object-fit:cover;width:340px;height:200px"/>
+        </figure>
+
+        <h4 class="wp-block-heading">Forschung</h4>
+        <p>In Freiburg wird Spitzenforschung auf allen Gebieten der Mathematik betrieben. Seit 2023 fördert die DFG den SFB &#8222;<a href="https://www.smalldata-initiative.de">Small Data</a>&#8220; mit 12 Mio EUR. <a href="https://uni-freiburg.de/math/forschungstaetigkeiten/" data-type="page" data-id="643">Mehr&#8230;</a></p>
+      </div>
+    </div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+<!--
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Mathematisches Institut</title>
+	<meta name='robots' content='noindex, nofollow' />
+
+	<link rel='stylesheet' id='dashicons-css' href='https://uni-freiburg.de/math/wp-includes/css/dashicons.min.css?ver=6.6.2' media='all' />
+	<link rel='stylesheet' id='slider-css' href='static/css/slider.css'>
+	<link rel='stylesheet' id='table-css' href='static/css/table.css'>
+
+	<link rel='stylesheet' id='wp-block-library-css' href='static/css/wp-includes/css/dist/block-library/style.css' media='all' />
+	<link rel='stylesheet' id='blocks-tailwind-css' href='static/css/wp-content/plugins/ufr-block-library/tailwind.css' media='all' />
+	<style id='global-styles-inline-css'>
+	:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--pitch-black-100: #000000;--wp--preset--color--pure-white-100: #ffffff;--wp--preset--color--disabled-100: #757575;--wp--preset--color--identity-black-100: #2a2a2a;--wp--preset--color--danger-red-100: #b60000;--wp--preset--color--identity-blue-100: #34499a;--wp--preset--color--identity-blue-80: #5c6dae;--wp--preset--color--identity-blue-60: #8591c2;--wp--preset--color--identity-blue-40: #adb6d6;--wp--preset--color--identity-blue-20: #d6daea;--wp--preset--color--identity-darkblue-100: #000149;--wp--preset--color--identity-darkblue-80: #33336d;--wp--preset--color--identity-darkblue-60: #666691;--wp--preset--color--identity-darkblue-40: #9999b6;--wp--preset--color--identity-darkblue-20: #ccccda;--wp--preset--color--identity-lightblue-100: #edf0fa;--wp--preset--color--identity-beige-100: #f6f1e3;--wp--preset--color--identity-beige-50: #faf8f1;--wp--preset--color--identity-teal-100: #00856c;--wp--preset--color--identity-teal-80: #339d89;--wp--preset--color--identity-teal-60: #66b5a6;--wp--preset--color--identity-teal-40: #99cec4;--wp--preset--color--identity-teal-20: #cce6e1;--wp--preset--color--identity-brown-100: #8f6b30;--wp--preset--color--identity-brown-80: #a58859;--wp--preset--color--identity-brown-60: #bba682;--wp--preset--color--identity-brown-40: #d2c3ac;--wp--preset--color--identity-brown-20: #e8e1d5;--wp--preset--color--identity-yellow-100: #ffe863;--wp--preset--color--identity-yellow-80: #ffec82;--wp--preset--color--identity-yellow-60: #fff1a1;--wp--preset--color--identity-yellow-40: #fff5c0;--wp--preset--color--identity-yellow-20: #fffadf;--wp--preset--color--identity-rose-100: #f5c2ed;--wp--preset--color--identity-rose-80: #f7cef0;--wp--preset--color--identity-rose-60: #f9daf4;--wp--preset--color--identity-rose-40: #fbe6f7;--wp--preset--color--identity-rose-20: #fdf2fb;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}.wp-block-cover{--wp--preset--color--pitch-black-100: #000000;--wp--preset--color--pure-white-100: #ffffff;}:root { --wp--style--global--content-size: 1642px;--wp--style--global--wide-size: 1642px; }:where(body) { margin: 0; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) { padding-right: 0; padding-left: 0; }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull { margin-left: 0; margin-right: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{background-color: var(--ufr--global--bg-color);color: var(--ufr--global--text-color);font-family: Social, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-size: var(--ufr--global--font-size);font-style: var(--ufr--global--font-style);font-weight: var(--ufr--global--font-weight);line-height: var(--ufr--global--line-height);--wp--style--root--padding-top: 0;--wp--style--root--padding-right: var(--ufr--global--padding-right);--wp--style--root--padding-bottom: 0;--wp--style--root--padding-left: var(--ufr--global--padding-left);}a:where(:not(.wp-element-button)){color: var(--ufr-link-color);text-decoration: underline;}:root :where(a:where(:not(.wp-element-button)):hover){color: var(--ufr-link-color-hover);}:root :where(a:where(:not(.wp-element-button)):active){color: var(--ufr-link-color-active);}h1{font-size: var(--ufr--global--h1--font-size);font-style: var(--ufr--global--h1--font-style);font-weight: var(--ufr--global--h1--font-weight);line-height: var(--ufr--global--h1--line-height);}h2{font-size: var(--ufr--global--h2--font-size);font-style: var(--ufr--global--h2--font-style);font-weight: var(--ufr--global--h2--font-weight);line-height: var(--ufr--global--h2--line-height);}h3{font-size: var(--ufr--global--h3--font-size);font-style: var(--ufr--global--h3--font-style);font-weight: var(--ufr--global--h3--font-weight);line-height: var(--ufr--global--h3--line-height);}h4{font-size: var(--ufr--global--h4--font-size);font-style: var(--ufr--global--h4--font-style);font-weight: var(--ufr--global--h4--font-weight);line-height: var(--ufr--global--h4--line-height);}h5{font-size: var(--ufr--global--h5--font-size);font-style: var(--ufr--global--h5--font-style);font-weight: var(--ufr--global--h5--font-weight);line-height: var(--ufr--global--h5--line-height);}h6{font-size: var(--ufr--global--h6--font-size);font-style: var(--ufr--global--h6--font-style);font-weight: var(--ufr--global--h6--font-weight);line-height: var(--ufr--global--h6--line-height);}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;line-height: inherit;padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-pitch-black-100-color{color: var(--wp--preset--color--pitch-black-100) !important;}.has-pure-white-100-color{color: var(--wp--preset--color--pure-white-100) !important;}.has-disabled-100-color{color: var(--wp--preset--color--disabled-100) !important;}.has-identity-black-100-color{color: var(--wp--preset--color--identity-black-100) !important;}.has-danger-red-100-color{color: var(--wp--preset--color--danger-red-100) !important;}.has-identity-blue-100-color{color: var(--wp--preset--color--identity-blue-100) !important;}.has-identity-blue-80-color{color: var(--wp--preset--color--identity-blue-80) !important;}.has-identity-blue-60-color{color: var(--wp--preset--color--identity-blue-60) !important;}.has-identity-blue-40-color{color: var(--wp--preset--color--identity-blue-40) !important;}.has-identity-blue-20-color{color: var(--wp--preset--color--identity-blue-20) !important;}.has-identity-darkblue-100-color{color: var(--wp--preset--color--identity-darkblue-100) !important;}.has-identity-darkblue-80-color{color: var(--wp--preset--color--identity-darkblue-80) !important;}.has-identity-darkblue-60-color{color: var(--wp--preset--color--identity-darkblue-60) !important;}.has-identity-darkblue-40-color{color: var(--wp--preset--color--identity-darkblue-40) !important;}.has-identity-darkblue-20-color{color: var(--wp--preset--color--identity-darkblue-20) !important;}.has-identity-lightblue-100-color{color: var(--wp--preset--color--identity-lightblue-100) !important;}.has-identity-beige-100-color{color: var(--wp--preset--color--identity-beige-100) !important;}.has-identity-beige-50-color{color: var(--wp--preset--color--identity-beige-50) !important;}.has-identity-teal-100-color{color: var(--wp--preset--color--identity-teal-100) !important;}.has-identity-teal-80-color{color: var(--wp--preset--color--identity-teal-80) !important;}.has-identity-teal-60-color{color: var(--wp--preset--color--identity-teal-60) !important;}.has-identity-teal-40-color{color: var(--wp--preset--color--identity-teal-40) !important;}.has-identity-teal-20-color{color: var(--wp--preset--color--identity-teal-20) !important;}.has-identity-brown-100-color{color: var(--wp--preset--color--identity-brown-100) !important;}.has-identity-brown-80-color{color: var(--wp--preset--color--identity-brown-80) !important;}.has-identity-brown-60-color{color: var(--wp--preset--color--identity-brown-60) !important;}.has-identity-brown-40-color{color: var(--wp--preset--color--identity-brown-40) !important;}.has-identity-brown-20-color{color: var(--wp--preset--color--identity-brown-20) !important;}.has-identity-yellow-100-color{color: var(--wp--preset--color--identity-yellow-100) !important;}.has-identity-yellow-80-color{color: var(--wp--preset--color--identity-yellow-80) !important;}.has-identity-yellow-60-color{color: var(--wp--preset--color--identity-yellow-60) !important;}.has-identity-yellow-40-color{color: var(--wp--preset--color--identity-yellow-40) !important;}.has-identity-yellow-20-color{color: var(--wp--preset--color--identity-yellow-20) !important;}.has-identity-rose-100-color{color: var(--wp--preset--color--identity-rose-100) !important;}.has-identity-rose-80-color{color: var(--wp--preset--color--identity-rose-80) !important;}.has-identity-rose-60-color{color: var(--wp--preset--color--identity-rose-60) !important;}.has-identity-rose-40-color{color: var(--wp--preset--color--identity-rose-40) !important;}.has-identity-rose-20-color{color: var(--wp--preset--color--identity-rose-20) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-pitch-black-100-background-color{background-color: var(--wp--preset--color--pitch-black-100) !important;}.has-pure-white-100-background-color{background-color: var(--wp--preset--color--pure-white-100) !important;}.has-disabled-100-background-color{background-color: var(--wp--preset--color--disabled-100) !important;}.has-identity-black-100-background-color{background-color: var(--wp--preset--color--identity-black-100) !important;}.has-danger-red-100-background-color{background-color: var(--wp--preset--color--danger-red-100) !important;}.has-identity-blue-100-background-color{background-color: var(--wp--preset--color--identity-blue-100) !important;}.has-identity-blue-80-background-color{background-color: var(--wp--preset--color--identity-blue-80) !important;}.has-identity-blue-60-background-color{background-color: var(--wp--preset--color--identity-blue-60) !important;}.has-identity-blue-40-background-color{background-color: var(--wp--preset--color--identity-blue-40) !important;}.has-identity-blue-20-background-color{background-color: var(--wp--preset--color--identity-blue-20) !important;}.has-identity-darkblue-100-background-color{background-color: var(--wp--preset--color--identity-darkblue-100) !important;}.has-identity-darkblue-80-background-color{background-color: var(--wp--preset--color--identity-darkblue-80) !important;}.has-identity-darkblue-60-background-color{background-color: var(--wp--preset--color--identity-darkblue-60) !important;}.has-identity-darkblue-40-background-color{background-color: var(--wp--preset--color--identity-darkblue-40) !important;}.has-identity-darkblue-20-background-color{background-color: var(--wp--preset--color--identity-darkblue-20) !important;}.has-identity-lightblue-100-background-color{background-color: var(--wp--preset--color--identity-lightblue-100) !important;}.has-identity-beige-100-background-color{background-color: var(--wp--preset--color--identity-beige-100) !important;}.has-identity-beige-50-background-color{background-color: var(--wp--preset--color--identity-beige-50) !important;}.has-identity-teal-100-background-color{background-color: var(--wp--preset--color--identity-teal-100) !important;}.has-identity-teal-80-background-color{background-color: var(--wp--preset--color--identity-teal-80) !important;}.has-identity-teal-60-background-color{background-color: var(--wp--preset--color--identity-teal-60) !important;}.has-identity-teal-40-background-color{background-color: var(--wp--preset--color--identity-teal-40) !important;}.has-identity-teal-20-background-color{background-color: var(--wp--preset--color--identity-teal-20) !important;}.has-identity-brown-100-background-color{background-color: var(--wp--preset--color--identity-brown-100) !important;}.has-identity-brown-80-background-color{background-color: var(--wp--preset--color--identity-brown-80) !important;}.has-identity-brown-60-background-color{background-color: var(--wp--preset--color--identity-brown-60) !important;}.has-identity-brown-40-background-color{background-color: var(--wp--preset--color--identity-brown-40) !important;}.has-identity-brown-20-background-color{background-color: var(--wp--preset--color--identity-brown-20) !important;}.has-identity-yellow-100-background-color{background-color: var(--wp--preset--color--identity-yellow-100) !important;}.has-identity-yellow-80-background-color{background-color: var(--wp--preset--color--identity-yellow-80) !important;}.has-identity-yellow-60-background-color{background-color: var(--wp--preset--color--identity-yellow-60) !important;}.has-identity-yellow-40-background-color{background-color: var(--wp--preset--color--identity-yellow-40) !important;}.has-identity-yellow-20-background-color{background-color: var(--wp--preset--color--identity-yellow-20) !important;}.has-identity-rose-100-background-color{background-color: var(--wp--preset--color--identity-rose-100) !important;}.has-identity-rose-80-background-color{background-color: var(--wp--preset--color--identity-rose-80) !important;}.has-identity-rose-60-background-color{background-color: var(--wp--preset--color--identity-rose-60) !important;}.has-identity-rose-40-background-color{background-color: var(--wp--preset--color--identity-rose-40) !important;}.has-identity-rose-20-background-color{background-color: var(--wp--preset--color--identity-rose-20) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-pitch-black-100-border-color{border-color: var(--wp--preset--color--pitch-black-100) !important;}.has-pure-white-100-border-color{border-color: var(--wp--preset--color--pure-white-100) !important;}.has-disabled-100-border-color{border-color: var(--wp--preset--color--disabled-100) !important;}.has-identity-black-100-border-color{border-color: var(--wp--preset--color--identity-black-100) !important;}.has-danger-red-100-border-color{border-color: var(--wp--preset--color--danger-red-100) !important;}.has-identity-blue-100-border-color{border-color: var(--wp--preset--color--identity-blue-100) !important;}.has-identity-blue-80-border-color{border-color: var(--wp--preset--color--identity-blue-80) !important;}.has-identity-blue-60-border-color{border-color: var(--wp--preset--color--identity-blue-60) !important;}.has-identity-blue-40-border-color{border-color: var(--wp--preset--color--identity-blue-40) !important;}.has-identity-blue-20-border-color{border-color: var(--wp--preset--color--identity-blue-20) !important;}.has-identity-darkblue-100-border-color{border-color: var(--wp--preset--color--identity-darkblue-100) !important;}.has-identity-darkblue-80-border-color{border-color: var(--wp--preset--color--identity-darkblue-80) !important;}.has-identity-darkblue-60-border-color{border-color: var(--wp--preset--color--identity-darkblue-60) !important;}.has-identity-darkblue-40-border-color{border-color: var(--wp--preset--color--identity-darkblue-40) !important;}.has-identity-darkblue-20-border-color{border-color: var(--wp--preset--color--identity-darkblue-20) !important;}.has-identity-lightblue-100-border-color{border-color: var(--wp--preset--color--identity-lightblue-100) !important;}.has-identity-beige-100-border-color{border-color: var(--wp--preset--color--identity-beige-100) !important;}.has-identity-beige-50-border-color{border-color: var(--wp--preset--color--identity-beige-50) !important;}.has-identity-teal-100-border-color{border-color: var(--wp--preset--color--identity-teal-100) !important;}.has-identity-teal-80-border-color{border-color: var(--wp--preset--color--identity-teal-80) !important;}.has-identity-teal-60-border-color{border-color: var(--wp--preset--color--identity-teal-60) !important;}.has-identity-teal-40-border-color{border-color: var(--wp--preset--color--identity-teal-40) !important;}.has-identity-teal-20-border-color{border-color: var(--wp--preset--color--identity-teal-20) !important;}.has-identity-brown-100-border-color{border-color: var(--wp--preset--color--identity-brown-100) !important;}.has-identity-brown-80-border-color{border-color: var(--wp--preset--color--identity-brown-80) !important;}.has-identity-brown-60-border-color{border-color: var(--wp--preset--color--identity-brown-60) !important;}.has-identity-brown-40-border-color{border-color: var(--wp--preset--color--identity-brown-40) !important;}.has-identity-brown-20-border-color{border-color: var(--wp--preset--color--identity-brown-20) !important;}.has-identity-yellow-100-border-color{border-color: var(--wp--preset--color--identity-yellow-100) !important;}.has-identity-yellow-80-border-color{border-color: var(--wp--preset--color--identity-yellow-80) !important;}.has-identity-yellow-60-border-color{border-color: var(--wp--preset--color--identity-yellow-60) !important;}.has-identity-yellow-40-border-color{border-color: var(--wp--preset--color--identity-yellow-40) !important;}.has-identity-yellow-20-border-color{border-color: var(--wp--preset--color--identity-yellow-20) !important;}.has-identity-rose-100-border-color{border-color: var(--wp--preset--color--identity-rose-100) !important;}.has-identity-rose-80-border-color{border-color: var(--wp--preset--color--identity-rose-80) !important;}.has-identity-rose-60-border-color{border-color: var(--wp--preset--color--identity-rose-60) !important;}.has-identity-rose-40-border-color{border-color: var(--wp--preset--color--identity-rose-40) !important;}.has-identity-rose-20-border-color{border-color: var(--wp--preset--color--identity-rose-20) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.wp-block-cover.has-pitch-black-100-color{color: var(--wp--preset--color--pitch-black-100) !important;}.wp-block-cover.has-pure-white-100-color{color: var(--wp--preset--color--pure-white-100) !important;}.wp-block-cover.has-pitch-black-100-background-color{background-color: var(--wp--preset--color--pitch-black-100) !important;}.wp-block-cover.has-pure-white-100-background-color{background-color: var(--wp--preset--color--pure-white-100) !important;}.wp-block-cover.has-pitch-black-100-border-color{border-color: var(--wp--preset--color--pitch-black-100) !important;}.wp-block-cover.has-pure-white-100-border-color{border-color: var(--wp--preset--color--pure-white-100) !important;}
+	:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+	:root :where(.wp-block-cover){padding-right: var(--ufr--global--padding-right);padding-left: var(--ufr--global--padding-left);}
+	:root :where(.wp-block-ufr-section){padding-right: var(--ufr--global--padding-right);padding-left: var(--ufr--global--padding-left);}
+	</style>
+	<link rel='stylesheet' id='tailwind-css' href='static/css/wp-content/themes/ufr-main-theme/tailwind.css' media='all' />
+	<link rel='stylesheet' id='tablepress-default-css' href='static/css/wp-content/plugins/tablepress/css/build/default.css' media='all' />
+	-->
+
+	<!-- Replacing multilingualpress-flag-icons-css implies downloading all flags. -->
+  <!--
+  <link rel='stylesheet' id='multilingualpress-flag-icons-css' href='https://uni-freiburg.de/math/wp-content/plugins/multilingualpress/src/modules/SiteFlags/public/css/frontend.min.css?ver=1724299309 <view-source:https://uni-freiburg.de/math/wp-content/plugins/multilingualpress/src/modules/SiteFlags/public/css/frontend.min.css?ver=1724299309>' media='all' />
+  <script src="{{url_for('static', filename='js/wp-content/plugins/ufr-block-library/blocks/tabs/tabs-frontend.js')}}" id="ufr-tabs-script-js"></script>
+  <script src="{{url_for('static', filename='js/wp-content/plugins/ufr-block-library/blocks/accordion/accordion-frontend.js')}}" id="ufr-accordion-script-js"></script>
+	<script src="https://uni-freiburg.de/math/wp-includes/js/dist/hooks.min.js?ver=2810c76e705dd1a53b18 <view-source:https://uni-freiburg.de/math/wp-includes/js/dist/hooks.min.js?ver=2810c76e705dd1a53b18>" id="wp-hooks-js"></script>
+  -->
+
+  <!-- This script does not appear to be functional -->
+  <!--
+  <script src="https://uni-freiburg.de/math/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6 <view-source:https://uni-freiburg.de/math/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6>" id="wp-i18n-js"></script>
+	<script id="wp-i18n-js-after">
+	wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+	</script>
+	<script src="{{url_for('static', filename='js/wp-content/plugins/ufr-block-library/blocks/counter/counter-frontend.js')}}" id="ufr-counter-script-js"></script>
+  <script src="{{url_for('static', filename='js/wp-content/themes/ufr-main-theme/assets/js/frontend-header.js')}}" id="ufr-frontend-async-header-js"></script>
+	<link rel="https://api.w.org/" href="https://uni-freiburg.de/math/wp-json/ <view-source:https://uni-freiburg.de/math/wp-json/>" /><link rel="alternate" title="JSON" type="application/json" href="https://uni-freiburg.de/math/wp-json/wp/v2/pages/167 <view-source:https://uni-freiburg.de/math/wp-json/wp/v2/pages/167>" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://uni-freiburg.de/math/xmlrpc.php?rsd <view-source:https://uni-freiburg.de/math/xmlrpc.php?rsd>" />
+	<meta name="generator" content="WordPress 6.6.2" />
+	<link rel="canonical" href="https://uni-freiburg.de/math/ <view-source:https://uni-freiburg.de/math/>" />
+	<link rel='shortlink' href='https://uni-freiburg.de/math/ <view-source:https://uni-freiburg.de/math/>' />
+	<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://uni-freiburg.de/math/wp-json/oembed/1.0/embed?url=https%3A%2F%2Funi-freiburg.de%2Fmath%2F <view-source:https://uni-freiburg.de/math/wp-json/oembed/1.0/embed?url=https%3A%2F%2Funi-freiburg.de%2Fmath%2F>" />
+	<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://uni-freiburg.de/math/wp-json/oembed/1.0/embed?url=https%3A%2F%2Funi-freiburg.de%2Fmath%2F&#038;format=xml <view-source:https://uni-freiburg.de/math/wp-json/oembed/1.0/embed?url=https%3A%2F%2Funi-freiburg.de%2Fmath%2F&format=xml>" />
+			
+	<link rel="icon" type="image/x-icon" href="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon.ico <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon.ico>">
+	<link rel="shortcut icon" type="image/x-icon" href="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon.ico <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon.ico>">
+
+	<link rel="icon" type="image/png" sizes="16x16" href="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-16x16.png <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-16x16.png>">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-32x32.png <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-32x32.png>">
+	<link rel="icon" type="image/png" sizes="96x96" href="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-96x96.png <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-96x96.png>">
+	<link rel="icon" type="image/png" sizes="192x192" href="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-192x192.png <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-192x192.png>">
+	<link rel="icon" type="image/png" sizes="512x512" href="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-512x512.png <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon-512x512.png>">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/apple-touch-icon.png <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/apple-touch-icon.png>">
+	<link rel="mask-icon" href="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/safari-pinned-tab.svg <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/safari-pinned-tab.svg>" color="#31499b">
+
+	<meta name="msapplication-TileColor" content="#31499b">
+	<meta name="msapplication-TileImage" content="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/mstile-144x144.png">
+	<meta name="theme-color" content="#31499b">
+
+</head>
+
+body class="home page-template-default page page-id-167 logged-in admin-bar no-customize-support pb-[81px] md:pb-0" -->
+
+
+
+		<script>
+		(function() {
+			var request, b = document.body, c = 'className', cs = 'customize-support', rcs = new RegExp('(^|\\s+)(no-)?'+cs+'(\\s+|$)');
+
+				request = true;
+	
+			b[c] = b[c].replace( rcs, ' ' );
+			// The customizer requires postMessage and CORS (if the site is cross domain).
+			b[c] += ( window.postMessage && request ? ' ' : ' no-' ) + cs;
+		}());
+	
+		</script>
+	<header class="flex flex-col mb-[15px] xl:mb-[35px] overflow-x-clip">
+	<div class="bg-identity-blue
+	pt-[25px] md:pt-[52px] xl:pt-[70px] xl:pb-[52px]
+	pb-[17px] md:pb-[26px] px-[24px] md:px-[48px] xl:px-[139px]
+	w-full relative is-layout-constrained has-global-padding
+	md:min-h-[190px] xl:min-h-[320px]">
+		<div class="relative">
+			<a class="inline-block" ufrlogo href="https://uni-freiburg.de/math <view-source:https://uni-freiburg.de/math>">
+				<span
+					class="
+						hidden md:inline-block
+						md:w-[227px] xl:w-[381px]
+						text-pure-white
+						"
+				>
+					<svg width="100%" viewBox="0 0 2951 329" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Startseite der Universität Freiburg"
+     role="img">
+    <title>Text icon 'Universität Freiburg'</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(0.264000, 0.178000)" fill="currentColor" fill-rule="nonzero">
+            <path
+                d="M55.848,257.76 C85.562,257.76 105.968,239.502 115.276,214.442 L115.276,253.822 L155.372,253.822 L155.372,78.402 L114.56,78.402 L114.56,165.038 C114.56,203.702 95.944,223.392 70.526,223.392 C50.478,223.392 40.454,209.788 40.454,181.864 L40.454,78.402 L0,78.402 L0,191.888 C0,231.984 18.974,257.76 55.848,257.76 Z M235.918,253.822 L235.918,166.112 C235.918,130.312 254.176,108.832 279.952,108.832 C302.148,108.832 312.888,122.794 312.888,151.076 L312.888,253.822 L354.058,253.822 L354.058,141.052 C354.058,101.314 333.294,74.464 294.988,74.464 C264.558,74.464 243.794,93.438 234.844,119.572 L234.844,78.402 L195.106,78.402 L195.106,253.822 L235.918,253.822 Z M430.814,253.822 L430.814,78.402 L390.002,78.402 L390.002,253.822 L430.814,253.822 Z M563.48,253.822 L631.5,78.402 L590.688,78.402 L543.79,213.726 L498.324,78.402 L453.574,78.402 L520.878,253.822 L563.48,253.822 Z M724.218,257.76 C766.82,257.76 792.954,234.49 803.694,206.924 L770.042,192.962 C762.166,213.726 747.846,226.614 725.65,226.614 C694.862,226.614 679.826,205.134 678.752,173.988 L804.41,173.988 L804.41,166.828 C804.41,109.548 775.054,73.032 723.144,73.032 C675.172,73.032 638.656,107.042 638.656,165.396 C638.656,221.244 669.086,257.76 724.218,257.76 Z M763.598,146.064 L679.826,146.064 C682.69,118.856 698.442,103.104 722.786,103.104 C746.414,103.104 762.166,117.424 763.598,146.064 Z M876.006,253.822 L876.006,179.358 C876.006,134.25 899.276,114.918 935.076,114.918 C937.16267,114.918 938.995953,114.918 940.698926,115.000051 C940.698926,115.000051 942.404617,101.249367 945.816,73.748 C942.713333,73.5093333 940.326667,73.39 938.656,73.39 C906.794,73.39 885.672,94.154 875.29,126.374 L875.29,78.402 L835.552,78.402 L835.552,253.822 L876.006,253.822 Z M1896.006,253.822 L1896.006,179.358 C1896.006,134.25 1919.276,114.918 1955.076,114.918 C1957.16267,114.918 1958.99595,114.918 1960.69893,115.000051 C1960.69893,115.000051 1962.40462,101.249367 1965.816,73.748 C1962.71333,73.5093333 1960.32667,73.39 1958.656,73.39 C1926.794,73.39 1905.672,94.154 1895.29,126.374 L1895.29,78.402 L1855.552,78.402 L1855.552,253.822 L1896.006,253.822 Z M2684.006,253.822 L2684.006,179.358 C2684.006,134.25 2707.276,114.918 2743.076,114.918 C2745.16267,114.918 2746.99595,114.918 2748.69893,115.000051 C2748.69893,115.000051 2750.40462,101.249367 2753.816,73.748 C2750.71333,73.5093333 2748.32667,73.39 2746.656,73.39 C2714.794,73.39 2693.672,94.154 2683.29,126.374 L2683.29,78.402 L2643.552,78.402 L2643.552,253.822 L2684.006,253.822 Z M1031.016,258.834 C1075.408,258.834 1104.048,237.712 1104.048,202.986 C1104.048,178.284 1089.728,160.026 1055.718,151.076 L1025.288,142.842 C1005.956,137.472 997.722,132.46 997.722,120.288 C997.722,108.832 1008.104,100.598 1027.794,100.598 C1050.348,100.598 1061.446,114.56 1064.668,128.88 L1099.394,119.572 C1091.876,90.574 1065.026,73.032 1029.584,73.032 C989.488,73.032 961.206,93.08 961.206,124.942 C961.206,150.002 977.316,167.902 1008.82,175.778 L1037.46,183.654 C1058.94,189.382 1065.742,195.11 1065.742,207.998 C1065.742,220.886 1054.286,230.91 1031.732,230.91 C1008.462,230.91 993.068,216.232 989.488,196.9 L953.688,206.924 C959.774,237.354 987.698,258.834 1031.016,258.834 Z M1174.57,253.822 L1174.57,78.402 L1133.758,78.402 L1133.758,253.822 L1174.57,253.822 Z M1288.052,257.402 C1300.94,257.402 1312.396,254.18 1318.84,250.958 L1318.84,220.886 C1311.68,223.034 1305.952,224.108 1298.792,224.108 C1281.25,224.108 1273.016,217.306 1273.016,198.332 L1273.016,109.19 L1317.05,109.19 L1317.05,78.402 L1272.658,78.402 L1272.658,26.134 L1233.636,26.134 L1233.636,78.402 L1194.972,78.402 L1194.972,109.19 L1233.636,109.19 L1233.636,203.702 C1233.636,239.86 1252.61,257.402 1288.052,257.402 Z M1395.806,258.834 C1425.52,258.834 1445.926,243.082 1454.876,220.886 C1456.308,243.798 1469.554,257.044 1493.898,257.044 C1502.848,257.044 1512.156,254.896 1517.884,251.316 L1517.884,225.182 C1513.946,226.972 1510.008,227.33 1506.428,227.33 C1495.688,227.33 1490.676,222.676 1490.676,207.282 L1490.676,141.41 C1490.676,97.018 1463.826,73.032 1415.138,73.032 C1372.894,73.032 1342.822,94.512 1341.032,126.016 L1379.338,132.46 L1379.338,129.238 C1380.77,110.98 1394.374,100.956 1415.138,100.956 C1440.556,100.956 1451.296,113.128 1451.296,135.324 L1451.296,144.99 C1442.704,144.274 1433.754,143.558 1423.014,143.558 C1376.116,144.274 1338.526,160.384 1338.526,205.134 C1338.526,239.502 1362.512,258.834 1395.806,258.834 Z M1409.052,228.762 C1390.078,228.762 1378.622,218.738 1378.622,202.27 C1378.622,177.926 1399.386,168.976 1432.68,168.26 C1439.482,168.26 1445.568,168.618 1451.296,168.976 L1451.296,181.506 C1451.296,211.22 1434.47,228.762 1409.052,228.762 Z M1605.948,257.402 C1618.836,257.402 1630.292,254.18 1636.736,250.958 L1636.736,220.886 C1629.576,223.034 1623.848,224.108 1616.688,224.108 C1599.146,224.108 1590.912,217.306 1590.912,198.332 L1590.912,109.19 L1634.946,109.19 L1634.946,78.402 L1590.554,78.402 L1590.554,26.134 L1551.532,26.134 L1551.532,78.402 L1512.868,78.402 L1512.868,109.19 L1551.532,109.19 L1551.532,203.702 C1551.532,239.86 1570.506,257.402 1605.948,257.402 Z M1788.646,253.822 L1788.646,109.19 L1830.532,109.19 L1830.532,78.402 L1788.646,78.402 L1788.646,61.576 C1788.646,44.392 1795.806,36.158 1814.064,36.158 C1818.718,36.158 1824.088,36.516 1830.174,37.948 L1830.174,7.16 C1823.014,5.37 1814.064,3.58 1804.398,3.58 C1771.462,3.58 1749.266,19.69 1749.266,56.564 L1749.266,78.402 L1654.29087,78.402 L1654.29087,109.19 L1749.266,109.19 L1749.266,253.822 L1788.646,253.822 Z M2057.138,257.76 C2099.74,257.76 2125.874,234.49 2136.614,206.924 L2102.962,192.962 C2095.086,213.726 2080.766,226.614 2058.57,226.614 C2027.782,226.614 2012.746,205.134 2011.672,173.988 L2137.33,173.988 L2137.33,166.828 C2137.33,109.548 2107.974,73.032 2056.064,73.032 C2008.092,73.032 1971.576,107.042 1971.576,165.396 C1971.576,221.244 2002.006,257.76 2057.138,257.76 Z M2096.518,146.064 L2012.746,146.064 C2015.61,118.856 2031.362,103.104 2055.706,103.104 C2079.334,103.104 2095.086,117.424 2096.518,146.064 Z M2208.284,253.822 L2208.284,78.402 L2167.472,78.402 L2167.472,253.822 L2208.284,253.822 Z M2347.826,258.118 C2388.996,258.118 2419.426,224.108 2419.426,165.038 C2419.426,108.116 2389.712,74.106 2347.826,74.106 C2318.112,74.106 2298.78,90.574 2289.83,112.054 L2289.83,7.16 L2249.018,7.16 L2249.018,253.822 L2289.114,253.822 L2289.114,220.17 C2298.422,241.65 2318.47,258.118 2347.826,258.118 Z M2334.222,227.688 C2306.298,227.688 2289.114,202.986 2289.114,166.112 C2289.114,127.448 2306.656,104.536 2333.864,104.536 C2361.072,104.536 2377.898,126.374 2377.898,165.754 C2377.898,206.208 2361.43,227.688 2334.222,227.688 Z M2947.27463,66.822 L2949.83656,99.6181562 L2944.08619,99.6181562 L2943.5549,99.6221305 C2935.96698,99.7360598 2929.54905,102.299469 2924.30109,107.312359 C2918.93109,112.441828 2916.24609,120.329948 2916.24609,130.976719 L2916.24609,130.976719 L2916.24609,139.121219 L2916.24225,139.893982 C2916.11935,152.231227 2913.04687,163.273947 2907.0248,173.022141 C2900.87727,182.973422 2892.09508,190.775771 2880.67823,196.429187 C2869.26139,202.082604 2856.04616,204.909312 2841.03253,204.909312 L2841.03253,204.909312 L2840.0932,204.905335 C2828.53178,204.807216 2817.84391,202.893905 2808.02961,199.165401 L2808.02961,199.165401 L2807.36604,198.909969 L2806.80989,199.118743 C2803.6758,200.328133 2800.94608,201.919901 2798.62072,203.894047 C2795.20107,206.797203 2793.49125,210.465771 2793.49125,214.89975 C2793.49125,219.751396 2795.43415,223.375214 2799.31994,225.771203 C2803.20573,228.167193 2808.76778,229.365187 2816.00609,229.365187 L2816.00609,229.365187 L2882.678,229.365187 L2883.44857,229.367931 C2899.31593,229.481321 2911.60679,233.109818 2920.32114,240.253422 C2929.17605,247.512245 2933.6035,257.738552 2933.6035,270.932344 C2933.6035,289.436469 2925.77878,303.635271 2910.12933,313.52875 C2894.47988,323.422229 2870.24682,328.368969 2837.43016,328.368969 C2811.80332,328.368969 2792.11426,324.897115 2778.36295,317.953406 C2764.61165,311.009698 2757.736,301.395906 2757.736,289.112031 C2757.736,281.236031 2760.40981,274.860089 2765.75744,269.984203 C2771.10506,265.108318 2778.15505,261.568406 2786.90741,259.364469 C2779.31482,257.250031 2773.27078,253.425771 2768.77527,247.891687 C2764.27976,242.357604 2762.032,235.30575 2762.032,226.736125 C2762.032,217.118604 2765.4302,208.932151 2772.22661,202.176766 L2772.22661,202.176766 L2772.69248,201.719793 C2778.00054,196.581816 2784.26553,192.839432 2791.48745,190.49264 L2791.51704,190.482969 L2791.44722,190.433266 C2785.043,185.882422 2779.70081,180.349078 2775.42064,173.833234 C2768.86663,163.855849 2765.58962,152.331792 2765.58962,139.261062 C2765.58962,126.939896 2768.76128,115.744937 2775.10459,105.676188 C2781.44791,95.6074375 2790.36434,87.6633802 2801.85391,81.8440156 C2813.34347,76.024651 2826.52234,73.1149688 2841.39053,73.1149688 C2856.82555,73.1149688 2870.41557,76.226026 2882.16058,82.4481406 C2893.90559,88.6702552 2902.45004,97.3620104 2907.79394,108.523406 C2908.89404,95.0536562 2912.8684,84.795651 2919.71702,77.7493906 C2926.56563,70.7031302 2935.7515,67.0606667 2947.27463,66.822 L2947.27463,66.822 Z M2874.49563,263.352812 L2813.78106,263.352812 L2813.15668,263.356397 C2805.91509,263.440037 2800.17333,264.987379 2795.93141,267.998422 C2791.56828,271.095495 2789.314,275.33649 2789.16856,280.721406 C2789.07533,287.68749 2793.22217,292.880354 2801.60906,296.3 C2809.99596,299.719646 2822.45697,301.429469 2838.99209,301.429469 C2859.50251,301.429469 2874.48537,299.517339 2883.94067,295.693078 C2893.39597,291.868818 2898.12363,286.281594 2898.12363,278.931406 C2898.12363,273.397323 2896.14344,269.41737 2892.18306,266.991547 C2888.22269,264.565724 2882.32688,263.352812 2874.49563,263.352812 L2874.49563,263.352812 Z M2489.59,78.402 L2489.59,181.864 C2489.59,209.788 2499.614,223.392 2519.662,223.392 C2545.08,223.392 2563.696,203.702 2563.696,165.038 L2563.696,165.038 L2563.696,78.402 L2604.508,78.402 L2604.508,253.822 L2564.412,253.822 L2564.412,214.442 C2555.104,239.502 2534.698,257.76 2504.984,257.76 C2468.11,257.76 2449.136,231.984 2449.136,191.888 L2449.136,191.888 L2449.136,78.402 L2489.59,78.402 Z M2839.80878,100.736906 C2832.82032,100.736906 2826.58236,102.166109 2821.09489,105.024516 C2815.60742,107.882922 2811.28718,112.187312 2808.13417,117.937687 C2804.98116,123.688062 2803.40466,130.795854 2803.40466,139.261062 C2803.40466,151.839542 2806.78794,161.345187 2813.55452,167.778 C2820.32109,174.210812 2829.07251,177.427219 2839.80878,177.427219 C2850.69422,177.427219 2859.5426,174.188437 2866.35392,167.710875 C2873.16524,161.233312 2876.57091,151.703427 2876.57091,139.121219 C2876.57091,130.65601 2874.97203,123.548219 2871.77427,117.797844 C2868.57651,112.047469 2864.21897,107.766385 2858.70167,104.954594 C2853.18437,102.142802 2846.88674,100.736906 2839.80878,100.736906 Z"></path>
+            <path
+                d="M1380.054,49.688 C1392.942,49.688 1401.892,40.022 1401.892,27.492 C1401.892,15.32 1392.942,5.654 1380.054,5.654 C1367.524,5.654 1358.216,15.32 1358.216,27.492 C1358.216,40.022 1367.524,49.688 1380.054,49.688 Z">
+            </path>
+            <path
+                d="M1447.054,49.688 C1459.942,49.688 1468.892,40.022 1468.892,27.492 C1468.892,15.32 1459.942,5.654 1447.054,5.654 C1434.524,5.654 1425.216,15.32 1425.216,27.492 C1425.216,40.022 1434.524,49.688 1447.054,49.688 Z">
+            </path>
+            <path
+                d="M1154.054,49.688 C1166.942,49.688 1175.892,40.022 1175.892,27.492 C1175.892,15.32 1166.942,5.654 1154.054,5.654 C1141.524,5.654 1132.216,15.32 1132.216,27.492 C1132.216,40.022 1141.524,49.688 1154.054,49.688 Z">
+            </path>
+            <path
+                d="M2187.054,49.688 C2199.942,49.688 2208.892,40.022 2208.892,27.492 C2208.892,15.32 2199.942,5.654 2187.054,5.654 C2174.524,5.654 2165.216,15.32 2165.216,27.492 C2165.216,40.022 2174.524,49.688 2187.054,49.688 Z">
+            </path>
+            <path
+                d="M410.054,49.688 C422.942,49.688 431.892,40.022 431.892,27.492 C431.892,15.32 422.942,5.654 410.054,5.654 C397.524,5.654 388.216,15.32 388.216,27.492 C388.216,40.022 397.524,49.688 410.054,49.688 Z">
+            </path>
+        </g>
+    </g>
+</svg>
+				</span>
+				<!-- ufr-text-logo short -->
+				<div class="
+						flex md:hidden
+						h-[30px]
+						w-[56px]
+						text-pure-white
+						"
+				>
+					<svg width="100%" viewBox="0 0 57 30" xmlns="http://www.w3.org/2000/svg"
+	aria-label="Startseite der Universität Freiburg"  role="img">
+	<title>Textlogo 'UFR', Abkürzung für 'Universität Freiburg'</title>
+	<g fill="currentColor">
+		<path d="M6.59108 30C8.15242 30.0086 9.67543 29.5167 10.9369 28.5966C12.1983 27.6765 13.1319 26.3765 13.6006 24.8872V29.5303H18.3326V8.83008H13.5201V19.0557C13.5201 23.6182 11.3231 25.9428 8.3236 25.9428C5.95708 25.9428 4.77383 24.338 4.77383 21.0414V8.83008H0V22.2215C0 26.9535 2.23992 29.9958 6.59108 29.9958" />
+		<path d="M48.1149 29.5354V20.7473C48.1149 15.4242 50.8612 13.1414 55.0868 13.1414C55.3327 13.1414 55.5492 13.1414 55.7511 13.1519L56.3548 8.28284C55.9879 8.25424 55.7061 8.24029 55.5095 8.24099C51.7494 8.24099 49.2563 10.6912 48.0312 14.4942V8.83105H43.3411V29.5354H48.1149Z" />
+		<path d="M36.2781 29.5354V12.4645H41.2215V8.83101H36.2781V6.84322C36.2781 4.81463 37.1235 3.84271 39.2776 3.84271C39.9176 3.83773 40.556 3.90796 41.1796 4.05195V0.418481C40.1867 0.155303 39.1653 0.0147621 38.1383 0C34.2506 0 31.6309 1.90095 31.6309 6.25316V8.83101H20.4219V12.4655H31.632V29.5354H36.2781Z" />
+	</g>
+</svg>
+				</div>
+			</a>
+			<div class="
+					w-full font-bold
+					hyphens-auto
+					text-[1rem] leading-[1.375rem]
+					md:text-[1.5rem] md:leading-[2.25rem]
+					xl:text-[3rem] xl:leading-[4.0625rem]
+					mt-[10px] md:mt-[8px] xl:mt-[10px]
+					text-pure-white
+										md:max-w-[414px] xl:max-w-[652px] 2xl:max-w-[1089px]
+					">
+				Mathematisches Institut			</div>
+			<div
+				class="absolute right-0 -top-[25px] md:-top-[52px] xl:-top-[80px]
+				*:-top-[80px] md:*:-top-[95px] xl:*:-top-[160px]
+				*:left-[25px] md:*:left-[45px] xl:*:left-[80px]
+				w-[171px]
+				md:w-[284px]
+				xl:w-[478px]"
+			>
+								<div
+					class="absolute opacity-40
+					w-[257px]
+					md:w-[428px]
+					xl:w-[728px]"
+				>
+					<svg
+	width="100%"
+	viewBox="0 0 65 65.7"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+	aria-label="Siegelement der Uni Freiburg in Form eines Kleeblatts"
+	
+	role="img">
+	<title>Siegelement der Uni Freiburg in Form eines Kleeblatts</title>
+<linearGradient
+	id="PWby4fN5Ya"
+	x1="15%" y1="85%"
+	x2="85%" y2="15%">
+	<stop
+		offset="0%"
+		stop-color="#000149"
+		stop-opacity="1" />
+	<stop
+		offset="100%"
+		stop-color="#000149"
+		stop-opacity="0" />
+</linearGradient>
+	<path
+		d="M48.5,16.8L48.5,16.8c0,0,0-0.1,0-0.1c0-8.9-7.2-16.1-16-16.1s-16,7.2-16,16.1c0,0,0,0.1,0,0.1l0,0 c-8.8,0-16,7.2-16,16.1S7.7,49,16.5,49l0,0c0,0,0,0.1,0,0.1c0,8.9,7.2,16.1,16,16.1s16-7.2,16-16.1c0,0,0-0.1,0-0.1l0,0 c8.8,0,16-7.2,16-16.1S57.4,16.7,48.5,16.8L48.5,16.8z"
+		stroke-width="2px"
+		vector-effect="non-scaling-stroke"
+		stroke="url(#PWby4fN5Ya)" />
+</svg>
+				</div>
+			</div>
+			
+			<div class="absolute top-0
+			flex flex-row justify-between gap-[35px] z-[3]
+			right-0 xl:-right-[60px]">
+				
+<div
+	class="
+		hidden md:inline-block  
+		"
+>
+	<div
+		class="flex flex-row justify-between md:gap-[10px] xl:gap-[35px] items-center">
+		
+<button
+	data-action="openDialog"
+	data-dialog-open="search-modal"
+	data-dialog-type="modal"
+	class="focus-visible:outline-dotted outline-2 outline-offset-4 transition-colors duration-[400ms] text-pure-white hover:text-identity-yellow-40 active:text-identity-yellow disabled:text-identity-blue-40 outline-pure-white ">
+	<span
+		class="block search md:w-[46px] xl:w-[58px] p-[7px] xl:p-[0px]">
+		<svg viewBox="0 0 60 57" fill="none" xmlns="http://www.w3.org/2000/svg"
+    aria-label="Suche"  role="img">
+    <title>Such-Icon</title>
+    <circle cx="22.2358" cy="22.2358" r="20.2358" stroke="currentColor" stroke-width="4"/>
+    <line x1="38.6972" y1="35.8687" x2="58.4142" y2="55.5857" stroke="currentColor" stroke-width="4"/>
+</svg>
+	</span>
+</button>
+		
+<button
+	data-action="openDialog"
+	data-dialog-open="menu"
+	class="
+		flex
+		flex-row
+		justify-between
+		md:gap-[10px] xl:gap-[25px]
+		focus-visible:outline-dotted outline-2 outline-offset-4 transition-colors duration-[400ms] text-pure-white hover:text-identity-yellow-40 active:text-identity-yellow disabled:text-identity-blue-40 outline-pure-white"
+>
+	<span
+		class="hidden md:block uppercase font-[350] md:text-[1.5625rem] xl:text-[2.1875rem] leading-normal">
+		Menü	</span>
+	<span
+		class="block
+			md:w-[54px] xl:w-[60px]	flex flex-col
+			justify-between gap-[8px] xl:gap-[14px]
+			md:px-[7px] xl:px-[0px]
+			"
+	>
+		<span class="w-full">
+			<svg width="100%" viewBox="0 0 60 51" xmlns="http://www.w3.org/2000/svg"
+	aria-label="Menü"  role="img">
+	<title>Menü-Icon</title>
+	<g fill="currentColor">
+		<path d="M59.9991 9.5H-0.000854492V5.5H59.9991V9.5Z" />
+		<path d="M59.9991 27.5H-0.000854492V23.5H59.9991V27.5Z" />
+		<path d="M59.9991 45.5H-0.000854492V41.5H59.9991V45.5Z" />
+	</g>
+</svg>
+		</span>
+	</span>
+</button>
+	</div>
+</div>
+			</div>
+					</div>
+	</div>
+	<!-- sticky header -->
+	
+<div
+	id="sticky-header"
+	aria-hidden inert
+	class="
+		hidden
+		w-full
+		top-0
+		px-[24px] md:px-[48px] xl:px-[139px]
+		py-[12px] md:py-[25px] xl:py-[30px]
+		has-global-padding is-layout-constrained mx-auto
+		bg-pure-white dark:bg-identity-black		drop-shadow-lg z-[100]"
+>
+	<div class="relative">
+	
+		
+
+		<div
+			class="
+				relative
+				w-full
+				flex items-start
+				flex-row md:flex-col
+				gap-[15px] md:gap-0"
+		>
+			<a href="https://uni-freiburg.de/math <view-source:https://uni-freiburg.de/math>">
+				<div
+					class="
+						hidden md:block
+						md:w-[180px] xl:w-[270px]
+						"
+				>
+					<svg width="100%" viewBox="0 0 2951 329" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Startseite der Universität Freiburg"
+     role="img">
+    <title>Text icon 'Universität Freiburg'</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(0.264000, 0.178000)" fill="currentColor" fill-rule="nonzero">
+            <path
+                d="M55.848,257.76 C85.562,257.76 105.968,239.502 115.276,214.442 L115.276,253.822 L155.372,253.822 L155.372,78.402 L114.56,78.402 L114.56,165.038 C114.56,203.702 95.944,223.392 70.526,223.392 C50.478,223.392 40.454,209.788 40.454,181.864 L40.454,78.402 L0,78.402 L0,191.888 C0,231.984 18.974,257.76 55.848,257.76 Z M235.918,253.822 L235.918,166.112 C235.918,130.312 254.176,108.832 279.952,108.832 C302.148,108.832 312.888,122.794 312.888,151.076 L312.888,253.822 L354.058,253.822 L354.058,141.052 C354.058,101.314 333.294,74.464 294.988,74.464 C264.558,74.464 243.794,93.438 234.844,119.572 L234.844,78.402 L195.106,78.402 L195.106,253.822 L235.918,253.822 Z M430.814,253.822 L430.814,78.402 L390.002,78.402 L390.002,253.822 L430.814,253.822 Z M563.48,253.822 L631.5,78.402 L590.688,78.402 L543.79,213.726 L498.324,78.402 L453.574,78.402 L520.878,253.822 L563.48,253.822 Z M724.218,257.76 C766.82,257.76 792.954,234.49 803.694,206.924 L770.042,192.962 C762.166,213.726 747.846,226.614 725.65,226.614 C694.862,226.614 679.826,205.134 678.752,173.988 L804.41,173.988 L804.41,166.828 C804.41,109.548 775.054,73.032 723.144,73.032 C675.172,73.032 638.656,107.042 638.656,165.396 C638.656,221.244 669.086,257.76 724.218,257.76 Z M763.598,146.064 L679.826,146.064 C682.69,118.856 698.442,103.104 722.786,103.104 C746.414,103.104 762.166,117.424 763.598,146.064 Z M876.006,253.822 L876.006,179.358 C876.006,134.25 899.276,114.918 935.076,114.918 C937.16267,114.918 938.995953,114.918 940.698926,115.000051 C940.698926,115.000051 942.404617,101.249367 945.816,73.748 C942.713333,73.5093333 940.326667,73.39 938.656,73.39 C906.794,73.39 885.672,94.154 875.29,126.374 L875.29,78.402 L835.552,78.402 L835.552,253.822 L876.006,253.822 Z M1896.006,253.822 L1896.006,179.358 C1896.006,134.25 1919.276,114.918 1955.076,114.918 C1957.16267,114.918 1958.99595,114.918 1960.69893,115.000051 C1960.69893,115.000051 1962.40462,101.249367 1965.816,73.748 C1962.71333,73.5093333 1960.32667,73.39 1958.656,73.39 C1926.794,73.39 1905.672,94.154 1895.29,126.374 L1895.29,78.402 L1855.552,78.402 L1855.552,253.822 L1896.006,253.822 Z M2684.006,253.822 L2684.006,179.358 C2684.006,134.25 2707.276,114.918 2743.076,114.918 C2745.16267,114.918 2746.99595,114.918 2748.69893,115.000051 C2748.69893,115.000051 2750.40462,101.249367 2753.816,73.748 C2750.71333,73.5093333 2748.32667,73.39 2746.656,73.39 C2714.794,73.39 2693.672,94.154 2683.29,126.374 L2683.29,78.402 L2643.552,78.402 L2643.552,253.822 L2684.006,253.822 Z M1031.016,258.834 C1075.408,258.834 1104.048,237.712 1104.048,202.986 C1104.048,178.284 1089.728,160.026 1055.718,151.076 L1025.288,142.842 C1005.956,137.472 997.722,132.46 997.722,120.288 C997.722,108.832 1008.104,100.598 1027.794,100.598 C1050.348,100.598 1061.446,114.56 1064.668,128.88 L1099.394,119.572 C1091.876,90.574 1065.026,73.032 1029.584,73.032 C989.488,73.032 961.206,93.08 961.206,124.942 C961.206,150.002 977.316,167.902 1008.82,175.778 L1037.46,183.654 C1058.94,189.382 1065.742,195.11 1065.742,207.998 C1065.742,220.886 1054.286,230.91 1031.732,230.91 C1008.462,230.91 993.068,216.232 989.488,196.9 L953.688,206.924 C959.774,237.354 987.698,258.834 1031.016,258.834 Z M1174.57,253.822 L1174.57,78.402 L1133.758,78.402 L1133.758,253.822 L1174.57,253.822 Z M1288.052,257.402 C1300.94,257.402 1312.396,254.18 1318.84,250.958 L1318.84,220.886 C1311.68,223.034 1305.952,224.108 1298.792,224.108 C1281.25,224.108 1273.016,217.306 1273.016,198.332 L1273.016,109.19 L1317.05,109.19 L1317.05,78.402 L1272.658,78.402 L1272.658,26.134 L1233.636,26.134 L1233.636,78.402 L1194.972,78.402 L1194.972,109.19 L1233.636,109.19 L1233.636,203.702 C1233.636,239.86 1252.61,257.402 1288.052,257.402 Z M1395.806,258.834 C1425.52,258.834 1445.926,243.082 1454.876,220.886 C1456.308,243.798 1469.554,257.044 1493.898,257.044 C1502.848,257.044 1512.156,254.896 1517.884,251.316 L1517.884,225.182 C1513.946,226.972 1510.008,227.33 1506.428,227.33 C1495.688,227.33 1490.676,222.676 1490.676,207.282 L1490.676,141.41 C1490.676,97.018 1463.826,73.032 1415.138,73.032 C1372.894,73.032 1342.822,94.512 1341.032,126.016 L1379.338,132.46 L1379.338,129.238 C1380.77,110.98 1394.374,100.956 1415.138,100.956 C1440.556,100.956 1451.296,113.128 1451.296,135.324 L1451.296,144.99 C1442.704,144.274 1433.754,143.558 1423.014,143.558 C1376.116,144.274 1338.526,160.384 1338.526,205.134 C1338.526,239.502 1362.512,258.834 1395.806,258.834 Z M1409.052,228.762 C1390.078,228.762 1378.622,218.738 1378.622,202.27 C1378.622,177.926 1399.386,168.976 1432.68,168.26 C1439.482,168.26 1445.568,168.618 1451.296,168.976 L1451.296,181.506 C1451.296,211.22 1434.47,228.762 1409.052,228.762 Z M1605.948,257.402 C1618.836,257.402 1630.292,254.18 1636.736,250.958 L1636.736,220.886 C1629.576,223.034 1623.848,224.108 1616.688,224.108 C1599.146,224.108 1590.912,217.306 1590.912,198.332 L1590.912,109.19 L1634.946,109.19 L1634.946,78.402 L1590.554,78.402 L1590.554,26.134 L1551.532,26.134 L1551.532,78.402 L1512.868,78.402 L1512.868,109.19 L1551.532,109.19 L1551.532,203.702 C1551.532,239.86 1570.506,257.402 1605.948,257.402 Z M1788.646,253.822 L1788.646,109.19 L1830.532,109.19 L1830.532,78.402 L1788.646,78.402 L1788.646,61.576 C1788.646,44.392 1795.806,36.158 1814.064,36.158 C1818.718,36.158 1824.088,36.516 1830.174,37.948 L1830.174,7.16 C1823.014,5.37 1814.064,3.58 1804.398,3.58 C1771.462,3.58 1749.266,19.69 1749.266,56.564 L1749.266,78.402 L1654.29087,78.402 L1654.29087,109.19 L1749.266,109.19 L1749.266,253.822 L1788.646,253.822 Z M2057.138,257.76 C2099.74,257.76 2125.874,234.49 2136.614,206.924 L2102.962,192.962 C2095.086,213.726 2080.766,226.614 2058.57,226.614 C2027.782,226.614 2012.746,205.134 2011.672,173.988 L2137.33,173.988 L2137.33,166.828 C2137.33,109.548 2107.974,73.032 2056.064,73.032 C2008.092,73.032 1971.576,107.042 1971.576,165.396 C1971.576,221.244 2002.006,257.76 2057.138,257.76 Z M2096.518,146.064 L2012.746,146.064 C2015.61,118.856 2031.362,103.104 2055.706,103.104 C2079.334,103.104 2095.086,117.424 2096.518,146.064 Z M2208.284,253.822 L2208.284,78.402 L2167.472,78.402 L2167.472,253.822 L2208.284,253.822 Z M2347.826,258.118 C2388.996,258.118 2419.426,224.108 2419.426,165.038 C2419.426,108.116 2389.712,74.106 2347.826,74.106 C2318.112,74.106 2298.78,90.574 2289.83,112.054 L2289.83,7.16 L2249.018,7.16 L2249.018,253.822 L2289.114,253.822 L2289.114,220.17 C2298.422,241.65 2318.47,258.118 2347.826,258.118 Z M2334.222,227.688 C2306.298,227.688 2289.114,202.986 2289.114,166.112 C2289.114,127.448 2306.656,104.536 2333.864,104.536 C2361.072,104.536 2377.898,126.374 2377.898,165.754 C2377.898,206.208 2361.43,227.688 2334.222,227.688 Z M2947.27463,66.822 L2949.83656,99.6181562 L2944.08619,99.6181562 L2943.5549,99.6221305 C2935.96698,99.7360598 2929.54905,102.299469 2924.30109,107.312359 C2918.93109,112.441828 2916.24609,120.329948 2916.24609,130.976719 L2916.24609,130.976719 L2916.24609,139.121219 L2916.24225,139.893982 C2916.11935,152.231227 2913.04687,163.273947 2907.0248,173.022141 C2900.87727,182.973422 2892.09508,190.775771 2880.67823,196.429187 C2869.26139,202.082604 2856.04616,204.909312 2841.03253,204.909312 L2841.03253,204.909312 L2840.0932,204.905335 C2828.53178,204.807216 2817.84391,202.893905 2808.02961,199.165401 L2808.02961,199.165401 L2807.36604,198.909969 L2806.80989,199.118743 C2803.6758,200.328133 2800.94608,201.919901 2798.62072,203.894047 C2795.20107,206.797203 2793.49125,210.465771 2793.49125,214.89975 C2793.49125,219.751396 2795.43415,223.375214 2799.31994,225.771203 C2803.20573,228.167193 2808.76778,229.365187 2816.00609,229.365187 L2816.00609,229.365187 L2882.678,229.365187 L2883.44857,229.367931 C2899.31593,229.481321 2911.60679,233.109818 2920.32114,240.253422 C2929.17605,247.512245 2933.6035,257.738552 2933.6035,270.932344 C2933.6035,289.436469 2925.77878,303.635271 2910.12933,313.52875 C2894.47988,323.422229 2870.24682,328.368969 2837.43016,328.368969 C2811.80332,328.368969 2792.11426,324.897115 2778.36295,317.953406 C2764.61165,311.009698 2757.736,301.395906 2757.736,289.112031 C2757.736,281.236031 2760.40981,274.860089 2765.75744,269.984203 C2771.10506,265.108318 2778.15505,261.568406 2786.90741,259.364469 C2779.31482,257.250031 2773.27078,253.425771 2768.77527,247.891687 C2764.27976,242.357604 2762.032,235.30575 2762.032,226.736125 C2762.032,217.118604 2765.4302,208.932151 2772.22661,202.176766 L2772.22661,202.176766 L2772.69248,201.719793 C2778.00054,196.581816 2784.26553,192.839432 2791.48745,190.49264 L2791.51704,190.482969 L2791.44722,190.433266 C2785.043,185.882422 2779.70081,180.349078 2775.42064,173.833234 C2768.86663,163.855849 2765.58962,152.331792 2765.58962,139.261062 C2765.58962,126.939896 2768.76128,115.744937 2775.10459,105.676188 C2781.44791,95.6074375 2790.36434,87.6633802 2801.85391,81.8440156 C2813.34347,76.024651 2826.52234,73.1149688 2841.39053,73.1149688 C2856.82555,73.1149688 2870.41557,76.226026 2882.16058,82.4481406 C2893.90559,88.6702552 2902.45004,97.3620104 2907.79394,108.523406 C2908.89404,95.0536562 2912.8684,84.795651 2919.71702,77.7493906 C2926.56563,70.7031302 2935.7515,67.0606667 2947.27463,66.822 L2947.27463,66.822 Z M2874.49563,263.352812 L2813.78106,263.352812 L2813.15668,263.356397 C2805.91509,263.440037 2800.17333,264.987379 2795.93141,267.998422 C2791.56828,271.095495 2789.314,275.33649 2789.16856,280.721406 C2789.07533,287.68749 2793.22217,292.880354 2801.60906,296.3 C2809.99596,299.719646 2822.45697,301.429469 2838.99209,301.429469 C2859.50251,301.429469 2874.48537,299.517339 2883.94067,295.693078 C2893.39597,291.868818 2898.12363,286.281594 2898.12363,278.931406 C2898.12363,273.397323 2896.14344,269.41737 2892.18306,266.991547 C2888.22269,264.565724 2882.32688,263.352812 2874.49563,263.352812 L2874.49563,263.352812 Z M2489.59,78.402 L2489.59,181.864 C2489.59,209.788 2499.614,223.392 2519.662,223.392 C2545.08,223.392 2563.696,203.702 2563.696,165.038 L2563.696,165.038 L2563.696,78.402 L2604.508,78.402 L2604.508,253.822 L2564.412,253.822 L2564.412,214.442 C2555.104,239.502 2534.698,257.76 2504.984,257.76 C2468.11,257.76 2449.136,231.984 2449.136,191.888 L2449.136,191.888 L2449.136,78.402 L2489.59,78.402 Z M2839.80878,100.736906 C2832.82032,100.736906 2826.58236,102.166109 2821.09489,105.024516 C2815.60742,107.882922 2811.28718,112.187312 2808.13417,117.937687 C2804.98116,123.688062 2803.40466,130.795854 2803.40466,139.261062 C2803.40466,151.839542 2806.78794,161.345187 2813.55452,167.778 C2820.32109,174.210812 2829.07251,177.427219 2839.80878,177.427219 C2850.69422,177.427219 2859.5426,174.188437 2866.35392,167.710875 C2873.16524,161.233312 2876.57091,151.703427 2876.57091,139.121219 C2876.57091,130.65601 2874.97203,123.548219 2871.77427,117.797844 C2868.57651,112.047469 2864.21897,107.766385 2858.70167,104.954594 C2853.18437,102.142802 2846.88674,100.736906 2839.80878,100.736906 Z"></path>
+            <path
+                d="M1380.054,49.688 C1392.942,49.688 1401.892,40.022 1401.892,27.492 C1401.892,15.32 1392.942,5.654 1380.054,5.654 C1367.524,5.654 1358.216,15.32 1358.216,27.492 C1358.216,40.022 1367.524,49.688 1380.054,49.688 Z">
+            </path>
+            <path
+                d="M1447.054,49.688 C1459.942,49.688 1468.892,40.022 1468.892,27.492 C1468.892,15.32 1459.942,5.654 1447.054,5.654 C1434.524,5.654 1425.216,15.32 1425.216,27.492 C1425.216,40.022 1434.524,49.688 1447.054,49.688 Z">
+            </path>
+            <path
+                d="M1154.054,49.688 C1166.942,49.688 1175.892,40.022 1175.892,27.492 C1175.892,15.32 1166.942,5.654 1154.054,5.654 C1141.524,5.654 1132.216,15.32 1132.216,27.492 C1132.216,40.022 1141.524,49.688 1154.054,49.688 Z">
+            </path>
+            <path
+                d="M2187.054,49.688 C2199.942,49.688 2208.892,40.022 2208.892,27.492 C2208.892,15.32 2199.942,5.654 2187.054,5.654 C2174.524,5.654 2165.216,15.32 2165.216,27.492 C2165.216,40.022 2174.524,49.688 2187.054,49.688 Z">
+            </path>
+            <path
+                d="M410.054,49.688 C422.942,49.688 431.892,40.022 431.892,27.492 C431.892,15.32 422.942,5.654 410.054,5.654 C397.524,5.654 388.216,15.32 388.216,27.492 C388.216,40.022 397.524,49.688 410.054,49.688 Z">
+            </path>
+        </g>
+    </g>
+</svg>
+				</div>
+				<div
+					class="
+						flex md:hidden
+						h-[20px]
+						w-[37.5px]
+						"
+				>
+					<svg width="100%" viewBox="0 0 57 30" xmlns="http://www.w3.org/2000/svg"
+	aria-label="Startseite der Universität Freiburg"  role="img">
+	<title>Textlogo 'UFR', Abkürzung für 'Universität Freiburg'</title>
+	<g fill="currentColor">
+		<path d="M6.59108 30C8.15242 30.0086 9.67543 29.5167 10.9369 28.5966C12.1983 27.6765 13.1319 26.3765 13.6006 24.8872V29.5303H18.3326V8.83008H13.5201V19.0557C13.5201 23.6182 11.3231 25.9428 8.3236 25.9428C5.95708 25.9428 4.77383 24.338 4.77383 21.0414V8.83008H0V22.2215C0 26.9535 2.23992 29.9958 6.59108 29.9958" />
+		<path d="M48.1149 29.5354V20.7473C48.1149 15.4242 50.8612 13.1414 55.0868 13.1414C55.3327 13.1414 55.5492 13.1414 55.7511 13.1519L56.3548 8.28284C55.9879 8.25424 55.7061 8.24029 55.5095 8.24099C51.7494 8.24099 49.2563 10.6912 48.0312 14.4942V8.83105H43.3411V29.5354H48.1149Z" />
+		<path d="M36.2781 29.5354V12.4645H41.2215V8.83101H36.2781V6.84322C36.2781 4.81463 37.1235 3.84271 39.2776 3.84271C39.9176 3.83773 40.556 3.90796 41.1796 4.05195V0.418481C40.1867 0.155303 39.1653 0.0147621 38.1383 0C34.2506 0 31.6309 1.90095 31.6309 6.25316V8.83101H20.4219V12.4655H31.632V29.5354H36.2781Z" />
+	</g>
+</svg>
+				</div>
+			</a>
+			<div
+				class="
+					w-full md:max-w-[500px] xl:max-w-[578px] 2xl:max-w-[813px]
+					font-bold
+					text-[1rem] md:text-[1.5rem] xl:text-[2.3125rem]
+					leading-[1.375rem] md:leading-[2.25rem] xl:leading-[3.4375rem]
+					md:mt-[10px] xl:mt-[15px]"
+			>
+				Mathematisches Institut			</div>
+		</div>
+		<div class="right-0 xl:-right-[60px] top-0 md:absolute">
+			
+<div
+	class="
+		hidden md:inline-block  
+		"
+>
+	<div
+		class="flex flex-row justify-between md:gap-[10px] xl:gap-[35px] items-center">
+		
+<button
+	data-action="openDialog"
+	data-dialog-open="search-modal"
+	data-dialog-type="modal"
+	class="focus-visible:outline-dotted outline-2 outline-offset-4 transition-colors duration-[400ms]
+		text-identity-black hover:text-identity-blue-80 active:text-identity-blue disabled:text-identity-disabled outline-identity-black
+		dark:text-pure-white dark:hover:text-identity-yellow-40 dark:active:text-identity-yellow dark:disabled:text-identity-blue-40 dark:outline-pure-white
+	 ">
+	<span
+		class="block search md:w-[46px] xl:w-[58px] p-[7px] xl:p-[0px]">
+		<svg viewBox="0 0 60 57" fill="none" xmlns="http://www.w3.org/2000/svg"
+    aria-label="Suche"  role="img">
+    <title>Such-Icon</title>
+    <circle cx="22.2358" cy="22.2358" r="20.2358" stroke="currentColor" stroke-width="4"/>
+    <line x1="38.6972" y1="35.8687" x2="58.4142" y2="55.5857" stroke="currentColor" stroke-width="4"/>
+</svg>
+	</span>
+</button>
+		
+<button
+	data-action="openDialog"
+	data-dialog-open="menu"
+	class="
+		flex
+		flex-row
+		justify-between
+		md:gap-[10px] xl:gap-[25px]
+		focus-visible:outline-dotted outline-2 outline-offset-4 transition-colors duration-[400ms]
+		text-identity-black hover:text-identity-blue-80 active:text-identity-blue disabled:text-identity-disabled outline-identity-black
+		dark:text-pure-white dark:hover:text-identity-yellow-40 dark:active:text-identity-yellow dark:disabled:text-identity-blue-40 dark:outline-pure-white
+	"
+>
+	<span
+		class="hidden md:block uppercase font-[350] md:text-[1.5625rem] xl:text-[2.1875rem] leading-normal">
+		Menü	</span>
+	<span
+		class="block
+			md:w-[54px] xl:w-[60px]	flex flex-col
+			justify-between gap-[8px] xl:gap-[14px]
+			md:px-[7px] xl:px-[0px]
+			"
+	>
+		<span class="w-full">
+			<svg width="100%" viewBox="0 0 60 51" xmlns="http://www.w3.org/2000/svg"
+	aria-label="Menü"  role="img">
+	<title>Menü-Icon</title>
+	<g fill="currentColor">
+		<path d="M59.9991 9.5H-0.000854492V5.5H59.9991V9.5Z" />
+		<path d="M59.9991 27.5H-0.000854492V23.5H59.9991V27.5Z" />
+		<path d="M59.9991 45.5H-0.000854492V41.5H59.9991V45.5Z" />
+	</g>
+</svg>
+		</span>
+	</span>
+</button>
+	</div>
+</div>
+		</div>
+	</div>
+</div>
+</header>
+
+<!-- Breadcrumbs -->
+<div class="has-global-padding is-layout-constrained relative z-10">
+	<nav
+	role="navigation"
+	type="breadcrumb"
+
+		aria-label="Breadcrumb"
+>
+
+		<ol
+		class="
+			hidden xl:flex
+			flex-row items-center flex-wrap list-none m-0 pl-[4px] border-none
+			[&_li]:leading-none [&_li>a]:mx-[8px] [&_>li:first-child>a]:ms-0
+		"
+	>
+					
+<li
+	class="flex items-center after:content-[&#039;/&#039;] last:after:content-none"
+
+	>
+	<a
+		class="inline-flex justify-center items-center my-[9px] text-[0.875rem] leading-[1.5rem] xl:text-[1.125rem] xl:leading-[1.5625rem] text-identity-black hover:text-identity-blue dark:text-pure-white dark:hover:text-identity-yellow ms-[4px] font-medium"
+						href="https://uni-freiburg.de <view-source:https://uni-freiburg.de/>"
+			>
+		<svg width="100%" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="home" class="w-[9.71px] h-[11px] xl:w-[14px] xl:h-[15px] -mt-[3px]">
+	<title>home</title>
+	<path
+		d="M1.75 13.7857H4.375V8.64286H9.625V13.7857H12.25V6.07143L7 2.21429L1.75 6.07143V13.7857ZM1.75 15.5C1.26875 15.5 0.856626 15.332 0.513626 14.996C0.170626 14.66 -0.000581848 14.2566 1.48557e-06 13.7857V6.07143C1.48557e-06 5.8 0.0621263 5.54286 0.186376 5.3C0.310626 5.05714 0.481835 4.85714 0.700001 4.7L5.95 0.842857C6.11042 0.728571 6.27812 0.642857 6.45312 0.585714C6.62812 0.528571 6.81042 0.5 7 0.5C7.18958 0.5 7.37187 0.528571 7.54687 0.585714C7.72187 0.642857 7.88958 0.728571 8.05 0.842857L13.3 4.7C13.5187 4.85714 13.6902 5.05714 13.8145 5.3C13.9387 5.54286 14.0006 5.8 14 6.07143V13.7857C14 14.2571 13.8285 14.6609 13.4855 14.9969C13.1425 15.3329 12.7307 15.5006 12.25 15.5H7.875V10.3571H6.125V15.5H1.75Z"
+		fill="currentColor" />
+</svg>
+		<span class="ms-[8px]">
+			Universität Freiburg		</span>
+	</a>
+</li>
+					
+<li
+	class="flex items-center after:content-[&#039;/&#039;] last:after:content-none"
+
+	>
+	<a
+		class="inline-flex justify-center items-center my-[9px] text-[0.875rem] leading-[1.5rem] xl:text-[1.125rem] xl:leading-[1.5625rem] text-identity-black hover:text-identity-blue dark:text-pure-white dark:hover:text-identity-yellow font-medium"
+						href="https://uni-freiburg.de/mathphys <view-source:https://uni-freiburg.de/mathphys>"
+			>
+				<span class="">
+			Willkommen an der Fakultät für Mathematik und Physik!		</span>
+	</a>
+</li>
+					
+<li
+	class="flex items-center after:content-[&#039;/&#039;] last:after:content-none"
+
+	>
+	<a
+		class="inline-flex justify-center items-center my-[9px] text-[0.875rem] leading-[1.5rem] xl:text-[1.125rem] xl:leading-[1.5625rem] text-identity-black hover:text-identity-blue dark:text-pure-white dark:hover:text-identity-yellow no-underline hover:!text-identity-black dark:hover:!text-pure-white font-book whitespace-nowrap overflow-hidden"
+					>
+				<span class="">
+			Mathematisches Institut		</span>
+	</a>
+</li>
+			</ol>
+
+		<div 
+		class="
+			flex
+			border-identity-black dark:border-pure-white border-y md:border-y-2 xl:border-none
+		"
+	>
+		<ol
+			class="
+				flex xl:hidden min-w-[44px]
+				flex-row items-center flex-nowrap list-none m-0 pl-[4px]
+				[&_li]:leading-none [&_li>a]:mx-[8px] [&_>li:first-child>a]:ms-0
+			"
+		>
+							
+<li
+	class="flex items-center after:content-[&#039;/&#039;] last:after:content-none flex-shrink-0"
+
+	>
+	<a
+		class="inline-flex justify-center items-center my-[9px] text-[0.875rem] leading-[1.5rem] xl:text-[1.125rem] xl:leading-[1.5625rem] text-identity-black hover:text-identity-blue dark:text-pure-white dark:hover:text-identity-yellow ms-[4px] font-medium"
+						href="https://uni-freiburg.de <view-source:https://uni-freiburg.de/>"
+			>
+		<svg width="100%" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="home" class="w-[9.71px] h-[11px] xl:w-[14px] xl:h-[15px] -mt-[3px]">
+	<title>home</title>
+	<path
+		d="M1.75 13.7857H4.375V8.64286H9.625V13.7857H12.25V6.07143L7 2.21429L1.75 6.07143V13.7857ZM1.75 15.5C1.26875 15.5 0.856626 15.332 0.513626 14.996C0.170626 14.66 -0.000581848 14.2566 1.48557e-06 13.7857V6.07143C1.48557e-06 5.8 0.0621263 5.54286 0.186376 5.3C0.310626 5.05714 0.481835 4.85714 0.700001 4.7L5.95 0.842857C6.11042 0.728571 6.27812 0.642857 6.45312 0.585714C6.62812 0.528571 6.81042 0.5 7 0.5C7.18958 0.5 7.37187 0.528571 7.54687 0.585714C7.72187 0.642857 7.88958 0.728571 8.05 0.842857L13.3 4.7C13.5187 4.85714 13.6902 5.05714 13.8145 5.3C13.9387 5.54286 14.0006 5.8 14 6.07143V13.7857C14 14.2571 13.8285 14.6609 13.4855 14.9969C13.1425 15.3329 12.7307 15.5006 12.25 15.5H7.875V10.3571H6.125V15.5H1.75Z"
+		fill="currentColor" />
+</svg>
+		<span class="">
+					</span>
+	</a>
+</li>
+							
+<li
+	class="flex items-center after:content-[&#039;/&#039;] last:after:content-none flex-shrink-0"
+
+	>
+	<a
+		class="inline-flex justify-center items-center my-[9px] text-[0.875rem] leading-[1.5rem] xl:text-[1.125rem] xl:leading-[1.5625rem] text-identity-black hover:text-identity-blue dark:text-pure-white dark:hover:text-identity-yellow font-medium cursor-pointer"
+				data-action="toggleBreadcrumbMobile"
+					>
+				<span class="">
+			...		</span>
+	</a>
+</li>
+							
+<li
+	class="flex items-center after:content-[&#039;/&#039;] last:after:content-none flex-shrink overflow-hidden"
+
+	>
+	<a
+		class="inline-flex justify-center items-center my-[9px] text-[0.875rem] leading-[1.5rem] xl:text-[1.125rem] xl:leading-[1.5625rem] text-identity-black hover:text-identity-blue dark:text-pure-white dark:hover:text-identity-yellow no-underline hover:!text-identity-black dark:hover:!text-pure-white font-book whitespace-nowrap overflow-hidden"
+					>
+				<span class="overflow-hidden text-ellipsis">
+			Mathematisches Institut		</span>
+	</a>
+</li>
+					</ol>
+				<button
+			data-action="toggleBreadcrumb"
+			class="xl:hidden ml-auto h-full min-w-[44px] min-h-[44px] flex items-center justify-center"
+		>
+			<svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="chevron-breadcrumb"  role="img">
+	<title>chevron-breadcrumb</title>
+	<path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 8.71309L4.19135 0.904175L-1.83206e-07 5.09543L12.0001 17.0958L24 5.09541L19.8086 0.9042L12.0001 8.71309Z" fill="currentColor" />
+</svg>
+		</button>
+			</div>
+
+		<ol
+		id="mobile-breadcrumb"
+		class="
+			hidden xl:hidden
+			list-none m-0 p-0
+			[&_li]:leading-none [&_li]:flex [&_li]:items-center
+		">
+					
+<li
+	class="flex items-center border-b"
+
+	>
+	<a
+		class="inline-flex justify-center items-center my-[9px] text-[0.875rem] leading-[1.5rem] xl:text-[1.125rem] xl:leading-[1.5625rem] text-identity-black hover:text-identity-blue dark:text-pure-white dark:hover:text-identity-yellow ms-[4px] font-medium"
+						href="https://uni-freiburg.de <view-source:https://uni-freiburg.de/>"
+			>
+		<svg width="100%" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="home" class="w-[9.71px] h-[11px] xl:w-[14px] xl:h-[15px] -mt-[3px]">
+	<title>home</title>
+	<path
+		d="M1.75 13.7857H4.375V8.64286H9.625V13.7857H12.25V6.07143L7 2.21429L1.75 6.07143V13.7857ZM1.75 15.5C1.26875 15.5 0.856626 15.332 0.513626 14.996C0.170626 14.66 -0.000581848 14.2566 1.48557e-06 13.7857V6.07143C1.48557e-06 5.8 0.0621263 5.54286 0.186376 5.3C0.310626 5.05714 0.481835 4.85714 0.700001 4.7L5.95 0.842857C6.11042 0.728571 6.27812 0.642857 6.45312 0.585714C6.62812 0.528571 6.81042 0.5 7 0.5C7.18958 0.5 7.37187 0.528571 7.54687 0.585714C7.72187 0.642857 7.88958 0.728571 8.05 0.842857L13.3 4.7C13.5187 4.85714 13.6902 5.05714 13.8145 5.3C13.9387 5.54286 14.0006 5.8 14 6.07143V13.7857C14 14.2571 13.8285 14.6609 13.4855 14.9969C13.1425 15.3329 12.7307 15.5006 12.25 15.5H7.875V10.3571H6.125V15.5H1.75Z"
+		fill="currentColor" />
+</svg>
+		<span class="ms-[8px]">
+			Universität Freiburg		</span>
+	</a>
+</li>
+					
+<li
+	class="flex items-center border-b"
+
+		style="padding-left: 24px"
+	>
+	<a
+		class="inline-flex justify-center items-center my-[9px] text-[0.875rem] leading-[1.5rem] xl:text-[1.125rem] xl:leading-[1.5625rem] text-identity-black hover:text-identity-blue dark:text-pure-white dark:hover:text-identity-yellow font-medium"
+						href="https://uni-freiburg.de/mathphys <view-source:https://uni-freiburg.de/mathphys>"
+			>
+				<span class="">
+			Willkommen an der Fakultät für Mathematik und Physik!		</span>
+	</a>
+</li>
+					
+<li
+	class="flex items-center border-b"
+
+		style="padding-left: 34px"
+	>
+	<a
+		class="inline-flex justify-center items-center my-[9px] text-[0.875rem] leading-[1.5rem] xl:text-[1.125rem] xl:leading-[1.5625rem] text-identity-black hover:text-identity-blue dark:text-pure-white dark:hover:text-identity-yellow no-underline hover:!text-identity-black dark:hover:!text-pure-white font-book whitespace-nowrap overflow-hidden"
+					>
+				<span class="">
+			Mathematisches Institut		</span>
+	</a>
+</li>
+			</ol>
+	
+</nav>
+</div>
+<!-- Mobile thumb navigation -->
+<ul
+	class="text-center flex h-[80px] w-full fixed md:hidden bottom-0 z-[999] left-0 bg-identity-darkblue
+	border-t-[1px] border-t-identity-blue-80 py-[14px] px-[24px] my-0"
+>
+	<li class="flex flex-1 justify-center items-center">
+		<button data-active="false" data-action="openDialog" data-dialog-open="menu" class="text-pure-white flex flex-col items-center !outline-2 outline-pure-white focus-visible:outline-dotted !outline-offset-4 pt-1 min-w-[44px] hover:text-identity-yellow-40 data-[active='true']:text-identity-yellow">
+			<svg width="100%" viewBox="0 0 60 51" xmlns="http://www.w3.org/2000/svg"
+	aria-label="Menü" class="w-6 h-6 mb-[5px]" role="img">
+	<title>Menü-Icon</title>
+	<g fill="currentColor">
+		<path d="M59.9991 9.5H-0.000854492V5.5H59.9991V9.5Z" />
+		<path d="M59.9991 27.5H-0.000854492V23.5H59.9991V27.5Z" />
+		<path d="M59.9991 45.5H-0.000854492V41.5H59.9991V45.5Z" />
+	</g>
+</svg>
+			<span class="text-sm leading-[1.375rem] font-medium tracking-[0.7px]">
+				Menü			</span>
+		</button>
+	</li>
+	<li class="flex flex-1 justify-center items-center">
+		<a href="https://uni-freiburg.de/math/?q= <view-source:https://uni-freiburg.de/math/?q=>" data-active="false" class="no-underline text-pure-white flex flex-col items-center !outline-2 outline-pure-white focus-visible:outline-dotted !outline-offset-4 pt-1 min-w-[44px] hover:text-identity-yellow-40 data-[active='true']:text-identity-yellow">
+			<svg viewBox="0 0 60 57" fill="none" xmlns="http://www.w3.org/2000/svg"
+    aria-label="Suche" class="w-6 h-6 mb-[5px]" role="img">
+    <title>Such-Icon</title>
+    <circle cx="22.2358" cy="22.2358" r="20.2358" stroke="currentColor" stroke-width="4"/>
+    <line x1="38.6972" y1="35.8687" x2="58.4142" y2="55.5857" stroke="currentColor" stroke-width="4"/>
+</svg>
+			<span class="text-sm leading-[1.375rem] font-medium tracking-[0.7px]">
+				Suche			</span>
+		</a>
+	</li>
+		<li class="flex flex-1 justify-center items-center">
+		<button data-active="false" data-action="openDialog" data-dialog-open="service" class="text-pure-white flex flex-col items-center !outline-2 outline-pure-white focus-visible:outline-dotted !outline-offset-4 pt-1 min-w-[44px] hover:text-identity-yellow-40 data-[active='true']:text-identity-yellow">
+			<svg width="100%" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+    aria-label="Service" class="w-6 h-6 mb-[5px]" role="img">
+    <title>Service-Icon</title>
+    <path d="M11.3 18.5H13.7V11.3H11.3V18.5ZM12.5 8.9C12.84 8.9 13.1252 8.7848 13.3556 8.5544C13.586 8.324 13.7008 8.0392 13.7 7.7C13.7 7.36 13.5848 7.0748 13.3544 6.8444C13.124 6.614 12.8392 6.4992 12.5 6.5C12.16 6.5 11.8748 6.6152 11.6444 6.8456C11.414 7.076 11.2992 7.3608 11.3 7.7C11.3 8.04 11.4152 8.3252 11.6456 8.5556C11.876 8.786 12.1608 8.9008 12.5 8.9ZM12.5 24.5C10.84 24.5 9.28 24.1848 7.82 23.5544C6.36 22.924 5.09 22.0692 4.01 20.99C2.93 19.91 2.0752 18.64 1.4456 17.18C0.816 15.72 0.5008 14.16 0.5 12.5C0.5 10.84 0.8152 9.28 1.4456 7.82C2.076 6.36 2.9308 5.09 4.01 4.01C5.09 2.93 6.36 2.0752 7.82 1.4456C9.28 0.816 10.84 0.5008 12.5 0.5C14.16 0.5 15.72 0.8152 17.18 1.4456C18.64 2.076 19.91 2.9308 20.99 4.01C22.07 5.09 22.9252 6.36 23.5556 7.82C24.186 9.28 24.5008 10.84 24.5 12.5C24.5 14.16 24.1848 15.72 23.5544 17.18C22.924 18.64 22.0692 19.91 20.99 20.99C19.91 22.07 18.64 22.9252 17.18 23.5556C15.72 24.186 14.16 24.5008 12.5 24.5ZM12.5 22.1C15.18 22.1 17.45 21.17 19.31 19.31C21.17 17.45 22.1 15.18 22.1 12.5C22.1 9.82 21.17 7.55 19.31 5.69C17.45 3.83 15.18 2.9 12.5 2.9C9.82 2.9 7.55 3.83 5.69 5.69C3.83 7.55 2.9 9.82 2.9 12.5C2.9 15.18 3.83 17.45 5.69 19.31C7.55 21.17 9.82 22.1 12.5 22.1Z" fill="currentColor"/>
+</svg>
+			<span class="text-sm leading-[1.375rem] font-medium tracking-[0.7px]">
+				Service			</span>
+		</button>
+	</li>
+</ul>
+
+<div class="relative has-global-padding is-layout-constrained mt-[25px] md:mt-[35px] xl:mt-[70px] clearfix">
+
+	<h1></h1>
+
+<div class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute
+			[&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip
+			[.wp-block-ufr-section_&amp;]:bl-overflow-x-visible
+			bl-bg-pure-white bl-text-identity-black dark:bl-bg-identity-darkblue dark:bl-text-pure-white bl-py-[24px] alignfull wp-block-ufr-section has-global-padding is-layout-constrained wp-block-section-is-layout-constrained">
+
+
+<div class="slideshow-container">
+<div
+    id="carouselExampleControls"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+				<img fetchpriority="high" decoding="async" width="360" height="640" src="/static/Bilder/science_days_2024_1.png" alt="" class="wp-image-378 size-full" srcset="/static/Bilder/science_days_2024_1.png 360w, /static/Bilder/science_days_2024_1-169x300.png 169w" sizes="(max-width: 360px) 100vw, 360px" />
+			</figure><div class="wp-block-media-text__content">
+			<h4 class="wp-block-heading">Science Days</h4>
+			<p>
+			</p>
+			</div>
+		</div>
+	</div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/static/Bilder/science_days_2024_1.png"
+                class="d-block w-100"
+                alt="..."
+                style="height: 20vw; object-fit: cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Science Days
+                </h5>
+                <p>
+                  Auf den Science Days (24.-26.10.2024) im Europa Park sorgte der Mathematik Stand für Begeisterung.
+				          Highlight war die Riesenseifenblase, die alle Blicke auf sich zog.
+				          Mit spannenden Mathematik- und Knobelaufgaben lud der Stand zum Nachdenken und Entdecken ein.
+				          Ein Tag an dem die Freude an der Mathematik für alle erlebbar wurde.
+				          Ganz herzlichen Dank geht an unsere Helfer:innen !!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="10000">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/static/Bilder/scholze.jpeg"
+                class="d-block w-100"
+                alt="..."
+                style="height: 20vw; object-fit: cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Mathematisches Kolloquium am 30.2.2024
+                </h5>
+                <p>
+                  Peter Scholze berichtet über die Einführung des Konzepts der
+                  "perfektoiden Räume", das eine natürliche Umgebung für
+                  Faltings' "fast Reinheits-Theorem" schafft und eine
+                  Tilting-Operation zwischen Charakteristik 0 und Charakteristik
+                  p ermöglicht. Dies erlaubte ihm den Beweis der
+                  Gewichts-Monodromie-Vermutung in bestimmten Fällen.
+                </p>
+                <p>
+                  Darüber hinaus gibt er grundlegende Resultate der p-adischen
+                  Hodge-Theorie in neue Kontexte, was bereits von Tate 1966
+                  vermutet worden war. Mit Kollaborateuren entwickelte er auch
+                  eine integrale Version der p-adischen Hodge-Theorie, die die
+                  Kohomologie der charakteristischen p-Faser mit der Kohomologie
+                  der p-adischen Faser in Beziehung setzt.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="10000">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/static/Bilder/tao.jpeg"
+                class="d-block w-100"
+                alt="..."
+                style="height: 20vw; object-fit: cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Mathematisches Kolloquium am 30.2.2024
+                </h5>
+                <p>
+                  Terence Tao, einer der renommiertesten Mathematiker unserer
+                  Zeit, berichtet über die berüchtigte Collatz-Vermutung.
+                </p>
+                <p>
+                  Die Collatz-Vermutung ist ein scheinbar einfaches
+                  mathematisches Problem, das Experten seit Jahrzehnten
+                  beschäftigt. Ausgehend von einer beliebigen natürlichen Zahl,
+                  wird diese entweder halbiert, wenn sie gerade ist, oder mit 3
+                  multipliziert und 1 addiert, wenn sie ungerade ist. Dieses
+                  Verfahren wird solange wiederholt, bis man schließlich bei der
+                  Zahl 1 angelangt. Die Vermutung besagt, dass dieser Prozess
+                  für jede Startzahl zwangsläufig zur 1 führt, obwohl dies
+                  bisher nicht mathematisch bewiesen werden konnte.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+<br>
+
+<div class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute
+			[&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip
+			[.wp-block-ufr-section_&amp;]:bl-overflow-x-visible
+			bl-bg-transparent bl-text-inherit dark:bl-bg-transparent dark:bl-text-inherit  alignfull wp-block-ufr-section has-global-padding is-layout-constrained wp-block-section-is-layout-constrained">
+
+	
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-1 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image size-full is-resized"><img decoding="async" width="360" height="240" src="/static/Bilder/startseite_treppenhaus.jpg" alt="" class="wp-image-381" style="aspect-ratio:16/9;object-fit:cover;width:auto;height:200px" srcset="/static/Bilder/startseite_treppenhaus.jpg 360w, /static/Bilder/startseite_treppenhaus-300x200.jpg 300w" sizes="(max-width: 360px) 100vw, 360px" /></figure>
+
+
+
+<h4 class="wp-block-heading">Über uns</h4>
+
+
+
+<p>In der Mathematik streben wir nach Wahrheit, und suchen nach eleganten und schönen Beweisen. Wir widmen uns der Exzellenz in allen Aspekten der Forschung und Lehre von Logik bis maschinellen Lernen und KI. Mehr &#8230;</p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image size-full is-resized"><img decoding="async" width="375" height="250" src="/static/Bilder/Uni-Freiburg_Okt-2021-19_2.jpg" alt="" class="wp-image-639" style="box-shadow:none;aspect-ratio:16/9;object-fit:cover;width:auto;height:200px" srcset="/static/Bilder/Uni-Freiburg_Okt-2021-19_2.jpg 375w, /static/Bilder/Uni-Freiburg_Okt-2021-19_2-300x200.jpg 300w" sizes="(max-width: 375px) 100vw, 375px" /></figure>
+
+
+
+<h4 class="wp-block-heading">Studium</h4>
+
+
+
+<p>Freiburg bietet ein breites Spektrum an Vorlesungen und eine fundierte Lehre von reiner über angewandte Mathematik bis zu Data Science. Neu: Der Tech Data Master. <a href="https://www.math.uni-freiburg.de/nlehre/de/studiengaenge/">Bewerben Sie sich jetzt ! </a></p>
+
+
+
+<div style="height:31px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<figure class="wp-block-image size-full is-resized"><img decoding="async" width="260" height="240" src="/static/Bilder/tafel.jpg" alt="" class="wp-image-385" style="object-fit:cover;width:340px;height:200px" /></figure>
+
+
+
+<h4 class="wp-block-heading">Forschung</h4>
+
+
+
+<p>In Freiburg wird Spitzenforschung auf allen Gebieten der Mathematik betrieben. Seit 2023 fördert die DFG den SFB &#8222;<a href="https://www.smalldata-initiative.de <view-source:https://www.smalldata-initiative.de/>">Small Data</a>&#8220; mit 12 Mio EUR. <a href="https://uni-freiburg.de/math/forschungstaetigkeiten/ <view-source:https://uni-freiburg.de/math/forschungstaetigkeiten/>" data-type="page" data-id="643">Mehr&#8230;</a></p>
+</div>
+</div>
+
+	</div>
+
+<!-- Kurznachrichten -->
+<div>
+	<h4 class="wp-block-heading">Aktuelle Informationen und Nachrichten</h4>
+		<figure class="wp-block-table">
+			<table class="has-fixed-layout">
+				<tbody>
+					<tr><td>11.09.2024</td><td>Super dynamische Inhalte</td></tr>
+					<tr><td>13.09.2024</td><td>Niemand ist so dynamisch.</td></tr>
+				  <tr><td>13.01.2025</td><td>Wie das wohl aussähe, wenn jemand einen
+						super langen Text schreiben würde, der viele Informationen enthält
+						und im Detail berichtet, was genau vorgefallen ist? Nun vermutlich
+						wäre ein längerer Text nicht kürzer als ein kurzer - dafür braucht
+						es keinen Mathematiker. Aber sähe es immer noch ansprechend aus?
+						Das kann nur ein Mathematiker entscheiden.</td></tr>
+				</tbody>
+			</table>
+		</figure>
+</div>
+
+
+<div class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute
+			[&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip
+			[.wp-block-ufr-section_&amp;]:bl-overflow-x-visible
+			bl-bg-transparent bl-text-inherit dark:bl-bg-transparent dark:bl-text-inherit  alignfull wp-block-ufr-section has-global-padding is-layout-constrained wp-block-section-is-layout-constrained">
+
+	
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-2 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<h4 class="wp-block-heading">News</h4>
+
+
+
+<p><a href="https://uni-freiburg.de/math/das-mathematische-institut/ <view-source:https://uni-freiburg.de/math/das-mathematische-institut/>" data-type="page" data-id="376">Mathematik auf den Science Days</a><br><a href="https://uni-freiburg.de/math/news/2024_klara_oehler <view-source:https://uni-freiburg.de/math/news/2024_klara_oehler>" data-type="page" data-id="469">Klara Oehler erhält Sonderpreis</a><br><a href="https://uni-freiburg.de/math/news/2024_abhishek_oswal <view-source:https://uni-freiburg.de/math/news/2024_abhishek_oswal>" data-type="page" data-id="469">Neuer Juniorprofessor Abhishek Oswal</a><br><a href="https://www.math.uni-freiburg.de/nlehre/ <view-source:https://www.math.uni-freiburg.de/nlehre/>">Neue Homepage für Lehre</a><br><a href="https://www.math.uni-freiburg.de/nlehre/de/studiengaenge/msc_data/ <view-source:https://www.math.uni-freiburg.de/nlehre/de/studiengaenge/msc_data/>">Neuer Studiengang Tech Data Master</a><br><a href="https://uni-freiburg.de/math/news-ii/ <view-source:https://uni-freiburg.de/math/news-ii/>" data-type="page" data-id="786">Und noch mehr&#8230;</a></p>
+
+
+
+<p></p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<h4 class="wp-block-heading">Veranstaltungen</h4>
+
+
+
+<p><strong>Mathematisches Kolloquium</strong><br>7 Nov 2024 15:00 HS II<br>Biased random walk on dynamical percolation<br>Nina Gantert (TUM)</p>
+
+
+
+<p><strong>11 Nov 2024 16:15 Raum 404</strong><br>Weyl formulae for some singular metrics with application to acoustic modes in gas giants<br>Charlotte Dietze (LMU)</p>
+
+
+
+<p><strong>12 Nov 2024 14:30</strong><br><strong>Oberseminar Mathematisches Logik</strong><br>Charlotte Bartnick.</p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<h4 class="wp-block-heading">Links</h4>
+
+
+
+<p><a href="https://www.math.uni-freiburg.de/nlehre/de/interesse/ <view-source:https://www.math.uni-freiburg.de/nlehre/de/interesse/>">Für Studieninteressierte</a><br><a href="https://www.math.uni-freiburg.de/institut/index.html#abteilungen <view-source:https://www.math.uni-freiburg.de/institut/index.html#abteilungen>">Abteilungen</a><br><a href="https://www.math.uni-freiburg.de/forschung/index.html <view-source:https://www.math.uni-freiburg.de/forschung/index.html>">Dozentinnen und Dozenten</a><br><a href="https://www.math.uni-freiburg.de/nlehre/ <view-source:https://www.math.uni-freiburg.de/nlehre/>">Studium</a><br><a href="https://www.math.uni-freiburg.de/nlehre/ <view-source:https://www.math.uni-freiburg.de/nlehre/>">Lehre</a><br>FAQ<br><a href="https://uni-freiburg.de/math/einrichtung/ <view-source:https://uni-freiburg.de/math/einrichtung/>" data-type="page" data-id="205">Personen</a><br>Outreach<br><a href="https://uni-freiburg.de/math/geschichte-i/ <view-source:https://uni-freiburg.de/math/geschichte-i/>" data-type="page" data-id="548">Die Geschichte des Instituts</a></p>
+
+
+
+<p></p>
+</div>
+</div>
+
+	</div>
+
+
+
+<div style="height:45px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<div class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute
+			[&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip
+			[.wp-block-ufr-section_&amp;]:bl-overflow-x-visible
+			bl-bg-transparent bl-text-inherit dark:bl-bg-transparent dark:bl-text-inherit  alignfull wp-block-ufr-section has-global-padding is-layout-constrained wp-block-section-is-layout-constrained">
+
+		</div>
+
+
+
+<div style="height:67px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<div class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute
+			[&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip
+			[.wp-block-ufr-section_&amp;]:bl-overflow-x-visible
+			bl-bg-identity-lightblue bl-text-identity-black dark:bl-bg-identity-lightblue dark:bl-text-identity-black bl-py-[24px] alignfull wp-block-ufr-section has-global-padding is-layout-constrained wp-block-section-is-layout-constrained">
+
+	
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-3 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-top is-layout-flow wp-block-column-is-layout-flow"><div
+	class="bl-@container/teaser-event
+			bl-block bl-relative bl-self-stretch
+			bl-min-w-full md:bl-min-w-[670px] xl:bl-min-w-[320px] bl-bg-identity-rose bl-text-identity-black dark:bl-bg-identity-rose dark:bl-text-identity-black wp-block-ufr-teaser-event"	data-eventteaser="1be61d75-b0bb-47b0-84f1-e118fd1c83f7">
+	<div class="bl-flex bl-flex-col bl-h-full lg:@md/teaser-event:bl-flex-row">
+				<div class="bl-w-full bl-aspect-[3/2]
+			@lg/teaser-event:bl-min-w-[50%] bl-flex-shrink-0 lg:@md/teaser-event:bl-w-[50%] lg:@md/teaser-event:bl-max-w-[774px]
+			@lg/teaser-event:bl-w-[50%] @lg/teaser-event:bl-max-w-[774px]
+			2xl:@2xl/teaser-event:bl-min-w-[30%] 2xl:@2xl/teaser-event:bl-w-[30%] 2xl:@2xl/teaser-event:bl-max-w-[478px]">
+			<div class="bl-relative bl-items-center bl-w-full bl-aspect-[3/2] bl-leading-[1.5625rem]">
+									<img decoding="async" src="/static/Bilder/small-data.png" alt=""
+						class="bl-object-cover bl-w-full bl-inline-block bl-aspect-[3/2]">
+											</div>
+		</div>
+				
+				<div class="bl-flex-grow bl-flex bl-flex-col bl-h-full bl-justify-between bl-px-[25px] bl-py-[20px]
+			md:bl-px-[45px] md:bl-py-[40px]
+			xl:bl-px-[55px] xl:bl-py-[50px]
+			xl:@2xl/teaser-event:*:*:bl-me-[119px]
+			[overflow-wrap:anywhere]">
+			<div>
+								<p class="bl-font-medium bl-text-inherit dark:bl-text-inherit bl-m-0
+					bl-text-[1.125rem] bl-leading-[1.5625rem]
+					md:bl-text-[1.25rem]
+					xl:bl-text-[1.5625rem] xl:bl-leading-[2.1875rem]">
+															SFB Small Data				</p>
+								<hr class="bl-h-[1px] bl-border-none bl-relative bl-bg-current bl-mt-[20px] md:bl-mt-[30px] xl:bl-mt-[40px] bl-mb-[20px] xl:bl-mb-[30px]">
+				<p class="bl-font-book [&#038;_a]:bl-font-medium
+					bl-text-[1rem] bl-leading-[1.375rem] bl-my-0
+					md:bl-text-[1.125rem] md:bl-leading-[1.375rem]
+					xl:bl-text-[1.375rem] xl:bl-leading-[2.0625rem]
+					[&#038;_a]:bl-underline [&#038;_a]:bl-underline-offset-[5px] [&#038;_a]:!bl-decoration-[1px]
+					hover:[&#038;_a]:!bl-decoration-[2px] focus-visible:[&#038;_a]:bl-outline
+					[&#038;_a]:bl-outline-1 [&#038;_a]:bl-outline-offset-4
+					active:[&#038;_a]:bl-outline-transparent
+					
+					[&amp;_a]:bl-text-identity-black hover:[&amp;_a]:bl-text-identity-blue-80 active:[&amp;_a]:bl-text-identity-blue [&amp;_a]:dark:bl-text-identity-black hover:dark:[&amp;_a]:bl-text-identity-blue-80 active:dark:[&amp;_a]:bl-text-identity-blue">
+					
+															In diesem Sonderforschungsbereich werden Datenanalyse und Modellierung in Anwendungen mit wenigen Daten untersucht. <a href="https://www.smalldata-initiative.de <view-source:https://www.smalldata-initiative.de/>">Mehr &#8230; </a>									</p>
+				<p class="bl-font-book [&#038;_a]:bl-font-medium bl-my-0
+					bl-text-[1rem] bl-leading-[1.375rem]
+					md:bl-text-[1.125rem] md:bl-leading-[1.375rem]
+					xl:bl-text-[1.375rem] xl:bl-leading-[2.0625rem]
+					[&#038;_a]:bl-underline [&#038;_a]:bl-underline-offset-[5px] [&#038;_a]:!bl-decoration-[1px]
+					hover:[&#038;_a]:!bl-decoration-[2px] focus-visible:[&#038;_a]:bl-outline
+					[&#038;_a]:bl-outline-1 [&#038;_a]:bl-outline-offset-4
+					active:[&#038;_a]:bl-outline-transparent
+					
+					[&amp;_a]:bl-text-identity-black hover:[&amp;_a]:bl-text-identity-blue-80 active:[&amp;_a]:bl-text-identity-blue [&amp;_a]:dark:bl-text-identity-black hover:dark:[&amp;_a]:bl-text-identity-blue-80 active:dark:[&amp;_a]:bl-text-identity-blue">
+					
+																			</p>
+				<p class="bl-font-book [&#038;_a]:bl-font-medium bl-my-0
+					bl-text-[1rem] bl-leading-[1.375rem]
+					md:bl-text-[1.125rem] md:bl-leading-[1.375rem]
+					xl:bl-text-[1.375rem] xl:bl-leading-[2.0625rem]
+					[&#038;_a]:bl-underline [&#038;_a]:bl-underline-offset-[5px] [&#038;_a]:!bl-decoration-[1px]
+					hover:[&#038;_a]:!bl-decoration-[2px] focus-visible:[&#038;_a]:bl-outline
+					[&#038;_a]:bl-outline-1 [&#038;_a]:bl-outline-offset-4
+					active:[&#038;_a]:bl-outline-transparent
+					xl:@2xl/teaser-event:bl-mb-0
+					xl:@2xl/teaser-event:bl-inline-block
+					
+					[&amp;_a]:bl-text-identity-black hover:[&amp;_a]:bl-text-identity-blue-80 active:[&amp;_a]:bl-text-identity-blue [&amp;_a]:dark:bl-text-identity-black hover:dark:[&amp;_a]:bl-text-identity-blue-80 active:dark:[&amp;_a]:bl-text-identity-blue">
+					
+																			</p>
+			</div>
+			<div>
+							</div>
+		</div>
+
+	</div>
+	</div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-top is-layout-flow wp-block-column-is-layout-flow"><div
+	class="bl-@container/teaser-event
+			bl-block bl-relative bl-self-stretch
+			bl-min-w-full md:bl-min-w-[670px] xl:bl-min-w-[320px] bl-bg-identity-yellow bl-text-identity-black dark:bl-bg-identity-yellow dark:bl-text-identity-black wp-block-ufr-teaser-event"	data-eventteaser="0f4213a9-f171-407a-9120-8a6a2743b859">
+	<div class="bl-flex bl-flex-col bl-h-full lg:@md/teaser-event:bl-flex-row">
+				<div class="bl-w-full bl-aspect-[3/2]
+			@lg/teaser-event:bl-min-w-[50%] bl-flex-shrink-0 lg:@md/teaser-event:bl-w-[50%] lg:@md/teaser-event:bl-max-w-[774px]
+			@lg/teaser-event:bl-w-[50%] @lg/teaser-event:bl-max-w-[774px]
+			2xl:@2xl/teaser-event:bl-min-w-[30%] 2xl:@2xl/teaser-event:bl-w-[30%] 2xl:@2xl/teaser-event:bl-max-w-[478px]">
+			<div class="bl-relative bl-items-center bl-w-full bl-aspect-[3/2] bl-leading-[1.5625rem]">
+									<img decoding="async" src="/static/Bilder/preis_ruzicka_2024.jpg" alt=""
+						class="bl-object-cover bl-w-full bl-inline-block bl-aspect-[3/2]">
+											</div>
+		</div>
+				
+				<div class="bl-flex-grow bl-flex bl-flex-col bl-h-full bl-justify-between bl-px-[25px] bl-py-[20px]
+			md:bl-px-[45px] md:bl-py-[40px]
+			xl:bl-px-[55px] xl:bl-py-[50px]
+			xl:@2xl/teaser-event:*:*:bl-me-[119px]
+			[overflow-wrap:anywhere]">
+			<div>
+								<p class="bl-font-medium bl-text-inherit dark:bl-text-inherit bl-m-0
+					bl-text-[1.125rem] bl-leading-[1.5625rem]
+					md:bl-text-[1.25rem]
+					xl:bl-text-[1.5625rem] xl:bl-leading-[2.1875rem]">
+															Michael Růžička				</p>
+								<hr class="bl-h-[1px] bl-border-none bl-relative bl-bg-current bl-mt-[20px] md:bl-mt-[30px] xl:bl-mt-[40px] bl-mb-[20px] xl:bl-mb-[30px]">
+				<p class="bl-font-book [&#038;_a]:bl-font-medium
+					bl-text-[1rem] bl-leading-[1.375rem] bl-my-0
+					md:bl-text-[1.125rem] md:bl-leading-[1.375rem]
+					xl:bl-text-[1.375rem] xl:bl-leading-[2.0625rem]
+					[&#038;_a]:bl-underline [&#038;_a]:bl-underline-offset-[5px] [&#038;_a]:!bl-decoration-[1px]
+					hover:[&#038;_a]:!bl-decoration-[2px] focus-visible:[&#038;_a]:bl-outline
+					[&#038;_a]:bl-outline-1 [&#038;_a]:bl-outline-offset-4
+					active:[&#038;_a]:bl-outline-transparent
+					
+					[&amp;_a]:bl-text-identity-black hover:[&amp;_a]:bl-text-identity-blue-80 active:[&amp;_a]:bl-text-identity-blue [&amp;_a]:dark:bl-text-identity-black hover:dark:[&amp;_a]:bl-text-identity-blue-80 active:dark:[&amp;_a]:bl-text-identity-blue">
+					
+															erhält die Ehrenmedaille der Tschechischen Mathematischen Gesellschaft									</p>
+				<p class="bl-font-book [&#038;_a]:bl-font-medium bl-my-0
+					bl-text-[1rem] bl-leading-[1.375rem]
+					md:bl-text-[1.125rem] md:bl-leading-[1.375rem]
+					xl:bl-text-[1.375rem] xl:bl-leading-[2.0625rem]
+					[&#038;_a]:bl-underline [&#038;_a]:bl-underline-offset-[5px] [&#038;_a]:!bl-decoration-[1px]
+					hover:[&#038;_a]:!bl-decoration-[2px] focus-visible:[&#038;_a]:bl-outline
+					[&#038;_a]:bl-outline-1 [&#038;_a]:bl-outline-offset-4
+					active:[&#038;_a]:bl-outline-transparent
+					
+					[&amp;_a]:bl-text-identity-black hover:[&amp;_a]:bl-text-identity-blue-80 active:[&amp;_a]:bl-text-identity-blue [&amp;_a]:dark:bl-text-identity-black hover:dark:[&amp;_a]:bl-text-identity-blue-80 active:dark:[&amp;_a]:bl-text-identity-blue">
+					
+																			</p>
+				<p class="bl-font-book [&#038;_a]:bl-font-medium bl-my-0
+					bl-text-[1rem] bl-leading-[1.375rem]
+					md:bl-text-[1.125rem] md:bl-leading-[1.375rem]
+					xl:bl-text-[1.375rem] xl:bl-leading-[2.0625rem]
+					[&#038;_a]:bl-underline [&#038;_a]:bl-underline-offset-[5px] [&#038;_a]:!bl-decoration-[1px]
+					hover:[&#038;_a]:!bl-decoration-[2px] focus-visible:[&#038;_a]:bl-outline
+					[&#038;_a]:bl-outline-1 [&#038;_a]:bl-outline-offset-4
+					active:[&#038;_a]:bl-outline-transparent
+					xl:@2xl/teaser-event:bl-mb-0
+					xl:@2xl/teaser-event:bl-inline-block
+					
+					[&amp;_a]:bl-text-identity-black hover:[&amp;_a]:bl-text-identity-blue-80 active:[&amp;_a]:bl-text-identity-blue [&amp;_a]:dark:bl-text-identity-black hover:dark:[&amp;_a]:bl-text-identity-blue-80 active:dark:[&amp;_a]:bl-text-identity-blue">
+					
+																			</p>
+			</div>
+			<div>
+							</div>
+		</div>
+
+	</div>
+	</div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-stretch is-layout-flow wp-block-column-is-layout-flow"><div
+	class="bl-@container/teaser-event
+			bl-block bl-relative bl-self-stretch
+			bl-min-w-full md:bl-min-w-[670px] xl:bl-min-w-[320px] bl-bg-identity-rose bl-text-identity-black dark:bl-bg-identity-rose dark:bl-text-identity-black wp-block-ufr-teaser-event"	data-eventteaser="ec9f997d-7b43-4fd2-a10b-bacbbb8bb4ff">
+	<div class="bl-flex bl-flex-col bl-h-full lg:@md/teaser-event:bl-flex-row">
+				<div class="bl-w-full bl-aspect-[3/2]
+			@lg/teaser-event:bl-min-w-[50%] bl-flex-shrink-0 lg:@md/teaser-event:bl-w-[50%] lg:@md/teaser-event:bl-max-w-[774px]
+			@lg/teaser-event:bl-w-[50%] @lg/teaser-event:bl-max-w-[774px]
+			2xl:@2xl/teaser-event:bl-min-w-[30%] 2xl:@2xl/teaser-event:bl-w-[30%] 2xl:@2xl/teaser-event:bl-max-w-[478px]">
+			<div class="bl-relative bl-items-center bl-w-full bl-aspect-[3/2] bl-leading-[1.5625rem]">
+									<img decoding="async" src="/static/Bilder/lindemann.jpg" alt=""
+						class="bl-object-cover bl-w-full bl-inline-block bl-aspect-[3/2]">
+											</div>
+		</div>
+				
+				<div class="bl-flex-grow bl-flex bl-flex-col bl-h-full bl-justify-between bl-px-[25px] bl-py-[20px]
+			md:bl-px-[45px] md:bl-py-[40px]
+			xl:bl-px-[55px] xl:bl-py-[50px]
+			xl:@2xl/teaser-event:*:*:bl-me-[119px]
+			[overflow-wrap:anywhere]">
+			<div>
+								<p class="bl-font-medium bl-text-inherit dark:bl-text-inherit bl-m-0
+					bl-text-[1.125rem] bl-leading-[1.5625rem]
+					md:bl-text-[1.25rem]
+					xl:bl-text-[1.5625rem] xl:bl-leading-[2.1875rem]">
+															Lindemann Preis				</p>
+								<hr class="bl-h-[1px] bl-border-none bl-relative bl-bg-current bl-mt-[20px] md:bl-mt-[30px] xl:bl-mt-[40px] bl-mb-[20px] xl:bl-mb-[30px]">
+				<p class="bl-font-book [&#038;_a]:bl-font-medium
+					bl-text-[1rem] bl-leading-[1.375rem] bl-my-0
+					md:bl-text-[1.125rem] md:bl-leading-[1.375rem]
+					xl:bl-text-[1.375rem] xl:bl-leading-[2.0625rem]
+					[&#038;_a]:bl-underline [&#038;_a]:bl-underline-offset-[5px] [&#038;_a]:!bl-decoration-[1px]
+					hover:[&#038;_a]:!bl-decoration-[2px] focus-visible:[&#038;_a]:bl-outline
+					[&#038;_a]:bl-outline-1 [&#038;_a]:bl-outline-offset-4
+					active:[&#038;_a]:bl-outline-transparent
+					
+					[&amp;_a]:bl-text-identity-black hover:[&amp;_a]:bl-text-identity-blue-80 active:[&amp;_a]:bl-text-identity-blue [&amp;_a]:dark:bl-text-identity-black hover:dark:[&amp;_a]:bl-text-identity-blue-80 active:dark:[&amp;_a]:bl-text-identity-blue">
+					
+															Jan-Henrik Matsch und Luca Terenzi erhalten den Preis für ihre hervorragenden Dissertationen. Mehr &#8230;									</p>
+				<p class="bl-font-book [&#038;_a]:bl-font-medium bl-my-0
+					bl-text-[1rem] bl-leading-[1.375rem]
+					md:bl-text-[1.125rem] md:bl-leading-[1.375rem]
+					xl:bl-text-[1.375rem] xl:bl-leading-[2.0625rem]
+					[&#038;_a]:bl-underline [&#038;_a]:bl-underline-offset-[5px] [&#038;_a]:!bl-decoration-[1px]
+					hover:[&#038;_a]:!bl-decoration-[2px] focus-visible:[&#038;_a]:bl-outline
+					[&#038;_a]:bl-outline-1 [&#038;_a]:bl-outline-offset-4
+					active:[&#038;_a]:bl-outline-transparent
+					
+					[&amp;_a]:bl-text-identity-black hover:[&amp;_a]:bl-text-identity-blue-80 active:[&amp;_a]:bl-text-identity-blue [&amp;_a]:dark:bl-text-identity-black hover:dark:[&amp;_a]:bl-text-identity-blue-80 active:dark:[&amp;_a]:bl-text-identity-blue">
+					
+																			</p>
+				<p class="bl-font-book [&#038;_a]:bl-font-medium bl-my-0
+					bl-text-[1rem] bl-leading-[1.375rem]
+					md:bl-text-[1.125rem] md:bl-leading-[1.375rem]
+					xl:bl-text-[1.375rem] xl:bl-leading-[2.0625rem]
+					[&#038;_a]:bl-underline [&#038;_a]:bl-underline-offset-[5px] [&#038;_a]:!bl-decoration-[1px]
+					hover:[&#038;_a]:!bl-decoration-[2px] focus-visible:[&#038;_a]:bl-outline
+					[&#038;_a]:bl-outline-1 [&#038;_a]:bl-outline-offset-4
+					active:[&#038;_a]:bl-outline-transparent
+					xl:@2xl/teaser-event:bl-mb-0
+					xl:@2xl/teaser-event:bl-inline-block
+					
+					[&amp;_a]:bl-text-identity-black hover:[&amp;_a]:bl-text-identity-blue-80 active:[&amp;_a]:bl-text-identity-blue [&amp;_a]:dark:bl-text-identity-black hover:dark:[&amp;_a]:bl-text-identity-blue-80 active:dark:[&amp;_a]:bl-text-identity-blue">
+					
+																			</p>
+			</div>
+			<div>
+							</div>
+		</div>
+
+	</div>
+	</div>
+</div>
+</div>
+
+	</div>
+
+
+
+<div style="height:46px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<div class="bl-w-full wp-block-ufr-accordion">
+
+
+<article class="ufr-accordion-container-wrapper" data-accordion="animationDuration: 400; direction: vertical; collapsible: true; ">
+	<div class="ufr-accordion-container-flex-wrapper ">
+		
+
+<section
+	id="Forschungsprojekte-am-Mathematischen-Institut"
+	class="ufr-accordion-item-section
+	ufr-accordion-item-section--vertical">
+	<div class="bl-group/accordion-header ufr-accordion-item-header
+			"
+	role="button"
+	tabindex="0"
+	aria-label="Akkordeon-Item  wechseln: Forschungsprojekte am Mathematischen Institut"
+	aria-controls="Akkordeon-Inhalt Forschungsprojekte-am-Mathematischen-Institut"
+	>
+		<div class="ufr-accordion-item-header-wrapper
+					">
+						<h3 class="ufr-accordion-item-header-heading
+				ufr-accordion-item-header-heading--vertical			">
+				Forschungsprojekte am Mathematischen Institut			</h3>
+		</div>
+		<span class="
+			chevron-container
+			ufr-accordion-item-header-chevron-container
+			ufr-accordion-item-header-chevron-container--!numbered ufr-accordion-header-chevron-container--light-in-lightmode ufr-accordion-header-chevron-container--dark-in-darkmode 		" aria-hidden="true">
+			<svg width="100%" viewBox="0 0 35 50" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="chevron-right" class="bl-h-[40px] md:bl-h-[40px] xl:bl-h-[100px] bl-rotate-90" role="img">
+	<title>chevron-right</title>
+	<path d="M5.00012 5L25.6062 25.0002L5.00012 45" stroke="currentColor" stroke-width="12" />
+</svg>
+		</span>
+	</div>
+	<div
+		id="Akkordeon-Inhalt Forschungsprojekte-am-Mathematischen-Institut"
+		class="ufr-accordion-item-body
+			ufr-accordion-item-body--vertical		"
+			>
+				<div
+		class="ufr-accordion-item-body-outer-content-wrapper
+					"
+		aria-hidden="true"
+		>
+			<div class="
+							">
+				
+
+<p>2023: Die DFG fördert den <strong>Sonderforschungsbereich</strong> (SFB) &#8222;<a href="https://gepris.dfg.de/gepris/projekt/499552394?context=projekt&amp;task=showDetail&amp;id=499552394&amp; <view-source:https://gepris.dfg.de/gepris/projekt/499552394?context=projekt&task=showDetail&id=499552394&>">Small Data</a>&#8220; mit 12 Mio. EUR. (Sprecher: Harald Binder; PIs: Peter Pfaffelhuber, Angelika Rohde, Thorsten Schmidt, Jens Timmer). <a href="https://www.smalldata-initiative.de <view-source:https://www.smalldata-initiative.de/>">&gt;</a></p>
+
+
+
+<p>Die DFG fördert die Forschergruppe &#8222;<a href="https://gepris-extern.dfg.de/gepris/projekt/460867398?language=en <view-source:https://gepris-extern.dfg.de/gepris/projekt/460867398?language=en>">Mathematische Statistik im Informationszeitalter &#8211; Statistische Effizienz und rechentechnische Durchführbarkeit</a>&#8220; (Sprecherin: Angelika Rohde). &gt;</p>
+
+
+
+<p>Die EU fördert im Marie Skłodowska-Curie Programm das Europäische Doktorandenprogramm <a href="https://remold.org/impressum/ <view-source:https://remold.org/impressum/>">Remold</a> (Wolfgang Soergel)</p>
+
+
+
+<p>2022: Die Vector Stiftung födert das Projekt <a href="https://www.stochastik.uni-freiburg.de/de/professoren/thorsten-schmidt/lean-ai <view-source:https://www.stochastik.uni-freiburg.de/de/professoren/thorsten-schmidt/lean-ai>">Lean AI</a> (Peter Pfaffelhuber und Thorsten Schmidt)</p>
+
+
+
+<p>2021: Die Carl-Zeiss Stiftung fördert &nbsp;im Rahmen ihres Programms „Wissenschaftliche Durchbrüche in Künstlicher Intelligenz&#8220; das Projekt <a href="https://kommunikation.uni-freiburg.de/pm/2021/carl-zeiss-stiftung-foerdert-freiburger-forschungsprojekt-zu-lernenden-assistenzrobotern <view-source:https://kommunikation.uni-freiburg.de/pm/2021/carl-zeiss-stiftung-foerdert-freiburger-forschungsprojekt-zu-lernenden-assistenzrobotern>">„Responsable and Scalable Learning for Robots Assisting Humans“ (ReScaLe)</a> &#8211; (Thorsten Schmidt)</p>
+
+
+
+<p>weitere Forschungsprojekte&#8230;</p>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<section
+	id="Preise-und-Auszeichnungen"
+	class="ufr-accordion-item-section
+	ufr-accordion-item-section--vertical">
+	<div class="bl-group/accordion-header ufr-accordion-item-header
+			"
+	role="button"
+	tabindex="0"
+	aria-label="Akkordeon-Item  wechseln: Preise und Auszeichnungen"
+	aria-controls="Akkordeon-Inhalt Preise-und-Auszeichnungen"
+	>
+		<div class="ufr-accordion-item-header-wrapper
+					">
+						<h3 class="ufr-accordion-item-header-heading
+				ufr-accordion-item-header-heading--vertical			">
+				Preise und Auszeichnungen			</h3>
+		</div>
+		<span class="
+			chevron-container
+			ufr-accordion-item-header-chevron-container
+			ufr-accordion-item-header-chevron-container--!numbered ufr-accordion-header-chevron-container--light-in-lightmode ufr-accordion-header-chevron-container--dark-in-darkmode 		" aria-hidden="true">
+			<svg width="100%" viewBox="0 0 35 50" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="chevron-right" class="bl-h-[40px] md:bl-h-[40px] xl:bl-h-[100px] bl-rotate-90" role="img">
+	<title>chevron-right</title>
+	<path d="M5.00012 5L25.6062 25.0002L5.00012 45" stroke="currentColor" stroke-width="12" />
+</svg>
+		</span>
+	</div>
+	<div
+		id="Akkordeon-Inhalt Preise-und-Auszeichnungen"
+		class="ufr-accordion-item-body
+			ufr-accordion-item-body--vertical		"
+			>
+				<div
+		class="ufr-accordion-item-body-outer-content-wrapper
+					"
+		aria-hidden="true"
+		>
+			<div class="
+							">
+				
+
+<p>2024: Anette Huber Klawitter ist ordentliches Mitglied der <a href="http://Annette Huber-Klawitter: ordentliches Mitglied der Heidelberger Akademie der Wissenschaften">Heidelberger Akademie der Wissenschaften</a></p>
+
+
+
+<p>2024: Wolfgang Soergel ist Mitglied der <a href="https://www.leopoldina.org/en/members/list-of-members/list-of-members/member/Member/show/wolfgang-soergel-1/ <view-source:https://www.leopoldina.org/en/members/list-of-members/list-of-members/member/Member/show/wolfgang-soergel-1/>">Leopoldina</a> (Nationale Akademie der Wissenschaften)</p>
+
+
+
+<p>2024: Michael Růžička erhält die Ehrenmedaille der Tschechischen Mathematischen Gesellschaft</p>
+
+
+
+<p>2023: Stefan Kebekus erhält den Frontiers of Science Award (Yanqi Lake Beijing Institute of Mathematical Sciences and Applications)</p>
+
+
+
+<p>2023: Stefan Kebekus erhält den Niethammer Innovation Award</p>
+
+
+
+<p>2023: Susanne Knies erhält den Universitätslehrpreis</p>
+
+
+
+<p>2020: Philipp Harms und Thorsten Schmidt erhalten mit Frank Hutter den IDA-Award zum Thema Maschinelles Lernen und künstliche Intelligenz in Freiburg</p>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+	</div>
+</article>
+</div>
+
+
+
+<p></p>
+
+
+
+<p>Auf dieser Seite finden Sie noch viele weitere Informationen, schauen Sie doch einmal bei unseren<a href="https://uni-freiburg.de/math/mathematische-stochastik-i/ <view-source:https://uni-freiburg.de/math/mathematische-stochastik-i/>" data-type="page" data-id="522"> Abteilungen</a> vorbei, informieren Sie sich über unsere <a href="https://uni-freiburg.de/math/das-mathematische-institut/ <view-source:https://uni-freiburg.de/math/das-mathematische-institut/>" data-type="page" data-id="376">Vorlesungen</a>, oder über unsere <a href="https://uni-freiburg.de/math/forschungstaetigkeiten/ <view-source:https://uni-freiburg.de/math/forschungstaetigkeiten/>" data-type="page" data-id="643">Forschung</a>. Falls Sie das Institut besuchen wollen, sind die <strong>Informationen zur Anreise</strong> besonders hilfreich. Haben Sie immer noch nicht gefunden was Sie suchten ? Vielleicht werden Sie bei den <strong>FAQs</strong> oder der Liste der <a href="https://uni-freiburg.de/math/einrichtung/ <view-source:https://uni-freiburg.de/math/einrichtung/>" data-type="page" data-id="205">Personen</a> am Institut fündig ? Sie können sich auch an die <a href="https://www.math.uni-freiburg.de/institut/index.html <view-source:https://www.math.uni-freiburg.de/institut/index.html>">Geschäftsstelle des Institutes</a> oder an das <a href="http://www.mathphys.uni-freiburg.de/dekanat.de.html <view-source:http://www.mathphys.uni-freiburg.de/dekanat.de.html>">Dekanat des Fachbereiches</a> wenden und dort eine Email schreiben oder anrufen.</p>
+</div>
+
+		
+<footer class="overflow-clip pt-1">
+	
+	<div class="has-global-padding is-layout-constrained mt-8">
+		<div class="bl-group/detailswrapper wp-block-ufr-details" aria-expanded="false" data-block-id="db88362e-3330-450f-9118-411b6b958910">
+	<button
+		data-block-id="db88362e-3330-450f-9118-411b6b958910"
+		data-role="open-button"
+		id="db88362e-3330-450f-9118-411b6b958910-open-button"
+		aria-controls="db88362e-3330-450f-9118-411b6b958910-content"
+		class="bl-group/detailsbutton bl-flex bl-items-center bl-mb-4 bl-cursor-pointer bl-text-inherit
+			hover:bl-text-identity-blue-80 active:bl-text-identity-blue			dark:hover:bl-text-identity-yellow-60 dark:active:bl-text-identity-yellow			bl-transition-colors bl-duration-[400ms]">
+		
+		<svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="chevron-down" class="bl-flex-shrink-0 bl-w-6 bl-text-inherit bl-rotate-180 group-aria-expanded/detailswrapper:bl-rotate-0 bl-me-3" role="img">
+	<title>chevron-down</title>
+	<path d="M12.0001 8.57706L4.28662 16.5242L-1.81865e-07 12.3636L12.0001 -4.43936e-05L24 12.3636L19.7133 16.5241L12.0001 8.57706Z" fill="currentColor"/>
+</svg>
+
+		<span class="bl-flex bl-items-center bl-flex-grow bl-m-0 bl-p-0 bl-text-start bl-min-h-11 group-hover/detailsbutton:bl-underline bl-underline-offset-[6px] bl-decoration-[2px] xl:bl-decoration-[3px]">
+						Mediennachweise ‒ ⚠ Fehlende Nachweise: 6		</span>
+	</button>
+	<div
+		id="db88362e-3330-450f-9118-411b6b958910-content"
+		aria-labelledby="db88362e-3330-450f-9118-411b6b958910-open-button"
+		class="bl-hidden group-aria-expanded/detailswrapper:bl-block">
+				<div><div
+	class="grid md:grid-cols-2 gap-y-4 mb-8">
+					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
+			<div class="flex-shrink-0 aspect-video h-[60px]">
+				<img
+					src="/static/Bilder/science_days_2024_1.png"
+					alt=""
+					class="w-full h-full object-contain">
+			</div>
+			<figcaption class="flex-grow jusitfy-center items-center">
+				<p class="m-0 p-0 justify-center">
+																	⚠ ‒ Fehlender Nachweis (<a href="https://uni-freiburg.de/math/wp-admin/upload.php?item=378 <view-source:https://uni-freiburg.de/math/wp-admin/upload.php?item=378>">In Mediengalerie bearbeiten</a>)									</p>
+			</figcaption>
+			
+		</figure>
+					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
+			<div class="flex-shrink-0 aspect-video h-[60px]">
+				<img
+					src="/static/Bilder/startseite_treppenhaus.jpg"
+					alt=""
+					class="w-full h-full object-contain">
+			</div>
+			<figcaption class="flex-grow jusitfy-center items-center">
+				<p class="m-0 p-0 justify-center">
+																	⚠ ‒ Fehlender Nachweis (<a href="https://uni-freiburg.de/math/wp-admin/upload.php?item=381 <view-source:https://uni-freiburg.de/math/wp-admin/upload.php?item=381>">In Mediengalerie bearbeiten</a>)									</p>
+			</figcaption>
+			
+		</figure>
+					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
+			<div class="flex-shrink-0 aspect-video h-[60px]">
+				<img
+					src="/static/Bilder/Uni-Freiburg_Okt-2021-19_2.jpg"
+					alt=""
+					class="w-full h-full object-contain">
+			</div>
+			<figcaption class="flex-grow jusitfy-center items-center">
+				<p class="m-0 p-0 justify-center">
+																	⚠ ‒ Fehlender Nachweis (<a href="https://uni-freiburg.de/math/wp-admin/upload.php?item=639 <view-source:https://uni-freiburg.de/math/wp-admin/upload.php?item=639>">In Mediengalerie bearbeiten</a>)									</p>
+			</figcaption>
+			
+		</figure>
+					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
+			<div class="flex-shrink-0 aspect-video h-[60px]">
+				<img
+					src="/static/Bilder/tafel.jpg"
+					alt=""
+					class="w-full h-full object-contain">
+			</div>
+			<figcaption class="flex-grow jusitfy-center items-center">
+				<p class="m-0 p-0 justify-center">
+																	⚠ ‒ Fehlender Nachweis (<a href="https://uni-freiburg.de/math/wp-admin/upload.php?item=385 <view-source:https://uni-freiburg.de/math/wp-admin/upload.php?item=385>">In Mediengalerie bearbeiten</a>)									</p>
+			</figcaption>
+			
+		</figure>
+					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
+			<div class="flex-shrink-0 aspect-video h-[60px]">
+				<img
+					src="/static/Bilder/small-data.png"
+					alt=""
+					class="w-full h-full object-contain">
+			</div>
+			<figcaption class="flex-grow jusitfy-center items-center">
+				<p class="m-0 p-0 justify-center">
+																	⚠ ‒ Fehlender Nachweis (<a href="https://uni-freiburg.de/math/wp-admin/upload.php?item=460 <view-source:https://uni-freiburg.de/math/wp-admin/upload.php?item=460>">In Mediengalerie bearbeiten</a>)									</p>
+			</figcaption>
+			
+		</figure>
+					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
+			<div class="flex-shrink-0 aspect-video h-[60px]">
+				<img
+					src="/static/Bilder/preis_ruzicka_2024.jpg"
+					alt=""
+					class="w-full h-full object-contain">
+			</div>
+			<figcaption class="flex-grow jusitfy-center items-center">
+				<p class="m-0 p-0 justify-center">
+											private															</p>
+			</figcaption>
+			
+		</figure>
+					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
+			<div class="flex-shrink-0 aspect-video h-[60px]">
+				<img
+					src="/static/Bilder/lindemann.jpg"
+					alt=""
+					class="w-full h-full object-contain">
+			</div>
+			<figcaption class="flex-grow jusitfy-center items-center">
+				<p class="m-0 p-0 justify-center">
+																	⚠ ‒ Fehlender Nachweis (<a href="https://uni-freiburg.de/math/wp-admin/upload.php?item=457">In Mediengalerie bearbeiten</a>)									</p>
+			</figcaption>
+			
+		</figure>
+	 
+</div>
+</div>	</div>
+</div>
+	</div>
+
+		<div
+		class="
+			relative bg-identity-darkblue text-pure-white
+			print:bg-pure-white print:text-pitch-black
+			pt-[35px] md:pt-10 xl:pt-[63px] pb-[45px] md:pb-[50px]
+			xl:pb-[70px] px-6 overflow-hidden"
+		>
+		
+<nav class="min-[1920px]:max-w-[1920px] min-[1920px]:mx-auto min-[1920px]:px-[139px]">
+	<ol
+		class="
+			flex flex-wrap justify-center mx-auto flex-col md:flex-row
+			gap-y-[22px] md:gap-y-[31px] md:gap-x-[80px]
+			xl:gap-x-[57px] max-w-[652px]
+			xl:max-w-[calc(6.36vw*10+16px*9)]
+			xl:justify-around list-none m-0 p-0">
+							<li
+			class="text-center leading-[1.375rem]">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Kontakt</a>
+		</li>
+				<li
+			class="text-center leading-[1.375rem]">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Barrierefreiheit</a>
+		</li>
+				<li
+			class="text-center leading-[1.375rem]">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Impressum</a>
+		</li>
+				<li
+			class="text-center leading-[1.375rem]">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Datenschutz</a>
+		</li>
+				<li
+			class="text-center leading-[1.375rem]">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Hilfe im Notfall</a>
+		</li>
+				<li
+			class="text-center leading-[1.375rem]">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Lageplan</a>
+		</li>
+			</ol>
+</nav>
+<div 
+	class="text-center mt-[37px] md:mt-[54px] 
+	xl:mt-[79px] max-w-[312px] md:max-w-[672px] mx-auto"
+>
+	<h2
+		class="text-xl font-medium mb-[15px] xl:mb-[34px]
+		xl:text-[2.3125rem] xl:leading-[3.125rem] text-pure-white"
+	>
+		Mathematisches Institut	</h2>
+	<p class="leading-[1.5625rem]">Ernst-Zermelo Str. 1, 79104 Freiburg </p>
+</div>
+
+<div class="
+		h-[2px] w-32 bg-pure-white block mt-10
+		md:mt-[80px] mx-auto">
+</div>
+
+		<div class="relative text-center mt-10 md:mt-[50px]">
+			<a
+				href="/ <view-source:https://uni-freiburg.de/>"
+				class="block mx-auto max-w-full w-[268px] md:w-[329px]
+				xl:w-[535px] mb-[10px] md:mb-[15px] xl:mb-5 mt-[80px]
+				print:text-pitch-black !outline-2 !outline-offset-8
+				!outline-pure-white focus-visible:!outline-dotted text-pure-white hover:text-pure-white"
+			>
+				<svg width="100%" viewBox="0 0 2951 329" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Ich bin ein tolles Arialabel für das Logo der Universität Freiburg!"
+     role="img">
+    <title>Logo der Universität Freiburg</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(0.264000, 0.178000)" fill="currentColor" fill-rule="nonzero">
+            <path
+                d="M55.848,257.76 C85.562,257.76 105.968,239.502 115.276,214.442 L115.276,253.822 L155.372,253.822 L155.372,78.402 L114.56,78.402 L114.56,165.038 C114.56,203.702 95.944,223.392 70.526,223.392 C50.478,223.392 40.454,209.788 40.454,181.864 L40.454,78.402 L0,78.402 L0,191.888 C0,231.984 18.974,257.76 55.848,257.76 Z M235.918,253.822 L235.918,166.112 C235.918,130.312 254.176,108.832 279.952,108.832 C302.148,108.832 312.888,122.794 312.888,151.076 L312.888,253.822 L354.058,253.822 L354.058,141.052 C354.058,101.314 333.294,74.464 294.988,74.464 C264.558,74.464 243.794,93.438 234.844,119.572 L234.844,78.402 L195.106,78.402 L195.106,253.822 L235.918,253.822 Z M430.814,253.822 L430.814,78.402 L390.002,78.402 L390.002,253.822 L430.814,253.822 Z M563.48,253.822 L631.5,78.402 L590.688,78.402 L543.79,213.726 L498.324,78.402 L453.574,78.402 L520.878,253.822 L563.48,253.822 Z M724.218,257.76 C766.82,257.76 792.954,234.49 803.694,206.924 L770.042,192.962 C762.166,213.726 747.846,226.614 725.65,226.614 C694.862,226.614 679.826,205.134 678.752,173.988 L804.41,173.988 L804.41,166.828 C804.41,109.548 775.054,73.032 723.144,73.032 C675.172,73.032 638.656,107.042 638.656,165.396 C638.656,221.244 669.086,257.76 724.218,257.76 Z M763.598,146.064 L679.826,146.064 C682.69,118.856 698.442,103.104 722.786,103.104 C746.414,103.104 762.166,117.424 763.598,146.064 Z M876.006,253.822 L876.006,179.358 C876.006,134.25 899.276,114.918 935.076,114.918 C937.16267,114.918 938.995953,114.918 940.698926,115.000051 C940.698926,115.000051 942.404617,101.249367 945.816,73.748 C942.713333,73.5093333 940.326667,73.39 938.656,73.39 C906.794,73.39 885.672,94.154 875.29,126.374 L875.29,78.402 L835.552,78.402 L835.552,253.822 L876.006,253.822 Z M1896.006,253.822 L1896.006,179.358 C1896.006,134.25 1919.276,114.918 1955.076,114.918 C1957.16267,114.918 1958.99595,114.918 1960.69893,115.000051 C1960.69893,115.000051 1962.40462,101.249367 1965.816,73.748 C1962.71333,73.5093333 1960.32667,73.39 1958.656,73.39 C1926.794,73.39 1905.672,94.154 1895.29,126.374 L1895.29,78.402 L1855.552,78.402 L1855.552,253.822 L1896.006,253.822 Z M2684.006,253.822 L2684.006,179.358 C2684.006,134.25 2707.276,114.918 2743.076,114.918 C2745.16267,114.918 2746.99595,114.918 2748.69893,115.000051 C2748.69893,115.000051 2750.40462,101.249367 2753.816,73.748 C2750.71333,73.5093333 2748.32667,73.39 2746.656,73.39 C2714.794,73.39 2693.672,94.154 2683.29,126.374 L2683.29,78.402 L2643.552,78.402 L2643.552,253.822 L2684.006,253.822 Z M1031.016,258.834 C1075.408,258.834 1104.048,237.712 1104.048,202.986 C1104.048,178.284 1089.728,160.026 1055.718,151.076 L1025.288,142.842 C1005.956,137.472 997.722,132.46 997.722,120.288 C997.722,108.832 1008.104,100.598 1027.794,100.598 C1050.348,100.598 1061.446,114.56 1064.668,128.88 L1099.394,119.572 C1091.876,90.574 1065.026,73.032 1029.584,73.032 C989.488,73.032 961.206,93.08 961.206,124.942 C961.206,150.002 977.316,167.902 1008.82,175.778 L1037.46,183.654 C1058.94,189.382 1065.742,195.11 1065.742,207.998 C1065.742,220.886 1054.286,230.91 1031.732,230.91 C1008.462,230.91 993.068,216.232 989.488,196.9 L953.688,206.924 C959.774,237.354 987.698,258.834 1031.016,258.834 Z M1174.57,253.822 L1174.57,78.402 L1133.758,78.402 L1133.758,253.822 L1174.57,253.822 Z M1288.052,257.402 C1300.94,257.402 1312.396,254.18 1318.84,250.958 L1318.84,220.886 C1311.68,223.034 1305.952,224.108 1298.792,224.108 C1281.25,224.108 1273.016,217.306 1273.016,198.332 L1273.016,109.19 L1317.05,109.19 L1317.05,78.402 L1272.658,78.402 L1272.658,26.134 L1233.636,26.134 L1233.636,78.402 L1194.972,78.402 L1194.972,109.19 L1233.636,109.19 L1233.636,203.702 C1233.636,239.86 1252.61,257.402 1288.052,257.402 Z M1395.806,258.834 C1425.52,258.834 1445.926,243.082 1454.876,220.886 C1456.308,243.798 1469.554,257.044 1493.898,257.044 C1502.848,257.044 1512.156,254.896 1517.884,251.316 L1517.884,225.182 C1513.946,226.972 1510.008,227.33 1506.428,227.33 C1495.688,227.33 1490.676,222.676 1490.676,207.282 L1490.676,141.41 C1490.676,97.018 1463.826,73.032 1415.138,73.032 C1372.894,73.032 1342.822,94.512 1341.032,126.016 L1379.338,132.46 L1379.338,129.238 C1380.77,110.98 1394.374,100.956 1415.138,100.956 C1440.556,100.956 1451.296,113.128 1451.296,135.324 L1451.296,144.99 C1442.704,144.274 1433.754,143.558 1423.014,143.558 C1376.116,144.274 1338.526,160.384 1338.526,205.134 C1338.526,239.502 1362.512,258.834 1395.806,258.834 Z M1409.052,228.762 C1390.078,228.762 1378.622,218.738 1378.622,202.27 C1378.622,177.926 1399.386,168.976 1432.68,168.26 C1439.482,168.26 1445.568,168.618 1451.296,168.976 L1451.296,181.506 C1451.296,211.22 1434.47,228.762 1409.052,228.762 Z M1605.948,257.402 C1618.836,257.402 1630.292,254.18 1636.736,250.958 L1636.736,220.886 C1629.576,223.034 1623.848,224.108 1616.688,224.108 C1599.146,224.108 1590.912,217.306 1590.912,198.332 L1590.912,109.19 L1634.946,109.19 L1634.946,78.402 L1590.554,78.402 L1590.554,26.134 L1551.532,26.134 L1551.532,78.402 L1512.868,78.402 L1512.868,109.19 L1551.532,109.19 L1551.532,203.702 C1551.532,239.86 1570.506,257.402 1605.948,257.402 Z M1788.646,253.822 L1788.646,109.19 L1830.532,109.19 L1830.532,78.402 L1788.646,78.402 L1788.646,61.576 C1788.646,44.392 1795.806,36.158 1814.064,36.158 C1818.718,36.158 1824.088,36.516 1830.174,37.948 L1830.174,7.16 C1823.014,5.37 1814.064,3.58 1804.398,3.58 C1771.462,3.58 1749.266,19.69 1749.266,56.564 L1749.266,78.402 L1654.29087,78.402 L1654.29087,109.19 L1749.266,109.19 L1749.266,253.822 L1788.646,253.822 Z M2057.138,257.76 C2099.74,257.76 2125.874,234.49 2136.614,206.924 L2102.962,192.962 C2095.086,213.726 2080.766,226.614 2058.57,226.614 C2027.782,226.614 2012.746,205.134 2011.672,173.988 L2137.33,173.988 L2137.33,166.828 C2137.33,109.548 2107.974,73.032 2056.064,73.032 C2008.092,73.032 1971.576,107.042 1971.576,165.396 C1971.576,221.244 2002.006,257.76 2057.138,257.76 Z M2096.518,146.064 L2012.746,146.064 C2015.61,118.856 2031.362,103.104 2055.706,103.104 C2079.334,103.104 2095.086,117.424 2096.518,146.064 Z M2208.284,253.822 L2208.284,78.402 L2167.472,78.402 L2167.472,253.822 L2208.284,253.822 Z M2347.826,258.118 C2388.996,258.118 2419.426,224.108 2419.426,165.038 C2419.426,108.116 2389.712,74.106 2347.826,74.106 C2318.112,74.106 2298.78,90.574 2289.83,112.054 L2289.83,7.16 L2249.018,7.16 L2249.018,253.822 L2289.114,253.822 L2289.114,220.17 C2298.422,241.65 2318.47,258.118 2347.826,258.118 Z M2334.222,227.688 C2306.298,227.688 2289.114,202.986 2289.114,166.112 C2289.114,127.448 2306.656,104.536 2333.864,104.536 C2361.072,104.536 2377.898,126.374 2377.898,165.754 C2377.898,206.208 2361.43,227.688 2334.222,227.688 Z M2947.27463,66.822 L2949.83656,99.6181562 L2944.08619,99.6181562 L2943.5549,99.6221305 C2935.96698,99.7360598 2929.54905,102.299469 2924.30109,107.312359 C2918.93109,112.441828 2916.24609,120.329948 2916.24609,130.976719 L2916.24609,130.976719 L2916.24609,139.121219 L2916.24225,139.893982 C2916.11935,152.231227 2913.04687,163.273947 2907.0248,173.022141 C2900.87727,182.973422 2892.09508,190.775771 2880.67823,196.429187 C2869.26139,202.082604 2856.04616,204.909312 2841.03253,204.909312 L2841.03253,204.909312 L2840.0932,204.905335 C2828.53178,204.807216 2817.84391,202.893905 2808.02961,199.165401 L2808.02961,199.165401 L2807.36604,198.909969 L2806.80989,199.118743 C2803.6758,200.328133 2800.94608,201.919901 2798.62072,203.894047 C2795.20107,206.797203 2793.49125,210.465771 2793.49125,214.89975 C2793.49125,219.751396 2795.43415,223.375214 2799.31994,225.771203 C2803.20573,228.167193 2808.76778,229.365187 2816.00609,229.365187 L2816.00609,229.365187 L2882.678,229.365187 L2883.44857,229.367931 C2899.31593,229.481321 2911.60679,233.109818 2920.32114,240.253422 C2929.17605,247.512245 2933.6035,257.738552 2933.6035,270.932344 C2933.6035,289.436469 2925.77878,303.635271 2910.12933,313.52875 C2894.47988,323.422229 2870.24682,328.368969 2837.43016,328.368969 C2811.80332,328.368969 2792.11426,324.897115 2778.36295,317.953406 C2764.61165,311.009698 2757.736,301.395906 2757.736,289.112031 C2757.736,281.236031 2760.40981,274.860089 2765.75744,269.984203 C2771.10506,265.108318 2778.15505,261.568406 2786.90741,259.364469 C2779.31482,257.250031 2773.27078,253.425771 2768.77527,247.891687 C2764.27976,242.357604 2762.032,235.30575 2762.032,226.736125 C2762.032,217.118604 2765.4302,208.932151 2772.22661,202.176766 L2772.22661,202.176766 L2772.69248,201.719793 C2778.00054,196.581816 2784.26553,192.839432 2791.48745,190.49264 L2791.51704,190.482969 L2791.44722,190.433266 C2785.043,185.882422 2779.70081,180.349078 2775.42064,173.833234 C2768.86663,163.855849 2765.58962,152.331792 2765.58962,139.261062 C2765.58962,126.939896 2768.76128,115.744937 2775.10459,105.676188 C2781.44791,95.6074375 2790.36434,87.6633802 2801.85391,81.8440156 C2813.34347,76.024651 2826.52234,73.1149688 2841.39053,73.1149688 C2856.82555,73.1149688 2870.41557,76.226026 2882.16058,82.4481406 C2893.90559,88.6702552 2902.45004,97.3620104 2907.79394,108.523406 C2908.89404,95.0536562 2912.8684,84.795651 2919.71702,77.7493906 C2926.56563,70.7031302 2935.7515,67.0606667 2947.27463,66.822 L2947.27463,66.822 Z M2874.49563,263.352812 L2813.78106,263.352812 L2813.15668,263.356397 C2805.91509,263.440037 2800.17333,264.987379 2795.93141,267.998422 C2791.56828,271.095495 2789.314,275.33649 2789.16856,280.721406 C2789.07533,287.68749 2793.22217,292.880354 2801.60906,296.3 C2809.99596,299.719646 2822.45697,301.429469 2838.99209,301.429469 C2859.50251,301.429469 2874.48537,299.517339 2883.94067,295.693078 C2893.39597,291.868818 2898.12363,286.281594 2898.12363,278.931406 C2898.12363,273.397323 2896.14344,269.41737 2892.18306,266.991547 C2888.22269,264.565724 2882.32688,263.352812 2874.49563,263.352812 L2874.49563,263.352812 Z M2489.59,78.402 L2489.59,181.864 C2489.59,209.788 2499.614,223.392 2519.662,223.392 C2545.08,223.392 2563.696,203.702 2563.696,165.038 L2563.696,165.038 L2563.696,78.402 L2604.508,78.402 L2604.508,253.822 L2564.412,253.822 L2564.412,214.442 C2555.104,239.502 2534.698,257.76 2504.984,257.76 C2468.11,257.76 2449.136,231.984 2449.136,191.888 L2449.136,191.888 L2449.136,78.402 L2489.59,78.402 Z M2839.80878,100.736906 C2832.82032,100.736906 2826.58236,102.166109 2821.09489,105.024516 C2815.60742,107.882922 2811.28718,112.187312 2808.13417,117.937687 C2804.98116,123.688062 2803.40466,130.795854 2803.40466,139.261062 C2803.40466,151.839542 2806.78794,161.345187 2813.55452,167.778 C2820.32109,174.210812 2829.07251,177.427219 2839.80878,177.427219 C2850.69422,177.427219 2859.5426,174.188437 2866.35392,167.710875 C2873.16524,161.233312 2876.57091,151.703427 2876.57091,139.121219 C2876.57091,130.65601 2874.97203,123.548219 2871.77427,117.797844 C2868.57651,112.047469 2864.21897,107.766385 2858.70167,104.954594 C2853.18437,102.142802 2846.88674,100.736906 2839.80878,100.736906 Z"></path>
+            <path
+                d="M1380.054,49.688 C1392.942,49.688 1401.892,40.022 1401.892,27.492 C1401.892,15.32 1392.942,5.654 1380.054,5.654 C1367.524,5.654 1358.216,15.32 1358.216,27.492 C1358.216,40.022 1367.524,49.688 1380.054,49.688 Z">
+            </path>
+            <path
+                d="M1447.054,49.688 C1459.942,49.688 1468.892,40.022 1468.892,27.492 C1468.892,15.32 1459.942,5.654 1447.054,5.654 C1434.524,5.654 1425.216,15.32 1425.216,27.492 C1425.216,40.022 1434.524,49.688 1447.054,49.688 Z">
+            </path>
+            <path
+                d="M1154.054,49.688 C1166.942,49.688 1175.892,40.022 1175.892,27.492 C1175.892,15.32 1166.942,5.654 1154.054,5.654 C1141.524,5.654 1132.216,15.32 1132.216,27.492 C1132.216,40.022 1141.524,49.688 1154.054,49.688 Z">
+            </path>
+            <path
+                d="M2187.054,49.688 C2199.942,49.688 2208.892,40.022 2208.892,27.492 C2208.892,15.32 2199.942,5.654 2187.054,5.654 C2174.524,5.654 2165.216,15.32 2165.216,27.492 C2165.216,40.022 2174.524,49.688 2187.054,49.688 Z">
+            </path>
+            <path
+                d="M410.054,49.688 C422.942,49.688 431.892,40.022 431.892,27.492 C431.892,15.32 422.942,5.654 410.054,5.654 C397.524,5.654 388.216,15.32 388.216,27.492 C388.216,40.022 397.524,49.688 410.054,49.688 Z">
+            </path>
+        </g>
+    </g>
+</svg>
+			</a>
+			<p class="leading-[1.5625rem] w-full md:w-[500px] xl:w-[841px] mx-auto">
+				Besucheradresse: Friedrichstraße 39, 79098 Freiburg | Postanschrift: Postfach, 79085 Freiburg			</p>
+		</div>
+		<div class="text-center print:invisible">
+			<button 
+				class="
+					text-[1.125rem] leading-[1.5625rem] px-[26px] py-[7px] border-[2px] gap-[14px] !decoration-2 no-underline
+					border-pure-white font-medium underline-offset-[5px]
+					
+					focus-visible:outline-dotted focus-visible:outline-2
+					focus-visible:outline-offset-[6px]
+					
+					bg-pure-white text-identity-black
+					hover:bg-identity-yellow-40 hover:border-identity-yellow-40 hover:underline
+					active:bg-identity-yellow active:border-identity-yellow
+					focus-visible:outline-pure-white inline-flex flex-row items-center motion-safe:transition-colors
+					motion-safe:duration-[400ms] justify-center
+				"
+				type="button"
+				data-action="openDialog"
+				data-dialog-open="linktree">
+				Soziale Medien			</button>
+		</div>
+	</div>
+	
+	<div class="max-w-[1920px] relative mx-auto">
+	<div class="
+		hidden md:block absolute pointer-events-none text-pure-white/20
+		print:text-pitch-black/20 
+
+		items-baseline
+		md:-bottom-[75px] md:-left-[50px]
+		xl:-bottom-[80px] xl:-left-[160px]" aria-hidden="true">
+		<!-- ufr-seal-6 -->
+	</div>
+</div>
+
+	
+<dialog
+	data-dialog-name="menu"
+	data-dialog-type="dialog"
+	class="isolate inset-0 m-0 p-0 max-w-full  w-full !h-[calc(100dvh-80px-46px)] md:!h-[calc(100dvh-32px)] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
+	inert>
+	<div
+		class="absolute z-20
+		w-[min(70vw,350px)] -right-[25vw] -top-[20px]
+		md:w-[350px] md:-right-[80px] md:-top-[40px]
+		xl:w-[850px] xl:-right-[250px] xl:-top-[120px]">
+		<!-- ufr-seal-5 -->
+	</div>
+	<div class="flex flex-col overflow-hidden h-full w-full z-40">
+		<div
+			class="flex px-[24px] md:px-[48px] xl:px-[139px] pt-[15px]
+			md:pt-[25px] lg:pt-[60px] justify-between z-20"
+		>
+			<div class="inline w-full justify-center align-middle">
+				<svg width="100%" viewBox="0 0 57 30" xmlns="http://www.w3.org/2000/svg"
+	aria-label="ufr-textlogo" class="w-[57px] h-[30px] align-middle md:hidden" role="img">
+	<title>ufr-textlogo</title>
+	<g fill="currentColor">
+		<path d="M6.59108 30C8.15242 30.0086 9.67543 29.5167 10.9369 28.5966C12.1983 27.6765 13.1319 26.3765 13.6006 24.8872V29.5303H18.3326V8.83008H13.5201V19.0557C13.5201 23.6182 11.3231 25.9428 8.3236 25.9428C5.95708 25.9428 4.77383 24.338 4.77383 21.0414V8.83008H0V22.2215C0 26.9535 2.23992 29.9958 6.59108 29.9958" />
+		<path d="M48.1149 29.5354V20.7473C48.1149 15.4242 50.8612 13.1414 55.0868 13.1414C55.3327 13.1414 55.5492 13.1414 55.7511 13.1519L56.3548 8.28284C55.9879 8.25424 55.7061 8.24029 55.5095 8.24099C51.7494 8.24099 49.2563 10.6912 48.0312 14.4942V8.83105H43.3411V29.5354H48.1149Z" />
+		<path d="M36.2781 29.5354V12.4645H41.2215V8.83101H36.2781V6.84322C36.2781 4.81463 37.1235 3.84271 39.2776 3.84271C39.9176 3.83773 40.556 3.90796 41.1796 4.05195V0.418481C40.1867 0.155303 39.1653 0.0147621 38.1383 0C34.2506 0 31.6309 1.90095 31.6309 6.25316V8.83101H20.4219V12.4655H31.632V29.5354H36.2781Z" />
+	</g>
+</svg>
+			</div>
+			<div>
+				<button
+					data-action="closeDialog"
+					data-dialog-close="menu"
+					class="inline min-h-[44px] min-w-[44px] outline-2
+					outline-pure-white
+					outline-offset-[6px] focus-visible:outline-dotted">
+					<svg width="100%" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="cross" class="max-h-full w-[30px] h-[30px] md:w-[40px]
+							md:h-[40px] lg:w-[52px] lg:h-[52px] mx-auto
+							hover:text-identity-yellow-40 active:text-identity-yellow" role="img">
+	<title>cross</title>
+	<path d="M33 33L3 3" stroke="currentColor" stroke-width="8" />
+	<path d="M3 33L33 3" stroke="currentColor" stroke-width="8" />
+</svg>
+				</button>
+			</div>
+		</div>
+		<div class="h-full flex-1 py-[20px] md:py-0 px-[24px] md:px-[48px] xl:px-[139px] overflow-y-auto flex xl:gap-[150px] w-full z-30">
+			
+<div id="menu-mountpoint" class="w-full">
+	
+</div>
+		</div>
+		<div
+			class="hidden md:block px-[24px] pb-[15px] z-30"
+		>
+			<!-- Language switcher -->
+			
+			<!-- Footer links -->
+						<ul
+				class="justify-end				m-0 p-0 flex flex-row text-center lg:text-end
+				mx-auto xl:me-[100px] me-[24px]
+				flex-wrap flex-shrink leading-10 pt-2 pb-[44px] xl:pb-0 z-[10] list-none"
+			>
+														<li class="h-auto whitespace-nowrap
+						after:content-[&#039;|&#039;] after:mx-3">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Impressum</a>
+					</li>
+														<li class="h-auto whitespace-nowrap
+						after:content-[&#039;|&#039;] after:mx-3">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Datenschutz</a>
+					</li>
+														<li class="h-auto whitespace-nowrap
+						">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Barrierefreiheit</a>
+					</li>
+							</ul>
+		</div>
+	</div>
+</dialog>
+	
+<dialog
+	data-dialog-name="language-switcher"
+	data-dialog-type="dialog"
+	class="isolate inset-0 m-0 p-0 max-w-full  w-full !h-[calc(100dvh-80px-46px)] md:!h-[calc(100dvh-32px)] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
+	inert>
+	<div
+		class="absolute z-20
+		w-[min(70vw,350px)] -right-[25vw] -top-[20px]
+		md:w-[350px] md:-right-[80px] md:-top-[40px]
+		xl:w-[850px] xl:-right-[250px] xl:-top-[120px]">
+		<!-- ufr seal3 -->
+	</div>
+	<div class="flex flex-col overflow-hidden h-full w-full z-40">
+		<div
+			class="flex px-[24px] md:px-[48px] xl:px-[139px] pt-[15px]
+			md:pt-[25px] lg:pt-[60px] justify-between z-20"
+		>
+			<div class="inline w-full justify-center align-middle">
+				<svg width="100%" viewBox="0 0 57 30" xmlns="http://www.w3.org/2000/svg"
+	aria-label="ufr-textlogo" class="w-[57px] h-[30px] align-middle md:hidden" role="img">
+	<title>ufr-textlogo</title>
+	<g fill="currentColor">
+		<path d="M6.59108 30C8.15242 30.0086 9.67543 29.5167 10.9369 28.5966C12.1983 27.6765 13.1319 26.3765 13.6006 24.8872V29.5303H18.3326V8.83008H13.5201V19.0557C13.5201 23.6182 11.3231 25.9428 8.3236 25.9428C5.95708 25.9428 4.77383 24.338 4.77383 21.0414V8.83008H0V22.2215C0 26.9535 2.23992 29.9958 6.59108 29.9958" />
+		<path d="M48.1149 29.5354V20.7473C48.1149 15.4242 50.8612 13.1414 55.0868 13.1414C55.3327 13.1414 55.5492 13.1414 55.7511 13.1519L56.3548 8.28284C55.9879 8.25424 55.7061 8.24029 55.5095 8.24099C51.7494 8.24099 49.2563 10.6912 48.0312 14.4942V8.83105H43.3411V29.5354H48.1149Z" />
+		<path d="M36.2781 29.5354V12.4645H41.2215V8.83101H36.2781V6.84322C36.2781 4.81463 37.1235 3.84271 39.2776 3.84271C39.9176 3.83773 40.556 3.90796 41.1796 4.05195V0.418481C40.1867 0.155303 39.1653 0.0147621 38.1383 0C34.2506 0 31.6309 1.90095 31.6309 6.25316V8.83101H20.4219V12.4655H31.632V29.5354H36.2781Z" />
+	</g>
+</svg>
+			</div>
+			<div>
+				<button
+					data-action="closeDialog"
+					data-dialog-close="language-switcher"
+					class="inline min-h-[44px] min-w-[44px] outline-2
+					outline-pure-white
+					outline-offset-[6px] focus-visible:outline-dotted">
+					<svg width="100%" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="cross" class="max-h-full w-[30px] h-[30px] md:w-[40px]
+							md:h-[40px] lg:w-[52px] lg:h-[52px] mx-auto
+							hover:text-identity-yellow-40 active:text-identity-yellow" role="img">
+	<title>cross</title>
+	<path d="M33 33L3 3" stroke="currentColor" stroke-width="8" />
+	<path d="M3 33L33 3" stroke="currentColor" stroke-width="8" />
+</svg>
+				</button>
+			</div>
+		</div>
+		<div class="h-full flex-1 py-[20px] md:py-0 px-[24px] md:px-[48px] xl:px-[139px] overflow-y-auto flex xl:gap-[150px] w-full z-30">
+			
+<div class="w-full mt-auto -mb-5">
+	<ul class="list-none m-0 p-0">
+		</ul>
+</div>
+		</div>
+		<div
+			class="hidden md:block px-[24px] pb-[15px] z-30"
+		>
+			<!-- Language switcher -->
+			
+			<!-- Footer links -->
+						<ul
+				class="justify-center				m-0 p-0 flex flex-row text-center lg:text-end
+				mx-auto xl:me-[100px] me-[24px]
+				flex-wrap flex-shrink leading-10 pt-2 pb-[44px] xl:pb-0 z-[10] list-none"
+			>
+														<li class="h-auto whitespace-nowrap
+						after:content-[&#039;|&#039;] after:mx-3">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Impressum</a>
+					</li>
+														<li class="h-auto whitespace-nowrap
+						after:content-[&#039;|&#039;] after:mx-3">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Datenschutz</a>
+					</li>
+														<li class="h-auto whitespace-nowrap
+						">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Barrierefreiheit</a>
+					</li>
+							</ul>
+		</div>
+	</div>
+</dialog>
+	
+<dialog
+	data-dialog-name="service"
+	data-dialog-type="dialog"
+	class="isolate inset-0 m-0 p-0 max-w-full  w-full !h-[calc(100dvh-80px-46px)] md:!h-[calc(100dvh-32px)] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
+	inert>
+	<div
+		class="absolute z-20
+		w-[min(70vw,350px)] -right-[25vw] -top-[20px]
+		md:w-[350px] md:-right-[80px] md:-top-[40px]
+		xl:w-[850px] xl:-right-[250px] xl:-top-[120px]">
+		<!-- ufr-seal-2 -->
+	</div>
+	<div class="flex flex-col overflow-hidden h-full w-full z-40">
+		<div
+			class="flex px-[24px] md:px-[48px] xl:px-[139px] pt-[15px]
+			md:pt-[25px] lg:pt-[60px] justify-between z-20"
+		>
+			<div class="inline w-full justify-center align-middle">
+				<svg width="100%" viewBox="0 0 57 30" xmlns="http://www.w3.org/2000/svg"
+	aria-label="ufr-textlogo" class="w-[57px] h-[30px] align-middle md:hidden" role="img">
+	<title>ufr-textlogo</title>
+	<g fill="currentColor">
+		<path d="M6.59108 30C8.15242 30.0086 9.67543 29.5167 10.9369 28.5966C12.1983 27.6765 13.1319 26.3765 13.6006 24.8872V29.5303H18.3326V8.83008H13.5201V19.0557C13.5201 23.6182 11.3231 25.9428 8.3236 25.9428C5.95708 25.9428 4.77383 24.338 4.77383 21.0414V8.83008H0V22.2215C0 26.9535 2.23992 29.9958 6.59108 29.9958" />
+		<path d="M48.1149 29.5354V20.7473C48.1149 15.4242 50.8612 13.1414 55.0868 13.1414C55.3327 13.1414 55.5492 13.1414 55.7511 13.1519L56.3548 8.28284C55.9879 8.25424 55.7061 8.24029 55.5095 8.24099C51.7494 8.24099 49.2563 10.6912 48.0312 14.4942V8.83105H43.3411V29.5354H48.1149Z" />
+		<path d="M36.2781 29.5354V12.4645H41.2215V8.83101H36.2781V6.84322C36.2781 4.81463 37.1235 3.84271 39.2776 3.84271C39.9176 3.83773 40.556 3.90796 41.1796 4.05195V0.418481C40.1867 0.155303 39.1653 0.0147621 38.1383 0C34.2506 0 31.6309 1.90095 31.6309 6.25316V8.83101H20.4219V12.4655H31.632V29.5354H36.2781Z" />
+	</g>
+</svg>
+			</div>
+			<div>
+				<button
+					data-action="closeDialog"
+					data-dialog-close="service"
+					class="inline min-h-[44px] min-w-[44px] outline-2
+					outline-pure-white
+					outline-offset-[6px] focus-visible:outline-dotted">
+					<svg width="100%" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="cross" class="max-h-full w-[30px] h-[30px] md:w-[40px]
+							md:h-[40px] lg:w-[52px] lg:h-[52px] mx-auto
+							hover:text-identity-yellow-40 active:text-identity-yellow" role="img">
+	<title>cross</title>
+	<path d="M33 33L3 3" stroke="currentColor" stroke-width="8" />
+	<path d="M3 33L33 3" stroke="currentColor" stroke-width="8" />
+</svg>
+				</button>
+			</div>
+		</div>
+		<div class="h-full flex-1 py-[20px] md:py-0 px-[24px] md:px-[48px] xl:px-[139px] overflow-y-auto flex xl:gap-[150px] w-full z-30">
+			
+<div class="w-full mt-auto -mb-5">
+	<ul class="list-none m-0 p-0">
+		<li class="py-[11px] border-b border-identity-blue-80 last:border-none text-center">
+			<a
+				class="
+					inline-flex underline-offset-[5px] decoration-2
+					text-[1.375rem] leading-[1.375rem]
+					hover:text-identity-yellow hover:underline
+					text-pure-white no-underline
+				"
+				href=" <view-source:https://uni-freiburg.de/math/>"
+			>
+				Kontakt			</a>
+		</li>
+		<li class="py-[11px] border-b border-identity-blue-80 last:border-none text-center">
+			<a
+				class="
+					inline-flex underline-offset-[5px] decoration-2
+					text-[1.375rem] leading-[1.375rem]
+					hover:text-identity-yellow hover:underline
+					text-pure-white no-underline
+				"
+				href=" <view-source:https://uni-freiburg.de/math/>"
+			>
+				Barrierefreiheit			</a>
+		</li>
+		<li class="py-[11px] border-b border-identity-blue-80 last:border-none text-center">
+			<a
+				class="
+					inline-flex underline-offset-[5px] decoration-2
+					text-[1.375rem] leading-[1.375rem]
+					hover:text-identity-yellow hover:underline
+					text-pure-white no-underline
+				"
+				href=" <view-source:https://uni-freiburg.de/math/>"
+			>
+				Impressum			</a>
+		</li>
+		<li class="py-[11px] border-b border-identity-blue-80 last:border-none text-center">
+			<a
+				class="
+					inline-flex underline-offset-[5px] decoration-2
+					text-[1.375rem] leading-[1.375rem]
+					hover:text-identity-yellow hover:underline
+					text-pure-white no-underline
+				"
+				href=" <view-source:https://uni-freiburg.de/math/>"
+			>
+				Datenschutz			</a>
+		</li>
+		<li class="py-[11px] border-b border-identity-blue-80 last:border-none text-center">
+			<a
+				class="
+					inline-flex underline-offset-[5px] decoration-2
+					text-[1.375rem] leading-[1.375rem]
+					hover:text-identity-yellow hover:underline
+					text-pure-white no-underline
+				"
+				href=" <view-source:https://uni-freiburg.de/math/>"
+			>
+				Hilfe im Notfall			</a>
+		</li>
+		<li class="py-[11px] border-b border-identity-blue-80 last:border-none text-center">
+			<a
+				class="
+					inline-flex underline-offset-[5px] decoration-2
+					text-[1.375rem] leading-[1.375rem]
+					hover:text-identity-yellow hover:underline
+					text-pure-white no-underline
+				"
+				href=" <view-source:https://uni-freiburg.de/math/>"
+			>
+				Lageplan			</a>
+		</li>
+	</ul>
+</div>
+		</div>
+		<div
+			class="hidden md:block px-[24px] pb-[15px] z-30"
+		>
+			<!-- Language switcher -->
+			
+			<!-- Footer links -->
+						<ul
+				class="justify-center				m-0 p-0 flex flex-row text-center lg:text-end
+				mx-auto xl:me-[100px] me-[24px]
+				flex-wrap flex-shrink leading-10 pt-2 pb-[44px] xl:pb-0 z-[10] list-none"
+			>
+														<li class="h-auto whitespace-nowrap
+						after:content-[&#039;|&#039;] after:mx-3">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Impressum</a>
+					</li>
+														<li class="h-auto whitespace-nowrap
+						after:content-[&#039;|&#039;] after:mx-3">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Datenschutz</a>
+					</li>
+														<li class="h-auto whitespace-nowrap
+						">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Barrierefreiheit</a>
+					</li>
+							</ul>
+		</div>
+	</div>
+</dialog>
+	
+<dialog
+	data-dialog-name="linktree"
+	data-dialog-type="dialog"
+	class="isolate inset-0 m-0 p-0 max-w-full  w-full !h-[calc(100dvh-80px-46px)] md:!h-[calc(100dvh-32px)] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
+	inert>
+	<div
+		class="absolute z-20
+		w-[min(70vw,350px)] -right-[25vw] -top-[20px]
+		md:w-[350px] md:-right-[80px] md:-top-[40px]
+		xl:w-[850px] xl:-right-[250px] xl:-top-[120px]">
+		<!-- IMPORT UFR SEAL -->
+	</div>
+	<div class="flex flex-col overflow-hidden h-full w-full z-40">
+		<div
+			class="flex px-[24px] md:px-[48px] xl:px-[139px] pt-[15px]
+			md:pt-[25px] lg:pt-[60px] justify-between z-20"
+		>
+			<div class="inline w-full justify-center align-middle">
+				<svg width="100%" viewBox="0 0 57 30" xmlns="http://www.w3.org/2000/svg"
+	aria-label="ufr-textlogo" class="w-[57px] h-[30px] align-middle md:hidden" role="img">
+	<title>ufr-textlogo</title>
+	<g fill="currentColor">
+		<path d="M6.59108 30C8.15242 30.0086 9.67543 29.5167 10.9369 28.5966C12.1983 27.6765 13.1319 26.3765 13.6006 24.8872V29.5303H18.3326V8.83008H13.5201V19.0557C13.5201 23.6182 11.3231 25.9428 8.3236 25.9428C5.95708 25.9428 4.77383 24.338 4.77383 21.0414V8.83008H0V22.2215C0 26.9535 2.23992 29.9958 6.59108 29.9958" />
+		<path d="M48.1149 29.5354V20.7473C48.1149 15.4242 50.8612 13.1414 55.0868 13.1414C55.3327 13.1414 55.5492 13.1414 55.7511 13.1519L56.3548 8.28284C55.9879 8.25424 55.7061 8.24029 55.5095 8.24099C51.7494 8.24099 49.2563 10.6912 48.0312 14.4942V8.83105H43.3411V29.5354H48.1149Z" />
+		<path d="M36.2781 29.5354V12.4645H41.2215V8.83101H36.2781V6.84322C36.2781 4.81463 37.1235 3.84271 39.2776 3.84271C39.9176 3.83773 40.556 3.90796 41.1796 4.05195V0.418481C40.1867 0.155303 39.1653 0.0147621 38.1383 0C34.2506 0 31.6309 1.90095 31.6309 6.25316V8.83101H20.4219V12.4655H31.632V29.5354H36.2781Z" />
+	</g>
+</svg>
+			</div>
+			<div>
+				<button
+					data-action="closeDialog"
+					data-dialog-close="linktree"
+					class="inline min-h-[44px] min-w-[44px] outline-2
+					outline-pure-white
+					outline-offset-[6px] focus-visible:outline-dotted">
+					<svg width="100%" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="cross" class="max-h-full w-[30px] h-[30px] md:w-[40px]
+							md:h-[40px] lg:w-[52px] lg:h-[52px] mx-auto
+							hover:text-identity-yellow-40 active:text-identity-yellow" role="img">
+	<title>cross</title>
+	<path d="M33 33L3 3" stroke="currentColor" stroke-width="8" />
+	<path d="M3 33L33 3" stroke="currentColor" stroke-width="8" />
+</svg>
+				</button>
+			</div>
+		</div>
+		<div class="h-full flex-1 py-[20px] md:py-0 px-[24px] md:px-[48px] xl:px-[139px] overflow-y-auto flex xl:gap-[150px] w-full z-30">
+			<div class="w-full flex flex-col 2xl:flex-row 2xl:gap-[150px]">
+	<section class="w-full 2xl:overflow-y-auto">
+		<h2
+			class="text-pure-white text-center text-[1.25rem] md:text-[1.5rem] xl:text-[2.3125rem]
+			leading-[1.75rem] lg:leading-[2.25rem] xl:leading-[3.125rem] mt-0
+			font-medium pb-0 mb-[5px] md:mb-[10px] xl:mb-[15px] z-10"
+		>
+			Universität Freiburg		</h2>
+		<ul class="flex flex-col gap-[10px]
+			md:gap-[20px] max-w-[750px] mx-auto list-none my-0 p-0">
+							<li class="@container/link-item">
+					
+<a
+	href="https://www.facebook.com/unifreiburg <view-source:https://www.facebook.com/unifreiburg>"
+	class="group block
+		no-underline
+		border-2 md:border-[3px] xl:border-4 md:!-outline-offset-[11px]
+	bg-transparent border-pure-white text-pure-white !outline-pure-white hover:!outline-identity-black active:!outline-identity-black md:!outline-pure-white
+	hover:bg-identity-yellow-40 hover:border-identity-yellow-40 hover:text-identity-black
+	active:bg-identity-yellow active:border-identity-yellow active:text-identity-black ps-[24px]
+		pe-[20px] py-2 overflow-x-visible transition-colors duration-[400ms]
+		!outline-2 !focus-within:outline-dotted !-outline-offset-[7px]">
+	<div class="flex gap-6 items-center w-full">
+		<svg width="100%" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="" class="h-6 w-6 shrink-0" role="img">
+	<title>facebook icon</title>
+	<path
+		d="M24.0602 12.5301C24.0602 5.88947 18.6707 0.5 12.0301 0.5C5.38947 0.5 0 5.88947 0 12.5301C0 18.3526 4.13835 23.2008 9.62406 24.3195V16.1391H7.21804V12.5301H9.62406V9.52256C9.62406 7.20075 11.5128 5.31203 13.8346 5.31203H16.8421V8.92105H14.4361C13.7744 8.92105 13.2331 9.46241 13.2331 10.1241V12.5301H16.8421V16.1391H13.2331V24.5C19.3083 23.8985 24.0602 18.7737 24.0602 12.5301Z"
+		fill="currentColor" />
+</svg>
+		<div
+			class="flex flex-col gap-1 basis-full
+				@sm/link-item:gap-4 @sm/link-item:py-1 @sm/link-item:flex-row">
+			<span class="font-medium underline-offset-[5px] decoration-[2px] md:decoration-[3px] xl:decoration-[4px] group-hover:underline">
+				Facebook			</span>
+			<span class="font-book italic @sm/link-item:text-right
+				@sm/link-item:flex-1 @sm/link-item:w-full @sm/link-item:block
+				@sm/link-item:flex-grow [word-break:break-all]">
+				unifreiburg			</span>
+		</div>
+	</div>
+</a>
+				</li>
+							<li class="@container/link-item">
+					
+<a
+	href="https://www.instagram.com/unifreiburg <view-source:https://www.instagram.com/unifreiburg>"
+	class="group block
+		no-underline
+		border-2 md:border-[3px] xl:border-4 md:!-outline-offset-[11px]
+	bg-transparent border-pure-white text-pure-white !outline-pure-white hover:!outline-identity-black active:!outline-identity-black md:!outline-pure-white
+	hover:bg-identity-yellow-40 hover:border-identity-yellow-40 hover:text-identity-black
+	active:bg-identity-yellow active:border-identity-yellow active:text-identity-black ps-[24px]
+		pe-[20px] py-2 overflow-x-visible transition-colors duration-[400ms]
+		!outline-2 !focus-within:outline-dotted !-outline-offset-[7px]">
+	<div class="flex gap-6 items-center w-full">
+		<svg width="100%" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="" class="h-6 w-6 shrink-0" role="img">
+	<title>instagram icon</title>
+	<path
+		d="M6.96 0.5H17.04C20.88 0.5 24 3.62 24 7.46V17.54C24 19.3859 23.2667 21.1562 21.9615 22.4615C20.6562 23.7667 18.8859 24.5 17.04 24.5H6.96C3.12 24.5 0 21.38 0 17.54V7.46C0 5.61409 0.733284 3.84379 2.03854 2.53854C3.34379 1.23328 5.11409 0.5 6.96 0.5ZM6.72 2.9C5.57427 2.9 4.47546 3.35514 3.6653 4.1653C2.85514 4.97546 2.4 6.07427 2.4 7.22V17.78C2.4 20.168 4.332 22.1 6.72 22.1H17.28C18.4257 22.1 19.5245 21.6449 20.3347 20.8347C21.1449 20.0245 21.6 18.9257 21.6 17.78V7.22C21.6 4.832 19.668 2.9 17.28 2.9H6.72ZM18.3 4.7C18.6978 4.7 19.0794 4.85804 19.3607 5.13934C19.642 5.42064 19.8 5.80218 19.8 6.2C19.8 6.59783 19.642 6.97936 19.3607 7.26066C19.0794 7.54197 18.6978 7.7 18.3 7.7C17.9022 7.7 17.5206 7.54197 17.2393 7.26066C16.958 6.97936 16.8 6.59783 16.8 6.2C16.8 5.80218 16.958 5.42064 17.2393 5.13934C17.5206 4.85804 17.9022 4.7 18.3 4.7ZM12 6.5C13.5913 6.5 15.1174 7.13214 16.2426 8.25736C17.3679 9.38258 18 10.9087 18 12.5C18 14.0913 17.3679 15.6174 16.2426 16.7426C15.1174 17.8679 13.5913 18.5 12 18.5C10.4087 18.5 8.88258 17.8679 7.75736 16.7426C6.63214 15.6174 6 14.0913 6 12.5C6 10.9087 6.63214 9.38258 7.75736 8.25736C8.88258 7.13214 10.4087 6.5 12 6.5ZM12 8.9C11.0452 8.9 10.1295 9.27928 9.45442 9.95442C8.77928 10.6295 8.4 11.5452 8.4 12.5C8.4 13.4548 8.77928 14.3705 9.45442 15.0456C10.1295 15.7207 11.0452 16.1 12 16.1C12.9548 16.1 13.8705 15.7207 14.5456 15.0456C15.2207 14.3705 15.6 13.4548 15.6 12.5C15.6 11.5452 15.2207 10.6295 14.5456 9.95442C13.8705 9.27928 12.9548 8.9 12 8.9Z"
+		fill="currentColor" />
+</svg>
+		<div
+			class="flex flex-col gap-1 basis-full
+				@sm/link-item:gap-4 @sm/link-item:py-1 @sm/link-item:flex-row">
+			<span class="font-medium underline-offset-[5px] decoration-[2px] md:decoration-[3px] xl:decoration-[4px] group-hover:underline">
+				Instagram			</span>
+			<span class="font-book italic @sm/link-item:text-right
+				@sm/link-item:flex-1 @sm/link-item:w-full @sm/link-item:block
+				@sm/link-item:flex-grow [word-break:break-all]">
+				@unifreiburg			</span>
+		</div>
+	</div>
+</a>
+				</li>
+							<li class="@container/link-item">
+					
+<a
+	href="https://twitter.com/UniFreiburg <view-source:https://twitter.com/UniFreiburg>"
+	class="group block
+		no-underline
+		border-2 md:border-[3px] xl:border-4 md:!-outline-offset-[11px]
+	bg-transparent border-pure-white text-pure-white !outline-pure-white hover:!outline-identity-black active:!outline-identity-black md:!outline-pure-white
+	hover:bg-identity-yellow-40 hover:border-identity-yellow-40 hover:text-identity-black
+	active:bg-identity-yellow active:border-identity-yellow active:text-identity-black ps-[24px]
+		pe-[20px] py-2 overflow-x-visible transition-colors duration-[400ms]
+		!outline-2 !focus-within:outline-dotted !-outline-offset-[7px]">
+	<div class="flex gap-6 items-center w-full">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24"
+	aria-label="" class="h-6 w-6 shrink-0" role="img">
+	<title>twitter icon</title>
+	<path d="M13.9623 10.1624L22.6961 0H20.6264L13.0429 8.82384L6.98596 0H0L9.15928 13.3432L0 24H2.06974L10.0781 14.6817L16.4747 24H23.4607L13.9623 10.1624ZM11.1275 13.4608L10.1995 12.1321L2.8155 1.55962H5.9945L11.9534 10.0919L12.8815 11.4206L20.6274 22.5113H17.4484L11.1275 13.4608Z" fill="currentColor"/>
+</svg>
+		<div
+			class="flex flex-col gap-1 basis-full
+				@sm/link-item:gap-4 @sm/link-item:py-1 @sm/link-item:flex-row">
+			<span class="font-medium underline-offset-[5px] decoration-[2px] md:decoration-[3px] xl:decoration-[4px] group-hover:underline">
+				X (ehemals Twitter)			</span>
+			<span class="font-book italic @sm/link-item:text-right
+				@sm/link-item:flex-1 @sm/link-item:w-full @sm/link-item:block
+				@sm/link-item:flex-grow [word-break:break-all]">
+				@UniFreiburg			</span>
+		</div>
+	</div>
+</a>
+				</li>
+							<li class="@container/link-item">
+					
+<a
+	href="https://bawü.social/@unifreiburg <view-source:https://xn--baw-joa.social/@unifreiburg>"
+	class="group block
+		no-underline
+		border-2 md:border-[3px] xl:border-4 md:!-outline-offset-[11px]
+	bg-transparent border-pure-white text-pure-white !outline-pure-white hover:!outline-identity-black active:!outline-identity-black md:!outline-pure-white
+	hover:bg-identity-yellow-40 hover:border-identity-yellow-40 hover:text-identity-black
+	active:bg-identity-yellow active:border-identity-yellow active:text-identity-black ps-[24px]
+		pe-[20px] py-2 overflow-x-visible transition-colors duration-[400ms]
+		!outline-2 !focus-within:outline-dotted !-outline-offset-[7px]">
+	<div class="flex gap-6 items-center w-full">
+		<svg width="100%" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="" class="h-6 w-6 shrink-0" role="img">
+	<title>mastodon icon</title>
+	<path
+		d="M21.7566 14.8855C21.4232 16.5758 18.851 18.434 15.8382 18.7936C14.2782 18.9734 12.742 19.1532 11.1105 19.0813C8.43114 18.9494 6.34717 18.434 6.34717 18.434V19.1772C6.72824 21.8385 8.99083 21.9944 11.1462 22.0783C13.3136 22.1382 15.2427 21.5268 15.2427 21.5268L15.338 23.5048C15.338 23.5048 13.8137 24.32 11.1105 24.4759C9.62198 24.5598 7.76427 24.4399 5.60885 23.8765C0.940763 22.6177 0.130992 17.5948 0.0119084 12.4879L0 8.37607C0 3.17331 3.37007 1.65084 3.37007 1.65084C5.09679 0.859638 8.02625 0.5 11.0748 0.5H11.1462C14.1948 0.5 17.1243 0.859638 18.851 1.65084C18.851 1.65084 22.2211 3.17331 22.2211 8.37607C22.2211 8.37607 22.2687 12.2242 21.7566 14.8855ZM18.2556 8.78366C18.2556 7.48897 17.8983 6.49397 17.2433 5.71475C16.5765 4.95951 15.6953 4.56391 14.5878 4.56391C13.3255 4.56391 12.3609 5.05542 11.7059 6.03843L11.1105 7.09336L10.5151 6.03843C9.84824 5.05542 8.89557 4.56391 7.62137 4.56391C6.5258 4.56391 5.64458 4.95951 4.9658 5.71475C4.31084 6.49397 3.96549 7.48897 3.96549 8.78366V15.0893H6.46625V8.96348C6.46625 7.69276 7.00213 7.02144 8.08579 7.02144C9.27663 7.02144 9.87205 7.80065 9.87205 9.33511V12.6797H12.3371V9.33511C12.3371 7.80065 12.9325 7.02144 14.1353 7.02144C15.207 7.02144 15.7429 7.69276 15.7429 8.96348V15.0893H18.2556V8.78366Z"
+		fill="currentColor" />
+</svg>
+		<div
+			class="flex flex-col gap-1 basis-full
+				@sm/link-item:gap-4 @sm/link-item:py-1 @sm/link-item:flex-row">
+			<span class="font-medium underline-offset-[5px] decoration-[2px] md:decoration-[3px] xl:decoration-[4px] group-hover:underline">
+				Mastodon			</span>
+			<span class="font-book italic @sm/link-item:text-right
+				@sm/link-item:flex-1 @sm/link-item:w-full @sm/link-item:block
+				@sm/link-item:flex-grow [word-break:break-all]">
+				@unifreiburg@bawü.social			</span>
+		</div>
+	</div>
+</a>
+				</li>
+							<li class="@container/link-item">
+					
+<a
+	href="https://www.youtube.com/c/UniversitätFreiburg <view-source:https://www.youtube.com/c/Universit%C3%A4tFreiburg>"
+	class="group block
+		no-underline
+		border-2 md:border-[3px] xl:border-4 md:!-outline-offset-[11px]
+	bg-transparent border-pure-white text-pure-white !outline-pure-white hover:!outline-identity-black active:!outline-identity-black md:!outline-pure-white
+	hover:bg-identity-yellow-40 hover:border-identity-yellow-40 hover:text-identity-black
+	active:bg-identity-yellow active:border-identity-yellow active:text-identity-black ps-[24px]
+		pe-[20px] py-2 overflow-x-visible transition-colors duration-[400ms]
+		!outline-2 !focus-within:outline-dotted !-outline-offset-[7px]">
+	<div class="flex gap-6 items-center w-full">
+		<svg width="100%" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="" class="h-6 w-6 shrink-0" role="img">
+	<title>youtube icon</title>
+	<path
+		d="M9.6 12.1L15.828 8.49998L9.6 4.89998V12.1ZM23.472 2.70398C23.628 3.26798 23.736 4.02397 23.808 4.98397C23.892 5.94397 23.928 6.77198 23.928 7.49197L24 8.49998C24 11.128 23.808 13.06 23.472 14.296C23.172 15.376 22.476 16.072 21.396 16.372C20.832 16.528 19.8 16.636 18.216 16.708C16.656 16.792 15.228 16.828 13.908 16.828L12 16.9C6.972 16.9 3.84 16.708 2.604 16.372C1.524 16.072 0.828 15.376 0.528 14.296C0.372 13.732 0.264 12.976 0.192 12.016C0.108 11.056 0.0719999 10.228 0.0719999 9.50798L0 8.49998C0 5.87197 0.192 3.93998 0.528 2.70398C0.828 1.62398 1.524 0.927976 2.604 0.627976C3.168 0.471976 4.2 0.363975 5.784 0.291975C7.344 0.207975 8.772 0.171976 10.092 0.171976L12 0.0999756C17.028 0.0999756 20.16 0.291976 21.396 0.627976C22.476 0.927976 23.172 1.62398 23.472 2.70398Z"
+		fill="currentColor" />
+</svg>
+		<div
+			class="flex flex-col gap-1 basis-full
+				@sm/link-item:gap-4 @sm/link-item:py-1 @sm/link-item:flex-row">
+			<span class="font-medium underline-offset-[5px] decoration-[2px] md:decoration-[3px] xl:decoration-[4px] group-hover:underline">
+				YouTube			</span>
+			<span class="font-book italic @sm/link-item:text-right
+				@sm/link-item:flex-1 @sm/link-item:w-full @sm/link-item:block
+				@sm/link-item:flex-grow [word-break:break-all]">
+				UniversitätFreiburg			</span>
+		</div>
+	</div>
+</a>
+				</li>
+							<li class="@container/link-item">
+					
+<a
+	href="https://www.linkedin.com/school/albert-ludwigs-universitaet-freiburg <view-source:https://www.linkedin.com/school/albert-ludwigs-universitaet-freiburg>"
+	class="group block
+		no-underline
+		border-2 md:border-[3px] xl:border-4 md:!-outline-offset-[11px]
+	bg-transparent border-pure-white text-pure-white !outline-pure-white hover:!outline-identity-black active:!outline-identity-black md:!outline-pure-white
+	hover:bg-identity-yellow-40 hover:border-identity-yellow-40 hover:text-identity-black
+	active:bg-identity-yellow active:border-identity-yellow active:text-identity-black ps-[24px]
+		pe-[20px] py-2 overflow-x-visible transition-colors duration-[400ms]
+		!outline-2 !focus-within:outline-dotted !-outline-offset-[7px]">
+	<div class="flex gap-6 items-center w-full">
+		<svg width="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="" class="h-6 w-6 shrink-0" role="img">
+	<title>linkedin icon</title>
+	<path
+		d="M21.3333 0C22.0406 0 22.7189 0.280951 23.219 0.781048C23.719 1.28115 24 1.95942 24 2.66667V21.3333C24 22.0406 23.719 22.7189 23.219 23.219C22.7189 23.719 22.0406 24 21.3333 24H2.66667C1.95942 24 1.28115 23.719 0.781048 23.219C0.280951 22.7189 0 22.0406 0 21.3333V2.66667C0 1.95942 0.280951 1.28115 0.781048 0.781048C1.28115 0.280951 1.95942 0 2.66667 0H21.3333ZM20.6667 20.6667V13.6C20.6667 12.4472 20.2087 11.3416 19.3936 10.5264C18.5784 9.71128 17.4728 9.25333 16.32 9.25333C15.1867 9.25333 13.8667 9.94667 13.2267 10.9867V9.50667H9.50667V20.6667H13.2267V14.0933C13.2267 13.0667 14.0533 12.2267 15.08 12.2267C15.5751 12.2267 16.0499 12.4233 16.3999 12.7734C16.75 13.1235 16.9467 13.5983 16.9467 14.0933V20.6667H20.6667ZM5.17333 7.41333C5.76742 7.41333 6.33717 7.17733 6.75725 6.75725C7.17733 6.33717 7.41333 5.76742 7.41333 5.17333C7.41333 3.93333 6.41333 2.92 5.17333 2.92C4.57571 2.92 4.00257 3.1574 3.57999 3.57999C3.1574 4.00257 2.92 4.57571 2.92 5.17333C2.92 6.41333 3.93333 7.41333 5.17333 7.41333ZM7.02667 20.6667V9.50667H3.33333V20.6667H7.02667Z"
+		fill="currentColor" />
+</svg>
+		<div
+			class="flex flex-col gap-1 basis-full
+				@sm/link-item:gap-4 @sm/link-item:py-1 @sm/link-item:flex-row">
+			<span class="font-medium underline-offset-[5px] decoration-[2px] md:decoration-[3px] xl:decoration-[4px] group-hover:underline">
+				LinkedIn			</span>
+			<span class="font-book italic @sm/link-item:text-right
+				@sm/link-item:flex-1 @sm/link-item:w-full @sm/link-item:block
+				@sm/link-item:flex-grow [word-break:break-all]">
+				albert-ludwigs-universitaet-freiburg			</span>
+		</div>
+	</div>
+</a>
+				</li>
+					</ul>
+	</section> 
+	</div>
+		</div>
+		<div
+			class="hidden md:block px-[24px] pb-[15px] z-30"
+		>
+			<!-- Language switcher -->
+			
+			<!-- Footer links -->
+						<ul
+				class="justify-center				m-0 p-0 flex flex-row text-center lg:text-end
+				mx-auto xl:me-[100px] me-[24px]
+				flex-wrap flex-shrink leading-10 pt-2 pb-[44px] xl:pb-0 z-[10] list-none"
+			>
+														<li class="h-auto whitespace-nowrap
+						after:content-[&#039;|&#039;] after:mx-3">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Impressum</a>
+					</li>
+														<li class="h-auto whitespace-nowrap
+						after:content-[&#039;|&#039;] after:mx-3">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Datenschutz</a>
+					</li>
+														<li class="h-auto whitespace-nowrap
+						">
+						
+<a
+			class="text-identity-blue-60 outline-transparent	disabled	 font-medium	relative group overflow-visible outline-2 no-underline
+	outline-offset-[15px] focus-visible:outline-dotted
+		after:absolute after:inset-x-0 after:pt-[7px] after:-bottom-[3px]
+	after:border-b-current after:border-b-[2px]
+		">
+	Barrierefreiheit</a>
+					</li>
+							</ul>
+		</div>
+	</div>
+</dialog>
+	
+<dialog
+	class="
+		backdrop:backdrop-filter backdrop:backdrop-blur-[7.5px] backdrop:bg-pure-white dark:backdrop:bg-identity-black backdrop:bg-opacity-50 dark:backdrop:bg-opacity-50
+		w-[660px] p-[85px]
+		bg-identity-blue text-pure-white
+	"
+	data-dialog-name="search-modal"
+	data-dialog-type="modal"
+>
+	<button
+		data-action="closeDialog"
+		data-dialog-close="search-modal"
+		class="absolute top-0 right-0 xl:top-5 xl:right-5 outline-2
+		outline-pure-white
+		outline-offset-2 focus-visible:outline-dotted hover:text-identity-yellow-40 active:text-identity-yellow transition-colors duration-[400ms]">
+		<svg width="100%" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="cross" class="h-[40px] w-[40px] p-[15px] xl:w-[80px] xl:h-[80px] xl:p-[20px] box-content
+				" role="img">
+	<title>cross</title>
+	<path d="M33 33L3 3" stroke="currentColor" stroke-width="8" />
+	<path d="M3 33L33 3" stroke="currentColor" stroke-width="8" />
+</svg>
+	</button>
+	<h1 class="mt-0 mb-[35px]">Suche</h1>
+	<div class="">
+	<form role="search" method="get"
+	class="searchform flex"
+	action="https://uni-freiburg.de/math/ <view-source:https://uni-freiburg.de/math/>"
+	aria-label="
+		Suche		">
+		<div class="flex-grow flex
+			border-0 border-b-[1px]
+			border-solid
+			border-pure-white		">
+			<label>
+				<span aria-label="
+				Suche				"
+				class="invisible absolute h-[1px]">
+					Suche:				</span>
+			</label>
+			<input type="hidden" name="searchmode" value="simple">
+			<input
+				type="search"
+				class="
+				w-full 
+				h-full
+				text-base md:text-lg xl:text-[1.375rem]
+				leading-snug md:leading-[1.5625rem] xl:leading-[2.0625rem]
+				self-center
+				bg-transparent
+				outline-none
+				placeholder:text-left appearance-none
+				placeholder:italic
+				placeholder:[#757575]
+				[&::-webkit-search-decoration]:hidden
+				[&::-webkit-search-cancel-button]:hidden
+				[&::-webkit-search-results-button]:hidden
+				[&::-webkit-search-results-decoration]:hidden 
+				"
+				oninput="this.closest('form').querySelector('button[data-type=\'searchinput-clearbtn\'').toggleAttribute('hidden', !this.value);"
+				placeholder="Suchbegriff eingeben"
+				value=""
+				name="q"
+				title="
+Suchbegriff eingeben"
+			/>
+			<button
+			data-type="searchinput-clearbtn"
+			class="w-[45px] md:w-[40px] xl:w-[45px] h-[45px] md:h-[40-px] xl:h-[45px] p-[15px] md:p-[10px] self-center flex-shrink-0 flex-grow-0 outline-2 focus-visible:outline-dotted transition-colors duration-[400ms] text-pure-white hover:text-identity-yellow-60 active:text-identity-yellow outline-pure-white"
+			hidden
+			type="button"
+			onclick="this.closest('form').querySelector('input[name=\'q\']').value = '';this.toggleAttribute('hidden');"
+			aria-label="
+				Leeres Suchfeld				">
+				<span class="flex">
+					<svg width="100%" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="Leeres Suchfeld"  role="img">
+	<title>Leeres Suchfeld</title>
+	<path d="M33 33L3 3" stroke="currentColor" stroke-width="8" />
+	<path d="M3 33L33 3" stroke="currentColor" stroke-width="8" />
+</svg>
+				</span>
+			</button>
+		</div>
+		<button
+			class="relative search-submit
+				text-pure-white hover:text-identity-yellow-60 active:text-identity-yellow outline-pure-white				w-[45.6px] xl:w-[100px]
+				px-[10px] xl:px-[16.25px] 
+				flex-shrink-0 flex-grow-0
+				transition-colors duration-[400ms]
+				outline-2 focus-visible:outline-dotted"
+			type="submit"
+			aria-label="
+			Suche abschicken		">
+			<svg width="100%" viewBox="0 0 35 50" fill="none" xmlns="http://www.w3.org/2000/svg"
+	aria-label="Suche abschicken"  role="img">
+	<title>Suche abschicken</title>
+	<path d="M5.00012 5L25.6062 25.0002L5.00012 45" stroke="currentColor" stroke-width="12" />
+</svg>
+		</button>
+	</form>
+</div>
+
+</dialog>
+</footer>
+		<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["disableCookies"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.mw.uni-freiburg.de/central/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '139']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+<style id='core-block-supports-inline-css'>
+.wp-container-core-columns-is-layout-1{flex-wrap:nowrap;}.wp-container-core-columns-is-layout-2{flex-wrap:nowrap;}.wp-container-core-columns-is-layout-3{flex-wrap:nowrap;}
+</style>
+<script src="https://uni-freiburg.de/math/wp-includes/js/hoverintent-js.min.js?ver=2.2.1 <view-source:https://uni-freiburg.de/math/wp-includes/js/hoverintent-js.min.js?ver=2.2.1>" id="hoverintent-js-js"></script>
+<script src="https://uni-freiburg.de/math/wp-includes/js/admin-bar.min.js?ver=6.6.2 <view-source:https://uni-freiburg.de/math/wp-includes/js/admin-bar.min.js?ver=6.6.2>" id="admin-bar-js"></script>
+<script id="ufr-frontend-index-js-extra">
+var menuApiUriData = {"data":"https:\/\/uni-freiburg.de\/math\/wp-json\/wp\/v2\/menus\/mainmenu\/","currentPageId":"167","home_url":"https:\/\/uni-freiburg.de\/math"};
+</script>
+<script id="ufr-frontend-index-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "ufr-main-theme", {"translation-revision-date":"2023-06-20 10:14+0200","generator":"WP-CLI\/2.12.0-alpha","source":"assets\/js\/index.js","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","lang":"de_DE","plural-forms":"nplurals=2; plural=(n != 1);"},"Overview":["\u00dcbersicht"]}}} );
+</script>
+<script src="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/js/index.js?ver=0.12.0 <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/js/index.js?ver=0.12.0>" id="ufr-frontend-index-js" defer data-wp-strategy="defer"></script>
+<script src="https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/teaser-event/teaser-event.js?ver=705d003c0692320127ce <view-source:https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/teaser-event/teaser-event.js?ver=705d003c0692320127ce>" id="ufr-teaser-event-view-script-js" defer data-wp-strategy="defer"></script>
+<script src="https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/details/frontend.js?ver=e11ace892e1d00505915 <view-source:https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/details/frontend.js?ver=e11ace892e1d00505915>" id="ufr-details-view-script-js" defer data-wp-strategy="defer"></script>
+
+</body>
+</html>
