@@ -1,21 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <!-- If there is at least one news item: create news-carousel. -->
+  {% if news_data|length > 0 %}
   <div class="container" id="news-carousel">
     <div
       id="carouselExampleControls"
       class="carousel slide"
       data-bs-ride="carousel"
     >
-      {% for item in most_recent_news %}
-
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="10000">
+        <!-- First item is the 'active' item. -->
+        {% for news_item in news_data %}
+        <div
+          class="carousel-item {% if news_item.id == news_data[0].id %} active {% endif %}"
+          data-bs-interval="10000">
+
           <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-4">
                 <img
-                  src="data:image/jpeg;base64,"
+                  src="data:image/{{ news_item.image.mime }};base64, {{ news_item.image.utf8 }}"
                   class="d-block w-100"
                   style="height: 20vw; object-fit: cover"
                   alt="..."
@@ -24,19 +29,18 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">
-                    item.title
+                    {{ news_item.title_de }}
                   </h5>
                   <p>
-                    item.text
+                    {{ news_item.text_de }}
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-
-      {% endfor %}
 
       <button
         class="carousel-control-prev"
@@ -58,6 +62,8 @@
       </button>
     </div>
   </div>
+
+  {% endif %}
 
   <div class="container" id="about-study-research" style="margin-top: 100px;">
 	<div class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute

@@ -3,6 +3,7 @@ from ipaddress import ip_network, IPv4Address
 import locale
 import json
 import requests
+from utils.db_objects import Image, NewsItem
 from utils.config import *
 from utils.util_logging import logger
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -599,7 +600,7 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
         item["image"] = base64.b64encode(news.bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
 
     # Daten für die News
-    query = { "monitor.fuermonitor": True, 
+    query = {"monitor.fuermonitor": True,
              "monitor.start" : { "$lte" : dt }, 
              "monitor.end" : { "$gte" : dt }}
     if testorpublic == "test":
@@ -690,3 +691,37 @@ scheduler.add_job(
 scheduler.start()
 
 
+# A test field
+@app.route("/wordpress_index")
+def test_page(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+    # Daten für die News
+    date_format_no_space = '%Y%m%d%H%M'
+    dt = datetime.strptime(dtstring, date_format_no_space)
+
+    # Filter and sort task could also be done in python. -> ToDo: Ask Peter.
+    data = {}
+    query = {
+        "_public": True,
+        "monitor.fuermonitor": True,
+        "monitor.start": {"$lte": dt},
+        "monitor.end": {"$gte": dt}}
+
+    data["news"] = list(news.news.find(query, sort=[("rang", pymongo.ASCENDING)]))
+
+    def get_image(img_id: str) -> Image:
+        db_item = news.bild.find_one({"_id": img_id})
+        return Image(db_item)
+
+    # Get data and image for all entries in news that have an image.
+    news_data = [
+        NewsItem(item, get_image(item["image"][0]["_id"]))
+        for item in data["news"]
+        if item["image"]]
+
+    # Filter entries that are not for homepage. ToDo: Ask Peter about it.
+    news_data = [item for item in news_data if item.intended_for_homepage]
+
+    # Render template and pass data
+    return render_template(
+        template_name_or_list="wordpress_index.html",
+        news_data=news_data)
