@@ -2,21 +2,16 @@ from flask import Flask, jsonify, url_for, render_template, redirect, request, a
 from ipaddress import ip_network, IPv4Address
 import locale
 import json
-import os
-from bs4 import BeautifulSoup
 import requests
 from utils.config import *
 from utils.util_logging import logger
-from utils.util_calendar import calendar, get_caldav_calendar_events
 from apscheduler.schedulers.background import BackgroundScheduler
 
 import utils.util_faq as util_faq
 import utils.util_person as person
 import utils.util_accordion as util_acc
 
-import utils.fb as fb
 from flask_misaka import Misaka
-import socket
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 import utils.util_vvz as vvz
@@ -24,7 +19,7 @@ import utils.util_news as news
 import xmltodict
 import base64
 import pymongo
-from bson import ObjectId
+
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
