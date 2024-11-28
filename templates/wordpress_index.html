@@ -1,50 +1,167 @@
+{% extends 'base.html' %}
 
-<!doctype html>
-<html lang="de-DE" dir="ltr" >
+{% block content %}
+  <div class="container" id="news-carousel">
+    <div
+      id="carouselExampleControls"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      {% for item in most_recent_news %}
 
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="data:image/jpeg;base64,"
+                  class="d-block w-100"
+                  style="height: 20vw; object-fit: cover"
+                  alt="..."
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    item.title
+                  </h5>
+                  <p>
+                    item.text
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container" id="about-study-research" style="margin-top: 100px;">
+	<div class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute
+			[&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip
+			[.wp-block-ufr-section_&amp;]:bl-overflow-x-visible
+			bl-bg-transparent bl-text-inherit dark:bl-bg-transparent dark:bl-text-inherit
+			alignfull wp-block-ufr-section has-global-padding is-layout-constrained
+			wp-block-section-is-layout-constrained">
+
+    <div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-1 wp-block-columns-is-layout-flex">
+      <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+
+        <figure class="wp-block-image size-full is-resized">
+          <img
+              decoding="async"
+              width="360"
+              height="240"
+              src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus.jpg"
+              alt=""
+              class="wp-image-381"
+              style="aspect-ratio:16/9;object-fit:cover;width:auto;height:200px"
+              srcset="https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus.jpg 360w,
+            https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus-300x200.jpg 300w"
+              sizes="(max-width: 360px) 100vw, 360px"/>
+        </figure>
+        <h4 class="wp-block-heading">Über uns</h4>
+        <p>In der Mathematik streben wir nach Wahrheit, und suchen nach eleganten und schönen Beweisen. Wir widmen uns der Exzellenz in allen Aspekten der Forschung und Lehre von Logik bis maschinellen Lernen und KI. Mehr &#8230;</p>
+      </div>
+
+      <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+
+        <figure class="wp-block-image size-full is-resized">
+          <img
+            decoding="async" width="375" height="250"
+            src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg" alt=""
+            class="wp-image-639" style="box-shadow:none;aspect-ratio:16/9;object-fit:cover;width:auto;height:200px"
+            srcset="https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg 375w, https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2-300x200.jpg 300w"
+            sizes="(max-width: 375px) 100vw, 375px"/>
+        </figure>
+
+        <h4 class="wp-block-heading">Studium</h4>
+        <p>Freiburg bietet ein breites Spektrum an Vorlesungen und eine fundierte Lehre von reiner über angewandte Mathematik bis zu Data Science. Neu: Der Tech Data Master. <a href="https://www.math.uni-freiburg.de/nlehre/de/studiengaenge/">Bewerben Sie sich jetzt ! </a></p>
+        <div style="height:31px" aria-hidden="true" class="wp-block-spacer"></div>
+      </div>
+
+      <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+
+        <figure class="wp-block-image size-full is-resized">
+          <img
+            decoding="async" width="260" height="240"
+            src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/tafel.jpg"
+            alt="" class="wp-image-385"
+             style="object-fit:cover;width:340px;height:200px"/>
+        </figure>
+
+        <h4 class="wp-block-heading">Forschung</h4>
+        <p>In Freiburg wird Spitzenforschung auf allen Gebieten der Mathematik betrieben. Seit 2023 fördert die DFG den SFB &#8222;<a href="https://www.smalldata-initiative.de">Small Data</a>&#8220; mit 12 Mio EUR. <a href="https://uni-freiburg.de/math/forschungstaetigkeiten/" data-type="page" data-id="643">Mehr&#8230;</a></p>
+      </div>
+    </div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+<!--
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Mathematisches Institut</title>
 	<meta name='robots' content='noindex, nofollow' />
 
-	<link rel='stylesheet' id='dashicons-css' href='fonts/wordpress/dashicons.eot' media='all' />
-	<link rel='stylesheet' id='slider-css' href='styles/slider.css'>
-	<link rel='stylesheet' id='table-css' href='styles/table.css'>
+	<link rel='stylesheet' id='dashicons-css' href='https://uni-freiburg.de/math/wp-includes/css/dashicons.min.css?ver=6.6.2' media='all' />
+	<link rel='stylesheet' id='slider-css' href='static/css/slider.css'>
+	<link rel='stylesheet' id='table-css' href='static/css/table.css'>
 
-	<style id='wp-emoji-styles-inline-css'>
-		img.wp-smiley, img.emoji {
-			display: inline !important;
-			border: none !important;
-			box-shadow: none !important;
-			height: 1em !important;
-			width: 1em !important;
-			margin: 0 0.07em !important;
-			vertical-align: -0.1em !important;
-			background: none !important;
-			padding: 0 !important;
-		}
-	</style>
-	<link rel='stylesheet' id='wp-block-library-css' href='https://uni-freiburg.de/math/wp-includes/css/dist/block-library/style.min.css?ver=6.6.2 <view-source:https://uni-freiburg.de/math/wp-includes/css/dist/block-library/style.min.css?ver=6.6.2>' media='all' />
-	<link rel='stylesheet' id='blocks-tailwind-css' href='https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/tailwind.css?ver=0.11.0 <view-source:https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/tailwind.css?ver=0.11.0>' media='all' />
+	<link rel='stylesheet' id='wp-block-library-css' href='static/css/wp-includes/css/dist/block-library/style.css' media='all' />
+	<link rel='stylesheet' id='blocks-tailwind-css' href='static/css/wp-content/plugins/ufr-block-library/tailwind.css' media='all' />
 	<style id='global-styles-inline-css'>
 	:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--pitch-black-100: #000000;--wp--preset--color--pure-white-100: #ffffff;--wp--preset--color--disabled-100: #757575;--wp--preset--color--identity-black-100: #2a2a2a;--wp--preset--color--danger-red-100: #b60000;--wp--preset--color--identity-blue-100: #34499a;--wp--preset--color--identity-blue-80: #5c6dae;--wp--preset--color--identity-blue-60: #8591c2;--wp--preset--color--identity-blue-40: #adb6d6;--wp--preset--color--identity-blue-20: #d6daea;--wp--preset--color--identity-darkblue-100: #000149;--wp--preset--color--identity-darkblue-80: #33336d;--wp--preset--color--identity-darkblue-60: #666691;--wp--preset--color--identity-darkblue-40: #9999b6;--wp--preset--color--identity-darkblue-20: #ccccda;--wp--preset--color--identity-lightblue-100: #edf0fa;--wp--preset--color--identity-beige-100: #f6f1e3;--wp--preset--color--identity-beige-50: #faf8f1;--wp--preset--color--identity-teal-100: #00856c;--wp--preset--color--identity-teal-80: #339d89;--wp--preset--color--identity-teal-60: #66b5a6;--wp--preset--color--identity-teal-40: #99cec4;--wp--preset--color--identity-teal-20: #cce6e1;--wp--preset--color--identity-brown-100: #8f6b30;--wp--preset--color--identity-brown-80: #a58859;--wp--preset--color--identity-brown-60: #bba682;--wp--preset--color--identity-brown-40: #d2c3ac;--wp--preset--color--identity-brown-20: #e8e1d5;--wp--preset--color--identity-yellow-100: #ffe863;--wp--preset--color--identity-yellow-80: #ffec82;--wp--preset--color--identity-yellow-60: #fff1a1;--wp--preset--color--identity-yellow-40: #fff5c0;--wp--preset--color--identity-yellow-20: #fffadf;--wp--preset--color--identity-rose-100: #f5c2ed;--wp--preset--color--identity-rose-80: #f7cef0;--wp--preset--color--identity-rose-60: #f9daf4;--wp--preset--color--identity-rose-40: #fbe6f7;--wp--preset--color--identity-rose-20: #fdf2fb;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}.wp-block-cover{--wp--preset--color--pitch-black-100: #000000;--wp--preset--color--pure-white-100: #ffffff;}:root { --wp--style--global--content-size: 1642px;--wp--style--global--wide-size: 1642px; }:where(body) { margin: 0; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) { padding-right: 0; padding-left: 0; }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull { margin-left: 0; margin-right: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{background-color: var(--ufr--global--bg-color);color: var(--ufr--global--text-color);font-family: Social, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;font-size: var(--ufr--global--font-size);font-style: var(--ufr--global--font-style);font-weight: var(--ufr--global--font-weight);line-height: var(--ufr--global--line-height);--wp--style--root--padding-top: 0;--wp--style--root--padding-right: var(--ufr--global--padding-right);--wp--style--root--padding-bottom: 0;--wp--style--root--padding-left: var(--ufr--global--padding-left);}a:where(:not(.wp-element-button)){color: var(--ufr-link-color);text-decoration: underline;}:root :where(a:where(:not(.wp-element-button)):hover){color: var(--ufr-link-color-hover);}:root :where(a:where(:not(.wp-element-button)):active){color: var(--ufr-link-color-active);}h1{font-size: var(--ufr--global--h1--font-size);font-style: var(--ufr--global--h1--font-style);font-weight: var(--ufr--global--h1--font-weight);line-height: var(--ufr--global--h1--line-height);}h2{font-size: var(--ufr--global--h2--font-size);font-style: var(--ufr--global--h2--font-style);font-weight: var(--ufr--global--h2--font-weight);line-height: var(--ufr--global--h2--line-height);}h3{font-size: var(--ufr--global--h3--font-size);font-style: var(--ufr--global--h3--font-style);font-weight: var(--ufr--global--h3--font-weight);line-height: var(--ufr--global--h3--line-height);}h4{font-size: var(--ufr--global--h4--font-size);font-style: var(--ufr--global--h4--font-style);font-weight: var(--ufr--global--h4--font-weight);line-height: var(--ufr--global--h4--line-height);}h5{font-size: var(--ufr--global--h5--font-size);font-style: var(--ufr--global--h5--font-style);font-weight: var(--ufr--global--h5--font-weight);line-height: var(--ufr--global--h5--line-height);}h6{font-size: var(--ufr--global--h6--font-size);font-style: var(--ufr--global--h6--font-style);font-weight: var(--ufr--global--h6--font-weight);line-height: var(--ufr--global--h6--line-height);}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;line-height: inherit;padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-pitch-black-100-color{color: var(--wp--preset--color--pitch-black-100) !important;}.has-pure-white-100-color{color: var(--wp--preset--color--pure-white-100) !important;}.has-disabled-100-color{color: var(--wp--preset--color--disabled-100) !important;}.has-identity-black-100-color{color: var(--wp--preset--color--identity-black-100) !important;}.has-danger-red-100-color{color: var(--wp--preset--color--danger-red-100) !important;}.has-identity-blue-100-color{color: var(--wp--preset--color--identity-blue-100) !important;}.has-identity-blue-80-color{color: var(--wp--preset--color--identity-blue-80) !important;}.has-identity-blue-60-color{color: var(--wp--preset--color--identity-blue-60) !important;}.has-identity-blue-40-color{color: var(--wp--preset--color--identity-blue-40) !important;}.has-identity-blue-20-color{color: var(--wp--preset--color--identity-blue-20) !important;}.has-identity-darkblue-100-color{color: var(--wp--preset--color--identity-darkblue-100) !important;}.has-identity-darkblue-80-color{color: var(--wp--preset--color--identity-darkblue-80) !important;}.has-identity-darkblue-60-color{color: var(--wp--preset--color--identity-darkblue-60) !important;}.has-identity-darkblue-40-color{color: var(--wp--preset--color--identity-darkblue-40) !important;}.has-identity-darkblue-20-color{color: var(--wp--preset--color--identity-darkblue-20) !important;}.has-identity-lightblue-100-color{color: var(--wp--preset--color--identity-lightblue-100) !important;}.has-identity-beige-100-color{color: var(--wp--preset--color--identity-beige-100) !important;}.has-identity-beige-50-color{color: var(--wp--preset--color--identity-beige-50) !important;}.has-identity-teal-100-color{color: var(--wp--preset--color--identity-teal-100) !important;}.has-identity-teal-80-color{color: var(--wp--preset--color--identity-teal-80) !important;}.has-identity-teal-60-color{color: var(--wp--preset--color--identity-teal-60) !important;}.has-identity-teal-40-color{color: var(--wp--preset--color--identity-teal-40) !important;}.has-identity-teal-20-color{color: var(--wp--preset--color--identity-teal-20) !important;}.has-identity-brown-100-color{color: var(--wp--preset--color--identity-brown-100) !important;}.has-identity-brown-80-color{color: var(--wp--preset--color--identity-brown-80) !important;}.has-identity-brown-60-color{color: var(--wp--preset--color--identity-brown-60) !important;}.has-identity-brown-40-color{color: var(--wp--preset--color--identity-brown-40) !important;}.has-identity-brown-20-color{color: var(--wp--preset--color--identity-brown-20) !important;}.has-identity-yellow-100-color{color: var(--wp--preset--color--identity-yellow-100) !important;}.has-identity-yellow-80-color{color: var(--wp--preset--color--identity-yellow-80) !important;}.has-identity-yellow-60-color{color: var(--wp--preset--color--identity-yellow-60) !important;}.has-identity-yellow-40-color{color: var(--wp--preset--color--identity-yellow-40) !important;}.has-identity-yellow-20-color{color: var(--wp--preset--color--identity-yellow-20) !important;}.has-identity-rose-100-color{color: var(--wp--preset--color--identity-rose-100) !important;}.has-identity-rose-80-color{color: var(--wp--preset--color--identity-rose-80) !important;}.has-identity-rose-60-color{color: var(--wp--preset--color--identity-rose-60) !important;}.has-identity-rose-40-color{color: var(--wp--preset--color--identity-rose-40) !important;}.has-identity-rose-20-color{color: var(--wp--preset--color--identity-rose-20) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-pitch-black-100-background-color{background-color: var(--wp--preset--color--pitch-black-100) !important;}.has-pure-white-100-background-color{background-color: var(--wp--preset--color--pure-white-100) !important;}.has-disabled-100-background-color{background-color: var(--wp--preset--color--disabled-100) !important;}.has-identity-black-100-background-color{background-color: var(--wp--preset--color--identity-black-100) !important;}.has-danger-red-100-background-color{background-color: var(--wp--preset--color--danger-red-100) !important;}.has-identity-blue-100-background-color{background-color: var(--wp--preset--color--identity-blue-100) !important;}.has-identity-blue-80-background-color{background-color: var(--wp--preset--color--identity-blue-80) !important;}.has-identity-blue-60-background-color{background-color: var(--wp--preset--color--identity-blue-60) !important;}.has-identity-blue-40-background-color{background-color: var(--wp--preset--color--identity-blue-40) !important;}.has-identity-blue-20-background-color{background-color: var(--wp--preset--color--identity-blue-20) !important;}.has-identity-darkblue-100-background-color{background-color: var(--wp--preset--color--identity-darkblue-100) !important;}.has-identity-darkblue-80-background-color{background-color: var(--wp--preset--color--identity-darkblue-80) !important;}.has-identity-darkblue-60-background-color{background-color: var(--wp--preset--color--identity-darkblue-60) !important;}.has-identity-darkblue-40-background-color{background-color: var(--wp--preset--color--identity-darkblue-40) !important;}.has-identity-darkblue-20-background-color{background-color: var(--wp--preset--color--identity-darkblue-20) !important;}.has-identity-lightblue-100-background-color{background-color: var(--wp--preset--color--identity-lightblue-100) !important;}.has-identity-beige-100-background-color{background-color: var(--wp--preset--color--identity-beige-100) !important;}.has-identity-beige-50-background-color{background-color: var(--wp--preset--color--identity-beige-50) !important;}.has-identity-teal-100-background-color{background-color: var(--wp--preset--color--identity-teal-100) !important;}.has-identity-teal-80-background-color{background-color: var(--wp--preset--color--identity-teal-80) !important;}.has-identity-teal-60-background-color{background-color: var(--wp--preset--color--identity-teal-60) !important;}.has-identity-teal-40-background-color{background-color: var(--wp--preset--color--identity-teal-40) !important;}.has-identity-teal-20-background-color{background-color: var(--wp--preset--color--identity-teal-20) !important;}.has-identity-brown-100-background-color{background-color: var(--wp--preset--color--identity-brown-100) !important;}.has-identity-brown-80-background-color{background-color: var(--wp--preset--color--identity-brown-80) !important;}.has-identity-brown-60-background-color{background-color: var(--wp--preset--color--identity-brown-60) !important;}.has-identity-brown-40-background-color{background-color: var(--wp--preset--color--identity-brown-40) !important;}.has-identity-brown-20-background-color{background-color: var(--wp--preset--color--identity-brown-20) !important;}.has-identity-yellow-100-background-color{background-color: var(--wp--preset--color--identity-yellow-100) !important;}.has-identity-yellow-80-background-color{background-color: var(--wp--preset--color--identity-yellow-80) !important;}.has-identity-yellow-60-background-color{background-color: var(--wp--preset--color--identity-yellow-60) !important;}.has-identity-yellow-40-background-color{background-color: var(--wp--preset--color--identity-yellow-40) !important;}.has-identity-yellow-20-background-color{background-color: var(--wp--preset--color--identity-yellow-20) !important;}.has-identity-rose-100-background-color{background-color: var(--wp--preset--color--identity-rose-100) !important;}.has-identity-rose-80-background-color{background-color: var(--wp--preset--color--identity-rose-80) !important;}.has-identity-rose-60-background-color{background-color: var(--wp--preset--color--identity-rose-60) !important;}.has-identity-rose-40-background-color{background-color: var(--wp--preset--color--identity-rose-40) !important;}.has-identity-rose-20-background-color{background-color: var(--wp--preset--color--identity-rose-20) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-pitch-black-100-border-color{border-color: var(--wp--preset--color--pitch-black-100) !important;}.has-pure-white-100-border-color{border-color: var(--wp--preset--color--pure-white-100) !important;}.has-disabled-100-border-color{border-color: var(--wp--preset--color--disabled-100) !important;}.has-identity-black-100-border-color{border-color: var(--wp--preset--color--identity-black-100) !important;}.has-danger-red-100-border-color{border-color: var(--wp--preset--color--danger-red-100) !important;}.has-identity-blue-100-border-color{border-color: var(--wp--preset--color--identity-blue-100) !important;}.has-identity-blue-80-border-color{border-color: var(--wp--preset--color--identity-blue-80) !important;}.has-identity-blue-60-border-color{border-color: var(--wp--preset--color--identity-blue-60) !important;}.has-identity-blue-40-border-color{border-color: var(--wp--preset--color--identity-blue-40) !important;}.has-identity-blue-20-border-color{border-color: var(--wp--preset--color--identity-blue-20) !important;}.has-identity-darkblue-100-border-color{border-color: var(--wp--preset--color--identity-darkblue-100) !important;}.has-identity-darkblue-80-border-color{border-color: var(--wp--preset--color--identity-darkblue-80) !important;}.has-identity-darkblue-60-border-color{border-color: var(--wp--preset--color--identity-darkblue-60) !important;}.has-identity-darkblue-40-border-color{border-color: var(--wp--preset--color--identity-darkblue-40) !important;}.has-identity-darkblue-20-border-color{border-color: var(--wp--preset--color--identity-darkblue-20) !important;}.has-identity-lightblue-100-border-color{border-color: var(--wp--preset--color--identity-lightblue-100) !important;}.has-identity-beige-100-border-color{border-color: var(--wp--preset--color--identity-beige-100) !important;}.has-identity-beige-50-border-color{border-color: var(--wp--preset--color--identity-beige-50) !important;}.has-identity-teal-100-border-color{border-color: var(--wp--preset--color--identity-teal-100) !important;}.has-identity-teal-80-border-color{border-color: var(--wp--preset--color--identity-teal-80) !important;}.has-identity-teal-60-border-color{border-color: var(--wp--preset--color--identity-teal-60) !important;}.has-identity-teal-40-border-color{border-color: var(--wp--preset--color--identity-teal-40) !important;}.has-identity-teal-20-border-color{border-color: var(--wp--preset--color--identity-teal-20) !important;}.has-identity-brown-100-border-color{border-color: var(--wp--preset--color--identity-brown-100) !important;}.has-identity-brown-80-border-color{border-color: var(--wp--preset--color--identity-brown-80) !important;}.has-identity-brown-60-border-color{border-color: var(--wp--preset--color--identity-brown-60) !important;}.has-identity-brown-40-border-color{border-color: var(--wp--preset--color--identity-brown-40) !important;}.has-identity-brown-20-border-color{border-color: var(--wp--preset--color--identity-brown-20) !important;}.has-identity-yellow-100-border-color{border-color: var(--wp--preset--color--identity-yellow-100) !important;}.has-identity-yellow-80-border-color{border-color: var(--wp--preset--color--identity-yellow-80) !important;}.has-identity-yellow-60-border-color{border-color: var(--wp--preset--color--identity-yellow-60) !important;}.has-identity-yellow-40-border-color{border-color: var(--wp--preset--color--identity-yellow-40) !important;}.has-identity-yellow-20-border-color{border-color: var(--wp--preset--color--identity-yellow-20) !important;}.has-identity-rose-100-border-color{border-color: var(--wp--preset--color--identity-rose-100) !important;}.has-identity-rose-80-border-color{border-color: var(--wp--preset--color--identity-rose-80) !important;}.has-identity-rose-60-border-color{border-color: var(--wp--preset--color--identity-rose-60) !important;}.has-identity-rose-40-border-color{border-color: var(--wp--preset--color--identity-rose-40) !important;}.has-identity-rose-20-border-color{border-color: var(--wp--preset--color--identity-rose-20) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.wp-block-cover.has-pitch-black-100-color{color: var(--wp--preset--color--pitch-black-100) !important;}.wp-block-cover.has-pure-white-100-color{color: var(--wp--preset--color--pure-white-100) !important;}.wp-block-cover.has-pitch-black-100-background-color{background-color: var(--wp--preset--color--pitch-black-100) !important;}.wp-block-cover.has-pure-white-100-background-color{background-color: var(--wp--preset--color--pure-white-100) !important;}.wp-block-cover.has-pitch-black-100-border-color{border-color: var(--wp--preset--color--pitch-black-100) !important;}.wp-block-cover.has-pure-white-100-border-color{border-color: var(--wp--preset--color--pure-white-100) !important;}
 	:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
 	:root :where(.wp-block-cover){padding-right: var(--ufr--global--padding-right);padding-left: var(--ufr--global--padding-left);}
 	:root :where(.wp-block-ufr-section){padding-right: var(--ufr--global--padding-right);padding-left: var(--ufr--global--padding-left);}
 	</style>
-	<link rel='stylesheet' id='tailwind-css' href='https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/tailwind.css?ver=0.12.0 <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/tailwind.css?ver=0.12.0>' media='all' />
-	<link rel='stylesheet' id='tablepress-default-css' href='https://uni-freiburg.de/math/wp-content/plugins/tablepress/css/build/default.css?ver=2.4.4 <view-source:https://uni-freiburg.de/math/wp-content/plugins/tablepress/css/build/default.css?ver=2.4.4>' media='all' />
-	<link rel='stylesheet' id='multilingualpress-flag-icons-css' href='https://uni-freiburg.de/math/wp-content/plugins/multilingualpress/src/modules/SiteFlags/public/css/frontend.min.css?ver=1724299309 <view-source:https://uni-freiburg.de/math/wp-content/plugins/multilingualpress/src/modules/SiteFlags/public/css/frontend.min.css?ver=1724299309>' media='all' />
-	<script src="https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/tabs/tab-frontend.js?ver=8d7a451100ed3322d126 <view-source:https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/tabs/tab-frontend.js?ver=8d7a451100ed3322d126>" id="ufr-tabs-script-js"></script>
-	<script src="https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/accordion/accordion-frontend.js?ver=0cb41fa65df9331e63b1 <view-source:https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/accordion/accordion-frontend.js?ver=0cb41fa65df9331e63b1>" id="ufr-accordion-script-js"></script>
+	<link rel='stylesheet' id='tailwind-css' href='static/css/wp-content/themes/ufr-main-theme/tailwind.css' media='all' />
+	<link rel='stylesheet' id='tablepress-default-css' href='static/css/wp-content/plugins/tablepress/css/build/default.css' media='all' />
+	-->
+
+	<!-- Replacing multilingualpress-flag-icons-css implies downloading all flags. -->
+  <!--
+  <link rel='stylesheet' id='multilingualpress-flag-icons-css' href='https://uni-freiburg.de/math/wp-content/plugins/multilingualpress/src/modules/SiteFlags/public/css/frontend.min.css?ver=1724299309 <view-source:https://uni-freiburg.de/math/wp-content/plugins/multilingualpress/src/modules/SiteFlags/public/css/frontend.min.css?ver=1724299309>' media='all' />
+  <script src="{{url_for('static', filename='js/wp-content/plugins/ufr-block-library/blocks/tabs/tabs-frontend.js')}}" id="ufr-tabs-script-js"></script>
+  <script src="{{url_for('static', filename='js/wp-content/plugins/ufr-block-library/blocks/accordion/accordion-frontend.js')}}" id="ufr-accordion-script-js"></script>
 	<script src="https://uni-freiburg.de/math/wp-includes/js/dist/hooks.min.js?ver=2810c76e705dd1a53b18 <view-source:https://uni-freiburg.de/math/wp-includes/js/dist/hooks.min.js?ver=2810c76e705dd1a53b18>" id="wp-hooks-js"></script>
-	<script src="https://uni-freiburg.de/math/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6 <view-source:https://uni-freiburg.de/math/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6>" id="wp-i18n-js"></script>
+  -->
+
+  <!-- This script does not appear to be functional -->
+  <!--
+  <script src="https://uni-freiburg.de/math/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6 <view-source:https://uni-freiburg.de/math/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6>" id="wp-i18n-js"></script>
 	<script id="wp-i18n-js-after">
 	wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 	</script>
-	<script src="https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/counter/counter-frontend.js?ver=d9496b61ab2d7d3c0034 <view-source:https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/counter/counter-frontend.js?ver=d9496b61ab2d7d3c0034>" id="ufr-counter-script-js"></script>
-	<script src="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/js/frontend-header.js?ver=0.12.0 <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/js/frontend-header.js?ver=0.12.0>" id="ufr-frontend-async-header-js" async data-wp-strategy="async"></script>
+	<script src="{{url_for('static', filename='js/wp-content/plugins/ufr-block-library/blocks/counter/counter-frontend.js')}}" id="ufr-counter-script-js"></script>
+  <script src="{{url_for('static', filename='js/wp-content/themes/ufr-main-theme/assets/js/frontend-header.js')}}" id="ufr-frontend-async-header-js"></script>
 	<link rel="https://api.w.org/" href="https://uni-freiburg.de/math/wp-json/ <view-source:https://uni-freiburg.de/math/wp-json/>" /><link rel="alternate" title="JSON" type="application/json" href="https://uni-freiburg.de/math/wp-json/wp/v2/pages/167 <view-source:https://uni-freiburg.de/math/wp-json/wp/v2/pages/167>" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://uni-freiburg.de/math/xmlrpc.php?rsd <view-source:https://uni-freiburg.de/math/xmlrpc.php?rsd>" />
 	<meta name="generator" content="WordPress 6.6.2" />
 	<link rel="canonical" href="https://uni-freiburg.de/math/ <view-source:https://uni-freiburg.de/math/>" />
@@ -70,7 +187,10 @@
 
 </head>
 
-	<body class="home page-template-default page page-id-167 logged-in admin-bar no-customize-support pb-[81px] md:pb-0" >
+body class="home page-template-default page page-id-167 logged-in admin-bar no-customize-support pb-[81px] md:pb-0" -->
+
+
+
 		<script>
 		(function() {
 			var request, b = document.body, c = 'className', cs = 'customize-support', rcs = new RegExp('(^|\\s+)(no-)?'+cs+'(\\s+|$)');
@@ -674,65 +794,143 @@
 
 
 <div class="slideshow-container">
-
-  <!-- Full-width images with number and caption text -->
-  <div class="mySlides fade">
-    <div class="wp-block-media-text is-stacked-on-mobile is-image-fill" style="grid-template-columns:43% auto">
-			<figure
-					class="wp-block-media-text__media"
-					style="background-image:url(https://uni-freiburg.de/math/wp-content/uploads/sites/14/science_days_2024_1.png);
-					background-position:55% 36%">
-				<img fetchpriority="high" decoding="async" width="360" height="640" src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/science_days_2024_1.png <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/science_days_2024_1.png>" alt="" class="wp-image-378 size-full" srcset="https://uni-freiburg.de/math/wp-content/uploads/sites/14/science_days_2024_1.png 360w, https://uni-freiburg.de/math/wp-content/uploads/sites/14/science_days_2024_1-169x300.png 169w" sizes="(max-width: 360px) 100vw, 360px" />
+<div
+    id="carouselExampleControls"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+				<img fetchpriority="high" decoding="async" width="360" height="640" src="/static/Bilder/science_days_2024_1.png" alt="" class="wp-image-378 size-full" srcset="/static/Bilder/science_days_2024_1.png 360w, /static/Bilder/science_days_2024_1-169x300.png 169w" sizes="(max-width: 360px) 100vw, 360px" />
 			</figure><div class="wp-block-media-text__content">
 			<h4 class="wp-block-heading">Science Days</h4>
-			<p>Auf den Science Days (24.-26.10.2024) im Europa Park sorgte der Mathematik Stand für Begeisterung.
-				Highlight war die Riesenseifenblase, die alle Blicke auf sich zog.
-				Mit spannenden Mathematik- und Knobelaufgaben lud der Stand zum Nachdenken und Entdecken ein.
-				Ein Tag an dem die Freude an der Mathematik für alle erlebbar wurde.
-				Ganz herzlichen Dank geht an unsere Helfer:innen !!
+			<p>
 			</p>
 			</div>
 		</div>
 	</div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/static/Bilder/science_days_2024_1.png"
+                class="d-block w-100"
+                alt="..."
+                style="height: 20vw; object-fit: cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Science Days
+                </h5>
+                <p>
+                  Auf den Science Days (24.-26.10.2024) im Europa Park sorgte der Mathematik Stand für Begeisterung.
+				          Highlight war die Riesenseifenblase, die alle Blicke auf sich zog.
+				          Mit spannenden Mathematik- und Knobelaufgaben lud der Stand zum Nachdenken und Entdecken ein.
+				          Ein Tag an dem die Freude an der Mathematik für alle erlebbar wurde.
+				          Ganz herzlichen Dank geht an unsere Helfer:innen !!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <div class="mySlides fade">
-		<div class="wp-block-media-text is-stacked-on-mobile is-image-fill" style="grid-template-columns:43% auto">
-			<figure
-					class="wp-block-media-text__media"
-					style="background-image:url(https://via.placeholder.com/400x300);
-					background-position:55% 36%">
-				<img fetchpriority="high" decoding="async" width="360" height="640" src="https://via.placeholder.com/300x200" sizes="(max-width: 360px) 100vw, 360px" />
-			</figure><div class="wp-block-media-text__content">
-			<h4 class="wp-block-heading">Science Days</h4>
-			<p>Auf den Science Days (24.-26.10.2024) im Europa Park sorgte der Mathematik Stand für Begeisterung.
-				Highlight war die Riesenseifenblase, die alle Blicke auf sich zog.
-				Mit spannenden Mathematik- und Knobelaufgaben lud der Stand zum Nachdenken und Entdecken ein.
-				Ein Tag an dem die Freude an der Mathematik für alle erlebbar wurde.
-				Ganz herzlichen Dank geht an unsere Helfer:innen !!
-			</p>
-			</div>
-		</div>
-	</div>
+      <div class="carousel-item" data-bs-interval="10000">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/static/Bilder/scholze.jpeg"
+                class="d-block w-100"
+                alt="..."
+                style="height: 20vw; object-fit: cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Mathematisches Kolloquium am 30.2.2024
+                </h5>
+                <p>
+                  Peter Scholze berichtet über die Einführung des Konzepts der
+                  "perfektoiden Räume", das eine natürliche Umgebung für
+                  Faltings' "fast Reinheits-Theorem" schafft und eine
+                  Tilting-Operation zwischen Charakteristik 0 und Charakteristik
+                  p ermöglicht. Dies erlaubte ihm den Beweis der
+                  Gewichts-Monodromie-Vermutung in bestimmten Fällen.
+                </p>
+                <p>
+                  Darüber hinaus gibt er grundlegende Resultate der p-adischen
+                  Hodge-Theorie in neue Kontexte, was bereits von Tate 1966
+                  vermutet worden war. Mit Kollaborateuren entwickelte er auch
+                  eine integrale Version der p-adischen Hodge-Theorie, die die
+                  Kohomologie der charakteristischen p-Faser mit der Kohomologie
+                  der p-adischen Faser in Beziehung setzt.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-	<div class="mySlides fade">
-		<div class="wp-block-media-text is-stacked-on-mobile is-image-fill" style="grid-template-columns:43% auto">
-			<figure
-					class="wp-block-media-text__media"
-					style="background-image:url(https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg);
-					background-position:55% 36%">
-				<img fetchpriority="high" decoding="async" width="360" height="640" src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg" sizes="(max-width: 360px) 100vw, 360px" />
-			</figure><div class="wp-block-media-text__content">
-			<h4 class="wp-block-heading">Science Days</h4>
-			<p>Auf den Science Days (24.-26.10.2024) im Europa Park sorgte der Mathematik Stand für Begeisterung.
-				Highlight war die Riesenseifenblase, die alle Blicke auf sich zog.
-				Mit spannenden Mathematik- und Knobelaufgaben lud der Stand zum Nachdenken und Entdecken ein.
-				Ein Tag an dem die Freude an der Mathematik für alle erlebbar wurde.
-				Ganz herzlichen Dank geht an unsere Helfer:innen !!
-			</p>
-			</div>
-		</div>
-	</div>
-
+      <div class="carousel-item" data-bs-interval="10000">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="/static/Bilder/tao.jpeg"
+                class="d-block w-100"
+                alt="..."
+                style="height: 20vw; object-fit: cover"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Mathematisches Kolloquium am 30.2.2024
+                </h5>
+                <p>
+                  Terence Tao, einer der renommiertesten Mathematiker unserer
+                  Zeit, berichtet über die berüchtigte Collatz-Vermutung.
+                </p>
+                <p>
+                  Die Collatz-Vermutung ist ein scheinbar einfaches
+                  mathematisches Problem, das Experten seit Jahrzehnten
+                  beschäftigt. Ausgehend von einer beliebigen natürlichen Zahl,
+                  wird diese entweder halbiert, wenn sie gerade ist, oder mit 3
+                  multipliziert und 1 addiert, wenn sie ungerade ist. Dieses
+                  Verfahren wird solange wiederholt, bis man schließlich bei der
+                  Zahl 1 angelangt. Die Vermutung besagt, dass dieser Prozess
+                  für jede Startzahl zwangsläufig zur 1 führt, obwohl dies
+                  bisher nicht mathematisch bewiesen werden konnte.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
   <!-- Next and previous buttons -->
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -785,7 +983,7 @@ function showSlides(n) {
 
 <div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-1 wp-block-columns-is-layout-flex">
 <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
-<figure class="wp-block-image size-full is-resized"><img decoding="async" width="360" height="240" src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus.jpg <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus.jpg>" alt="" class="wp-image-381" style="aspect-ratio:16/9;object-fit:cover;width:auto;height:200px" srcset="https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus.jpg 360w, https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus-300x200.jpg 300w" sizes="(max-width: 360px) 100vw, 360px" /></figure>
+<figure class="wp-block-image size-full is-resized"><img decoding="async" width="360" height="240" src="/static/Bilder/startseite_treppenhaus.jpg" alt="" class="wp-image-381" style="aspect-ratio:16/9;object-fit:cover;width:auto;height:200px" srcset="/static/Bilder/startseite_treppenhaus.jpg 360w, /static/Bilder/startseite_treppenhaus-300x200.jpg 300w" sizes="(max-width: 360px) 100vw, 360px" /></figure>
 
 
 
@@ -799,7 +997,7 @@ function showSlides(n) {
 
 
 <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
-<figure class="wp-block-image size-full is-resized"><img decoding="async" width="375" height="250" src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg>" alt="" class="wp-image-639" style="box-shadow:none;aspect-ratio:16/9;object-fit:cover;width:auto;height:200px" srcset="https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg 375w, https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2-300x200.jpg 300w" sizes="(max-width: 375px) 100vw, 375px" /></figure>
+<figure class="wp-block-image size-full is-resized"><img decoding="async" width="375" height="250" src="/static/Bilder/Uni-Freiburg_Okt-2021-19_2.jpg" alt="" class="wp-image-639" style="box-shadow:none;aspect-ratio:16/9;object-fit:cover;width:auto;height:200px" srcset="/static/Bilder/Uni-Freiburg_Okt-2021-19_2.jpg 375w, /static/Bilder/Uni-Freiburg_Okt-2021-19_2-300x200.jpg 300w" sizes="(max-width: 375px) 100vw, 375px" /></figure>
 
 
 
@@ -817,7 +1015,7 @@ function showSlides(n) {
 
 
 <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
-<figure class="wp-block-image size-full is-resized"><img decoding="async" width="260" height="240" src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/tafel.jpg <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/tafel.jpg>" alt="" class="wp-image-385" style="object-fit:cover;width:340px;height:200px" /></figure>
+<figure class="wp-block-image size-full is-resized"><img decoding="async" width="260" height="240" src="/static/Bilder/tafel.jpg" alt="" class="wp-image-385" style="object-fit:cover;width:340px;height:200px" /></figure>
 
 
 
@@ -943,7 +1141,7 @@ function showSlides(n) {
 			@lg/teaser-event:bl-w-[50%] @lg/teaser-event:bl-max-w-[774px]
 			2xl:@2xl/teaser-event:bl-min-w-[30%] 2xl:@2xl/teaser-event:bl-w-[30%] 2xl:@2xl/teaser-event:bl-max-w-[478px]">
 			<div class="bl-relative bl-items-center bl-w-full bl-aspect-[3/2] bl-leading-[1.5625rem]">
-									<img decoding="async" src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/small-data.png <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/small-data.png>" alt=""
+									<img decoding="async" src="/static/Bilder/small-data.png" alt=""
 						class="bl-object-cover bl-w-full bl-inline-block bl-aspect-[3/2]">
 											</div>
 		</div>
@@ -1019,7 +1217,7 @@ function showSlides(n) {
 			@lg/teaser-event:bl-w-[50%] @lg/teaser-event:bl-max-w-[774px]
 			2xl:@2xl/teaser-event:bl-min-w-[30%] 2xl:@2xl/teaser-event:bl-w-[30%] 2xl:@2xl/teaser-event:bl-max-w-[478px]">
 			<div class="bl-relative bl-items-center bl-w-full bl-aspect-[3/2] bl-leading-[1.5625rem]">
-									<img decoding="async" src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/preis_ruzicka_2024.jpg <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/preis_ruzicka_2024.jpg>" alt=""
+									<img decoding="async" src="/static/Bilder/preis_ruzicka_2024.jpg" alt=""
 						class="bl-object-cover bl-w-full bl-inline-block bl-aspect-[3/2]">
 											</div>
 		</div>
@@ -1095,7 +1293,7 @@ function showSlides(n) {
 			@lg/teaser-event:bl-w-[50%] @lg/teaser-event:bl-max-w-[774px]
 			2xl:@2xl/teaser-event:bl-min-w-[30%] 2xl:@2xl/teaser-event:bl-w-[30%] 2xl:@2xl/teaser-event:bl-max-w-[478px]">
 			<div class="bl-relative bl-items-center bl-w-full bl-aspect-[3/2] bl-leading-[1.5625rem]">
-									<img decoding="async" src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/lindemann.jpg <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/lindemann.jpg>" alt=""
+									<img decoding="async" src="/static/Bilder/lindemann.jpg" alt=""
 						class="bl-object-cover bl-w-full bl-inline-block bl-aspect-[3/2]">
 											</div>
 		</div>
@@ -1363,7 +1561,7 @@ function showSlides(n) {
 					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
 			<div class="flex-shrink-0 aspect-video h-[60px]">
 				<img
-					src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/science_days_2024_1.png <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/science_days_2024_1.png>"
+					src="/static/Bilder/science_days_2024_1.png"
 					alt=""
 					class="w-full h-full object-contain">
 			</div>
@@ -1376,7 +1574,7 @@ function showSlides(n) {
 					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
 			<div class="flex-shrink-0 aspect-video h-[60px]">
 				<img
-					src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus.jpg <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/startseite_treppenhaus.jpg>"
+					src="/static/Bilder/startseite_treppenhaus.jpg"
 					alt=""
 					class="w-full h-full object-contain">
 			</div>
@@ -1389,7 +1587,7 @@ function showSlides(n) {
 					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
 			<div class="flex-shrink-0 aspect-video h-[60px]">
 				<img
-					src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/Uni-Freiburg_Okt-2021-19_2.jpg>"
+					src="/static/Bilder/Uni-Freiburg_Okt-2021-19_2.jpg"
 					alt=""
 					class="w-full h-full object-contain">
 			</div>
@@ -1402,7 +1600,7 @@ function showSlides(n) {
 					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
 			<div class="flex-shrink-0 aspect-video h-[60px]">
 				<img
-					src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/tafel.jpg <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/tafel.jpg>"
+					src="/static/Bilder/tafel.jpg"
 					alt=""
 					class="w-full h-full object-contain">
 			</div>
@@ -1415,7 +1613,7 @@ function showSlides(n) {
 					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
 			<div class="flex-shrink-0 aspect-video h-[60px]">
 				<img
-					src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/small-data.png <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/small-data.png>"
+					src="/static/Bilder/small-data.png"
 					alt=""
 					class="w-full h-full object-contain">
 			</div>
@@ -1428,7 +1626,7 @@ function showSlides(n) {
 					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
 			<div class="flex-shrink-0 aspect-video h-[60px]">
 				<img
-					src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/preis_ruzicka_2024.jpg <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/preis_ruzicka_2024.jpg>"
+					src="/static/Bilder/preis_ruzicka_2024.jpg"
 					alt=""
 					class="w-full h-full object-contain">
 			</div>
@@ -1441,13 +1639,13 @@ function showSlides(n) {
 					<figure class="flex flex-row m-0 p-0 gap-4 justify-center items-center">
 			<div class="flex-shrink-0 aspect-video h-[60px]">
 				<img
-					src="https://uni-freiburg.de/math/wp-content/uploads/sites/14/lindemann.jpg <view-source:https://uni-freiburg.de/math/wp-content/uploads/sites/14/lindemann.jpg>"
+					src="/static/Bilder/lindemann.jpg"
 					alt=""
 					class="w-full h-full object-contain">
 			</div>
 			<figcaption class="flex-grow jusitfy-center items-center">
 				<p class="m-0 p-0 justify-center">
-																	⚠ ‒ Fehlender Nachweis (<a href="https://uni-freiburg.de/math/wp-admin/upload.php?item=457 <view-source:https://uni-freiburg.de/math/wp-admin/upload.php?item=457>">In Mediengalerie bearbeiten</a>)									</p>
+																	⚠ ‒ Fehlender Nachweis (<a href="https://uni-freiburg.de/math/wp-admin/upload.php?item=457">In Mediengalerie bearbeiten</a>)									</p>
 			</figcaption>
 			
 		</figure>
@@ -2453,5 +2651,6 @@ var menuApiUriData = {"data":"https:\/\/uni-freiburg.de\/math\/wp-json\/wp\/v2\/
 <script src="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/js/index.js?ver=0.12.0 <view-source:https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/js/index.js?ver=0.12.0>" id="ufr-frontend-index-js" defer data-wp-strategy="defer"></script>
 <script src="https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/teaser-event/teaser-event.js?ver=705d003c0692320127ce <view-source:https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/teaser-event/teaser-event.js?ver=705d003c0692320127ce>" id="ufr-teaser-event-view-script-js" defer data-wp-strategy="defer"></script>
 <script src="https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/details/frontend.js?ver=e11ace892e1d00505915 <view-source:https://uni-freiburg.de/math/wp-content/plugins/ufr-block-library/blocks/details/frontend.js?ver=e11ace892e1d00505915>" id="ufr-details-view-script-js" defer data-wp-strategy="defer"></script>
-	</body>
+
+</body>
 </html>

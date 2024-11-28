@@ -14,9 +14,21 @@ from utils.util_logging import logger
 from utils.util_faq import get_faq
 from flask_misaka import markdown
 from flask_misaka import Misaka
+from flask import Flask, render_template
+from pymongo import MongoClient
+
+# from utils.util_news import vortrag
 
 app = Flask(__name__)
 Misaka(app)
+
+# Connect to MongoDB
+client = MongoClient('mongodb://localhost:27017/')
+db = client.news
+collection_vortrag = db.vortrag
+collection_carouselnews = db.carouselnews
+collection_bild = db.bild
+collection_news = db.news
 
 # This function is important for changing languages; see base.html. Within a template, we can use its own endpoint, i.e. all parameters it was given. 
 # For changin languages, we are then able to only change the lang-parameter.
@@ -259,4 +271,19 @@ def showmediathek(lang):
 # A test field
 @app.route("/wordpress_index")
 def test_page():
-    return render_template("wordpress_index.html")
+    # Query: Get first 3 items with a 'start' field, sorted by 'start' date
+    most_recent_carousel = list(
+        collection_carouselnews.find({'start': {'$exists': True}})
+            .sort('start', 1)
+            .limit(3))
+    most_recent_news = list(
+        collection_news.find({'start': {'$exists': True}})
+            .sort('start', 1)
+            .limit(3))
+    # Render template and pass data
+    return render_template(
+        template_name_or_list="wordpress_index.html",
+        most_recent_carousel=most_recent_carousel,
+        bilder=collection_bild.find(),
+        vortrag=collection_vortrag.find(),
+        most_recent_news=most_recent_news)
