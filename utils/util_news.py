@@ -34,7 +34,6 @@ def get_events(lang = "de"):
 
     for vr in list(vortragsreihe.find({"event": True, "sichtbar" : True, "_public" : True}, sort = [("rang", pymongo.ASCENDING)])):
         events.append({"kurzname" : vr["kurzname"], "title" : vr[f"title_{lang}"]})
-    print(f"Reihen: {reihen}")
     return reihen, events
 
 def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):

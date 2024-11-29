@@ -17,13 +17,6 @@
     <link
       rel="stylesheet"
       id="unitheme-style-css"
-      href="{{url_for('static', filename =  'css/vorlesungsverzeichnis.css') }}"
-      type="text/css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      id="unitheme-style-css"
       href="/static/css/unitheme.css?ver=2.0.02"
       type="text/css"
       media="all"
@@ -38,14 +31,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <script></script>
-    <link
-      href="/static/css/ufr-colors.css"
-      type="text/css"
-      media="all"
-      type="text/css"
-      media="all"
-    />
     <link rel="icon" href="/static/images/favicon-32x32.png" type="image/png" />
     <script>
       $('[data-toggle="tooltip"]').tooltip({
@@ -53,6 +38,7 @@
           '<div class="tooltip tooltip-custom"><div class="title">Test</div><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
       });
     </script>
+
     <style>
       a:visited {
         color: inherit; /* Inherit the color from the parent element */
@@ -65,18 +51,17 @@
         color: black;
       }
 
-      .navbar .nav-link {
-        font-weight: bold;
-        color: black !important;
-      }
-
-      .navbar .nav-link:hover {
-        color: #344a9a !important;
+      nav-link,
+      nav-link:hover,
+      nav-link:active,
+      nav-link:focus {
+        outline: 0;
       }
 
       /* Hamburger-Menü */
       .navbar-toggler {
         border: none; /* Kein Rahmen */
+        outline: 0;
         display: flex;
         align-items: center;
         gap: 0.5rem; /* Abstand zwischen "Menü"-Text und Icon */
@@ -99,6 +84,7 @@
         padding: 5rem;
         color: #344a9a !important;
         background-color: #00004a; /* Navigation Hintergrund */
+        z-index: 1; /* SVG hinter den Links */
       }
 
       .fullscreen-navbar svg.background-svg {
@@ -217,6 +203,33 @@
 
       .footer-buttons a:hover {
         color: #ffe863;
+      }
+
+      /* UFR-Button */
+      a:visited {
+        color: inherit; /* Oder die gewünschte Farbe */
+      }
+      .ufr-button {
+        background-color: white;
+        border: 2px solid black;
+        color: black;
+        padding: 10px 20px;
+        font-weight: 450;
+        font-size: 18px;
+        border-radius: 0px;
+        height: 50px;
+      }
+
+      .fa-angle-up {
+        font-size: 20px;
+        transform: rotate(90deg);
+      }
+      /* Hover-Effekt */
+      .ufr-button:hover {
+        background-color: #344a9a; /* Blau */
+        color: #fff; /* Weiß */
+        text-decoration: underline; /* Unterstreichung */
+        border-color: #344a9a; /* Rahmenfarbe anpassen */
       }
 
       /* rotate caret on hover */

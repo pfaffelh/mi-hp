@@ -4,47 +4,42 @@
 <div class="container py-4" id="inhalt">
   <div class="container py-4">
     <div class="row">
-      <div class="col text-end">
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['previousanfang'], end = data['anfang'])}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          <<
-        </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['end'], end = data['nextend'])}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          >>
-        </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentsemester'], end = data['anfangnextsemester'])}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Semesteransicht
-        </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentmonth'], end = data['anfangnextmonth'])}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Monatsansicht
-        </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = 'alle', anfang = data['anfang'], end = data['end'])}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Alle Vorträge
-        </a>
+      <div class="col">
+        <button class="ufr-button">
+          <a
+            href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['previousanfang'], end = data['anfang'])}}"
+          >
+          <i class="fas fa-angles-up" style="transform:rotate(270deg);"></i>
+          </a>
+        </button>
+        <button class="ufr-button">
+          <a
+            href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['end'], end = data['nextend'])}}"
+          >
+          <i class="fas fa-angles-up" style="transform:rotate(90deg);"></i>
+          </a>
+        </button>
+        <button class="ufr-button">
+          <a
+            href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentsemester'], end = data['anfangnextsemester'])}}"
+          >
+            <i class="fas fa-angle-up"></i> Semesteransicht
+          </a>
+        </button>
+        <button class="ufr-button">
+          <a
+            href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentmonth'], end = data['anfangnextmonth'])}}"
+          >
+            <i class="fas fa-angle-up"></i> Monatsansicht
+          </a>
+        </button>
+        <button class="ufr-button">
+          <a
+            href="{{url_for('showvortragsreihe', lang=lang, kurzname = 'alle', anfang = data['anfang'], end = data['end'])}}"
+          >
+            <i class="fas fa-angle-up"></i> Alle Vorträge
+          </a>
+        </button>
       </div>
     </div>
   </div>
@@ -75,8 +70,9 @@
             <p style="margin-bottom: 2px">{{ v["reihentitle"]}}</p>
             {% endif %}
             <p style="font-weight: bold; margin-bottom: 2px">
-              {% if v["sprecher"] != "" %}{{ v["sprecher"] }}{% if v["sprecher_affiliation"] != "" %}({{
-              v["sprecher_affiliation"] }}){% endif %}: {% endif %}{{ v['title'] }}
+              {% if v["sprecher"] != "" %}{{ v["sprecher"] }}{% if
+              v["sprecher_affiliation"] != "" %}({{ v["sprecher_affiliation"]
+              }}){% endif %}: {% endif %}{{ v['title'] }}
             </p>
             <p style="margin-bottom: 2px">
               {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if
