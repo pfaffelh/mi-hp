@@ -121,7 +121,7 @@
               <div class="modal-body">
                 <div>
                   <h5 class="h5">
-                    {% if lang == "de" %}Zeit un Ort{% else %}Time and place{%
+                    {% if lang == "de" %}Zeit und Ort{% else %}Time and place{%
                     endif %}
                   </h5>
                   <p>
@@ -134,7 +134,7 @@
                     {% if lang == "de" %}Zusammenfassung{% else %}Abstract{%
                     endif %}
                   </h5>
-                  <p>{{ v["abstract"] }}</p>
+                  <p>{{ v["abstract"] |markdown }}</p>
                   {% if v["kommentar"] %}
                   <i>{{ v["kommentar"]|markdown }}</i> {% endif %}
                 </div>

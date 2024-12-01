@@ -5,6 +5,7 @@ import xmltodict
 from datetime import datetime, timedelta
 from .config import *
 import base64, json
+import latex2markdown
 
 
 app = Flask(__name__)
@@ -251,7 +252,7 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
                 "reihentitle" : "" if re is None else re[f"title_{lang}"],
                 "url" : v["url"],
                 "lang" : v["lang"],
-                "abstract" : v[f"text_{lang}"],
+                "abstract" : latex2markdown.LaTeX2Markdown(v[f"text_{lang}"]).to_markdown(),
                 "datum" : v["start"].strftime('%d.%m.%Y'),
                 "tag" : tage[v["start"].weekday()],
                 "startzeit" : v["start"].strftime('%H:%M'),
@@ -283,12 +284,12 @@ def get_event(kurzname, lang = "de"):
                 "title" : v[f"title_{lang}"],
                 "url" : v["url"],
                 "lang" : v["lang"],
-                "abstract" : v[f"text_{lang}"],
+                "abstract" : latex2markdown.LaTeX2Markdown(v[f"text_{lang}"]).to_markdown(),
                 "datum" : v["start"].strftime('%d.%m.%Y') if v["start"] != previousdatum else "",
                 "tag" : tage[v["start"].weekday()] if v["start"] != previousdatum else "",
                 "startzeit" : v["start"].strftime('%H:%M'),
                 "endzeit" : v["end"].strftime('%H:%M'),
-                "kommentar" : v[f"kommentar_{lang}"]
+                "kommentar" : latex2markdown.LaTeX2Markdown(v[f"kommentar_{lang}"]).to_markdown()
             }
         )
         previousdatum = v["start"]
