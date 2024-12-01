@@ -42,7 +42,11 @@
     <style>
       a:visited {
         color: inherit; /* Inherit the color from the parent element */
-      } /* Navbar */
+      }
+      a:focus {
+        outline: none; /* Inherit the color from the parent element */
+      }
+      /* Navbar */
       .navbar {
         height: 6rem; /* Doppelte Standardhöhe */
         margin-top: 1rem; /* Abstand zum oberen Rand */
@@ -51,11 +55,59 @@
         color: black;
       }
 
+      @media (max-width: 767px) {
+        .navbar {
+          display: none;
+        }
+
+        /* Style für den mobilen Menü-Button */
+        #mobile-nav-toggle {
+          position: fixed;
+          bottom: 0px;
+          left: 0%;
+          width: 25%;
+          background-color: #00004a !important;
+          border: 1px solid white;
+          border-radius: 0px;
+          z-index: 1000;
+        }
+        #mobile-lang-toggle {
+          position: fixed;
+          bottom: 0px;
+          left: 25%;
+          width: 25%;
+          background-color: #00004a !important;
+          border: 1px solid white;
+          border-radius: 0px;
+          z-index: 1000;
+        }
+        #mobile-service-toggle {
+          position: fixed;
+          bottom: 0px;
+          left: 50%;
+          width: 25%;
+          background-color: #00004a !important;
+          border: 1px solid white;
+          border-radius: 0px;
+          z-index: 1000;
+        }
+        #mobile-tool-toggle {
+          position: fixed;
+          bottom: 0px;
+          left: 75%;
+          width: 25%;
+          background-color: #00004a !important;
+          border: 1px solid white;
+          border-radius: 0px;
+          z-index: 1000;
+        }
+      }
+
       nav-link,
       nav-link:hover,
       nav-link:active,
       nav-link:focus {
-        outline: 0;
+        outline: none;
       }
 
       /* Hamburger-Menü */
@@ -369,6 +421,7 @@
       const toggleButton = document.getElementById("navbarToggle");
       const closeButton = document.getElementById("closeNavbar");
       const navbarMenu = document.getElementById("fullscreenNavbar");
+      const mobileNavToggle = document.getElementById("mobile-nav-toggle");
 
       const reihenToggle = document.getElementById("reihenToggle");
       const reihenSubmenu = document.getElementById("reihenSubmenu");
@@ -378,6 +431,9 @@
 
       // Öffnen der Navigation
       toggleButton.addEventListener("click", () => {
+        navbarMenu.classList.add("show");
+      });
+      mobileNavToggle.addEventListener("click", () => {
         navbarMenu.classList.add("show");
       });
 
@@ -400,7 +456,7 @@
         reihenSubmenu.style.display = "none";
       });
     </script>
-
+    <script></script>
     <script>
       var tooltipTriggerList = [].slice.call(
         document.querySelectorAll('[data-bs-toggle="tooltip"]')
