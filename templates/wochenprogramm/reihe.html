@@ -2,21 +2,21 @@
 %} {% endblock %} {% block content %}
 
 <div class="container py-4" id="inhalt">
-  <div class="container py-4">
+  <div class="container py-4 text-end">
     <div class="row">
       <div class="col">
         <button class="ufr-button">
           <a
             href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['previousanfang'], end = data['anfang'])}}"
           >
-          <i class="fas fa-angles-up" style="transform:rotate(270deg);"></i>
+            <i class="fas fa-angles-up" style="transform: rotate(270deg)"></i>
           </a>
         </button>
         <button class="ufr-button">
           <a
             href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['end'], end = data['nextend'])}}"
           >
-          <i class="fas fa-angles-up" style="transform:rotate(90deg);"></i>
+            <i class="fas fa-angles-up" style="transform: rotate(90deg)"></i>
           </a>
         </button>
         <button class="ufr-button">
@@ -43,7 +43,9 @@
       </div>
     </div>
   </div>
-
+  <div class="container py-4">
+    <h1>Vorträge am Mathematischen Institut</h1>
+  </div>
   <div class="container py-4">
     <h2>{{ data['reihe']}}</h2>
     {% if data['prefix'] != "" %}

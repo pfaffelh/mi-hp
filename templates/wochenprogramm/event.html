@@ -1,19 +1,21 @@
-{% extends 'base_news.html' %} {% block navbar %} {% include 'navbar_new.html' %} {%
-endblock %} {% block content %}
+{% extends 'base_news.html' %} {% block navbar %} {% include 'navbar_new.html'
+%} {% endblock %} {% block content %}
 
+<div class="container py-4">
+  <h1>Vorträge am Mathematischen Institut</h1>
+</div>
 <div class="container py-4" id="inhalt">
   <h2>{{ data['reihe']}}</h2>
   {% if data['prefix'] != "" %}
   <p>{{ data['prefix']|markdown }}</p>
-  {% endif %}
-
-  {% set modal_index = namespace(value=0) %}
+  {% endif %} {% set modal_index = namespace(value=0) %}
   <div class="container mt-1">
     <div class="row button-grid">
       {% for v in data["vortrag"] %}
       <div
         class="col-md-2 col-sm-2 d-flex align-items-stretch justify-content-start px-0"
-      > {% if v["tag"] %}{{ v["tag"] }}, {{ v["datum"] }}{% else %}{% endif %}
+      >
+        {% if v["tag"] %}{{ v["tag"] }}, {{ v["datum"] }}{% else %}{% endif %}
       </div>
       <div
         class="col-md-10 col-sm-10 d-flex align-items-stretch justify-content-start px-0"
@@ -34,9 +36,8 @@ endblock %} {% block content %}
             v["sprecher_affiliation"] }}){% endif %}: {{ v['title'] }}
           </p>
           <p style="margin-bottom: 2px">
-            {{ v["startzeit"] }}{% if
-            v["endzeit"] != v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}, {{
-            v["ort"] }}:
+            {{ v["startzeit"] }}{% if v["endzeit"] != v["startzeit"] %}-{{
+            v["endzeit"]}}{% endif %}, {{ v["ort"] }}:
           </p>
         </button>
       </div>
