@@ -682,6 +682,22 @@ def get_vortraege(anfang = (datetime.now() - timedelta(days=datetime.now().weekd
             })
     return jsonify(vortraege_reduced)
 
+@fortivpn()
+@app.route("/vpn/wordpress/index")
+def wordpress_index():
+    response_news = requests.get("https://www.math.uni-freiburg.de/nlehre/api/news/")
+    news_data = json.loads(response_news.text)
+
+    response_news = requests.get("https://www.math.uni-freiburg.de/nlehre/api/wochenprogramm/")
+    talks_data = json.loads(response_news.text)
+
+    # Render template and pass data
+    return render_template(
+        template_name_or_list="wordpress/index.html",
+        news_data=news_data,
+        talks_data=talks_data)
+
+
 scheduler = BackgroundScheduler(timezone="Europe/Rome")
 # Runs from Monday to Sunday at 05:30 
 scheduler.add_job(
