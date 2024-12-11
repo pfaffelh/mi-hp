@@ -1,1 +1,90 @@
 
+{% if lang == "de" %}{% else %}{% endif %}
+
+
+{% if lang == "de" %}
+<h4>(A) Zulassungsvoraussetzungen</h4>
+<p>
+  Genaue Regelungen finden sich in der rechtlich bindenden
+  <a
+    href="https://www.jsl.uni-freiburg.de/informationen_fuer_studierende_web/zulassungsordnungen/zulassungsordnung-m.sc.-mathematics-in-data-and-technology-16.05.2024.pdf"
+  >
+    Zulassungsordnung</a
+  >. Wir fassen die Zulassungsvoraussetzungen hier zusammen:
+</p>
+<b> (1) </b>
+Ein 
+<u
+  data-bs-toggle="tooltip"
+  title="Eine Mindest-Note ist nicht erforderlich."
+  >Bachelor-Abschluss</u
+>
+in Physik, Informatik oder einen
+<u
+  data-bs-toggle="tooltip"
+  title="Über die Gleichwertigkeit entscheidet eine Zulassungskommission"
+  >gleichwertigen</u
+>
+Abschluss mit mindestens 30 ECTS-Punkten aus fachwissenschaftlichen Lehrveranstaltungen in
+Mathematik.
+
+<p>
+  <b> (2) </b>
+  Sprachkenntnisse: Niveau C1 in Deutsch.
+</p>
+
+<h4>(B) Bewerbungfristen</h4>
+<p>
+  1. Mai bis 31. Mai für das Wintersemester. (Studienbeginn ist nur zum
+  Wintersemester möglich.)
+</p>
+<h4>(C) Benötigte Dokumente</h4>
+<ol>
+  <li style="margin-bottom: 5px">
+    Eine Leistungsübersicht (
+    <i> transcript of records </i>
+    ) oder alternative Darstellung der bisherigen Studieninhalte, ggf.
+    <u
+      data-bs-toggle="tooltip"
+      title="Dokumente können auf Deutsch, Englisch oder Französisch eingereicht werden. Von anderssprachigen Dokumenten muss eine beglaubigte Übersetzung ins Deutsche oder Englische beigefügt werden."
+    >
+      mit Übersetzung</u
+    >.
+  </li>
+  <li style="margin-bottom: 5px">
+    Das Zeugnis des berufsqualifizierenden Hochschulabschlusses, der Grundlage
+    für den Zugang zum Master-Studium ist (
+    <i>
+      typischerweise Bachelor in Mathematik, Informatik oder einem
+      ingenieurwissenschaftlichen Studiengang
+    </i>
+    ), ggf.
+    <u
+      data-bs-toggle="tooltip"
+      title="Dokumente können auf Deutsch, Englisch oder Französisch eingereicht werden. Von anderssprachigen Dokumenten muss eine beglaubigte Übersetzung ins Deutsche oder Englische beigefügt werden."
+    >
+      mit Übersetzung.</u
+    >
+    <br style="margin-bottom: 5px" />
+    Falls das Studium noch nicht abgeschlossen ist und die Informationen nicht
+    aus der Leistungsübersicht hervorgehen: Nachweis über Benotung, Abgabe oder
+    Anmeldung der Bachelor-Arbeit oder, falls dies nicht möglich ist,
+    Bestätigung der Hochschule über das voraussichtliche Abschlussdatum des
+    Studiums.
+  </li>
+  <li style="margin-bottom: 5px">
+    Für Bewerber aus China, Indien und Vietnam: die APS-Bescheinigung.
+  </li>
+  <li style="margin-bottom: 5px">
+    Nachweis über Englischkenntnisse: mindestens Niveau B2 (
+    <a
+      href="https://www.studium.uni-freiburg.de/de/studierendenservices/sprachnachweise"
+    >
+      akzeptierte Nachweise
+    </a>
+    )
+  </li>
+  <li style="margin-bottom: 5px">
+    Das unterschriebene (von HISinOne erzeugte) Bestätigungsformular.
+  </li>
+</ol>
