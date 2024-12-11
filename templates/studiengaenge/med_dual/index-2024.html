@@ -77,30 +77,6 @@
       <h4 class="accordion-header">
         <button
           aria-controls="vorContent"
-          aria-expanded="{% if anchor == 'bewerbung' %}true{% else %}false{% endif %}"
-          class="accordion-button {% if anchor != 'bewerbung' %}collapsed{% endif %}"
-          data-bs-target="#vorContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <h3 class="h5">Bewerbung</h3>
-        </button>
-      </h4>
-      <div
-        aria-labelledby="vorContent"
-        class="accordion-collapse collapse {% if anchor == 'bewerbung' %}show{% endif %}"
-        data-bs-parent="#accordionExample"
-        id="vorContent"
-      >
-        <div class="accordion-body">
-          {% include "studiengaenge/med_dual/bewerbung_med_dual.html" %}
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h4 class="accordion-header">
-        <button
-          aria-controls="vorContent"
           aria-expanded="{% if anchor == 'hintergrund' %}true{% else %}false{% endif %}"
           class="accordion-button {% if anchor != 'hintergrund' %}collapsed{% endif %}"
           data-bs-target="#vorContent"
