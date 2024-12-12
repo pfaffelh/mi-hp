@@ -1118,10 +1118,12 @@
     </svg>
     <!-- Navigationselemente -->
     <div class="menu">
-      <a href="#reihen" class="nav-link" id="reihenToggle"
-        >{% if lang == "de" %}Vortragsreihen{% else %}Lecture series{% endif
-        %}</a
-      >
+      <a href="#reihen" class="nav-link" id="reihenToggle">
+        {% if lang == "de" %}Vortragsreihen{% else %}Lecture series{% endif %}
+
+        <div style="float: right"><i class="fas fa-chevron-right"></i></div>
+      </a>
+
       <div class="submenu" id="reihenSubmenu">
         {% for reihe in reihen %}
         <a
@@ -1131,7 +1133,12 @@
         >
         {% endfor %}
       </div>
-      <a href="#events" class="nav-link" id="eventsToggle">Events</a>
+
+      <a href="#events" class="nav-link" id="eventsToggle"
+        >Events
+        <div style="float: right"><i class="fas fa-chevron-right"></i></div>
+      </a>
+
       <div class="submenu" id="eventsSubmenu">
         {% for event in events %}
         <a
@@ -1141,6 +1148,7 @@
         >
         {% endfor %}
       </div>
+
       <a href="{{ url_for('shownews', lang=lang) }}" class="nav-link"
         >News-Archiv</a
       >

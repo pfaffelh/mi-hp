@@ -41,7 +41,7 @@ def get_accordion_data(kurzname, lang, show = ""):
                         { "kurzname" : z["kurzname"], "parent_kurzname" : y["kurzname"], "sichtbar" : z["sichtbar"], "titel" : z[titel], "titel_html" : z["titel_html"], "prefix" : z[prefix], "prefix_html" : z["prefix_html"], "suffix" : z[suffix],  "suffix_html" : z["suffix_html"], "bearbeitet" : z[bearbeitet],"kinder" : []}              
                         )
     except:
-        logger.warning("No connection to database")
+#        logger.warning("No connection to database")
         data = { "kurzname" : kurzname, "sichtbar" : True, "titel" : "", "titel_html" : False, "prefix" : "", "prefix_html" : False, "suffix" : "", "suffix_html" : False, "bearbeitet" : "", "kinder" : []}
     if show == "":
         showcat = ""
