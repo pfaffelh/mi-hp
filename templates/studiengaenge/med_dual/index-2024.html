@@ -1,7 +1,13 @@
 <div class="container" id="inhalt">
   <h1>Masterstudiengang Lehramt Gymnasium - dual (PO 2024)</h1>
   <p>
-    Bei Fragen zu der Studienorganisation (Belegung, Prüfungsanmeldung,
+    Der Studiengang wurde zum WS 24/25 als Modellprojekt des Landes Baden-Württemberg an der Universität Freiburg eingerichtet. Absolventinnen 
+    und Absolventen eines Fachbachelorstudiums in Physik oder Informatik können sich innerhalb von insgesamt drei Jahren (4 Semester Studium an der UFR, ein Jahr 
+    verkürzter Vorbereitungsdienst) zur Lehrkraft für Mathematik und Physik bzw. 
+    Mathematik und Informatik ausbilden lassen. Das Projekt ist auf drei Jahrgänge befristet.
+  </p>
+  <p>
+    Bei Fragen zum Bewerbungsverfahren und der Studienorganisation (Belegung, Prüfungsanmeldung,
     detaillierter Modulplan, etc) wenden Sie sich bitte an die
     <a href="{{ url_for('showstudiendekanat', lang=lang)}}">
       Studiengangkoordination Duales Lehramt
@@ -88,6 +94,30 @@
       >
         <div class="accordion-body">
           {% include "studiengaenge/med_dual/hintergrund.html" %}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button
+          aria-controls="vorContent"
+          aria-expanded="{% if anchor == 'hintergrund' %}true{% else %}false{% endif %}"
+          class="accordion-button {% if anchor != 'hintergrund' %}collapsed{% endif %}"
+          data-bs-target="#vorContent"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">Bewerbungsverfahren</h3>
+        </button>
+      </h4>
+      <div
+        aria-labelledby="vorContent"
+        class="accordion-collapse collapse {% if anchor == 'hintergrund' %}show{% endif %}"
+        data-bs-parent="#accordionExample"
+        id="vorContent"
+      >
+        <div class="accordion-body">
+          {% include "studiengaenge/med_dual/kurz.html" %}
         </div>
       </div>
     </div>

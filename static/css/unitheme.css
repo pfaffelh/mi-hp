@@ -7468,7 +7468,7 @@ a.card[rel=next]:after {
 .card {
   background-color:#fff;
   border-radius:4px;
-  box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+  box-shadow:0 1px 3px rgba(0,0,0,0),0 1px 2px rgba(0,0,0,0);
   transition:all .3s cubic-bezier(.25,.8,.25,1);
   position:relative;
   text-decoration:none!important;
@@ -7485,7 +7485,7 @@ a.card[rel=next]:after {
 .card .card__image {
   height:8rem;
   background-color:#888;
-  border-bottom:#efefef solid 1px
+  border-bottom:#efefef solid 0px
 }
 .card .card__image img {
   height:100%;
@@ -7664,7 +7664,7 @@ a[href].card .card__content>p+p {
 .archive .pagination .prev .card__content .card__meta,
 .post-navigation>.nav-links>a .card__content .card__meta,
 a[href].card .card__content .card__meta {
-  border-top:solid 1px #ddd;
+  border-top:solid 0px #ddd;
   margin:16px -16px -16px -16px;
   padding:16px;
   font-size:.9em
@@ -7952,7 +7952,7 @@ body:not(.wp-admin) .accordion button.accordion-item__button>* {
 .accordion.card {
   background-color:#fff;
   border-radius:4px;
-  box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+  box-shadow:0 1px 3px rgba(0,0,0,0),0 1px 2px rgba(0,0,0,0);
   transition:all .3s cubic-bezier(.25,.8,.25,1);
   position:relative;
   text-decoration:none!important;
@@ -8068,7 +8068,7 @@ body:not(.wp-admin) .accordion button.accordion-item__button>* {
 .accordion.card :not(:first-child) .accordion-item,
 .accordion.card>:not(:first-child),
 .accordion>:not(:first-child) {
-  border-top:1px solid #d1d1d1
+  border-top:0px solid #d1d1d1
 }
 .accordion .accordion-item__content[hidden],
 .accordion.card .accordion-item__content[hidden] {
