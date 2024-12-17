@@ -185,7 +185,8 @@ def showstudiengang(lang, studiengang, anchor=""):
     if studiengang == "med_erw":
         filenames = ["studiengaenge/med_erw/index-2021.html"]
     if studiengang == "med_dual":
-        filenames = ["studiengaenge/med_dual/index-2024.html"]
+        return redirect(url_for('showaccordion', lang=lang, kurzname = 'med-dual', show=''))
+        # filenames = ["studiengaenge/med_dual/index-2024.html"]
     if studiengang == "promotion":
         filenames = ["studiengaenge/promotion/index.html"]
 
