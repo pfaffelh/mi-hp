@@ -157,11 +157,9 @@ def showanfang(lang, anchor=""):
 
 # Test: Studienanfang aus FAQ.
 @app.route("/nlehre/vpn/anfang")
-def showanfangneu(lang, anchor=""):
-    with app.open_resource('static/data/anfang.json') as f:
-        data = json.load(f)
-    filenames = ["anfang/anfang_content.html"]
-    return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
+def showanfangneu(lang, show =""):
+    data, show, showcat = util_acc.get_accordion_data("studienanfang", lang, show = show)
+    return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
 
 ###################
 ## Studiengaenge ##
