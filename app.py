@@ -155,6 +155,14 @@ def showanfang(lang, anchor=""):
     filenames = ["anfang/studienanfang.html"]
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
+# Test: Studienanfang aus FAQ.
+@app.route("/nlehre/vpn/anfang")
+def showanfangneu(lang, anchor=""):
+    with app.open_resource('static/data/anfang.json') as f:
+        data = json.load(f)
+    filenames = ["anfang/anfang_content.html"]
+    return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
+
 ###################
 ## Studiengaenge ##
 ###################
