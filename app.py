@@ -156,7 +156,7 @@ def showanfang(lang, anchor=""):
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
 # Test: Studienanfang aus FAQ.
-@app.route("/nlehre/vpn/anfang")
+@app.route("/nlehre/vpn/<lang>/anfang")
 def showanfangneu(lang="de", show =""):
     data, show, showcat = util_acc.get_accordion_data("studienanfang", lang, show = show)
     return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
