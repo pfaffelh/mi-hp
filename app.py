@@ -152,14 +152,7 @@ def showweiterbildung(lang, anchor=""):
 @app.route("/nlehre/<lang>/anfang/")
 @app.route("/nlehre/<lang>/anfang/<anchor>")
 def showanfang(lang, anchor=""):
-    filenames = ["anfang/studienanfang.html"]
-    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
-
-# Test: Studienanfang aus FAQ.
-@app.route("/nlehre/vpn/<lang>/anfang")
-def showanfangneu(lang="de", show =""):
-    data, show, showcat = util_acc.get_accordion_data("studienanfang", lang, show = show)
-    return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
+    return redirect(url_for('showaccordion', lang=lang, kurzname = 'studienanfang', show=anchor))
 
 ###################
 ## Studiengaenge ##
@@ -339,7 +332,7 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
 def showaccordion(lang, kurzname, show =""):
     vpn = False
     data, show, showcat = util_acc.get_accordion_data(kurzname, lang, show = show)
-    return render_template("accordion.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
+    return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
 
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/")
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/<show>")
