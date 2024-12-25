@@ -444,9 +444,7 @@ def showmitfaq(lang, show =""):
 def showlehrende(lang, unterseite ="", anchor = ""):
     filenames = []
     if unterseite == "zertifikat":
-        if anchor == "":
-            anchor = "what"
-        filenames = ["lehrende/zertifikat-hochschullehre.html"]
+        return redirect(url_for('showaccordion', lang=lang, kurzname = 'zertifikat', show=anchor))
     if unterseite == "calendar":
         events = vvz.get_calendar_data(datetime.now() + timedelta(days = -180), lang)
         return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = True)

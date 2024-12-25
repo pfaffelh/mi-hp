@@ -13,35 +13,54 @@ try:
 except:
     logger.warning("No connection to Database FAQ")
 
-# returns 
+
+# Here, x is a dict with fields x[f"{field_prefix}_de"] and x[f"{field_prefix}_en"]. The goal is to read x[f"{field_prefix}_{lang}"] if this data is available, otherwise use the other language.
+def get(x, field_prefix, lang, alt = ""):
+    otherlang = "de" if lang == "en" else "en"
+    if x.get(f"{field_prefix}_de") is None: # field is not acailable, return alt
+        res = alt
+    else:
+        res = x[f"{field_prefix}_{lang}"] if x[f"{field_prefix}_{lang}"] != "" else x[f"{field_prefix}_{otherlang}"]
+    return res
+
+# get_accordion_data returns 
 # a list of category shortnames (cats_kurzname), 
 # a dictionary how to translate them into full names (names_dict), 
 # a dict with the shortnames as keys, where each value is a list of triples (id, q, a), which contains the information for each question in each category (qa_pairs). 
 # recall that category and qa come with a variable rang: int, which serves to order the categories and qa-pairs. 
-
 def get_accordion_data(kurzname, lang, show = ""):
-    bearbeitet = f"bearbeitet_{lang}"
-    titel = f"titel_{lang}"
-    title = f"title_{lang}"
-    prefix = f"prefix_{lang}"
-    url = f"url_{lang}"
-    suffix = f"suffix_{lang}"
+    fields = ["kurzname", "sichtbar", "prefix_html", "suffix_html"] # no language in these fields
+    field_prefixes = ["titel", "prefix", "suffix", "bearbeitet"] # these fields exists with _de and _en
+    quicklink_prefixes = ["title", "url"] # there are title_de and title_en, and url_de and url_en
 
     try:
         x = knoten.find_one({"kurzname" : kurzname, "sichtbar" : True})
-        data = { "kurzname" : x["kurzname"], "sichtbar" : x["sichtbar"], "titel" : x[titel], "titel_html" : x["titel_html"], "prefix" : x[prefix], "prefix_html" : x["prefix_html"], "quicklinks" : [{"titel" : q[title], "url" : q[url]} for q in x["quicklinks"]], "suffix" : x[suffix], "suffix_html" : x["suffix_html"], "bearbeitet" : x[bearbeitet], "kinder" : []}
+        loc = { field: x[field] for field in fields}
+        loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in x["quicklinks"]]
+        loc["kinder"] = []
+        for field_prefix in field_prefixes:
+            loc[field_prefix] = get(x, field_prefix, lang)
+        data = loc
         for k1 in x["kinder"]:
             y = knoten.find_one({"_id" : k1})
+            loc = {}
             if y["sichtbar"]:
-                data["kinder"].append(
-                    { "kurzname" : y["kurzname"], "sichtbar" : y["sichtbar"], "titel" : y[titel], "titel_html" : y["titel_html"], "prefix" : y[prefix], "prefix_html" : y["prefix_html"], "quicklinks" : [{"titel" : q[title], "url" : q[url]} for q in y["quicklinks"]], "suffix" : y[suffix], "suffix_html" : y["suffix_html"], "bearbeitet" : y[bearbeitet],"kinder" : []}
-                )
+                loc = { field: y[field] for field in fields}
+                loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in y["quicklinks"]]
+                loc["kinder"] = []
+                for field_prefix in field_prefixes:
+                    loc[field_prefix] = get(y, field_prefix, lang)
+                data["kinder"].append(loc)
                 for k2 in y["kinder"]:
                     z = knoten.find_one({"_id" : k2})
                     if z["sichtbar"]:
-                        data["kinder"][-1]["kinder"].append(
-                        { "kurzname" : z["kurzname"], "parent_kurzname" : y["kurzname"], "sichtbar" : z["sichtbar"], "titel" : z[titel], "titel_html" : z["titel_html"], "prefix" : z[prefix], "prefix_html" : z["prefix_html"], "quicklinks" : [{"titel" : q[title], "url" : q[url]} for q in z["quicklinks"]], "suffix" : z[suffix],  "suffix_html" : z["suffix_html"], "bearbeitet" : z[bearbeitet],"kinder" : []}              
-                        )
+                        loc = { field: z[field] for field in fields}
+                        loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in z["quicklinks"]]
+                        loc["kinder"] = []
+                        for field_prefix in field_prefixes:
+                            loc[field_prefix] = get(z, field_prefix, lang)
+                        data["kinder"][-1]["kinder"].append(loc)                        
+                        
     except:
         logger.warning("No connection to database")
         data = { "kurzname" : kurzname, "sichtbar" : True, "titel" : "", "titel_html" : False, "prefix" : "", "prefix_html" : False, "quicklinks" : [], "suffix" : "", "suffix_html" : False, "bearbeitet" : "", "kinder" : []}
@@ -56,6 +75,6 @@ def get_accordion_data(kurzname, lang, show = ""):
             showcat = show
         else:
             showcat = p["kurzname"]
-
+    print(data)
     return data, show, showcat
 
