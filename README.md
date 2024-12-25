@@ -2,6 +2,85 @@
 
 Dies ist das Repository der [Lehre-Seiten des Mathematischen Instituts der Universität Freiburg](https://www.math.uni-freiburg.de/nlehre/). Es handelt sich um eine Flask-App (also python), die mit einer lokalen Datenbank verbunden ist.
 
+## Übersicht aller Seiten:
+- Hauptseite "/nlehre/<lang>"
+  - zeigt auf 
+- interesse "/nlehre/<lang>/interesse/"; Hier kommen die Daten aus
+  - /static/data/interesse.json'
+    "interesse/interesse_prefix.html", "interesse/interesse_content.html"
+- anfang "/nlehre/<lang>/anfang/<anchor>"
+  - redirect zu /nlehre/<lang>/page/studienanfang/
+  - Hier werden die Daten aus der FAQ-App genommen.
+- weiterbildung "/nlehre/<lang>/weiterbildung/<anchor>"
+  - momentan nicht verlinkt; Daten kommen aus 'static/data/weiterbildung.json'
+    gerenderte Datei ist "interesse/interesse_content.html"
+- Studiengaenge "/nlehre/<lang>/studiengaenge/"
+  - Daten aus "studiengaenge/index.html"
+  - Unterseiten: "/nlehre/<lang>/studiengaenge/<studiengang>/"
+    - Daten kommen aus html-Seite (außer med-dual), nämlich
+        if studiengang == "bsc": "studiengaenge/bsc/index-2021.html"
+        if studiengang == "msc": "studiengaenge/msc/index-2014.html"
+        if studiengang == "msc_data": "studiengaenge/msc_data/index-2024.html"
+        if studiengang == "2hfb": "studiengaenge/2hfb/index-2021.html"
+        if studiengang == "med": "studiengaenge/med/index-2018.html"
+        if studiengang == "med_erw": "studiengaenge/med_erw/index-2021.html"
+        if studiengang == "med_dual": Hier wird die FAQ-App verwendet, kurzname = 'med-dual'
+        if studiengang == "promotion": "studiengaenge/promotion/index.html"
+    - **TODO** Auf FAQ-App für alle Studiengänge umsteigen
+- lehrveranstaltungen Übersicht "/nlehre/<lang>/lehrveranstaltungen/"
+  - Hauptseite aller Lehrveranstaltungen
+- lehrveranstaltungen einzelner Semester "/nlehre/<lang>/lehrveranstaltungen/<semester>/", also zB
+    Hier werden die Lehrveranstaltungen der Semester angezeigt. Bis incl SS24 sind die Daten als statische Webseiten hinterlegt, etwa unter "/nlehre/<lang>/lehrveranstaltungen/ss24". Die Seite 
+    "/nlehre/<lang>/lehrveranstaltungen/2024SS"
+    gibt es auch, und sie bezieht Daten aus dem VVZ. Ab WS24 sind nur diese Seiten verlinkt. 
+    - Es gibt außerdem Seiten "/nlehre/<lang>/lehrveranstaltungen/<semester>/<studiengang>" und
+      "/nlehre/<lang>/lehrveranstaltungen/<semester>/<studiengang>/<modul>",
+      die nur das Angebot für die entsprechenden Studiengänge und Module bereitstellen. Diese sind jedoch kaum verlinkt, werden aber automatisch aus dem VVZ generiert.
+    - "/nlehre/<lang>/lehrveranstaltungen/<semester>/stundenplan/"
+      Hier ist eine Aufschlüsselung der Anzeige nach Zeiten
+    - "/nlehre/<lang>/lehrveranstaltungen/<semester>/personenplan/"
+      Hier ist eine Aufschlüsselung der Anzeige nach Personen. (Unter tools-depudate gibt es eine ähnliche Ansicht, diese ist ergänzt durch die vereinbarten Deputatsstunden.)
+- Prüfungsamt und Studienberatung: 
+  - zeigt das studentische FAQ aus mi-FAQ
+- studiendekanat "/nlehre/<lang>/studiendekanat/" und Unterseiten
+  - Hier sind alle Seite aus dem Untermenü zu "Prüfungsamt und Studienberatung"
+  - Die Startseite "Studienberatung" zeigt die Studienberatung, die Daten kommen aus mi-faq "Studiendekanat"
+    "studiendekanat/studienberatung.html"
+    if unterseite == "pruefungsamt": Daten aus mi-FAQ "showpruefungsamt" muss True sein
+    "studiendekanat/pruefungsamt.html"
+    if unterseite == "schwerpunktgebiete": "studiendekanat/schwerpunktgebiete.html"
+    if unterseite == "warum_mathematik": "studiendekanat/warum_mathematik.html"
+    if unterseite == "termine": "studiendekanat/termine.html"
+    if unterseite == "calendar": "studiendekanat/calendar.html"
+    Ereignisse werden aus dem vvz generiert 
+    if unterseite == "anmeldung": "studiendekanat/anmeldung.html"
+    if unterseite == "modulplan": "studiendekanat/modulplan.html"
+    if unterseite == "pruefungen": "studiendekanat/pruefungen.html"
+    if unterseite == "ausland": "studiendekanat/ausland.html"
+  - **TODO** Unterseiten warum_mathematik, termine, pruefungen, ausland auf accordion-Seiten umstellen
+- lehrende
+  - Die Startseite zeigt das Lehrenden-FAQ, die Daten kommen aus mi-faq 
+  - unterseite == "zertifikat": accordion-Seite zum Lehrzertifikat
+    if unterseite == "calendar": genau wie der Kalender der Studierenden
+  - "/nlehre/vpn/<lang>/lehrende/<semester>/planung/"
+    Lehrplanung Zukunft aus dem vvz; Zugang nur über vpn
+- downloads "/nlehre/<lang>/downloads/"
+  - Die Download Seite; "downloads/downloads.html"
+
+
+- Im Footer der Seite gibt es folgende Elemente:
+  - bildnachweis "/nlehre/<lang>/bildnachweis/"
+    siehe "footer/bildnachweis.html"; die Daten kommen aus mi-news
+  - impressum "/nlehre/<lang>/impressum/"
+    siehe "footer/impressum.html"
+  - datenschutz "/nlehre/<lang>/datenschutz/"
+    siehe "footer/datenschutz.html"
+  - tools "/nlehre/vpn/<lang>/tools"
+    siehe "footer/tools.html"
+
+
+
+
 ## Aufbau der URLs
 
 Der Aufbau der URLs ist fast immer `https://www.math.uni-freiburg.de/nlehre/<lang>/unterpunkt/unterseite/anchor`, wobei `lang == de` oder `lang == en` die Sprache angibt. Die Templates der Unterpunkte

@@ -1,30 +1,23 @@
 from flask import Flask, jsonify, url_for, render_template, redirect, request, abort
-from ipaddress import ip_network, IPv4Address
-import locale
-import json
-import os
-from bs4 import BeautifulSoup
-import requests
-from utils.config import *
-from utils.util_logging import logger
-from utils.util_calendar import calendar, get_caldav_calendar_events
-from apscheduler.schedulers.background import BackgroundScheduler
-
-import utils.util_faq as util_faq
-import utils.util_person as person
-import utils.util_accordion as util_acc
-
-import utils.fb as fb
 from flask_misaka import Misaka
-import socket
+from ipaddress import ip_network, IPv4Address
+import locale, json, os, requests, xmltodict, base64, pymongo, socket
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
+from apscheduler.schedulers.background import BackgroundScheduler
+from bson import ObjectId
+
+
+from utils.config import *
+from utils.util_logging import logger
+# from utils.util_calendar import calendar, get_caldav_calendar_events
+
+import utils.util_faq as faq
+import utils.util_person as person
 import utils.util_vvz as vvz
 import utils.util_news as news
-import xmltodict
-import base64
-import pymongo
-from bson import ObjectId
+
+
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
@@ -75,28 +68,60 @@ app.jinja_env.globals['url_for_self'] = url_for_self
 # Deutsche Namen für Tage und Monate
 locale.setlocale(locale.LC_ALL, "de_DE.UTF8") 
 
-###############
-## Home page ##
-###############
-
+# This should be deleted soon (20.12.2024)
 @app.route("/nlehre/screenshotwp/")
 def showwp():
     return render_template("screenshottocode.html")
 
-@app.route("/nlehre/test/")
-@app.route("/nlehre/test/<lang>/")
-@app.route("/nlehre/test/<lang>/<dtstring>")
+@fortivpn()
+@app.route("/nlehre/vpn/wordpress/index")
+def wordpress_index():
+    response_news = requests.get("https://www.math.uni-freiburg.de/nlehre/api/news/")
+    news_data = json.loads(response_news.text)
+
+    response_news = requests.get("https://www.math.uni-freiburg.de/nlehre/api/wochenprogramm/")
+    talks_data = json.loads(response_news.text)
+
+    # Render template and pass data
+    return render_template(
+        template_name_or_list="wordpress/index.html",
+        news_data=news_data,
+        talks_data=talks_data)
+
+# Ansatz des Personenverzeichnisses
+@app.route("/nlehre/<lang>/personen/")
+@app.route("/nlehre/<lang>/personen/<show>/")
+def showpersonen(show = "", lang = "de"):
+    data = person.get_person_data()
+    return render_template("personen/index.html", data = data, show=show, lang=lang)
+
+
+###############
+## Home page ##
+###############
+
 @app.route("/nlehre/")
 @app.route("/nlehre/<lang>/")
-@app.route("/nlehre/<lang>/<dtstring>")
-def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
-    testorpublic = "test" if "test" in request.path.split("/") else "_public"
-    # print(request.endpoint)
-    data = news.data_for_base(lang, dtstring, testorpublic)
-    filenames = ["index.html"]
-    return render_template("home.html", filenames=filenames, data = data, lang=lang)
+def showbase(lang="de"):
+    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester=vvz.get_current_semester_kurzname()))
 
+################################
+## Allgemeine Accordion-Seite ##
+################################
+@app.route("/nlehre/<lang>/page/<kurzname>/")
+@app.route("/nlehre/<lang>/page/<kurzname>/<show>")
+def showaccordion(lang, kurzname, show =""):
+    vpn = False
+    data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
+    return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
 
+# Here is the vpn version
+@app.route("/nlehre/vpn/<lang>/page/<kurzname>/")
+@app.route("/nlehre/vpn/<lang>/page/<kurzname>/<show>")
+def showvpnaccordion(lang, kurzname, show =""):
+    vpn = True
+    data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
+    return render_template("accordion.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
 
 ############
 ## footer ##
@@ -137,14 +162,6 @@ def showinteresse(lang = "de", anchor=""):
     filenames = ["interesse/interesse_prefix.html", "interesse/interesse_content.html"]
     return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
-@app.route("/nlehre/<lang>/weiterbildung/")
-@app.route("/nlehre/<lang>/weiterbildung/<anchor>")
-def showweiterbildung(lang, anchor=""):
-    with app.open_resource('static/data/weiterbildung.json') as f:
-        data = json.load(f)
-    filenames = ["interesse/interesse_content.html"]
-    return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
-
 ##########################
 ## Studienanfänger      ## 
 ##########################
@@ -153,6 +170,19 @@ def showweiterbildung(lang, anchor=""):
 @app.route("/nlehre/<lang>/anfang/<anchor>")
 def showanfang(lang, anchor=""):
     return redirect(url_for('showaccordion', lang=lang, kurzname = 'studienanfang', show=anchor))
+
+###################
+## Weiterbildung ## 
+###################
+# Soll es diese Seite wirklich geben?
+
+@app.route("/nlehre/<lang>/weiterbildung/")
+@app.route("/nlehre/<lang>/weiterbildung/<anchor>")
+def showweiterbildung(lang, anchor=""):
+    with app.open_resource('static/data/weiterbildung.json') as f:
+        data = json.load(f)
+    filenames = ["interesse/interesse_content.html"]
+    return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
 ###################
 ## Studiengaenge ##
@@ -188,28 +218,11 @@ def showstudiengang(lang, studiengang, anchor=""):
         # filenames = ["studiengaenge/med_dual/index-2024.html"]
     if studiengang == "promotion":
         filenames = ["studiengaenge/promotion/index.html"]
-
     return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
-
-@app.route("/nlehre/<lang>/studiengaenge/<studiengang>/verlauf/")
-def showstudienverlauf(lang, studiengang):
-    if studiengang == "bsc":
-        filenames = ["studiengaenge/studienverlauf-bsc-2021.html"]
-    if studiengang == "bscb":
-        filenames = ["studiengaenge/studienverlauf-bsc-2021b.html"]
-    if studiengang == "msc":
-        filenames = ["studiengaenge/studienverlauf-msc-2014.html"]       
-    if studiengang == "2hfb":
-        filenames = ["studiengaenge/studienverlauf-2hfb-2021.html"]       
-    if studiengang == "med":
-        filenames = ["studiengaenge/studienverlauf-med-2018.html"]       
-    return render_template("home.html", filenames = filenames, studiengang=studiengang, lang=lang)
-
 
 #########################
 ## Lehrveranstaltungen ##
 #########################
-
 
 @app.route("/nlehre/<lang>/lehrveranstaltungen/")
 def showlehrveranstaltungenbase(lang="de"):
@@ -324,85 +337,25 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
     data = vvz.get_data_personenplan(next_semester, lang, vpn = True)
     return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=next_semester, semester_dict = {}, semester_lang = vvz.semester_name_de(next_semester), showdeputate = False, vpn_nextsemester = True)
 
-################################
-## Allgemeine Accordion-Seite ##
-################################
-@app.route("/nlehre/<lang>/page/<kurzname>/")
-@app.route("/nlehre/<lang>/page/<kurzname>/<show>")
-def showaccordion(lang, kurzname, show =""):
-    vpn = False
-    data, show, showcat = util_acc.get_accordion_data(kurzname, lang, show = show)
-    return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
-
-@app.route("/nlehre/vpn/<lang>/page/<kurzname>/")
-@app.route("/nlehre/vpn/<lang>/page/<kurzname>/<show>")
-def showvpnaccordion(lang, kurzname, show =""):
-    vpn = True
-    data, show, showcat = util_acc.get_accordion_data(kurzname, lang, show = show)
-    return render_template("accordion.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
-
-
 #####################################
 ## Prüfungsamt und Studienberatung ##
 #####################################
 
-#@app.route("/nlehre/<lang>/studiendekanat/")
-#def showstudiendekanatbase(lang):
-#    with app.open_resource('static/data/studiendekanat.json') as f:
-#        data = json.load(f)    
-#    filenames = ["studiendekanat/index.html"]
-#    return render_template("home.html", data=data, filenames = filenames, lang=lang)
-# show ist entweder "", oder "all" oder eine id für ein qa-Paar
-@app.route("/nlehre/<lang>/studiendekanat/faq2/")
-@app.route("/nlehre/<lang>/studiendekanat/faq2/<show>")
-def showstufaq2(lang, show =""):
-    try:
-        cat_ids, names_dict, qa_pairs = util_faq.get_stu_faq(lang)
-    except:
-        logger.warning("No connection to database")
-        cat_ids, names_dict, qa_pairs  = ["unsichtbar"], {"unsichtbar": "Unsichtbar"}, {"unsichtbar": []}
-    if show == "":
-        showcat = ""
-    elif show == "all":
-        showcat = "all"
-    else:
-        showcat = util_faq.get_stu_cat(show)
-    return render_template("studiendekanat/index.html", lang=lang, cat_ids = cat_ids, names_dict = names_dict, qa_pairs = qa_pairs, showcat = showcat, studiengaenge = studiengaenge, show=show)
-
 @app.route("/nlehre/<lang>/studiendekanat/faq/")
 @app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
 def showstufaq(lang, show =""):
-    data, show, showcat = util_acc.get_accordion_data("faqstud", lang, show = show)
-    return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
+    return redirect(url_for('showaccordion', lang=lang, kurzname = 'faqstud', show=show))
 
 @app.route("/nlehre/<lang>/studiendekanat/")
 @app.route("/nlehre/<lang>/studiendekanat/<unterseite>/")
 def showstudiendekanat(lang, unterseite = ""):
     data = {}
+    filenames = []
     if unterseite == "":
-        try:
-            cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
-            mongo_db_faq = cluster["faq"]
-            studiendekanat = mongo_db_faq["studiendekanat"]
-        except:
-            logger.warning("No connection to Database FAQ")
-
-        data = list(studiendekanat.find({"showstudienberatung" : True}, sort=[("rang", pymongo.ASCENDING)]))
-        for item in data:
-            item["shownews"] = (datetime.now() < item["news_ende"])
- #           item["text_de"] = item["text_de"].split("\n")
- #           item["text_en"] = item["text_en"].split("\n")
+        data = faq.get_studiendekenat_data({"showstudienberatung" : True})
         filenames = ["studiendekanat/studienberatung.html"]
     if unterseite == "pruefungsamt":
-        try:
-            cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
-            mongo_db_faq = cluster["faq"]
-            studiendekanat = mongo_db_faq["studiendekanat"]
-        except:
-            logger.warning("No connection to Database FAQ")
-        data = list(studiendekanat.find({"showpruefungsamt" : True}, sort=[("rang", pymongo.ASCENDING)]))
-        for item in data:
-            item["shownews"] = (datetime.now() < item["news_ende"])
+        data = faq.get_studiendekenat_data({"showpruefungsamt" : True})
         filenames = ["studiendekanat/pruefungsamt.html"]        
     if unterseite == "schwerpunktgebiete":
         filenames = ["studiendekanat/schwerpunktgebiete.html"]
@@ -419,25 +372,21 @@ def showstudiendekanat(lang, unterseite = ""):
         filenames = ["studiendekanat/modulplan.html"]
     if unterseite == "pruefungen":
         filenames = ["studiendekanat/pruefungen.html"]
-    if unterseite == "termine":
-        filenames = ["studiendekanat/termine.html"]
     if unterseite == "ausland":
         filenames = ["studiendekanat/ausland.html"]
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
 
-#####################################
+##################
 ## Für Lehrende ##
-#####################################
+##################
 
 # show ist entweder "", oder "all" oder eine id für ein qa-Paar
 @app.route("/nlehre/<lang>/lehrende/")
 @app.route("/nlehre/<lang>/lehrende/faq/")
 @app.route("/nlehre/<lang>/lehrende/faq/<show>")
 def showmitfaq(lang, show =""):
-    kurzname = "faqmit"
-    data, show, showcat = util_acc.get_accordion_data(kurzname, lang, show = show)
-    return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
+    return redirect(url_for('showaccordion', lang=lang, kurzname = 'faqmit', show=show))
 
 @app.route("/nlehre/<lang>/lehrende/<unterseite>")
 @app.route("/nlehre/<lang>/lehrende/<unterseite>/<anchor>")
@@ -446,7 +395,7 @@ def showlehrende(lang, unterseite ="", anchor = ""):
     if unterseite == "zertifikat":
         return redirect(url_for('showaccordion', lang=lang, kurzname = 'zertifikat', show=anchor))
     if unterseite == "calendar":
-        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -180), lang)
+        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -360), lang)
         return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = True)
         
     return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
@@ -475,17 +424,6 @@ def showdownloads(lang, anchor=""):
     filenames = ["downloads/downloads.html"]
     return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
-##############
-## Personen ##
-##############
-
-@app.route("/nlehre/<lang>/personen/")
-@app.route("/nlehre/<lang>/personen/<show>/")
-def showpersonen(show = "", lang = "de"):
-    data = person.get_person_data()
-    return render_template("personen/index.html", data = data, show=show, lang=lang)
-    
-    
 ####################
 ## Wochenprogramm ##
 ####################
@@ -680,22 +618,8 @@ def get_vortraege(anfang = (datetime.now() - timedelta(days=datetime.now().weekd
             })
     return jsonify(vortraege_reduced)
 
-@fortivpn()
-@app.route("/nlehre/vpn/wordpress/index")
-def wordpress_index():
-    response_news = requests.get("https://www.math.uni-freiburg.de/nlehre/api/news/")
-    news_data = json.loads(response_news.text)
 
-    response_news = requests.get("https://www.math.uni-freiburg.de/nlehre/api/wochenprogramm/")
-    talks_data = json.loads(response_news.text)
-
-    # Render template and pass data
-    return render_template(
-        template_name_or_list="wordpress/index.html",
-        news_data=news_data,
-        talks_data=talks_data)
-
-
+# This function reads the Mensaplan everyday and puts the result into the mongodb
 scheduler = BackgroundScheduler(timezone="Europe/Rome")
 # Runs from Monday to Sunday at 05:30 
 scheduler.add_job(

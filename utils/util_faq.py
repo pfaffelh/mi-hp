@@ -2,86 +2,92 @@ import pymongo
 import utils.config as config
 from bson import ObjectId
 from .util_logging import logger
+from datetime import datetime
 
 # Connect to MongoDB
 try:
     cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
     mongo_db_faq = cluster["faq"]
-    studiengang = mongo_db_faq["studiengang"]
-    stu_category = mongo_db_faq["stu_category"]
-    stu_qa = mongo_db_faq["stu_qa"]
-    mit_category = mongo_db_faq["mit_category"]
-    mit_qa = mongo_db_faq["mit_qa"]
+    knoten = mongo_db_faq["knoten"]
     studiendekanat = mongo_db_faq["studiendekanat"]
     
 except:
-    logger.warning("No connection to Database 1")
+    logger.warning("No connection to Database!")
 
+def get_studiendekenat_data(query):
+    try:
+        cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
+        mongo_db_faq = cluster["faq"]
+        studiendekanat = mongo_db_faq["studiendekanat"]
+    except:
+        logger.warning("No connection to Database FAQ")
 
-# returns 
+    data = list(studiendekanat.find(query, sort=[("rang", pymongo.ASCENDING)]))
+    for item in data:
+        item["shownews"] = (datetime.now() < item["news_ende"])
+    return data
+
+# Here, x is a dict with fields x[f"{field_prefix}_de"] and x[f"{field_prefix}_en"]. The goal is to read x[f"{field_prefix}_{lang}"] if this data is available, otherwise use the other language.
+def get(x, field_prefix, lang, alt = ""):
+    otherlang = "de" if lang == "en" else "en"
+    if x.get(f"{field_prefix}_de") is None: # field is not acailable, return alt
+        res = alt
+    else:
+        res = x[f"{field_prefix}_{lang}"] if x[f"{field_prefix}_{lang}"] != "" else x[f"{field_prefix}_{otherlang}"]
+    return res
+
+# get_accordion_data returns 
 # a list of category shortnames (cats_kurzname), 
 # a dictionary how to translate them into full names (names_dict), 
 # a dict with the shortnames as keys, where each value is a list of triples (id, q, a), which contains the information for each question in each category (qa_pairs). 
 # recall that category and qa come with a variable rang: int, which serves to order the categories and qa-pairs. 
+def get_accordion_data(kurzname, lang, show = ""):
+    fields = ["kurzname", "sichtbar", "prefix_html", "suffix_html"] # no language in these fields
+    field_prefixes = ["titel", "prefix", "suffix", "bearbeitet"] # these fields exists with _de and _en
+    quicklink_prefixes = ["title", "url"] # there are title_de and title_en, and url_de and url_en
 
-def get_stu_faq(lang):
-    # Alle Kategorien zeigen außer "unsichtbar"
-    cats = list(stu_category.find({"kurzname": {"$ne": "unsichtbar"}}, sort=[("rang", pymongo.ASCENDING)]))
-    q = f"q_{lang}"
-    a = f"a_{lang}"
-    bearbeitet = f"bearbeitet_{lang}"
-    name = f"name_{lang}"
-
-    cat_ids = [f"stu_kat_{cat['_id']}" for cat in cats]
-    names_dict = {f"stu_kat_{cat['_id']}": cat[name] for cat in cats}
-    qa_pairs = {}
-    for cat in cats:
-        y = list(stu_qa.find({"category": cat["_id"]}, sort=[("rang", pymongo.ASCENDING)]))
-        qa_pairs[f"stu_kat_{cat['_id']}"] = [ (f"qa_{str(x['_id'])}", x[q]  + (f" ({', '.join([s[name] for s in list(studiengang.find({'_id': { '$in' : x['studiengang']}}))])})" if x['studiengang'] != [] else "") , x[a], x[bearbeitet]) for x in y]
-        #print(qa_pairs[cat_id])
-    return cat_ids, names_dict, qa_pairs
-
-def get_mit_faq(lang):
-    # Alle Kategorien zeigen außer "unsichtbar"
-    cats = list(mit_category.find({"kurzname": {"$ne": "unsichtbar"}}, sort=[("rang", pymongo.ASCENDING)]))
-    q = f"q_{lang}"
-    a = f"a_{lang}"
-    bearbeitet = f"bearbeitet_{lang}"
-    name = f"name_{lang}"
-
-    cat_ids = [f"mit_kat_{cat['_id']}" for cat in cats]
-    names_dict = {f"mit_kat_{cat['_id']}": cat[name] for cat in cats}
-    qa_pairs = {}
-    for cat in cats:
-        y = list(mit_qa.find({"category": cat["_id"]}, sort=[("rang", pymongo.ASCENDING)]))
-        qa_pairs[f"mit_kat_{cat['_id']}"] = [ (f"qa_{str(x['_id'])}", x[q] , x[a], x[bearbeitet]) for x in y]
-    return cat_ids, names_dict, qa_pairs
-
-# id ist enweder eine qa-id oder eine cat-id
-def get_stu_cat(id):
-    id = id.split("_")[-1]
     try:
-        x = stu_category.find_one({"_id" : ObjectId(id)})
-        res =f"stu_kat_{x['_id']}"
-    except:    
-        x = stu_qa.find_one({"_id" : ObjectId(id)})
-        if x:
-            res = f"stu_kat_{x['category']}"
+        x = knoten.find_one({"kurzname" : kurzname, "sichtbar" : True})
+        loc = { field: x[field] for field in fields}
+        loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in x["quicklinks"]]
+        loc["kinder"] = []
+        for field_prefix in field_prefixes:
+            loc[field_prefix] = get(x, field_prefix, lang)
+        data = loc
+        for k1 in x["kinder"]:
+            y = knoten.find_one({"_id" : k1})
+            loc = {}
+            if y["sichtbar"]:
+                loc = { field: y[field] for field in fields}
+                loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in y["quicklinks"]]
+                loc["kinder"] = []
+                for field_prefix in field_prefixes:
+                    loc[field_prefix] = get(y, field_prefix, lang)
+                data["kinder"].append(loc)
+                for k2 in y["kinder"]:
+                    z = knoten.find_one({"_id" : k2})
+                    if z["sichtbar"]:
+                        loc = { field: z[field] for field in fields}
+                        loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in z["quicklinks"]]
+                        loc["kinder"] = []
+                        for field_prefix in field_prefixes:
+                            loc[field_prefix] = get(z, field_prefix, lang)
+                        data["kinder"][-1]["kinder"].append(loc)                        
+                        
+    except:
+        logger.warning("No connection to database")
+        data = { "kurzname" : kurzname, "sichtbar" : True, "titel" : "", "titel_html" : False, "prefix" : "", "prefix_html" : False, "quicklinks" : [], "suffix" : "", "suffix_html" : False, "bearbeitet" : "", "kinder" : []}
+    if show == "":
+        showcat = ""
+    elif show == "all":
+        showcat = "all"
+    else:
+        k = knoten.find_one({"kurzname" : show, "sichtbar" : True})
+        p = knoten.find_one({"kinder" : { "$elemMatch" : { "$eq": k["_id"]}}})
+        if p == knoten.find_one({"kurzname" : kurzname}):
+            showcat = show
         else:
-            res = ""
-    return res
-
-# id ist enweder eine qa-id oder eine cat-id
-def get_mit_cat(id):
-    id = id.split("_")[-1]
-    try:
-        x = mit_category.find_one({"_id" : ObjectId(id)})
-        res =f"mit_kat_{x['_id']}"
-    except:    
-        x = mit_qa.find_one({"_id" : ObjectId(id)})
-        if x:
-            res = f"mit_kat_{x['category']}"
-        else:
-            res = ""
-    return res
+            showcat = p["kurzname"]
+    print(data)
+    return data, show, showcat
 
