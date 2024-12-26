@@ -7,7 +7,6 @@ from dateutil.relativedelta import relativedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 from bson import ObjectId
 
-
 from utils.config import *
 from utils.util_logging import logger
 # from utils.util_calendar import calendar, get_caldav_calendar_events
@@ -16,8 +15,6 @@ import utils.util_faq as faq
 import utils.util_person as person
 import utils.util_vvz as vvz
 import utils.util_news as news
-
-
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
@@ -432,39 +429,8 @@ def showdownloads(lang, anchor=""):
 @app.route("/nlehre/<lang>/vortragsreihe/<kurzname>/")
 @app.route("/nlehre/<lang>/vortragsreihe/<kurzname>/<anfang>/<end>")
 def showvortragsreihe(lang, kurzname="alle", anfang = datetime(datetime.now().year, datetime.now().month, 1).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1)).strftime('%Y%m%d')):
-    anfangdate = datetime.strptime(anfang, '%Y%m%d')
-    enddate = datetime.strptime(end, '%Y%m%d')
-    diffmonth = abs(enddate.month - anfangdate.month)
-    if diffmonth == 1 or (anfangdate.month == 12 and enddate.month == 1):
-        zeitraum = f"{news.get_monat(anfangdate.month, lang)} {anfangdate.year}"
-        previousanfangdate = news.get_start_previous_month(anfangdate)
-        nextenddate = news.get_end_next_month(anfangdate)
-    elif diffmonth == 6:
-        sem_de = "Sommersemester" if anfangdate.month == 4 else "Wintersemester"
-        sem_en = "Summer term" if anfangdate.month == 4 else "Winter term"
-        sem = sem_de if lang == "de" else sem_en
-        zeitraum = f"{sem} {anfangdate.year}"
-        previousanfangdate = news.get_start_previous_semester(anfangdate)
-        nextenddate = news.get_end_next_semester(anfangdate)
-    else:
-        zeitraum = ""
-        previousanfangdate = anfangdate
-        nextenddate = enddate
     reihen, events = news.get_events(lang)
-
-    previousanfang = previousanfangdate.strftime('%Y%m%d')
-    nextend = nextenddate.strftime('%Y%m%d')
-
-    data = news.get_wochenprogramm(anfangdate, enddate, kurzname, lang)
-    data["anfang"] = anfang
-    data["end"] = end
-    data["previousanfang"] = previousanfang
-    data["nextend"] = nextend
-    data["zeitraum"] = zeitraum
-    data["anfangcurrentsemester"] = news.get_start_current_semester().strftime('%Y%m%d')
-    data["anfangnextsemester"] = news.get_start_next_semester(news.get_start_current_semester()).strftime('%Y%m%d')
-    data["anfangcurrentmonth"] = news.get_start_current_month().strftime('%Y%m%d')
-    data["anfangnextmonth"] = news.get_start_next_month(news.get_start_current_month()).strftime('%Y%m%d')
+    data = news.get_wochenprogramm_full(anfang, end, kurzname, lang)
     return render_template("wochenprogramm/reihe.html", reihen = reihen, events = events, kurzname = kurzname, lang=lang, data = data)
 
 @app.route("/nlehre/<lang>/event/<kurzname>/")
@@ -477,45 +443,13 @@ def showevent(lang, kurzname="alle"):
 @app.route("/nlehre/<lang>/newsarchiv/<anfang>/<end>/")
 def shownews(lang = "de", anfang = datetime(datetime.now().year, datetime.now().month, 1).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1)).strftime('%Y%m%d')):
     reihen, events = news.get_events(lang)
-    anfangdate = datetime.strptime(anfang, '%Y%m%d')
-    enddate = datetime.strptime(end, '%Y%m%d')
-    data = news.data_for_newsarchiv(anfangdate, enddate, lang)    
-    data["zeitraum"] = f"{news.get_monat(anfangdate.month, lang)} {anfangdate.year}"
-    data["previousanfang"] = news.get_start_previous_month(anfangdate).strftime('%Y%m%d')
-    data["nextend"] = news.get_end_next_month(anfangdate).strftime('%Y%m%d')
-    data["anfang"] = anfang
-    data["end"] = end
+    data = news.data_for_newsarchiv_full(lang, anfang, end)
     filenames = ["wochenprogramm/newsarchiv.html"]
     return render_template("home_news.html", filenames=filenames, reihen = reihen, events = events, data = data, lang=lang)
 
 #################
 ## Monitor EG  ##
 #################
-
-def get_mensaplan_text(url, date):
-    response = requests.get(url)
-    if response.status_code == 200:
-        mensaplan_xml = response.text
-        mensaplan = xmltodict.parse(mensaplan_xml)
-        date_format = '%d.%m.%Y'
-        tagesplan = mensaplan["plan"]["ort"]["tagesplan"]
-        tagesplan = [t["menue"] for t in tagesplan if t["@datum"] == datetime.now().strftime('%d.%m.%Y')]
-        # print(tagesplan)
-        if tagesplan != []:
-            tagesplan = tagesplan[0]
-            ausgabe = f"<h2>Mensaplan am {date.strftime('%d.%m.')}</h2>"
-            # Abendessen wird nicht ausgegeben
-            for t in [t for t in tagesplan if t["@art"][0:10] != "Abendessen"]: 
-                art = t["@art"]
-                name = t["name"]
-                if len(t["name"]) > 60:
-                    name = name[0:59] + "..."
-                ausgabe = ausgabe + f"<h4>{art}: {name}</h4>"
-        else:
-            ausgabe = "<h2>Heute ist die Mensa zu!</h2>"
-    else: 
-        ausgabe = ""
-    return ausgabe
 
 @app.route("/nlehre/monitortest/")
 @app.route("/nlehre/monitortest/<dtstring>")
@@ -524,99 +458,24 @@ def get_mensaplan_text(url, date):
 def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     # determine if only shown on test
     testorpublic = "test" if "monitortest" in request.path.split("/") else "_public" 
-
-    # the date format for <dtstring>
-    date_format_no_space = '%Y%m%d%H%M'
-    dt = datetime.strptime(dtstring, date_format_no_space)
-
-    data = {}
-    # Daten für das Carousel
-    if testorpublic == "test":
-        data["carouselnews"] = list(news.carouselnews.find({"start" : { "$lte" : dt }, "end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))
-    else:
-        data["carouselnews"] = list(news.carouselnews.find({"_public" :True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))  
-
-    for item in data["carouselnews"]:
-        item["image"] = base64.b64encode(news.bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
-
-    # Daten für die News
-    query = { "monitor.fuermonitor": True, 
-             "monitor.start" : { "$lte" : dt }, 
-             "monitor.end" : { "$gte" : dt }}
-    if testorpublic == "test":
-        data["news"] = list(news.news.find(query ,sort=[("rang", pymongo.ASCENDING)]))
-    else:
-        query["_public"] = True
-        data["news"] = list(news.news.find(query, sort=[("rang", pymongo.ASCENDING)]))  
-    for item in data["news"]:
-        if item["image"] != []:
-            item["image"][0]["data"] = base64.b64encode(news.bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
-
-    for item in data['news']:
-        item['today'] = True if (item["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
- 
+    data = news.get_monitordata(dtstring, testorpublic)
     return render_template("monitor/monitor_quer.html", data=data, lang="de")
+
+###########
+## api's ##
+###########
 
 @app.route("/nlehre/api/news/")
 def get_news():
-    try:
-        cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
-        mongo_db_news = cluster["news"]
-        news = mongo_db_news["news"]
-    except:
-        pass
-
-    dt = datetime.now()
-    news =  list(news.find({ "_public": True, "home.fuerhome": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))  
-    news_reduced = []
-    for n in news:
-        news_reduced.append({"title_de" : n["home"]["title_de"],
-                             "title_en" : n["home"]["title_en"],
-                             "text_de" : n["home"]["text_de"],
-                             "text_en" : n["home"]["text_en"],
-                             "link" : n["link"]
-                             })
+    news_reduced = news.get_api_news()
     return jsonify(news_reduced)
 
 @app.route("/nlehre/api/wochenprogramm/")
 @app.route("/nlehre/api/wochenprogramm/<anfang>/<ende>/")
 # Default ist: anfang ist Anfang dieser Woche, ende ist Ende dieser Woche
 def get_vortraege(anfang = (datetime.now() - timedelta(days=datetime.now().weekday())).strftime('%Y%m%d'), ende = (datetime.now() + timedelta(days=7-datetime.now().weekday())).strftime('%Y%m%d')):
-    try:
-        cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
-        mongo_db_news = cluster["news"]
-        vortrag = mongo_db_news["vortrag"]
-        vortragsreihe = mongo_db_news["vortragsreihe"]
-    except:
-        pass
-
-    anfang = datetime.strptime(anfang, "%Y%m%d")
-    ende = datetime.strptime(ende, "%Y%m%d")
-
-    vortraege =  list(vortrag.find({ "_public": True, "start" : { "$gte" : anfang }, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
-    vortraege_reduced = []
-    leer = vortragsreihe.find_one({"kurzname" : "alle"})
-    tage = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
-    for v in vortraege:
-        reihe = list(vortragsreihe.find({"_id" : { "$in" : v["vortragsreihe"]}}))
-        reihe = [item["title_de"] for item in reihe if item != leer]
-        reihe = "" if reihe == [] else reihe[0]
-        vortraege_reduced.append(
-            {
-                "vortragsreihe" : reihe,
-                "sprecher" : v["sprecher"],
-                "sprecher_affiliation" : v["sprecher_affiliation_de"],
-                "titel" : v["title_de"],
-                "abstract" : v["text_de"],
-                "ort" : v["ort_de"],
-                "url" : v["url"],
-                "datum" : v["start"].strftime('%d.%m.%Y'),
-                "tag" : tage[v["start"].weekday()],
-                "startzeit" : v["start"].strftime('%H:%M'),
-                "endzeit" : v["end"].strftime('%H:%M'),
-                "kommentar" : v["kommentar_de"]
-            })
-    return jsonify(vortraege_reduced)
+    wochenprogramm_reduced = news.get_api_wochenprogramm(anfang, ende)
+    return jsonify(wochenprogramm_reduced)
 
 
 # This function reads the Mensaplan everyday and puts the result into the mongodb

@@ -68,6 +68,17 @@ def data_for_newsarchiv(anfang, end, lang="de"):
     # print(data)
     return data
 
+def data_for_newsarchiv_full(lang, anfang, end):
+    anfangdate = datetime.strptime(anfang, '%Y%m%d')
+    enddate = datetime.strptime(end, '%Y%m%d')
+    data = data_for_newsarchiv(anfangdate, enddate, lang)    
+    data["zeitraum"] = f"{get_monat(anfangdate.month, lang)} {anfangdate.year}"
+    data["previousanfang"] = get_start_previous_month(anfangdate).strftime('%Y%m%d')
+    data["nextend"] = get_end_next_month(anfangdate).strftime('%Y%m%d')
+    data["anfang"] = anfang
+    data["end"] = end
+    return data
+
 def data_for_bildnachweis(lang="de"):
     data_news = []
     dcarouselnews = list(carouselnews.find({"_public" :True, "start" : { "$lte" : datetime.now() }, "end" : { "$gte" : datetime.now() }}))        
@@ -126,8 +137,8 @@ def get_mensaplan_text(url, date):
             for t in [t for t in tagesplan if t["@art"][0:10] != "Abendessen"]: 
                 art = t["@art"]
                 name = t["name"]
-                if len(t["name"]) > 60:
-                    name = name[0:59] + "..."
+                if len(t["name"]) > 50:
+                    name = name[0:49] + "..."
                 ausgabe = ausgabe + f"<h4>{art}: {name}</h4>"
         else:
             ausgabe = "<h2>Heute ist die Mensa zu!</h2>"
@@ -228,13 +239,9 @@ def get_monat(n, lang="de"):
     monate = monate_de if lang == "de" else monate_en
     return monate[n]
 
-
 def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
     data = {}
-    tage_de = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
-    tage_en = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    tage = tage_de if lang == "de" else tage_en
-
+    tage = tage_lang(lang)
     vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
     data["reihe"] = vr[f"title_{lang}"]
     data["prefix"] = vr[f"text_{lang}"]
@@ -263,11 +270,45 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
         previousdatum = v["start"]
     return data
 
+def get_wochenprogramm_full(anfang, end, kurzname="alle", lang="de"):
+    anfangdate = datetime.strptime(anfang, '%Y%m%d')
+    enddate = datetime.strptime(end, '%Y%m%d')
+    diffmonth = abs(enddate.month - anfangdate.month)
+    if diffmonth == 1 or (anfangdate.month == 12 and enddate.month == 1):
+        zeitraum = f"{get_monat(anfangdate.month, lang)} {anfangdate.year}"
+        previousanfangdate = get_start_previous_month(anfangdate)
+        nextenddate = get_end_next_month(anfangdate)
+    elif diffmonth == 6:
+        sem_de = "Sommersemester" if anfangdate.month == 4 else "Wintersemester"
+        sem_en = "Summer term" if anfangdate.month == 4 else "Winter term"
+        sem = sem_de if lang == "de" else sem_en
+        zeitraum = f"{sem} {anfangdate.year}"
+        previousanfangdate = get_start_previous_semester(anfangdate)
+        nextenddate = get_end_next_semester(anfangdate)
+    else:
+        zeitraum = ""
+        previousanfangdate = anfangdate
+        nextenddate = enddate
+
+    previousanfang = previousanfangdate.strftime('%Y%m%d')
+    nextend = nextenddate.strftime('%Y%m%d')
+
+    data = get_wochenprogramm(anfangdate, enddate, kurzname, lang)
+    data["anfang"] = anfang
+    data["end"] = end
+    data["previousanfang"] = previousanfang
+    data["nextend"] = nextend
+    data["zeitraum"] = zeitraum
+    data["anfangcurrentsemester"] = get_start_current_semester().strftime('%Y%m%d')
+    data["anfangnextsemester"] = get_start_next_semester(get_start_current_semester()).strftime('%Y%m%d')
+    data["anfangcurrentmonth"] = get_start_current_month().strftime('%Y%m%d')
+    data["anfangnextmonth"] = get_start_next_month(get_start_current_month()).strftime('%Y%m%d')
+    return data
+
+
 def get_event(kurzname, lang = "de"):
     data = {}
-    tage_de = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
-    tage_en = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    tage = tage_de if lang == "de" else tage_en
+    tage = tage_lang(lang)
 
     vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
     data["reihe"] = vr[f"title_{lang}"]
@@ -295,3 +336,78 @@ def get_event(kurzname, lang = "de"):
         previousdatum = v["start"]
     return data
     
+def get_monitordata(dtstring, testorpublic):
+    # the date format for <dtstring>
+    date_format_no_space = '%Y%m%d%H%M'
+    dt = datetime.strptime(dtstring, date_format_no_space)
+
+    data = {}
+    # Daten für das Carousel
+    if testorpublic == "test":
+        data["carouselnews"] = list(carouselnews.find({"start" : { "$lte" : dt }, "end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))
+    else:
+        data["carouselnews"] = list(carouselnews.find({"_public" :True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))  
+
+    for item in data["carouselnews"]:
+        item["image"] = base64.b64encode(bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
+
+    # Daten für die News
+    query = { "monitor.fuermonitor": True, 
+             "monitor.start" : { "$lte" : dt }, 
+             "monitor.end" : { "$gte" : dt }}
+    if testorpublic == "test":
+        data["news"] = list(news.find(query ,sort=[("rang", pymongo.ASCENDING)]))
+    else:
+        query["_public"] = True
+        data["news"] = list(news.find(query, sort=[("rang", pymongo.ASCENDING)]))  
+    for item in data["news"]:
+        if item["image"] != []:
+            item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
+
+    for item in data['news']:
+        item['today'] = True if (item["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
+    return data
+
+
+def get_api_news():    
+    dt = datetime.now()
+    new =  list(news.find({ "_public": True, "home.fuerhome": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))  
+    news_reduced = []
+    for n in new:
+        news_reduced.append({"title_de" : n["home"]["title_de"],
+                             "title_en" : n["home"]["title_en"],
+                             "text_de" : n["home"]["text_de"],
+                             "text_en" : n["home"]["text_en"],
+                             "link" : n["link"]
+                             })
+    return news_reduced
+
+
+def get_api_wochenprogramm(anfang, ende):
+    anfang = datetime.strptime(anfang, "%Y%m%d")
+    ende = datetime.strptime(ende, "%Y%m%d")
+
+    vortraege =  list(vortrag.find({ "_public": True, "start" : { "$gte" : anfang }, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
+    vortraege_reduced = []
+    leer = vortragsreihe.find_one({"kurzname" : "alle"})
+    tage = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+    for v in vortraege:
+        reihe = list(vortragsreihe.find({"_id" : { "$in" : v["vortragsreihe"]}}))
+        reihe = [item["title_de"] for item in reihe if item != leer]
+        reihe = "" if reihe == [] else reihe[0]
+        vortraege_reduced.append(
+            {
+                "vortragsreihe" : reihe,
+                "sprecher" : v["sprecher"],
+                "sprecher_affiliation" : v["sprecher_affiliation_de"],
+                "titel" : v["title_de"],
+                "abstract" : v["text_de"],
+                "ort" : v["ort_de"],
+                "url" : v["url"],
+                "datum" : v["start"].strftime('%d.%m.%Y'),
+                "tag" : tage[v["start"].weekday()],
+                "startzeit" : v["start"].strftime('%H:%M'),
+                "endzeit" : v["end"].strftime('%H:%M'),
+                "kommentar" : v["kommentar_de"]
+            })
+    return vortraege_reduced

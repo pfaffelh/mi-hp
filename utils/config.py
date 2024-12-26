@@ -101,3 +101,7 @@ wochentage = {
     "Sonntag": "Sunday"
 }
 
+def tage_lang(lang):
+    tage_de = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+    tage_en = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    return tage_de if lang == "de" else tage_en
