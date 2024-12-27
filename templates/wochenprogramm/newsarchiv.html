@@ -1,6 +1,6 @@
 <div class="container" id="inhalt">
   <br />
-  <div class="container py-4">
+  <div class="container">
     <div class="row">
       <div class="col">
         <a
@@ -22,11 +22,11 @@
       </div>
     </div>
   </div>
-  <div class="container py-4">
-    <h1>News-Archiv des Mathematischen Instituts</h1>
+  <div class="container">
+    <h2>{% if lang == "de" %}News-Archiv des Mathematischen Instituts{% else %}News-archive of the mathematical institute{% endif %}</h2>
   </div>
 
-  <div class="container py-4">
+  <div class="container py-1">
     <h3>{{ data['zeitraum'] }}</h3>
     <div class="row row-cols-1 row-cols-md-3 g-3">
       {% for item in data["news"] %}

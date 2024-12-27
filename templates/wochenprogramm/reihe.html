@@ -1,8 +1,8 @@
 {% extends 'base_new.html' %} {% block navbar %} {% include 'navbar_news.html'
 %} {% endblock %} {% block content %}
 
-<div class="container py-4" id="inhalt">
-  <div class="container py-4 text-end">
+<div class="container" id="inhalt">
+  <div class="container text-end">
     <div class="row">
       <div class="col">
         <a
@@ -48,10 +48,10 @@
       </div>
     </div>
   </div>
-  <div class="container py-4">
-    <h1>Vorträge am Mathematischen Institut</h1>
+  <div class="container">
+    <h1>{% if lang == "de" %}Vorträge am Mathematischen Institut{% else %}Talks at the mathematical institute{% endif %}</h1>
   </div>
-  <div class="container py-4">
+  <div class="container py-1">
     <h2>{{ data['reihe']}}</h2>
     {% if data['prefix'] != "" %}
     <p>{{ data['prefix']|markdown }}</p>

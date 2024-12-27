@@ -38,7 +38,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="icon" href="/static/images/favicon-32x32.png" type="image/png">
+    <link rel="icon" href="/static/images/favicon-32x32.png" type="image/png" />
     <script>
       $('[data-toggle="tooltip"]').tooltip({
         template:
@@ -156,20 +156,20 @@
       .btn-primary:hover,
       .btn-primary:active,
       .btn-primary:visited {
-        background-color: #344A9A !important;
+        background-color: #344a9a !important;
         color: white !important;
       }
       @media (max-width: 576px) {
         .modal-dialog {
-          margin: 0;          /* Entfernt den Rand um den Modal */
-          width: 100%;        /* Modal füllt die gesamte Breite */
-          max-width: 100%;    /* Keine maximale Breite */
-          height: 100%;       /* Modal füllt die gesamte Höhe */
-          padding: 0;         /* Kein Innenabstand */
+          margin: 0; /* Entfernt den Rand um den Modal */
+          width: 100%; /* Modal füllt die gesamte Breite */
+          max-width: 100%; /* Keine maximale Breite */
+          height: 100%; /* Modal füllt die gesamte Höhe */
+          padding: 0; /* Kein Innenabstand */
         }
         .modal-full-mobile {
-          width : 100vw;
-          height :100vh;
+          width: 100vw;
+          height: 100vh;
         }
       }
       .modal-backdrop {
@@ -180,56 +180,51 @@
         z-index: 1100 !important;
       }
       .h5 {
-        font-size: 1.25rem; 
+        font-size: 1.25rem;
       }
     </style>
 
     {% block styles %}
     <!-- Add additional styles here -->
-      <style>
-        button.lecture-module-button {
-          background-color:white !important; /* Custom background color */
-          color:black !important; /* Custom text color */
-          border-color: white !important;
-          padding: 8px 12px !important;        /* Custom padding */
-          border-radius: 8px !important;       /* Custom border-radius */
-          white-space: normal !important;  /* Allows text to wrap naturally */
-          word-break: keep-all !important; /* Prefers line breaks over word breaks */
-          font-weight: normal !important;
-          text-decoration: none !important;
-          overflow-wrap: break-word;     /* Break long words if absolutely necessary */
-          display: inline-block;         /* Ensure block-level behavior but inline sizing */
-        }
+    <style>
+      button.lecture-module-button {
+        background-color: white !important; /* Custom background color */
+        color: black !important; /* Custom text color */
+        border-color: white !important;
+        padding: 8px 12px !important; /* Custom padding */
+        border-radius: 8px !important; /* Custom border-radius */
+        white-space: normal !important; /* Allows text to wrap naturally */
+        word-break: keep-all !important; /* Prefers line breaks over word breaks */
+        font-weight: normal !important;
+        text-decoration: none !important;
+        overflow-wrap: break-word; /* Break long words if absolutely necessary */
+        display: inline-block; /* Ensure block-level behavior but inline sizing */
+      }
 
-        button.lecture-module-button:hover {
-          background-color :#f5f5f5 !important; /* Custom hover color */
-          color: black !important;
-        }
+      button.lecture-module-button:hover {
+        background-color: #f5f5f5 !important; /* Custom hover color */
+        color: black !important;
+      }
 
-        .button-grid .col-md-6 {
-          padding: 10px; /* Optional: Add some padding to the columns */
-        }
+      .button-grid .col-md-6 {
+        padding: 10px; /* Optional: Add some padding to the columns */
+      }
 
-        .button-grid .lecture-module-button {
-          margin-bottom: 10px; /* Adjust this value to increase space between buttons */
-        }
-
-      </style>
+      .button-grid .lecture-module-button {
+        margin-bottom: 10px; /* Adjust this value to increase space between buttons */
+      }
+    </style>
     {% endblock %}
   </head>
 
   <body class="bg-white">
-    <header class="bg-ufr-darkblue">
-      <nav
-        id="site-navigation"
-        class="navbar navbar-expand-xl flex"
-        aria-label="Oberes Menü"
-      >
-        <div class="container-fluid">
+    <header class="navbar navbar-expand-xxl bg-ufr-darkblue">
+      <nav class="navbar container navbar-dark flex">
+        <div class="container">
           <div class="d-flex flex-grow-1">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-0 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link text-white me-4" href="#"></a>
+                <a class="nav-link text-white me-0" href="#"></a>
               </li>
               <li class="nav-item d-flex align-items-center">
                 <a class="navbar-brand" href="https://www.uni-freiburg.de">
@@ -267,8 +262,8 @@
                     class="nav-link text-white"
                     href="#"
                   >
-                    {% if lang == "de" %}Wochenprogramm{% else %}Talks and News{%
-                    endif %}</a
+                    {% if lang == "de" %}Wochenprogramm{% else %}Talks and
+                    News{% endif %}</a
                   >
                 </h2>
               </li>
