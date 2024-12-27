@@ -26,15 +26,19 @@ except:
     pass
     # logger.warning("No connection to Database 1")
 
-# Daten für /nlehre/
+def getwl(x, field, lang):
+    otherlang = "en" if lang == "de" else "de"
+    loc = x.get(f"{field}_{lang}", "")
+    return loc if loc != "" else x.get(f"{field}_{otherlang}", "")
+
 def get_events(lang = "de"):
     reihen = []
     events = []
     for vr in list(vortragsreihe.find({"event": False, "sichtbar" : True, "_public" : True}, sort = [("rang", pymongo.ASCENDING)])):
-        reihen.append({"kurzname" : vr["kurzname"], "title" : vr[f"title_{lang}"]})
+        reihen.append({"kurzname" : vr["kurzname"], "title" : getwl(vr, "title", lang)})
 
     for vr in list(vortragsreihe.find({"event": True, "sichtbar" : True, "_public" : True}, sort = [("rang", pymongo.ASCENDING)])):
-        events.append({"kurzname" : vr["kurzname"], "title" : vr[f"title_{lang}"]})
+        events.append({"kurzname" : vr["kurzname"], "title" : getwl(vr, "title", lang)})
     return reihen, events
 
 def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
@@ -62,7 +66,10 @@ def data_for_newsarchiv(anfang, end, lang="de"):
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
-
+            item['home']["title"] = getwl(item['home'], "title", lang)
+            item['home']["text"] = getwl(item['home'], "text", lang)
+            item['home']["popover_title"] = getwl(item['home'], "popover_title", lang)
+            item['home']["popover_text"] = getwl(item['home'], "popover_text", lang)
     for item in data['news']:
         item['today'] = False
     # print(data)
@@ -243,8 +250,8 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
     data = {}
     tage = tage_lang(lang)
     vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
-    data["reihe"] = vr[f"title_{lang}"]
-    data["prefix"] = vr[f"text_{lang}"]
+    data["reihe"] = getwl(vr, "title", lang)
+    data["prefix"] = getwl(vr, "text", lang)
     vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("start", pymongo.ASCENDING)]))
     data["vortrag"] = []
     previousdatum = ""
@@ -252,19 +259,19 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
         re = vortragsreihe.find_one({"_id" : { "$in": v["vortragsreihe"], "$ne" : vr["_id"]}, "_public" : True})
         data["vortrag"].append(
             {
-                "sprecher" : v["sprecher_en"] if (lang == "en" and v["sprecher"] == "") else v["sprecher"],
-                "sprecher_affiliation" : v[f"sprecher_affiliation_{lang}"],
-                "ort" : v[f"ort_{lang}"],
-                "title" : v[f"title_{lang}"],
-                "reihentitle" : "" if re is None else re[f"title_{lang}"],
+                "sprecher" : getwl(v, "sprecher", lang),
+                "sprecher_affiliation" : getwl(v, "sprecher_affiliation", lang),
+                "ort" : getwl(v, "ort", lang),
+                "title" : getwl(v, "title", lang),
+                "reihentitle" : "" if re is None else getwl(re, "title", lang),
                 "url" : v["url"],
                 "lang" : v["lang"],
-                "abstract" : latex2markdown.LaTeX2Markdown(v[f"text_{lang}"]).to_markdown(),
+                "abstract" : latex2markdown.LaTeX2Markdown(getwl(v, "text", lang)).to_markdown(),
                 "datum" : v["start"].strftime('%d.%m.%Y'),
                 "tag" : tage[v["start"].weekday()],
                 "startzeit" : v["start"].strftime('%H:%M'),
                 "endzeit" : v["end"].strftime('%H:%M'),
-                "kommentar" : v[f"kommentar_{lang}"]
+                "kommentar" : getwl(v, "kommentar", lang)
             }
         )
         previousdatum = v["start"]
@@ -311,26 +318,26 @@ def get_event(kurzname, lang = "de"):
     tage = tage_lang(lang)
 
     vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
-    data["reihe"] = vr[f"title_{lang}"]
-    data["prefix"] = vr[f"text_{lang}"]
+    data["reihe"] = getwl(vr, "title", lang)
+    data["prefix"] = getwl(vr, "text", lang)
     vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True}, sort=[("start", pymongo.ASCENDING)]))
     data["vortrag"] = []
     previousdatum = ""
     for v in vo:
         data["vortrag"].append(
             {
-                "sprecher" : v["sprecher_de"] if (lang == "en" and v["sprecher"] == "") else v["sprecher"],
-                "sprecher_affiliation" : v[f"sprecher_affiliation_{lang}"],
-                "ort" : v[f"ort_{lang}"],
-                "title" : v[f"title_{lang}"],
+                "sprecher" : getwl(v, "sprecher", lang),
+                "sprecher_affiliation" : getwl(v, "sprecher_affiliation", lang),
+                "ort" : getwl(v, "ort", lang),
+                "title" : getwl(v, "title", lang),
                 "url" : v["url"],
                 "lang" : v["lang"],
-                "abstract" : latex2markdown.LaTeX2Markdown(v[f"text_{lang}"]).to_markdown(),
+                "abstract" : latex2markdown.LaTeX2Markdown(getwl(v, "text", lang)).to_markdown(),
                 "datum" : v["start"].strftime('%d.%m.%Y') if v["start"] != previousdatum else "",
                 "tag" : tage[v["start"].weekday()] if v["start"] != previousdatum else "",
                 "startzeit" : v["start"].strftime('%H:%M'),
                 "endzeit" : v["end"].strftime('%H:%M'),
-                "kommentar" : latex2markdown.LaTeX2Markdown(v[f"kommentar_{lang}"]).to_markdown()
+                "kommentar" : latex2markdown.LaTeX2Markdown(getwl(v, "kommentar", lang)).to_markdown()
             }
         )
         previousdatum = v["start"]
@@ -398,16 +405,17 @@ def get_api_wochenprogramm(anfang, ende):
         vortraege_reduced.append(
             {
                 "vortragsreihe" : reihe,
-                "sprecher" : v["sprecher"],
-                "sprecher_affiliation" : v["sprecher_affiliation_de"],
-                "titel" : v["title_de"],
-                "abstract" : v["text_de"],
-                "ort" : v["ort_de"],
+                "sprecher" : getwl(v, "sprecher", "de"),
+                "sprecher_affiliation" : getwl(v, "sprecher_affiliation", "de"),
+                "titel" : getwl(v, "title", "de"),
+                "abstract" : getwl(v, "text", "de"),
+                "ort" : getwl(v, "ort", "de"),
                 "url" : v["url"],
                 "datum" : v["start"].strftime('%d.%m.%Y'),
                 "tag" : tage[v["start"].weekday()],
                 "startzeit" : v["start"].strftime('%H:%M'),
                 "endzeit" : v["end"].strftime('%H:%M'),
-                "kommentar" : v["kommentar_de"]
+                "kommentar" : getwl(v, "kommentar", "de")
             })
     return vortraege_reduced
+

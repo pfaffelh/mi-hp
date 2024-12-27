@@ -1,9 +1,6 @@
 {% extends 'base_new.html' %} {% block navbar %} {% include 'navbar_news.html'
 %} {% endblock %} {% block content %}
 
-<div class="container py-4">
-  <h1>Vorträge am Mathematischen Institut</h1>
-</div>
 <div class="container py-4" id="inhalt">
   <h2>{{ data['reihe']}}</h2>
   {% if data['prefix'] != "" %}
