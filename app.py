@@ -128,6 +128,14 @@ def showvpnaccordion(lang, kurzname, show =""):
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
     return render_template("accordion.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
 
+@app.route("/nlehre/<lang>/lexikon/")
+def showlexikon(lang):
+    data = faq.get_lexikon_data()
+    filenames = ["footer/lexikon.html"]
+    return render_template("home.html", filenames = filenames, data = data, lang = lang)
+
+
+
 ############
 ## footer ##
 ############
@@ -150,7 +158,7 @@ def showdatenschutz(lang):
     return render_template("home.html", filenames = filenames, lang=lang)
 
 @app.route("/nlehre/vpn/<lang>/tools")
-def showtools(lang):
+def showtools(lang = "de"):
     filenames = ["footer/tools.html"]
     return render_template("home.html", filenames = filenames, lang=lang)
 

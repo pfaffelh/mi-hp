@@ -10,6 +10,7 @@ try:
     mongo_db_faq = cluster["faq"]
     knoten = mongo_db_faq["knoten"]
     studiendekanat = mongo_db_faq["studiendekanat"]
+    dictionary = mongo_db_faq["dictionary"]
     
 except:
     logger.warning("No connection to Database!")
@@ -91,3 +92,6 @@ def get_accordion_data(kurzname, lang, show = ""):
     print(data)
     return data, show, showcat
 
+def get_lexikon_data(lang = "de"):
+    return list(dictionary.find({}, sort=[("de", pymongo.ASCENDING)]))
+    

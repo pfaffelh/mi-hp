@@ -1,0 +1,24 @@
+<div class="container px-4 py-5" id="featured-3">
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-1">
+    <div class="feature col">
+      <div class="feature-icon bg-gradient"></div>
+      <div>
+        <header class="entry-header">
+          <h3>Lexikon de/en einiger Fachbegriffe in der Lehre</h3>
+        </header>
+        <div class="row border-bottom pb-3 mb-3">
+          <div class="col-md-2"><h5>deutsch</h5></div>
+          <div class="col-md-2"><h5>englisch</h5></div>
+          <div class="col-md-4"><h5>Kommentar</h5></div>
+        </div>
+        {% for d in data %}
+        <div class="row border-bottom pb-3 mb-3">
+          <div class="col-md-2">{{ d["de"] }}</div>
+          <div class="col-md-2">{{ d["en"] }}</div>
+          <div class="col-md-4">{{ d["kommentar"] }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
