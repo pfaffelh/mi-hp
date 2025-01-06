@@ -99,8 +99,16 @@ def showpersonen(show = "", lang = "de"):
 
 @app.route("/nlehre/")
 @app.route("/nlehre/<lang>/")
-def showbase(lang="de"):
-    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester=vvz.get_current_semester_kurzname()))
+@app.route("/nlehre/<lang>/<dtstring>")
+def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+    testorpublic = "test" if "test" in request.path.split("/") else "_public"
+    # print(request.endpoint)
+    data = news.data_for_base(lang, dtstring, testorpublic)
+    filenames = ["index.html"]
+    return render_template("home.html", filenames=filenames, data = data, lang=lang)
+
+#def showbase(lang="de"):
+#    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester=vvz.get_current_semester_kurzname()))
 
 ################################
 ## Allgemeine Accordion-Seite ##
