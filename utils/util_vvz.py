@@ -226,7 +226,7 @@ def make_raumzeit_einmalig(veranstaltung, lang = "de", url = True):
             else:
                 datum = ""
             if termin['startzeit'] is not None:
-                zeit = f"{str(termin['startzeit'].hour)}{': '+str(termin['startzeit'].minute)}"
+                zeit = f"{str(termin['startzeit'].hour)}{':'+str(termin['startzeit'].minute)}"
                 if termin['endzeit'] is not None:
                     # Bei einmaligen Terminen werden Minuten immer angezeigt.
                     zeit = zeit + f"-{str(termin['endzeit'].hour)}{': '+str(termin['endzeit'].minute) if termin['endzeit'].minute > 0 else ''}"
