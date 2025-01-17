@@ -226,10 +226,10 @@ def make_raumzeit_einmalig(veranstaltung, lang = "de", url = True):
             else:
                 datum = ""
             if termin['startzeit'] is not None:
-                zeit = f"{str(termin['startzeit'].hour)}{':'+str(termin['startzeit'].minute)}"
+                zeit = termin['startzeit'].strftime("%H:%M")
                 if termin['endzeit'] is not None:
                     # Bei einmaligen Terminen werden Minuten immer angezeigt.
-                    zeit = zeit + f"-{str(termin['endzeit'].hour)}{': '+str(termin['endzeit'].minute) if termin['endzeit'].minute > 0 else ''}"
+                    zeit = zeit + "-" + termin['endzeit'].strftime("%H:%M") 
             else:
                 zeit = ""
             # person braucht man, wenn wir dann die Datenbank geupdated haben.
@@ -427,10 +427,9 @@ def name_termine(ver_id, lang="de"):
             else:
                 datum = ""
             if t['startzeit'] is not None:
-                zeit = f"{str(t['startzeit'].hour)}{': '+ str(t['startzeit'].minute) if t['startzeit'].minute > 0 else ''}"
+                zeit = t['startzeit'].strftime("%H:%M")
                 if t['endzeit'] is not None:
-                    zeit = zeit + f"-{str(t['endzeit'].hour)}{': '+str(t['endzeit'].minute) if t['endzeit'].minute > 0 else ''}"
-                zeit = zeit + " Uhr"
+                    zeit = zeit + "-" + t['endzeit'].strftime("%H:%M")
             else:
                 zeit = ""
             termine.append(": ".join([x for x in [ta, ", ".join([x for x in [datum, zeit] if x != ""])] if x != ""]))
