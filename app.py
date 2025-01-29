@@ -389,6 +389,20 @@ def showstudiendekanat(lang, unterseite = ""):
         filenames = ["studiendekanat/ausland.html"]
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
+@app.route("/nlehre/vpn/<lang>/pruefungstermine/")
+@app.route("/nlehre/vpn/<lang>/pruefungstermine/<anchor>")
+def showanfang(lang, anchor=""):
+    return redirect(url_for('showaccordion', lang=lang, kurzname = 'pruefungstermine', show=anchor))
+
+@app.route("/nlehre/vpn/<lang>/pruefungstermine/")
+@app.route("/nlehre/vpn/<lang>/pruefungen/<anchor>")
+def showanfang(lang, anchor=""):
+    return redirect(url_for('showaccordion', lang=lang, kurzname = 'pruefungen-begriffe-regeln', show=anchor))
+
+@app.route("/nlehre/vpn/<lang>/warum-mathematik/")
+@app.route("/nlehre/vpn/<lang>/warum-mathematik/<anchor>")
+def showanfang(lang, anchor=""):
+    return redirect(url_for('showaccordion', lang=lang, kurzname = 'warum-mathematik', show=anchor))
 
 ##################
 ## Für Lehrende ##
