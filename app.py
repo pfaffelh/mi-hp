@@ -359,8 +359,20 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
 @app.route("/nlehre/vpn/<lang>/studiendekanat/warummathematik/<show>")
 def show_warum_mathematik(lang, show =""):
     return redirect(url_for('showaccordion', lang=lang, kurzname =
-    'warum_mathematik', show=show))
+    'warum-mathematik', show=show))
 
+
+@app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungstermine/")
+@app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungstermine/<show>")
+def show_pruefungstermine(lang, show =""):
+    return redirect(url_for('showaccordion', lang=lang, kurzname =
+    'pruefungstermine', show=show))
+
+@app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungen/")
+@app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungen/<show>")
+def show_pruefungen(lang, show =""):
+    return redirect(url_for('showaccordion', lang=lang, kurzname =
+    'pruefungen-begriffe-regeln', show=show))
 
 @app.route("/nlehre/<lang>/studiendekanat/faq/")
 @app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
