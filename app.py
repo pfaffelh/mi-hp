@@ -354,6 +354,14 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
 ## Prüfungsamt und Studienberatung ##
 #####################################
 
+# TEST: Neue Accordions
+@app.route("/nlehre/vpn/<lang>/studiendekanat/warummathematik/")
+@app.route("/nlehre/vpn/<lang>/studiendekanat/warummathematik/<show>")
+def showstufaq(lang, show =""):
+    return redirect(url_for('showaccordion', lang=lang, kurzname =
+    'warum_mathematik', show=show))
+
+
 @app.route("/nlehre/<lang>/studiendekanat/faq/")
 @app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
 def showstufaq(lang, show =""):
