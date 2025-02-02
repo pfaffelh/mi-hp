@@ -368,8 +368,8 @@ def show_pruefungstermine(lang, show =""):
     return redirect(url_for('showaccordion', lang=lang, kurzname =
     'pruefungstermine', show=show))
 
-@app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungen/")
-@app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungen/<show>")
+@app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungsregeln/")
+@app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungsregeln/<show>")
 def show_pruefungen(lang, show =""):
     return redirect(url_for('showaccordion', lang=lang, kurzname =
     'pruefungen-begriffe-regeln', show=show))
