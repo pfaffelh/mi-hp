@@ -357,7 +357,7 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
 # TEST: Neue Accordions
 @app.route("/nlehre/vpn/<lang>/studiendekanat/warummathematik/")
 @app.route("/nlehre/vpn/<lang>/studiendekanat/warummathematik/<show>")
-def showstufaq(lang, show =""):
+def show_warum_mathematik(lang, show =""):
     return redirect(url_for('showaccordion', lang=lang, kurzname =
     'warum_mathematik', show=show))
 
