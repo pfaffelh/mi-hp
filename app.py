@@ -232,7 +232,8 @@ def showstudiengang(lang, studiengang, anchor=""):
         return redirect(url_for('showaccordion', lang=lang, kurzname = 'med-dual', show=''))
         # filenames = ["studiengaenge/med_dual/index-2024.html"]
     if studiengang == "promotion":
-        filenames = ["studiengaenge/promotion/index.html"]
+        return redirect(url_for('showaccordion', lang=lang, kurzname = 'promotion', show=show))
+    #   filenames = ["studiengaenge/promotion/index.html"]
     return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
 
 #########################
@@ -357,17 +358,6 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
 #####################################
 
 # TEST: Neue Accordions
-@app.route("/nlehre/vpn/<lang>/studiendekanat/warummathematik/")
-@app.route("/nlehre/vpn/<lang>/studiendekanat/warummathematik/<show>")
-def show_warum_mathematik(lang, show =""):
-    return redirect(url_for('showaccordion', lang=lang, kurzname =
-    'warum-mathematik', show=show))
-
-@app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungstermine/")
-@app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungstermine/<show>")
-def show_pruefungstermine(lang, show =""):
-    return redirect(url_for('showaccordion', lang=lang, kurzname =
-    'pruefungstermine', show=show))
 
 @app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungsregeln/")
 @app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungsregeln/<show>")
@@ -375,23 +365,7 @@ def show_pruefungen(lang, show =""):
     return redirect(url_for('showaccordion', lang=lang, kurzname =
     'pruefungen-begriffe-regeln', show=show))
 
-@app.route("/nlehre/vpn/<lang>/downloads/")
-@app.route("/nlehre/vpn/<lang>/downloads/<show>")
-def show_downloads(lang, show =""):
-    return redirect(url_for('showaccordion', lang=lang, kurzname =
-    'downloads', show=show))
-
-@app.route("/nlehre/vpn/<lang>/ausland/")
-@app.route("/nlehre/vpn/<lang>/ausland/<show>")
-def show_ausland(lang, show =""):
-    return redirect(url_for('showaccordion', lang=lang, kurzname =
-    'ausland', show=show))
-
-@app.route("/nlehre/vpn/<lang>/promotion/")
-@app.route("/nlehre/vpn/<lang>/promotion/<show>")
-def show_promotion(lang, show =""):
-    return redirect(url_for('showaccordion', lang=lang, kurzname =
-    'promotion', show=show))
+# Neue Accordions Ende
 
 @app.route("/nlehre/<lang>/studiendekanat/faq/")
 @app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
@@ -400,7 +374,8 @@ def showstufaq(lang, show =""):
 
 @app.route("/nlehre/<lang>/studiendekanat/")
 @app.route("/nlehre/<lang>/studiendekanat/<unterseite>/")
-def showstudiendekanat(lang, unterseite = ""):
+@app.route("/nlehre/<lang>/studiendekanat/<unterseite>/<show>")
+def showstudiendekanat(lang, unterseite = "", show = ""):
     data = {}
     filenames = []
     if unterseite == "":
@@ -412,9 +387,11 @@ def showstudiendekanat(lang, unterseite = ""):
     if unterseite == "schwerpunktgebiete":
         filenames = ["studiendekanat/schwerpunktgebiete.html"]
     if unterseite == "warum_mathematik":
-        filenames = ["studiendekanat/warum_mathematik.html"]
+        return redirect(url_for('showaccordion', lang=lang, kurzname = 'warum-mathematik', show=show))
+        # filenames = ["studiendekanat/warum_mathematik.html"]
     if unterseite == "termine":
-        filenames = ["studiendekanat/termine.html"]
+        return redirect(url_for('showaccordion', lang=lang, kurzname = 'pruefungstermine', show=show))
+        # filenames = ["studiendekanat/termine.html"]
     if unterseite == "calendar":
         events = vvz.get_calendar_data(datetime.now() + timedelta(days = -365), lang)
         return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = False)
@@ -425,7 +402,7 @@ def showstudiendekanat(lang, unterseite = ""):
     if unterseite == "pruefungen":
         filenames = ["studiendekanat/pruefungen.html"]
     if unterseite == "ausland":
-        filenames = ["studiendekanat/ausland.html"]
+        return redirect(url_for('showaccordion', lang=lang, kurzname = 'ausland', show=show))
     return render_template("home.html", data=data, filenames = filenames, lang=lang)
 
 
@@ -469,12 +446,14 @@ def showlehrveranstaltungenplanung(lang, semester):
 ## Downloads ##
 ###############
 
-# anchor kann sein: lehrende, pruefungsamt, studiendokumente, promotion, gesetz, bericht
+# show kann sein: lehrende, pruefungsamt, studiendokumente, promotion, gesetz, bericht
 @app.route("/nlehre/<lang>/downloads/")
-@app.route("/nlehre/<lang>/downloads/<anchor>")
-def showdownloads(lang, anchor=""):
-    filenames = ["downloads/downloads.html"]
-    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
+@app.route("/nlehre/<lang>/downloads/<show>")
+def showdownloads(lang, show=""):
+    return redirect(url_for('showaccordion', lang=lang, kurzname =
+        'downloads', show=show))
+#    filenames = ["downloads/downloads.html"]
+#    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
 
 ####################
 ## Wochenprogramm ##
