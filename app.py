@@ -361,7 +361,6 @@ def show_warum_mathematik(lang, show =""):
     return redirect(url_for('showaccordion', lang=lang, kurzname =
     'warum-mathematik', show=show))
 
-
 @app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungstermine/")
 @app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungstermine/<show>")
 def show_pruefungstermine(lang, show =""):
@@ -373,6 +372,12 @@ def show_pruefungstermine(lang, show =""):
 def show_pruefungen(lang, show =""):
     return redirect(url_for('showaccordion', lang=lang, kurzname =
     'pruefungen-begriffe-regeln', show=show))
+
+@app.route("/nlehre/vpn/<lang>/downloads/")
+@app.route("/nlehre/vpn/<lang>/downloads/<show>")
+def show_downloads(lang, show =""):
+    return redirect(url_for('showaccordion', lang=lang, kurzname =
+    'downloads', show=show))
 
 @app.route("/nlehre/<lang>/studiendekanat/faq/")
 @app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
