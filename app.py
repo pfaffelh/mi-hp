@@ -100,6 +100,8 @@ def showpersonen(show = "", lang = "de"):
 @app.route("/nlehre/")
 @app.route("/nlehre/<lang>/")
 @app.route("/nlehre/<lang>/<dtstring>")
+@app.route("/nlehre/test/<lang>/")
+@app.route("/nlehre/test/<lang>/<dtstring>")
 def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     testorpublic = "test" if "test" in request.path.split("/") else "_public"
     # print(request.endpoint)
