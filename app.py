@@ -379,6 +379,18 @@ def show_downloads(lang, show =""):
     return redirect(url_for('showaccordion', lang=lang, kurzname =
     'downloads', show=show))
 
+@app.route("/nlehre/vpn/<lang>/ausland/")
+@app.route("/nlehre/vpn/<lang>/ausland/<show>")
+def show_ausland(lang, show =""):
+    return redirect(url_for('showaccordion', lang=lang, kurzname =
+    'ausland', show=show))
+
+@app.route("/nlehre/vpn/<lang>/promotion/")
+@app.route("/nlehre/vpn/<lang>/promotion/<show>")
+def show_promotion(lang, show =""):
+    return redirect(url_for('showaccordion', lang=lang, kurzname =
+    'promotion', show=show))
+
 @app.route("/nlehre/<lang>/studiendekanat/faq/")
 @app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
 def showstufaq(lang, show =""):
