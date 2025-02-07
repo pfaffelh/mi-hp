@@ -1,5 +1,5 @@
 {% extends 'skel.html' %} {% block content %}
-<h1>News</h1>
+<h1>News aus dem Mathematischen Institut</h1>
 
 <div
   class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute [&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip [.wp-block-ufr-section_&amp;]:bl-overflow-x-visible bl-bg-identity-yellow bl-text-identity-black dark:bl-bg-identity-teal dark:bl-text-pure-white bl-py-[24px] alignfull wp-block-ufr-section has-global-padding is-layout-constrained wp-block-section-is-layout-constrained"
@@ -9,7 +9,7 @@
 
     <a
       class="bl-@container/teaser-news bl-bg-pure-white bl-text-identity-black dark:bl-bg-identity-black dark:bl-text-pure-white bl-group hover:bl-shadow-[8px_8px_15px_rgba(0,0,0,0.25)] bl-transition-all bl-duration-[400ms] hover:bl-text-identity-black active:bl-text-identity-black hover:dark:bl-text-pure-white active:dark:bl-text-pure-white bl-block bl-relative bl-self-stretch bl-min-w-full md:bl-min-w-[670px] xl:bl-min-w-[320px] !bl-no-underline hover:!bl-no-underline wp-block-ufr-teaser-news wp-container-content-1"
-      href="{{ item['home']['url']}}"
+      href="{{ item['link']}}"
     >
       <div class="bl-flex bl-flex-col bl-h-full @lg/teaser-news:!bl-flex-row">
         <div
@@ -46,7 +46,7 @@
             </p>
           </div>
           <div>
-            {% if item['home']['url'] != ""%}
+            {% if item['link'] != "" %}
             <div
               class="bl-cursor-pointer bl-float-left rtl:bl-float-right bl-text-center bl-mt-[20px] xl:bl-mt-[30px] bl-inline-block bl-font-medium bl-text-[1.125rem] xl:bl-text-[1.25rem] bl-leading-[1.5625rem] bl-no-underline hover:bl-underline bl-decoration-[2px] bl-transition-colors bl-duration-[400ms] bl-px-[26px] xl:bl-px-[32px] bl-py-[7.5px] xl:bl-py-[12.5px] focus-visible:bl-outline-dotted focus-visible:bl-outline-2 bl-outline-offset-[6px] xl:bl-outline-offset-[7px] bl-hyphens-manual bl-bg-identity-black bl-text-pure-white hover:bl-text-pure-white hover:bl-bg-identity-blue-80 active:bl-bg-identity-blue !bl-outline-identity-black dark:bl-bg-pure-white dark:bl-text-identity-black dark:hover:bl-text-identity-black dark:hover:bl-bg-identity-yellow-40 dark:active:bl-bg-identity-yellow dark:!bl-outline-pure-white"
             >
