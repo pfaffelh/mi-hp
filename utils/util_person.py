@@ -41,7 +41,7 @@ def get_person_data():
         # Verbindung beenden
         conn.unbind()
     except:
-        with open("/test/ldap.json", 'r') as file:
+        with open("static/data/ldap.json", 'r') as file:
             res = json.load(file)
 
     trans = {
@@ -78,5 +78,5 @@ def make_skel(url, id, string = "{% block content%}Content{% endblock %}"):
     content.string = string
     html = doc.prettify("utf-8")
     # Write the skelet
-    with open("/templates/skel.html", "wb") as file:
+    with open("/nlehre/templates/skel.html", "wb") as file:
         file.write(html)
