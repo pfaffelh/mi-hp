@@ -41,7 +41,7 @@ def get_person_data():
         # Verbindung beenden
         conn.unbind()
     except:
-        with open("test/ldap.json", 'r') as file:
+        with open("/test/ldap.json", 'r') as file:
             res = json.load(file)
 
     trans = {
