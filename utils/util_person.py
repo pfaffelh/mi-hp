@@ -78,5 +78,5 @@ def make_skel(url, id, string = "{% block content%}Content{% endblock %}"):
     content.string = string
     html = doc.prettify("utf-8")
     # Write the skelet
-    with open("/nlehre/templates/skel.html", "wb") as file:
+    with open("nlehre/templates/skel.html", "wb") as file:
         file.write(html)
