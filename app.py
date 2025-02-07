@@ -85,14 +85,22 @@ def wordpress_index():
         news_data=news_data,
         talks_data=talks_data)
 
-# Ansatz des Personenverzeichnisses
+# Ansatz des Personenverzeichnisses unter wp
 @app.route("/nlehre/<lang>/personen/")
 @app.route("/nlehre/<lang>/personen/<show>/")
-def showpersonen(show = "", lang = "de"):
+def showpersonenwp(show = "", lang = "de"):
     data = person.get_person_data()
     person.make_skel("https://uni-freiburg.de/universitaet/portrait/", 
               {"class" : "clearfix"})
-    return render_template("personen/index.html", data = data, show=show, lang=lang)
+    return render_template("wp/personen.html", data = data, show=show, lang=lang)
+
+# Ansatz der News unter wp
+@app.route("/nlehre/<lang>/news/")
+def shownewswp(show = "", lang = "de"):
+    data = news.data_for_base(lang)
+    person.make_skel("https://uni-freiburg.de/universitaet/portrait/", 
+              {"class" : "clearfix"})
+    return render_template("wp/news.html", data = data, show=show, lang=lang)
 
 
 ###############

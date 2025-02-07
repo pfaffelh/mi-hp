@@ -7,6 +7,7 @@ from ldap3 import Server, Connection, ALL, SUBTREE
 import json
 from bs4 import BeautifulSoup
 import requests
+from utils.config import *
 
 try:
     ldap_server = 'ldap://home.mathematik.uni-freiburg.de'  # Beispiel für einen öffentlichen LDAP-Server
@@ -30,19 +31,26 @@ def remove_p(html):
 
 def get_person_data():
     # Suche im LDAP-Baum durchführen
-    try:
-        conn.search(search_base, search_filter, search_scope=SUBTREE, attributes=attributes)
-        # Liste für die Ergebnisse
-        res = []
-        # Ergebnisse in eine Liste von Dictionaries umwandeln
-        for entry in conn.entries:
-            entry_dict = {attr: entry[attr].value for attr in attributes if attr in entry}
-            res.append(entry_dict)
-        # Verbindung beenden
-        conn.unbind()
-    except:
-        with open("/usr/local/lib/mi-hp/static/data/ldap.json", 'r') as file:
-            res = json.load(file)
+#    try:
+#        conn.search(search_base, search_filter, search_scope=SUBTREE, attributes=attributes)
+#        # Liste für die Ergebnisse
+#        res = []
+#        # Ergebnisse in eine Liste von Dictionaries umwandeln
+#        for entry in conn.entries:
+#            entry_dict = {attr: entry[attr].value for attr in attributes if attr in entry}
+#            res.append(entry_dict)
+#        # Verbindung beenden
+#        conn.unbind()
+#    except:
+    print(ip_address)
+    if (ip_address == "127.0.1.1"):
+        fn = "static/data/ldap.json"
+    elif os.getcwd() == "/home/flask-reader/mi-hp":
+        fn = "/home/flask-reader/mi-hp/static/data/ldap.json"
+    else:
+        fn = "/usr/local/lib/mi-hp/static/data/ldap.json"
+    with open(fn , 'r') as file:
+        res = json.load(file)
 
     trans = {
         "secretary" : "Sekretariate",
@@ -78,5 +86,11 @@ def make_skel(url, id, string = "{% block content%}Content{% endblock %}"):
     content.string = string
     html = doc.prettify("utf-8")
     # Write the skelet
-    with open("/usr/local/lib/mi-hp/templates/skel.html", "wb") as file:
+    if (ip_address == "127.0.1.1"):
+        fn = "templates/skel.html"
+    elif os.getcwd() == "/home/flask-reader/mi-hp":
+        fn = "/home/flask-reader/mi-hp/templates/skel.html"
+    else:
+        fn = "/usr/local/lib/mi-hp/templates/skel.html"
+    with open(fn, "wb") as file:
         file.write(html)
