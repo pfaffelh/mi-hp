@@ -71,12 +71,12 @@ if __name__ == "__main__":
 # id is a dict, e.g. {"class" : "clearfix"}
 def make_skel(url, id, string = "{% block content%}Content{% endblock %}"):
     print(url)
-    result = requests.get(url, verify=False)
+    result = requests.get(url)
     doc = BeautifulSoup(result.text, 'lxml')
 
     content = doc.find('div', id)
     content.string = string
     html = doc.prettify("utf-8")
     # Write the skelet
-    with open("nlehre/templates/skel.html", "wb") as file:
+    with open("/usr/local/lib/mi-hp/templates/skel.html", "wb") as file:
         file.write(html)
