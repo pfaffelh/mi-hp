@@ -1,69 +1,34 @@
-{% extends 'base.html' %} {% block navbar %} {% include 'navbar.html' %} {%
-endblock %} {% block content %}
-<div class="container" id="inhalt">
+{% extends 'skel.html' %} {% block content %}
+
+<h3 class="wp-block-heading">
   <h1>Lehrkörper / Mitarbeiter</h1>
+</h3>
+
+<div
+  class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute [&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip [.wp-block-ufr-section_&amp;]:bl-overflow-x-visible bl-bg-transparent bl-text-inherit dark:bl-bg-transparent dark:bl-text-inherit alignfull wp-block-ufr-section has-global-padding is-layout-constrained wp-block-section-is-layout-constrained"
+>
+  {% for k1 in data %}
+
+  <h4
+    class="wp-block-heading has-text-align-left"
+    id="block-0d8febea-81f3-4fa4-b1cc-8bee832ee085"
+  >
+    <strong>{{ k1["name"]|markdown }}</strong>
+  </h4>
+  <figure class="wp-block-table">
+    <table class="has-fixed-layout">
+      <tbody>
+        {% for p in k1["person"] %}
+        <tr>
+          <td><a href="mailto:{{ p['mail'] }}">{{ p["sn"] }}, {{ p["givenName"] }}</a></td>
+          <td>Tel: 0761 / 203 {{ p["telephoneNumber"] }}</td>
+          <td>Raum {{ p["roomNumber"] }} ({{p["street"]}})</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </figure>
+  {% endfor %}
 </div>
 
-<div class="container">
-  <div class="row g-0 py-1 row-cols-4 row-cols-lg-6">
-    {% if show != 'all' %}
-    <a
-      class="action"
-      href="{{ url_for('showpersonen', lang = lang, show = 'all') }}"
-    >
-      <button class="btn btn-primary" style="background-color: #344a9a">
-        {% if lang == "de" %}Alles ausklappen{% else %} Expand all {% endif %}
-      </button></a
-    >
-    {% else %}
-    <a
-      class="action"
-      href="{{ url_for('showpersonen', lang = lang, show = '') }}"
-    >
-      <button class="btn btn-primary">
-        {% if lang == "de" %}Alles einklappen{% else %} Collapse all {% endif %}
-      </button></a
-    >
-    {% endif %}
-  </div>
-</div>
-
-<div class="container">
-  <div class="accordion" id="accordionFAQtags">
-    {% for k1 in data %}
-    <div class="accordion-item">
-      <h3 class="accordion-header">
-        <button
-          aria-controls="{{k1['kurzname']}}"
-          aria-expanded="{% if show == 'all' or show == k1['kurzname'] %}true{% else %}false{% endif %}"
-          class="accordion-button {% if show != 'all' and show != k1['kurzname'] %}collapsed{% endif %}"
-          data-bs-target="#{{k1['kurzname']}}"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <h3 class="h5">{{ k1["name"]|markdown }}</h3>
-        </button>
-      </h3>
-      <div
-        aria-labelledby="{{k1['kurzname']}}"
-        class="accordion-collapse collapse {% if show == 'all' or show == k1['kurzname'] %}show{% endif %}"
-        data-bs-parent="#accordionFAQtags"
-        id="{{k1['kurzname']}}"
-      >
-        <div class="accordion-body">
-          {% for p in k1["person"] %}
-          <p>{{ p["givenName"] }} {{ p["sn"] }}</p>
-          <p>
-            Tel: 0761 / 203 {{ p["telephoneNumber"] }}, Raum {{
-            p["roomNumber"] }} ({{p["street"]}})
-          </p>
-          <p>Email: {{ p["mail"] }}</p>
-          <br>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-</div>
 {% endblock %}

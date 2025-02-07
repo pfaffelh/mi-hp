@@ -90,6 +90,8 @@ def wordpress_index():
 @app.route("/nlehre/<lang>/personen/<show>/")
 def showpersonen(show = "", lang = "de"):
     data = person.get_person_data()
+    person.make_skel("https://uni-freiburg.de/universitaet/portrait/", 
+              {"class" : "clearfix"})
     return render_template("personen/index.html", data = data, show=show, lang=lang)
 
 

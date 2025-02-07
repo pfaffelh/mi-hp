@@ -5,6 +5,8 @@ from operator import itemgetter
 from markdown import markdown
 from ldap3 import Server, Connection, ALL, SUBTREE
 import json
+from bs4 import BeautifulSoup
+import requests
 
 try:
     ldap_server = 'ldap://home.mathematik.uni-freiburg.de'  # Beispiel für einen öffentlichen LDAP-Server
@@ -50,7 +52,7 @@ def get_person_data():
         "employee" : "Administration und Technik"
     }
     res = [item for item in res if item["eduPersonPrimaryAffiliation"] in trans.keys()]
-    
+    print(res)   
 #    res = dict(sorted(res, key=lambda x: (x["eduPersonPrimaryAffiliation"], x["cn"])))
         
     data = []
@@ -58,10 +60,23 @@ def get_person_data():
         data.append({
             "kurzname" : key,
             "name" : value,
-            "person" : sorted([x for x in res if x["eduPersonPrimaryAffiliation"] == key ], key = lambda x: x['cn'])
+            "person" : sorted([x for x in res if x["eduPersonPrimaryAffiliation"] == key ], key = lambda x: x['sn'][0])
         })
     print(data)
     return data
 
 if __name__ == "__main__":
     get_person_data()
+
+# id is a dict, e.g. {"class" : "clearfix"}
+def make_skel(url, id, string = "{% block content%}Content{% endblock %}"):
+    print(url)
+    result = requests.get(url, verify=False)
+    doc = BeautifulSoup(result.text, 'lxml')
+
+    content = doc.find('div', id)
+    content.string = string
+    html = doc.prettify("utf-8")
+    # Write the skelet
+    with open("templates/skel.html", "wb") as file:
+        file.write(html)
