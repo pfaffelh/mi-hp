@@ -46,11 +46,13 @@
             </p>
           </div>
           <div>
+            {% if item['home']['url'] != ""%}
             <div
               class="bl-cursor-pointer bl-float-left rtl:bl-float-right bl-text-center bl-mt-[20px] xl:bl-mt-[30px] bl-inline-block bl-font-medium bl-text-[1.125rem] xl:bl-text-[1.25rem] bl-leading-[1.5625rem] bl-no-underline hover:bl-underline bl-decoration-[2px] bl-transition-colors bl-duration-[400ms] bl-px-[26px] xl:bl-px-[32px] bl-py-[7.5px] xl:bl-py-[12.5px] focus-visible:bl-outline-dotted focus-visible:bl-outline-2 bl-outline-offset-[6px] xl:bl-outline-offset-[7px] bl-hyphens-manual bl-bg-identity-black bl-text-pure-white hover:bl-text-pure-white hover:bl-bg-identity-blue-80 active:bl-bg-identity-blue !bl-outline-identity-black dark:bl-bg-pure-white dark:bl-text-identity-black dark:hover:bl-text-identity-black dark:hover:bl-bg-identity-yellow-40 dark:active:bl-bg-identity-yellow dark:!bl-outline-pure-white"
             >
               Mehr erfahren
             </div>
+            {% endif %}
           </div>
         </div>
       </div>
