@@ -98,7 +98,7 @@ def showpersonenwp(show = "", lang = "de"):
 @app.route("/nlehre/<lang>/news/")
 def shownewswp(show = "", lang = "de"):
     data = news.data_for_base(lang)
-    person.make_skel("https://uni-freiburg.de/universitaet/portrait/", 
+    person.make_skel("https://uni-freiburg.de/lehre/", 
               {"class" : "clearfix"})
     return render_template("wp/news.html", data = data, show=show, lang=lang)
 
