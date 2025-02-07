@@ -18,3 +18,4 @@ misaka == 2.1.1
 markdown==3.7
 flask_misaka==1.0.1
 ldap3==2.9.1
+requests==2.31.0
