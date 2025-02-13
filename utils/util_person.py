@@ -29,13 +29,16 @@ def remove_p(html):
     else:
         return html
 
-def get_person_data():
+def get_person_data(abteilung = ""):
     try:
         # URL des öffentlichen LDAP-Servers
         ldap_server = 'ldap://home.mathematik.uni-freiburg.de'  # Beispiel für einen öffentlichen LDAP-Server
 
         # LDAP-Baum und Suchbasis
         search_base = 'ou=People,dc=home,dc=mathematik,dc=uni-freiburg,dc=de'  # Der Startpunkt für die LDAP-Suche
+        if abteilung != "":
+            search_base = f"ou={abteilung}," + search_base
+
         search_filter = '(objectClass=*)'  # Beispielhafter Filter, um alle Personenobjekte zu suchen
 
         # Verbindung zum LDAP-Server ohne Authentifizierung herstellen (anonyme Bindung)

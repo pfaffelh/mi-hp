@@ -1,14 +1,13 @@
-{% extends 'skel.html' %} {% block content %}
+{% extends config['skel_name'] %} {% block content %}
 
 <h3 class="wp-block-heading">
-  <h1>Lehrkörper / Mitarbeiter</h1>
+  <h1>{{ config['titel'] }}</h1>
 </h3>
 
 <div
   class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute [&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip [.wp-block-ufr-section_&amp;]:bl-overflow-x-visible bl-bg-transparent bl-text-inherit dark:bl-bg-transparent dark:bl-text-inherit alignfull wp-block-ufr-section has-global-padding is-layout-constrained wp-block-section-is-layout-constrained"
 >
-  {% for k1 in data %}
-
+  {% for k1 in data %} {% if k1["person"] != [] %}
   <h4
     class="wp-block-heading has-text-align-left"
     id="block-0d8febea-81f3-4fa4-b1cc-8bee832ee085"
@@ -20,7 +19,16 @@
       <tbody>
         {% for p in k1["person"] %}
         <tr>
-          <td><a href="mailto:{{ p['mail'] }}">{{ p["sn"] }}, {{ p["givenName"] }}</a></td>
+          <td>
+            {% if p['labeledURI'] %}
+            <a href="{{ p['labeledURI'] }}"
+              >{{ p["sn"] }}, {{ p["givenName"] }}</a
+            >
+            {% else %} {{ p["sn"] }}, {{ p["givenName"] }} {% endif %}
+            <a href="mailto:{{ p['mail'] }}"
+              >{{ p["sn"] }}, {{ p["givenName"] }}</a
+            >
+          </td>
           <td>Tel: 0761 / 203 {{ p["telephoneNumber"] }}</td>
           <td>Raum {{ p["roomNumber"] }} ({{p["street"]}})</td>
         </tr>
@@ -28,7 +36,7 @@
       </tbody>
     </table>
   </figure>
-  {% endfor %}
+  {% endif %} {% endfor %}
 </div>
 
 {% endblock %}

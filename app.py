@@ -85,14 +85,82 @@ def wordpress_index():
         news_data=news_data,
         talks_data=talks_data)
 
-# Ansatz des Personenverzeichnisses unter wp
-@app.route("/cd2021/<lang>/personen/")
-@app.route("/cd2021/<lang>/personen/<show>/")
-def showpersonenwp(show = "", lang = "de"):
-    data = person.get_person_data()
-    person.make_skel("https://uni-freiburg.de/universitaet/portrait/", 
-              {"class" : "clearfix"})
-    return render_template("wp/personen.html", data = data, show=show, lang=lang)
+wp_config = {
+    "personen_de" : {
+        "titel" : "Lehrkörper / Mitarbeiter",
+        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
+        "skel_name" : "skel.html",
+        "query" : {"class" : "clearfix"},
+        "template" : "wp/personen.html"
+    },
+    "personen_AM_de" : {
+        "titel" : "Lehrkörper / Mitarbeiter",
+        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
+        "skel_name" : "skel.html",
+        "query" : {"class" : "clearfix"},
+        "template" : "wp/personen.html"
+    },
+    "personen_D_de" : {
+        "titel" : "Lehrkörper / Mitarbeiter",
+        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
+        "skel_name" : "skel.html",
+        "query" : {"class" : "clearfix"},
+        "template" : "wp/personen.html"
+    },
+    "personen_Di_de" : {
+        "titel" : "Mitarbeiter der Abteilung für Didaktik der Mathematik",
+        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
+        "skel_name" : "skel.html",
+        "query" : {"class" : "clearfix"},
+        "template" : "wp/personen.html"
+    },
+    "personen_ML_de" : {
+        "titel" : "Lehrkörper / Mitarbeiter",
+        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
+        "skel_name" : "skel.html",
+        "query" : {"class" : "clearfix"},
+        "template" : "wp/personen.html"
+    },
+    "personen_MSt_de" : {
+        "titel" : "Lehrkörper / Mitarbeiter",
+        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
+        "skel_name" : "skel.html",
+        "query" : {"class" : "clearfix"},
+        "template" : "wp/personen.html"
+    },
+    "personen_PA_de" : {
+        "titel" : "Lehrkörper / Mitarbeiter",
+        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
+        "skel_name" : "skel.html",
+        "query" : {"class" : "clearfix"},
+        "template" : "wp/personen.html"
+    },
+    "personen_RM_de" : {
+        "titel" : "Lehrkörper / Mitarbeiter",
+        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
+        "skel_name" : "skel.html",
+        "query" : {"class" : "clearfix"},
+        "template" : "wp/personen.html"
+    }
+}
+
+wp_config["personen_de"]["url_skel"]
+
+# Ansatz des Personenverzeichnisses etc unter wp
+@app.route("/cd2021/<id>/")
+@app.route("/cd2021/<id>/<show>/")
+def showfakewp(id, show = "", lang = "de"):
+    dir = id.split("_")
+    if dir[0] == "personen":
+        lang = list(reversed(dir))[0]
+        if len(dir) == 3:
+            abteilung = dir[1]
+            data = person.get_person_data(abteilung = abteilung)
+        else:
+            data = person.get_person_data()
+        person.make_skel(wp_config[id]["url_skel"], wp_config[id]["query"])
+
+    return render_template(wp_config[id]["template"], data = data, config = wp_config[id], show=show, lang=lang)
 
 # Ansatz der News unter wp
 @app.route("/cd2021/<lang>/news/")
