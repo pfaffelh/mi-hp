@@ -9,20 +9,6 @@ from bs4 import BeautifulSoup
 import requests
 from utils.config import *
 
-try:
-    ldap_server = 'ldap://home.mathematik.uni-freiburg.de'  # Beispiel für einen öffentlichen LDAP-Server
-
-    # LDAP-Baum und Suchbasis
-    search_base = 'ou=People,dc=home,dc=mathematik,dc=uni-freiburg,dc=de'  # Der Startpunkt für die LDAP-Suche
-    search_filter = '(objectClass=*)'  # Beispielhafter Filter, um alle Personenobjekte zu suchen
-
-    # Verbindung zum LDAP-Server ohne Authentifizierung herstellen (anonyme Bindung)
-    server = Server(ldap_server, get_info=ALL)
-    conn = Connection(server, auto_bind=True)  # Keine Anmeldeinformationen erforderlich
-    attributes = ['cn', 'sn', 'mail', 'labeledURI', 'givenName', 'objectClass', 'eduPersonPrimaryAffiliation', 'street', 'telephoneNumber', 'roomNumber', 'personalTitle'] 
-except:
-    print("No connection to LDAP server")
-
 def remove_p(html):
     if html.startswith('<p>') and html.endswith('</p>'):
         return html[3:-4] 

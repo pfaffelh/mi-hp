@@ -25,9 +25,7 @@
               >{{ p["sn"] }}, {{ p["givenName"] }}</a
             >
             {% else %} {{ p["sn"] }}, {{ p["givenName"] }} {% endif %}
-            <a href="mailto:{{ p['mail'] }}"
-              >{{ p["sn"] }}, {{ p["givenName"] }}</a
-            >
+            <a href="mailto:{{ p['mail'] }}"> ✉</a>
           </td>
           <td>Tel: 0761 / 203 {{ p["telephoneNumber"] }}</td>
           <td>Raum {{ p["roomNumber"] }} ({{p["street"]}})</td>
