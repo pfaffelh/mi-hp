@@ -30,27 +30,43 @@ def remove_p(html):
         return html
 
 def get_person_data():
-    # Suche im LDAP-Baum durchführen
-#    try:
-#        conn.search(search_base, search_filter, search_scope=SUBTREE, attributes=attributes)
-#        # Liste für die Ergebnisse
-#        res = []
-#        # Ergebnisse in eine Liste von Dictionaries umwandeln
-#        for entry in conn.entries:
-#            entry_dict = {attr: entry[attr].value for attr in attributes if attr in entry}
-#            res.append(entry_dict)
-#        # Verbindung beenden
-#        conn.unbind()
-#    except:
-    print(ip_address)
-    if (ip_address == "127.0.1.1"):
-        fn = "static/data/ldap.json"
-    elif os.getcwd() == "/home/flask-reader/mi-hp":
-        fn = "/home/flask-reader/mi-hp/static/data/ldap.json"
-    else:
-        fn = "/usr/local/lib/mi-hp/static/data/ldap.json"
-    with open(fn , 'r') as file:
-        res = json.load(file)
+    try:
+        # URL des öffentlichen LDAP-Servers
+        ldap_server = 'ldap://home.mathematik.uni-freiburg.de'  # Beispiel für einen öffentlichen LDAP-Server
+
+        # LDAP-Baum und Suchbasis
+        search_base = 'ou=People,dc=home,dc=mathematik,dc=uni-freiburg,dc=de'  # Der Startpunkt für die LDAP-Suche
+        search_filter = '(objectClass=*)'  # Beispielhafter Filter, um alle Personenobjekte zu suchen
+
+        # Verbindung zum LDAP-Server ohne Authentifizierung herstellen (anonyme Bindung)
+        server = Server(ldap_server, get_info=ALL)
+        conn = Connection(server, auto_bind=True)  # Keine Anmeldeinformationen erforderlich
+        attributes = ['cn', 'sn', 'mail', 'labeledURI', 'givenName', 'objectClass', 'eduPersonPrimaryAffiliation', 'street', 'telephoneNumber', 'roomNumber', 'personalTitle'] 
+
+        # Suche im LDAP-Baum durchführen
+        conn.search(search_base, search_filter, search_scope=SUBTREE, attributes=attributes)
+
+        # Liste für die Ergebnisse
+        res = []
+
+        # Ergebnisse in eine Liste von Dictionaries umwandeln
+        for entry in conn.entries:
+            entry_dict = {attr: entry[attr].value for attr in attributes if attr in entry}
+            res.append(entry_dict)
+
+        # Verbindung beenden
+        conn.unbind()
+
+    except:
+        print(ip_address)
+        if (ip_address == "127.0.1.1"):
+            fn = "static/data/ldap.json"
+        elif os.getcwd() == "/home/flask-reader/mi-hp":
+            fn = "/home/flask-reader/mi-hp/static/data/ldap.json"
+        else:
+            fn = "/usr/local/lib/mi-hp/static/data/ldap.json"
+        with open(fn , 'r') as file:
+            res = json.load(file)
 
     trans = {
         "secretary" : "Sekretariate",

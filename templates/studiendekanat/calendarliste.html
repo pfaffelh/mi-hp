@@ -1,0 +1,179 @@
+{% extends "base.html" %} {% block styles %}
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"
+  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+  crossorigin="anonymous"
+></script>
+<style>
+  .fc .fc-col-header-cell-cushion {
+    display: inline-block;
+    padding: 2px 4px;
+  }
+  .fc-event {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+</style>
+{% endblock %} {% block navbar %} {% include 'navbar.html' %} {% endblock %} {%
+block content %} {% if lehrende %}
+<div class="container">
+  <h3>Liebe Dozent*innen und Assistent*innen</h3>
+  <p>
+    Bitte teilen Sie dem Prüfungsamt spätestens in der zweiten Semesterwoche die
+    Klausurtermine Ihrer Veranstaltungen mit. Beachten Sie außerdem, dass in
+    Zweifelsfällen Angaben in HisInOne bindend sind.
+  </p>
+</div>
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <div class="feature-icon bg-gradient text-end">
+        <a
+          href="/{{lang}}/lehrveranstaltungen/{{laufendes_semester}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          Lehrveranstaltungen des laufenden Semesters</a
+        >
+
+        {% if show_kommendes_semester %}
+        <a
+          href="/{{lang}}/lehrveranstaltungen/{{kommendes_semester}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          Lehrveranstaltungen des kommenden Semesters
+        </a>
+        {% endif %}
+        <a
+          href="{{ url_for('showmitfaq', lang=lang)}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          FAQ</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="container">
+  {% if lang == "de" %}
+  <h3>Prüfungen und Fristen Mathematik</h3>
+  Die hier dargestellten Prüfungstermine und Fristen stellen eine Übersicht dar.
+  Im Zweifelsfall entscheidend sind jedoch immer Einträge in
+  <a href="https://campus.uni-freiburg.de">HisInOne</a>. {% else %}
+  <h3>Exams and dates</h3>
+  You find here an overview of examination dates and deadlines. In case of
+  doubt, however, entries in
+  <a href="https://campus.uni-freiburg.de">HisInOne</a> are legally binding.
+  <div class="container text-end">
+    <div class="row">
+      <div class="col">
+        <div class="feature-icon bg-gradient text-end">
+          <a
+            href="/{{lang}}/lehrveranstaltungen/{{laufendes_semester}}"
+            class="btn btn-primary bg-ufr-blue link-dark"
+            role="button"
+            aria-disabled="true"
+          >
+            Lehrveranstaltungen des laufenden Semesters</a
+          >
+          <a
+            href="{{ url_for('showstufaq', lang=lang)}}"
+            class="btn btn-primary bg-ufr-blue link-dark"
+            role="button"
+            aria-disabled="true"
+          >
+            FAQ</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
+<br />
+
+{% for event in events %} {% if v['url'] != "" %}
+<h4 class="modal-title" id="modalLabel-{{modal_index.value}}">
+  <a href="{{ v['url'] | safe}}">
+    {{ v['sprecher']}}: {{ v['title']|markdown }}
+  </a>
+</h4>
+
+<a
+  class="btn btn-outline-primary active bg-white"
+  style="border-color: #004a99"
+  href="{{ v['url'] }}"
+  role="button"
+>
+  <i class="fa-solid fa-link" style="color: #004a99"></i>
+</a>
+{% else %}
+<h4 style="color: black">{{ v['sprecher']}}: {{ v['title']|markdown }}</h4>
+{% endif %} {% endfor %}
+
+<div class="container" style="max-width: 140vh">
+  <div id="calendar"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap5@6.1.11/index.global.min.js"></script>
+<script src="fullcalendar/core/index.global.js"></script>
+<script src="fullcalendar/core/locales/de.global.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var calendarEl = document.getElementById("calendar");
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      timeZone: "local",
+      locale: "de",
+      expandRows: true,
+      buttonText: {
+        today: "heute",
+        month: "Monat",
+        week: "Woche",
+        day: "Tag",
+        list: "Liste"
+      },
+      firstDay: 1,
+      themeSystem: 'bootstrap5',
+      headerToolbar: {
+        left: "prev,next,today",
+        center: "title",
+        right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+      },
+      weekNumbers: true,
+      dayMaxEvents: true, // allow "more" link when too many events
+      eventTimeFormat: { // like '14:30:00'
+        hour: '2-digit',
+        minute: '2-digit',
+        meridiem: false
+      },
+      eventClick: function(info) {
+        alert('Event: ' + info.event.title);
+      },
+     events: [
+            {% for event in events %}
+            {
+              start: '{{ event.start}}',
+              end: '{{ event.end }}',
+              allDay: {{ event.allDay}},
+              title: '{{ event.title}}',
+            },
+            {% endfor %}
+          ],
+    });
+    calendar.render();
+  });
+</script>
+{% endblock %}
