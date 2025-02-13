@@ -86,8 +86,8 @@ def wordpress_index():
         talks_data=talks_data)
 
 # Ansatz des Personenverzeichnisses unter wp
-@app.route("/nlehre/<lang>/personen/")
-@app.route("/nlehre/<lang>/personen/<show>/")
+@app.route("/cd2021/<lang>/personen/")
+@app.route("/cd2021/<lang>/personen/<show>/")
 def showpersonenwp(show = "", lang = "de"):
     data = person.get_person_data()
     person.make_skel("https://uni-freiburg.de/universitaet/portrait/", 
@@ -95,7 +95,7 @@ def showpersonenwp(show = "", lang = "de"):
     return render_template("wp/personen.html", data = data, show=show, lang=lang)
 
 # Ansatz der News unter wp
-@app.route("/nlehre/<lang>/news/")
+@app.route("/cd2021/<lang>/news/")
 def shownewswp(show = "", lang = "de"):
     data = news.data_for_base(lang)
     print(data)
@@ -470,22 +470,24 @@ def showdownloads(lang, show=""):
 ## Wochenprogramm ##
 ####################
 
-@app.route("/nlehre/<lang>/vortragsreihe/")
-@app.route("/nlehre/<lang>/vortragsreihe/<kurzname>/")
-@app.route("/nlehre/<lang>/vortragsreihe/<kurzname>/<anfang>/<end>")
-def showvortragsreihe(lang, kurzname="alle", anfang = datetime(datetime.now().year, datetime.now().month, 1).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1)).strftime('%Y%m%d')):
+@app.route("/wochenprogramm/")
+@app.route("/wochenprogramm/<lang>/")
+@app.route("/wochenprogramm/<lang>/vortragsreihe/")
+@app.route("/wochenprogramm/<lang>/vortragsreihe/<kurzname>/")
+@app.route("/wochenprogramm/<lang>/vortragsreihe/<kurzname>/<anfang>/<end>")
+def showvortragsreihe(lang="de", kurzname="alle", anfang = datetime(datetime.now().year, datetime.now().month, 1).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1)).strftime('%Y%m%d')):
     reihen, events = news.get_events(lang)
     data = news.get_wochenprogramm_full(anfang, end, kurzname, lang)
     return render_template("wochenprogramm/reihe.html", reihen = reihen, events = events, kurzname = kurzname, lang=lang, data = data)
 
-@app.route("/nlehre/<lang>/event/<kurzname>/")
+@app.route("/wochenprogramm/<lang>/event/<kurzname>/")
 def showevent(lang, kurzname="alle"):
     reihen, events = news.get_events(lang)
     data = news.get_event(kurzname, lang)
     return render_template("wochenprogramm/event.html", reihen = reihen, events = events, kurzname = kurzname, lang=lang, data = data)
 
-@app.route("/nlehre/<lang>/newsarchiv/")
-@app.route("/nlehre/<lang>/newsarchiv/<anfang>/<end>/")
+@app.route("/wochenprogramm/<lang>/newsarchiv/")
+@app.route("/wochenprogramm/<lang>/newsarchiv/<anfang>/<end>/")
 def shownews(lang = "de", anfang = datetime(datetime.now().year, datetime.now().month, 1).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1)).strftime('%Y%m%d')):
     reihen, events = news.get_events(lang)
     data = news.data_for_newsarchiv_full(lang, anfang, end)

@@ -1,3 +1,12 @@
+# ou kann sein 
+# "AM" : "Angewandte Mathematik", 
+# "D": "Dekanat",
+# "Di": "Didaktik"
+# "ML": "Mathematische Logik"
+# "MSt": "Mathematische Stochastik"
+# "PA": "Prüfungsamt"
+# "RM": "Reine Mathematik"
+
 from ldap3 import Server, Connection, ALL, SUBTREE
 import json
 
@@ -5,7 +14,7 @@ import json
 ldap_server = 'ldap://home.mathematik.uni-freiburg.de'  # Beispiel für einen öffentlichen LDAP-Server
 
 # LDAP-Baum und Suchbasis
-search_base = 'ou=People,dc=home,dc=mathematik,dc=uni-freiburg,dc=de'  # Der Startpunkt für die LDAP-Suche
+search_base = 'ou=Di,ou=People,dc=home,dc=mathematik,dc=uni-freiburg,dc=de'  # Der Startpunkt für die LDAP-Suche
 search_filter = '(objectClass=*)'  # Beispielhafter Filter, um alle Personenobjekte zu suchen
 
 # Verbindung zum LDAP-Server ohne Authentifizierung herstellen (anonyme Bindung)
