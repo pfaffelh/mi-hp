@@ -1,0 +1,21 @@
+{% extends config['skel_name'] %} {% block content %}
+<div>
+  <ul class="wp-block-list">
+    {% for entry in data %}
+    <li class="list-group-item">
+      {{ entry.author }} {{ entry.title }}. {% if entry.booktitle %} In
+      <em>{{ entry.booktitle }}</em> {% if entry.editor %}(Editor.: {{
+      entry.editor }}){% endif %} {% if entry.pages %}, S. {{ entry.pages }}{%
+      endif %}. {% if entry.publisher %} {{ entry.publisher }}.{% endif %} {%
+      else %}{{ entry.journal}}. {{ entry.volume }}, {{ entry.pages}}, {{
+      entry.year }}. {% endif %} {% if entry.url %}<a href="{{ entry.url }}"
+        >🔗</a
+      >
+      {% endif %}
+      <br />
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

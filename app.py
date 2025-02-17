@@ -121,8 +121,9 @@ def showfakewp(site, show = "", lang = "de"):
         return render_template("wp/personenstochastik_static.html")
     elif dir[0] == "pfaffelhuberstatic":
         return render_template("wp/pfaffelhuber_static.html")
-    elif dir[0] == "pfaffelhuberwithbib":
-        data = news.data_for_base(lang)
+    elif dir[0] == "pfaffelhuber":
+        data = wp.get_bibdata("static/bibtex/pfaffelhuber.bib")
+        print(data)
         wp.make_skel(wp.config[site])
         
     return render_template(wp.config[site]["template"], data = data, config = wp.config[site], show=show, lang=lang)
