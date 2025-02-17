@@ -1,0 +1,22 @@
+{% extends config['skel_name'] %} {% block content %}
+
+<h4 class="wp-block-heading">{{ config['titel'] }}</h4>
+{% if data["vortrag"] != [] %} {% for v in data["vortrag"] %} {% if v['url'] !=
+"" %}
+<p>
+  <strong>
+    <a href="{{ v['url'] | safe}}">
+      {{ v['sprecher']}}: {{ v['title']|markdown }}
+    </a>
+  </strong>
+  {% else %}
+  <strong>{{ v['sprecher']}}: {{ v['title']|markdown }}</strong>
+  {% endif %} {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if
+  v["endzeit"] != v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}, {{ v["ort"] }}
+  {% if v["reihentitle"] != ""%} ({{ v["reihentitle"]}})
+  <br />
+  {% endif %}
+</p>
+{% endfor %} {% else %}
+<p>Keine Veranstaltungen in den nächsten 14 Tagen.</p>
+{% endif %} {% endblock %}

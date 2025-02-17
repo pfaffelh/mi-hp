@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 from bson import ObjectId
+from bs4 import BeautifulSoup
 
 from utils.config import *
 from utils.util_logging import logger
@@ -91,6 +92,7 @@ wp_config = {
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
         "query" : {"class" : "clearfix"},
+        "use_parent" : False, 
         "template" : "wp/personen.html"
     },
     "personen_AM_de" : {
@@ -98,6 +100,7 @@ wp_config = {
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
         "query" : {"class" : "clearfix"},
+        "use_parent" : False, 
         "template" : "wp/personen.html"
     },
     "personen_D_de" : {
@@ -105,6 +108,7 @@ wp_config = {
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
         "query" : {"class" : "clearfix"},
+        "use_parent" : False, 
         "template" : "wp/personen.html"
     },
     "personen_Di_de" : {
@@ -112,6 +116,7 @@ wp_config = {
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
         "query" : {"class" : "clearfix"},
+        "use_parent" : False, 
         "template" : "wp/personen.html"
     },
     "personen_ML_de" : {
@@ -119,6 +124,7 @@ wp_config = {
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
         "query" : {"class" : "clearfix"},
+        "use_parent" : False, 
         "template" : "wp/personen.html"
     },
     "personen_MSt_de" : {
@@ -126,6 +132,7 @@ wp_config = {
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
         "query" : {"class" : "clearfix"},
+        "use_parent" : False, 
         "template" : "wp/personen.html"
     },
     "personen_PA_de" : {
@@ -133,6 +140,7 @@ wp_config = {
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
         "query" : {"class" : "clearfix"},
+        "use_parent" : False, 
         "template" : "wp/personen.html"
     },
     "personen_RM_de" : {
@@ -140,27 +148,67 @@ wp_config = {
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
         "query" : {"class" : "clearfix"},
+        "use_parent" : False, 
         "template" : "wp/personen.html"
+    },
+    "institut_de" : {
+        "titel" : "Veranstaltungen",
+        "url_skel" : "http://127.0.0.1:5000/cd2021/institutstatic/",
+        "skel_name" : "skel.html",
+        "query" : {"string" : "Veranstaltungen"},
+        "use_parent" : True, 
+        "template" : "wp/institut.html"
     }
 }
+# change institut_de url_skel to https://math.uni-freiburg.de/cd2021/institutstatic/
 
-wp_config["personen_de"]["url_skel"]
+# id is a dict, e.g. {"class" : "clearfix"}
+def make_skel(site, string = "{% block content%}Content{% endblock %}"):
+    result = requests.get(site["url_skel"])
+    doc = BeautifulSoup(result.text, 'lxml')
+    if "string" in site["query"].keys(): 
+        print(site["query"])
+        content = doc.find(string = site["query"]["string"]).find_parent().find_parent()
+    else:
+        print(site["query"])
+        content = doc.find("div", site["query"])
+    content.string = string
+    html = doc.prettify("utf-8")
+    # Write the skelet
+    if (ip_address == "127.0.1.1"):
+        fn = "templates/" + site["skel_name"]
+    elif os.getcwd() == "/home/flask-reader/mi-hp":
+        fn = "/home/flask-reader/mi-hp/templates/" + site["skel_name"]
+    else:
+        fn = "/usr/local/lib/mi-hp/templates/" + site["skel_name"]
+    with open(fn, "wb") as file:
+        file.write(html)
 
 # Ansatz des Personenverzeichnisses etc unter wp
-@app.route("/cd2021/<id>/")
-@app.route("/cd2021/<id>/<show>/")
-def showfakewp(id, show = "", lang = "de"):
-    dir = id.split("_")
+@app.route("/cd2021/<site>/")
+@app.route("/cd2021/<site>/<show>/")
+def showfakewp(site, show = "", lang = "de"):
+    dir = site.split("_")
+    lang = list(reversed(dir))[0]
     if dir[0] == "personen":
-        lang = list(reversed(dir))[0]
         if len(dir) == 3:
             abteilung = dir[1]
             data = person.get_person_data(abteilung = abteilung)
         else:
             data = person.get_person_data()
-        person.make_skel(wp_config[id]["url_skel"], wp_config[id]["query"])
+        make_skel(wp_config[site])
+    elif dir[0] == "institutstatic":
+        return render_template("wp/institut_static.html")
+    elif dir[0] == "institut":
+        # get data from wochenprogramm, news
+        anfang = datetime.now().strftime('%Y%m%d')
+        end = (datetime.now() + relativedelta(days = 14)).strftime('%Y%m%d')
+        reihen, events = news.get_events(lang)
+        data = news.get_wochenprogramm_full(anfang, end, "alle", lang)
+        print(data["vortrag"])
+        make_skel(wp_config[site])
 
-    return render_template(wp_config[id]["template"], data = data, config = wp_config[id], show=show, lang=lang)
+    return render_template(wp_config[site]["template"], data = data, config = wp_config[site], show=show, lang=lang)
 
 # Ansatz der News unter wp
 @app.route("/cd2021/<lang>/news/")
