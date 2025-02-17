@@ -120,7 +120,7 @@ from pybtex.database.input import bibtex
 from jinja2 import Environment, FileSystemLoader
 
 # BibTeX-Datei einlesen
-def get_bibdata(filename)
+def get_bibdata(filename):
     parser = bibtex.Parser()
     bib_data = parser.parse_file(filename)
 
