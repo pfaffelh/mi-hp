@@ -16,6 +16,7 @@ import utils.util_faq as faq
 import utils.util_person as person
 import utils.util_vvz as vvz
 import utils.util_news as news
+import utils.util_wp as wp
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
@@ -86,110 +87,6 @@ def wordpress_index():
         news_data=news_data,
         talks_data=talks_data)
 
-wp_config = {
-    "personen_de" : {
-        "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
-        "skel_name" : "skel.html",
-        "queries" : [{"class" : "clearfix"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/personen.html"
-    },
-    "personen_AM_de" : {
-        "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
-        "skel_name" : "skel.html",
-        "queries" : [{"class" : "clearfix"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/personen.html"
-    },
-    "personen_D_de" : {
-        "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
-        "skel_name" : "skel.html",
-        "queries" : [{"class" : "clearfix"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/personen.html"
-    },
-    "personen_Di_de" : {
-        "titel" : "Mitarbeiter der Abteilung für Didaktik der Mathematik",
-        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
-        "skel_name" : "skel.html",
-        "queries" : [{"class" : "clearfix"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/personen.html"
-    },
-    "personen_ML_de" : {
-        "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
-        "skel_name" : "skel.html",
-        "queries" : [{"class" : "clearfix"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/personen.html"
-    },
-    "personen_MSt_de" : {
-        "titel" : "",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/personenstochastikstatic/",
-        "skel_name" : "skel.html",
-        "queries" : [{"class" : "wp-block-section-is-layout-constrained"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/personen.html"
-    },
-    "personen_PA_de" : {
-        "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
-        "skel_name" : "skel.html",
-        "queries" : [{"class" : "clearfix"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/personen.html"
-    },
-    "personen_RM_de" : {
-        "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
-        "skel_name" : "skel_person.html",
-        "queries" : [{"class" : "clearfix"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/personen.html"
-    },
-    "institut_de" : {
-        "titel" : "Veranstaltungen",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/institutstatic/",
-        "skel_name" : "skel_institut.html",
-        "queries" : [{"string" : "News"}, {"string" : "Veranstaltungen"}],
-        "strings" : ["{% block content0%}Content{% endblock %}", "{% block content1%}Content{% endblock %}"], 
-        "template" : "wp/institut.html"
-    },
-    "news_de" : {
-        "titel" : "News",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/newsstatic/",
-        "skel_name" : "skel_news.html",
-        "queries" : [{"string" : "News II"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/news.html"
-    }
-}
-# change institut_de url_skel to https://math.uni-freiburg.de/cd2021/institutstatic/
-
-def make_skel(site):
-    result = requests.get(site["url_skel"])
-    doc = BeautifulSoup(result.text, 'lxml')
-    for i, query in enumerate(site["queries"]):
-        if "string" in query.keys(): 
-            content = doc.find(string = query["string"]).find_parent().find_parent()
-        else:
-            content = doc.find("div", query)
-        content.string = site["strings"][i]
-    html = doc.prettify("utf-8")
-    # Write the skelet
-    if (ip_address == "127.0.1.1"):
-        fn = "templates/" + site["skel_name"]
-    elif os.getcwd() == "/home/flask-reader/mi-hp":
-        fn = "/home/flask-reader/mi-hp/templates/" + site["skel_name"]
-    else:
-        fn = "/usr/local/lib/mi-hp/templates/" + site["skel_name"]
-    with open(fn, "wb") as file:
-        file.write(html)
-
 # Ansatz des Personenverzeichnisses etc unter wp
 @app.route("/cd2021/<site>/")
 @app.route("/cd2021/<site>/<show>/")
@@ -202,7 +99,7 @@ def showfakewp(site, show = "", lang = "de"):
             data = person.get_person_data(abteilung = abteilung)
         else:
             data = person.get_person_data()
-        make_skel(wp_config[site])
+        wp.make_skel(wp.config[site])
     elif dir[0] == "institutstatic":
         return render_template("wp/institut_static.html")
     elif dir[0] == "institut":
@@ -214,17 +111,21 @@ def showfakewp(site, show = "", lang = "de"):
         data["wochenprogramm"] = news.get_wochenprogramm_full(anfang, end, "alle", lang)
         data["news"] = news.data_for_base(lang)["news"]
         print([item['home'] for item in data["news"]])
-        make_skel(wp_config[site])
+        wp.make_skel(wp.config[site])
     elif dir[0] == "newsstatic":
         return render_template("wp/news_static.html")
     elif dir[0] == "news":
-        # get data from news
         data = news.data_for_base(lang)
-        make_skel(wp_config[site])
+        wp.make_skel(wp.config[site])
     elif dir[0] == "personenstochastikstatic":
         return render_template("wp/personenstochastik_static.html")
+    elif dir[0] == "pfaffelhuberstatic":
+        return render_template("wp/pfaffelhuber_static.html")
+    elif dir[0] == "pfaffelhuberwithbib":
+        data = news.data_for_base(lang)
+        wp.make_skel(wp.config[site])
         
-    return render_template(wp_config[site]["template"], data = data, config = wp_config[site], show=show, lang=lang)
+    return render_template(wp.config[site]["template"], data = data, config = wp.config[site], show=show, lang=lang)
 
 # Ansatz der News unter wp
 @app.route("/cd2021/<lang>/news/")
