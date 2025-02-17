@@ -128,10 +128,10 @@ wp_config = {
         "template" : "wp/personen.html"
     },
     "personen_MSt_de" : {
-        "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
+        "titel" : "",
+        "url_skel" : "http://127.0.0.1:5000/cd2021/personenstochastikstatic/",
         "skel_name" : "skel.html",
-        "queries" : [{"class" : "clearfix"}],
+        "queries" : [{"class" : "wp-block-section-is-layout-constrained"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
@@ -221,6 +221,9 @@ def showfakewp(site, show = "", lang = "de"):
         # get data from news
         data = news.data_for_base(lang)
         make_skel(wp_config[site])
+    elif dir[0] == "personenstochastikstatic":
+        return render_template("wp/personenstochastik_static.html")
+        
     return render_template(wp_config[site]["template"], data = data, config = wp_config[site], show=show, lang=lang)
 
 # Ansatz der News unter wp
@@ -665,5 +668,4 @@ scheduler.add_job(
     minute=30
 )
 scheduler.start()
-
 
