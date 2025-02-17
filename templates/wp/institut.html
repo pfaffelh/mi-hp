@@ -1,15 +1,34 @@
 {% extends config['skel_name'] %} {% block content0 %}
 
-<h4 class="wp-block-heading">{{ config['titel'] }}</h4>
-{% if data["vortrag"] != [] %}{% for v in data["vortrag"] %}
+<h4 class="wp-block-heading">News</h4>
+
 <p>
-  {% if v["reihentitle"] != ""%} <strong>{{ v["reihentitel"] }}</strong><br />{%
-  endif %} {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if
-  v["endzeit"] != v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}, {{ v["ort"]
-  }}<br />{% if v['url'] != "" %}<a href="{{ v['url']}}">{{ v["titel"] }}</a> {%
-  else %}{{ v["titel"] }}{% endif %}<br />{{ v["sprecher"] }}{% if
-  v["sprecher_affiliation"] != "" %} ({{ v["sprecher_affiliation"] }}) {% endif
-  %}
+  {% if data["news"] != [] %}{% for v in data["news"] %}
+  <a href="" data-type="page" data-id="376">{{ v["home"]["title_de"] }}</a
+  ><br />
+  {% endfor %}<br>{% endif %}
+  <a
+    href="/cd2021/news_de/"
+    data-type="page"
+    data-id="786"
+    >Und noch mehr&#8230;</a
+  >
+</p>
+
+{% endblock %} {% block content1 %}
+<h4 class="wp-block-heading">{{ config['titel'] }}</h4>
+{% if data["wochenprogramm"]["vortrag"] != [] %}{% for v in
+data["wochenprogramm"]["vortrag"] %}
+<p>
+  {{ v["sprecher"] }}: {% if v["sprecher_affiliation"] != "" %} ({{
+  v["sprecher_affiliation"] }}) {% endif %} <br />{% if v['url'] != "" %}<a
+    href="{{ v['url']}}"
+    >{{ v["title"] }}</a
+  >
+  {% else %}{{ v["title"] }}{% endif %}<br />
+  {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if v["endzeit"] !=
+  v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}, {{ v["ort"] }}<br />{% if
+  v["reihentitle"] != ""%}{{ v["reihentitle"] }} {% endif %}
 </p>
 {% endfor %} {% else %}
 <p>Keine Veranstaltungen in den nächsten 14 Tagen.</p>

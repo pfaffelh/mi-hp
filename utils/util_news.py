@@ -312,7 +312,6 @@ def get_wochenprogramm_full(anfang, end, kurzname="alle", lang="de"):
     data["anfangnextmonth"] = get_start_next_month(get_start_current_month()).strftime('%Y%m%d')
     return data
 
-
 def get_event(kurzname, lang = "de"):
     data = {}
     tage = tage_lang(lang)

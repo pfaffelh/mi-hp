@@ -155,9 +155,17 @@ wp_config = {
         "titel" : "Veranstaltungen",
         "url_skel" : "http://127.0.0.1:5000/cd2021/institutstatic/",
         "skel_name" : "skel.html",
-        "queries" : [{"string" : "Veranstaltungen"}],
-        "strings" : ["{% block content0%}Content{% endblock %}"], 
+        "queries" : [{"string" : "News"}, {"string" : "Veranstaltungen"}],
+        "strings" : ["{% block content0%}Content{% endblock %}", "{% block content1%}Content{% endblock %}"], 
         "template" : "wp/institut.html"
+    },
+    "news_de" : {
+        "titel" : "News",
+        "url_skel" : "http://127.0.0.1:5000/cd2021/newsstatic/",
+        "skel_name" : "skel.html",
+        "queries" : [{"string" : "News II"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
+        "template" : "wp/news.html"
     }
 }
 # change institut_de url_skel to https://math.uni-freiburg.de/cd2021/institutstatic/
@@ -165,12 +173,12 @@ wp_config = {
 def make_skel(site):
     result = requests.get(site["url_skel"])
     doc = BeautifulSoup(result.text, 'lxml')
-    for query in site["queries"]:
+    for i, query in enumerate(site["queries"]):
         if "string" in query.keys(): 
             content = doc.find(string = query["string"]).find_parent().find_parent()
         else:
             content = doc.find("div", query)
-        content.string = string
+        content.string = site["strings"][i]
     html = doc.prettify("utf-8")
     # Write the skelet
     if (ip_address == "127.0.1.1"):
@@ -202,17 +210,23 @@ def showfakewp(site, show = "", lang = "de"):
         anfang = datetime.now().strftime('%Y%m%d')
         end = (datetime.now() + relativedelta(days = 14)).strftime('%Y%m%d')
         reihen, events = news.get_events(lang)
-        data = news.get_wochenprogramm_full(anfang, end, "alle", lang)
-        print(data["vortrag"])
+        data = {}
+        data["wochenprogramm"] = news.get_wochenprogramm_full(anfang, end, "alle", lang)
+        data["news"] = news.data_for_base(lang)["news"]
+        print([item['home'] for item in data["news"]])
         make_skel(wp_config[site])
-
+    elif dir[0] == "newsstatic":
+        return render_template("wp/news_static.html")
+    elif dir[0] == "news":
+        # get data from news
+        data = news.data_for_base(lang)
+        make_skel(wp_config[site])
     return render_template(wp_config[site]["template"], data = data, config = wp_config[site], show=show, lang=lang)
 
 # Ansatz der News unter wp
 @app.route("/cd2021/<lang>/news/")
 def shownewswp(show = "", lang = "de"):
     data = news.data_for_base(lang)
-    print(data)
     person.make_skel("https://uni-freiburg.de/lehre/", 
               {"class" : "clearfix"})
     return render_template("wp/news.html", data = data, show=show, lang=lang)
