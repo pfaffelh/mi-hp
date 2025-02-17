@@ -146,7 +146,7 @@ wp_config = {
     "personen_RM_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
-        "skel_name" : "skel.html",
+        "skel_name" : "skel_person.html",
         "queries" : [{"class" : "clearfix"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
@@ -154,7 +154,7 @@ wp_config = {
     "institut_de" : {
         "titel" : "Veranstaltungen",
         "url_skel" : "https://www.math.uni-freiburg.de/cd2021/institutstatic/",
-        "skel_name" : "skel.html",
+        "skel_name" : "skel_institut.html",
         "queries" : [{"string" : "News"}, {"string" : "Veranstaltungen"}],
         "strings" : ["{% block content0%}Content{% endblock %}", "{% block content1%}Content{% endblock %}"], 
         "template" : "wp/institut.html"
@@ -162,7 +162,7 @@ wp_config = {
     "news_de" : {
         "titel" : "News",
         "url_skel" : "https://www.math.uni-freiburg.de/cd2021/newsstatic/",
-        "skel_name" : "skel.html",
+        "skel_name" : "skel_news.html",
         "queries" : [{"string" : "News II"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/news.html"
