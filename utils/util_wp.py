@@ -128,7 +128,7 @@ def get_bibdata(filename):
     for key, entry in bib_data.entries.items():
         data.append({
             "ID": key,
-            "type" : entry.type
+            "type" : entry.type,
             "author": " and ".join(person.get_part_as_text("last") for person in entry.persons["author"]),
             "title": entry.fields.get("title", "Kein Titel"),
             "journal": entry.fields.get("journal", ""),
