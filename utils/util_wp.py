@@ -137,11 +137,7 @@ def format_authors(persons):
     return decode_latex(", ".join(authors))
 
 # BibTeX-Datei einlesen
-def get_bibdata(filename):
-    parser = bibtex.Parser()
-    with app.open_resource(filename) as f:
-        bib_data = parser.parse_file(f)
-
+def get_bibdata(bib_data):
     data = []
     for key, entry in bib_data.entries.items():
         data.append({

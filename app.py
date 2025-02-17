@@ -7,6 +7,7 @@ from dateutil.relativedelta import relativedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 from bson import ObjectId
 from bs4 import BeautifulSoup
+from pybtex.database.input import bibtex
 
 from utils.config import *
 from utils.util_logging import logger
