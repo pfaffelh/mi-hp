@@ -91,88 +91,86 @@ wp_config = {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
-        "query" : {"class" : "clearfix"},
-        "use_parent" : False, 
+        "queries" : [{"class" : "clearfix"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
     "personen_AM_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
-        "query" : {"class" : "clearfix"},
-        "use_parent" : False, 
+        "queries" : [{"class" : "clearfix"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
     "personen_D_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
-        "query" : {"class" : "clearfix"},
-        "use_parent" : False, 
+        "queries" : [{"class" : "clearfix"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
     "personen_Di_de" : {
         "titel" : "Mitarbeiter der Abteilung für Didaktik der Mathematik",
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
-        "query" : {"class" : "clearfix"},
-        "use_parent" : False, 
+        "queries" : [{"class" : "clearfix"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
     "personen_ML_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
-        "query" : {"class" : "clearfix"},
-        "use_parent" : False, 
+        "queries" : [{"class" : "clearfix"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
     "personen_MSt_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
-        "query" : {"class" : "clearfix"},
-        "use_parent" : False, 
+        "queries" : [{"class" : "clearfix"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
     "personen_PA_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
-        "query" : {"class" : "clearfix"},
-        "use_parent" : False, 
+        "queries" : [{"class" : "clearfix"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
     "personen_RM_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://uni-freiburg.de/universitaet/portrait/",
         "skel_name" : "skel.html",
-        "query" : {"class" : "clearfix"},
-        "use_parent" : False, 
+        "queries" : [{"class" : "clearfix"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
     "institut_de" : {
         "titel" : "Veranstaltungen",
         "url_skel" : "http://127.0.0.1:5000/cd2021/institutstatic/",
         "skel_name" : "skel.html",
-        "query" : {"string" : "Veranstaltungen"},
-        "use_parent" : True, 
+        "queries" : [{"string" : "Veranstaltungen"}],
+        "strings" : ["{% block content0%}Content{% endblock %}"], 
         "template" : "wp/institut.html"
     }
 }
 # change institut_de url_skel to https://math.uni-freiburg.de/cd2021/institutstatic/
 
-# id is a dict, e.g. {"class" : "clearfix"}
-def make_skel(site, string = "{% block content%}Content{% endblock %}"):
+def make_skel(site):
     result = requests.get(site["url_skel"])
     doc = BeautifulSoup(result.text, 'lxml')
-    if "string" in site["query"].keys(): 
-        print(site["query"])
-        content = doc.find(string = site["query"]["string"]).find_parent().find_parent()
-    else:
-        print(site["query"])
-        content = doc.find("div", site["query"])
-    content.string = string
+    for query in site["queries"]:
+        if "string" in query.keys(): 
+            content = doc.find(string = query["string"]).find_parent().find_parent()
+        else:
+            content = doc.find("div", query)
+        content.string = string
     html = doc.prettify("utf-8")
     # Write the skelet
     if (ip_address == "127.0.1.1"):

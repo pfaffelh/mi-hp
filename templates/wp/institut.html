@@ -1,21 +1,15 @@
-{% extends config['skel_name'] %} {% block content %}
+{% extends config['skel_name'] %} {% block content0 %}
 
 <h4 class="wp-block-heading">{{ config['titel'] }}</h4>
-{% if data["vortrag"] != [] %} {% for v in data["vortrag"] %} {% if v['url'] !=
-"" %}
+{% if data["vortrag"] != [] %}{% for v in data["vortrag"] %}
 <p>
-  <strong>
-    <a href="{{ v['url'] | safe}}">
-      {{ v['sprecher']}}: {{ v['title']|markdown }}
-    </a>
-  </strong>
-  {% else %}
-  <strong>{{ v['sprecher']}}: {{ v['title']|markdown }}</strong>
-  {% endif %} {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if
-  v["endzeit"] != v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}, {{ v["ort"] }}
-  {% if v["reihentitle"] != ""%} ({{ v["reihentitle"]}})
-  <br />
-  {% endif %}
+  {% if v["reihentitle"] != ""%} <strong>{{ v["reihentitel"] }}</strong><br />{%
+  endif %} {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if
+  v["endzeit"] != v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}, {{ v["ort"]
+  }}<br />{% if v['url'] != "" %}<a href="{{ v['url']}}">{{ v["titel"] }}</a> {%
+  else %}{{ v["titel"] }}{% endif %}<br />{{ v["sprecher"] }}{% if
+  v["sprecher_affiliation"] != "" %} ({{ v["sprecher_affiliation"] }}) {% endif
+  %}
 </p>
 {% endfor %} {% else %}
 <p>Keine Veranstaltungen in den nächsten 14 Tagen.</p>
