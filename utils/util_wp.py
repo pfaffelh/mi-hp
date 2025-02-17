@@ -139,7 +139,8 @@ def format_authors(persons):
 # BibTeX-Datei einlesen
 def get_bibdata(filename):
     parser = bibtex.Parser()
-    bib_data = parser.parse_file(filename)
+    with app.open_resource(filename) as f:
+        bib_data = parser.parse_file(f)
 
     data = []
     for key, entry in bib_data.entries.items():

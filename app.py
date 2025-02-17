@@ -122,7 +122,7 @@ def showfakewp(site, show = "", lang = "de"):
     elif dir[0] == "pfaffelhuberstatic":
         return render_template("wp/pfaffelhuber_static.html")
     elif dir[0] == "pfaffelhuber":
-        data = wp.get_bibdata("../static/bibtex/pfaffelhuber.bib")
+        data = wp.get_bibdata("static/bibtex/pfaffelhuber.bib")
         print(data)
         wp.make_skel(wp.config[site])
         
