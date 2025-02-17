@@ -129,7 +129,7 @@ wp_config = {
     },
     "personen_MSt_de" : {
         "titel" : "",
-        "url_skel" : "http://127.0.0.1:5000/cd2021/personenstochastikstatic/",
+        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/personenstochastikstatic/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-section-is-layout-constrained"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
