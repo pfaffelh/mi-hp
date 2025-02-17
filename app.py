@@ -153,7 +153,7 @@ wp_config = {
     },
     "institut_de" : {
         "titel" : "Veranstaltungen",
-        "url_skel" : "http://127.0.0.1:5000/cd2021/institutstatic/",
+        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/institutstatic/",
         "skel_name" : "skel.html",
         "queries" : [{"string" : "News"}, {"string" : "Veranstaltungen"}],
         "strings" : ["{% block content0%}Content{% endblock %}", "{% block content1%}Content{% endblock %}"], 
@@ -161,7 +161,7 @@ wp_config = {
     },
     "news_de" : {
         "titel" : "News",
-        "url_skel" : "http://127.0.0.1:5000/cd2021/newsstatic/",
+        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/newsstatic/",
         "skel_name" : "skel.html",
         "queries" : [{"string" : "News II"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
