@@ -125,8 +125,10 @@ def showfakewp(site, show = "", lang = "de"):
     elif dir[0] == "pfaffelhuber":
         parser = bibtex.Parser()
         with app.open_resource("static/bibtex/pfaffelhuber.bib") as f:
-            bib_data = parser.parse_file(f)
-        data = wp.get_bibdata(f)
+            bib_content = f.read().decode("utf-8")  # 🔹 Dateiinhalt als String
+            bib_data = parser.parse_string(bib_content)  # 🔹 Direkt in parse_string()
+    
+        data = wp.get_bibdata(bib_data)
         print(data)
         wp.make_skel(wp.config[site])
         
