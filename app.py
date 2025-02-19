@@ -552,14 +552,17 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 ###########
 
 @app.route("/nlehre/api/news/")
+@app.route("/wochenprogramm/api/news/")
 def get_news():
     news_reduced = news.get_api_news()
     return jsonify(news_reduced)
 
 @app.route("/nlehre/api/wochenprogramm/")
 @app.route("/nlehre/api/wochenprogramm/<anfang>/<ende>/")
-# Default ist: anfang ist Anfang dieser Woche, ende ist Ende dieser Woche
-def get_vortraege(anfang = (datetime.now() - timedelta(days=datetime.now().weekday())).strftime('%Y%m%d'), ende = (datetime.now() + timedelta(days=7-datetime.now().weekday())).strftime('%Y%m%d')):
+@app.route("/wochenprogramm/api/veranstaltungen/")
+@app.route("/wochenprogramm/api/veranstaltungen/<anfang>/<ende>/")
+# Default ist: anfang ist jetzt, ende ist Ende nächster Woche
+def get_vortraege(anfang = datetime.now().strftime('%Y%m%d'), ende = (datetime.now() + timedelta(days=14-datetime.now().weekday())).strftime('%Y%m%d')):
     wochenprogramm_reduced = news.get_api_wochenprogramm(anfang, ende)
     return jsonify(wochenprogramm_reduced)
 
