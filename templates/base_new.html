@@ -218,7 +218,7 @@
   </head>
 
   <body class="bg-white">
-    <header class="navbar navbar-expand-xxl bg-ufr-darkblue">
+    <header class="navbar navbar-expand bg-ufr-darkblue">
       <nav class="navbar container navbar-dark flex">
         <div class="container">
           <div class="d-flex flex-grow-1">
@@ -229,9 +229,19 @@
               <li class="nav-item d-flex align-items-center">
                 <a class="navbar-brand" href="https://www.uni-freiburg.de">
                   <img
+                    class="d-none d-xl-block"
                     src="{{url_for('static', filename =  'images/ufr-logo-white.svg') }}"
                     alt="Albert-Ludwigs-Universität Freiburg"
                     width="339"
+                    height="55"
+                  />
+                </a>
+                <a class="navbar-brand" href="https://www.uni-freiburg.de">
+                  <img
+                    class="d-block d-xl-none"
+                    src="{{url_for('static', filename =  'images/ufr.png') }}"
+                    alt="Albert-Ludwigs-Universität Freiburg"
+                    width="55"
                     height="55"
                   />
                 </a>
@@ -244,17 +254,29 @@
                   <a
                     href="https://www.math.uni-freiburg.de"
                     class="nav-link text-white"
-                    href="#"
+                    href="https://www.math.uni-freiburg.de"
                   >
                     {% if lang == "de" %}Mathematisches Institut{% else
                     %}Mathematical Institute{% endif %}</a
                   >
                 </h2>
               </li>
+              <li class="d-block d-xl-none mr-4">
+                <h2>
+                  <a
+                    href="https://www.math.uni-freiburg.de"
+                    class="nav-link text-white"
+                    href="#"
+                  >
+                    {% if lang == "de" %}Math{% else
+                    %}Math{% endif %}</a
+                  >
+                </h2>
+              </li>
               <li class="nav-item d-none d-xl-block align-self-center">
                 <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
               </li>
-              <li class="nav-item d-flex align-items-center">
+              <li class="nav-item d-none d-xl-block mr-4">
                 <!-- <li class="nav-item d-none d-xl-block mr-4"> -->
                 <h2>
                   <a
@@ -264,6 +286,18 @@
                   >
                     {% if lang == "de" %}Wochenprogramm{% else %}Talks and
                     News{% endif %}</a
+                  >
+                </h2>
+              </li>
+              <li class="d-block d-xl-none mr-4">
+                <!-- <li class="nav-item d-none d-xl-block mr-4"> -->
+                <h2>
+                  <a
+                    href="{{url_for('showvortragsreihe', lang = lang) }}"
+                    class="nav-link text-white"
+                    href="#"
+                  >
+                    {% if lang == "de" %}Vorträge{% else %}Talks{% endif %}</a
                   >
                 </h2>
               </li>
