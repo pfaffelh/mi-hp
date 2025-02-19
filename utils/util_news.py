@@ -399,10 +399,10 @@ def get_api_wochenprogramm(anfang, ende):
     tage = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
     for v in vortraege:
         reihe = list(vortragsreihe.find({"_id" : { "$in" : v["vortragsreihe"]}}))
-        reihe = [item["title_de"] for item in reihe if item != leer]
         reihenkurzname = [item["kurzname"] for item in reihe if item != leer]
-        reihe = "" if reihe == [] else reihe[0]
+        reihe = [item["title_de"] for item in reihe if item != leer]
         reihenkurzname = "" if reihe == [] else reihenkurzname[0]
+        reihe = "" if reihe == [] else reihe[0]
         vortraege_reduced.append(
             {
                 "reihenkurzname" : reihenkurzname,
