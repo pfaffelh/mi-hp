@@ -400,9 +400,12 @@ def get_api_wochenprogramm(anfang, ende):
     for v in vortraege:
         reihe = list(vortragsreihe.find({"_id" : { "$in" : v["vortragsreihe"]}}))
         reihe = [item["title_de"] for item in reihe if item != leer]
+        reihenkurzname = [item["kurzname"] for item in reihe if item != leer]
         reihe = "" if reihe == [] else reihe[0]
+        reihenkurzname = "" if reihe == [] else reihenkurzname[0]
         vortraege_reduced.append(
             {
+                "reihenkurzname" : reihenkurzname,
                 "vortragsreihe" : reihe,
                 "sprecher" : getwl(v, "sprecher", "de"),
                 "sprecher_affiliation" : getwl(v, "sprecher_affiliation", "de"),
