@@ -357,15 +357,17 @@ def get_monitordata(dtstring, testorpublic):
     for item in data["carouselnews"]:
         item["image"] = base64.b64encode(bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
 
-    # Daten für die News
+    # Daten für die News, wird doppelt gelesen wegen Scroll-Effekts
     query = { "monitor.fuermonitor": True, 
              "monitor.start" : { "$lte" : dt }, 
              "monitor.end" : { "$gte" : dt }}
     if testorpublic == "test":
         data["news"] = list(news.find(query ,sort=[("rang", pymongo.ASCENDING)]))
+#        data["news"] = data["news"] + list(news.find(query ,sort=[("rang", pymongo.ASCENDING)]))
     else:
         query["_public"] = True
         data["news"] = list(news.find(query, sort=[("rang", pymongo.ASCENDING)]))  
+#        data["news"] = data["news"] + list(news.find(query, sort=[("rang", pymongo.ASCENDING)]))
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')

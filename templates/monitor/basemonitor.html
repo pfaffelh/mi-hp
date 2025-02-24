@@ -47,70 +47,71 @@
       });
     </script>
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-        .container {
-            top: 0%;
-            height: 100vh; /* Nimmt immer die volle Höhe des Viewports ein */
-            flex-direction: column;
-            justify-content: center; /* Zentriert den Inhalt vertikal */
-            align-items: center; /* Zentriert den Inhalt horizontal */
-            overflow: hidden; /* Verhindert Scrollen */
-        }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      .container {
+        top: 0%;
+        height: 100vh; /* Nimmt immer die volle Höhe des Viewports ein */
+        flex-direction: column;
+        justify-content: center; /* Zentriert den Inhalt vertikal */
+        align-items: center; /* Zentriert den Inhalt horizontal */
+        overflow: hidden; /* Verhindert Scrollen */
+      }
 
+      .scale-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%; /* Nimmt immer die volle Breite ein */
+        height: auto;
+        transform-origin: top left; /* Skalierung beginnt oben links */
+      }
+
+      .scale-wrapper > * {
+        flex-shrink: 0; /* Elemente bleiben in ihrem Verhältnis */
+      }
+
+      @media (max-height: 100vh) {
         .scale-wrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%; /* Nimmt immer die volle Breite ein */
-            height: auto;
-            transform-origin: top left; /* Skalierung beginnt oben links */
+          height: 100%;
+          transform: scale(calc(100vh / var(--content-height)));
         }
+      }
 
-        .scale-wrapper > * {
-            flex-shrink: 0; /* Elemente bleiben in ihrem Verhältnis */
-        }
+      .watermark-today {
+        position: relative;
+      }
 
-        @media (max-height: 100vh) {
-            .scale-wrapper {
-                height: 100%;
-                transform: scale(calc(100vh / var(--content-height)));
-            }
-        }
+      .watermark-today::after {
+        content: "Heute";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-30deg);
+        font-size: 7rem;
+        font-weight: bold;
+        color: rgba(255, 255, 255, 0.5);
+        pointer-events: none;
+      }
+      .watermark-drop {
+        position: relative;
+      }
 
-        .watermark-today {
-              position: relative;
-        }
-
-        .watermark-today::after {
-            content: "Heute";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-30deg);
-            font-size: 7rem;
-            font-weight: bold;
-            color: rgba(255, 255, 255, 0.5);
-            pointer-events: none;
-        }
-        .watermark-drop {
-            position: relative;
-        }
-
-        .watermark-drop::after {
-            content: "ENTFÄLLT!";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            font-weight: bold;
-            color: rgba(255, 0, 0, 1);
-        }
+      .watermark-drop::after {
+        content: "ENTFÄLLT!";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4rem;
+        font-weight: bold;
+        color: rgba(255, 0, 0, 1);
+      }
     </style>
     <style>
       .no-envelope::before {
@@ -212,6 +213,26 @@
       .btn-primary:visited {
         background-color: #344a9a !important;
         color: white !important;
+      }
+      .scroll-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .scroll-content {
+        display: flex;
+        flex-direction: column;
+        animation: scrollUp 10s linear infinite;
+      }
+
+      @keyframes scrollUp {
+        0% {
+          transform: translateY(0%);
+        }
+        100% {
+          transform: translateY(-50%);
+        }
       }
     </style>
     {% block styles %}
