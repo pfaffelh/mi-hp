@@ -81,25 +81,20 @@ endblock %} {% block content %}
           <div class="accordion" id="accordion{{k1['kurzname']}}">
             <div class="text-end">{{ k1['bearbeitet']|markdown }}</div>
             {% if k1["prefix_html"] %} {{ k1["prefix"]|safe }} {% else %} {{
-            k1["prefix"]|markdown }} {% endif %} {% for k2 in k1["kinder"] %} {%
-            if k1["quicklinks"] !=[] %}
-            <div class="container text-end">
-              <div class="row">
-                <div class="col">
-                  {% for q in k1["quicklinks"] %}
-                  <a
-                    href="{{ q['url']}}"
-                    class="btn btn-primary"
-                    role="button"
-                    aria-disabled="true"
-                  >
-                    {{ q['titel']}}
-                  </a>
-                  {% endfor %}
-                </div>
-              </div>
+            k1["prefix"]|markdown }} {% endif %} {% if k1["quicklinks"] !=[] %}
+            <div class="text-end">
+              {% for q in k1["quicklinks"] %}
+              <a
+                href="{{ q['url']}}"
+                class="btn btn-primary"
+                role="button"
+                aria-disabled="true"
+              >
+                {{ q['titel']}}
+              </a>
+              {% endfor %}
             </div>
-            {% endif %}
+            {% endif %} {% for k2 in k1["kinder"] %}
             <div class="accordion-item">
               <h3 class="accordion-header">
                 <button
@@ -127,21 +122,17 @@ endblock %} {% block content %}
                   {% if k2["prefix_html"] %} {{ k2["prefix"]|safe }} {% else %}
                   {{ k2["prefix"]|markdown }} {% endif %} {% if k2["quicklinks"]
                   !=[] %}
-                  <div class="container text-end">
-                    <div class="row">
-                      <div class="col">
-                        {% for q in k2["quicklinks"] %}
-                        <a
-                          href="{{ q['url']}}"
-                          class="btn btn-primary"
-                          role="button"
-                          aria-disabled="true"
-                        >
-                          {{ q['titel']}}
-                        </a>
-                        {% endfor %}
-                      </div>
-                    </div>
+                  <div class="text-end">
+                    {% for q in k2["quicklinks"] %}
+                    <a
+                      href="{{ q['url']}}"
+                      class="btn btn-primary"
+                      role="button"
+                      aria-disabled="true"
+                    >
+                      {{ q['titel']}}
+                    </a>
+                    {% endfor %}
                   </div>
                   {% endif %} {% if k2["suffix_html"] %} {{ k2["suffix"]|safe }}
                   {% else %} {{ k2["suffix"]|markdown }} {% endif %}
