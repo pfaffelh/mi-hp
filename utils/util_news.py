@@ -427,35 +427,29 @@ def get_api_wochenprogramm(anfang, ende):
 
 
 # .netrc-Datei lesen
-try:
-    netrc_info = netrc.netrc()
-    absender_email, absender_passwort, _ = netrc_info.authenticators("mail.uni-freiburg.de")
-except FileNotFoundError:
-    print("Fehler: .netrc-Datei nicht gefunden.")
-    exit()
-except Exception as e:
-    print(f"Fehler beim Lesen der .netrc-Datei: {e}")
-    exit()
+#try:
+#    netrc_info = netrc.netrc()
+#    absender_email, absender_passwort, _ = netrc_info.authenticators("mail.uni-freiburg.de")
 
-empfaenger_email = "empfaenger@example.com"  # Empfänger-E-Mail-Adresse
+#empfaenger_email = "empfaenger@example.com"  # Empfänger-E-Mail-Adresse
 
 # E-Mail-Inhalt
-betreff = "Test"
-inhalt = "Test2"
+#betreff = "Test"
+#inhalt = "Test2"
 
 # Erstelle die E-Mail-Nachricht
-nachricht = MIMEText(inhalt)
-nachricht["Subject"] = betreff
-nachricht["From"] = absender_email
-nachricht["To"] = empfaenger_email
+#nachricht = MIMEText(inhalt)
+#nachricht["Subject"] = betreff
+#nachricht["From"] = absender_email
+#nachricht["To"] = empfaenger_email
 
 # Verbindung zum Mailserver herstellen und E-Mail senden
-try:
-    server = smtplib.SMTP_SSL("mail.uni-freiburg.de", 443)
-    server.login(absender_email, absender_passwort)
-    server.sendmail(absender_email, empfaenger_email, nachricht.as_string())
-    print("E-Mail erfolgreich versendet!")
-except Exception as e:
-    print(f"Fehler beim Senden der E-Mail: {e}")
-finally:
-    server.quit()
+#try:
+#    server = smtplib.SMTP_SSL("mail.uni-freiburg.de", 443)
+#    server.login(absender_email, absender_passwort)
+#    server.sendmail(absender_email, empfaenger_email, nachricht.as_string())
+#    print("E-Mail erfolgreich versendet!")
+#except Exception as e:
+#    print(f"Fehler beim Senden der E-Mail: {e}")
+#finally:
+#    server.quit()
