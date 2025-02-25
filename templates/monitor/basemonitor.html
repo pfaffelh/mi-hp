@@ -223,15 +223,16 @@
       .scroll-content {
         display: flex;
         flex-direction: column;
-        animation: scrollUp 20s linear infinite;
+        animation: scrollUp 10s linear infinite;
+        backface-visibility: hidden;
       }
 
       @keyframes scrollUp {
         0% {
-          transform: translate3d(0, 0, 0);
+          transform: translateY(0%);
         }
         100% {
-          transform: translate3d(0, -100%, 0);
+          transform: translateY(-50%);
         }
       }
     </style>
