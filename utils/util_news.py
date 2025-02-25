@@ -6,7 +6,8 @@ from datetime import datetime, timedelta
 from .config import *
 import base64, json
 import latex2markdown
-
+import smtplib
+from email.mime.text import MIMEText
 
 app = Flask(__name__)
 
@@ -319,6 +320,7 @@ def get_event(kurzname, lang = "de"):
     vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
     data["reihe"] = getwl(vr, "title", lang)
     data["prefix"] = getwl(vr, "text", lang)
+    data["url"] = vr["url"]
     vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True}, sort=[("start", pymongo.ASCENDING)]))
     data["vortrag"] = []
     previousdatum = ""
@@ -423,3 +425,37 @@ def get_api_wochenprogramm(anfang, ende):
             })
     return vortraege_reduced
 
+
+# .netrc-Datei lesen
+try:
+    netrc_info = netrc.netrc()
+    absender_email, absender_passwort, _ = netrc_info.authenticators("mail.uni-freiburg.de")
+except FileNotFoundError:
+    print("Fehler: .netrc-Datei nicht gefunden.")
+    exit()
+except Exception as e:
+    print(f"Fehler beim Lesen der .netrc-Datei: {e}")
+    exit()
+
+empfaenger_email = "empfaenger@example.com"  # Empfänger-E-Mail-Adresse
+
+# E-Mail-Inhalt
+betreff = "Test"
+inhalt = "Test2"
+
+# Erstelle die E-Mail-Nachricht
+nachricht = MIMEText(inhalt)
+nachricht["Subject"] = betreff
+nachricht["From"] = absender_email
+nachricht["To"] = empfaenger_email
+
+# Verbindung zum Mailserver herstellen und E-Mail senden
+try:
+    server = smtplib.SMTP_SSL("mail.uni-freiburg.de", 443)
+    server.login(absender_email, absender_passwort)
+    server.sendmail(absender_email, empfaenger_email, nachricht.as_string())
+    print("E-Mail erfolgreich versendet!")
+except Exception as e:
+    print(f"Fehler beim Senden der E-Mail: {e}")
+finally:
+    server.quit()

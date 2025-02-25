@@ -2,7 +2,7 @@
 %} {% endblock %} {% block content %}
 
 <div class="container py-4" id="inhalt">
-  <h2>{{ data['reihe']}}</h2>
+  <h2>{% if data["url"] != "" %} <a href = "{{ data['url']}}">{{ data['reihe']}}</a>{% else %}{{ data['reihe']}}{% endif %}</h2>
   {% if data['prefix'] != "" %}
   <p>{{ data['prefix']|markdown }}</p>
   {% endif %} {% set modal_index = namespace(value=0) %}

@@ -566,7 +566,6 @@ def get_vortraege(anfang = datetime.now().strftime('%Y%m%d'), ende = (datetime.n
     wochenprogramm_reduced = news.get_api_wochenprogramm(anfang, ende)
     return jsonify(wochenprogramm_reduced)
 
-
 # This function reads the Mensaplan everyday and puts the result into the mongodb
 scheduler = BackgroundScheduler(timezone="Europe/Rome")
 # Runs from Monday to Sunday at 05:30 
