@@ -58,6 +58,7 @@
         top: 0%;
         height: 100vh; /* Nimmt immer die volle Höhe des Viewports ein */
         flex-direction: column;
+        overflow-y: scroll;
         justify-content: center; /* Zentriert den Inhalt vertikal */
         align-items: center; /* Zentriert den Inhalt horizontal */
         overflow: hidden; /* Verhindert Scrollen */
@@ -77,10 +78,12 @@
         flex-shrink: 0; /* Elemente bleiben in ihrem Verhältnis */
       }
 
-      @media (max-height: 100vh) {
-        .scale-wrapper {
-          height: 100%;
-          transform: scale(calc(100vh / var(--content-height)));
+      @media (prefers-reduced-motion: reduce) {
+        .container {
+          scroll-behavior: auto; /* Deaktiviert sanftes Scrollen */
+        }
+        .container-content {
+          animation: none; /* Deaktiviert die Animation */
         }
       }
 
