@@ -83,16 +83,20 @@ endblock %} {% block content %}
             {% if k1["prefix_html"] %} {{ k1["prefix"]|safe }} {% else %} {{
             k1["prefix"]|markdown }} {% endif %} {% if k1["quicklinks"] !=[] %}
             <div class="text-end">
-              {% for q in k1["quicklinks"] %}
-              <a
-                href="{{ q['url']}}"
-                class="btn btn-primary"
-                role="button"
-                aria-disabled="true"
-              >
-                {{ q['title']}}
-              </a>
-              {% endfor %}
+              <div class="row">
+                <div class="col">
+                  {% for q1 in k1["quicklinks"] %}
+                  <a
+                    href="{{ q1['url']}}"
+                    class="btn btn-primary"
+                    role="button"
+                    aria-disabled="true"
+                  >
+                    {{ q1['title']}}
+                  </a>
+                  {% endfor %}
+                </div>
+              </div>
             </div>
             {% endif %} {% for k2 in k1["kinder"] %}
             <div class="accordion-item">
@@ -123,16 +127,20 @@ endblock %} {% block content %}
                   {{ k2["prefix"]|markdown }} {% endif %} {% if k2["quicklinks"]
                   !=[] %}
                   <div class="text-end">
-                    {% for q in k2["quicklinks"] %}
-                    <a
-                      href="{{ q['url']}}"
-                      class="btn btn-primary"
-                      role="button"
-                      aria-disabled="true"
-                    >
-                      {{ q['title']}}
-                    </a>
-                    {% endfor %}
+                    <div class="row">
+                      <div class="col">
+                        {% for q2 in k2["quicklinks"] %}
+                        <a
+                          href="{{ q2['url']}}"
+                          class="btn btn-primary"
+                          role="button"
+                          aria-disabled="true"
+                        >
+                          {{ q2['title']}}
+                        </a>
+                        {% endfor %}
+                      </div>
+                    </div>
                   </div>
                   {% endif %} {% if k2["suffix_html"] %} {{ k2["suffix"]|safe }}
                   {% else %} {{ k2["suffix"]|markdown }} {% endif %}
