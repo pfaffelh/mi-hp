@@ -444,7 +444,7 @@ def get_api_wochenprogramm(anfang, ende):
             })
     return vortraege_reduced
 
-def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template=mail_template, absender_email=absender_email, absender_passwort=absender_passwort):
+def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template=mail_template, absender_email=smtp_user, absender_passwort=smtp_passwort):
     """
     Versendet E-Mails mit einer Jinja2-Vorlage an mehrere Empfänger.
     """
