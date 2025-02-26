@@ -27,7 +27,7 @@
           role="button"
           aria-disabled="true"
         >
-          Semesteransicht
+          {% if lang == "de" %}Semesteransicht{% else %}Semesterly view{% endif %} 
         </a>
         <a
           href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentmonth'], end = data['anfangnextmonth'])}}"
@@ -35,7 +35,7 @@
           role="button"
           aria-disabled="true"
         >
-          Monatsansicht
+          {% if lang == "de" %}Monatsansicht{% else %}Monthly view{% endif %}           
         </a>
         <a
           href="{{url_for('showvortragsreihe', lang=lang, kurzname = 'alle', anfang = data['anfang'], end = data['end'])}}"
@@ -43,7 +43,7 @@
           role="button"
           aria-disabled="true"
         >
-          Alle Vorträge
+          {% if lang == "de" %}Alle Vorträge{% else %}All talks{% endif %}           
         </a>
       </div>
     </div>
@@ -58,6 +58,13 @@
     {% endif %}
 
     <h3>{{ data['zeitraum'] }}</h3>
+
+    {% for ev in data["events"] %}
+    <h4>{% if ev['url'] != ""%}<a href="{{ev['url']}}">{{ ev["title"] }}</a>{% else %}{{ ev["title"] }}{% endif %}</h4>
+    <p>{{ ev["starttag"] }}, {{ ev["startdatum"] }}{% if ev["startzeit"] != "00:00" %}, {{ ev["startzeit"] }}{% endif %} {% if ev["enddatum"] != ev["startdatum"] %}-- {{ ev["endtag"] }}, {{ ev["enddatum"] }}{% if ev["endzeit"] != "00:00" %}, {{ ev["endzeit"] }}{% endif %}{% endif %}</p>
+    <p>{{ ev["kommentar"]}}</p>
+    {% endfor %}
+
     {% set modal_index = namespace(value=0) %}
     <div class="container mt-1">
       <div class="row button-grid">

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Vorträge am Mathematischen Institut</h1>
+
+    {% if data['url'] != "" %}
+    <h2><a href="{{data['url']}}">{{ data['reihe']}}</a></h2>
+    {% else %}
+    <h2>{{ data['reihe']}}</h2>
+    {% endif %}
+    {% if data['prefix'] != "" %}
+
+    <p>{{ data['prefix']|markdown }}</p>
+    {% endif %}
+
+    <h3>{{ data['zeitraum'] }}</h3>
+    {% set modal_index = namespace(value=0) %} {% for v in data["vortrag"] %} {%
+    if v["reihentitle"] != ""%}
+    <p style="margin-bottom: 2px">{{ v["reihentitle"]}}</p>
+    {% endif %}
+    <p style="font-weight: bold; margin-bottom: 2px">
+      {% if v["sprecher"] != "" %}{{ v["sprecher"] }}{% if
+      v["sprecher_affiliation"] != "" %}({{ v["sprecher_affiliation"] }}){%
+      endif %}: {% endif %}{{ v['title'] }} {% if v['url'] != "" %}
+      <a href="{{ v['url'] | safe}}">
+        {% if v["sprecher"] != "" %}{{ v["sprecher"] }}{% if
+        v["sprecher_affiliation"] != "" %}({{ v["sprecher_affiliation"] }}){%
+        endif %}: {% endif %}{{ v['title'] }}
+      </a>
+      {% else %} {% if v["sprecher"] != "" %}{{ v["sprecher"] }}{% if
+      v["sprecher_affiliation"] != "" %}({{ v["sprecher_affiliation"] }}){%
+      endif %}: {% endif %}{{ v['title'] }} {% endif %}
+    </p>
+    <p>{{ v["abstract"] |markdown }}</p>
+    {% if v["kommentar"] %}
+    <i>{{ v["kommentar"]|markdown }}</i> {% endif %}
+  </body>
+</html>

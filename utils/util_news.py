@@ -253,18 +253,35 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
     vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
     data["reihe"] = getwl(vr, "title", lang)
     data["prefix"] = getwl(vr, "text", lang)
+    data["events"] = []
+    if kurzname == "alle":
+        ev = list(vortragsreihe.find({"_public" : True, "event" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("start", pymongo.ASCENDING)]))
+        for e in ev:
+            data["events"].append(
+                {
+                    "title" : getwl(e, "title", lang),
+                    "url" : e["url"],
+                    "starttag" : tage[e["start"].weekday()],
+                    "startdatum" : e["start"].strftime('%d.%m.%Y'),
+                    "startzeit" : e["start"].strftime('%H:%M'),
+                    "endtag" : tage[e["end"].weekday()],
+                    "enddatum" : e["end"].strftime('%d.%m.%Y'),
+                    "endzeit" : e["end"].strftime('%H:%M'),
+                    "kommentar" : getwl(e, "kommentar", lang)
+                }
+            )
     vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("start", pymongo.ASCENDING)]))
     data["vortrag"] = []
     previousdatum = ""
     for v in vo:
-        re = vortragsreihe.find_one({"_id" : { "$in": v["vortragsreihe"], "$ne" : vr["_id"]}, "_public" : True})
+        re = list(vortragsreihe.find({"_id" : { "$in": v["vortragsreihe"], "$ne" : vr["_id"]}, "_public" : True}))
         data["vortrag"].append(
             {
                 "sprecher" : getwl(v, "sprecher", lang),
                 "sprecher_affiliation" : getwl(v, "sprecher_affiliation", lang),
                 "ort" : getwl(v, "ort", lang),
                 "title" : getwl(v, "title", lang),
-                "reihentitle" : "" if re is None else getwl(re, "title", lang),
+                "reihentitle" : "" if re == [] else ", ".join([getwl(x, "title", lang) for x in re]),
                 "url" : v["url"],
                 "lang" : v["lang"],
                 "abstract" : latex2markdown.LaTeX2Markdown(getwl(v, "text", lang)).to_markdown(),
@@ -431,7 +448,7 @@ def get_api_wochenprogramm(anfang, ende):
 #    netrc_info = netrc.netrc()
 #    absender_email, absender_passwort, _ = netrc_info.authenticators("mail.uni-freiburg.de")
 
-#empfaenger_email = "empfaenger@example.com"  # Empfänger-E-Mail-Adresse
+#empfaenger_email = "pfaffelh@gmail.com"  # Empfänger-E-Mail-Adresse
 
 # E-Mail-Inhalt
 #betreff = "Test"
@@ -440,16 +457,14 @@ def get_api_wochenprogramm(anfang, ende):
 # Erstelle die E-Mail-Nachricht
 #nachricht = MIMEText(inhalt)
 #nachricht["Subject"] = betreff
-#nachricht["From"] = absender_email
+#nachricht["From"] = smtp_user
 #nachricht["To"] = empfaenger_email
 
 # Verbindung zum Mailserver herstellen und E-Mail senden
 #try:
 #    server = smtplib.SMTP_SSL("mail.uni-freiburg.de", 443)
-#    server.login(absender_email, absender_passwort)
-#    server.sendmail(absender_email, empfaenger_email, nachricht.as_string())
+#    server.login(smtp_user, smtp_password)
+#    server.sendmail(smtp_user, empfaenger_email, nachricht.as_string())
 #    print("E-Mail erfolgreich versendet!")
 #except Exception as e:
 #    print(f"Fehler beim Senden der E-Mail: {e}")
-#finally:
-#    server.quit()
