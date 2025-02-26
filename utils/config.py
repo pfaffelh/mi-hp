@@ -80,9 +80,9 @@ mensaplan_url = mensaplan_host + "apispeiseplan?&type=98&tx_speiseplan_pi1[apiKe
 smtp_user, _, smtp_password = netrc.authenticators("mail.uni-freiburg.de")
 empfaenger_email = "pfaffelh@gmail.com"  # Empfänger-E-Mail-Adresse
 mail_template = "templates/wochenprogramm/wochenprogrammmail.html"
-anfang_date = datetime.date.today() + datetime.timedelta(days=1)
+anfang_date = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) + datetime.timedelta(days=1)
 anfang = anfang_date.strftime('%Y%m%d')
-end_date = datetime.date.today() + datetime.timedelta(days=8)
+end_date = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) + datetime.timedelta(days=8)
 end = end_date.strftime('%Y%m%d')
 kurzname = "alle"
 lang = "de"
