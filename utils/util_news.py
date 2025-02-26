@@ -281,7 +281,7 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
                 "sprecher_affiliation" : getwl(v, "sprecher_affiliation", lang),
                 "ort" : getwl(v, "ort", lang),
                 "title" : getwl(v, "title", lang),
-                "reihentitle" : "" if re == [] else ", ".join([getwl(x, "title", lang) for x in re]),
+                "reihe" : list(zip([getwl(x, "title", lang) for x in re], [x["url"] for x in re])),
                 "url" : v["url"],
                 "lang" : v["lang"],
                 "abstract" : latex2markdown.LaTeX2Markdown(getwl(v, "text", lang)).to_markdown(),

@@ -27,7 +27,8 @@
           role="button"
           aria-disabled="true"
         >
-          {% if lang == "de" %}Semesteransicht{% else %}Semesterly view{% endif %} 
+          {% if lang == "de" %}Semesteransicht{% else %}Semesterly view{% endif
+          %}
         </a>
         <a
           href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentmonth'], end = data['anfangnextmonth'])}}"
@@ -35,7 +36,7 @@
           role="button"
           aria-disabled="true"
         >
-          {% if lang == "de" %}Monatsansicht{% else %}Monthly view{% endif %}           
+          {% if lang == "de" %}Monatsansicht{% else %}Monthly view{% endif %}
         </a>
         <a
           href="{{url_for('showvortragsreihe', lang=lang, kurzname = 'alle', anfang = data['anfang'], end = data['end'])}}"
@@ -43,13 +44,16 @@
           role="button"
           aria-disabled="true"
         >
-          {% if lang == "de" %}Alle Vorträge{% else %}All talks{% endif %}           
+          {% if lang == "de" %}Alle Vorträge{% else %}All talks{% endif %}
         </a>
       </div>
     </div>
   </div>
   <div class="container">
-    <h1>{% if lang == "de" %}Vorträge am Mathematischen Institut{% else %}Talks at the mathematical institute{% endif %}</h1>
+    <h1>
+      {% if lang == "de" %}Vorträge am Mathematischen Institut{% else %}Talks at
+      the mathematical institute{% endif %}
+    </h1>
   </div>
   <div class="container py-1">
     <h2>{{ data['reihe']}}</h2>
@@ -60,12 +64,18 @@
     <h3>{{ data['zeitraum'] }}</h3>
 
     {% for ev in data["events"] %}
-    <h4>{% if ev['url'] != ""%}<a href="{{ev['url']}}">{{ ev["title"] }}</a>{% else %}{{ ev["title"] }}{% endif %}</h4>
-    <p>{{ ev["starttag"] }}, {{ ev["startdatum"] }}{% if ev["startzeit"] != "00:00" %}, {{ ev["startzeit"] }}{% endif %} {% if ev["enddatum"] != ev["startdatum"] %}-- {{ ev["endtag"] }}, {{ ev["enddatum"] }}{% if ev["endzeit"] != "00:00" %}, {{ ev["endzeit"] }}{% endif %}{% endif %}</p>
+    <h4>
+      {% if ev['url'] != ""%}<a href="{{ev['url']}}">{{ ev["title"] }}</a>{%
+      else %}{{ ev["title"] }}{% endif %}
+    </h4>
+    <p>
+      {{ ev["starttag"] }}, {{ ev["startdatum"] }}{% if ev["startzeit"] !=
+      "00:00" %}, {{ ev["startzeit"] }}{% endif %} {% if ev["enddatum"] !=
+      ev["startdatum"] %}-- {{ ev["endtag"] }}, {{ ev["enddatum"] }}{% if
+      ev["endzeit"] != "00:00" %}, {{ ev["endzeit"] }}{% endif %}{% endif %}
+    </p>
     <p>{{ ev["kommentar"]}}</p>
-    {% endfor %}
-
-    {% set modal_index = namespace(value=0) %}
+    {% endfor %} {% set modal_index = namespace(value=0) %}
     <div class="container mt-1">
       <div class="row button-grid">
         {% for v in data["vortrag"] %}
@@ -80,8 +90,13 @@
             data-bs-target="#modal-{{modal_index.value}}"
             style="font-size: 110%"
           >
-            {% if v["reihentitle"] != ""%}
-            <p style="margin-bottom: 2px">{{ v["reihentitle"]}}</p>
+            {% if v["reihe"] != []%}
+            <p style="margin-bottom: 2px">
+              {% for (title, url) in v["reihe"] %} {% if url != "" %}<a
+                href="{{url}}"
+                >{{ title }}</a
+              >{% else %}{{ title }}{% endif %} {% endfor %}
+            </p>
             {% endif %}
             <p style="font-weight: bold; margin-bottom: 2px">
               {% if v["sprecher"] != "" %}{{ v["sprecher"] }}{% if
@@ -109,31 +124,37 @@
             <div class="modal-content">
               <!-- Header -->
               <div class="modal-header">
-                {% if v['url'] != "" %}
                 <h4 class="modal-title" id="modalLabel-{{modal_index.value}}">
-                  <a href="{{ v['url'] | safe}}">
-                    {{ v['sprecher']}}: {{ v['title']|markdown }}
-                  </a>
+                  {% if v["reihe"] != []%} {% for (title, url) in v["reihe"] %}
+                  {% if url != "" %}<a href="{{url}}">{{ title }}</a>{% else
+                  %}{{ title }}{% endif %} {% endfor %} {% endif %}
                 </h4>
-
-                <a
-                  class="btn btn-outline-primary active bg-white"
-                  style="border-color: #004a99"
-                  href="{{ v['url'] }}"
-                  role="button"
-                >
-                  <i class="fa-solid fa-link" style="color: #004a99"></i>
-                </a>
-                {% else %}
-                <h4 style="color: black">
-                  {{ v['sprecher']}}: {{ v['title']|markdown }}
-                </h4>
-                {% endif %}
               </div>
 
               <!-- Body -->
               <div class="modal-body">
                 <div>
+                  <h5>
+                    {% if v['url'] != "" %}
+                    <h4>
+                      <a href="{{ v['url'] | safe}}">
+                        {{ v['sprecher']}}: {{ v['title']|markdown }}
+                      </a>
+                    </h4>
+                    <a
+                      class="btn btn-outline-primary active bg-white"
+                      style="border-color: #004a99"
+                      href="{{ v['url'] }}"
+                      role="button"
+                    >
+                      <i class="fa-solid fa-link" style="color: #004a99"></i>
+                    </a>
+                    {% else %}
+                    <h4 style="color: black">
+                      {{ v['sprecher']}}: {{ v['title']|markdown }}
+                    </h4>
+                    {% endif %}
+                  </h5>
                   <h5 class="h5">
                     {% if lang == "de" %}Zeit und Ort{% else %}Time and place{%
                     endif %}
