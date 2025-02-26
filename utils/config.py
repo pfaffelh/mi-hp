@@ -74,7 +74,7 @@ except:
     mensa_password = ""
 mensaplan_url = mensaplan_host + "apispeiseplan?&type=98&tx_speiseplan_pi1[apiKey]=" + mensa_password + "&&tx_speiseplan_pi1[ort]=620"
 
-# smtp_user, smtp_password, _ = netrc.authenticators("mail.uni-freiburg.de")
+smtp_user, smtp_password, _ = netrc.authenticators("mail.uni-freiburg.de")
 
 studiengaenge = {"all": "alle Studiengänge",
                     "bsc": "Bachelor of Science Mathematik",
