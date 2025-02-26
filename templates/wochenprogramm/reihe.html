@@ -65,8 +65,8 @@
 
     {% for ev in data["events"] %}
     <h4>
-      {% if ev['url'] != ""%}<a href="{{ev['url']}}">{{ ev["title"] }}</a>{%
-      else %}{{ ev["title"] }}{% endif %}
+      {% if ev['url'] != ""%}<a href="{{ev['url'] | safe}}">{{ ev["title"] }}</a
+      >{% else %}{{ ev["title"] }}{% endif %}
     </h4>
     <p>
       {{ ev["starttag"] }}, {{ ev["startdatum"] }}{% if ev["startzeit"] !=
@@ -92,10 +92,7 @@
           >
             {% if v["reihe"] != []%}
             <p style="margin-bottom: 2px">
-              {% for (title, url) in v["reihe"] %} {% if url != "" %}<a
-                href="{{url}}"
-                >{{ title }}</a
-              >{% else %}{{ title }}{% endif %} {% endfor %}
+              {% for (title, url) in v["reihe"] %} {{ title }} {% endfor %}
             </p>
             {% endif %}
             <p style="font-weight: bold; margin-bottom: 2px">

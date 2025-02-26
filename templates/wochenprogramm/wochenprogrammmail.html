@@ -1,38 +1,69 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <h1>Vorträge am Mathematischen Institut</h1>
-
-    {% if data['url'] != "" %}
-    <h2><a href="{{data['url']}}">{{ data['reihe']}}</a></h2>
-    {% else %}
-    <h2>{{ data['reihe']}}</h2>
+    <h2>
+      {% if lang == "de" %}Vorträge am Mathematischen Institut{% else %}Talks at
+      the mathematical institute{% endif %}
+    </h2>
+    {% if prefix != "" %}
+    <p>{{ prefix|safe }}</p>
+    {% endif %} 
+    {% if events != [] %}
+    <h3>Events</h3>
     {% endif %}
-    {% if data['prefix'] != "" %}
-
-    <p>{{ data['prefix']|markdown }}</p>
-    {% endif %}
-
-    <h3>{{ data['zeitraum'] }}</h3>
-    {% set modal_index = namespace(value=0) %} {% for v in data["vortrag"] %} {%
-    if v["reihentitle"] != ""%}
-    <p style="margin-bottom: 2px">{{ v["reihentitle"]}}</p>
-    {% endif %}
-    <p style="font-weight: bold; margin-bottom: 2px">
-      {% if v["sprecher"] != "" %}{{ v["sprecher"] }}{% if
-      v["sprecher_affiliation"] != "" %}({{ v["sprecher_affiliation"] }}){%
-      endif %}: {% endif %}{{ v['title'] }} {% if v['url'] != "" %}
-      <a href="{{ v['url'] | safe}}">
-        {% if v["sprecher"] != "" %}{{ v["sprecher"] }}{% if
-        v["sprecher_affiliation"] != "" %}({{ v["sprecher_affiliation"] }}){%
-        endif %}: {% endif %}{{ v['title'] }}
-      </a>
-      {% else %} {% if v["sprecher"] != "" %}{{ v["sprecher"] }}{% if
-      v["sprecher_affiliation"] != "" %}({{ v["sprecher_affiliation"] }}){%
-      endif %}: {% endif %}{{ v['title'] }} {% endif %}
+    {% for ev in events %}
+    <p style="margin-bottom: 5px">
+      {{ ev["starttag"] }}, {{ ev["startdatum"] }}{% if ev["startzeit"] !=
+      "00:00" %}, {{ ev["startzeit"] }}{% endif %} {% if ev["enddatum"] !=
+      ev["startdatum"] %}- {{ ev["endtag"] }}, {{ ev["enddatum"] }}{% if
+      ev["endzeit"] != "00:00" %}, {{ ev["endzeit"] }}{% endif %}{% endif %}
     </p>
-    <p>{{ v["abstract"] |markdown }}</p>
-    {% if v["kommentar"] %}
-    <i>{{ v["kommentar"]|markdown }}</i> {% endif %}
+    <h4 style="margin-top: 5px">
+      {% if ev['url'] != ""%}<a href="{{ev['url'] | safe}}">{{ ev["title"] }}</a
+      >{% else %}{{ ev["title"] }}{% endif %}
+    </h4>
+    <p style="margin-top: 5px">{{ ev["kommentar"]}}</p>
+    {% endfor %} 
+    {% if vortrag != [] %}
+    <br />
+    <h3>Vorträge</h3>
+    {% endif %}
+    {% for v in vortrag %}
+    <br />
+    <p>
+      {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if v["endzeit"]
+      != v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}{% if v["ort"] != "" %},
+      {{ v["ort"] }}{% endif %}
+    </p>
+
+    <p>
+      {% if v["reihe"] != []%} {% for (title, url) in v["reihe"] %} {% if url !=
+      "" %}<a href="{{url}}">{{ title }}</a>{% else %}{{ title }}{% endif %} {%
+      endfor %} {% endif %}
+    </p>
+
+    <h5>
+      {% if v['url'] != "" %}
+      <a href="{{ v['url'] | safe}}">
+        {{ v['sprecher']}}: {{ v['title']|safe }}
+      </a>
+      {% else %} {{ v['sprecher']}}: {{ v['title']|safe }} {% endif %}
+    </h5>
+
+    {% if v["abstract"] != "" %}
+    <p>
+      {% if lang == "de" %}Zusammenfassung: {% else %}Abstract: {% endif %} {{
+      v["abstract"] |safe }}
+    </p>
+    {% endif %} {% if v["kommentar"] %}
+    <i style="margin-top: 5px">{{ v["kommentar"]|safe }}</i> {% endif %}{%
+    endfor %}
+    <br />
+    <br />
+    <br />
+    <img
+      src="https://www.math.uni-freiburg.de/static/images/ufr-logo-white.svg"
+      alt="Universität Freiburg"
+    />
   </body>
 </html>
