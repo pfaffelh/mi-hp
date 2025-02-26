@@ -68,6 +68,7 @@ calendar_host = "cal.mathematik.privat/davical/caldav.php/"
 cal_username, cal_account, cal_password = netrc.authenticators(calendar_host)
 sondertermine_lehre_calendar_url = "http://cal.mathematik.privat/davical/caldav.php/pruefungsamt/pramt/"
 
+# Mensaplan für Monitor
 mensaplan_host = "https://www.swfr.de/"
 try:
     mensa_username, mensa_account, mensa_password = netrc.authenticators(mensaplan_host)
@@ -75,17 +76,17 @@ except:
     mensa_password = ""
 mensaplan_url = mensaplan_host + "apispeiseplan?&type=98&tx_speiseplan_pi1[apiKey]=" + mensa_password + "&&tx_speiseplan_pi1[ort]=620"
 
+# Mailversand
 smtp_user, _, smtp_password = netrc.authenticators("mail.uni-freiburg.de")
 empfaenger_email = "pfaffelh@gmail.com"  # Empfänger-E-Mail-Adresse
 mail_template = "templates/wochenprogramm/wochenprogrammmail.html"
-anfang_date = datetime.now()
+anfang_date = datetime.date.today() + datetime.timedelta(days=1)
 anfang = anfang_date.strftime('%Y%m%d')
-end_date = datetime.now() + relativedelta(months=3)
+end_date = datetime.date.today() + datetime.timedelta(days=8)
 end = end_date.strftime('%Y%m%d')
 kurzname = "alle"
 lang = "de"
 betreff = f"Wochenprogramm {anfang_date.strftime('%d.%m')} bis {end_date.strftime('%d.%m')}"
-
 
 studiengaenge = {"all": "alle Studiengänge",
                     "bsc": "Bachelor of Science Mathematik",

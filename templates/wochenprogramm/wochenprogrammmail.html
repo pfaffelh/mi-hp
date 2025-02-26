@@ -22,8 +22,9 @@
     </p>
     {% endfor %} {% if vortrag != [] %}
     <br />
+    {% if events != [] %}
     <h3>Vorträge</h3>
-    {% endif %} {% for v in vortrag %}
+    {% endif %} {% endif %} {% for v in vortrag %}
     <p>
       {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if v["endzeit"]
       != v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}{% if v["ort"] != "" %},
@@ -46,8 +47,8 @@
       <i style="margin-top: 5px">{{ v["kommentar"]|safe }}</i> {% endif %}
     </p>
     {% endfor %}
-    <br>
-    <br>
+    <br />
+    <br />
     <img
       src="https://www.math.uni-freiburg.de/static/images/ufr.png"
       alt="Universität Freiburg"
