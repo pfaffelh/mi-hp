@@ -448,7 +448,7 @@ def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template
     """
     Versendet E-Mails mit einer Jinja2-Vorlage an mehrere Empfänger.
     """
-    data = news.get_wochenprogramm_full(anfang, end, kurzname, lang)
+    data = get_wochenprogramm_full(anfang, end, kurzname, lang)
     try:
         with smtplib.SMTP_SSL("mail.uni-freiburg.de", 465) as server:
             server.login(absender_email, absender_passwort)
