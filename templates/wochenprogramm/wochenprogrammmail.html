@@ -7,60 +7,45 @@
     </h2>
     {% if prefix != "" %}
     <p>{{ prefix|safe }}</p>
-    {% endif %} 
-    {% if events != [] %}
+    {% endif %} {% if events != [] %}
     <h3>Events</h3>
-    {% endif %}
-    {% for ev in events %}
-    <p style="margin-bottom: 5px">
+    {% endif %} {% for ev in events %}
+    <p>
       {{ ev["starttag"] }}, {{ ev["startdatum"] }}{% if ev["startzeit"] !=
       "00:00" %}, {{ ev["startzeit"] }}{% endif %} {% if ev["enddatum"] !=
       ev["startdatum"] %}- {{ ev["endtag"] }}, {{ ev["enddatum"] }}{% if
       ev["endzeit"] != "00:00" %}, {{ ev["endzeit"] }}{% endif %}{% endif %}
-    </p>
-    <h4 style="margin-top: 5px">
+      <br />
       {% if ev['url'] != ""%}<a href="{{ev['url'] | safe}}">{{ ev["title"] }}</a
-      >{% else %}{{ ev["title"] }}{% endif %}
-    </h4>
-    <p style="margin-top: 5px">{{ ev["kommentar"]}}</p>
-    {% endfor %} 
-    {% if vortrag != [] %}
+      >{% else %}{{ ev["title"] }}{% endif %} {% if ev["kommentar"] %}<br />{{
+      ev["kommentar"]}}{% endif %}
+    </p>
+    {% endfor %} {% if vortrag != [] %}
     <br />
     <h3>Vorträge</h3>
-    {% endif %}
-    {% for v in vortrag %}
-    <br />
+    {% endif %} {% for v in vortrag %}
     <p>
       {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if v["endzeit"]
       != v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}{% if v["ort"] != "" %},
       {{ v["ort"] }}{% endif %}
-    </p>
-
-    <p>
+      <br />
       {% if v["reihe"] != []%} {% for (title, url) in v["reihe"] %} {% if url !=
       "" %}<a href="{{url}}">{{ title }}</a>{% else %}{{ title }}{% endif %} {%
       endfor %} {% endif %}
-    </p>
-
-    <h5>
+      <br />
       {% if v['url'] != "" %}
       <a href="{{ v['url'] | safe}}">
         {{ v['sprecher']}}: {{ v['title']|safe }}
       </a>
       {% else %} {{ v['sprecher']}}: {{ v['title']|safe }} {% endif %}
-    </h5>
+      <br />
 
-    {% if v["abstract"] != "" %}
-    <p>
-      {% if lang == "de" %}Zusammenfassung: {% else %}Abstract: {% endif %} {{
-      v["abstract"] |safe }}
+      {% if v["abstract"] != "" %} {% if lang == "de" %}Zusammenfassung: {% else
+      %}Abstract: {% endif %} {{ v["abstract"] |safe }} {% endif %}<br />
+      {% if v["kommentar"] %}
+      <i style="margin-top: 5px">{{ v["kommentar"]|safe }}</i> {% endif %}
     </p>
-    {% endif %} {% if v["kommentar"] %}
-    <i style="margin-top: 5px">{{ v["kommentar"]|safe }}</i> {% endif %}{%
-    endfor %}
-    <br />
-    <br />
-    <br />
+    {% endfor %}
     <img
       src="https://www.math.uni-freiburg.de/static/images/ufr.png"
       alt="Universität Freiburg"
