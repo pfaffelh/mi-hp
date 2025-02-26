@@ -577,5 +577,13 @@ scheduler.add_job(
     hour=5,
     minute=30
 )
+scheduler.add_job(
+    func=news.send_email,
+    trigger="cron",
+    max_instances=1,
+    day_of_week='mon-sun',
+    hour=22,
+    minute=50
+)
 scheduler.start()
 

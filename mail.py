@@ -11,10 +11,11 @@ from utils.config import *
 smtp_user, _, smtp_password = netrc.authenticators("mail.uni-freiburg.de")
 empfaenger_email = "pfaffelh@gmail.com"  # Empfänger-E-Mail-Adresse
 
-def send_email(empfaenger_email, betreff, template_html, absender_email, absender_passwort, **data):
+def send_email(empfaenger_email, betreff, template_html, absender_email, absender_passwort):
     """
     Versendet E-Mails mit einer Jinja2-Vorlage an mehrere Empfänger.
     """
+    data = news.get_wochenprogramm_full(anfang, end, kurzname, lang)
     try:
         with smtplib.SMTP_SSL("mail.uni-freiburg.de", 465) as server:
             server.login(absender_email, absender_passwort)
@@ -43,23 +44,7 @@ def send_email(empfaenger_email, betreff, template_html, absender_email, absende
         print(f"Fehler beim Senden der E-Mail: {e}")
 
 
-empfaenger_email = "pfaffelh@gmail.com"
-template_html = "templates/wochenprogramm/wochenprogrammmail.html"
 
-anfang_date = datetime.now()
-anfang = anfang_date.strftime('%Y%m%d')
-end_date = datetime.now() + relativedelta(months=3)
-end = end_date.strftime('%Y%m%d')
-
-kurzname = "alle"
-lang = "de"
-
-data = news.get_wochenprogramm_full(anfang, end, kurzname, lang)
-print(data)
-
-betreff = f"Wochenprogramm {anfang_date.strftime('%d.%m')} bis {end_date.strftime('%d.%m')}"
-print(betreff)
-
-send_email(empfaenger_email, betreff, template_html, smtp_user, smtp_password, **data)
+send_email(empfaenger_email, betreff, mail_template, smtp_user, smtp_password)
 
 

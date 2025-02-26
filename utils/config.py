@@ -2,6 +2,7 @@ import socket
 import netrc
 import os
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
@@ -75,6 +76,16 @@ except:
 mensaplan_url = mensaplan_host + "apispeiseplan?&type=98&tx_speiseplan_pi1[apiKey]=" + mensa_password + "&&tx_speiseplan_pi1[ort]=620"
 
 smtp_user, smtp_password, _ = netrc.authenticators("mail.uni-freiburg.de")
+empfaenger_email = "pfaffelh@gmail.com"  # Empfänger-E-Mail-Adresse
+mail_template = "templates/wochenprogramm/wochenprogrammmail.html"
+anfang_date = datetime.now()
+anfang = anfang_date.strftime('%Y%m%d')
+end_date = datetime.now() + relativedelta(months=3)
+end = end_date.strftime('%Y%m%d')
+kurzname = "alle"
+lang = "de"
+betreff = f"Wochenprogramm {anfang_date.strftime('%d.%m')} bis {end_date.strftime('%d.%m')}"
+
 
 studiengaenge = {"all": "alle Studiengänge",
                     "bsc": "Bachelor of Science Mathematik",

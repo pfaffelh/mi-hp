@@ -8,6 +8,8 @@ import base64, json
 import latex2markdown
 import smtplib
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from jinja2 import Template
 
 app = Flask(__name__)
 
@@ -442,29 +444,34 @@ def get_api_wochenprogramm(anfang, ende):
             })
     return vortraege_reduced
 
+def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template=mail_template, absender_email=absender_email, absender_passwort=absender_passwort):
+    """
+    Versendet E-Mails mit einer Jinja2-Vorlage an mehrere Empfänger.
+    """
+    data = news.get_wochenprogramm_full(anfang, end, kurzname, lang)
+    try:
+        with smtplib.SMTP_SSL("mail.uni-freiburg.de", 465) as server:
+            server.login(absender_email, absender_passwort)
 
-# .netrc-Datei lesen
-#try:
-#    netrc_info = netrc.netrc()
-#    absender_email, absender_passwort, _ = netrc_info.authenticators("mail.uni-freiburg.de")
+            with open(mail_template, 'r') as f:
+                vorlage = Template(f.read())
+            # E-Mail-Nachricht erstellen (MIMEMultipart für HTML-Inhalt)
+            msg = MIMEMultipart('alternative')
+            msg['Subject'] = betreff
+            msg['From'] = absender_email
+            msg['To'] = empfaenger_email  # Individueller Empfänger
 
-#empfaenger_email = "pfaffelh@gmail.com"  # Empfänger-E-Mail-Adresse
+            # Vorlage mit Daten füllen
+            print(data)
+            print("de")
+            html_inhalt = vorlage.render(lang = "de", **data)
 
-# E-Mail-Inhalt
-#betreff = "Test"
-#inhalt = "Test2"
+            # HTML-Inhalt hinzufügen
+            html_part = MIMEText(html_inhalt, 'html')
+            msg.attach(html_part)
 
-# Erstelle die E-Mail-Nachricht
-#nachricht = MIMEText(inhalt)
-#nachricht["Subject"] = betreff
-#nachricht["From"] = smtp_user
-#nachricht["To"] = empfaenger_email
+            server.send_message(msg)
+            print(f"E-Mail an {empfaenger_email} erfolgreich versendet!")
 
-# Verbindung zum Mailserver herstellen und E-Mail senden
-#try:
-#    server = smtplib.SMTP_SSL("mail.uni-freiburg.de", 443)
-#    server.login(smtp_user, smtp_password)
-#    server.sendmail(smtp_user, empfaenger_email, nachricht.as_string())
-#    print("E-Mail erfolgreich versendet!")
-#except Exception as e:
-#    print(f"Fehler beim Senden der E-Mail: {e}")
+    except Exception as e:
+        print(f"Fehler beim Senden der E-Mail: {e}")
