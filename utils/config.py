@@ -75,7 +75,7 @@ except:
     mensa_password = ""
 mensaplan_url = mensaplan_host + "apispeiseplan?&type=98&tx_speiseplan_pi1[apiKey]=" + mensa_password + "&&tx_speiseplan_pi1[ort]=620"
 
-smtp_user, smtp_password, _ = netrc.authenticators("mail.uni-freiburg.de")
+smtp_user, _, smtp_password = netrc.authenticators("mail.uni-freiburg.de")
 empfaenger_email = "pfaffelh@gmail.com"  # Empfänger-E-Mail-Adresse
 mail_template = "templates/wochenprogramm/wochenprogrammmail.html"
 anfang_date = datetime.now()
