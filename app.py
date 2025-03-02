@@ -556,6 +556,12 @@ def shownews(lang = "de", anfang = datetime(datetime.now().year, datetime.now().
     filenames = ["wochenprogramm/newsarchiv.html"]
     return render_template("home_news.html", filenames=filenames, reihen = reihen, events = events, data = data, lang=lang)
 
+@app.route("/wochenprogramm/<lang>/faq/")
+@app.route("/wochenprogramm/<lang>/faq/<show>")
+def showwoprofaq(lang, show =""):
+    return redirect(url_for('showaccordion_wochenprogramm', lang=lang, kurzname = 'faqwopro', show=show))
+
+
 #################
 ## Monitor EG  ##
 #################
