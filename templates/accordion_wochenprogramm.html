@@ -1,0 +1,160 @@
+{% extends 'base_wochenprogramm.html' %} {% block navbar %} {% include 'navbar_wochenprogramm.html' %} {%
+endblock %} {% block content %}
+<div class="container" id="inhalt">
+  <h1>
+    {% if data["titel_html"] %} {{ data["titel"]|safe }} {% else %} {{
+    data["titel"]|markdown }} {% endif %}
+  </h1>
+  {% if data["prefix_html"] %} {{ data["prefix"]|safe }} {% else %} {{
+  data["prefix"]|markdown }} {% endif %}
+</div>
+
+{% if data["quicklinks"] !=[] %}
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      {% for q in data["quicklinks"] %}
+      <a
+        href="{{ q['url']}}"
+        class="btn btn-primary"
+        role="button"
+        aria-disabled="true"
+      >
+        {{ q['title']}}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="container">
+  <div class="row g-0 py-1 row-cols-4 row-cols-lg-6">
+    {% if show != 'all' %}
+    <a
+      class="action"
+      href="{% if vpn %}{{ url_for('showvpnaccordion_wochenprogramm', kurzname = data['kurzname'], lang = lang, show = 'all') }}{% else %}{{ url_for('showaccordion_wochenprogramm', kurzname = data['kurzname'], lang = lang, show = 'all') }}{% endif %}"
+    >
+      <button class="btn btn-primary" style="background-color: #344a9a">
+        {% if lang == "de" %}Alles ausklappen{% else %} Expand all {% endif %}
+      </button></a
+    >
+    {% else %}
+    <a
+      class="action"
+      href="{% if vpn %}{{ url_for('showvpnaccordion_wochenprogramm', kurzname = data['kurzname'], lang = lang, show = '') }}{% else %}{{ url_for('showaccordion_wochenprogramm', kurzname = data['kurzname'], lang = lang, show = '') }}{% endif %}"
+    >
+      <button class="btn btn-primary">
+        {% if lang == "de" %}Alles einklappen{% else %} Collapse all {% endif %}
+      </button></a
+    >
+    {% endif %}
+  </div>
+</div>
+
+<div class="container">
+  <div class="accordion" id="accordionFAQtags">
+    {% for k1 in data["kinder"] %}
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button
+          aria-controls="{{k1['kurzname']}}"
+          aria-expanded="{% if showcat == 'all' or showcat == k1['kurzname'] %}true{% else %}false{% endif %}"
+          class="accordion-button {% if showcat != 'all' and showcat != k1['kurzname'] %}collapsed{% endif %}"
+          data-bs-target="#{{k1['kurzname']}}"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <h3 class="h5">
+            {% if k1["titel_html"] %} {{ k1["titel"]|safe }} {% else %} {{
+            k1["titel"]|markdown }} {% endif %}
+          </h3>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="{{k1['kurzname']}}"
+        class="accordion-collapse collapse {% if showcat == 'all' or showcat == k1['kurzname'] %}show{% endif %}"
+        data-bs-parent="#accordionFAQtags"
+        id="{{k1['kurzname']}}"
+      >
+        <div class="accordion-body">
+          <div class="accordion" id="accordion{{k1['kurzname']}}">
+            <div class="text-end">{{ k1['bearbeitet']|markdown }}</div>
+            {% if k1["prefix_html"] %} {{ k1["prefix"]|safe }} {% else %} {{
+            k1["prefix"]|markdown }} {% endif %} {% if k1["quicklinks"] !=[] %}
+            <div class="text-end">
+              <div class="row">
+                <div class="col">
+                  {% for q1 in k1["quicklinks"] %}
+                  <a
+                    href="{{ q1['url']}}"
+                    class="btn btn-primary"
+                    role="button"
+                    aria-disabled="true"
+                  >
+                    {{ q1['title']}}
+                  </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            {% endif %} {% for k2 in k1["kinder"] %}
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button
+                  aria-controls="{{k2['kurzname']}}"
+                  aria-expanded="{% if show == 'all' or show == k2['kurzname'] %}true{% else %}false{% endif %}"
+                  class="accordion-button {% if show != 'all' and show != k2['kurzname'] %}collapsed{% endif %}"
+                  data-bs-target="#{{k2['kurzname']}}"
+                  data-bs-toggle="collapse"
+                  type="button"
+                >
+                  <h3 class="h5" id="{{k2['kurzname']}}_q">
+                    {% if k2["titel_html"] %} {{ k2["titel"]|safe }} {% else %}
+                    {{ k2["titel"]|markdown }} {% endif %}
+                  </h3>
+                </button>
+              </h3>
+              <div
+                aria-labelledby="{{k2['kurzname']}}"
+                class="accordion-collapse collapse {% if show == 'all' or show == k2['kurzname'] %}show{% endif %}"
+                data-bs-parent="#accordion{{k1['kurzname']}}"
+                id="{{k2['kurzname']}}"
+              >
+                <div class="accordion-body">
+                  <div class="text-end">{{ k2['bearbeitet']|markdown }}</div>
+                  {% if k2["prefix_html"] %} {{ k2["prefix"]|safe }} {% else %}
+                  {{ k2["prefix"]|markdown }} {% endif %} {% if k2["quicklinks"]
+                  !=[] %}
+                  <div class="text-end">
+                    <div class="row">
+                      <div class="col">
+                        {% for q2 in k2["quicklinks"] %}
+                        <a
+                          href="{{ q2['url']}}"
+                          class="btn btn-primary"
+                          role="button"
+                          aria-disabled="true"
+                        >
+                          {{ q2['title']}}
+                        </a>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %} {% if k2["suffix_html"] %} {{ k2["suffix"]|safe }}
+                  {% else %} {{ k2["suffix"]|markdown }} {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %} {% if k1["suffix_html"] %} {{ k1["suffix"]|safe }} {%
+            else %} {{ k1["suffix"]|markdown }} {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% if data["suffix_html"] %} {{ data["suffix"]|safe }} {% else
+    %} {{ data["suffix"]|markdown }} {% endif %}
+  </div>
+</div>
+{% endblock %}

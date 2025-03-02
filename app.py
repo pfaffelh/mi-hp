@@ -57,7 +57,7 @@ def handle_context():
                 show_laufendes_semester = vvz.get_showsemester(cur), 
                 show_kommendes_semester = vvz.get_showsemester(vvz.next_semester_kurzname(cur)))
 
-# This function is important for changing languages; see base.html. Within a template, we can use its own endpoint, i.e. all parameters it was given. 
+# This function is important for changing languages; see base_???.html. Within a template, we can use its own endpoint, i.e. all parameters it was given. 
 # For changing languages, we are then able to only change the lang-parameter.
 def url_for_self(**args):
     return url_for(request.endpoint, **dict(request.view_args, **args))
@@ -157,34 +157,57 @@ def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     # print(request.endpoint)
     data = news.data_for_base(lang, dtstring, testorpublic)
     filenames = ["index.html"]
-    return render_template("home.html", filenames=filenames, data = data, lang=lang)
+    return render_template("home_nlehre.html", filenames=filenames, data = data, lang=lang)
 
 #def showbase(lang="de"):
 #    return redirect(url_for('showlehrveranstaltungen', lang=lang, semester=vvz.get_current_semester_kurzname()))
 
-################################
-## Allgemeine Accordion-Seite ##
-################################
+#######################################
+## Allgemeine Accordion-Seite nlehre ##
+#######################################
 @app.route("/nlehre/<lang>/page/<kurzname>/")
 @app.route("/nlehre/<lang>/page/<kurzname>/<show>")
-def showaccordion(lang, kurzname, show =""):
+def showaccordion_nlehre(lang, kurzname, show =""):
     vpn = False
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
-    return render_template("accordion.html", lang=lang, data = data, showcat = showcat, show=show)
+    return render_template("accordion_nlehre.html", lang=lang, data = data, showcat = showcat, show=show)
 
 # Here is the vpn version
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/")
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/<show>")
-def showvpnaccordion(lang, kurzname, show =""):
+def showvpnaccordion_nlehre(lang, kurzname, show =""):
     vpn = True
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
-    return render_template("accordion.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
+    return render_template("accordion_nlehre.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
+
+###############################################
+## Allgemeine Accordion-Seite wochenprogramm ##
+###############################################
+@app.route("/wochenprogramm/<lang>/page/<kurzname>/")
+@app.route("/wochenprogramm/<lang>/page/<kurzname>/<show>")
+def showaccordion_wochenprogramm(lang, kurzname, show =""):
+    vpn = False
+    data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
+    return render_template("accordion_wochenprogramm.html", lang=lang, data = data, showcat = showcat, show=show)
+
+# Here is the vpn version
+@app.route("/wochenprogramm/vpn/<lang>/page/<kurzname>/")
+@app.route("/wochenprogramm/vpn/<lang>/page/<kurzname>/<show>")
+def showvpnaccordion_wochenprogramm(lang, kurzname, show =""):
+    vpn = True
+    data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
+    return render_template("accordion_wochenprogramm.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
+
+#############
+## Lexikon ##
+#############
+
 
 @app.route("/nlehre/<lang>/lexikon/")
 def showlexikon(lang):
     data = faq.get_lexikon_data()
     filenames = ["footer/lexikon.html"]
-    return render_template("home.html", filenames = filenames, data = data, lang = lang)
+    return render_template("home_nlehre.html", filenames = filenames, data = data, lang = lang)
 
 
 
@@ -197,22 +220,22 @@ def showbildnachweis(lang):
     # Bilder von "News und "Monitor"
     data = news.data_for_bildnachweis(lang)
     filenames = ["footer/bildnachweis.html"]
-    return render_template("home.html", filenames = filenames, data = data, lang=lang)
+    return render_template("home_nlehre.html", filenames = filenames, data = data, lang=lang)
 
 @app.route("/nlehre/<lang>/impressum/")
 def showimpressum(lang):
     filenames = ["footer/impressum.html"]
-    return render_template("home.html", filenames = filenames, lang=lang)
+    return render_template("home_nlehre.html", filenames = filenames, lang=lang)
 
 @app.route("/nlehre/<lang>/datenschutz/")
 def showdatenschutz(lang):
     filenames = ["footer/datenschutz.html"]
-    return render_template("home.html", filenames = filenames, lang=lang)
+    return render_template("home_nlehre.html", filenames = filenames, lang=lang)
 
 @app.route("/nlehre/vpn/<lang>/tools")
 def showtools(lang = "de"):
     filenames = ["footer/tools.html"]
-    return render_template("home.html", filenames = filenames, lang=lang)
+    return render_template("home_nlehre.html", filenames = filenames, lang=lang)
 
 ##########################
 ## Studieninteressierte ## 
@@ -225,7 +248,7 @@ def showinteresse(lang = "de", anchor=""):
     with app.open_resource('static/data/interesse.json') as f:
         data = json.load(f)
     filenames = ["interesse/interesse_prefix.html", "interesse/interesse_content.html"]
-    return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
+    return render_template("home_nlehre.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
 ##########################
 ## Studienanfänger      ## 
@@ -234,7 +257,7 @@ def showinteresse(lang = "de", anchor=""):
 @app.route("/nlehre/<lang>/anfang/")
 @app.route("/nlehre/<lang>/anfang/<anchor>")
 def showanfang(lang, anchor=""):
-    return redirect(url_for('showaccordion', lang=lang, kurzname = 'studienanfang', show=anchor))
+    return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'studienanfang', show=anchor))
 
 ###################
 ## Weiterbildung ## 
@@ -247,7 +270,7 @@ def showweiterbildung(lang, anchor=""):
     with app.open_resource('static/data/weiterbildung.json') as f:
         data = json.load(f)
     filenames = ["interesse/interesse_content.html"]
-    return render_template("home.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
+    return render_template("home_nlehre.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
 
 ###################
 ## Studiengaenge ##
@@ -258,7 +281,7 @@ def showweiterbildung(lang, anchor=""):
 @app.route("/nlehre/<lang>/studiengaenge/<anchor>")
 def showstudiengaenge(lang = "de", anchor="aktuell"):
     filenames = ["studiengaenge/index.html"]
-    return render_template("home.html", filenames = filenames, lang=lang, anchor=anchor)
+    return render_template("home_nlehre.html", filenames = filenames, lang=lang, anchor=anchor)
 
 @app.route("/nlehre/<lang>/studiengaenge/<anchor>")
 @app.route("/nlehre/<lang>/studiengaenge/<studiengang>/")
@@ -279,12 +302,12 @@ def showstudiengang(lang, studiengang, anchor=""):
     if studiengang == "med_erw":
         filenames = ["studiengaenge/med_erw/index-2021.html"]
     if studiengang == "med_dual":
-        return redirect(url_for('showaccordion', lang=lang, kurzname = 'med-dual', show=''))
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'med-dual', show=''))
         # filenames = ["studiengaenge/med_dual/index-2024.html"]
     if studiengang == "promotion":
-        return redirect(url_for('showaccordion', lang=lang, kurzname = 'promotion', show=''))
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'promotion', show=''))
     #   filenames = ["studiengaenge/promotion/index.html"]
-    return render_template("home.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
+    return render_template("home_nlehre.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
 
 #########################
 ## Lehrveranstaltungen ##
@@ -334,7 +357,7 @@ def showlehrveranstaltungenbase(lang="de"):
         except:
             semester_dict_2[key]["verw_exists"] =False
 
-    return render_template("home.html", filenames=filenames, lang=lang, semester_dict=semester_dict_2, semester_dict_old=semester_dict_old)
+    return render_template("home_nlehre.html", filenames=filenames, lang=lang, semester_dict=semester_dict_2, semester_dict_old=semester_dict_old)
 
 @app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/")
 @app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/<studiengang>")
@@ -343,7 +366,7 @@ def showlehrveranstaltungen(lang, semester, studiengang = "", modul = ""):
     semesterliste_alt = ["ws0607", "ss07", "ws0708", "ss08", "ws0809", "ss09", "ws0910", "ss10", "ws1011", "ss11", "ws1112", "ss12", "ws1213", "ss13", "ws1314", "ss14", "ws1415", "ss15", "ws1516", "ss16", "ws1617", "ss17", "ws1718", "ss18", "ws1819", "ss19", "ws1920", "ss20", "ws2021", "ss21", "ws2122", "ss22", "ws2223", "ss23", "ws2324", "ss24"]
     if semester in semesterliste_alt:
         filenames = [f"lehrveranstaltungen/{semester}.html"]
-        return render_template("home.html", filenames = filenames, lang=lang, semester=semester)
+        return render_template("home_nlehre.html", filenames = filenames, lang=lang, semester=semester)
     else:
         data = vvz.get_data(semester, lang, studiengang, modul)
         return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=semester, studiengang = studiengang, modul = modul, vpn_nextsemester = False)
@@ -381,7 +404,7 @@ def showlehrveranstaltungennextsemester(lang, studiengang = "", modul = ""):
     if vvz.get_showsemester(next_semester, hp_sichtbar = True):
         filenames = ["message.html"]
         message = f"<h1>Die Daten sind bereits <a href=/nlehre/de/lehrveranstaltungen/{next_semester}>hier</a> veröffentlicht.</h1>"
-        return render_template("home.html", filenames = filenames, lang=lang, message = message)
+        return render_template("home_nlehre.html", filenames = filenames, lang=lang, message = message)
     elif vvz.get_showsemester(next_semester, hp_sichtbar = False):
         data = vvz.get_data(next_semester, lang, studiengang, modul, vpn = True)
         return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=next_semester, studiengang = studiengang, modul = modul, vpn_nextsemester = True)
@@ -389,7 +412,7 @@ def showlehrveranstaltungennextsemester(lang, studiengang = "", modul = ""):
         filenames = ["message.html"]
         m = "{{ url_for('showlehrveranstaltungen', lang=lang, semester = kommendes_semester) }}"
         message = f"<h1>Es liegen noch keine Daten vor.</h1>"
-        return render_template("home.html", filenames = filenames, lang=lang, message = message)
+        return render_template("home_nlehre.html", filenames = filenames, lang=lang, message = message)
 
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/stundenplan/")
 def showlehrveranstaltungennextsemesterstundenplan(lang):
@@ -412,7 +435,7 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
 @app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungsregeln/")
 @app.route("/nlehre/vpn/<lang>/studiendekanat/pruefungsregeln/<show>")
 def show_pruefungen(lang, show =""):
-    return redirect(url_for('showaccordion', lang=lang, kurzname =
+    return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname =
     'pruefungen-begriffe-regeln', show=show))
 
 # Neue Accordions Ende
@@ -420,7 +443,7 @@ def show_pruefungen(lang, show =""):
 @app.route("/nlehre/<lang>/studiendekanat/faq/")
 @app.route("/nlehre/<lang>/studiendekanat/faq/<show>")
 def showstufaq(lang, show =""):
-    return redirect(url_for('showaccordion', lang=lang, kurzname = 'faqstud', show=show))
+    return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'faqstud', show=show))
 
 @app.route("/nlehre/<lang>/studiendekanat/")
 @app.route("/nlehre/<lang>/studiendekanat/<unterseite>/")
@@ -437,10 +460,10 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
     if unterseite == "schwerpunktgebiete":
         filenames = ["studiendekanat/schwerpunktgebiete.html"]
     if unterseite == "warum_mathematik":
-        return redirect(url_for('showaccordion', lang=lang, kurzname = 'warum-mathematik', show=show))
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'warum-mathematik', show=show))
         # filenames = ["studiendekanat/warum_mathematik.html"]
     if unterseite == "termine":
-        return redirect(url_for('showaccordion', lang=lang, kurzname = 'pruefungstermine', show=show))
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'pruefungstermine', show=show))
         # filenames = ["studiendekanat/termine.html"]
     if unterseite == "calendar":
         events = vvz.get_calendar_data(datetime.now() + timedelta(days = -365), lang)
@@ -452,8 +475,8 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
     if unterseite == "pruefungen":
         filenames = ["studiendekanat/pruefungen.html"]
     if unterseite == "ausland":
-        return redirect(url_for('showaccordion', lang=lang, kurzname = 'ausland', show=show))
-    return render_template("home.html", data=data, filenames = filenames, lang=lang)
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'ausland', show=show))
+    return render_template("home_nlehre.html", data=data, filenames = filenames, lang=lang)
 
 
 ##################
@@ -465,26 +488,26 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
 @app.route("/nlehre/<lang>/lehrende/faq/")
 @app.route("/nlehre/<lang>/lehrende/faq/<show>")
 def showmitfaq(lang, show =""):
-    return redirect(url_for('showaccordion', lang=lang, kurzname = 'faqmit', show=show))
+    return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'faqmit', show=show))
 
 @app.route("/nlehre/<lang>/lehrende/<unterseite>")
 @app.route("/nlehre/<lang>/lehrende/<unterseite>/<anchor>")
 def showlehrende(lang, unterseite ="", anchor = ""):
     filenames = []
     if unterseite == "zertifikat":
-        return redirect(url_for('showaccordion', lang=lang, kurzname = 'zertifikat', show=anchor))
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'zertifikat', show=anchor))
     if unterseite == "calendar":
         events = vvz.get_calendar_data(datetime.now() + timedelta(days = -360), lang)
         return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = True)
         
-    return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
+    return render_template("home_nlehre.html", filenames = filenames, anchor = anchor, lang=lang)
 
 @fortivpn()
 @app.route("/nlehre/vpn/<lang>/lehrende/<unterseite>")
 @app.route("/nlehre/vpn/<lang>/lehrende/<unterseite>/<anchor>")
 def showlehrendevpn(lang, unterseite ="", anchor = ""):
     filenames = []
-    return render_template("home.html", filenames = filenames, anchor = anchor, lang=lang)
+    return render_template("home_nlehre.html", filenames = filenames, anchor = anchor, lang=lang)
 
 @app.route("/nlehre/vpn/<lang>/lehrende/<semester>/planung/")
 def showlehrveranstaltungenplanung(lang, semester):
@@ -500,10 +523,10 @@ def showlehrveranstaltungenplanung(lang, semester):
 @app.route("/nlehre/<lang>/downloads/")
 @app.route("/nlehre/<lang>/downloads/<show>")
 def showdownloads(lang, show=""):
-    return redirect(url_for('showaccordion', lang=lang, kurzname =
+    return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname =
         'downloads', show=show))
 #    filenames = ["downloads/downloads.html"]
-#    return render_template("home.html", filenames=filenames, anchor=anchor, lang=lang)
+#    return render_template("home_nlehre.html", filenames=filenames, anchor=anchor, lang=lang)
 
 ####################
 ## Wochenprogramm ##
