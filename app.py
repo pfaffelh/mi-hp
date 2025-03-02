@@ -613,8 +613,8 @@ scheduler.add_job(
     trigger="cron",
     max_instances=1,
     day_of_week='sun',
-    hour=18,
-    minute=59
+    hour=19,
+    minute=38
 )
 scheduler.start()
 

@@ -454,9 +454,10 @@ def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template
         try:
             with smtplib.SMTP_SSL("mail.uni-freiburg.de", 465) as server:
                 server.login(absender_email, absender_passwort)
+                print("Erfolgreich eingeloggt!")
 
                 with app.open_resource(mail_template, 'r') as f:
-                    vorlage = Template(f.read().decode("utf-8"))
+                    vorlage = Template(f.read())
                 # E-Mail-Nachricht erstellen (MIMEMultipart für HTML-Inhalt)
                 msg = MIMEMultipart('alternative')
                 msg['Subject'] = betreff
