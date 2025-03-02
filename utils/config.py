@@ -87,7 +87,7 @@ end_date = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) + r
 end = end_date.strftime('%Y%m%d')
 kurzname = "alle"
 lang = "de"
-betreff = f"Wochenprogramm {anfang_date.strftime('%d.%m')} bis {end_date.strftime('%d.%m')}"
+betreff = f"Wochenprogramm {anfang_date.strftime('%-d.%-m')} bis {end_date.strftime('%-d.%-m')}"
 
 studiengaenge = {"all": "alle Studiengänge",
                     "bsc": "Bachelor of Science Mathematik",
