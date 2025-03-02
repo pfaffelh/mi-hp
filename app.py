@@ -180,30 +180,9 @@ def showvpnaccordion_nlehre(lang, kurzname, show =""):
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
     return render_template("accordion_nlehre.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
 
-###############################################
-## Allgemeine Accordion-Seite wochenprogramm ##
-###############################################
-@app.route("/wochenprogramm/<lang>/page/<kurzname>/")
-@app.route("/wochenprogramm/<lang>/page/<kurzname>/<show>")
-def showaccordion_wochenprogramm(lang, kurzname, show =""):
-    vpn = False
-    print(kurzname)
-    data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
-    print(data)
-    return render_template("accordion_wochenprogramm.html", lang=lang, data = data, showcat = showcat, show=show)
-
-# Here is the vpn version
-@app.route("/wochenprogramm/vpn/<lang>/page/<kurzname>/")
-@app.route("/wochenprogramm/vpn/<lang>/page/<kurzname>/<show>")
-def showvpnaccordion_wochenprogramm(lang, kurzname, show =""):
-    vpn = True
-    data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
-    return render_template("accordion_wochenprogramm.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
-
 #############
 ## Lexikon ##
 #############
-
 
 @app.route("/nlehre/<lang>/lexikon/")
 def showlexikon(lang):
@@ -527,8 +506,6 @@ def showlehrveranstaltungenplanung(lang, semester):
 def showdownloads(lang, show=""):
     return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname =
         'downloads', show=show))
-#    filenames = ["downloads/downloads.html"]
-#    return render_template("home_nlehre.html", filenames=filenames, anchor=anchor, lang=lang)
 
 ####################
 ## Wochenprogramm ##
@@ -562,6 +539,27 @@ def shownews(lang = "de", anfang = datetime(datetime.now().year, datetime.now().
 @app.route("/wochenprogramm/<lang>/faq/<show>")
 def showwoprofaq(lang, show =""):
     return redirect(url_for('showaccordion_wochenprogramm', lang=lang, kurzname = 'faqwopro', show=show))
+
+####################################
+## Accordion-Seite wochenprogramm ##
+####################################
+
+@app.route("/wochenprogramm/<lang>/page/<kurzname>/")
+@app.route("/wochenprogramm/<lang>/page/<kurzname>/<show>")
+def showaccordion_wochenprogramm(lang, kurzname, show =""):
+    vpn = False
+    reihen, events = news.get_events(lang)
+    data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
+    return render_template("accordion_wochenprogramm.html", lang=lang, reihen=reihen, events=events, data=data, showcat=showcat, show=show)
+
+# Here is the vpn version
+@app.route("/wochenprogramm/vpn/<lang>/page/<kurzname>/")
+@app.route("/wochenprogramm/vpn/<lang>/page/<kurzname>/<show>")
+def showvpnaccordion_wochenprogramm(lang, kurzname, show =""):
+    vpn = True
+    reihen, events = news.get_events(lang)
+    data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
+    return render_template("accordion_wochenprogramm.html", lang=lang, vpn = vpn, reihen=reihen, events=events, data = data, showcat = showcat, show=show)
 
 
 #################
@@ -597,8 +595,12 @@ def get_vortraege(anfang = datetime.now().strftime('%Y%m%d'), ende = (datetime.n
     wochenprogramm_reduced = news.get_api_wochenprogramm(anfang, ende)
     return jsonify(wochenprogramm_reduced)
 
-# This function reads the Mensaplan everyday and puts the result into the mongodb
+#######################################
+## Regelmäßig ausgeführte Funktionen ##
+#######################################
+
 scheduler = BackgroundScheduler(timezone="Europe/Rome")
+# This function reads the Mensaplan everyday and puts the result into the mongodb
 # Runs from Monday to Sunday at 05:30 
 scheduler.add_job(
     func=news.writetonews_mensaplan_text,
@@ -608,13 +610,14 @@ scheduler.add_job(
     hour=5,
     minute=30
 )
+# Wochenprogramm-Email-Versand jeden Sonntag um 12:30
 scheduler.add_job(
     func=news.send_email,
     trigger="cron",
     max_instances=1,
     day_of_week='sun',
-    hour=19,
-    minute=38
+    hour=12,
+    minute=30
 )
 scheduler.start()
 
