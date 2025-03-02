@@ -187,7 +187,9 @@ def showvpnaccordion_nlehre(lang, kurzname, show =""):
 @app.route("/wochenprogramm/<lang>/page/<kurzname>/<show>")
 def showaccordion_wochenprogramm(lang, kurzname, show =""):
     vpn = False
+    print(kurzname)
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
+    print(data)
     return render_template("accordion_wochenprogramm.html", lang=lang, data = data, showcat = showcat, show=show)
 
 # Here is the vpn version
@@ -611,8 +613,8 @@ scheduler.add_job(
     trigger="cron",
     max_instances=1,
     day_of_week='sun',
-    hour=16,
-    minute=0
+    hour=18,
+    minute=43
 )
 scheduler.start()
 
