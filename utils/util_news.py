@@ -40,8 +40,8 @@ def get_events(lang = "de"):
     for vr in list(vortragsreihe.find({"event": False, "sichtbar" : True, "_public" : True}, sort = [("rang", pymongo.ASCENDING)])):
         reihen.append({"kurzname" : vr["kurzname"], "title" : getwl(vr, "title", lang)})
 
-    for vr in list(vortragsreihe.find({"event": True, "sichtbar" : True, "_public" : True}, sort = [("rang", pymongo.ASCENDING)])):
-        events.append({"kurzname" : vr["kurzname"], "title" : getwl(vr, "title", lang)})
+    for vr in list(vortragsreihe.find({"event": True, "sichtbar" : True, "_public" : True}, sort = [("end", pymongo.DESCENDING)])):
+        events.append({"kurzname" : vr["kurzname"], "title" : f"{getwl(vr, 'title', lang)} ({vr['start'].strftime('%-d.%-m')}-{vr['end'].strftime('%-d.%-m.%y')})"})
     return reihen, events
 
 def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
@@ -264,10 +264,10 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
                     "title" : getwl(e, "title", lang),
                     "url" : e["url"],
                     "starttag" : tage[e["start"].weekday()],
-                    "startdatum" : e["start"].strftime('%d.%m.%Y'),
+                    "startdatum" : e["start"].strftime('%-d.%-m.%y'),
                     "startzeit" : e["start"].strftime('%H:%M'),
                     "endtag" : tage[e["end"].weekday()],
-                    "enddatum" : e["end"].strftime('%d.%m.%Y'),
+                    "enddatum" : e["end"].strftime('%-d.%-m.%y'),
                     "endzeit" : e["end"].strftime('%H:%M'),
                     "kommentar" : getwl(e, "kommentar", lang)
                 }
@@ -287,7 +287,7 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
                 "url" : v["url"],
                 "lang" : v["lang"],
                 "abstract" : latex2markdown.LaTeX2Markdown(getwl(v, "text", lang)).to_markdown(),
-                "datum" : v["start"].strftime('%d.%m.%Y'),
+                "datum" : v["start"].strftime('%-d.%-m.%y'),
                 "tag" : tage[v["start"].weekday()],
                 "startzeit" : v["start"].strftime('%H:%M'),
                 "endzeit" : v["end"].strftime('%H:%M'),
@@ -353,7 +353,7 @@ def get_event(kurzname, lang = "de"):
                 "url" : v["url"],
                 "lang" : v["lang"],
                 "abstract" : latex2markdown.LaTeX2Markdown(getwl(v, "text", lang)).to_markdown(),
-                "datum" : v["start"].strftime('%d.%m.%Y') if v["start"] != previousdatum else "",
+                "datum" : v["start"].strftime('%-d.%-m.%y') if v["start"] != previousdatum else "",
                 "tag" : tage[v["start"].weekday()] if v["start"] != previousdatum else "",
                 "startzeit" : v["start"].strftime('%H:%M'),
                 "endzeit" : v["end"].strftime('%H:%M'),
@@ -436,7 +436,7 @@ def get_api_wochenprogramm(anfang, ende):
                 "abstract" : getwl(v, "text", "de"),
                 "ort" : getwl(v, "ort", "de"),
                 "url" : v["url"],
-                "datum" : v["start"].strftime('%d.%m.%Y'),
+                "datum" : v["start"].strftime('%-d.%-m.%y'),
                 "tag" : tage[v["start"].weekday()],
                 "startzeit" : v["start"].strftime('%H:%M'),
                 "endzeit" : v["end"].strftime('%H:%M'),
