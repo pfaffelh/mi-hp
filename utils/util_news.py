@@ -37,10 +37,10 @@ def getwl(x, field, lang):
 def get_events(lang = "de"):
     reihen = []
     events = []
-    for vr in list(vortragsreihe.find({"event": False, "sichtbar" : True, "_public" : True}, sort = [("rang", pymongo.ASCENDING)])):
+    for vr in list(vortragsreihe.find({"event": False, "sichtbar" : True, "_public" : True, "kurzname" : { "$ne" : ""}}, sort = [("rang", pymongo.ASCENDING)])):
         reihen.append({"kurzname" : vr["kurzname"], "title" : getwl(vr, "title", lang)})
 
-    for vr in list(vortragsreihe.find({"event": True, "sichtbar" : True, "_public" : True}, sort = [("end", pymongo.DESCENDING)])):
+    for vr in list(vortragsreihe.find({"event": True, "sichtbar" : True, "_public" : True, "kurzname" : { "$ne" : ""}}, sort = [("end", pymongo.ASCENDING)])):
         events.append({"kurzname" : vr["kurzname"], "title" : f"{getwl(vr, 'title', lang)} ({vr['start'].strftime('%-d.%-m')}-{vr['end'].strftime('%-d.%-m.%y')})"})
     return reihen, events
 

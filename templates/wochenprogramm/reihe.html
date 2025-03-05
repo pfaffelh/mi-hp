@@ -5,45 +5,25 @@
   <div class="container text-end">
     <div class="row">
       <div class="col">
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['previousanfang'], end = data['anfang'])}}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['previousanfang'], end = data['anfang'])}}"
+          class="btn btn-primary" role="button" aria-disabled="true">
           <i class="fas fa-angles-up" style="transform: rotate(270deg)"></i>
         </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['end'], end = data['nextend'])}}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['end'], end = data['nextend'])}}"
+          class="btn btn-primary" role="button" aria-disabled="true">
           <i class="fas fa-angles-up" style="transform: rotate(90deg)"></i>
         </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentsemester'], end = data['anfangnextsemester'])}}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentsemester'], end = data['anfangnextsemester'])}}"
+          class="btn btn-primary" role="button" aria-disabled="true">
           {% if lang == "de" %}Semesteransicht{% else %}Semesterly view{% endif
           %}
         </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentmonth'], end = data['anfangnextmonth'])}}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentmonth'], end = data['anfangnextmonth'])}}"
+          class="btn btn-primary" role="button" aria-disabled="true">
           {% if lang == "de" %}Monatsansicht{% else %}Monthly view{% endif %}
         </a>
-        <a
-          href="{{url_for('showvortragsreihe', lang=lang, kurzname = 'alle', anfang = data['anfang'], end = data['end'])}}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
+        <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = 'alle', anfang = data['anfang'], end = data['end'])}}"
+          class="btn btn-primary" role="button" aria-disabled="true">
           {% if lang == "de" %}Alle Vorträge{% else %}All talks{% endif %}
         </a>
       </div>
@@ -63,33 +43,47 @@
 
     <h3>{{ data['zeitraum'] }}</h3>
 
-    {% for ev in data["events"] %}
-    <h4>
-      {% if ev['url'] != ""%}<a href="{{ev['url'] | safe}}">{{ ev["title"] }}</a
-      >{% else %}{{ ev["title"] }}{% endif %}
-    </h4>
-    <p>
-      {{ ev["starttag"] }}, {{ ev["startdatum"] }}{% if ev["startzeit"] !=
-      "00:00" %}, {{ ev["startzeit"] }}{% endif %} {% if ev["enddatum"] !=
-      ev["startdatum"] %}-- {{ ev["endtag"] }}, {{ ev["enddatum"] }}{% if
-      ev["endzeit"] != "00:00" %}, {{ ev["endzeit"] }}{% endif %}{% endif %}
-    </p>
-    <p>{{ ev["kommentar"]}}</p>
-    {% endfor %} {% set modal_index = namespace(value=0) %}
+    {% set modal_index = namespace(value=0) %}
     <div class="container mt-1">
       <div class="row button-grid">
-        {% for v in data["vortrag"] %}
-        <div
-          class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0"
-        >
+        {% if data["events"] != [] %}
+        <div class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0">
+          <h3>Events</h3>
+        </div>
+        {% endif %}
+        {% for ev in data["events"] %}
+        <div class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0">
           <!-- Modal Buttons -->
-          <button
-            type="button"
-            class="btn btn-primary w-100 h-100 lecture-module-button text-start"
-            data-bs-toggle="modal"
-            data-bs-target="#modal-{{modal_index.value}}"
-            style="font-size: 110%"
-          >
+          <button type="button" class="btn btn-primary w-100 h-100 lecture-module-button text-start"
+            data-bs-toggle="modal" data-bs-target="#modal-{{modal_index.value}}" style="font-size: 110%" {% if ev["url"]
+            !="" %} {% set url=ev["url"] %}{% else %}{% set
+            url="https://www.math.uni-freiburg.de/wochenprogramm/de/event/{{ ev['kurzname'] }}" %}{% endif %}
+            onclick="window.location.href='{{ url }}';">
+            <p style="font-weight: bold; margin-bottom: 2px">
+              {{ ev["title"] }}
+            </p>
+            <p style="margin-bottom: 2px">
+              {{ ev["starttag"] }}, {{ ev["startdatum"] }}{% if ev["startzeit"] !=
+              "00:00" %}, {{ ev["startzeit"] }}{% endif %} {% if ev["enddatum"] !=
+              ev["startdatum"] %}-- {{ ev["endtag"] }}, {{ ev["enddatum"] }}{% if
+              ev["endzeit"] != "00:00" %}, {{ ev["endzeit"] }}{% endif %}{% endif %}
+            </p>
+            <p style="margin-bottom: 2px">
+              {{ ev["kommentar"]}}
+            </p>
+          </button>
+        </div>
+        {% set modal_index.value = modal_index.value + 1 %} {% endfor %}
+        {% if data["events"] != [] and data["vortrag"] != [] %}
+        <div class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0">
+          <h3>Vorträge</h3>
+        </div>
+        {% endif %}
+        {% for v in data["vortrag"] %}
+        <div class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0">
+          <!-- Modal Buttons -->
+          <button type="button" class="btn btn-primary w-100 h-100 lecture-module-button text-start"
+            data-bs-toggle="modal" data-bs-target="#modal-{{modal_index.value}}" style="font-size: 110%">
             {% if v["reihe"] != []%}
             <p style="margin-bottom: 2px">
               {% for (title, url) in v["reihe"] %} {{ title }} {% endfor %}
@@ -109,14 +103,8 @@
         </div>
 
         <!-- Modals -->
-        <div
-          class="modal fade"
-          id="modal-{{modal_index.value}}"
-          tabindex="-1"
-          aria-labelledby="modalLabel-{{modal_index.value}}"
-          aria-hidden="true"
-          data-bs-backdrop="true"
-        >
+        <div class="modal fade" id="modal-{{modal_index.value}}" tabindex="-1"
+          aria-labelledby="modalLabel-{{modal_index.value}}" aria-hidden="true" data-bs-backdrop="true">
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
               <!-- Header -->
@@ -138,12 +126,8 @@
                         {{ v['sprecher']}}: {{ v['title']|markdown }}
                       </a>
                     </h4>
-                    <a
-                      class="btn btn-outline-primary active bg-white"
-                      style="border-color: #004a99"
-                      href="{{ v['url'] }}"
-                      role="button"
-                    >
+                    <a class="btn btn-outline-primary active bg-white" style="border-color: #004a99"
+                      href="{{ v['url'] }}" role="button">
                       <i class="fa-solid fa-link" style="color: #004a99"></i>
                     </a>
                     {% else %}
@@ -172,11 +156,7 @@
                 </div>
               </div>
 
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                 {% if lang == 'de' %} Schließen {% elif lang == 'en' %} Close {%
                 endif %}
               </button>

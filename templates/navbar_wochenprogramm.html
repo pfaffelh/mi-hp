@@ -23,6 +23,7 @@
           <li class="nav-item dropdown px-4 text-white ms-0">
             {% if lang == "de" %}Events{% else %}Events{% endif %}
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              {% if events != [] %}
               {% for event in events %}
               <li class="dropdown-submenu">
                 <a class="dropdown-item text-black"
@@ -30,6 +31,11 @@
                   {{ event['title'] }}</a>
               </li>
               {% endfor %}
+              {% else %}
+              <li class="dropdown-submenu">
+                {% if lang == "de" %}Keine Events geplant{% else %}No events planned{% endif %}
+              </li>
+              {% endif %}
             </ul>
           </li>
           <li>
