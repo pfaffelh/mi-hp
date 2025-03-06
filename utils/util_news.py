@@ -367,6 +367,7 @@ def get_monitordata(dtstring, testorpublic):
     # the date format for <dtstring>
     date_format_no_space = '%Y%m%d%H%M'
     dt = datetime.strptime(dtstring, date_format_no_space)
+    dt_seven_days = dt + timedelta(days = 7)
 
     data = {}
     # Daten für das Carousel
@@ -378,23 +379,54 @@ def get_monitordata(dtstring, testorpublic):
     for item in data["carouselnews"]:
         item["image"] = base64.b64encode(bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
 
-    # Daten für die News, wird doppelt gelesen wegen Scroll-Effekts
     query = { "monitor.fuermonitor": True, 
              "monitor.start" : { "$lte" : dt }, 
              "monitor.end" : { "$gte" : dt }}
     if testorpublic == "test":
         data["news"] = list(news.find(query ,sort=[("rang", pymongo.ASCENDING)]))
-#        data["news"] = data["news"] + list(news.find(query ,sort=[("rang", pymongo.ASCENDING)]))
     else:
         query["_public"] = True
         data["news"] = list(news.find(query, sort=[("rang", pymongo.ASCENDING)]))  
-#        data["news"] = data["news"] + list(news.find(query, sort=[("rang", pymongo.ASCENDING)]))
     for item in data["news"]:
         if item["image"] != []:
-            item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
+            item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()
 
     for item in data['news']:
         item['today'] = True if (item["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
+
+    # Add Vorträge der nächsten 7 Tage als eine News
+    if testorpublic == "test":
+        query = {"start" : { "$gte" : dt }, "end" : { "$lte" : dt_seven_days }}
+    else:
+        query = {"_public" :True, "start" : { "$gte" : dt}, "end" : { "$lte" : dt_seven_days }}
+    vortraege = list(vortrag.find(query, sort=[("start", pymongo.ASCENDING)]))
+    print(vortraege)
+    if vortraege != []:
+        for v in vortraege:
+            v["sprecher"] = getwl(v, "sprecher", lang)
+            v["sprecher_affiliation"] = getwl(v, "sprecher_affiliation", lang)
+            v["sprecher_affiliation"] = " (" + v["sprecher_affiliation"] + ")" if v["sprecher_affiliation"] != "" else ""
+            v["ort"] = getwl(v, "ort", lang)
+            v["title"] = getwl(v, "title", lang)
+            v["title"] = v["title"] + "." if v["title"] != "" else ""
+            re = vortragsreihe.find_one({"_id" : { "$in" : v["vortragsreihe"]}, "kurzname" : { "$ne" : "alle"}})
+            v["reihe"] = (getwl(re, "title", "en") + ": ") if re else ""
+            v["datum"] = v["start"].strftime('%-d.%-m.%y')
+            v["tag"] = tage[v["start"].weekday()]
+            v["startzeit"] = v["start"].strftime('%H:%M')
+        
+        data["news"].append(
+            {
+                "link" : "https://www.math.uni-freiburg.de/wochenprogramm/",
+                "showlastday" : False,
+                "image" : [],
+                "monitor" : {
+                    "title" : "Vorträge der nächsten sieben Tage",
+                    "text" : "  \n".join([f"{v["tag"]}, {v["datum"]}, {v["ort"]}. {v["reihe"]} {v["sprecher"]}{v["sprecher_affiliation"]}. {v["title"]}" for v in vortraege])
+                }
+            }
+        )
+        
     return data
 
 
@@ -419,7 +451,6 @@ def get_api_wochenprogramm(anfang, ende):
     vortraege =  list(vortrag.find({ "_public": True, "start" : { "$gte" : anfang }, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
     vortraege_reduced = []
     leer = vortragsreihe.find_one({"kurzname" : "alle"})
-    tage = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
     for v in vortraege:
         reihe = list(vortragsreihe.find({"_id" : { "$in" : v["vortragsreihe"]}}))
         reihenkurzname = [item["kurzname"] for item in reihe if item != leer]
