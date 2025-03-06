@@ -422,7 +422,7 @@ def get_monitordata(dtstring, testorpublic):
                 "image" : [],
                 "monitor" : {
                     "title" : "Vorträge der nächsten sieben Tage",
-                    "text" : "  \n".join([f"{v["tag"]}, {v["datum"]}, {v["ort"]}. {v["reihe"]} {v["sprecher"]}{v["sprecher_affiliation"]}. {v["title"]}" for v in vortraege])
+                    "text" : "  \n".join([f"{v['tag']}, {v['datum']}, {v['ort']}. {v['reihe']} {v['sprecher']}{v['sprecher_affiliation']}. {v['title']}" for v in vortraege])
                 }
             }
         )
