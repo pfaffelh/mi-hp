@@ -1,0 +1,11 @@
+table.vlverz td { border: none; }
+table.vlverz td { vertical-align: top; }
+table.vlverz td { margin-top: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; }
+table.vlverz tr.note td { padding-top: 0.25em !important; font-style: italic; }
+table.vlverz td:nth-child(2) { padding-right: 3ex; }
+table.vlverz col:nth-child(1) { width: 50pt; }
+table.vlverz col:nth-child(3) { width: 30%; }
+dd { vertical-align: top; position: relative; }
+dt { vertical-align: top; float: left; width: 5em; }
+dl { vertical-align:top; }
+.sembox { border: 1px solid #cacac8; padding: 0 10px; margin-bottom: 20px; }

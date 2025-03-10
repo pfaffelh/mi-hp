@@ -1,0 +1,191 @@
+@import "menu.css";
+
+body			{ color: #363534; }
+#brotkrumen a           { color: #2A6EBB; }
+#inhalt a               { color: #2A6EBB; }
+#inhalt a:visited       { color: #203EAB; }
+#oberebox,
+#oberebox a,
+#fusszeile,
+#fusszeile a            { color: #FFFFFF; }
+#lastwords,
+#lastwords a            { color: #777777; }
+
+#oberebox       { background: #004a99 url(/cd2009/siegel-93x55.png) no-repeat scroll left bottom; }
+#schlitz        { background: url(/cd2009/red-bar-17x4.gif) no-repeat scroll left top #FFFFFF; }
+
+#grauerbalken   { background-color: #CACAC8; }
+#oberebox       { background-color: #004A99; }
+#brotkrumen     { background-color: #E0E1DD; }
+#inhaltwrap     { background-color: #F4F3F3; }
+#fusszeile      { background-color: #004A99; }
+
+a       { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+table { margin-top: 1em; margin-bottom: 1em; border-collapse: collapse; }
+th, td                  { padding: 0.3em; }
+table.border th,
+table.border td         { border: 1px solid black; }
+table.noborder td,
+table.noborder th       { border: none; }
+table.top td,
+table.top th            { vertical-align: top; }
+
+body {
+        font-family: Arial, sans-serif;
+}
+h1,h2,h3,h4,h5,h6,#institution {
+        font-family: Times New Roman, serif;
+}
+
+h1,h2 {
+        border-bottom: 1px solid #cacac8;
+        font-weight: normal;
+}
+h3,h4,h5,h6 {
+        border-bottom: none;
+        font-weight: bold;
+}
+dt {
+	font-style: italic;
+}
+
+body          { font-size: 69%; }
+h1            { font-size: 165%; }
+h2            { font-size: 140%; margin: 1em 0 0.75em 0; }
+h3            { font-size: 125%; }
+h4            { font-size: 110%; }
+h5            { font-size: 100%; }
+h6            { font-size: 90%; }
+#linkebox     { font-size: 100%; }
+#sprachwahl   { font-size: 9pt; }
+#abteilung    { font-size: 18pt; }
+#institut     { font-size: 18pt; }
+#universitaet { font-size: 14pt; }
+#brotkrumen   { font-size: 9pt; }
+#inhalt       { font-size: 1.2em; }
+#fusszeile    { font-size: 1.1em; }
+.menu         { font-size: 1.2em; }
+
+#inhalt ul {
+	list-style-type: none;
+	list-style-image: url(bullet.gif);
+}
+
+#inhalt li {
+	margin: 0.25em 0;
+}
+
+#inhalt ul ul li {
+	list-style-type: none;
+	list-style-image: url(bullet_hollow.gif);
+}
+
+
+/* box positioning
+ */
+* { box-sizing: border-box; }
+
+#navigation   { display: none; }
+#navigation-label { display: none; }
+#navigation-menu  { position: relative; top: 200px; }
+#navigation-oberesmenu   { position: initial; width: initial; }
+#navigation-unteresmenu  { position: initial; width: initial; padding-top: 1.2em; }
+#linkebox     { position: absolute; top: 0;     left: 1px;   width: 200px; }
+#mittlerebox  { position: absolute; top: 0;     left: 181px; width: 66px; }
+#rechtebox    { position: absolute; top: 0;     left: 247px; width: 756px; }
+#grauerbalken { position: absolute; top: 116px; left: 0; right: 0; height: 4px; }
+#oberebox     { position: absolute; top: 0;     left: 0; right: 0; height: 116px; }
+#schlitz      { position: absolute; top: 116px; left: 0; right: 0; height: 4px; }
+#brotkrumen   { position: absolute; top: 120px; left: 0; right: 0; height: 19px; }
+#grossebox    { position: absolute; top: 139px; left: 0; right: 0; }
+#logo         { position: absolute; top: 10px;  right: 10px; }
+#differimg    { width: 100px; }
+#sprachwahl   { position: absolute; top:    10px; left: 197px; }
+#institution  { position: absolute; bottom: 10px; left: 197px; }
+#inhalt       { position: relative; }
+#fusszeile    { position: relative; height: 30px; }
+
+#rechtebox  { min-height: 90%; }
+#grossebox  { padding-bottom: 10px; bottom: 0px; }
+#inhaltwrap { padding: 1px 25px 25px 25px; min-height: 100%; overflow: auto; }
+#brotkrumen { padding: 3px 25px; }
+#fusszeile  { padding: 8px 20px 5px; }
+#lastwords  { padding: 5px 0; }
+
+
+/* horizontal lists using float and clearfix hack
+ */
+#sprachwahl ul,
+#brotkrumen ul,
+#fusszeile ul {
+        list-style-type: none; padding: 0; margin: 0;
+}
+#sprachwahl ul:after,
+#brotkrumen ul:after,
+#fusszeile ul:after {
+        content: ".";
+        visibility: hidden;
+        display: block;
+        height: 0;
+        clear: both;
+}
+#sprachwahl ul li,
+#brotkrumen ul li:not(:last-child) {
+        float: left;
+        padding: 0 5px 0 0;
+}
+#fusszeile ul li:not(:last-child) {
+        float: left;
+        padding: 0 20px 0 0;
+}
+
+
+/* tables classes copied from RZ
+ */
+table.uni {
+	border-collapse: collapse;
+	border-spacing: 0;
+	background: #f2f3f1;
+	border: 1px solid #cacac8;
+}
+table.uni th {
+	background: #d6d6d4;
+	font-weight: bold;
+	padding: 0.25em;
+	border: 1px solid #cacac8;
+	text-align:left;
+}
+table.uni td {
+	vertical-align: top;
+	padding: 0.25em;
+}
+table.uni p {
+	font-size: 1em !important;
+}
+table.uni-grid {
+	border-collapse: collapse;
+	border-spacing: 0;
+	background: #f2f3f1;
+	border: 1px solid #cacac8;
+}
+table.uni-grid th {
+	background: #cacac8;
+	font-weight: bold;
+	padding: 0.25em;
+	border: 1px solid #cacac8;
+	text-align:left;
+}
+table.uni-grid td {
+	vertical-align: top;
+	padding: 0.25em;
+	border: 1px solid #cacac8;
+}
+table.uni-grid p {
+	font-size: 1em !important;
+}
+.contents-vertical { line-height: 1.2; text-align: center; }
+.contents-vertical > ul { list-style: none outside none; margin: 0; padding: 0; }
+.contents-vertical > ul > li { display: inline; margin: 0 !important; }
+.contents-vertical > ul > li:not(:first-child):before { content: " | "; }
