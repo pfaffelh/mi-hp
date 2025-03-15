@@ -88,6 +88,10 @@ def wordpress_index():
         news_data=news_data,
         talks_data=talks_data)
 
+####################
+## Fake Wordpress ##
+####################
+
 # Ansatz des Personenverzeichnisses etc unter wp
 @app.route("/cd2021/<site>/")
 @app.route("/cd2021/<site>/<show>/")
