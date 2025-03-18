@@ -155,7 +155,7 @@ def shownewswp(show = "", lang = "de"):
 def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     testorpublic = "test" if "test" in request.path.split("/") else "_public"
     # print(request.endpoint)
-    data = news.data_for_base(lang, dtstring, testorpublic)
+    data = news.data_for_base(lang, dtstring, testorpublic, tags = ["Lehre"])
     filenames = ["index.html"]
     return render_template("home_nlehre.html", filenames=filenames, data = data, lang=lang)
 
@@ -580,12 +580,16 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 ## api's ##
 ###########
 
+# Test mit
+# # curl https://www.math.uni-freiburg.de/nlehre/api/news/
 @app.route("/nlehre/api/news/")
 @app.route("/wochenprogramm/api/news/")
 def get_news():
     news_reduced = news.get_api_news()
     return jsonify(news_reduced)
 
+# Test mit
+# # curl https://www.math.uni-freiburg.de/nlehre/api/news/
 @app.route("/nlehre/api/wochenprogramm/")
 @app.route("/nlehre/api/wochenprogramm/<anfang>/<ende>/")
 @app.route("/wochenprogramm/api/veranstaltungen/")

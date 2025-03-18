@@ -44,16 +44,16 @@ def get_events(lang = "de"):
         events.append({"kurzname" : vr["kurzname"], "title" : f"{getwl(vr, 'title', lang)} ({vr['start'].strftime('%-d.%-m')}-{vr['end'].strftime('%-d.%-m.%y')})"})
     return reihen, events
 
-def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
+def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public", tags = ["Institut"]):
     date_format_no_space = '%Y%m%d%H%M'
 
     dt = datetime.strptime(dtstring, date_format_no_space)
 
     data = {}
     if testorpublic == "test":
-        data["news"] =  list(news.find({ "home.fuerhome": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))
+        data["news"] =  list(news.find({"tags": { "$elemMatch" : { "$in" : tags }}, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))
     else:
-        data["news"] =  list(news.find({ "_public": True, "home.fuerhome": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))  
+        data["news"] =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))  
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
@@ -63,9 +63,9 @@ def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), t
     # print(data)
     return data
 
-def data_for_newsarchiv(anfang, end, lang="de"):
+def data_for_newsarchiv(anfang, end, lang="de", tags = ["Institut"]):
     data = {}
-    data["news"] =  list(news.find({ "_public": True, "home.fuerhome": True, "home.end" : { "$lte" : end, "$gte" : anfang }}, sort=[("home.start", pymongo.DESCENDING)]))
+    data["news"] =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.end" : { "$lte" : end, "$gte" : anfang }}, sort=[("home.start", pymongo.DESCENDING)]))
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
@@ -89,7 +89,7 @@ def data_for_newsarchiv_full(lang, anfang, end):
     data["end"] = end
     return data
 
-def data_for_bildnachweis(lang="de"):
+def data_for_bildnachweis(lang="de", tags = ["Institut", "Monitor"]):
     data_news = []
     dcarouselnews = list(carouselnews.find({"_public" :True, "start" : { "$lte" : datetime.now() }, "end" : { "$gte" : datetime.now() }}))        
     for item in dcarouselnews:
@@ -98,7 +98,7 @@ def data_for_bildnachweis(lang="de"):
                           "mime": b["mime"], 
                           "bildnachweis" : b["bildnachweis"]
                           })
-    dnews = list(news.find({ "_public": True, "$or" : [{"monitor.fuermonitor": True, "monitor.start" : { "$lte" : datetime.now() }, "monitor.end" : { "$gte" : datetime.now() }}, {"home.fuerhome": True, "home.start" : { "$lte" : datetime.now() }, "home.end" : { "$gte" : datetime.now() }}]}))        
+    dnews = list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "$or" : [{"monitor.start" : { "$lte" : datetime.now() }, "monitor.end" : { "$gte" : datetime.now() }}, {"home.start" : { "$lte" : datetime.now() }, "home.end" : { "$gte" : datetime.now() }}]}))        
     for item in dnews:
         if item["image"] != []:
             b = bild.find_one({ "_id": item["image"][0]["_id"]})
@@ -379,7 +379,7 @@ def get_monitordata(dtstring, testorpublic):
     for item in data["carouselnews"]:
         item["image"] = base64.b64encode(bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
 
-    query = { "monitor.fuermonitor": True, 
+    query = { "tags": { "$elemMatch" : { "$eq" : "Monitor" }}, 
              "monitor.start" : { "$lte" : dt }, 
              "monitor.end" : { "$gte" : dt }}
     if testorpublic == "test":
@@ -430,9 +430,9 @@ def get_monitordata(dtstring, testorpublic):
     return data
 
 
-def get_api_news():    
+def get_api_news(tags = ["Institut"]):    
     dt = datetime.now()
-    new =  list(news.find({ "_public": True, "home.fuerhome": True, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))  
+    new =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))  
     news_reduced = []
     for n in new:
         news_reduced.append({"title_de" : n["home"]["title_de"],
