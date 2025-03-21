@@ -578,7 +578,7 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
     # determine if only shown on test
     testorpublic = "test" if "monitortest" in request.path.split("/") else "_public" 
     data = news.get_monitordata(dtstring, testorpublic)
-    return render_template("monitor/monitor_quer.html", data=data, lang="de")
+    return render_template("monitor/monitor_quer2.html", data=data, lang="de")
 
 ###########
 ## api's ##
