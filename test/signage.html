@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signage Board - 20 Messages</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 30px;
+    }
+    .message-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .visible {
+      opacity: 1;
+    }
+    .message-item {
+      padding: 10px;
+      background-color: #333;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="mb-4">📢 Announcements</h1>
+    <div id="messageContainer" class="message-list visible">
+      <!-- Messages will be injected here -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Create 20 messages
+    const messages = [];
+    for (let i = 1; i <= 20; i++) {
+      messages.push(`Message ${i}`);
+    }
+
+    const container = document.getElementById('messageContainer');
+
+    function renderMessages() {
+      container.innerHTML = ''; // Clear
+      messages.forEach(msg => {
+        const div = document.createElement('div');
+        div.className = 'message-item';
+        div.textContent = msg;
+        container.appendChild(div);
+      });
+    }
+
+    function shiftMessages() {
+      // Fade out
+      container.classList.remove('visible');
+
+      setTimeout(() => {
+        // Rotate first 3 to end
+        const shifted = messages.splice(0, 3);
+        messages.push(...shifted);
+
+        // Re-render
+        renderMessages();
+
+        // Fade in
+        container.classList.add('visible');
+      }, 1000); // Match fade-out duration
+    }
+
+    // Initial render
+    renderMessages();
+
+    // Shift every 4 seconds
+    setInterval(shiftMessages, 4000);
+  </script>
+
+</body>
+</html>
