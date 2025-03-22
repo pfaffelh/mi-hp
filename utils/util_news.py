@@ -443,7 +443,6 @@ def get_api_news(tags = ["Institut"]):
                              })
     return news_reduced
 
-
 def get_api_wochenprogramm(anfang, ende):
     anfang = datetime.strptime(anfang, "%Y%m%d")
     ende = datetime.strptime(ende, "%Y%m%d")
@@ -495,8 +494,6 @@ def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template
                 msg['To'] = empfaenger_email  # Individueller Empfänger
 
                 # Vorlage mit Daten füllen
-                print(data)
-                print("de")
                 html_inhalt = vorlage.render(lang = "de", **data)
 
                 # HTML-Inhalt hinzufügen

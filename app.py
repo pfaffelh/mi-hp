@@ -593,7 +593,7 @@ def get_news():
     return jsonify(news_reduced)
 
 # Test mit
-# # curl https://www.math.uni-freiburg.de/nlehre/api/news/
+# # curl https://www.math.uni-freiburg.de/nlehre/api/wochenprogramm/
 @app.route("/nlehre/api/wochenprogramm/")
 @app.route("/nlehre/api/wochenprogramm/<anfang>/<ende>/")
 @app.route("/wochenprogramm/api/veranstaltungen/")
