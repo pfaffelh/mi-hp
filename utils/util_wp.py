@@ -94,23 +94,29 @@ config = {
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/pershome.html"
     },
-    "fdm_seminar_en" : {
+    "fdmseminar_en" : {
         "titel" : "",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/fdm_seminar_static/",
-        "skel_name" : "skel_fdm_seminar.html",
-        "queries" : [{"string" : "Pfaffelhuber, Rohde. xxx"}],
+        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/fdmseminarstatic/",
+        "skel_name" : "skel_fdmseminar.html",
+        "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/fdm_seminar.html"
+        "template" : "wp/fdmseminar.html"
     }
 }
 # change institut_de url_skel to https://math.uni-freiburg.de/cd2021/institutstatic/
 # "queries" : [{"string" : "Pfaffelhuber, Rohde. xxx"}],
         
 def make_skel(site):
+    print("Site:")
+    print(site)
     result = requests.get(site["url_skel"])
+    print("Result")
+    print(result)
     doc = BeautifulSoup(result.text, 'lxml')
+    print(doc)
     for i, query in enumerate(site["queries"]):
         if "string" in query.keys(): 
+            print(doc.find(string = query["string"]))
             content = doc.find(string = query["string"]).find_parent().find_parent()
         else:
             content = doc.find("div", query)

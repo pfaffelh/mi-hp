@@ -135,10 +135,12 @@ def showfakewp(site, show = "", lang = "de"):
         data = wp.get_bibdata(bib_data)
         print(data)
         wp.make_skel(wp.config[site])
-    elif dir[0] == "fdm_seminar_en":
-        return render_template("wp/news_static.html")
-    elif dir[0] == "news":
-        data = news.data_for_base(lang)
+    elif dir[0] == "fdmseminarstatic":
+        print("Hier")
+        return render_template("wp/fdmseminarstatic.html")
+    elif dir[0] == "fdmseminar":
+        data = news.get_wochenprogramm_full(anfang = datetime(datetime.now().year, datetime.now().month, datetime.now().day).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1000)).strftime('%Y%m%d'), kurzname = "FDMAI", lang = "en")
+#        data = news.get_wochenprogramm_full(anfang = datetime(2024,1,1).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1000)).strftime('%Y%m%d'), kurzname = "FDMAI", lang = "en")
         wp.make_skel(wp.config[site])
         
     return render_template(wp.config[site]["template"], data = data, config = wp.config[site], show=show, lang=lang)

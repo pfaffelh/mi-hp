@@ -1,0 +1,33 @@
+{% extends config['skel_name'] %} {% block content %}
+{% if data["vortrag"] == [] %}
+<h3>Currently, there are no upcoming talks.</h3>
+{% else %}
+<ul class="wp-block-list">
+  {% for v in data["vortrag"] %}
+  <li>
+    <p style="font-weight: bold; margin-bottom: 2px">
+      {% if v["sprecher"] != "" %}
+      {{ v["sprecher"] }}
+      {% if v["sprecher_affiliation"] != "" %}
+      ({{ v["sprecher_affiliation"] }})
+      {% endif %}:
+      {% endif %}
+      {% if v['url'] == "" %}
+      {{ v['title'] }}
+      {% else %}
+      <a href="{{ v['url'] | safe}}">{{ v['title']|markdown }}</a>
+      {% endif %}
+    </p>
+    <p style="margin-bottom: 2px">
+      {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if
+      v["endzeit"] != v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}, {{
+      v["ort"] }}
+    </p>
+    {% if v["abstract"] != "" %}
+    {{ v["abstract"] |markdown }}
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
