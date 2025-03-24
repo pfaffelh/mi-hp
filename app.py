@@ -135,6 +135,11 @@ def showfakewp(site, show = "", lang = "de"):
         data = wp.get_bibdata(bib_data)
         print(data)
         wp.make_skel(wp.config[site])
+    elif dir[0] == "fdm_seminar_en":
+        return render_template("wp/news_static.html")
+    elif dir[0] == "news":
+        data = news.data_for_base(lang)
+        wp.make_skel(wp.config[site])
         
     return render_template(wp.config[site]["template"], data = data, config = wp.config[site], show=show, lang=lang)
 

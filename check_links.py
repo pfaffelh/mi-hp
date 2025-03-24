@@ -9,11 +9,11 @@ def check_link(link_url, source_url, only_errors=False):
     try:
         response = requests.head(link_url, timeout=5, allow_redirects=True)
         if response.status_code >= 400:
-            print(f"[ERROR] {link_url} (found on {source_url}) returned status code {response.status_code}")
+            print(f"ERROR on {source_url}: {link_url} not found ({response.status_code})")
         elif not only_errors:
-            print(f"[OK] {link_url} (found on {source_url}) returned status code {response.status_code}")
+            print(f"ERROR on {source_url}: {link_url} returned status code {response.status_code}")
     except requests.RequestException as e:
-        print(f"[ERROR] {link_url} (found on {source_url}) could not be reached: {e}")
+        print(f"[ERROR] on {source_url}: {link_url}  could not be reached: {e}")
 
 def crawl(url, base_url, max_depth=2, depth=0, only_errors=False):
     if url in visited_urls or depth > max_depth:
@@ -25,7 +25,7 @@ def crawl(url, base_url, max_depth=2, depth=0, only_errors=False):
     try:
         response = requests.get(url, timeout=5)
     except requests.RequestException as e:
-        print(f"[ERROR] Failed to retrieve {url}: {e}")
+        print(f"[ERROR] on {url} : Failed to retrieve with error {e}")
         return
 
     if 'text/html' not in response.headers.get('Content-Type', ''):
@@ -59,3 +59,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     crawl(args.url, args.url, max_depth=args.depth, only_errors=args.only_errors)
+
+
+# use with
+# python3 check_links.py "https://www.math.uni-freiburg.de/nlehre/" --only-errors --depth 3 > broken_links

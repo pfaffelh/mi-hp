@@ -93,6 +93,14 @@ config = {
         "queries" : [{"string" : "Pfaffelhuber, Rohde. xxx"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/pershome.html"
+    },
+    "fdm_seminar_en" : {
+        "titel" : "",
+        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/fdm_seminar_static/",
+        "skel_name" : "skel_fdm_seminar.html",
+        "queries" : [{"string" : "Pfaffelhuber, Rohde. xxx"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
+        "template" : "wp/fdm_seminar.html"
     }
 }
 # change institut_de url_skel to https://math.uni-freiburg.de/cd2021/institutstatic/
