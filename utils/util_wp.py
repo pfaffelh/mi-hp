@@ -96,7 +96,7 @@ config = {
     },
     "fdmseminar_en" : {
         "titel" : "",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/fdmseminarstatic/",
+        "url_skel" : "https://uni-freiburg.de/fdmai/seminar/",
         "skel_name" : "skel_fdmseminar.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
