@@ -79,7 +79,6 @@ def get_person_data(abteilung = ""):
         "employee" : "Administration und Technik"
     }
     res = [item for item in res if item["eduPersonPrimaryAffiliation"] in trans.keys()]
-    print(res)   
 #    res = dict(sorted(res, key=lambda x: (x["eduPersonPrimaryAffiliation"], x["cn"])))
         
     data = []
@@ -89,7 +88,6 @@ def get_person_data(abteilung = ""):
             "name" : value,
             "person" : sorted([x for x in res if x["eduPersonPrimaryAffiliation"] == key ], key = lambda x: x['sn'][0])
         })
-    print(data)
     return data
 
 if __name__ == "__main__":

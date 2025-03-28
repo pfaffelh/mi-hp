@@ -1,0 +1,24 @@
+{% extends config['skel_name'] %} {% block content %} {% for k1 in data %} {% if
+k1["person"] != [] %}
+
+<h3 class="wp-block-heading">{{ k1["name"]|markdown }}</h3>
+{% for p in k1["person"] %}
+<p>
+  <strong>
+    {% if p['labeledURI'] %}
+    <a href="{{ p['labeledURI'] }}">{{ p["sn"] }}, {{ p["givenName"] }}</a>
+    {% else %} {{ p["sn"] }}, {{ p["givenName"] }} {% endif %} </strong
+  ><br />mail:
+  <strong><a href="mailto:{{ p['mail'] }}">{{ p['mail'] }}</a></strong
+  >
+  {% if p["telephoneNumber"] %}
+  <br />tel: <strong>0761 / 203 {{ p["telephoneNumber"] }}</strong> 
+  {% endif %}
+  <br />Raum
+  {{ p["roomNumber"] }} ({{p["street"]}})
+</p>
+
+<p></p>
+<div style="height: 30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+{% endfor %} {% endif %} {% endfor %} {% endblock %}

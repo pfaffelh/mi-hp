@@ -48,11 +48,11 @@ config = {
     },
     "personen_MSt_de" : {
         "titel" : "",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/personenstochastikstatic/",
+        "url_skel" : "http://127.0.0.1:5000/cd2021/personenstochastikstatic/",
         "skel_name" : "skel.html",
-        "queries" : [{"class" : "wp-block-section-is-layout-constrained"}],
+        "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/personen.html"
+        "template" : "wp/personen_MSt.html"
     },
     "personen_PA_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
@@ -107,16 +107,10 @@ config = {
 # "queries" : [{"string" : "Pfaffelhuber, Rohde. xxx"}],
         
 def make_skel(site):
-    print("Site:")
-    print(site)
     result = requests.get(site["url_skel"])
-    print("Result")
-    print(result)
     doc = BeautifulSoup(result.text, 'lxml')
-    print(doc)
     for i, query in enumerate(site["queries"]):
         if "string" in query.keys(): 
-            print(doc.find(string = query["string"]))
             content = doc.find(string = query["string"]).find_parent().find_parent()
         else:
             content = doc.find("div", query)
