@@ -48,7 +48,7 @@ config = {
     },
     "personen_MSt_de" : {
         "titel" : "",
-        "url_skel" : "https://math.uni-freiburg.de/cd2021/personenstochastikstatic/",
+        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/personenstochastikstatic/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
@@ -107,7 +107,7 @@ config = {
 # "queries" : [{"string" : "Pfaffelhuber, Rohde. xxx"}],
         
 def make_skel(site):
-    result = requests.get(site["url_skel"])
+    result = requests.get(site["url_skel"], verify=False)
     doc = BeautifulSoup(result.text, 'lxml')
     for i, query in enumerate(site["queries"]):
         if "string" in query.keys(): 
