@@ -259,7 +259,7 @@
                 <li>
                   <a
                     class="dropdown-item text-black"
-                    href="{{ url_for('showdownloads', anchor='pruefungsamt', lang=lang) }}"
+                    href="{{ url_for('showaccordion_nlehre', lang = lang, kurzname ='downloads', show = 'downloads-studierende') }}"
                     >{% if lang == "de" %}Formulare und Anträge{% else %}Forms
                     and applications{% endif %}</a
                   >
@@ -268,13 +268,13 @@
                   <hr class="dropdown-divider" />
                 </li>
 
-                <li class="nav-item dropdown px-3">
+                <li>
                   <a
                     class="dropdown-item text-black"
                     href="{{ url_for('showstufaq', lang=lang) }}"
                   >
-                    {% if lang == "de" %}Prüfungsamt und Studienberatung{% else
-                    %}Examination office and student counseling{% endif %}</a
+                    {% if lang == "de" %}FAQ{% else
+                    %}FAQ{% endif %}</a
                   >
                 </li>
 
