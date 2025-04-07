@@ -180,7 +180,7 @@ def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 def showaccordion_nlehre(lang, kurzname, show =""):
     vpn = False
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
-    return render_template("accordion_nlehre.html", lang=lang, data = data, showcat = showcat, show=show)
+    return render_template("accordion_nlehre.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
 
 # Here is the vpn version
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/")
