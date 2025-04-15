@@ -157,13 +157,23 @@ def shownewswp(show = "", lang = "de"):
 ## Home page ##
 ###############
 
+# public
 @app.route("/nlehre/")
 @app.route("/nlehre/<lang>/")
 @app.route("/nlehre/<lang>/<dtstring>")
+def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+    testorpublic = "_public"
+    # print(request.endpoint)
+    data = news.data_for_base(lang, dtstring, testorpublic, tags = ["Lehre"])
+    filenames = ["index.html"]
+    return render_template("home_nlehre.html", filenames=filenames, data = data, lang=lang)
+
+# test
+@app.route("/nlehre/test/")
 @app.route("/nlehre/test/<lang>/")
 @app.route("/nlehre/test/<lang>/<dtstring>")
-def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
-    testorpublic = "test" if "test" in request.path.split("/") else "_public"
+def showbasetest(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+    testorpublic = "test" 
     # print(request.endpoint)
     data = news.data_for_base(lang, dtstring, testorpublic, tags = ["Lehre"])
     filenames = ["index.html"]
