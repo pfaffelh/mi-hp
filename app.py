@@ -68,26 +68,6 @@ app.jinja_env.globals['url_for_self'] = url_for_self
 # Deutsche Namen für Tage und Monate
 locale.setlocale(locale.LC_ALL, "de_DE.UTF8") 
 
-# This should be deleted soon (20.12.2024)
-@app.route("/nlehre/screenshotwp/")
-def showwp():
-    return render_template("screenshottocode.html")
-
-@fortivpn()
-@app.route("/nlehre/vpn/wordpress/index")
-def wordpress_index():
-    response_news = requests.get("https://www.math.uni-freiburg.de/nlehre/api/news/")
-    news_data = json.loads(response_news.text)
-
-    response_news = requests.get("https://www.math.uni-freiburg.de/nlehre/api/wochenprogramm/")
-    talks_data = json.loads(response_news.text)
-
-    # Render template and pass data
-    return render_template(
-        template_name_or_list="wordpress/index.html",
-        news_data=news_data,
-        talks_data=talks_data)
-
 ####################
 ## Fake Wordpress ##
 ####################
@@ -188,7 +168,6 @@ def showbasetest(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 @app.route("/nlehre/<lang>/page/<kurzname>/")
 @app.route("/nlehre/<lang>/page/<kurzname>/<show>")
 def showaccordion_nlehre(lang, kurzname, show =""):
-    vpn = False
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
     return render_template("accordion_nlehre.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
 
@@ -196,7 +175,6 @@ def showaccordion_nlehre(lang, kurzname, show =""):
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/")
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/<show>")
 def showvpnaccordion_nlehre(lang, kurzname, show =""):
-    vpn = True
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
     return render_template("accordion_nlehre.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
 
@@ -407,7 +385,7 @@ def showlehrveranstaltungennextsemester(lang, studiengang = "", modul = ""):
         message = f"<h1>Die Daten sind bereits <a href=/nlehre/de/lehrveranstaltungen/{next_semester}>hier</a> veröffentlicht.</h1>"
         return render_template("home_nlehre.html", filenames = filenames, lang=lang, message = message)
     elif vvz.get_showsemester(next_semester, hp_sichtbar = False):
-        data = vvz.get_data(next_semester, lang, studiengang, modul, vpn = True)
+        data = vvz.get_data(next_semester, lang, studiengang, modul, vpn = vpn)
         return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=next_semester, studiengang = studiengang, modul = modul, vpn_nextsemester = True)
     else:
         filenames = ["message.html"]
@@ -418,14 +396,14 @@ def showlehrveranstaltungennextsemester(lang, studiengang = "", modul = ""):
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/stundenplan/")
 def showlehrveranstaltungennextsemesterstundenplan(lang):
     next_semester = vvz.next_semester_kurzname(vvz.get_current_semester_kurzname())
-    data = vvz.get_data_stundenplan(next_semester, lang, vpn = True)
+    data = vvz.get_data_stundenplan(next_semester, lang, vpn = vpn)
     return render_template("lehrveranstaltungen/vvz_stundenplan.html", lang=lang, data = data, semester=next_semester, semester_lang = vvz.semester_name_de(next_semester), vpn_nextsemester = True)
 
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/personenplan/")
 def showlehrveranstaltungennextsemesterpersonenplan(lang):
     next_semester = vvz.next_semester_kurzname(vvz.get_current_semester_kurzname())
     data = vvz.get_data_personenplan(next_semester, lang, vpn = True)
-    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=next_semester, semester_dict = {}, semester_lang = vvz.semester_name_de(next_semester), showdeputate = False, vpn_nextsemester = True)
+    return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=next_semester, semester_dict = {}, semester_lang = vvz.semester_name_de(next_semester), showdeputate = False, vpn_nextsemester = vpn)
 
 #####################################
 ## Prüfungsamt und Studienberatung ##

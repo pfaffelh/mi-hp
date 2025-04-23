@@ -1,0 +1,16 @@
+\documentclass{article}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[paperheight=1cm,paperwidth=1.5cm,margin=0cm,heightrounded]{geometry}
+\usepackage{background}
+
+\begin{document}
+
+\backgroundsetup{scale=1, color=black, opacity=1, angle=0, contents={\hspace*{-.7cm}\includegraphics[width=1.50\paperwidth,height=1\paperheight]{hintergrund_vortrag1.pdf}}}
+
+\vspace*{-1.05cm}
+\color{white}
+\begin{center}
+\huge FAQ
+\end{center}
+
+\end{document}
