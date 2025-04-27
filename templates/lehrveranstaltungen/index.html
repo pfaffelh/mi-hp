@@ -1,6 +1,16 @@
 {% if lang == 'de' %}{% else %}{% endif %}
 <div class="container" id="inhalt">
-  <br />
+  <div class="container text-end py-4">
+    <div class="row">
+      <div class="col">
+        <a href="{{url_for('showlehrveranstaltungenpersonen', lang=lang, id = '')}}"
+          class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
+          {% if lang == "de" %} Übersicht aller Lehrpersonen {% else %} Overview of
+          staff {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-auto">
       <h1>
@@ -57,23 +67,17 @@
             <th scope="row">{{value["name"]}}</th>
             <td>
               <center>
-                <a
-                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"
-                  ><i class="fa-solid fa-link"></i
-                ></a>
+                <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"><i
+                    class="fa-solid fa-link"></i></a>
               </center>
             </td>
             <td>
               {% if not value["mh_lang_exists"] %}
               <center>
                 {% if value["komm_lang_exists"] %}
-                <a
-                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')}}"
-                ></a>
+                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')}}"></a>
                 {% elif value["komm_exists"] %}
-                <a
-                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"
-                ></a>
+                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"></a>
                 {% endif %}
               </center>
               {% endif %}
@@ -81,22 +85,16 @@
             <td>
               <center>
                 {% if value["mh_lang_exists"] %}
-                <a
-                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')}}"
-                ></a>
+                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')}}"></a>
                 {% elif value["mh_exists"] %}
-                <a
-                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
-                ></a>
+                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"></a>
                 {% endif %}
               </center>
             </td>
             <td>
               <center>
                 {% if value["verw_exists"] %}
-                <a
-                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'verw.pdf')}}"
-                ></a>
+                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'verw.pdf')}}"></a>
                 {% endif %}
               </center>
             </td>
@@ -110,13 +108,8 @@
         endif %}
       </h2>
       {% for key, value in semester_dict_old.items() %}
-      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"
-        >{{ value }}</a
-      >
-      <a
-        href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"
-        >(Kommentare)</a
-      >
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}">{{ value }}</a>
+      <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}">(Kommentare)</a>
       <br />
       {% endfor %}
       <!-- <h2>Intern</h2>

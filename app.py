@@ -386,7 +386,7 @@ def showlehrveranstaltungennextsemester(lang, studiengang = "", modul = ""):
         message = f"<h1>Die Daten sind bereits <a href=/nlehre/de/lehrveranstaltungen/{next_semester}>hier</a> veröffentlicht.</h1>"
         return render_template("home_nlehre.html", filenames = filenames, lang=lang, message = message)
     elif vvz.get_showsemester(next_semester, hp_sichtbar = False):
-        data = vvz.get_data(next_semester, lang, studiengang, modul, vpn = vpn)
+        data = vvz.get_data(next_semester, lang, studiengang, modul, query = {}, vpn = vpn)
         return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=next_semester, studiengang = studiengang, modul = modul, vpn_nextsemester = True)
     else:
         filenames = ["message.html"]
@@ -405,6 +405,13 @@ def showlehrveranstaltungennextsemesterpersonenplan(lang):
     next_semester = vvz.next_semester_kurzname(vvz.get_current_semester_kurzname())
     data = vvz.get_data_personenplan(next_semester, lang, vpn = True)
     return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=next_semester, semester_dict = {}, semester_lang = vvz.semester_name_de(next_semester), showdeputate = False, vpn_nextsemester = vpn)
+
+@app.route("/nlehre/<lang>/lehrveranstaltungen/personen/")
+@app.route("/nlehre/<lang>/lehrveranstaltungen/personen/<id>/")
+def showlehrveranstaltungenpersonen(lang, id = ""):
+    data = vvz.get_data_person(id, lang)
+    personen = vvz.get_current_personen(lang)
+    return render_template("lehrveranstaltungen/vvz_person.html", lang = lang, data = data, personen = personen, id = id)
 
 #####################################
 ## Prüfungsamt und Studienberatung ##

@@ -1,4 +1,5 @@
 import pymongo
+from bson import ObjectId
 from datetime import datetime, timedelta
 from collections import OrderedDict
 from .config import *
@@ -253,11 +254,11 @@ def make_codes(sem_id, veranstaltung_id, lang):
     return res
 
 # Falls vpn == True, werden auch nicht sichtbare Semester angezeigt
-def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = False):
-    query = {"kurzname": sem_shortname}
+def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", veranstaltungs_query = {}, vpn = False):
+    semester_query = {"kurzname" : sem_shortname}
     if not vpn:
-        query["hp_sichtbar"] = True
-    sem = vvz_semester.find_one(query)
+        semester_query["hp_sichtbar"] = True
+    sem = vvz_semester.find_one(semester_query)
     sem_id = sem.get("_id", "")
 
     data = {"vpn" : vpn}
@@ -305,10 +306,11 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = Fal
             else:
                 mod_list = list(vvz_modul.find({ "kurzname" : modul}))
 
-            query = {"rubrik": rubrik["_id"], "hp_sichtbar": True, "$or" : [{ "verwendbarkeit_modul" : { "$elemMatch" : { "$eq" : m["_id"] }}} for m in mod_list ]}
-            veranstaltungen = list(vvz_veranstaltung.find(query, sort=[("rang", pymongo.ASCENDING)]))
+            veranstaltungs_query = veranstaltungs_query | {"rubrik": rubrik["_id"], "hp_sichtbar": True, "$or" : [{ "verwendbarkeit_modul" : { "$elemMatch" : { "$eq" : m["_id"] }}} for m in mod_list ]}
+            veranstaltungen = list(vvz_veranstaltung.find(veranstaltungs_query, sort=[("rang", pymongo.ASCENDING)]))
         else:
-            veranstaltungen = list(vvz_veranstaltung.find({"rubrik": rubrik["_id"], "hp_sichtbar" : True}, sort=[("rang", pymongo.ASCENDING)]))
+            veranstaltungs_query = veranstaltungs_query | {"rubrik": rubrik["_id"], "hp_sichtbar" : True}
+            veranstaltungen = list(vvz_veranstaltung.find(veranstaltungs_query, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
             v_dict = {}
             v_dict["code"] = make_codes(sem_id, veranstaltung["_id"], lang)
@@ -338,10 +340,10 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", vpn = Fal
             v_dict["verwendbarkeit"] = "<br>".join([makemodulname(x, lang, True, studiengang)for x in mod_list_reduced])
             r_dict["veranstaltung"].append(v_dict)
 
-        if studiengang == "" or r_dict["veranstaltung"] != []:
+        if r_dict["veranstaltung"] != []:
             data["rubrik"].append(r_dict)
     # print(data["rubrik"])
-        #print(data)
+    #print(data)
     return data
 
 def get_data_stundenplan(sem_shortname, lang="de", vpn = False):
@@ -437,6 +439,36 @@ def name_termine(ver_id, lang="de"):
     if termine != []:
         res = res + "<br>" + "; ".join(termine)
     return res
+
+def get_current_personen(lang = "de"):
+    name = "name" if lang == "de" else "name_en"
+    s = vvz_semester.find_one({"hp_sichtbar" : True}, sort=[("rang", pymongo.DESCENDING)])
+    personen = list(vvz_person.find({"semester" : { "$elemMatch" : { "$eq" : s["_id"]}}}))
+    per = sorted(personen, key=lambda d: (d[name], d["vorname"]))
+    data = [{"_id" : str(p["_id"]), "name" : vorname_name(p["_id"], url = False, lang = lang), "url" : p["url"]} for p in per]
+    print(data[0])
+    return data
+
+# Wenn id == "", werden alle Daten des Semesters ausgelesen. Andernfalls ist es die id einer Lehrperson im vvz.
+def get_data_person(id, lang = "de"):
+    if str(id) != "":
+        id = ObjectId(id)
+
+    name = f"name_{lang}"
+    # Hier wird das Semester festgelegt, ab wann die Anzeige stattfindet.
+    startsemester = vvz_semester.find_one({"kurzname" : "2020WS", "hp_sichtbar" : True})
+    semester = list(vvz_semester.find({"hp_sichtbar" : True, "rang" : { "$gte" : startsemester["rang"]}}, sort=[("rang", pymongo.DESCENDING)]))
+
+    data = []
+    for s in semester:
+        if id != "":
+            query = {"$or" : [{"dozent" : { "$elemMatch" : { "$eq" : id}}}, {"assistent" : { "$elemMatch" : { "$eq" : id }}}, {"organisation" : { "$elemMatch" : { "$eq" : id}}}]}
+        else:
+            query = {}
+        sem_data = get_data(s["kurzname"], lang, "", "", query)
+        data.append(sem_data)
+    print(data[0])
+    return data
 
 def get_data_personenplan(sem_shortname, lang="de", vpn = False):
     query = {"kurzname": sem_shortname}

@@ -55,14 +55,15 @@ endblock %} {% block content %}
         {% if lang == "de" %} Zum Personenplan {% else %} Courses of all persons
         {% endif %}
       </a>
-      <a
-        href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
+      <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}" class="btn btn-primary bg-ufr-blue link-dark"
+        role="button" aria-disabled="true">
         {% if lang == "de" %} Übersicht aller Semester {% else %} Overview of
         all semesters {% endif %}
+      </a>
+      <a href="{{url_for('showlehrveranstaltungenpersonen', lang=lang, id = '')}}" class="btn btn-primary bg-ufr-blue link-dark"
+        role="button" aria-disabled="true">
+        {% if lang == "de" %} Übersicht aller Lehrpersonen {% else %} Overview of
+        staff {% endif %}
       </a>
       {% else %}
       <a
