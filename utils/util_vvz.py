@@ -107,7 +107,6 @@ def vorname_name(person_id, url = True, lang = "de"):
     p = vvz_person.find_one({"_id": person_id})
     if lang == "en" and p["name_en"] != "":
         res = p["name_en"]
-        print(res)
     else:
         res = f"{p['vorname']} {p['name']}"
     if url and p["url"] != "":
@@ -441,12 +440,12 @@ def name_termine(ver_id, lang="de"):
     return res
 
 def get_current_personen(lang = "de"):
-    name = "name" if lang == "de" else "name_en"
     s = vvz_semester.find_one({"hp_sichtbar" : True}, sort=[("rang", pymongo.DESCENDING)])
     personen = list(vvz_person.find({"semester" : { "$elemMatch" : { "$eq" : s["_id"]}}}))
-    per = sorted(personen, key=lambda d: (d[name], d["vorname"]))
+    for p in personen:
+        p["name_nolang"] = p["name"] if (lang == "de" or p["name_en"] == "") else p["name_en"]
+    per = sorted(personen, key=lambda d: (d["name_nolang"], d["vorname"]))
     data = [{"_id" : str(p["_id"]), "name" : vorname_name(p["_id"], url = False, lang = lang), "url" : p["url"]} for p in per]
-    print(data[0])
     return data
 
 # Wenn id == "", werden alle Daten des Semesters ausgelesen. Andernfalls ist es die id einer Lehrperson im vvz.
@@ -467,7 +466,6 @@ def get_data_person(id, lang = "de"):
             query = {}
         sem_data = get_data(s["kurzname"], lang, "", "", query)
         data.append(sem_data)
-    print(data[0])
     return data
 
 def get_data_personenplan(sem_shortname, lang="de", vpn = False):
