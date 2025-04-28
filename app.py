@@ -169,6 +169,7 @@ def showbasetest(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 @app.route("/nlehre/<lang>/page/<kurzname>/")
 @app.route("/nlehre/<lang>/page/<kurzname>/<show>")
 def showaccordion_nlehre(lang, kurzname, show =""):
+    vpn = False
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
     return render_template("accordion_nlehre.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
 
