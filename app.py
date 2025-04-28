@@ -176,6 +176,7 @@ def showaccordion_nlehre(lang, kurzname, show =""):
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/")
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/<show>")
 def showvpnaccordion_nlehre(lang, kurzname, show =""):
+    vpn = True
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
     return render_template("accordion_nlehre.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
 
@@ -380,6 +381,7 @@ def showlehrveranstaltungendeputate(lang, semester = vvz.get_current_semester_ku
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/<studiengang>")
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/<studiengang>/<modul>")
 def showlehrveranstaltungennextsemester(lang, studiengang = "", modul = ""):
+    vpn = True
     next_semester = vvz.next_semester_kurzname(vvz.get_current_semester_kurzname())
     if vvz.get_showsemester(next_semester, hp_sichtbar = True):
         filenames = ["message.html"]
