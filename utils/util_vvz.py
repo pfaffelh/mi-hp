@@ -363,7 +363,7 @@ def get_data_stundenplan(sem_shortname, lang="de", vpn = False):
                     zeit = zeit + f"-{str(t['ende'].hour)}{': '+str(t['ende'].minute) if t['ende'].minute > 0 else ''}"
                 zeit = (zeit + " Uhr") if lang == "de" else (zeit + "h")
             else:
-                zeit == ""
+                zeit = ""
             if zeit != "":
                 url = v["url"]
                 if t["wochentag"] in wochentage.keys():
@@ -511,7 +511,8 @@ def get_data_personenplan(sem_shortname, lang="de", vpn = False):
                     "person_mit_url": f"{name_vorname(p, True, lang)}",
                     "veranstaltung": nt,
                     "rolle": name_terminart(t["key"], lang),
-                    "sws": [d["sws"] for d in v["deputat"] if d["person"] == p][0]
+                    "sws": sws,
+                    "kommentar" : kommentar
                     })
 
     data = sorted(data, key = itemgetter('person', 'veranstaltung'))
