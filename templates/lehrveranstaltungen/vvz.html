@@ -16,18 +16,9 @@ endblock %} {% block content %}
       </a>
       {% endif %}
       <a
-        {%
-        if
-        vpn_nextsemester
-        %}
-        href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
-        {%
-        else
-        %}
-        href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
-        {%
-        endif
-        %}
+        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
+        {% endif %}
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"

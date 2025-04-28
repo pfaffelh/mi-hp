@@ -398,12 +398,14 @@ def showlehrveranstaltungennextsemester(lang, studiengang = "", modul = ""):
 
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/stundenplan/")
 def showlehrveranstaltungennextsemesterstundenplan(lang):
+    vpn = True
     next_semester = vvz.next_semester_kurzname(vvz.get_current_semester_kurzname())
     data = vvz.get_data_stundenplan(next_semester, lang, vpn = vpn)
     return render_template("lehrveranstaltungen/vvz_stundenplan.html", lang=lang, data = data, semester=next_semester, semester_lang = vvz.semester_name_de(next_semester), vpn_nextsemester = True)
 
 @app.route("/nlehre/vpn/<lang>/lehrveranstaltungen/personenplan/")
 def showlehrveranstaltungennextsemesterpersonenplan(lang):
+    vpn = True
     next_semester = vvz.next_semester_kurzname(vvz.get_current_semester_kurzname())
     data = vvz.get_data_personenplan(next_semester, lang, vpn = True)
     return render_template("lehrveranstaltungen/vvz_personenplan.html", lang=lang, data = data, semester=next_semester, semester_dict = {}, semester_lang = vvz.semester_name_de(next_semester), showdeputate = False, vpn_nextsemester = vpn)
