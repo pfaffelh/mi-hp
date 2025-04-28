@@ -27,15 +27,8 @@ endblock %} {% block content %}
         courses {% endif %}
       </a>
       <a
-        {%
-        if
-        vpn_nextsemester
-        %}
-        href="{{url_for('showlehrveranstaltungennextsemesterpersonenplan', lang=lang)}}"
-        {%
-        else
-        %}
-        href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}"
+        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterpersonenplan', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}"
         {%
         endif
         %}
@@ -58,18 +51,9 @@ endblock %} {% block content %}
       </a>
       {% else %}
       <a
-        {%
-        if
-        vpn_nextsemester
-        %}
-        href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
-        {%
-        else
-        %}
-        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester)}}"
-        {%
-        endif
-        %}
+        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester)}}"
+        {% endif %}
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
