@@ -448,24 +448,26 @@ def get_current_personen(lang = "de"):
     data = [{"_id" : str(p["_id"]), "name" : vorname_name(p["_id"], url = False, lang = lang), "url" : p["url"]} for p in per]
     return data
 
-# Wenn id == "", werden alle Daten des Semesters ausgelesen. Andernfalls ist es die id einer Lehrperson im vvz.
+# Wenn id == "all", werden alle Daten der Semester ausgelesen. Wenn id == "", werden keine Daten zurückgegeben. Andernfalls ist es die id einer Lehrperson im vvz.
 def get_data_person(id, lang = "de"):
-    if str(id) != "":
-        id = ObjectId(id)
-
-    name = f"name_{lang}"
-    # Hier wird das Semester festgelegt, ab wann die Anzeige stattfindet.
-    startsemester = vvz_semester.find_one({"kurzname" : "2020WS", "hp_sichtbar" : True})
-    semester = list(vvz_semester.find({"hp_sichtbar" : True, "rang" : { "$gte" : startsemester["rang"]}}, sort=[("rang", pymongo.DESCENDING)]))
-
-    data = []
-    for s in semester:
-        if id != "":
-            query = {"$or" : [{"dozent" : { "$elemMatch" : { "$eq" : id}}}, {"assistent" : { "$elemMatch" : { "$eq" : id }}}, {"organisation" : { "$elemMatch" : { "$eq" : id}}}]}
+    if str(id) == "":
+        data = []
+    else:
+        if id != "all":
+            id = ObjectId(id)
+            query = {"$or" : [{"dozent" : { "$elemMatch" : { "$eq" : id}}}, {"assistent" : { "$elemMatch" : { "$eq" : id }}}]}
         else:
             query = {}
-        sem_data = get_data(s["kurzname"], lang, "", "", query)
-        data.append(sem_data)
+
+        name = f"name_{lang}"
+        # Hier wird das Semester festgelegt, ab wann die Anzeige stattfindet.
+        startsemester = vvz_semester.find_one({"kurzname" : "2018WS", "hp_sichtbar" : True})
+        semester = list(vvz_semester.find({"hp_sichtbar" : True, "rang" : { "$gte" : startsemester["rang"]}}, sort=[("rang", pymongo.DESCENDING)]))
+
+        data = []
+        for s in semester:
+            sem_data = get_data(s["kurzname"], lang, "", "", query)
+            data.append(sem_data)
     return data
 
 def get_data_personenplan(sem_shortname, lang="de", vpn = False):

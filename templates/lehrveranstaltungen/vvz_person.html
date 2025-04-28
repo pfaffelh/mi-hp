@@ -9,10 +9,13 @@ endblock %} {% block content %}
 </div>
 
 <div class="container py-4" id="dropdown">
-<div class="dropdown">
+<h2>{% if lang == "de" %}Lehrveranstaltungen seit Wintersemester 2018{% else %}Courses sind winter semester 2018{% endif %}</h2>
+  <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownPersonenButton" data-bs-toggle="dropdown"
     aria-expanded="false">
     {% if id == "" %} {% if lang == "de" %}Bitte Lehrperson auswählen{% else %}Please choose a person{% endif %}
+    {% elif id == "all" %} 
+    {% if lang == "de" %}Lehrveranstaltungen aller Lehrpersonen{% else %}Courses by all teaching staff{% endif %}
     {% else %} 
     {% if lang == "de" %}Lehrveranstaltungen von {% else %}Courses by {% endif %}
     {% for p in personen %} {% if p['_id'] == id %}{{ p['name']  }} {% endif %} {% endfor %}
