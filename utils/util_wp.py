@@ -88,7 +88,7 @@ config = {
     },
     "pfaffelhuber_de" : {
         "titel" : "",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/pfaffelhuberstatic/",
+        "url_skel" : "https://uni-freiburg.de/stochastik/peter-pfaffelhuber/",
         "skel_name" : "skel_pfaffelhuber.html",
         "queries" : [{"string" : "Pfaffelhuber, Rohde. xxx"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
