@@ -48,7 +48,7 @@ config = {
     },
     "personen_MSt_de" : {
         "titel" : "",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/personenstochastikstatic/",
+        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
