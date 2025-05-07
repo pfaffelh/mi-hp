@@ -318,7 +318,7 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", veranstal
             v_dict["link"] = veranstaltung["url"]
             v_dict["dozent_mit_url"] = ", ".join([vorname_name(x, True, lang) for x in veranstaltung["dozent"]])
             v_dict["dozent"] = ", ".join([vorname_name(x, False, lang) for x in veranstaltung["dozent"]])
-            v_dict["allepersonen"] = ", ".join([vorname_name(x, False, lang) for x in veranstaltung["dozent"] + veranstaltung["assistent"] + veranstaltung["organisation"]])
+            v_dict["allepersonen"] = ", ".join([vorname_name(x, False, lang) for x in veranstaltung["dozent"] + veranstaltung["assistent"]]) # + veranstaltung["organisation"]])
             v_dict["assistent_mit_url"] = ", ".join([vorname_name(x, True, lang) for x in veranstaltung["assistent"]])
             v_dict["assistent"] = ", ".join([vorname_name(x, False, lang) for x in veranstaltung["assistent"]])
             v_dict["organisation_mit_url"] = ", ".join([vorname_name(x, True, lang) for x in veranstaltung["organisation"]])
