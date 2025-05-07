@@ -175,9 +175,9 @@ def make_raumzeit_woechentlich(veranstaltung, lang = "de", url = True):
                 raum = get_raum(r["_id"], url)
                 # zB Vorlesung: Montag, 8-10 Uhr, HSII, Albertstr. 23a
                 if termin['start'] is not None:
-                    zeit = f"{str(termin['start'].hour)}{': '+str(termin['start'].minute) if termin['start'].minute > 0 else ''}"
+                    zeit = f"{str(termin['start'].hour)}{':'+str(termin['start'].minute) if termin['start'].minute > 0 else ''}"
                     if termin['ende'] is not None:
-                        zeit = zeit + f"-{str(termin['ende'].hour)}{': '+str(termin['ende'].minute) if termin['ende'].minute > 0 else ''}"
+                        zeit = zeit + f"-{str(termin['ende'].hour)}{':'+str(termin['ende'].minute) if termin['ende'].minute > 0 else ''}"
                     zeit = zeit + (" Uhr" if lang == "de" else "h")
                 else:
                     zeit = ""
