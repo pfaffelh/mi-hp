@@ -311,9 +311,10 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", veranstal
             veranstaltungs_query = veranstaltungs_query | {"rubrik": rubrik["_id"], "hp_sichtbar" : True}
             veranstaltungen = list(vvz_veranstaltung.find(veranstaltungs_query, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
+            otherlang = "de" if lang == "en" else "en"
             v_dict = {}
             v_dict["code"] = make_codes(sem_id, veranstaltung["_id"], lang)
-            v_dict["titel"] = veranstaltung[f"name_{lang}"]
+            v_dict["titel"] = veranstaltung[f"name_{lang}"] if veranstaltung[f"name_{lang}"] != "" else veranstaltung[f"name_{otherlang}"]
             v_dict["kommentar"] = veranstaltung[f"kommentar_html_{lang}"]
             v_dict["link"] = veranstaltung["url"]
             v_dict["dozent_mit_url"] = ", ".join([vorname_name(x, True, lang) for x in veranstaltung["dozent"]])
