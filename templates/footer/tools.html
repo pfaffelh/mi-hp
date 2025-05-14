@@ -88,12 +88,12 @@
                 >
                   Deputate
                 </a>
-                <a
-                  href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
-                  class="btn btn-primary bg-ufr-blue link-dark"
-                  role="button"
-                  aria-disabled="true"
-                >
+                <a href="{{url_for('showlehrendevpn', lang=lang, unterseite = 'calendar')}}" class="btn btn-primary bg-ufr-blue link-dark"
+                  role="button" aria-disabled="true">
+                  Kalender Studiendekanat
+                </a>
+                <a href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}" class="btn btn-primary bg-ufr-blue link-dark"
+                  role="button" aria-disabled="true">
                   Lehrveranstaltungen des kommenden Semesters (unveröffentlicht)
                 </a>
                 <a

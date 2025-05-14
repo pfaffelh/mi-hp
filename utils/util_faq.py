@@ -3,6 +3,7 @@ import utils.config as config
 from bson import ObjectId
 from .util_logging import logger
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 # Connect to MongoDB
 try:
@@ -11,18 +12,20 @@ try:
     knoten = mongo_db_faq["knoten"]
     studiendekanat = mongo_db_faq["studiendekanat"]
     dictionary = mongo_db_faq["dictionary"]
-    
+    kalender = mongo_db_faq["kalender"]
+    prozesspaket = mongo_db_faq["prozesspaket"]
+    prozess = mongo_db_faq["prozess"]
+    aufgabe = mongo_db_faq["aufgabe"]
+    mongo_db_users = cluster["user"]
+    users = mongo_db_users["user"]
+    group = mongo_db_users["group"]    
+    mongo_db_faq = cluster["faq"]
+    studiendekanat = mongo_db_faq["studiendekanat"]
+            
 except:
     logger.warning("No connection to Database!")
 
 def get_studiendekenat_data(query):
-    try:
-        cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
-        mongo_db_faq = cluster["faq"]
-        studiendekanat = mongo_db_faq["studiendekanat"]
-    except:
-        logger.warning("No connection to Database FAQ")
-
     data = list(studiendekanat.find(query, sort=[("rang", pymongo.ASCENDING)]))
     for item in data:
         item["shownews"] = (datetime.now() < item["news_ende"])
@@ -89,9 +92,57 @@ def get_accordion_data(kurzname, lang, show = ""):
             showcat = show
         else:
             showcat = p["kurzname"]
-    print(data)
     return data, show, showcat
 
 def get_lexikon_data(lang = "de"):
     return list(dictionary.find({}, sort=[("de", pymongo.ASCENDING)]))
-    
+        
+def get_contrasting_text_color(hex_color):
+    # Remove '#' if present
+    hex_color = hex_color.lstrip('#')
+    # Convert hex to RGB
+    r, g, b = [int(hex_color[i:i+2], 16) for i in (0, 2, 4)]
+    # Calculate luminance (per W3C)
+    luminance = (0.299 * r + 0.587 * g + 0.114 * b)
+    # Return white for dark backgrounds, black for light backgrounds
+    return '#ffffff' if luminance < 128 else '#000000'
+
+# Hier werden alle Termine ausgegeben, die nach anzeige_start liegen
+def get_calendar_data(anzeige_start):
+    gr = group.find_one({"name" : "faq"})
+
+    # kalender und aufgaben, die nur Termine sind: 
+    # aus kalender
+    events = []
+    termine_prpa = list(kalender.find({"datum" : { "$gte" : anzeige_start}}))
+    for t in termine_prpa:
+        events.append({
+            "color" : "#FFFFFF",
+            "textcolor" : "#000000",
+            "start": t["datum"].strftime("%Y-%m-%d %H:%M:00"),
+            "end": t["datum"].strftime("%Y-%m-%d %H:%M:00"),
+            "allDay": True,
+            "title": t["name"]
+        })
+    # aus aufgabe
+    termine_auf = list(aufgabe.find({"ankerdatum" : { "$in" : [t["_id"] for t in termine_prpa]}}))
+    gr = group.find_one({"name" : "faq"})
+    faq_users = list(users.find({"groups" : { "$elemMatch" : { "$eq" : gr["_id"]}}}, sort = [("name", pymongo.ASCENDING)])) 
+    for t in termine_auf:
+        if t["nurtermin"] or t["verantwortlicher"] not in [r["rz"] for r in faq_users]:
+            col = "#FFFFFF"
+            textcol = "#000000"
+        else:
+            col = "".join([r["color"] for r in faq_users if t["verantwortlicher"] == r["rz"]])
+            textcol = get_contrasting_text_color(col)
+            events.append({
+                "color" : col,
+                "textcolor" : textcol,
+                "start": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])).strftime("%Y-%m-%d %H:%M:00"),
+                "end": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])).strftime("%Y-%m-%d %H:%M:00"),
+                "allDay": True,
+                "title": t["name"]
+            })
+    print(events)
+    faq_users = [u for u in faq_users if u["color"] != "#FFFFFF"]
+    return faq_users, events

@@ -95,7 +95,6 @@ def showfakewp(site, show = "", lang = "de"):
         data = {}
         data["wochenprogramm"] = news.get_wochenprogramm_full(anfang, end, "alle", lang)
         data["news"] = news.data_for_base(lang)["news"]
-        print([item['home'] for item in data["news"]])
         wp.make_skel(wp.config[site])
     elif dir[0] == "newsstatic":
         return render_template("wp/news_static.html")
@@ -113,7 +112,6 @@ def showfakewp(site, show = "", lang = "de"):
             bib_data = parser.parse_string(bib_content)  # 🔹 Direkt in parse_string()
     
         data = wp.get_bibdata(bib_data)
-        print(data)
         wp.make_skel(wp.config[site])
     elif dir[0] == "fdmseminarstatic":
         return render_template("wp/fdmseminarstatic.html")
@@ -458,7 +456,7 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
         # filenames = ["studiendekanat/termine.html"]
     if unterseite == "calendar":
         events = vvz.get_calendar_data(datetime.now() + timedelta(days = -365), lang)
-        return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = False)
+        return render_template("studiendekanat/calendar_pruefungen.html", events=events, lang=lang, lehrende = False)
     if unterseite == "anmeldung":
         filenames = ["studiendekanat/anmeldung.html"]
     if unterseite == "modulplan":
@@ -489,7 +487,7 @@ def showlehrende(lang, unterseite ="", anchor = ""):
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'zertifikat', show=anchor))
     if unterseite == "calendar":
         events = vvz.get_calendar_data(datetime.now() + timedelta(days = -360), lang)
-        return render_template("studiendekanat/calendar.html", events=events, lang=lang, lehrende = True)
+        return render_template("studiendekanat/calendar_pruefungen.html", events=events, lang=lang, lehrende = True)
         
     return render_template("home_nlehre.html", filenames = filenames, anchor = anchor, lang=lang)
 
@@ -498,7 +496,10 @@ def showlehrende(lang, unterseite ="", anchor = ""):
 @app.route("/nlehre/vpn/<lang>/lehrende/<unterseite>/<anchor>")
 def showlehrendevpn(lang, unterseite ="", anchor = ""):
     filenames = []
-    return render_template("home_nlehre.html", filenames = filenames, anchor = anchor, lang=lang)
+    if unterseite == "calendar":
+        faq_users, events = faq.get_calendar_data(datetime.now() + timedelta(days = -720))
+        print(events)
+        return render_template("studiendekanat/calendar_plan.html", lang = lang, faq_users = faq_users, events=events)
 
 @app.route("/nlehre/vpn/<lang>/lehrende/<semester>/planung/")
 def showlehrveranstaltungenplanung(lang, semester):
