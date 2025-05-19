@@ -104,12 +104,12 @@
                 >
                   Lexikon (de/en)
                 </a>
-                <a
-                  href="{{url_for('showvpnaccordion_nlehre', lang = lang, kurzname = 'homepage')}}"
-                  class="btn btn-primary bg-ufr-blue link-dark"
-                  role="button"
-                  aria-disabled="true"
-                >
+                <a href="{{url_for('showlehrendevpn)', lang = lang, (lang, unterseite ='calendar', anchor = "")}}"
+                  class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
+                  Kalender
+                </a>
+                <a href="{{url_for('showvpnaccordion_nlehre', lang = lang, kurzname = 'homepage')}}"
+                  class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
                   Unsere Homepage
                 </a>
               </div>
