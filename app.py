@@ -484,6 +484,7 @@ def showmitfaq(lang, show =""):
     return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'faqmit', show=show))
 
 @app.route("/nlehre/<lang>/lehrende/<unterseite>")
+@app.route("/nlehre/<lang>/lehrende/<unterseite>/")
 @app.route("/nlehre/<lang>/lehrende/<unterseite>/<anchor>")
 def showlehrende(lang, unterseite ="", anchor = ""):
     filenames = []
