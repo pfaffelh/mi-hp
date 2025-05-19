@@ -121,7 +121,9 @@ def get_calendar_data(anzeige_start):
             "textcolor" : "#000000",
             "start": t["datum"].strftime("%Y-%m-%d %H:%M:00"),
             "end": t["datum"].strftime("%Y-%m-%d %H:%M:00"),
-            "allDay": True,
+            "startzeit": t["datum"].strftime("%H:%M"),
+            "endezeit": t["datum"].strftime("%H:%M:00"),
+            "allDay": True if t["datum"].time() == datetime.min.time() else False,
             "title": t["name"]
         })
     # aus aufgabe
@@ -140,9 +142,10 @@ def get_calendar_data(anzeige_start):
                 "textcolor" : textcol,
                 "start": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])).strftime("%Y-%m-%d %H:%M:00"),
                 "end": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])).strftime("%Y-%m-%d %H:%M:00"),
+                "startzeit": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])).strftime("%H:%M:00"),
+                "endezeit": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])).strftime("%H:%M"),
                 "allDay": True,
                 "title": t["name"]
             })
-    print(events)
     faq_users = [u for u in faq_users if u["color"] != "#FFFFFF"]
     return faq_users, events

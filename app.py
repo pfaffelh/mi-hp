@@ -503,7 +503,6 @@ def showlehrendevpn(lang, unterseite ="", anchor = ""):
     filenames = []
     if unterseite == "calendar":
         faq_users, events = faq.get_calendar_data(datetime.now() + timedelta(days = -720))
-        print(events)
         return render_template("studiendekanat/calendar_plan.html", lang = lang, faq_users = faq_users, events=events)
 
 @app.route("/nlehre/vpn/<lang>/lehrende/<semester>/planung/")
