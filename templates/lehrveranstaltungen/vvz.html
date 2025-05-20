@@ -63,7 +63,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} Veranstaltungen für 2-Hauptfach Bachelor {% else %} Courses for 2 Marjor Bachelor {% endif %}
+        {% if lang == "de" %} Veranstaltungen für 2-Hauptfächer-Bachelor {% else %} Courses for 2 Major Bachelor {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'BSc21')}}"
