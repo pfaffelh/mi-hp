@@ -107,6 +107,13 @@ def get_contrasting_text_color(hex_color):
     # Return white for dark backgrounds, black for light backgrounds
     return '#ffffff' if luminance < 128 else '#000000'
 
+def format_termin(t):
+    if t["datum"].time() == datetime.min.time():
+        res = t["name"]
+    else:
+        res = f"{t['datum'].strftime('%H:%M')}: {t['name']}"
+    return res    
+
 # Hier werden alle Termine ausgegeben, die nach anzeige_start liegen
 def get_calendar_data(anzeige_start):
     gr = group.find_one({"name" : "faq"})
@@ -124,7 +131,10 @@ def get_calendar_data(anzeige_start):
             "startzeit": t["datum"].strftime("%H:%M"),
             "endezeit": t["datum"].strftime("%H:%M:00"),
             "allDay": True if t["datum"].time() == datetime.min.time() else False,
-            "title": t["name"]
+            "title": t["name"],
+            "extendedProps" : {
+                "description" : format_termin(t)
+            }
         })
     # aus aufgabe
     termine_auf = list(aufgabe.find({"ankerdatum" : { "$in" : [t["_id"] for t in termine_prpa]}}))
@@ -145,7 +155,10 @@ def get_calendar_data(anzeige_start):
                 "startzeit": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])).strftime("%H:%M:00"),
                 "endezeit": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])).strftime("%H:%M"),
                 "allDay": True,
-                "title": t["name"]
+                "title": t["name"],
+                "extendedProps" : {
+                    "description" : f"{t["name"]}"                
+                }
             })
     faq_users = [u for u in faq_users if u["color"] != "#FFFFFF"]
     return faq_users, events
