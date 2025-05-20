@@ -58,6 +58,14 @@ endblock %} {% block content %}
     <div class="col">
       {% if studiengang == "" %} {% if not vpn_nextsemester %}
       <a
+        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = '2HfB21')}}"
+        class="btn btn-primary bg-ufr-blue link-dark"
+        role="button"
+        aria-disabled="true"
+      >
+        {% if lang == "de" %} Veranstaltungen für 2-Hauptfach Bachelor {% else %} Courses for 2 Marjor Bachelor {% endif %}
+      </a>
+      <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'BSc21')}}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
@@ -66,12 +74,12 @@ endblock %} {% block content %}
         {% if lang == "de" %} ...für BSc Mathematik{% else %} ...for BSc Matthematics {% endif %}
       </a>
       <a
-        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = '2HfB21')}}"
+        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MEd18')}}"
         class="btn btn-primary bg-ufr-blue link-dark"
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} ...für 2-Hauptfach Bachelor {% else %} ...for 2 Marjor Bachelor {% endif %}
+        {% if lang == "de" %} ...für MEd Mathematik {% else %} ...for MEd Mathematics {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MSc14')}}"
@@ -87,17 +95,9 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} Courses for M.Sc. Mathematics in Data and
-        Technology {% else %} Courses for M.Sc. Mathematics in Data and
+        {% if lang == "de" %} ..für M.Sc. Mathematics in Data and
+        Technology {% else %} ...for M.Sc. Mathematics in Data and
         Technology {% endif %}
-      </a>
-      <a
-        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MEd18')}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
-        {% if lang == "de" %} ...für MEd Mathematik {% else %} ...for MEd Mathematics {% endif %}
       </a>
       {% endif %}
       {% endif %}
