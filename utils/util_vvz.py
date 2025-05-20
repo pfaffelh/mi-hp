@@ -558,7 +558,7 @@ def get_data_planung(sem_shortname, lang="de"):
     return sems, data
 
 # Hier werden alle Termine ausgegeben, die nach anzeige_start liegen
-def get_calendar_data(anzeige_start, lang):
+def get_calendar_data(anzeige_start, lang = "de"):
     ter_list = [ta["_id"] for ta in list(vvz_terminart.find({"cal_sichtbar" : True}))]
     ver = list(vvz_veranstaltung.find({"einmaliger_termin" : { "$elemMatch" : {  "key" : { "$in" : ter_list},"startdatum" : { "$gte" : anzeige_start}}}}))
     all = []
@@ -574,18 +574,29 @@ def get_calendar_data(anzeige_start, lang):
                 if t["startzeit"] and (t["startzeit"].hour != 0 or t["startzeit"].minute != 0): 
                     start = datetime.combine(t["startdatum"].date(), t["startzeit"].time())
                     allDay = 'false'
+                    title_lang = f"{start.strftime("%H:%M")} :{title}"
                 else:
                     start = t["startdatum"]
                     allDay = 'true'
+                    title_lang = title
                 if t["endzeit"] : 
                     ende = datetime.combine(t["enddatum"].date(), t["endzeit"].time())
                 else:
                     ende = t["enddatum"]
+                col = next((c["color"] for c in calendars if c["kurzname"] == "pruefungen"), "#FFFFFF")
+
                 all.append({
+                    "color" : col,
+                    "textcolor" : get_contrasting_text_color(col),
                     "start": start.strftime("%Y-%m-%d %H:%M:00"),
                     "end": ende.strftime("%Y-%m-%d %H:%M:00"),
+                    "startzeit": start.strftime("%H:%M"),
+                    "endezeit": ende.strftime("%H:%M"),
                     "allDay": allDay,
-                    "title": title
+                    "title": title,
+                    "extendedProps" : {
+                        "description" : title_lang
+                    },
+                    "groupId" : "pruefungen"
                 })
-
     return all

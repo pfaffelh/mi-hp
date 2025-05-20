@@ -502,8 +502,9 @@ def showlehrende(lang, unterseite ="", anchor = ""):
 def showlehrendevpn(lang, unterseite ="", anchor = ""):
     filenames = []
     if unterseite == "calendar":
-        faq_users, events = faq.get_calendar_data(datetime.now() + timedelta(days = -720))
-        return render_template("studiendekanat/calendar_plan.html", calendars = calendars, lang = lang, faq_users = faq_users, events=events)
+        events = faq.get_calendar_data(datetime.now() + timedelta(days = -720))
+        events = events + vvz.get_calendar_data(datetime.now() + timedelta(days = -720))
+        return render_template("studiendekanat/calendar_plan.html", calendars = calendars, lang = lang, events=events)
 
 @app.route("/nlehre/vpn/<lang>/lehrende/<semester>/planung/")
 def showlehrveranstaltungenplanung(lang, semester):

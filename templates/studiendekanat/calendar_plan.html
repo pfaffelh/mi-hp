@@ -2,7 +2,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"
   integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet"><style>
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+<style>
   .fc .fc-col-header-cell-cushion {
     display: inline-block;
     padding: 2px 4px;
@@ -14,7 +15,7 @@
   }
 
   #calendar {
-    max-width: 900px;
+    max-width: 1500px;
     margin: 40px auto;
   }
 
@@ -22,12 +23,6 @@
     color: white;
     border: none;
   }
-
-  {% for c in calendars %}
-  .btn-{{ c["kurzname"] }} {
-    background-color: {{ c["color"] }}
-  }
-  {% endfor %}
 
   .btn-off {
     background-color: #e0e0e0 !important;
@@ -40,69 +35,50 @@ block content %}
   <h4>{% if lang == "de" %}Wähle Kalender{% else %}Choose calendar{% endif %}</h4>
   <div class="btn-group calendar-toggle-group mb-4" role="group" id="calendarToggles">
     {% for c in calendars %}
-    <button type="button" class="btn {% if c['kurzname'] != 'semesterplan' %}btn-off{% endif %}" data-calendar={{ c['kurzname'] }}"work">{% if lang == 'de' %} {{ c['name_de'] }}  {% else %} {{ c['name_en'] }} {% endif %} </button>
+    <button type="button" class="btn {% if c['kurzname'] != 'semesteplan' %}btn-off{% endif %}"
+      data-calendar="{{c['kurzname']}}">{{c['name_de']}}</button>
     {% endfor %}
   </div>
-
-
-  <h3>Semesterplanung</h3>
-<!--  <h4>Verantwortliche</h4>
-</div>
-<div class="container" style="max-width: 140vh">
-  {% for u in faq_users %}
-  <div class="row">
-    <div class="col-1 mx-3" style="background: {{ u['color'] }}; color: {{ u['color'] }}; ">d</div>
-    <div class="col-4">{{ u["vorname"] }} {{ u["name"] }}</div>
+  <div class="container">
+    <div id="calendar"></div>
   </div>
-  {% endfor %}
-</div>-->
-<br />
 
-<div class="container" style="max-width: 140vh">
-  <div id="calendar"></div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap5@6.1.11/index.global.min.js"></script>
-<script src="fullcalendar/core/index.global.js"></script>
-<script src="fullcalendar/core/locales/de.global.js"></script>
-<script>
-  function formatTimeIfNotMidnight(isoString) {
-    const date = new Date(isoString);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
+  {% endblock %}
 
-    if (hours === 0 && minutes === 0) {
-      return ""; // Keine Uhrzeit anzeigen
-    } else {
-      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
-    }
-  }
-</script>
-<script>
-  function formatEvent(event) {
-    const s = `${String(event.start.getHours()).padStart(2, '0')}:${String(event.start.getMinutes()).padStart(2, '0')}`
-    const e = `${String(event.end.getHours()).padStart(2, '0')}:${String(event.end.getMinutes()).padStart(2, '0')}`
+  {% block js %}
 
-    if (event.start.getHours() === 0 && event.start.getMinutes() === 0) {
-      return info.event.title; // Keine Uhrzeit anzeigen
-    } else {
-      if (s == e) {
-        return `${s}: ` + info.event.title;
-      } else {
-        return `${s}-${e}: ` + info.event.title;
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const calendarEl = document.getElementById('calendar');
+      const toggleButtons = document.querySelectorAll('#calendarToggles .btn');
+
+      const calendarColors = { {% for c in calendars %}
+      {{ c["kurzname"]}}: '{{c["color"]}}', {% endfor %}
+      };
+
+    const initiallyActive = ['semesterplan']; // ← nur diese Kalender aktiv beim Start
+
+    const allEvents = [
+      {% for event in events %}
+    {
+      start: '{{ event.start}}',
+        end: '{{ event.end }}',
+          allDay: '{{ event.allDay}}',
+            title: '{{ event.title}}',
+              backgroundColor: '{{ event.color}}',
+                textColor: '{{ event.textcolor}}',
+                  groupId: '{{event.groupId}}',
+                    extendedProps: {
+        description: '{{ event.extendedProps.description}}',
       }
-    }
-  }
-</script>
+    },
+    {% endfor %}
+          ]
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const calendarEl = document.getElementById("calendar");    
-    const calendarColors = {
-      {% for c in calendars %} "{{ c['kurzname'] }}" : "{{ c['color']}}", {% endfor %}
-    };
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    const calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
       timeZone: "local",
       locale: "de",
@@ -128,28 +104,79 @@ block content %}
         minute: '2-digit',
         meridiem: false
       },
-      eventClick: function(info) {
-          alert(info.event.extendedProps.description);
+      // Events filtern je nach Auswahl
+      events: function (fetchInfo, successCallback) {
+        const selectedCalendars = getSelectedCalendars();
+        const filtered = allEvents
+          .filter(evt => selectedCalendars.includes(evt.groupId))
+          .map(evt => ({
+            ...evt,
+            color: calendarColors[evt.groupId],
+            title: evt.title,
+          }));
+        successCallback(filtered);
       },
-      events: [
-        {% for event in events %}
-            {
-              start: '{{ event.start}}',
-              end: '{{ event.end }}',
-              allDay: '{{ event.allDay}}',
-              title: '{{ event.title}}',
-              backgroundColor: '{{ event.color}}',
-              textColor: '{{ event.textcolor}}',
-              extendedProps: {
-                description: '{{ event.extendedProps.description}}',
+
+      // Tooltip bei hover
+      eventDidMount: function (info) {
+        new bootstrap.Tooltip(info.el, {
+          title: info.event.extendedProps.description,
+          placement: 'top',
+          trigger: 'hover',
+          container: 'body'
+        });
+      },
+
+      // Alert bei Klick
+      eventClick: function (info) {
+        alert(info.event.extendedProps.description);
       }
-            },
-            {% endfor %}
-          ],
-      eventDidMount: function(info) {
-         info.el.setAttribute("title", info.event.extendedProps.description);
-  }    });
+    });
+
     calendar.render();
-  });
-</script>
-{% endblock %}
+
+    // Button-Click: aktivieren/deaktivieren
+    toggleButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cal = btn.dataset.calendar;
+        const color = calendarColors[cal];
+
+        if (btn.classList.contains('btn-off')) {
+          btn.classList.remove('btn-off');
+          btn.style.backgroundColor = color;
+          btn.style.color = 'white';
+        } else {
+          btn.classList.add('btn-off');
+          btn.style.backgroundColor = '';
+          btn.style.color = '';
+        }
+
+        calendar.refetchEvents();
+      });
+    });
+
+    // Buttons mit richtiger Startfarbe
+    toggleButtons.forEach(btn => {
+      const cal = btn.dataset.calendar;
+      const color = calendarColors[cal];
+      if (initiallyActive.includes(cal)) {
+        btn.classList.remove('btn-off');
+        btn.style.backgroundColor = color;
+        btn.style.color = 'white';
+      } else {
+        btn.classList.add('btn-off');
+        btn.style.backgroundColor = '';
+        btn.style.color = '';
+      }
+      calendar.refetchEvents();
+    });
+
+    function getSelectedCalendars() {
+      return Array.from(toggleButtons)
+        .filter(btn => !btn.classList.contains('btn-off'))
+        .map(btn => btn.getAttribute('data-calendar'));
+    }
+    });
+  </script>
+
+  {% endblock %}

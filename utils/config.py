@@ -127,21 +127,38 @@ calendars = [
     { "kurzname" : "wochenprogramm",
       "name_de" : "Wochenprogramm",
       "name_en" : "Talks",
-      "color" : "#2ca02c;",
+      "color" : "#2ca02c",
     },
     { "kurzname" : "studiendekanat",
       "name_de" : "Studiendekanat",
       "name_en" : "Program coordination",
-      "color": "#ff7f0e;",
+      "color": "#ff7f0e",
     },
     { "kurzname" : "semesterplan",
       "name_de" : "Semesterplan",
       "name_en" : "Semester schedule",
-      "color" : "#1f77b4;",
+      "color" : "#1f77b4",
     },
     { "kurzname" : "pruefungen",
       "name_de" : "Prüfungen",
       "name_en" : "Exams",
-      "color" : "#9467bd;"
+      "color" : "#9467bd"
     },
 ]
+
+def get_contrasting_text_color(hex_color):
+    # Remove '#' if present
+    hex_color = hex_color.lstrip('#')
+    # Convert hex to RGB
+    r, g, b = [int(hex_color[i:i+2], 16) for i in (0, 2, 4)]
+    # Calculate luminance (per W3C)
+    luminance = (0.299 * r + 0.587 * g + 0.114 * b)
+    # Return white for dark backgrounds, black for light backgrounds
+    return '#ffffff' if luminance < 128 else '#000000'
+
+def format_termin(t):
+    if t["datum"].time() == datetime.min.time():
+        res = t["name"]
+    else:
+        res = f"{t['datum'].strftime('%H:%M')}: {t['name']}"
+    return res    

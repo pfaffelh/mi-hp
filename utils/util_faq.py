@@ -4,6 +4,7 @@ from bson import ObjectId
 from .util_logging import logger
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from utils.config import *
 
 # Connect to MongoDB
 try:
@@ -97,35 +98,18 @@ def get_accordion_data(kurzname, lang, show = ""):
 def get_lexikon_data(lang = "de"):
     return list(dictionary.find({}, sort=[("de", pymongo.ASCENDING)]))
         
-def get_contrasting_text_color(hex_color):
-    # Remove '#' if present
-    hex_color = hex_color.lstrip('#')
-    # Convert hex to RGB
-    r, g, b = [int(hex_color[i:i+2], 16) for i in (0, 2, 4)]
-    # Calculate luminance (per W3C)
-    luminance = (0.299 * r + 0.587 * g + 0.114 * b)
-    # Return white for dark backgrounds, black for light backgrounds
-    return '#ffffff' if luminance < 128 else '#000000'
-
-def format_termin(t):
-    if t["datum"].time() == datetime.min.time():
-        res = t["name"]
-    else:
-        res = f"{t['datum'].strftime('%H:%M')}: {t['name']}"
-    return res    
-
 # Hier werden alle Termine ausgegeben, die nach anzeige_start liegen
 def get_calendar_data(anzeige_start):
     gr = group.find_one({"name" : "faq"})
-
     # kalender und aufgaben, die nur Termine sind: 
     # aus kalender
     events = []
     termine_prpa = list(kalender.find({"datum" : { "$gte" : anzeige_start}}))
     for t in termine_prpa:
+        col = next((c["color"] for c in calendars if c["kurzname"] == "semesterplan"), "#FFFFFF")
         events.append({
-            "color" : "#FFFFFF",
-            "textcolor" : "#000000",
+            "color" : col,
+            "textcolor" : get_contrasting_text_color(col),
             "start": t["datum"].strftime("%Y-%m-%d %H:%M:00"),
             "end": t["datum"].strftime("%Y-%m-%d %H:%M:00"),
             "startzeit": t["datum"].strftime("%H:%M"),
@@ -134,31 +118,29 @@ def get_calendar_data(anzeige_start):
             "title": t["name"],
             "extendedProps" : {
                 "description" : format_termin(t)
-            }
+            },
+            "groupId" : "semesterplan"
         })
     # aus aufgabe
     termine_auf = list(aufgabe.find({"ankerdatum" : { "$in" : [t["_id"] for t in termine_prpa]}}))
     gr = group.find_one({"name" : "faq"})
     faq_users = list(users.find({"groups" : { "$elemMatch" : { "$eq" : gr["_id"]}}}, sort = [("name", pymongo.ASCENDING)])) 
     for t in termine_auf:
-        if t["nurtermin"] or t["verantwortlicher"] not in [r["rz"] for r in faq_users]:
-            col = "#FFFFFF"
-            textcol = "#000000"
-        else:
-            col = "".join([r["color"] for r in faq_users if t["verantwortlicher"] == r["rz"]])
-            textcol = get_contrasting_text_color(col)
-            events.append({
-                "color" : col,
-                "textcolor" : textcol,
-                "start": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])).strftime("%Y-%m-%d %H:%M:00"),
-                "end": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])).strftime("%Y-%m-%d %H:%M:00"),
-                "startzeit": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])).strftime("%H:%M:00"),
-                "endezeit": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])).strftime("%H:%M"),
-                "allDay": True,
-                "title": t["name"],
-                "extendedProps" : {
-                    "description" : f"{t["name"]}"                
-                }
-            })
-    faq_users = [u for u in faq_users if u["color"] != "#FFFFFF"]
-    return faq_users, events
+        col = next((c["color"] for c in calendars if c["kurzname"] == "studiendekanat"), "#FFFFFF")
+        events.append({
+            "color" : col,
+            "textcolor" : get_contrasting_text_color(col),
+            "start": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])).strftime("%Y-%m-%d %H:%M:00"),
+            "end": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])).strftime("%Y-%m-%d %H:%M:00"),
+            "startzeit": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])).strftime("%H:%M:00"),
+            "endezeit": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])).strftime("%H:%M"),
+            "allDay": True,
+            "title": t["name"],
+            "extendedProps" : {
+                "description" : f"{t["name"]}"                
+            },
+            "groupId" : "studiendekanat"
+        })
+
+
+    return events
