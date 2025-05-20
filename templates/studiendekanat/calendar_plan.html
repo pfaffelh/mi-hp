@@ -42,13 +42,16 @@ block content %}
 <script src="fullcalendar/core/index.global.js"></script>
 <script src="fullcalendar/core/locales/de.global.js"></script>
 <script>
-  function formatTimeIfNotMidnight(date) {
+  function formatTimeIfNotMidnight(isoString) {
+    const date = new Date(isoString);
     const hours = date.getHours();
     const minutes = date.getMinutes();
+
     if (hours === 0 && minutes === 0) {
-      return "";  // genau Mitternacht → leerer String
+      return ""; // Keine Uhrzeit anzeigen
     }
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}: `;
+
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
   }
 </script>
 <script>
@@ -81,15 +84,14 @@ block content %}
         meridiem: false
       },
       eventClick: function(info) {
-        const hours = info.event.start.getHours();
-        const minutes = info.event.start.getMinutes();
-        if (hours === 0 && minutes === 0) {
-          const vor = "";  // genau Mitternacht → leerer String
+        const start = info.event.start;
+        const timeString = formatTimeIfNotMidnight(start.toISOString());
+
+        if (timeString) {
+          alert(`${timeString}` `: ` + info.event.title);
+        } else {
+          alert(info.event.title);
         }
-        else {
-          const vor = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`; 
-        }
-        alert(info.event.start  + info.event.title);
       },
      events: [
             {% for event in events %}
