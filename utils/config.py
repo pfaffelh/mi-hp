@@ -121,3 +121,27 @@ def tage_lang(lang):
     tage_de = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
     tage_en = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     return tage_de if lang == "de" else tage_en
+
+
+calendars = [
+    { "kurzname" : "wochenprogramm",
+      "name_de" : "Wochenprogramm",
+      "name_en" : "Talks",
+      "color" : "#2ca02c;",
+    },
+    { "kurzname" : "studiendekanat",
+      "name_de" : "Studiendekanat",
+      "name_en" : "Program coordination",
+      "color": "#ff7f0e;",
+    },
+    { "kurzname" : "semesterplan",
+      "name_de" : "Semesterplan",
+      "name_en" : "Semester schedule",
+      "color" : "#1f77b4;",
+    },
+    { "kurzname" : "pruefungen",
+      "name_de" : "Prüfungen",
+      "name_en" : "Exams",
+      "color" : "#9467bd;"
+    },
+]

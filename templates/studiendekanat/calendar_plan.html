@@ -1,36 +1,60 @@
 {% extends "base_nlehre.html" %} {% block styles %}
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
-  rel="stylesheet"
-/>
-<script
-  src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"
-  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-  crossorigin="anonymous"
-></script>
-<style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"
+  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet"><style>
   .fc .fc-col-header-cell-cushion {
     display: inline-block;
     padding: 2px 4px;
   }
+
   .fc-event {
     margin-top: 0px;
     margin-bottom: 0px;
   }
+
+  #calendar {
+    max-width: 900px;
+    margin: 40px auto;
+  }
+
+  .calendar-toggle-group .btn {
+    color: white;
+    border: none;
+  }
+
+  {% for c in calendars %}
+  .btn-{{ c["kurzname"] }} {
+    background-color: {{ c["color"] }}
+  }
+  {% endfor %}
+
+  .btn-off {
+    background-color: #e0e0e0 !important;
+    color: black !important;
+  }
 </style>
 {% endblock %} {% block navbar %} {% include 'navbar_nlehre.html' %} {% endblock %} {%
-block content %} 
+block content %}
 <div class="container">
+  <h4>{% if lang == "de" %}Wähle Kalender{% else %}Choose calendar{% endif %}</h4>
+  <div class="btn-group calendar-toggle-group mb-4" role="group" id="calendarToggles">
+    {% for c in calendars %}
+    <button type="button" class="btn {% if c['kurzname'] != 'semesterplan' %}btn-off{% endif %}" data-calendar={{ c['kurzname'] }}"work">{% if lang == 'de' %} {{ c['name_de'] }}  {% else %} {{ c['name_en'] }} {% endif %} </button>
+    {% endfor %}
+  </div>
+
+
   <h3>Planung Studiendekanat Mathematik</h3>
   <h4>Verantwortliche</h4>
 </div>
 <div class="container" style="max-width: 140vh">
-{% for u in faq_users %}
+  {% for u in faq_users %}
   <div class="row">
     <div class="col-1 mx-3" style="background: {{ u['color'] }}; color: {{ u['color'] }}; ">d</div>
     <div class="col-4">{{ u["vorname"] }} {{ u["name"] }}</div>
   </div>
-{% endfor %}
+  {% endfor %}
 </div>
 <br />
 
@@ -56,7 +80,11 @@ block content %}
 </script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var calendarEl = document.getElementById("calendar");
+    const calendarEl = document.getElementById("calendar");    
+    const calendarColors = {
+      {% for c in calendars %} "{{ c['kurzname'] }}" : "{{ c['color']}}", {% endfor %}
+    };
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
       timeZone: "local",
@@ -83,7 +111,7 @@ block content %}
         minute: '2-digit',
         meridiem: false
       },
-      eventClick: function(info) {
+      eventClick: function (info) {
         const start = info.event.start;
         const timeString = formatTimeIfNotMidnight(start.toISOString());
 
@@ -93,20 +121,20 @@ block content %}
           alert(info.event.title);
         }
       },
-     events: [
-            {% for event in events %}
+      events: [
+        {% for event in events %}
             {
-              start: '{{ event.start}}',
-              end: '{{ event.end }}',
-              allDay: '{{ event.allDay}}',
-              title: '{{ event.title}}',
-              backgroundColor: '{{ event.color}}',
-              textColor: '{{ event.textcolor}}',
-            },
-            {% endfor %}
+        start: '{{ event.start}}',
+        end: '{{ event.end }}',
+        allDay: '{{ event.allDay}}',
+        title: '{{ event.title}}',
+        backgroundColor: '{{ event.color}}',
+        textColor: '{{ event.textcolor}}',
+      },
+      {% endfor %}
           ],
     });
-    calendar.render();
+  calendar.render();
   });
 </script>
 {% endblock %}
