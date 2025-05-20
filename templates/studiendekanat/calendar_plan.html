@@ -45,8 +45,8 @@ block content %}
   </div>
 
 
-  <h3>Planung Studiendekanat Mathematik</h3>
-  <h4>Verantwortliche</h4>
+  <h3>Semesterplanung</h3>
+<!--  <h4>Verantwortliche</h4>
 </div>
 <div class="container" style="max-width: 140vh">
   {% for u in faq_users %}
@@ -55,7 +55,7 @@ block content %}
     <div class="col-4">{{ u["vorname"] }} {{ u["name"] }}</div>
   </div>
   {% endfor %}
-</div>
+</div>-->
 <br />
 
 <div class="container" style="max-width: 140vh">
@@ -73,11 +73,28 @@ block content %}
 
     if (hours === 0 && minutes === 0) {
       return ""; // Keine Uhrzeit anzeigen
+    } else {
+      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
     }
-
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
   }
 </script>
+<script>
+  function formatEvent(event) {
+    const s = `${String(event.start.getHours()).padStart(2, '0')}:${String(event.start.getMinutes()).padStart(2, '0')}`
+    const e = `${String(event.end.getHours()).padStart(2, '0')}:${String(event.end.getMinutes()).padStart(2, '0')}`
+
+    if (event.start.getHours() === 0 && event.start.getMinutes() === 0) {
+      return info.event.title; // Keine Uhrzeit anzeigen
+    } else {
+      if (s == e) {
+        return `${s}: ` + info.event.title;
+      } else {
+        return `${s}-${e}: ` + info.event.title;
+      }
+    }
+  }
+</script>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const calendarEl = document.getElementById("calendar");    
@@ -111,30 +128,28 @@ block content %}
         minute: '2-digit',
         meridiem: false
       },
-      eventClick: function (info) {
-        const start = info.event.start;
-        const timeString = formatTimeIfNotMidnight(start.toISOString());
-
-        if (timeString) {
-          alert(`${timeString}` `: ` + info.event.title);
-        } else {
-          alert(info.event.title);
-        }
+      eventClick: function(info) {
+          alert(info.event.extendedProps.description);
       },
       events: [
         {% for event in events %}
             {
-        start: '{{ event.start}}',
-        end: '{{ event.end }}',
-        allDay: '{{ event.allDay}}',
-        title: '{{ event.title}}',
-        backgroundColor: '{{ event.color}}',
-        textColor: '{{ event.textcolor}}',
-      },
-      {% endfor %}
+              start: '{{ event.start}}',
+              end: '{{ event.end }}',
+              allDay: '{{ event.allDay}}',
+              title: '{{ event.title}}',
+              backgroundColor: '{{ event.color}}',
+              textColor: '{{ event.textcolor}}',
+              extendedProps: {
+                description: '{{ event.extendedProps.description}}',
+      }
+            },
+            {% endfor %}
           ],
-    });
-  calendar.render();
+      eventDidMount: function(info) {
+         info.el.setAttribute("title", info.event.extendedProps.description);
+  }    });
+    calendar.render();
   });
 </script>
 {% endblock %}
