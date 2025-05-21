@@ -23,55 +23,114 @@
     </div>
   </div>
   <div class="container">
-    <h2>{% if lang == "de" %}News-Archiv des Mathematischen Instituts{% else %}News-archive of the mathematical institute{% endif %}</h2>
+    <h2>
+      {% if lang == "de" %}News-Archiv des Mathematischen Instituts{% else
+      %}News-archive of the mathematical institute{% endif %}
+    </h2>
   </div>
 
   <div class="container py-1">
     <h3>{{ data['zeitraum'] }}</h3>
-    <div class="row row-cols-1 row-cols-md-3 g-3">
+    <div class="message-list visible" id="message-container">
       {% for item in data["news"] %}
-      <div class="col">
-        <div
-          class="card h-100 flex-grow-1 {% if item['today'] and item['monitor']['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
-        >
-          <center>
-            <img
-              src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
-              class="card-img-fluid d-none d-md-block"
-              alt="..."
-              style="height: 15vw; {{ item['image'][0]['stylehome'] }};"
-            />
-          </center>
-          <div class="card-body">
-            <h3 class="h5">{{ item['home']['title']|markdown }}</h3>
-            <div class="card-text">
-              {{ item['home']['text']|markdown}}
-              <p align="right">
-                {% if item['home']['popover_title']!= '' or
-                item['home']['popover_text']!= '' %}
-                <button
-                  type="button"
-                  class="btn btn-outline-primary active bg-white"
-                  data-bs-trigger="focus"
-                  data-bs-toggle="popover"
-                  data-bs-html="true"
-                  style="color: #004a99"
-                  title="{{ item['home']['popover_title']|markdown }}"
-                  data-bs-content="{{ item['home']['popover_text']|markdown }}"
-                >
-                  <i class="fa-solid fa-info" style="color: #004a99"></i>
-                </button>
-                {% endif %} {% if item['link']!= '' %}
-                <a
-                  class="btn btn-outline-primary active bg-white"
-                  style="border-color: #004a99"
-                  href="{{ item['link'] }}"
-                  role="button"
-                >
-                  <i class="fa-solid fa-link" style="color: #004a99"></i>
-                </a>
-                {% endif %}
-              </p>
+      <div class="message-item">
+        <div class="row row-cols-1">
+          <div class="col row-cols-1 g-3">
+            <div
+              class="card h-100 {% if item['today'] and item['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
+            >
+              <div class="g-2">
+                <div class="card-body py-0 px-0">
+                  <div class="row py-0 px-0">
+                    {% if loop.index0 %2 == 0 %}
+                    <div
+                      class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
+                    >
+                      <h3 class="card-title">
+                        {% if lang == "de" %}{{ item['home']['title_de'] |
+                        markdown }}{% else %}{{ item['home']['title_en'] |
+                        markdown }}{% endif %}
+                      </h3>
+                      <p
+                        class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
+                      >
+                        <font size="+2">
+                          {% if lang == "de" %}{{ item['home']['text_de'] |
+                          markdown }}{% else %}{{ item['home']['text_en'] |
+                          markdown }}{% endif %}
+                        </font>
+                        {% if item['link']!= '' %}
+                        <a
+                          class="btn btn-outline-primary active bg-white"
+                          style="border-color: #004a99"
+                          href="{{ item['link'] }}"
+                          role="button"
+                        >
+                          <i
+                            class="fa-solid fa-link"
+                            style="color: #004a99"
+                          ></i>
+                        </a>
+                        {% endif %}
+                      </p>
+                    </div>
+                    {% if item['image'] != [] %}
+                    <div
+                      class="col-sm-{{ item['image'][0]['widthmonitor']}} text-right"
+                    >
+                      {% if item['image'] %}
+                      <img
+                        src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
+                        alt="Red dot"
+                        class="float-end"
+                        alt="..."
+                        style="{{ item['image'][0]['stylemonitor'] }}"
+                      />
+                      {% endif %}
+                    </div>
+                    {% endif %} {% else %} {% if item['image'] != [] %}
+                    <div
+                      class="col-sm-{{ item['image'][0]['widthmonitor']}} text-left"
+                    >
+                      <img
+                        src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
+                        alt="Red dot"
+                        class="float-start"
+                        style="{{ item['image'][0]['stylemonitor'] }}"
+                      />
+                    </div>
+                    {% endif %}
+                    <div
+                      class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
+                    >
+                      <h3 class="card-title">
+                        {{ item['monitor']['title'] | markdown }}
+                      </h3>
+                      <p
+                        class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
+                      >
+                        <font size="+2"
+                          >{{ item['monitor']['text'] | markdown}}</font
+                        >
+                        {% if item['link']!= '' %}
+                        <a
+                          class="btn btn-outline-primary active bg-white"
+                          style="border-color: #004a99"
+                          href="{{ item['link'] }}"
+                          role="button"
+                        >
+                          <i
+                            class="fa-solid fa-link"
+                            style="color: #004a99"
+                          ></i>
+                        </a>
+                        {% endif %}
+                      </p>
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
