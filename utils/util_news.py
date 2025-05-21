@@ -309,15 +309,14 @@ def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
             "title" : getwl(e, "title", lang),
             "start": e["start"].strftime("%Y-%m-%d %H:%M:00"),
             "end": e["end"].strftime("%Y-%m-%d %H:%M:00"),
-            "allDay": if e["start"].hour == 0 and e["start"].minute != 0) then True else False,
+            "allDay": True if (e["start"].hour == 0 and e["start"].minute != 0) else False,
             "extendedProps" : {
                 "description" : title
             },
             "groupId" : "wochenprogramm"
            })
     for d in data["vortrag"]:
-        
-
+        all.append([])
     return all
 
 
