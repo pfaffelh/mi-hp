@@ -263,6 +263,8 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
                 {
                     "title" : getwl(e, "title", lang),
                     "url" : e["url"],
+                    "start" : e["start"],
+                    "end" : e["end"],
                     "starttag" : tage[e["start"].weekday()],
                     "startdatum" : e["start"].strftime('%-d.%-m.%y'),
                     "startzeit" : e["start"].strftime('%H:%M'),
@@ -289,6 +291,8 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
                 "abstract" : latex2markdown.LaTeX2Markdown(getwl(v, "text", lang)).to_markdown(),
                 "datum" : v["start"].strftime('%-d.%-m.%y'),
                 "tag" : tage[v["start"].weekday()],
+                "start" : v["start"],
+                "end" : v["end"],
                 "startzeit" : v["start"].strftime('%H:%M'),
                 "endzeit" : v["end"].strftime('%H:%M'),
                 "kommentar" : getwl(v, "kommentar", lang)
@@ -298,7 +302,8 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
     return data
 
 def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
-    enddate = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=240)).strftime('%Y%m%d')
+    enddate = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=240))
+    
     data = get_wochenprogramm(anfangdate, enddate, "alle", lang)
     col = next((c["color"] for c in calendars if c["kurzname"] == "wochenprogramm"), "#FFFFFF")
     all = []
@@ -306,17 +311,28 @@ def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
         all.append({
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
-            "title" : getwl(e, "title", lang),
+            "title" : e["title"],
             "start": e["start"].strftime("%Y-%m-%d %H:%M:00"),
             "end": e["end"].strftime("%Y-%m-%d %H:%M:00"),
             "allDay": True if (e["start"].hour == 0 and e["start"].minute != 0) else False,
             "extendedProps" : {
-                "description" : title
+                "description" : e["title"]
             },
             "groupId" : "wochenprogramm"
            })
-    for d in data["vortrag"]:
-        all.append([])
+    for v in data["vortrag"]:
+        all.append({
+            "color" : col,
+            "textcolor" : get_contrasting_text_color(col),
+            "title" : f"{v["sprecher"]}: {v["title"]}",
+            "start": v["start"].strftime("%Y-%m-%d %H:%M:00"),
+            "end": v["end"].strftime("%Y-%m-%d %H:%M:00"),
+            "allDay": True if (v["start"].hour == 0 and v["start"].minute != 0) else False,
+            "extendedProps" : {
+                "description" : f"{next(iter([c[0] for c in v["reihe"]]), "")}: {v["title"]} ({v["sprecher"]})",
+            },
+            "groupId" : "wochenprogramm"            
+        })
     return all
 
 
