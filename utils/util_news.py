@@ -297,6 +297,30 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
         previousdatum = v["start"]
     return data
 
+def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
+    enddate = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=240)).strftime('%Y%m%d')
+    data = get_wochenprogramm(anfangdate, enddate, "alle", lang)
+    col = next((c["color"] for c in calendars if c["kurzname"] == "wochenprogramm"), "#FFFFFF")
+    all = []
+    for e in data["events"]:
+        all.append({
+            "color" : col,
+            "textcolor" : get_contrasting_text_color(col),
+            "title" : getwl(e, "title", lang),
+            "start": e["start"].strftime("%Y-%m-%d %H:%M:00"),
+            "end": e["end"].strftime("%Y-%m-%d %H:%M:00"),
+            "allDay": if e["start"].hour == 0 and e["start"].minute != 0) then True else False,
+            "extendedProps" : {
+                "description" : title
+            },
+            "groupId" : "wochenprogramm"
+           })
+    for d in data["vortrag"]:
+        
+
+    return all
+
+
 def get_wochenprogramm_full(anfang, end, kurzname="alle", lang="de"):
     anfangdate = datetime.strptime(anfang, '%Y%m%d')
     enddate = datetime.strptime(end, '%Y%m%d')
