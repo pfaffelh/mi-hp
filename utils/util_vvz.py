@@ -6,7 +6,7 @@ from .config import *
 from operator import itemgetter
 import latex2markdown
 from markdown import markdown
-
+import re
 from markdown.treeprocessors import Treeprocessor
 from markdown.extensions import Extension
 import xml.etree.ElementTree as etree
@@ -572,31 +572,35 @@ def get_calendar_data(anzeige_start, lang = "de"):
                 te = te + ": " if te != "" else ""
                 title = f"{te} {repr_veranstaltung(v['_id'], lang)} {t[f'kommentar_{lang}_html']}, {repr_semester(v['semester'], lang)}"
                 if t["startzeit"] and (t["startzeit"].hour != 0 or t["startzeit"].minute != 0): 
-                    start = datetime.combine(t["startdatum"].date(), t["startzeit"].time())
-                    allDay = 'false'
-                    title_lang = f"{start.strftime("%H:%M")} :{title}"
+                    allDay = False
+                    startdt = datetime.combine(t["startdatum"].date(), t["startzeit"].time())
+                    start = startdt.isoformat()
                 else:
-                    start = t["startdatum"]
-                    allDay = 'true'
-                    title_lang = title
+#                    allDay = False
+#                    start = datetime.combine(t["startdatum"].date(), datetime.min.time()).isoformat()
+                    allDay = True
+                    startdt = t["startdatum"]
+                    start = startdt.strftime('%Y-%m-%d')
                 if t["endzeit"] : 
-                    ende = datetime.combine(t["enddatum"].date(), t["endzeit"].time())
+                    endedt = datetime.combine(t["enddatum"].date(), t["endzeit"].time())
                 else:
-                    ende = t["enddatum"]
+                    endedt = t["enddatum"].date()
+                ende = endedt.isoformat()
                 col = next((c["color"] for c in calendars if c["kurzname"] == "pruefungen"), "#FFFFFF")
 
                 all.append({
                     "color" : col,
                     "textcolor" : get_contrasting_text_color(col),
-                    "start": start.strftime("%Y-%m-%d %H:%M:00"),
-                    "end": ende.strftime("%Y-%m-%d %H:%M:00"),
-                    "startzeit": start.strftime("%H:%M"),
-                    "endezeit": ende.strftime("%H:%M"),
+                    "start": start,
+                    "end": ende,
                     "allDay": allDay,
                     "title": title,
                     "extendedProps" : {
-                        "description" : title_lang
-                    },
+                        "description" : "",
+                        "googleTime" : formatDateForGoogle(startdt, endedt, allDay),
+                     },
                     "groupId" : "pruefungen"
                 })
+
+    print([a["start"] for a in all])
     return all

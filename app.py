@@ -504,7 +504,10 @@ def showlehrendevpn(lang, unterseite ="", anchor = ""):
     if unterseite == "calendar":
         anfang = datetime.now() + timedelta(days = -720)
         events = faq.get_calendar_data(anfang) + vvz.get_calendar_data(anfang) + news.get_wochenprogramm_for_calendar(anfang)
+        for event in events:
+                print(event)
         return render_template("studiendekanat/calendar_plan.html", calendars = calendars, lang = lang, events=events)
+
 
 @app.route("/nlehre/vpn/<lang>/lehrende/<semester>/planung/")
 def showlehrveranstaltungenplanung(lang, semester):

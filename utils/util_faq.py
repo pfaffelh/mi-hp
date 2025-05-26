@@ -107,17 +107,17 @@ def get_calendar_data(anzeige_start):
     termine_prpa = list(kalender.find({"datum" : { "$gte" : anzeige_start}}))
     for t in termine_prpa:
         col = next((c["color"] for c in calendars if c["kurzname"] == "semesterplan"), "#FFFFFF")
+        allDay = True if t["datum"].time() == datetime.min.time() else False
         events.append({
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
-            "start": t["datum"].strftime("%Y-%m-%d %H:%M:00"),
-            "end": t["datum"].strftime("%Y-%m-%d %H:%M:00"),
-            "startzeit": t["datum"].strftime("%H:%M"),
-            "endezeit": t["datum"].strftime("%H:%M:00"),
-            "allDay": True if t["datum"].time() == datetime.min.time() else False,
+            "start": t["datum"].strftime('%Y-%m-%d') if allDay else t["datum"].isoformat(),
+            "end": t["datum"].isoformat(),
+            "allDay": allDay,
             "title": t["name"],
             "extendedProps" : {
-                "description" : format_termin(t)
+                "description" : format_termin(t),
+                "googleTime" : formatDateForGoogle(t["datum"], t["datum"], allDay),
             },
             "groupId" : "semesterplan"
         })
@@ -127,20 +127,22 @@ def get_calendar_data(anzeige_start):
     faq_users = list(users.find({"groups" : { "$elemMatch" : { "$eq" : gr["_id"]}}}, sort = [("name", pymongo.ASCENDING)])) 
     for t in termine_auf:
         col = next((c["color"] for c in calendars if c["kurzname"] == "studiendekanat"), "#FFFFFF")
+        anfang = kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])
+        ende = kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])
+        allDay = True if anfang.time() == datetime.min.time() else False
+
         events.append({
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
-            "start": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])).strftime("%Y-%m-%d %H:%M:00"),
-            "end": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])).strftime("%Y-%m-%d %H:%M:00"),
-            "startzeit": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["start"])).strftime("%H:%M:00"),
-            "endezeit": (kalender.find_one({"_id" : t["ankerdatum"]})["datum"] + relativedelta(days = t["ende"])).strftime("%H:%M"),
-            "allDay": True,
+            "start": anfang.strftime('%Y-%m-%d') if allDay else anfang.isoformat(),
+            "end": ende.isoformat(),
+            "allDay": allDay,
             "title": t["name"],
             "extendedProps" : {
-                "description" : f"{t["name"]}"                
+                "description" : "",
+                "googleTime" : formatDateForGoogle(anfang, ende, allDay),
             },
             "groupId" : "studiendekanat"
         })
-
 
     return events

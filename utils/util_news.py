@@ -308,28 +308,31 @@ def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
     col = next((c["color"] for c in calendars if c["kurzname"] == "wochenprogramm"), "#FFFFFF")
     all = []
     for e in data["events"]:
+        allDay = True if (e["start"].time() == datetime.min.time()) else False
         all.append({
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
             "title" : e["title"],
-            "start": e["start"].strftime("%Y-%m-%d %H:%M:00"),
-            "end": e["end"].strftime("%Y-%m-%d %H:%M:00"),
-            "allDay": True if (e["start"].hour == 0 and e["start"].minute != 0) else False,
+            "start": e["start"].strftime('%Y-%m-%d') if allDay else e["start"].isoformat(),
+            "end": e["end"].isoformat(),
+            "allDay": allDay,
             "extendedProps" : {
-                "description" : e["title"]
+                "description" : e["title"],
+                "googleTime" : formatDateForGoogle(e["start"], e["end"], allDay),
             },
-            "groupId" : "wochenprogramm"
+            "groupId" : "wochenprogramm",
            })
     for v in data["vortrag"]:
         all.append({
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
             "title" : f"{v["sprecher"]}: {v["title"]}",
-            "start": v["start"].strftime("%Y-%m-%d %H:%M:00"),
-            "end": v["end"].strftime("%Y-%m-%d %H:%M:00"),
-            "allDay": True if (v["start"].hour == 0 and v["start"].minute != 0) else False,
+            "start": v["start"].isoformat(),
+            "end": v["end"].isoformat(),
+            "allDay": True if v["start"].time() == datetime.min.time() else False,
             "extendedProps" : {
                 "description" : f"{next(iter([c[0] for c in v["reihe"]]), "")}: {v["title"]} ({v["sprecher"]})",
+                "googleTime" : formatDateForGoogle(v["start"], v["end"], allDay),
             },
             "groupId" : "wochenprogramm"            
         })

@@ -1,22 +1,14 @@
 {% extends "base_nlehre.html" %} {% block styles %}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"
-  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
 <style>
-  .fc .fc-col-header-cell-cushion {
-    display: inline-block;
-    padding: 2px 4px;
-  }
-
-  .fc-event {
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-
   #calendar {
     max-width: 1500px;
     margin: 40px auto;
+  }
+
+  .calendar-wrapper {
+    position: relative;
   }
 
   .calendar-toggle-group .btn {
@@ -28,10 +20,84 @@
     background-color: #e0e0e0 !important;
     color: black !important;
   }
+
+  #eventModal {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  #eventModal.show {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .cal-modal-content {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    text-align: left;
+    transform: translateY(0);
+    /* Ensure no offset */
+
+  }
+
+  .close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .close:hover {
+    color: #000;
+  }
+
+  .cal-modal-links a {
+    display: block;
+    margin: 10px 0;
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .cal-modal-links a:hover {
+    text-decoration: underline;
+  }
+
+  .cal-modal-description {
+    margin-top: 15px;
+    color: #333;
+  }
+
+  @media (max-width: 1000px) {
+    .cal-modal-content {
+      width: 95%;
+      padding: 15px;
+      font-size: 15px;
+    }
+
+    .cal-modal-links a {
+      font-size: 14px;
+    }
+  }
 </style>
 {% endblock %} {% block navbar %} {% include 'navbar_nlehre.html' %} {% endblock %} {%
 block content %}
-<div class="container">
+<div class="container calendar-wrapper" id = "calendar-container">
   <h4>{% if lang == "de" %}Wähle Kalender{% else %}Choose calendar{% endif %}</h4>
   <div class="btn-group calendar-toggle-group mb-4" role="group" id="calendarToggles">
     {% for c in calendars %}
@@ -39,127 +105,198 @@ block content %}
       data-calendar="{{c['kurzname']}}">{{c['name_de']}}</button>
     {% endfor %}
   </div>
-  <div class="container">
-    <div id="calendar"></div>
+  <div id="calendar"></div>
+
+  <!-- MODAL -->
+  <div id="eventModal" class="cal-modal">
+    <div class="cal-modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="cal-modal-title"></h3>
+
+      <div class="cal-modal-links">
+        <a id="cal-modal-link-google" href="#" target="_blank">In Google Kalender übernehmen</a>
+        <a id="cal-modal-link-ics" href="#" download="termin.ics">.ics-Datei herunterladen</a>
+      </div>
+
+      <div class="cal-modal-description" id="cal-modal-description"></div>
+    </div>
   </div>
+</div>
 
-  {% endblock %}
+{% endblock %}
 
-  {% block js %}
+{% block js %}
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const calendarEl = document.getElementById('calendar');
-      const toggleButtons = document.querySelectorAll('#calendarToggles .btn');
+<script>
+  function pad(n) {
+    return n < 10 ? '0' + n : n;
+  }
 
-      const calendarColors = { {% for c in calendars %}
+  function formatLocalDateTimeForGoogle(date) {
+    return (
+      date.getFullYear().toString() +
+      pad(date.getMonth() + 1) +
+      pad(date.getDate()) +
+      'T' +
+      pad(date.getHours()) +
+      pad(date.getMinutes()) +
+      pad(date.getSeconds())
+    );
+  }
+
+  function formatDateForGoogle(start, end, allDay) {
+    if (allDay) {
+      // YYYYMMDD/YYYMMDD (exclusive end date)
+      const startStr = start.toISOString().slice(0, 10).replace(/-/g, '');
+      const endDate = new Date(end);
+      endDate.setDate(endDate.getDate() + 1);
+      const endStr = endDate.toISOString().slice(0, 10).replace(/-/g, '');
+      return `${startStr}/${endStr}`;
+    } else {
+      const startStr = formatLocalDateTimeForGoogle(start);
+      const endStr = formatLocalDateTimeForGoogle(end);
+      return `${startStr}/${endStr}`;
+    }
+  }
+  function formatDateForGoogle2(date) {
+    const pad = (num) => String(num).padStart(2, '0');
+    return (
+      date.getFullYear().toString() +
+      pad(date.getMonth() + 1) +
+      pad(date.getDate()) + 'T' +
+      pad(date.getHours()) +
+      pad(date.getMinutes()) +
+      pad(date.getSeconds())
+    );
+  }
+  function openModal(event) {
+    document.getElementById("cal-modal-title").textContent = event.title;
+
+    // const link1 = document.getElementById("cal-modal-link1");
+    // link1.style.display = event.extendedProps.link1 ? 'block' : 'none';
+    // link1.href = event.extendedProps.link1 || '#';
+
+    // /const link2 = document.getElementById("modal-link2");
+    // link2.style.display = event.extendedProps.link2 ? 'block' : 'none';
+    // link2.href = event.extendedProps.link2 || '#';
+
+    const description = event.extendedProps.description || '';
+    document.getElementById("cal-modal-description").textContent = description;
+
+    // Google-Kalender-Link
+    const start = event.start;
+    const gtime = event.extendedProps.googleTime;
+    const end = event.end || new Date(event.start.getTime() + 60 * 60 * 1000); 
+    const allDay = event.alDay;
+    const title = encodeURIComponent(event.title);
+    const desc = encodeURIComponent(description);
+    const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${gtime}&details=${desc}`;
+    document.getElementById("cal-modal-link-google").href = googleUrl;
+
+    // ICS-Datei
+    const icsContent =
+      `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${event.title}\nDESCRIPTION:${description}\nDTSTART:${start}\nDTEND:${end}\nEND:VEVENT\nEND:VCALENDAR`;
+    const blob = new Blob([icsContent], { type: 'text/calendar' });
+    const icsUrl = URL.createObjectURL(blob);
+    document.getElementById("cal-modal-link-ics").href = icsUrl;
+
+    document.getElementById("eventModal").style.display = "flex";
+    document.getElementById("eventModal").classList.add("show");
+  }
+
+  //function closeModal() {
+  //  document.getElementById("eventModal").style.display = "none";
+  // }
+
+  function closeModal() {
+    document.getElementById("eventModal").classList.remove("show");
+  }
+
+  // Zum Schließen, wenn irgendwo geclickt wird.
+  window.onclick = function (event) {
+    const modal = document.getElementById("eventModal");
+    if (event.target === cal - modal) {
+      closeModal();
+    }
+  };
+  document.addEventListener('DOMContentLoaded', function () {
+    const calendarEl = document.getElementById('calendar');
+    const toggleButtons = document.querySelectorAll('#calendarToggles .btn');
+
+    const calendarColors = { {% for c in calendars %}
       {{ c["kurzname"]}}: '{{c["color"]}}', {% endfor %}
       };
 
-    const initiallyActive = ['semesterplan']; // ← nur diese Kalender aktiv beim Start
+  const initiallyActive = ['semesterplan']; // ← nur diese Kalender aktiv beim Start
+  const allEvents = {{ events|tojson}};
 
-    const allEvents = [
-      {% for event in events %}
-    {
-      start: '{{ event.start}}',
-        end: '{{ event.end }}',
-          allDay: '{{ event.allDay}}',
-            title: '{{ event.title}}',
-              backgroundColor: '{{ event.color}}',
-                textColor: '{{ event.textcolor}}',
-                  groupId: '{{event.groupId}}',
-                    extendedProps: {
-        description: '{{ event.extendedProps.description}}',
-      }
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    timeZone: "local",
+    locale: "de",
+    expandRows: true,
+    buttonText: {
+      today: "heute",
+      month: "Monat",
+      week: "Woche",
+      day: "Tag",
+      list: "Liste"
     },
-    {% endfor %}
-          ]
+    firstDay: 1,
+    themeSystem: 'bootstrap5',
+    headerToolbar: {
+      left: "prev,next,today",
+      center: "title",
+      right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+    },
+    weekNumbers: true,
+    dayMaxEvents: true, // allow "more" link when too many events
+    eventTimeFormat: { // like '14:30:00'
+      hour: '2-digit',
+      minute: '2-digit',
+      meridiem: false
+    },
+    // Events filtern je nach Auswahl
+    events: function (fetchInfo, successCallback) {
+      const selectedCalendars = getSelectedCalendars();
+      const filtered = allEvents
+        .filter(evt => selectedCalendars.includes(evt.groupId))
+        .map(evt => ({
+          ...evt,
+          color: calendarColors[evt.groupId],
+          title: evt.title,
+        }));
+      successCallback(filtered);
+    },
 
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      timeZone: "local",
-      locale: "de",
-      expandRows: true,
-      buttonText: {
-        today: "heute",
-        month: "Monat",
-        week: "Woche",
-        day: "Tag",
-        list: "Liste"
-      },
-      firstDay: 1,
-      themeSystem: 'bootstrap5',
-      headerToolbar: {
-        left: "prev,next,today",
-        center: "title",
-        right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
-      },
-      weekNumbers: true,
-      dayMaxEvents: true, // allow "more" link when too many events
-      eventTimeFormat: { // like '14:30:00'
-        hour: '2-digit',
-        minute: '2-digit',
-        meridiem: false
-      },
-      // Events filtern je nach Auswahl
-      events: function (fetchInfo, successCallback) {
-        const selectedCalendars = getSelectedCalendars();
-        const filtered = allEvents
-          .filter(evt => selectedCalendars.includes(evt.groupId))
-          .map(evt => ({
-            ...evt,
-            color: calendarColors[evt.groupId],
-            title: evt.title,
-          }));
-        successCallback(filtered);
-      },
-
-      // Tooltip bei hover
-      eventDidMount: function (info) {
-        new bootstrap.Tooltip(info.el, {
-          title: info.event.extendedProps.description,
-          placement: 'top',
-          trigger: 'hover',
-          container: 'body'
-        });
-      },
-
-      // Alert bei Klick
-      eventClick: function (info) {
-        alert(info.event.extendedProps.description);
-      }
-    });
-
-    calendar.render();
-
-    // Button-Click: aktivieren/deaktivieren
-    toggleButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const cal = btn.dataset.calendar;
-        const color = calendarColors[cal];
-
-        if (btn.classList.contains('btn-off')) {
-          btn.classList.remove('btn-off');
-          btn.style.backgroundColor = color;
-          btn.style.color = 'white';
-        } else {
-          btn.classList.add('btn-off');
-          btn.style.backgroundColor = '';
-          btn.style.color = '';
-        }
-
-        calendar.refetchEvents();
+    // Tooltip bei hover
+    eventDidMount: function (info) {
+      new bootstrap.Tooltip(info.el, {
+        title: info.event.extendedProps.description,
+        placement: 'top',
+        trigger: 'hover',
+        container: 'body'
       });
-    });
+    },
+    eventClick: function (info) {
+      info.jsEvent.preventDefault();
+      openModal(info.event);
+    }
 
-    // Buttons mit richtiger Startfarbe
-    toggleButtons.forEach(btn => {
+  });
+
+  calendar.render();
+
+  // Button-Click: aktivieren/deaktivieren
+  toggleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
       const cal = btn.dataset.calendar;
       const color = calendarColors[cal];
-      if (initiallyActive.includes(cal)) {
+
+      if (btn.classList.contains('btn-off')) {
         btn.classList.remove('btn-off');
         btn.style.backgroundColor = color;
         btn.style.color = 'white';
@@ -168,15 +305,38 @@ block content %}
         btn.style.backgroundColor = '';
         btn.style.color = '';
       }
+
       calendar.refetchEvents();
     });
-
-    function getSelectedCalendars() {
-      return Array.from(toggleButtons)
-        .filter(btn => !btn.classList.contains('btn-off'))
-        .map(btn => btn.getAttribute('data-calendar'));
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeModal();
     }
-    });
-  </script>
+  });
 
-  {% endblock %}
+  // Buttons mit richtiger Startfarbe
+  toggleButtons.forEach(btn => {
+    const cal = btn.dataset.calendar;
+    const color = calendarColors[cal];
+    if (initiallyActive.includes(cal)) {
+      btn.classList.remove('btn-off');
+      btn.style.backgroundColor = color;
+      btn.style.color = 'white';
+    } else {
+      btn.classList.add('btn-off');
+      btn.style.backgroundColor = '';
+      btn.style.color = '';
+    }
+    calendar.refetchEvents();
+  });
+
+  function getSelectedCalendars() {
+    return Array.from(toggleButtons)
+      .filter(btn => !btn.classList.contains('btn-off'))
+      .map(btn => btn.getAttribute('data-calendar'));
+  }
+    });
+</script>
+
+{% endblock %}

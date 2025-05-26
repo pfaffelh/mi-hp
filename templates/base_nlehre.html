@@ -168,7 +168,11 @@
       background-color: #344A9A !important;
       color: white !important;
     }
+  </style>
 
+  {% block styles %}
+  <!-- Add additional styles here -->
+  <style>
     @media (max-width: 576px) {
       .modal-dialog {
         margin: 0;
@@ -201,11 +205,7 @@
     .h5 {
       font-size: 1.25rem;
     }
-  </style>
 
-  {% block styles %}
-  <!-- Add additional styles here -->
-  <style>
     button.lecture-module-button {
       background-color: white !important;
       /* Custom background color */
@@ -402,7 +402,7 @@
       return new bootstrap.Tooltip(tooltipTriggerEl);
     });
   </script>
-  
+
   <script>
     $(document).ready(function () {
       // Alle Popovers auf der Seite initialisieren

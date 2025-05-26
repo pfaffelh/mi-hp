@@ -162,3 +162,17 @@ def format_termin(t):
     else:
         res = f"{t['datum'].strftime('%H:%M')}: {t['name']}"
     return res    
+
+from datetime import datetime, timedelta
+
+def formatDateForGoogle(start, end, allDay):
+    if allDay:
+        start_str = start.strftime('%Y%m%d')
+        # Google erwartet das Enddatum exklusiv → +1 Tag
+        end_str = (end + timedelta(days=1)).strftime('%Y%m%d')
+    else:
+        # Ohne Zeitzone (lokal)
+        start_str = start.strftime('%Y%m%dT%H%M%S')
+        end_str = end.strftime('%Y%m%dT%H%M%S')
+    
+    return f"{start_str}/{end_str}"
