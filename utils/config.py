@@ -166,13 +166,36 @@ def format_termin(t):
 from datetime import datetime, timedelta
 
 def formatDateForGoogle(start, end, allDay):
+    if not isinstance(end, datetime):
+        end = datetime.combine(end, datetime.min.time())
     if allDay:
         start_str = start.strftime('%Y%m%d')
         # Google erwartet das Enddatum exklusiv → +1 Tag
+        end = end if start <= end else start
         end_str = (end + timedelta(days=1)).strftime('%Y%m%d')
+        end_str = end.strftime('%Y%m%d')
     else:
         # Ohne Zeitzone (lokal)
         start_str = start.strftime('%Y%m%dT%H%M%S')
         end_str = end.strftime('%Y%m%dT%H%M%S')
     
     return f"{start_str}/{end_str}"
+
+def formatDateForIcs(start, end, allDay):
+    if not isinstance(end, datetime):
+        end = datetime.combine(end, datetime.min.time())
+    if allDay:
+        start_str = start.strftime('%Y%m%d')
+        # ics erwartet das Enddatum exklusiv → +1 Tag
+        end = end if start <= end else start
+        end_str = (end + timedelta(days=1)).strftime('%Y%m%d')
+        # end_str = end.strftime('%Y%m%d')
+        res = f"DTSTART;VALUE=DATE:{start_str}\nDTEND;VALUE=DATE:{end_str}"
+    else:
+        # Ohne Zeitzone (lokal)
+        start_str = start.strftime('%Y%m%dT%H%M%S')
+        end_str = end.strftime('%Y%m%dT%H%M%S')
+        res = f"DTSTART:{start_str}\nDTEND:{end_str}"
+    
+    return res
+

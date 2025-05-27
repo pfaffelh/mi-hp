@@ -319,6 +319,7 @@ def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
             "extendedProps" : {
                 "description" : e["title"],
                 "googleTime" : formatDateForGoogle(e["start"], e["end"], allDay),
+                "icsTime" : formatDateForIcs(e["start"], e["end"], allDay),
             },
             "groupId" : "wochenprogramm",
            })
@@ -331,8 +332,9 @@ def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
             "end": v["end"].isoformat(),
             "allDay": True if v["start"].time() == datetime.min.time() else False,
             "extendedProps" : {
-                "description" : f"{next(iter([c[0] for c in v["reihe"]]), "")}: {v["title"]} ({v["sprecher"]})",
+                "description" : f"{next(iter([c[0] for c in v["reihe"]]), "")}, {getwl(v, "ort", lang)} \n {latex2markdown.LaTeX2Markdown(getwl(v, "text", lang)).to_markdown()}",
                 "googleTime" : formatDateForGoogle(v["start"], v["end"], allDay),
+                "icsTime" : formatDateForIcs(v["start"], v["start"], allDay),
             },
             "groupId" : "wochenprogramm"            
         })

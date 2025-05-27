@@ -108,7 +108,7 @@ block content %}
   <div id="calendar"></div>
 
   <!-- MODAL -->
-  <div id="eventModal" class="cal-modal">
+  <div id="eventModal">
     <div class="cal-modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
       <h3 id="cal-modal-title"></h3>
@@ -189,16 +189,20 @@ block content %}
     // Google-Kalender-Link
     const start = event.start;
     const gtime = event.extendedProps.googleTime;
+    const icstime = event.extendedProps.icsTime;
     const end = event.end || new Date(event.start.getTime() + 60 * 60 * 1000); 
     const allDay = event.alDay;
     const title = encodeURIComponent(event.title);
     const desc = encodeURIComponent(description);
     const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${gtime}&details=${desc}`;
     document.getElementById("cal-modal-link-google").href = googleUrl;
-
+    const formatDate = date =>
+      date.toISOString().split('T')[0].replace(/-/g, '');
+    const formatDateTime = date =>
+      date.toISOString().replace(/[-:]|\.\d{3}/g, '');
     // ICS-Datei
     const icsContent =
-      `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${event.title}\nDESCRIPTION:${description}\nDTSTART:${start}\nDTEND:${end}\nEND:VEVENT\nEND:VCALENDAR`;
+        `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${event.title}\nDESCRIPTION:${description}\n${icstime}\nEND:VEVENT\nEND:VCALENDAR`;
     const blob = new Blob([icsContent], { type: 'text/calendar' });
     const icsUrl = URL.createObjectURL(blob);
     document.getElementById("cal-modal-link-ics").href = icsUrl;
@@ -218,7 +222,7 @@ block content %}
   // Zum Schließen, wenn irgendwo geclickt wird.
   window.onclick = function (event) {
     const modal = document.getElementById("eventModal");
-    if (event.target === cal - modal) {
+    if (event.target === modal) {
       closeModal();
     }
   };

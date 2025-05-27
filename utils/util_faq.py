@@ -118,6 +118,7 @@ def get_calendar_data(anzeige_start):
             "extendedProps" : {
                 "description" : format_termin(t),
                 "googleTime" : formatDateForGoogle(t["datum"], t["datum"], allDay),
+                "icsTime" : formatDateForIcs(t["datum"], t["datum"], allDay),
             },
             "groupId" : "semesterplan"
         })
@@ -141,6 +142,7 @@ def get_calendar_data(anzeige_start):
             "extendedProps" : {
                 "description" : "",
                 "googleTime" : formatDateForGoogle(anfang, ende, allDay),
+                "icsTime" : formatDateForIcs(anfang, ende, allDay),
             },
             "groupId" : "studiendekanat"
         })

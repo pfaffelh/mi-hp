@@ -598,6 +598,7 @@ def get_calendar_data(anzeige_start, lang = "de"):
                     "extendedProps" : {
                         "description" : "",
                         "googleTime" : formatDateForGoogle(startdt, endedt, allDay),
+                        "icsTime" : formatDateForIcs(startdt, endedt, allDay),
                      },
                     "groupId" : "pruefungen"
                 })
