@@ -116,7 +116,9 @@ def get_calendar_data(anzeige_start):
             "allDay": allDay,
             "title": t["name"],
             "extendedProps" : {
-                "description" : format_termin(t),
+                "description1" : format_termin(t),
+                "description2" : "",
+                "ort" : "",
                 "googleTime" : formatDateForGoogle(t["datum"], t["datum"], allDay),
                 "icsTime" : formatDateForIcs(t["datum"], t["datum"], allDay),
             },
