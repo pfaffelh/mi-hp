@@ -1,6 +1,12 @@
 {% extends "base_nlehre.html" %} {% block styles %}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css"
+  rel="stylesheet"
+/>
 <style>
   #calendar {
     max-width: 1500px;
@@ -52,7 +58,6 @@
     text-align: left;
     transform: translateY(0);
     /* Ensure no offset */
-
   }
 
   .close {
@@ -95,16 +100,68 @@
     }
   }
 </style>
-{% endblock %} {% block navbar %} {% include 'navbar_nlehre.html' %} {% endblock %} {%
-block content %}
-<div class="container calendar-wrapper" id = "calendar-container">
-  <h4>{% if lang == "de" %}Wähle Kalender{% else %}Choose calendar{% endif %}</h4>
-  <div class="btn-group calendar-toggle-group mb-4" role="group" id="calendarToggles">
-    {% for c in calendars %}
-    <button type="button" class="btn {% if c['kurzname'] != 'semesteplan' %}btn-off{% endif %}"
-      data-calendar="{{c['kurzname']}}">{{c['name_de']}}</button>
-    {% endfor %}
+{% endblock %} {% block navbar %} {% include 'navbar_nlehre.html' %} {% endblock
+%} {% block content %}
+{% if selected_calendar == "pruefungen" %}
+<div class="container">
+  {% if lang == "de" %}
+  <h3>Prüfungen und Fristen Mathematik</h3>
+  Die hier dargestellten Prüfungstermine und Fristen stellen eine Übersicht dar. Im Zweifelsfall entscheidend sind jedoch immer Einträge in <a href="https://campus.uni-freiburg.de">HisInOne</a>.
+  {% else %}
+  <h3>Exams and dates</h3>
+  You find here an overview of examination dates and deadlines. In case of doubt, however, entries in <a href=‘https://campus.uni-freiburg.de’</a> are legally binding.
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <div class="feature-icon bg-gradient text-end">
+        <a
+          href="/{{lang}}/lehrveranstaltungen/{{laufendes_semester}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          Lehrveranstaltungen des laufenden Semesters</a
+        >
+        <a
+          href="{{ url_for('showstufaq', lang=lang)}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          FAQ</a
+        >
+      </div>
+    </div>
   </div>
+</div>
+{% endif %}
+</div>
+{% endif %}
+
+<div class="container calendar-wrapper" id="calendar-container">
+  {% if all_calendars | length > 1 %}
+  <h4>
+    {% if lang == "de" %}Wähle Kalender{% else %}Choose calendar{% endif %}
+  </h4>
+  {% endif %}
+  <div
+    class="btn-group calendar-toggle-group mb-4"
+    role="group"
+    id="calendarToggles"
+  >
+    
+   {% for c in all_calendars %}
+    <button
+      type="button"
+      class="btn {% if c['kurzname'] != elected_calendar %}btn-off{% endif %}"
+      data-calendar="{{c['kurzname']}}"
+    >
+      {{c['name_de']}}
+    </button>
+    {% endfor %}
+
+  </div>
+  
   <div id="calendar"></div>
 
   <!-- MODAL -->
@@ -114,18 +171,20 @@ block content %}
       <h3 id="cal-modal-title"></h3>
 
       <div class="cal-modal-links">
-        <a id="cal-modal-link-google" href="#" target="_blank">In Google Kalender übernehmen</a>
-        <a id="cal-modal-link-ics" href="#" download="termin.ics">.ics-Datei herunterladen</a>
+        <a id="cal-modal-link-google" href="#"
+          >In Google Kalender übernehmen</a
+        >
+        <a id="cal-modal-link-ics" href="#" download="termin.ics"
+          >.ics-Datei herunterladen</a
+        >
       </div>
-
-      <div class="cal-modal-description" id="cal-modal-description"></div>
+      <div class="cal-modal-description1" id="cal-modal-description1"></div>
+      <div class="cal-modal-description2" id="cal-modal-description2"></div>
     </div>
   </div>
 </div>
 
-{% endblock %}
-
-{% block js %}
+{% endblock %} {% block js %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
@@ -183,18 +242,22 @@ block content %}
     // link2.style.display = event.extendedProps.link2 ? 'block' : 'none';
     // link2.href = event.extendedProps.link2 || '#';
 
-    const description = event.extendedProps.description || '';
-    document.getElementById("cal-modal-description").textContent = description;
+    const description1 = event.extendedProps.description1 || '';
+    document.getElementById("cal-modal-description1").textContent = description1;
+    const description2 = event.extendedProps.description2 || '';
+    document.getElementById("cal-modal-description2").textContent = description2;
 
     // Google-Kalender-Link
     const start = event.start;
     const gtime = event.extendedProps.googleTime;
     const icstime = event.extendedProps.icsTime;
-    const end = event.end || new Date(event.start.getTime() + 60 * 60 * 1000); 
+    const end = event.end || new Date(event.start.getTime() + 60 * 60 * 1000);
     const allDay = event.alDay;
     const title = encodeURIComponent(event.title);
-    const desc = encodeURIComponent(description);
-    const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${gtime}&details=${desc}`;
+    const desc1 = encodeURIComponent(description1);
+    const desc2 = encodeURIComponent(description2);
+    const ort = encodeURIComponent(event.extendedProps.ort || '');
+    const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${gtime}&details=${desc2}&location=${ort}`;
     document.getElementById("cal-modal-link-google").href = googleUrl;
     const formatDate = date =>
       date.toISOString().split('T')[0].replace(/-/g, '');
@@ -202,7 +265,7 @@ block content %}
       date.toISOString().replace(/[-:]|\.\d{3}/g, '');
     // ICS-Datei
     const icsContent =
-        `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${event.title}\nDESCRIPTION:${description}\n${icstime}\nEND:VEVENT\nEND:VCALENDAR`;
+        `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${event.title}\nLOCATION:${ort}\nDESCRIPTION:${desc2}\n${icstime}\nEND:VEVENT\nEND:VCALENDAR\n`;
     const blob = new Blob([icsContent], { type: 'text/calendar' });
     const icsUrl = URL.createObjectURL(blob);
     document.getElementById("cal-modal-link-ics").href = icsUrl;
@@ -230,15 +293,16 @@ block content %}
     const calendarEl = document.getElementById('calendar');
     const toggleButtons = document.querySelectorAll('#calendarToggles .btn');
 
-    const calendarColors = { {% for c in calendars %}
+    const calendarColors = { {% for c in all_calendars %}
       {{ c["kurzname"]}}: '{{c["color"]}}', {% endfor %}
       };
 
-  const initiallyActive = ['semesterplan']; // ← nur diese Kalender aktiv beim Start
+  const initiallyActive = ['{{ selected_calendar }}']; // ← nur diese Kalender aktiv beim Start
   const allEvents = {{ events|tojson}};
+  const initialView = window.innerWidth < 1000 ? 'listWeek' : 'dayGridMonth';
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
+    initialView: initialView,
     timeZone: "local",
     locale: "de",
     expandRows: true,
@@ -279,7 +343,7 @@ block content %}
     // Tooltip bei hover
     eventDidMount: function (info) {
       new bootstrap.Tooltip(info.el, {
-        title: info.event.extendedProps.description,
+        title: info.event.title,
         placement: 'top',
         trigger: 'hover',
         container: 'body'
@@ -288,8 +352,7 @@ block content %}
     eventClick: function (info) {
       info.jsEvent.preventDefault();
       openModal(info.event);
-    }
-
+    },
   });
 
   calendar.render();

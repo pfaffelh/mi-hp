@@ -56,6 +56,15 @@
           study assistant {% endif %}
         </a>
         <a
+          href="{{ url_for('showstudiendekanat', unterseite='warum_mathematik', lang=lang) }}"
+          class="btn btn-primary"
+          role="button"
+          aria-disabled="true"
+        >
+          {% if lang == "de" %} Warum Mathematik? {% else %} Why mathematics {%
+          endif %}
+        </a>
+        <!-- <a
           href="{{ url_for('showweiterbildung', lang=lang)}}"
           class="btn btn-primary"
           role="button"
@@ -63,7 +72,7 @@
         >
           {% if lang == "de" %} Weiterbildung {% else %} Further education {%
           endif %}
-        </a>
+        </a>-->
         <a
           href="{{ url_for('showstudiendekanat', lang=lang) }}"
           class="btn btn-primary"

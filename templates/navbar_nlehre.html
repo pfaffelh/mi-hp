@@ -214,6 +214,15 @@
                     counceling{% endif %}</a
                   >
                 </li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstufaq', lang=lang) }}"
+                  >
+                    {% if lang == "de" %}FAQ{% else
+                    %}FAQ{% endif %}</a
+                  >
+                </li>
                 <!--              <li>
                 <a
                   class="dropdown-item text-black"
@@ -264,19 +273,7 @@
                     and applications{% endif %}</a
                   >
                 </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
 
-                <li>
-                  <a
-                    class="dropdown-item text-black"
-                    href="{{ url_for('showstufaq', lang=lang) }}"
-                  >
-                    {% if lang == "de" %}FAQ{% else
-                    %}FAQ{% endif %}</a
-                  >
-                </li>
 
                 <li>
                   <hr class="dropdown-divider" />

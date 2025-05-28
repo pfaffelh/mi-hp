@@ -459,8 +459,16 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'pruefungstermine', show=show))
         # filenames = ["studiendekanat/termine.html"]
     if unterseite == "calendar":
-        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -365), lang)
-        return render_template("studiendekanat/calendar_pruefungen.html", events=events, lang=lang, lehrende = False)
+
+
+        anfang = datetime.now() + timedelta(days = -720)
+        events = faq.get_calendar_data(anfang) + vvz.get_calendar_data(anfang) + news.get_wochenprogramm_for_calendar(anfang)
+        all_calendars = [calendars[3]]
+        selected_calendar = "pruefungen"
+        return render_template("studiendekanat/calendar_plan.html", all_calendars = all_calendars, selected_calendar = selected_calendar, lang = lang, events=events)
+
+#        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -365), lang)
+#        return render_template("studiendekanat/calendar_pruefungen.html", events=events, lang=lang, lehrende = False)
     if unterseite == "anmeldung":
         filenames = ["studiendekanat/anmeldung.html"]
     if unterseite == "modulplan":
@@ -503,10 +511,10 @@ def showlehrendevpn(lang, unterseite ="", anchor = ""):
     filenames = []
     if unterseite == "calendar":
         anfang = datetime.now() + timedelta(days = -720)
+        all_calendars = calendars
+        selected_calendar = "semesterplan"
         events = faq.get_calendar_data(anfang) + vvz.get_calendar_data(anfang) + news.get_wochenprogramm_for_calendar(anfang)
-        for event in events:
-                print(event)
-        return render_template("studiendekanat/calendar_plan.html", calendars = calendars, lang = lang, events=events)
+        return render_template("studiendekanat/calendar_plan.html", all_calendars = all_calendars, selected_calendar = selected_calendar, lang = lang, events=events)
 
 
 @app.route("/nlehre/vpn/<lang>/lehrende/<semester>/planung/")

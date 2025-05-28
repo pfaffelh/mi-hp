@@ -317,7 +317,9 @@ def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
             "end": e["end"].isoformat(),
             "allDay": allDay,
             "extendedProps" : {
-                "description" : e["title"],
+                "description1" : e["title"],
+                "description2" : "",
+                "ort" : "",
                 "googleTime" : formatDateForGoogle(e["start"], e["end"], allDay),
                 "icsTime" : formatDateForIcs(e["start"], e["end"], allDay),
             },
@@ -332,7 +334,9 @@ def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
             "end": v["end"].isoformat(),
             "allDay": True if v["start"].time() == datetime.min.time() else False,
             "extendedProps" : {
-                "description" : f"{next(iter([c[0] for c in v["reihe"]]), "")}, {getwl(v, "ort", lang)} \n {latex2markdown.LaTeX2Markdown(getwl(v, "text", lang)).to_markdown()}",
+                "description1" : f"{next(iter([c[0] for c in v["reihe"]]), "")}, {v["ort"]}, {v["start"].strftime('%H:%M')}",
+                "description2" : f"{v["abstract"]}",
+                "ort" : v["ort"],
                 "googleTime" : formatDateForGoogle(v["start"], v["end"], allDay),
                 "icsTime" : formatDateForIcs(v["start"], v["start"], allDay),
             },
@@ -466,7 +470,7 @@ def get_monitordata(dtstring, testorpublic):
                 "image" : [],
                 "monitor" : {
                     "title" : "Vorträge der nächsten sieben Tage",
-                    "text" : "  \n".join([f"{v['tag']}, {v['datum']}, {v['ort']}. {v['reihe']} {v['sprecher']}{v['sprecher_affiliation']}. {v['title']}" for v in vortraege])
+                    "text" : "  \n".join([f"{v['tag']}, {v['datum']}, {v["startzeit"]}, {v['ort']}. {v['reihe']} {v['sprecher']}{v['sprecher_affiliation']}. {v['title']}" for v in vortraege])
                 }
             }
         )
