@@ -102,25 +102,66 @@
 </style>
 {% endblock %} {% block navbar %} {% include 'navbar_nlehre.html' %} {% endblock
 %} {% block content %}
+{% if selected_calendar == "pruefungen" %}
+<div class="container">
+  {% if lang == "de" %}
+  <h3>Prüfungen und Fristen Mathematik</h3>
+  Die hier dargestellten Prüfungstermine und Fristen stellen eine Übersicht dar. Im Zweifelsfall entscheidend sind jedoch immer Einträge in <a href="https://campus.uni-freiburg.de">HisInOne</a>.
+  {% else %}
+  <h3>Exams and dates</h3>
+  You find here an overview of examination dates and deadlines. In case of doubt, however, entries in <a href=‘https://campus.uni-freiburg.de’</a> are legally binding.
+<div class="container text-end">
+  <div class="row">
+    <div class="col">
+      <div class="feature-icon bg-gradient text-end">
+        <a
+          href="/{{lang}}/lehrveranstaltungen/{{laufendes_semester}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          Lehrveranstaltungen des laufenden Semesters</a
+        >
+        <a
+          href="{{ url_for('showstufaq', lang=lang)}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          FAQ</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+</div>
+{% endif %}
+
 <div class="container calendar-wrapper" id="calendar-container">
+  {% if all_calendars | length > 1 %}
   <h4>
     {% if lang == "de" %}Wähle Kalender{% else %}Choose calendar{% endif %}
   </h4>
+  {% endif %}
   <div
     class="btn-group calendar-toggle-group mb-4"
     role="group"
     id="calendarToggles"
   >
-    {% for c in calendars %}
+    
+   {% for c in all_calendars %}
     <button
       type="button"
-      class="btn {% if c['kurzname'] != 'semesteplan' %}btn-off{% endif %}"
+      class="btn {% if c['kurzname'] != elected_calendar %}btn-off{% endif %}"
       data-calendar="{{c['kurzname']}}"
     >
       {{c['name_de']}}
     </button>
     {% endfor %}
+
   </div>
+  
   <div id="calendar"></div>
 
   <!-- MODAL -->
@@ -252,11 +293,11 @@
     const calendarEl = document.getElementById('calendar');
     const toggleButtons = document.querySelectorAll('#calendarToggles .btn');
 
-    const calendarColors = { {% for c in calendars %}
+    const calendarColors = { {% for c in all_calendars %}
       {{ c["kurzname"]}}: '{{c["color"]}}', {% endfor %}
       };
 
-  const initiallyActive = ['semesterplan']; // ← nur diese Kalender aktiv beim Start
+  const initiallyActive = ['{{ selected_calendar }}']; // ← nur diese Kalender aktiv beim Start
   const allEvents = {{ events|tojson}};
   const initialView = window.innerWidth < 1000 ? 'listWeek' : 'dayGridMonth';
 
