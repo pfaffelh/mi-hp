@@ -451,7 +451,7 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
         data = faq.get_studiendekenat_data({"showpruefungsamt" : True})
         filenames = ["studiendekanat/pruefungsamt.html"]        
     if unterseite == "schwerpunktgebiete":
-        filenames = ["studiendekanat/schwerpunktgebiete.html"]
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'schwerpunktgebiete', show=show))
     if unterseite == "warum_mathematik":
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'warum-mathematik', show=show))
         # filenames = ["studiendekanat/warum_mathematik.html"]

@@ -4,7 +4,7 @@
 
 <p>
   {% if data["news"] != [] %}{% for v in data["news"] %}
-  <a href="" data-type="page" data-id="376">{{ v["home"]["title_de"] }}</a
+  <a href="{{ v['link']}}" data-type="page" data-id="376">{{ v["home"]["title_de"] }}</a
   ><br />
   {% endfor %}<br>{% endif %}
   <a

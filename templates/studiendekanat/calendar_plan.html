@@ -148,12 +148,14 @@
     class="btn-group calendar-toggle-group mb-4"
     role="group"
     id="calendarToggles"
-  >
-    
+  >    
    {% for c in all_calendars %}
     <button
       type="button"
-      class="btn {% if c['kurzname'] != elected_calendar %}btn-off{% endif %}"
+      {% if all_calendars | length <= 1 %} 
+      style="visibility: hidden;" 
+      {% endif %}
+      class="btn {% if c['kurzname'] != selected_calendar %}btn-off{% endif %}"
       data-calendar="{{c['kurzname']}}"
     >
       {{c['name_de']}}

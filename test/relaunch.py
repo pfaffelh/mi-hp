@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # URL der Seite
-url = 'https://uni-freiburg.de/fdmai/'
+url = 'https://uni-freiburg.de/math/'
 
 # Passwort und Feldnamen
 password = 'relaunch2024'
@@ -40,7 +40,8 @@ if password_field:
     # 4. Nach Login den Inhalt holen
     final_soup = BeautifulSoup(login_response.text, 'html.parser')
     print("Seite nach Login erfolgreich geladen!\n")
-    print(final_soup.prettify())  # Ausgabe der ersten 1000 Zeichen
+    with open("relaunch.html", "w", encoding="utf-8") as file:
+        file.write(final_soup.prettify())
 else:
     print("Seite ist nicht passwortgeschützt. Inhalt:\n")
     print(soup.prettify()[:1000])  # Ausgabe der ersten 1000 Zeichen
