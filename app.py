@@ -648,6 +648,6 @@ scheduler.add_job(
     max_instances=1,
     day_of_week='sun',
     hour=22,
-    minute=00
+    minute=03
 )
 scheduler.start()
