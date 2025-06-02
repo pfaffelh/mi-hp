@@ -26,16 +26,25 @@ try:
 except:
     logger.warning("No connection to Database!")
 
-def get_studiendekenat_data(query):
+def get_studiendekenat_data(query, lang = "de"):
+    otherlang = "en" if lang == "de" else "de"
     data = list(studiendekanat.find(query, sort=[("rang", pymongo.ASCENDING)]))
     for item in data:
+        item["rolle"] = item[f"rolle_{lang}"] if item[f"rolle_{lang}"] != "" else item[f"rolle_{otherlang}"]
+        item["raum"] = item[f"raum_{lang}"] if item[f"raum_{lang}"] != "" else item[f"raum_{otherlang}"]
+        item["name"] = item[f"name_{lang}"] if item[f"name_{lang}"] != "" else item[f"name_{otherlang}"]
+        item["tel"] = item[f"tel_{lang}"] if item[f"tel_{lang}"] != "" else item[f"tel_{otherlang}"]
+        item["sprechstunde"] = item[f"sprechstunde_{lang}"] if item[f"sprechstunde_{lang}"] != "" else item[f"sprechstunde_{otherlang}"]
+        item["prefix"] = item[f"prefix_{lang}"] if item[f"prefix_{lang}"] != "" else item[f"prefix_{otherlang}"]
+        item["text"] = item[f"text_{lang}"] if item[f"text_{lang}"] != "" else item[f"text_{otherlang}"]
+        item["news"] = item[f"news_{lang}"] if item[f"news_{lang}"] != "" else item[f"news_{otherlang}"]        
         item["shownews"] = (datetime.now() < item["news_ende"])
     return data
 
 # Here, x is a dict with fields x[f"{field_prefix}_de"] and x[f"{field_prefix}_en"]. The goal is to read x[f"{field_prefix}_{lang}"] if this data is available, otherwise use the other language.
 def get(x, field_prefix, lang, alt = ""):
     otherlang = "de" if lang == "en" else "en"
-    if x.get(f"{field_prefix}_de") is None: # field is not acailable, return alt
+    if x.get(f"{field_prefix}_de") is None: # field is not abailable, return alt
         res = alt
     else:
         res = x[f"{field_prefix}_{lang}"] if x[f"{field_prefix}_{lang}"] != "" else x[f"{field_prefix}_{otherlang}"]

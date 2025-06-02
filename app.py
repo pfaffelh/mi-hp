@@ -445,10 +445,10 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
     data = {}
     filenames = []
     if unterseite == "":
-        data = faq.get_studiendekenat_data({"showstudienberatung" : True})
+        data = faq.get_studiendekenat_data({"showstudienberatung" : True}, lang = lang)
         filenames = ["studiendekanat/studienberatung.html"]
     if unterseite == "pruefungsamt":
-        data = faq.get_studiendekenat_data({"showpruefungsamt" : True})
+        data = faq.get_studiendekenat_data({"showpruefungsamt" : True}, lang = lang)
         filenames = ["studiendekanat/pruefungsamt.html"]        
     if unterseite == "schwerpunktgebiete":
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'schwerpunktgebiete', show=show))
@@ -459,8 +459,6 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'pruefungstermine', show=show))
         # filenames = ["studiendekanat/termine.html"]
     if unterseite == "calendar":
-
-
         anfang = datetime.now() + timedelta(days = -720)
         events = faq.get_calendar_data(anfang) + vvz.get_calendar_data(anfang) + news.get_wochenprogramm_for_calendar(anfang)
         all_calendars = [calendars[3]]

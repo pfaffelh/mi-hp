@@ -1,27 +1,19 @@
 <br />
 <div class="container" id="inhalt">
   <div>
-    <h2>Prüfungsamt Mathematik</h2>
+    <h2>{% if lang == "de" %}Prüfungsamt Mathematik{% else %}Examination Office{% endif %}</h2>
   </div>
   <div class="container g-3">
     <div class="row">
       <div class="col-lg-9 col-md-7 row-cols-sm-1">
         <ul>
-{% for item in data %}
-{% if lang == "de" %}
-{% if item['shownews'] and item['news_de'] !='' %} 
-<li class = "text-danger h5 py-4">
-<strong>{{ item['rolle_de']|safe }}: {{ item['news_de'] | safe }}</strong>
-</li>
-{% endif %}
-{% else %}
-{% if item['shownews'] and item['news_en'] !='' %} 
-<li class = "text-danger h5 py-4">
-<strong>{{ item['rolle_en']|safe }}: {{ item['news_en'] | safe }}</strong>
-</li>
-{% endif %}
-{% endif %}
-{% endfor %}
+          {% for item in data %}
+          {% if item['shownews'] and item['news'] !='' %}
+          <li class="text-danger h5 py-4">
+            <strong>{{ item['name']|safe }}: {{ item['news'] | safe }}</strong>
+          </li>
+          {% endif %}
+          {% endfor %}
           <li>
             Das Prüfungsamt ist zuständig für die Prüfungsverwaltung der
             Mathematik-Studiengänge. Darunter fallen etwa Angelegenheiten rund
@@ -37,150 +29,110 @@
             in Linearer Algebra und Analysis müssen über
             <a href="https://campus.uni-freiburg.de/">HISInOne</a> angemeldet
             werden. Die mündlichen Prüfungen in den MSc-Studiengängen müssen im
-            <a href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang)}}"
-              >Prüfungsamt</a
-            >
-            angemeldet werden. Eine genaue Beschreibung finden Sie bei unserer <a href = "{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}">Anleitung zur Prüfungsanmeldung</a>.
+            <a href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang)}}">Prüfungsamt</a>
+            angemeldet werden. Eine genaue Beschreibung finden Sie bei unserer <a
+              href="{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}">Anleitung zur
+              Prüfungsanmeldung</a>.
           </li>
           <li>
-            Unser <a href="{{ url_for('showstufaq', lang=lang)}}">FAQ</a> beantwortet einige Fragen rund um das Prüfungsamt, z.B. bei Abmeldung einer Prüfung oder Vergabe einer Abschlussarbeit.
+            Unser <a href="{{ url_for('showstufaq', lang=lang)}}">FAQ</a> beantwortet einige Fragen rund um das
+            Prüfungsamt, z.B. bei Abmeldung einer Prüfung oder Vergabe einer Abschlussarbeit.
           </li>
         </ul>
       </div>
     </div>
   </div>
-<div class="container text-end">
-  <div class="row">
-    <div class="col">
-      <div class="feature-icon bg-gradient text-end">
-        <a
-          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          Anleitung zur Prüfungsanmeldung</a
-        >
-        <a
-          href="{{ url_for('showstufaq', lang=lang)}}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          FAQ</a
-        >
-      <a
-          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='pruefungen') }}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-          >
-          Prüfungsanmeldung
-        </a>
-      <a
-          href="{{ url_for('showstudiendekanat', lang=lang, unterseite='modulplan') }}"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-          >
-          Modulpläne der Studiengänge
-        </a>
-        <a
-          href="https://campus.uni-freiburg.de/"
-          class="btn btn-primary bg-ufr-blue link-dark"
-          role="button"
-          aria-disabled="true"
-        >
-          HISInOne</a
-        >
-      </div>
-    </div>
-  </div>
-</div>
-
-<br />
-
-<div class="row g-2">
-  {% for item in data %}
-  <div class="col-md-4">
-    <div class="card h-100">
-      <a
-        class="btn bg-ufr-yellow-60 link-dark"
-        {% if item['link']!= '' %} href="{{ item['link'] }}" {% endif %}"
-        type="button"
-        style="width: 100%;"
-      >
-        <center>
-          <h4>
-            {% if lang == "de" %} {% if item['rolle_de'] != "" %}
-            {{item['rolle_de']|safe}} {% endif %} {% else %} {% if
-            item['rolle_en'] != "" %} {{item['rolle_en']|safe}}{% endif %}
-            {% endif %}
-          </h4>
-          <h4>
-            <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
-            {% if lang == "de" %} {{ item['name_de']|safe }} {% else %} {{ item['name_en']|safe }} {% endif %}
-          </h4>
-          </center>
-      </a>
-      <div class="card-body">
-        <div class="card-text">
-              {% set mail = item['mail'] %}
-              {% if lang == 'de' %}
-              {% if item['prefix_de'] !='' %} {{ item['prefix_de'] | safe }} {% endif %} <br>
-              {% if item['raum_de'] !='' %} Raum: {{ item['raum_de'] | safe }} {% endif %} <br>
-              {% if item['tel_de'] !='' %} Tel.: {{ item['tel_de'] | safe }} {% endif %}<br>
-              {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
-              {% if item['sprechstunde_de'] !='' %} Sprechstunde: {{ item['sprechstunde_de'] | safe }} {% endif %}<br>
-              {% if item['shownews'] and item['news_de'] !='' %} <strong>Achtung:</strong> {{ item['news_de'] | safe }} {% endif %}<br>
-              {% else %}
-              {% if item['prefix_en'] !='' %} {{ item['prefix_en'] | safe }} {% endif %} <br>
-              {% if item['raum_en'] !='' %} Room: {{ item['raum_de'] | safe }} {% endif %} <br>
-              {% if item['tel_en'] !='' %} Tel.: {{ item['tel_en'] | safe }} {% endif %}<br>
-              {% if item['mail'] !='' %} Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a> {% endif %}<br>
-              {% if item['sprechstunde_en'] !='' %} Office hours: {{ item['sprechstunde_en'] | safe }} {% endif %}<br>
-              {% if item['shownews'] and item['news_en'] !='' %} <strong>Attention:</strong> {{ item['news_en'] | safe }} {% endif %}<br>
-              <p align="right">
-            <button
-              type="button"
-              class="btn btn-outline-primary active bg-white"
-              data-bs-toggle="popover"
-              data-bs-html="true"
-              style="color: #004a99"
-              title="{{ item['name'] | safe }}"
-              data-bs-content="
-              {% if lang == 'de'  and item['text_de'] != [] %}
-              <ul>
-              {% for x in item['text_de'] %}
-              <li>{{ x|safe }}</li>
-              {% endfor %}
-              </ul>
-              {% elif lang == "en" and item['text_en'] != [] %}
-              <ul>
-              {% for x in item['text_en'] %}
-              <li>{{ x|safe }}</li>
-              {% endfor %}
-              </ul>
-              {% endif %}"
-            >
-              <i class="fa-solid fa-info" style="color: #004a99"></i>
-            </button>
-            {% endif %} 
-            <!-- {% if item['link']!= '' %}
-            <a
-              class="btn btn-outline-primary active bg-white"
-              style="border-color: #004a99"
-              href="{{ item['link'] }}"
-              role="button"
-            >
-              <i class="fa-solid fa-link" style="color: #004a99"></i>
-            </a>
-            {% endif %} -->
-          </p>
+  <div class="container text-end">
+    <div class="row">
+      <div class="col">
+        <div class="feature-icon bg-gradient text-end">
+          <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}"
+            class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
+            Anleitung zur Prüfungsanmeldung</a>
+          <a href="{{ url_for('showstufaq', lang=lang)}}" class="btn btn-primary bg-ufr-blue link-dark" role="button"
+            aria-disabled="true">
+            FAQ</a>
+          <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='pruefungen') }}"
+            class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
+            Prüfungsanmeldung
+          </a>
+          <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='modulplan') }}"
+            class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
+            Modulpläne der Studiengänge
+          </a>
+          <a href="https://campus.uni-freiburg.de/" class="btn btn-primary bg-ufr-blue link-dark" role="button"
+            aria-disabled="true">
+            HISInOne</a>
         </div>
       </div>
     </div>
   </div>
-  {% endfor %}
-</div>
 
+  <br />
+
+
+
+
+  <div class="row g-2">
+    {% for item in data %}
+    <div class="col-md-4">
+      <div class="card h-100">
+        <a class="btn bg-ufr-yellow-60 link-dark no-hover-effect" {% if item['link']!='' %} href="{{ item['link'] }}" {%
+          endif %} type="button" style="width: 100%; border-radius: 12px">
+          <center>
+            <h4>
+              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
+              {{ item['name']|safe }}
+            </h4>
+          </center>
+        </a>
+        <div class="card-body">
+          <div class="card-text">
+            <h4>
+              {% if item['rolle'] != "" %}
+              {{item['rolle']|safe}} {% endif %}
+            </h4>
+            {% if item['mail']!= '' %} {% set mail = item['mail'] %}
+            Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a>
+            {% endif %}
+            <br>
+            {% if item['raum'] !='' %} {% if lang == "de" %}Raum{% else %}Office{% endif %}: {{ item['raum'] | safe }}
+            {%
+            endif %} <br>
+            {% if item['tel'] !='' %} Tel.: {{ item['tel'] | safe }} {% endif %}<br>
+            {% if item['sprechstunde'] !='' %}{% if lang == "de" %} Sprechstunde{% else %}Office hour{% endif %}: {{
+            item['sprechstunde'] | safe }} {% endif %}<br>
+            {% if item['shownews'] and item['news'] !='' %} <strong>{% if lang == "de" %}Achtung{% else %}Note{% endif
+              %}:</strong> {{ item['news'] | safe }} {%
+            endif %}<br>
+            {% if item['text'] != '' %}
+            <hr>
+            {% if lang == "de" %}Aufgaben{% else %}Tasks{% endif %}:
+            {{ item['text'] | markdown}}
+            {% endif %}
+            <!-- {% if item['text'] != '' %}
+            <p align="right">
+              <button type="button" class="btn btn-outline-primary active bg-white" data-bs-toggle="popover"
+                data-bs-html="true" style="color: #004a99" title="{{ item['name'] | safe }}"
+                data-bs-content="{{ item['text_de'] | markdown}}">
+                <i class="fa-solid fa-info" style="color: #004a99"></i>
+              </button>
+              {% endif %}-->
+            <!-- {% if item['link']!= '' %}
+              <a
+                class="btn btn-outline-primary active bg-white"
+                style="border-color: #004a99"
+                href="{{ item['link'] }}"
+                role="button"
+              >
+                <i class="fa-solid fa-link" style="color: #004a99"></i>
+              </a>
+              {% endif %} -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
