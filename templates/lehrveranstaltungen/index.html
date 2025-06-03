@@ -17,12 +17,19 @@
         {% if lang == 'de' %}Lehrveranstaltungen{% else %} Course program {%
         endif %}
       </h1>
-      In der Spalte "Veranstaltungsverzeichnis" kommen Sie zu der Liste der im jeweiligen 
+      {% if lang == 'de' %}In der Spalte "Veranstaltungsverzeichnis" kommen Sie zu der Liste der im jeweiligen 
       Semester angebotenen Lehrveranstaltungen des Mathematischen Instituts.<br>
       Gegen Ende der Vorlesungszeit des Vorsemesters erscheint das Kommentierte Vorlesungsverzeichnis ("Kommentare"),
       das Angaben zu den Inhalten, Voraussetzungen und der Verwandbarkeit der Veranstaltungen enthält. 
       Zu Beginn der Vorlesungszeit des Semester wird es um die aktuellen Ergänzungen der Modulhandbücher erweitert, 
-      in denen die Anforderungen an Studien- und Prüfungsleistungen spezifiziert sind.
+      in denen die Anforderungen an Studien- und Prüfungsleistungen spezifiziert sind.{% else %}
+      In the "Course Catalogue" column, you will find the list of courses offered by the Institute of Mathematics 
+      in the respective semester.<br>
+      Towards the end of the lecture period of the previous semester, the Comprehensive Course Catalogue ("Kommentare") 
+      appears, which contains information on the content, prerequisites and applicability of the courses. 
+      At the beginning of the lecture period of the semester, it is expanded to include the supplements 
+      to the module handbooks, in which the requirements for coursework and examinations are specified.
+      {% endif %}
       <table class="table table-lg table-striped table-hover table-borderless">
         <thead>
           <tr>
@@ -30,7 +37,7 @@
             <th scope="col">
               <center>
                 <div>
-                  {% if lang == 'de' %}Veranstaltungs-{% else %}List of courses{%
+                  {% if lang == 'de' %}Veranstaltungs-{% else %}Course Catalogue{%
                   endif %}
                 </div>
                 <div>{% if lang == 'de' %}verzeichnis{% endif %}</div>
@@ -38,28 +45,27 @@
             </th>
             <th scope="col">
               <center>
-              {% if lang == 'de' %}Kommentiertes VVZ{% else %}Comprehensive course catalogue{% endif %}
+              {% if lang == 'de' %}Kommentiertes VVZ{% else %}Comprehensive Course Catalogue{% endif %}
               </center>
             </th>
             <th scope="col">
               <center>
                 <div>
-                  {% if lang == 'de' %}Kommentiertes VVZ und {% else %}Comprehensive course catalogue{% endif %}
+                  {% if lang == 'de' %}Kommentiertes VVZ und {% else %}Comprehensive Course Catalogue{% endif %}
                 </div>
                 <div>
                   {% if lang == 'de' %}Ergänzungen zu den{% else %}and Supplements
                   of the {% endif %}
                 </div>
                 <div>
-                  {% if lang == 'de' %}Modulhandbüchern{% else %}module
-                  handbooks{% endif %}
+                  {% if lang == 'de' %}Modulhandbüchern{% else %}Module Handbooks{% endif %}
                 </div>
               </center>
             </th>
             <th scope="col">
               <center>
                 <div>
-                  {% if lang == 'de' %}Verwendbarkeits-{% else %}Usability-{%
+                  {% if lang == 'de' %}Verwendbarkeits-{% else %}Usability{%
                   endif %}
                 </div>
                 <div>
