@@ -3,10 +3,14 @@
   <div class="container text-end py-4">
     <div class="row">
       <div class="col">
-        <a href="{{url_for('showlehrveranstaltungenpersonen', lang=lang, id = '')}}"
-          class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
-          {% if lang == "de" %} Übersicht aller Lehrpersonen {% else %} Overview of
-          staff {% endif %}
+        <a
+          href="{{url_for('showlehrveranstaltungenpersonen', lang=lang, id = '')}}"
+          class="btn btn-primary bg-ufr-blue link-dark"
+          role="button"
+          aria-disabled="true"
+        >
+          {% if lang == "de" %} Übersicht aller Lehrpersonen {% else %} Overview
+          of staff {% endif %}
         </a>
       </div>
     </div>
@@ -17,6 +21,7 @@
         {% if lang == 'de' %}Lehrveranstaltungen{% else %} Course program {%
         endif %}
       </h1>
+<<<<<<< HEAD
       {% if lang == 'de' %}In der Spalte "Veranstaltungsverzeichnis" kommen Sie zu der Liste der im jeweiligen 
       Semester angebotenen Lehrveranstaltungen des Mathematischen Instituts.<br>
       Gegen Ende der Vorlesungszeit des Vorsemesters erscheint das Kommentierte Vorlesungsverzeichnis ("Kommentare"),
@@ -30,6 +35,25 @@
       At the beginning of the lecture period of the semester, it is expanded to include the supplements 
       to the module handbooks, in which the requirements for coursework and examinations are specified.
       {% endif %}
+=======
+      {% if lang == 'de' %}In der Spalte "Veranstaltungsverzeichnis" kommen Sie
+      zu der Liste der im jeweiligen Semester angebotenen Lehrveranstaltungen
+      des Mathematischen Instituts.<br />
+      Gegen Ende der Vorlesungszeit des Vorsemesters erscheint das Kommentierte
+      Vorlesungsverzeichnis ("Kommentare"), das Angaben zu den Inhalten,
+      Voraussetzungen und der Verwandbarkeit der Veranstaltungen enthält. Zu
+      Beginn der Vorlesungszeit des Semester wird es um die aktuellen
+      Ergänzungen der Modulhandbücher erweitert, in denen die Anforderungen an
+      Studien- und Prüfungsleistungen spezifiziert sind.{% else %} In the
+      "Course Catalogue" column, you will find the list of courses offered by
+      the Institute of Mathematics in the respective semester.<br />
+      Towards the end of the lecture period of the previous semester, the
+      Comprehensive Course Catalogue ("Kommentare") appears, which contains
+      information on the content, prerequisites and applicability of the
+      courses. At the beginning of the lecture period of the semester, it is
+      expanded to include the supplements to the module handbooks, in which the
+      requirements for coursework and examinations are specified. {% endif %}
+>>>>>>> f7c4194 (changed veranstplan)
       <table class="table table-lg table-striped table-hover table-borderless">
         <thead>
           <tr>
@@ -37,32 +61,47 @@
             <th scope="col">
               <center>
                 <div>
+<<<<<<< HEAD
                   {% if lang == 'de' %}Veranstaltungs-{% else %}Course List{%
                   endif %}
+=======
+                  {% if lang == 'de' %}Veranstaltungs-{% else %}Course
+                  Catalogue{% endif %}
+>>>>>>> f7c4194 (changed veranstplan)
                 </div>
                 <div>{% if lang == 'de' %}verzeichnis{% endif %}</div>
               </center>
             </th>
-            <th scope="col">
+            <!--<th scope="col">
               <center>
               {% if lang == 'de' %}Kommentiertes VVZ{% else %}Course Catalogue{% endif %}
               </center>
-            </th>
+            </th>-->
             <th scope="col">
               <center>
                 <div>
+<<<<<<< HEAD
                   {% if lang == 'de' %}Kommentiertes VVZ mit {% else %}Course Catalogue{% endif %}
                 </div>
                 <div>
                   {% if lang == 'de' %}Ergänzungen zu den{% else %}with Supplements
                   of the {% endif %}
+=======
+                  {% if lang == 'de' %}Kommentiertes VVZ und {% else
+                  %}Comprehensive Course Catalogue{% endif %}
                 </div>
                 <div>
-                  {% if lang == 'de' %}Modulhandbüchern{% else %}Module Handbooks{% endif %}
+                  {% if lang == 'de' %}Ergänzungen zu den{% else %}and
+                  Supplements of the {% endif %}
+>>>>>>> f7c4194 (changed veranstplan)
+                </div>
+                <div>
+                  {% if lang == 'de' %}Modulhandbüchern{% else %}Module
+                  Handbooks{% endif %}
                 </div>
               </center>
             </th>
-            <th scope="col">
+            <!--<th scope="col">
               <center>
                 <div>
                   {% if lang == 'de' %}Verwendbarkeits-{% else %}Usability{%
@@ -72,7 +111,7 @@
                   {% if lang == 'de' %}tabelle{% else %}table{% endif %}
                 </div>
               </center>
-            </th>
+            </th>-->
           </tr>
         </thead>
         <tbody>
@@ -81,11 +120,13 @@
             <th scope="row">{{value["name"]}}</th>
             <td>
               <center>
-                <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"><i
-                    class="fa-solid fa-link"></i></a>
+                <a
+                  href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"
+                  ><i class="fa-solid fa-link"></i
+                ></a>
               </center>
             </td>
-            <td>
+            <!--<td>
               {% if not value["mh_lang_exists"] %}
               <center>
                 {% if value["komm_lang_exists"] %}
@@ -95,38 +136,84 @@
                 {% endif %}
               </center>
               {% endif %}
-            </td>
+            </td>-->
             <td>
               <center>
                 {% if value["mh_lang_exists"] %}
-                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')}}"></a>
+                <a
+                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')}}"
+                ></a>
                 {% elif value["mh_exists"] %}
-                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"></a>
+                <a
+                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
+                ></a>
                 {% endif %}
               </center>
             </td>
-            <td>
+            <!--<td>
               <center>
                 {% if value["verw_exists"] %}
                 <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'verw.pdf')}}"></a>
                 {% endif %}
               </center>
-            </td>
+            </td>-->
           </tr>
           {% endfor %}
         </tbody>
       </table>
       <br />
-      <h2>
-        {% if lang == 'de' %}Ältere Semester{% else %}More previous semesters{%
-        endif %}
-      </h2>
-      {% for key, value in semester_dict_old.items() %}
-      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}">{{ value }}</a>
-      <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}">(Kommentare)</a>
-      <br />
-      {% endfor %}
-      <!-- <h2>Intern</h2>
+
+      <div class="accordion accordion-flush" id="accordionExample">
+        <div class="accordion-item">
+          <h4 class="accordion-header">
+            <button
+              aria-controls="kurzContent"
+              aria-expanded="{% if anchor == 'kurz' %}true{% else %}false{% endif %}"
+              class="accordion-button {% if anchor != 'kurz' %}collapsed{% endif %}"
+              data-bs-target="#kurzContent"
+              data-bs-toggle="collapse"
+              type="button"
+            >
+              <h3 class="h5">
+                {% if lang == 'de' %}Ältere Semester{% else %}More previous
+                semesters{% endif %}
+              </h3>
+            </button>
+          </h4>
+          <div
+            aria-labelledby="kurzContent"
+            class="accordion-collapse collapse {% if anchor == 'kurz' %}show{% endif %}"
+            data-bs-parent="#accordionExample"
+            id="kurzContent"
+          >
+            <div class="accordion-body" id="kurz">
+              {% for key, value in semester_dict_old.items() %}
+              <a
+                href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"
+                >{{ value["name"] }}</a
+              >
+              <a
+                href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"
+                >(Kommentare)</a
+              >
+              {% if value["mh_lang_exists"] %}
+              <a
+                href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')}}"
+                >Ergänzungen zu den Modulhandbüchern</a
+              >
+              {% elif value["mh_exists"] %}
+              <a
+                href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
+                >Ergänzungen zu den Modulhandbüchern</a
+              >
+              {% endif %}
+              <br />
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- <h2>Intern</h2>
       <ul>
         <li>
           <a
@@ -143,6 +230,7 @@
           >
         </li>
       </ul>-->
+      </div>
     </div>
   </div>
 </div>

@@ -295,17 +295,19 @@ def showstudiengang(lang, studiengang, anchor=""):
 @app.route("/nlehre/<lang>/lehrveranstaltungen/")
 def showlehrveranstaltungenbase(lang="de"):
     filenames = ["lehrveranstaltungen/index.html"]
+    # a sind alle Semester, die als sichtbar angelegt sind
     a = [x["kurzname"] for x in list(vvz.vvz_semester.find({"hp_sichtbar": True}))]
+    # b sind alle Semester bis 2100
     b = ["2024WS"] + [f"20{x}{s}S" for x in range(25,100) for s in ["S", "W"]]
-#    b = ["2018WS"] + [f"20{x}{s}S" for x in range(19,100) for s in ["S", "W"]]
     acapb = [x for x in a if x in b]
     acapb.reverse()
     if lang == "de":
         semester_dict_2 = { x : {"name": vvz.semester_name_de(x)} for x in acapb }
     else:
         semester_dict_2 = { x : {"name": vvz.semester_name_en(x)} for x in acapb }
-    semester_dict_2.update(semester_dict)
+    #semester_dict_2.update(semester_dict)
     # print(semester_dict_2)
+
     for key, value in semester_dict_2.items():
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/'+key+'.pdf')

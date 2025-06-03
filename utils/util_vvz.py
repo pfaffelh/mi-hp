@@ -338,6 +338,7 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", veranstal
                 mod_list = list(vvz_modul.find({ "studiengang" : { "$elemMatch" : { "$eq" : s["_id"] }}}))
                 mod_list_reduced = [m["_id"] for m in mod_list if m["_id"] in veranstaltung["verwendbarkeit_modul"]]
             v_dict["verwendbarkeit"] = "<br>".join([makemodulname(x, lang, True, studiengang)for x in mod_list_reduced])
+            v_dict["verwendbarkeit_kommentar"] = "<br>".join([makemodulname(x, lang, True, studiengang)for x in mod_list_reduced])
             r_dict["veranstaltung"].append(v_dict)
 
         if r_dict["veranstaltung"] != []:

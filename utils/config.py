@@ -37,32 +37,76 @@ semester_dict = {
     "ss19": {"name": "Sommersemester 2019"},
     "ws1819": {"name": "Wintersemester 2018/19"}
 }
+
 semester_dict_old = {
-    "ss18": "Sommersemester 2018",
-    "ws1718": "Wintersemester 2017/18",
-    "ss17": "Sommersemester 2017",
-    "ws1617": "Wintersemester 2016/17",
-    "ss16": "Sommersemester 2016",
-    "ws1516": "Wintersemester 2015/16",
-    "ss15": "Sommersemester 2015",
-    "ws1415": "Wintersemester 2014/15",
-    "ss14": "Sommersemester 2014",
-    "ws1314": "Wintersemester 2013/14",
-    "ss13": "Sommersemester 2013",
-    "ws1213": "Wintersemester 2012/13",
-    "ss12": "Sommersemester 2012",
-    "ws1112": "Wintersemester 2011/12",
-    "ss11": "Sommersemester 2011",
-    "ws1011": "Wintersemester 2010/11",
-    "ss10": "Sommersemester 2010",
-    "ws0910": "Wintersemester 2009/10",
-    "ss09": "Sommersemester 2009",
-    "ws0809": "Wintersemester 2008/09",
-    "ss08": "Sommersemester 2008",
-    "ws0708": "Wintersemester 2007/08",
-    "ss07": "Sommersemester 2007",
-    "ws0607": "Wintersemester 2006/07"
+    "ss24": {"name": "Sommersemester 2024"},
+    "ws2324": {"name": "Wintersemester 2023/24"},
+    "ss23": {"name": "Sommersemester 2023"},
+    "ws2223": {"name": "Wintersemester 2022/23"},
+    "ss22": {"name": "Sommersemester 2022"},
+    "ws2122": {"name": "Wintersemester 2021/22"},
+    "ss21": {"name": "Sommersemester 2021"},
+    "ws2021": {"name": "Wintersemester 2020/21"},
+    "ss20": {"name": "Sommersemester 2020"},
+    "ws1920": {"name": "Wintersemester 2019/20"},
+    "ss19": {"name": "Sommersemester 2019"},
+    "ws1819": {"name": "Wintersemester 2018/19"},
+    "ss18": {"name": "Sommersemester 2018"},
+    "ws1718": {"name": "Wintersemester 2017/18"},
+    "ss17": {"name": "Sommersemester 2017"},
+    "ws1617": {"name": "Wintersemester 2016/17"},
+    "ss16": {"name": "Sommersemester 2016"},
+    "ws1516": {"name": "Wintersemester 2015/16"},
+    "ss15": {"name": "Sommersemester 2015"},
+    "ws1415": {"name": "Wintersemester 2014/15"},
+    "ss14": {"name": "Sommersemester 2014"},
+    "ws1314": {"name": "Wintersemester 2013/14"},
+    "ss13": {"name": "Sommersemester 2013"},
+    "ws1213": {"name": "Wintersemester 2012/13"},
+    "ss12": {"name": "Sommersemester 2012"},
+    "ws1112": {"name": "Wintersemester 2011/12"},
+    "ss11": {"name": "Sommersemester 2011"},
+    "ws1011": {"name": "Wintersemester 2010/11"},
+    "ss10": {"name": "Sommersemester 2010"},
+    "ws0910": {"name": "Wintersemester 2009/10"},
+    "ss09": {"name": "Sommersemester 2009"},
+    "ws0809": {"name": "Wintersemester 2008/09"},
+    "ss08": {"name": "Sommersemester 2008"},
+    "ws0708": {"name": "Wintersemester 2007/08"},
+    "ss07": {"name": "Sommersemester 2007"},
+    "ws0607": {"name": "Wintersemester 2006/07"}
 }
+
+for key, value in semester_dict_old.items():
+    try:
+        app.open_resource('static/pdf/lehrveranstaltungen/'+key+'.pdf')
+        semester_dict_old[key]["komm_exists"] = True
+    except:
+        semester_dict_old[key]["komm_exists"] = False
+    try:
+        app.open_resource('static/pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')
+        semester_dict_old[key]["komm_lang_exists"] = True
+    except:
+        semester_dict_old[key]["komm_lang_exists"] = False
+
+    try:
+        app.open_resource('static/pdf/lehrveranstaltungen/'+key+'mh.pdf')
+        semester_dict_old[key]["mh_exists"] = True
+    except:
+        semester_dict_old[key]["mh_exists"] =False
+
+    try:
+        app.open_resource('static/pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')
+        semester_dict_old[key]["mh_lang_exists"] = True
+    except:
+        semester_dict_old[key]["mh_lang_exists"] =False
+
+    try:
+        app.open_resource('static/pdf/lehrveranstaltungen/'+key+'verw.pdf')
+        semester_dict_old[key]["verw_exists"] = True
+    except:
+        semester_dict_old[key]["verw_exists"] =False
+
 
 calendar_host = "cal.mathematik.privat/davical/caldav.php/"
 cal_username, cal_account, cal_password = netrc.authenticators(calendar_host)
