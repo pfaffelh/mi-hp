@@ -606,5 +606,4 @@ def get_calendar_data(anzeige_start, lang = "de"):
                     "groupId" : "pruefungen"
                 })
 
-    print([a["start"] for a in all])
     return all

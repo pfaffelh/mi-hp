@@ -299,7 +299,7 @@
       {{ c["kurzname"]}}: '{{c["color"]}}', {% endfor %}
       };
 
-  const initiallyActive = ['{{ selected_calendar }}']; // ← nur diese Kalender aktiv beim Start
+  const initiallyActive = '{{ selected_calendars | tojson }}'; // ← nur diese Kalender aktiv beim Start
   const allEvents = {{ events|tojson}};
   const initialView = window.innerWidth < 1000 ? 'listWeek' : 'dayGridMonth';
 

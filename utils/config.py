@@ -188,6 +188,11 @@ calendars = [
       "name_en" : "Exams",
       "color" : "#9467bd"
     },
+    { "kurzname" : "promotion",
+      "name_de" : "Promotionen",
+      "name_en" : "PhD exams",
+      "color" : "#bcbd22"
+    },
 ]
 
 def get_contrasting_text_color(hex_color):

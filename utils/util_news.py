@@ -249,14 +249,14 @@ def get_monat(n, lang="de"):
     monate = monate_de if lang == "de" else monate_en
     return monate[n]
 
-def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
+def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle"}, lang="de"):
     data = {}
     tage = tage_lang(lang)
-    vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
+    vr = vortragsreihe.find_one(query)
     data["reihe"] = getwl(vr, "title", lang)
     data["prefix"] = getwl(vr, "text", lang)
     data["events"] = []
-    if kurzname == "alle":
+    if query["kurzname"] == "alle":
         ev = list(vortragsreihe.find({"_public" : True, "event" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("start", pymongo.ASCENDING)]))
         for e in ev:
             data["events"].append(
@@ -301,11 +301,17 @@ def get_wochenprogramm(anfangdate, enddate, kurzname="alle", lang="de"):
         previousdatum = v["start"]
     return data
 
-def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
+def get_wochenprogramm_for_calendar(anfangdate, query = {"kurzname" : "alle", "_public" : True}, lang="de"):
     enddate = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=240))
     
-    data = get_wochenprogramm(anfangdate, enddate, "alle", lang)
-    col = next((c["color"] for c in calendars if c["kurzname"] == "wochenprogramm"), "#FFFFFF")
+    data = get_wochenprogramm(anfangdate, enddate, query, lang)
+
+    trans = query.get("kurzname")
+    if query.get("kurzname") == "alle":
+        trans = "wochenprogramm"
+
+    col = next((c["color"] for c in calendars if c["kurzname"] == trans), "#FFFFFF")
+
     all = []
     for e in data["events"]:
         allDay = True if (e["start"].time() == datetime.min.time()) else False
@@ -323,16 +329,17 @@ def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
                 "googleTime" : formatDateForGoogle(e["start"], e["end"], allDay),
                 "icsTime" : formatDateForIcs(e["start"], e["end"], allDay),
             },
-            "groupId" : "wochenprogramm",
+            "groupId" : trans,
            })
     for v in data["vortrag"]:
+        allDay = True if v["start"].time() == datetime.min.time() else False
         all.append({
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
             "title" : f"{v["sprecher"]}: {v["title"]}",
             "start": v["start"].isoformat(),
             "end": v["end"].isoformat(),
-            "allDay": True if v["start"].time() == datetime.min.time() else False,
+            "allDay": allDay,
             "extendedProps" : {
                 "description1" : f"{next(iter([c[0] for c in v["reihe"]]), "")}, {v["ort"]}, {v["start"].strftime('%H:%M')}",
                 "description2" : f"{v["abstract"]}",
@@ -340,12 +347,11 @@ def get_wochenprogramm_for_calendar(anfangdate, lang="de"):
                 "googleTime" : formatDateForGoogle(v["start"], v["end"], allDay),
                 "icsTime" : formatDateForIcs(v["start"], v["start"], allDay),
             },
-            "groupId" : "wochenprogramm"            
+            "groupId" : trans
         })
     return all
 
-
-def get_wochenprogramm_full(anfang, end, kurzname="alle", lang="de"):
+def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public" : True}, lang="de"):
     anfangdate = datetime.strptime(anfang, '%Y%m%d')
     enddate = datetime.strptime(end, '%Y%m%d')
     diffmonth = abs(enddate.month - anfangdate.month)
@@ -368,7 +374,7 @@ def get_wochenprogramm_full(anfang, end, kurzname="alle", lang="de"):
     previousanfang = previousanfangdate.strftime('%Y%m%d')
     nextend = nextenddate.strftime('%Y%m%d')
 
-    data = get_wochenprogramm(anfangdate, enddate, kurzname, lang)
+    data = get_wochenprogramm(anfangdate, enddate, query, lang)
     data["anfang"] = anfang
     data["end"] = end
     data["previousanfang"] = previousanfang
@@ -442,13 +448,9 @@ def get_monitordata(dtstring, testorpublic):
     for item in data['news']:
         item['today'] = True if (item["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
 
-    # Add Vorträge der nächsten 7 Tage als eine News
-    if testorpublic == "test":
-        query = {"start" : { "$gte" : dt }, "end" : { "$lte" : dt_seven_days }}
-    else:
-        query = {"_public" :True, "start" : { "$gte" : dt}, "end" : { "$lte" : dt_seven_days }}
+    # Add Vorträge der nächsten 7 Tage als eine News, only public
+    query = {"_public" :True, "start" : { "$gte" : dt}, "end" : { "$lte" : dt_seven_days }}
     vortraege = list(vortrag.find(query, sort=[("start", pymongo.ASCENDING)]))
-    print(vortraege)
     if vortraege != []:
         for v in vortraege:
             v["sprecher"] = getwl(v, "sprecher", lang)
@@ -462,7 +464,7 @@ def get_monitordata(dtstring, testorpublic):
             v["datum"] = v["start"].strftime('%-d.%-m.%y')
             v["tag"] = tage[v["start"].weekday()]
             v["startzeit"] = v["start"].strftime('%H:%M')
-        
+
         data["news"].append(
             {
                 "link" : "https://www.math.uni-freiburg.de/wochenprogramm/",

@@ -464,8 +464,8 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
         anfang = datetime.now() + timedelta(days = -720)
         events = faq.get_calendar_data(anfang) + vvz.get_calendar_data(anfang) + news.get_wochenprogramm_for_calendar(anfang)
         all_calendars = [calendars[3]]
-        selected_calendar = "pruefungen"
-        return render_template("studiendekanat/calendar_plan.html", all_calendars = all_calendars, selected_calendar = selected_calendar, lang = lang, events=events)
+        selected_calendars = ["pruefungen"]
+        return render_template("studiendekanat/calendar_plan.html", all_calendars = all_calendars, selected_calendars = selected_calendars, lang = lang, events=events)
 
 #        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -365), lang)
 #        return render_template("studiendekanat/calendar_pruefungen.html", events=events, lang=lang, lehrende = False)
@@ -512,9 +512,11 @@ def showlehrendevpn(lang, unterseite ="", anchor = ""):
     if unterseite == "calendar":
         anfang = datetime.now() + timedelta(days = -720)
         all_calendars = calendars
-        selected_calendar = "semesterplan"
-        events = faq.get_calendar_data(anfang) + vvz.get_calendar_data(anfang) + news.get_wochenprogramm_for_calendar(anfang)
-        return render_template("studiendekanat/calendar_plan.html", all_calendars = all_calendars, selected_calendar = selected_calendar, lang = lang, events=events)
+        selected_calendars = ["semesterplan", "promotion"]
+        events = faq.get_calendar_data(anfang) + vvz.get_calendar_data(anfang) + news.get_wochenprogramm_for_calendar(anfang) + news.get_wochenprogramm_for_calendar(anfang, query = {"kurzname" : "promotion"})
+        print(events[-2])
+        print(events[-1])
+        return render_template("studiendekanat/calendar_plan.html", all_calendars = all_calendars, selected_calendars = selected_calendars, lang = lang, events=events)
 
 
 @app.route("/nlehre/vpn/<lang>/lehrende/<semester>/planung/")
@@ -545,7 +547,7 @@ def showdownloads(lang, show=""):
 @app.route("/wochenprogramm/<lang>/vortragsreihe/<kurzname>/<anfang>/<end>")
 def showvortragsreihe(lang="de", kurzname="alle", anfang = datetime(datetime.now().year, datetime.now().month, 1).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1)).strftime('%Y%m%d')):
     reihen, events = news.get_events(lang)
-    data = news.get_wochenprogramm_full(anfang, end, kurzname, lang)
+    data = news.get_wochenprogramm_full(anfang, end, { "kurzname" : kurzname}, lang)
     return render_template("wochenprogramm/reihe.html", reihen = reihen, events = events, kurzname = kurzname, lang=lang, data = data)
 
 @app.route("/wochenprogramm/<lang>/event/<kurzname>/")
