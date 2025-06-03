@@ -449,8 +449,11 @@ def get_monitordata(dtstring, testorpublic):
         item['today'] = True if (item["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
 
     # Add Vorträge der nächsten 7 Tage als eine News, only public
-    query = {"_public" :True, "start" : { "$gte" : dt}, "end" : { "$lte" : dt_seven_days }}
+    leer = vortragsreihe.find_one({"kurzname" : "alle"})
+    print(leer)
+    query = {"vortragsreihe" : {"$elemMatch" : { "$eq" : leer["_id"]}}, "_public" :True, "start" : { "$gte" : dt}, "end" : { "$lte" : dt_seven_days }}
     vortraege = list(vortrag.find(query, sort=[("start", pymongo.ASCENDING)]))
+    print(vortraege)
     if vortraege != []:
         for v in vortraege:
             v["sprecher"] = getwl(v, "sprecher", lang)
@@ -497,9 +500,9 @@ def get_api_wochenprogramm(anfang, ende):
     anfang = datetime.strptime(anfang, "%Y%m%d")
     ende = datetime.strptime(ende, "%Y%m%d")
 
-    vortraege =  list(vortrag.find({ "_public": True, "start" : { "$gte" : anfang }, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
-    vortraege_reduced = []
     leer = vortragsreihe.find_one({"kurzname" : "alle"})
+    vortraege =  list(vortrag.find({"vortragsreihe" : {"$elemMatch" : { "$eq" : leer["_id"]}}, "_public": True, "start" : { "$gte" : anfang }, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
+    vortraege_reduced = []
     for v in vortraege:
         reihe = list(vortragsreihe.find({"_id" : { "$in" : v["vortragsreihe"]}}))
         reihenkurzname = [item["kurzname"] for item in reihe if item != leer]

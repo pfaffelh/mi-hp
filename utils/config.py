@@ -189,7 +189,7 @@ calendars = [
       "color" : "#9467bd"
     },
     { "kurzname" : "promotion",
-      "name_de" : "Promotionen",
+      "name_de" : "Disputationen",
       "name_en" : "PhD exams",
       "color" : "#bcbd22"
     },
