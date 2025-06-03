@@ -63,7 +63,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} Veranstaltungen für 2-HF-Bachelor {% else %} Courses for 2 Major Bachelor {% endif %}
+        {% if lang == "de" %} Veranstaltungen für ... 2-HF-Bachelor {% else %} Courses for ... 2 Major Bachelor {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'BSc21')}}"
@@ -71,7 +71,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} ... BSc Mathe{% else %} ... BSc Maths {% endif %}
+        {% if lang == "de" %} ... B.Sc. Mathe{% else %} ... B.Sc. Maths {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MEd18')}}"
@@ -79,7 +79,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} ... MEd Mathe {% else %} ... MEd Maths {% endif %}
+        {% if lang == "de" %} ... M.Ed. Mathe {% else %} ... M.Ed. Maths {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MSc14')}}"
@@ -87,7 +87,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} ... MSc Mathe {% else %} ... MSc Maths {% endif %}
+        {% if lang == "de" %} ... M.Sc. Mathe {% else %} ... M.Sc. Mathematics {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MScData24')}}"
@@ -95,7 +95,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} ... MSc Maths in Data and Technology {% else %} ... MSc Maths in Data and
+        {% if lang == "de" %} ... M.Sc. Maths in Data and Technology {% else %} ... M.Sc. Maths in Data and
         Technology {% endif %}
       </a>
       {% endif %}
