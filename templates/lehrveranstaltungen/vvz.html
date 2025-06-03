@@ -13,7 +13,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} Zum Stundenplan {% else %} Timetable for all
+        {% if lang == "de" %} Stundenplan {% else %} Timetable for all
         courses {% endif %}
       </a>
       <a
@@ -26,7 +26,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} Zum Personenplan {% else %} Courses of all persons
+        {% if lang == "de" %} Personenplan {% else %} Courses of all persons
         {% endif %}
       </a>
       <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}" class="btn btn-primary bg-ufr-blue link-dark"
