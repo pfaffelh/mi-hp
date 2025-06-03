@@ -118,6 +118,10 @@
                 <a
                   href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
                 ></a>
+                {% elif value["komm_lang_exists"] %}
+                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')}}"></a>
+                {% elif value["komm_exists"] %}
+                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"></a>
                 {% endif %}
               </center>
             </td>

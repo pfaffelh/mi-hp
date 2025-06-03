@@ -5,27 +5,15 @@ endblock %} {% block content %}
     <div class="col">
       {% if studiengang == "" %} {% if not vpn_nextsemester %}
       {% endif %}
-      <a
-        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
-        {% else %} href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
-        {% endif %}
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
+      <a {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}" {%
+        else %} href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}" {% endif %}
+        class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
         {% if lang == "de" %} Stundenplan {% else %} Timetable for all
         courses {% endif %}
       </a>
-      <a
-        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterpersonenplan', lang=lang)}}"
-        {% else %} href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}"
-        {%
-        endif
-        %}
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
+      <a {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterpersonenplan', lang=lang)}}" {%
+        else %} href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}" {% endif %}
+        class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
         {% if lang == "de" %} Personenplan {% else %} Courses of all persons
         {% endif %}
       </a>
@@ -34,20 +22,15 @@ endblock %} {% block content %}
         {% if lang == "de" %} Übersicht aller Semester {% else %} Overview of
         all semesters {% endif %}
       </a>
-      <a href="{{url_for('showlehrveranstaltungenpersonen', lang=lang, id = '')}}" class="btn btn-primary bg-ufr-blue link-dark"
-        role="button" aria-disabled="true">
+      <a href="{{url_for('showlehrveranstaltungenpersonen', lang=lang, id = '')}}"
+        class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
         {% if lang == "de" %} Übersicht aller Lehrpersonen {% else %} Overview of
         staff {% endif %}
       </a>
       {% else %}
-      <a
-        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
-        {% else %} href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester)}}"
-        {% endif %}
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
+      <a {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}" {% else %}
+        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester)}}" {% endif %}
+        class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
         {% if lang == "de" %} Alle Lehrveranstaltungen {% else %} All courses {%
         endif %}
       </a>
@@ -57,44 +40,25 @@ endblock %} {% block content %}
   <div class="row">
     <div class="col">
       {% if studiengang == "" %} {% if not vpn_nextsemester %}
-      <a
-        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = '2HfB21')}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
-        {% if lang == "de" %} Veranstaltungen für ... 2-HF-Bachelor {% else %} Courses for ... 2 Major Bachelor {% endif %}
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = '2HfB21')}}"
+        class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
+        {% if lang == "de" %} Veranstaltungen für ... 2-HF-Bachelor {% else %} Courses for ... 2 Major Bachelor {% endif
+        %}
       </a>
-      <a
-        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'BSc21')}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'BSc21')}}"
+        class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
         {% if lang == "de" %} ... B.Sc. Mathe{% else %} ... B.Sc. Maths {% endif %}
       </a>
-      <a
-        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MEd18')}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MEd18')}}"
+        class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
         {% if lang == "de" %} ... M.Ed. Mathe {% else %} ... M.Ed. Maths {% endif %}
       </a>
-      <a
-        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MSc14')}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MSc14')}}"
+        class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
         {% if lang == "de" %} ... M.Sc. Mathe {% else %} ... M.Sc. Mathematics {% endif %}
       </a>
-      <a
-        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MScData24')}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MScData24')}}"
+        class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
         {% if lang == "de" %} ... M.Sc. Maths in Data and Technology {% else %} ... M.Sc. Maths in Data and
         Technology {% endif %}
       </a>
@@ -106,12 +70,8 @@ endblock %} {% block content %}
   <div class="row py-4">
     <div class="col">
       {% for m in data["studiengang"]["modul"] %}
-      <a
-        href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = studiengang, modul = m['kurzname'])}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = studiengang, modul = m['kurzname'])}}"
+        class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
         {{m["name"]}}
       </a>
       {% endfor %}
@@ -123,8 +83,7 @@ endblock %} {% block content %}
 {% if vpn_nextsemester %}
 <div class="container">
   <h3>
-    <span style="color: red"
-      >{% if lang == "de" %}Diese Seite beinhaltet die Planung für das nächste
+    <span style="color: red">{% if lang == "de" %}Diese Seite beinhaltet die Planung für das nächste
       Semester; die Informationen hier sind vorläufig und haben noch keine
       Gültigkeit! {% else %} This page contains the plan for the next semester;
       the information here is preliminary and not yet valid! {% endif %}
@@ -165,17 +124,10 @@ endblock %} {% block content %}
     <div class="row button-grid">
       <!-- Loop über Veranstaltungen -->
       {% for course in rubrik["veranstaltung"] %}
-      <div
-        class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0"
-      >
+      <div class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0">
         <!-- Modal Buttons -->
-        <button
-          type="button"
-          class="btn btn-primary w-100 h-100 lecture-module-button text-start"
-          data-bs-toggle="modal"
-          data-bs-target="#modal-{{modal_index.value}}"
-          style="font-size: 110%"
-        >
+        <button type="button" class="btn btn-primary w-100 h-100 lecture-module-button text-start"
+          data-bs-toggle="modal" data-bs-target="#modal-{{modal_index.value}}" style="font-size: 110%">
           <p style="font-weight: bold">{{ course['titel'] }}</p>
           {% if course['allepersonen'] != "" %}
           <p style="margin-bottom: 5px">{{ course['allepersonen']|safe}}</p>
@@ -187,14 +139,8 @@ endblock %} {% block content %}
       </div>
 
       <!-- Modals -->
-      <div
-        class="modal fade"
-        id="modal-{{modal_index.value}}"
-        tabindex="-1"
-        aria-labelledby="modalLabel-{{modal_index.value}}"
-        aria-hidden="true"
-        data-bs-backdrop="true"
-      >
+      <div class="modal fade" id="modal-{{modal_index.value}}" tabindex="-1"
+        aria-labelledby="modalLabel-{{modal_index.value}}" aria-hidden="true" data-bs-backdrop="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <!-- Header -->
@@ -206,12 +152,8 @@ endblock %} {% block content %}
                 </a>
               </h4>
 
-              <a
-                class="btn btn-outline-primary active bg-white"
-                style="border-color: #004a99"
-                href="{{ course['link'] }}"
-                role="button"
-              >
+              <a class="btn btn-outline-primary active bg-white" style="border-color: #004a99"
+                href="{{ course['link'] }}" role="button">
                 <i class="fa-solid fa-link" style="color: #004a99"></i>
               </a>
 
@@ -229,6 +171,21 @@ endblock %} {% block content %}
 
             <!-- Body -->
             <div class="modal-body">
+              <div>
+                <p>
+                  {% if course['dozent_mit_url'] != "" %} {% if lang == "de"
+                  %}Dozent:in: {% else %}Lecturer: {% endif%} {{
+                  course['dozent_mit_url']|safe}} <br />
+                  {% endif %} {% if course["assistent_mit_url"] %} {% if lang ==
+                  "de" %}Assistenz: {% else %}Assistant: {% endif %} {{
+                  course["assistent_mit_url"]|safe }} <br />
+                  {% endif %} {% if course["organisation_mit_url"] %}
+                  Organisation: {{ course["organisation_mit_url"]|safe }} <br />
+                  {% endif %} {% for ck, c in course["code"].items() %} {{ ck
+                  }}: {{ c }} <br />
+                  {% endfor %}
+                </p>
+              </div>
               <div>
                 {% if course["raumzeit_woechentlich_mit_url"]|length > 0 %}
                 <h5 class="h5">
@@ -249,24 +206,6 @@ endblock %} {% block content %}
                 <i>{{ course["kommentar"]|markdown }}</i> {% endif %}
               </div>
 
-              <div>
-                <span class="h5">
-                  {% if lang == "de" %}Lehre {% else %}Teaching {% endif %}
-                </span>
-                <p>
-                  {% if course['dozent_mit_url'] != "" %} {% if lang == "de"
-                  %}Dozent:in: {% else %}Teacher: {% endif%} {{
-                  course['dozent_mit_url']|safe}} <br />
-                  {% endif %} {% if course["assistent_mit_url"] %} {% if lang ==
-                  "de" %}Assistenz: {% else %}Assistant: {% endif %} {{
-                  course["assistent_mit_url"]|safe }} <br />
-                  {% endif %} {% if course["organisation_mit_url"] %}
-                  Organisation: {{ course["organisation_mit_url"]|safe }} <br />
-                  {% endif %} {% for ck, c in course["code"].items() %} {{ ck
-                  }}: {{ c }} <br />
-                  {% endfor %}
-                </p>
-              </div>
 
               {% if course['inhalt'] != "" %}
               <div>
@@ -290,16 +229,13 @@ endblock %} {% block content %}
                   %}
                 </span>
                 <p>{{ course['verwendbarkeit']|markdown }}</p>
+                {% if course['verwendbarkeit_kommentar'] != "" %}<p>{{ course['verwendbarkeit_kommentar']|markdown }}</p>{% endif %}
               </div>
               {% endif %}
             </div>
           </div>
 
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             {% if lang == 'de' %} Schließen {% elif lang == 'en' %} Close {%
             endif %}
           </button>

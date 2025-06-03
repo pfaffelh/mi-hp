@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="/static/css/ufr-colors.css" type="text/css" media="all" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="icon" href="/static/images/favicon-32x32.png" type="image/png">
+  <link rel="stylesheet" href="/static/css/styles.css" type="text/css" />
   <script>
     $('[data-toggle="tooltip"]').tooltip({
       template:
@@ -28,7 +29,10 @@
     body {
       font-size: 16px;
       line-height: 1.94;
-      hyphens: auto;
+      hyphens: auto !important;
+      word-wrap: break-word !important;
+      word-break: break-word !important;
+      white-space: normal !important;
     }
 
     .nav-link {
@@ -169,6 +173,11 @@
       color: white !important;
     }
 
+  </style>
+
+  {% block styles %}
+  <!-- Add additional styles here -->
+  <style>
     .no-hover-effect {
       background-color: #fff1a9 !important;
       /* Beibehaltung der ursprünglichen Farbe */
@@ -182,11 +191,7 @@
       color: inherit !important;
       /* Keine Textfarbenänderung beim Hover */
     }
-  </style>
 
-  {% block styles %}
-  <!-- Add additional styles here -->
-  <style>
     @media (max-width: 576px) {
       .modal-dialog {
         margin: 0;
