@@ -71,7 +71,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} ... BSc Mathe{% else %} ...for BSc Math {% endif %}
+        {% if lang == "de" %} ... BSc Mathe{% else %} ... BSc Maths {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MEd18')}}"
@@ -79,7 +79,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} ...für MEd Mathe {% else %} ...for MEd Math {% endif %}
+        {% if lang == "de" %} ... MEd Mathe {% else %} ... MEd Maths {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MSc14')}}"
@@ -87,7 +87,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} ...für MSc Mathe {% else %} ... for MSc Math {% endif %}
+        {% if lang == "de" %} ... MSc Mathe {% else %} ... MSc Maths {% endif %}
       </a>
       <a
         href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MScData24')}}"
@@ -95,8 +95,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {% if lang == "de" %} ...für MSc Math in Data and
-        Technology {% else %} ...for MSc Math in Data and
+        {% if lang == "de" %} ... MSc Maths in Data and Technology {% else %} ... MSc Maths in Data and
         Technology {% endif %}
       </a>
       {% endif %}
