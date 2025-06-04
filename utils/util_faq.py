@@ -121,15 +121,15 @@ def get_calendar_data(anzeige_start):
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
             "start": t["datum"].strftime('%Y-%m-%d') if allDay else t["datum"].isoformat(),
-            "end": t["datum"].isoformat(),
+            "end": (t["datum"] + relativedelta(minutes = t["dauer"])).isoformat(),
             "allDay": allDay,
             "title": t["name"],
             "extendedProps" : {
                 "description1" : format_termin(t),
                 "description2" : "",
                 "ort" : "",
-                "googleTime" : formatDateForGoogle(t["datum"], t["datum"], allDay),
-                "icsTime" : formatDateForIcs(t["datum"], t["datum"], allDay),
+                "googleTime" : formatDateForGoogle(t["datum"], t["datum"] + relativedelta(minutes = t["dauer"]), allDay),
+                "icsTime" : formatDateForIcs(t["datum"], t["datum"] + relativedelta(minutes = t["dauer"]), allDay),
             },
             "groupId" : "semesterplan"
         })

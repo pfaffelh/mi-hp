@@ -163,7 +163,7 @@ def format_termin(t):
     if t["datum"].time() == datetime.min.time():
         res = t["name"]
     else:
-        res = f"{t['datum'].strftime('%H:%M')}: {t['name']}"
+        res = f"{t['datum'].strftime('%H:%M')}--{(t['datum'] + relativedelta(minutes = t["dauer"])).strftime('%H:%M')}: {t['name']}"
     return res    
 
 from datetime import datetime, timedelta
