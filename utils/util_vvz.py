@@ -550,7 +550,7 @@ def get_data_planung(sem_shortname, lang="de"):
         loc2 = loc3 = {}
         for s in sems:
             if pv["regel"] == "Jedes Semester" or (is_WS(s) and pv["regel"] == "Jedes Wintersemester") or (not is_WS(s) and pv["regel"] == "Jedes Sommersemester"):
-                loc2[s] = "offen"                
+                loc2[s] = "offen"
         for p in planung: #[p in planung if p["veranstaltung"] == pv] :
             if p["veranstaltung"] == pv["_id"]:
                 loc3[p["sem"]] = ", ".join([name(x) for x in p["dozent"]] + ([p["kommentar"]] if p["kommentar"] != "" else []))

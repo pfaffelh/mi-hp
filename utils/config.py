@@ -23,21 +23,6 @@ weekday = {
     "Samstag": "Sa",
     "Sonntag": "So",    
 }
-semester_dict = {
-    "ss24": {"name": "Sommersemester 2024"},
-    "ws2324": {"name": "Wintersemester 2023/24"},
-    "ss23": {"name": "Sommersemester 2023"},
-    "ws2223": {"name": "Wintersemester 2022/23"},
-    "ss22": {"name": "Sommersemester 2022"},
-    "ws2122": {"name": "Wintersemester 2021/22"},
-    "ss21": {"name": "Sommersemester 2021"},
-    "ws2021": {"name": "Wintersemester 2020/21"},
-    "ss20": {"name": "Sommersemester 2020"},
-    "ws1920": {"name": "Wintersemester 2019/20"},
-    "ss19": {"name": "Sommersemester 2019"},
-    "ws1819": {"name": "Wintersemester 2018/19"}
-}
-
 semester_dict_old = {
     "ss24": {"name": "Sommersemester 2024"},
     "ws2324": {"name": "Wintersemester 2023/24"},
@@ -76,37 +61,6 @@ semester_dict_old = {
     "ss07": {"name": "Sommersemester 2007"},
     "ws0607": {"name": "Wintersemester 2006/07"}
 }
-
-for key, value in semester_dict_old.items():
-    try:
-        app.open_resource('static/pdf/lehrveranstaltungen/'+key+'.pdf')
-        semester_dict_old[key]["komm_exists"] = True
-    except:
-        semester_dict_old[key]["komm_exists"] = False
-    try:
-        app.open_resource('static/pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')
-        semester_dict_old[key]["komm_lang_exists"] = True
-    except:
-        semester_dict_old[key]["komm_lang_exists"] = False
-
-    try:
-        app.open_resource('static/pdf/lehrveranstaltungen/'+key+'mh.pdf')
-        semester_dict_old[key]["mh_exists"] = True
-    except:
-        semester_dict_old[key]["mh_exists"] =False
-
-    try:
-        app.open_resource('static/pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')
-        semester_dict_old[key]["mh_lang_exists"] = True
-    except:
-        semester_dict_old[key]["mh_lang_exists"] =False
-
-    try:
-        app.open_resource('static/pdf/lehrveranstaltungen/'+key+'verw.pdf')
-        semester_dict_old[key]["verw_exists"] = True
-    except:
-        semester_dict_old[key]["verw_exists"] =False
-
 
 calendar_host = "cal.mathematik.privat/davical/caldav.php/"
 cal_username, cal_account, cal_password = netrc.authenticators(calendar_host)

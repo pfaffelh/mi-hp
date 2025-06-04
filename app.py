@@ -302,43 +302,72 @@ def showlehrveranstaltungenbase(lang="de"):
     acapb = [x for x in a if x in b]
     acapb.reverse()
     if lang == "de":
-        semester_dict_2 = { x : {"name": vvz.semester_name_de(x)} for x in acapb }
+        semester_dict = { x : {"name": vvz.semester_name_de(x)} for x in acapb }
     else:
-        semester_dict_2 = { x : {"name": vvz.semester_name_en(x)} for x in acapb }
-    #semester_dict_2.update(semester_dict)
-    # print(semester_dict_2)
-
-    for key, value in semester_dict_2.items():
+        semester_dict = { x : {"name": vvz.semester_name_en(x)} for x in acapb }
+    print(weekday)
+    for key, value in semester_dict_old.items():
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/'+key+'.pdf')
-            semester_dict_2[key]["komm_exists"] = True
+            semester_dict_old[key]["komm_exists"] = True
         except:
-            semester_dict_2[key]["komm_exists"] = False
+            semester_dict_old[key]["komm_exists"] = False
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')
-            semester_dict_2[key]["komm_lang_exists"] = True
+            semester_dict_old[key]["komm_lang_exists"] = True
         except:
-            semester_dict_2[key]["komm_lang_exists"] = False
+            semester_dict_old[key]["komm_lang_exists"] = False
 
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/'+key+'mh.pdf')
-            semester_dict_2[key]["mh_exists"] = True
+            semester_dict_old[key]["mh_exists"] = True
         except:
-            semester_dict_2[key]["mh_exists"] =False
+            semester_dict_old[key]["mh_exists"] =False
 
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')
-            semester_dict_2[key]["mh_lang_exists"] = True
+            semester_dict_old[key]["mh_lang_exists"] = True
         except:
-            semester_dict_2[key]["mh_lang_exists"] =False
+            semester_dict_old[key]["mh_lang_exists"] =False
 
         try:
             app.open_resource('static/pdf/lehrveranstaltungen/'+key+'verw.pdf')
-            semester_dict_2[key]["verw_exists"] = True
+            semester_dict_old[key]["verw_exists"] = True
         except:
-            semester_dict_2[key]["verw_exists"] =False
+            semester_dict_old[key]["verw_exists"] = False
+    
+    for key, value in semester_dict.items():
+        try:
+            app.open_resource('static/pdf/lehrveranstaltungen/'+key+'.pdf')
+            semester_dict[key]["komm_exists"] = True
+        except:
+            semester_dict[key]["komm_exists"] = False
+        try:
+            app.open_resource('static/pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')
+            semester_dict[key]["komm_lang_exists"] = True
+        except:
+            semester_dict[key]["komm_lang_exists"] = False
 
-    return render_template("home_nlehre.html", filenames=filenames, lang=lang, semester_dict=semester_dict_2, semester_dict_old=semester_dict_old)
+        try:
+            app.open_resource('static/pdf/lehrveranstaltungen/'+key+'mh.pdf')
+            semester_dict[key]["mh_exists"] = True
+        except:
+            semester_dict[key]["mh_exists"] =False
+
+        try:
+            app.open_resource('static/pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')
+            semester_dict[key]["mh_lang_exists"] = True
+        except:
+            semester_dict[key]["mh_lang_exists"] =False
+
+        try:
+            app.open_resource('static/pdf/lehrveranstaltungen/'+key+'verw.pdf')
+            semester_dict[key]["verw_exists"] = True
+        except:
+            semester_dict[key]["verw_exists"] =False
+
+    print(semester_dict)
+    return render_template("home_nlehre.html", filenames=filenames, lang=lang, semester_dict=semester_dict, semester_dict_old=semester_dict_old)
 
 @app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/")
 @app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/<studiengang>")
@@ -514,8 +543,6 @@ def showlehrendevpn(lang, unterseite ="", anchor = ""):
         all_calendars = calendars
         selected_calendars = ["semesterplan", "promotion"]
         events = faq.get_calendar_data(anfang) + vvz.get_calendar_data(anfang) + news.get_wochenprogramm_for_calendar(anfang) + news.get_wochenprogramm_for_calendar(anfang, query = {"kurzname" : "promotion"})
-        print(events[-2])
-        print(events[-1])
         return render_template("studiendekanat/calendar_plan.html", all_calendars = all_calendars, selected_calendars = selected_calendars, lang = lang, events=events)
 
 
