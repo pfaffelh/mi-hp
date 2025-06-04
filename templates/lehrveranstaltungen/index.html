@@ -30,10 +30,10 @@
       Beginn der Vorlesungszeit des Semester wird es um die aktuellen
       Ergänzungen der Modulhandbücher erweitert, in denen die Anforderungen an
       Studien- und Prüfungsleistungen spezifiziert sind.{% else %} In the
-      "Course Catalogue" column, you will find the list of courses offered by
+      "Course List" column, you will find the list of courses offered by
       the Institute of Mathematics in the respective semester.<br />
       Towards the end of the lecture period of the previous semester, the
-      Comprehensive Course Catalogue ("Kommentare") appears, which contains
+      Course Catalogue ("Kommentare") appears, which contains
       information on the content, prerequisites and applicability of the
       courses. At the beginning of the lecture period of the semester, it is
       expanded to include the supplements to the module handbooks, in which the
@@ -60,14 +60,13 @@
               <center>
                 <div>
                   {% if lang == 'de' %}Kommentiertes Vorlesungsverzeichnis {% else
-                  %}Comprehensive Course Catalogue{% endif %}
+                  %}Course Catalogue{% endif %}
                 </div>
                 <div>
-                  {% if lang == 'de' %}mit den {% else %}with
-                  Supplements of the {% endif %}
+                  {% if lang == 'de' %}mit den {% else %}with{% endif %}
                 </div>
                 <div>
-                  {% if lang == 'de' %}Ergänzungen zu den Modulhandbüchern{% else %}Module
+                  {% if lang == 'de' %}Ergänzungen zu den Modulhandbüchern{% else %}Supplements of the Module
                   Handbooks{% endif %}
                 </div>
               </center>
