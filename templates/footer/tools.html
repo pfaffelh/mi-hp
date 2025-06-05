@@ -8,54 +8,85 @@
           <div class="container">
             <div class="row">
               <div class="col">
-                <a
-                  href="https://pdfform1.mathematik.privat"
-                  class="btn btn-primary bg-ufr-blue link-dark"
-                  role="button"
-                  aria-disabled="true"
+                <u
+                  data-bs-toggle="tooltip"
+                  title="Zur Übertragung von Daten aus Bewerbugnsformularen in das Einstellungsfformular für wissenschaftliche Hilfskräfte."
                 >
-                  Ausfüllhilfe P166
-                </a>
-                <a
-                  href="https://mi-wunsch1.mathematik.privat"
-                  class="btn btn-primary bg-ufr-blue link-dark"
-                  role="button"
-                  aria-disabled="true"
+                  <a
+                    href="https://pdfform1.mathematik.privat"
+                    class="btn btn-primary bg-ufr-blue link-dark"
+                    role="button"
+                    aria-disabled="true"
+                  >
+                    Ausfüllhilfe P166
+                  </a></u
                 >
-                  Prüfungseinteilung
-                </a>
-                <a
-                  href="https://mi-stat1.mathematik.privat"
-                  class="btn btn-primary bg-ufr-blue link-dark"
-                  role="button"
-                  aria-disabled="true"
+                <u
+                  data-bs-toggle="tooltip"
+                  title="Einteilung der drei Prüferwünsche auf die Prüfer:innen für die mündlichen Prüfungen der Grundvorlesungen."
                 >
-                  STAT
-                </a>
-                <a
-                  href="https://mi-faq1.mathematik.privat"
-                  class="btn btn-primary bg-ufr-blue link-dark"
-                  role="button"
-                  aria-disabled="true"
+                  <a
+                    href="https://mi-wunsch1.mathematik.privat"
+                    class="btn btn-primary bg-ufr-blue link-dark"
+                    role="button"
+                    aria-disabled="true"
+                  >
+                    Prüfungseinteilung
+                  </a></u
                 >
-                  FAQ
-                </a>
-                <a
-                  href="https://mi-news1.mathematik.privat"
-                  class="btn btn-primary bg-ufr-blue link-dark"
-                  role="button"
-                  aria-disabled="true"
+                <u
+                  data-bs-toggle="tooltip"
+                  title="App zur Erstellung von Statistiken in der Lehre."
                 >
-                  NEWS
-                </a>
-                <a
-                  href="https://mi-vvz1.mathematik.privat"
-                  class="btn btn-primary bg-ufr-blue link-dark"
-                  role="button"
-                  aria-disabled="true"
+                  <a
+                    href="https://mi-stat1.mathematik.privat"
+                    class="btn btn-primary bg-ufr-blue link-dark"
+                    role="button"
+                    aria-disabled="true"
+                  >
+                    STAT
+                  </a></u
                 >
-                  VVZ
-                </a>
+                <u
+                  data-bs-toggle="tooltip"
+                  title="App zum Editieren von den Accordion-Seite auf den Lehre-Seiten, Informationen zum Studiendekanat, Planer für gemeinsame Aufgaben."
+                >
+                  <a
+                    href="https://mi-faq1.mathematik.privat"
+                    class="btn btn-primary bg-ufr-blue link-dark"
+                    role="button"
+                    aria-disabled="true"
+                  >
+                    FAQ
+                  </a></u
+                >
+
+                <u
+                  data-bs-toggle="tooltip"
+                  title="App zum Eintragen von Neuigkeiten auf Homepage, Monitor im EG, Wochenprogramm"
+                >
+                  <a
+                    href="https://mi-news1.mathematik.privat"
+                    class="btn btn-primary bg-ufr-blue link-dark"
+                    role="button"
+                    aria-disabled="true"
+                  >
+                    NEWS
+                  </a></u
+                >
+                <u
+                  data-bs-toggle="tooltip"
+                  title="App zum Eintragen von Informationen zu unseren Lehrveranstaltungen (Klausuren, Dozent:innen, Räume etc)"
+                >
+                  <a
+                    href="https://mi-vvz1.mathematik.privat"
+                    class="btn btn-primary bg-ufr-blue link-dark"
+                    role="button"
+                    aria-disabled="true"
+                  >
+                    VVZ
+                  </a></u
+                >
               </div>
             </div>
           </div>
@@ -88,12 +119,12 @@
                 >
                   Deputate
                 </a>
-                <a href="{{url_for('showlehrendevpn', lang=lang, unterseite = 'calendar')}}" class="btn btn-primary bg-ufr-blue link-dark"
-                  role="button" aria-disabled="true">
-                  Kalender Studiendekanat
-                </a>
-                <a href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}" class="btn btn-primary bg-ufr-blue link-dark"
-                  role="button" aria-disabled="true">
+                <a
+                  href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
+                  class="btn btn-primary bg-ufr-blue link-dark"
+                  role="button"
+                  aria-disabled="true"
+                >
                   Lehrveranstaltungen des kommenden Semesters (unveröffentlicht)
                 </a>
                 <a
@@ -104,12 +135,12 @@
                 >
                   Lexikon (de/en)
                 </a>
-                <a href="{{url_for('showlehrendevpn', lang = lang, unterseite ='calendar', anchor = '')}}"
-                  class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
-                  Kalender
-                </a>
-                <a href="{{url_for('showvpnaccordion_nlehre', lang = lang, kurzname = 'homepage')}}"
-                  class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
+                <a
+                  href="{{url_for('showvpnaccordion_nlehre', lang = lang, kurzname = 'homepage')}}"
+                  class="btn btn-primary bg-ufr-blue link-dark"
+                  role="button"
+                  aria-disabled="true"
+                >
                   Unsere Homepage
                 </a>
               </div>
