@@ -261,6 +261,7 @@ def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle"}, lang=
         for e in ev:
             data["events"].append(
                 {
+                    "uid" : str(e["_id"]),
                     "title" : getwl(e, "title", lang),
                     "url" : e["url"],
                     "start" : e["start"],
@@ -281,6 +282,7 @@ def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle"}, lang=
         re = list(vortragsreihe.find({"_id" : { "$in": v["vortragsreihe"], "$ne" : vr["_id"]}, "_public" : True}))
         data["vortrag"].append(
             {
+                "uid" : str(v["_id"]),
                 "sprecher" : getwl(v, "sprecher", lang),
                 "sprecher_affiliation" : getwl(v, "sprecher_affiliation", lang),
                 "ort" : getwl(v, "ort", lang),
@@ -318,6 +320,7 @@ def get_wochenprogramm_for_calendar(anfangdate, query = {"kurzname" : "alle", "_
         all.append({
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
+            "uid" : e["uid"],
             "title" : e["title"],
             "start": e["start"].strftime('%Y-%m-%d') if allDay else e["start"].isoformat(),
             "end": e["end"].isoformat(),
@@ -334,6 +337,7 @@ def get_wochenprogramm_for_calendar(anfangdate, query = {"kurzname" : "alle", "_
     for v in data["vortrag"]:
         allDay = True if v["start"].time() == datetime.min.time() else False
         all.append({
+            "uid" : v["uid"],
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
             "title" : f"{v["sprecher"]}: {v["title"]}",
