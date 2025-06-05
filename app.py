@@ -570,7 +570,8 @@ def showdownloads(lang, show=""):
 def showvortragsreiheics(lang="de", kurzname="alle"):
     anfang = datetime.now() + timedelta(days = -720)
     events = news.get_wochenprogramm_for_calendar(anfang, query = {"kurzname" : kurzname, "_public" : True})
-    return Response("wochenprogramm/reihe.ics", lang=lang, events=events, kurzname=kurzname, mimetype="text/calendar")
+    ics_content = render_template("wochenprogramm/reihe.ics", lang=lang, events=events, kurzname=kurzname)
+    return Response(ics_content, mimetype="text/calendar")
 
 
 @app.route("/wochenprogramm/")
