@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+
+{% for event in events %}
+BEGIN:VEVENT
+SUMMARY:{{ event["title"] }}
+LOCATION:{{ event["extendedProps"]["ort"]}}
+DESCRIPTION:{{ event["extendedProps"]["description2"] }}
+{{ event["extendedProps"]["icsTime"]}}
+END:VEVENT
+
+{% endfor %}
+END:VCALENDAR

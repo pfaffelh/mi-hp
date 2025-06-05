@@ -345,7 +345,7 @@ def get_wochenprogramm_for_calendar(anfangdate, query = {"kurzname" : "alle", "_
                 "description2" : f"{v["abstract"]}",
                 "ort" : v["ort"],
                 "googleTime" : formatDateForGoogle(v["start"], v["end"], allDay),
-                "icsTime" : formatDateForIcs(v["start"], v["start"], allDay),
+                "icsTime" : formatDateForIcs(v["start"], v["end"], allDay),
             },
             "groupId" : trans
         })

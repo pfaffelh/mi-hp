@@ -508,7 +508,6 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'ausland', show=show))
     return render_template("home_nlehre.html", data=data, filenames = filenames, lang=lang)
 
-
 ##################
 ## Für Lehrende ##
 ##################
@@ -566,6 +565,12 @@ def showdownloads(lang, show=""):
 ####################
 ## Wochenprogramm ##
 ####################
+
+@app.route("/wochenprogramm/<lang>/<kurzname>.ics")
+def showvortragsreiheic(lang="de", kurzname="alle"):
+    anfang = datetime.now() + timedelta(days = -720)
+    events = news.get_wochenprogramm_for_calendar(anfang, query = {"kurzname" : kurzname, "_public" : True})
+    return render_template("wochenprogramm/reihe.ics", lang = lang, events=events)
 
 @app.route("/wochenprogramm/")
 @app.route("/wochenprogramm/<lang>/")
