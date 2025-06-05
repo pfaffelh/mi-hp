@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, url_for, render_template, redirect, request, abort
+from flask import Flask, jsonify, url_for, render_template, redirect, request, abort, Response
 from flask_misaka import Misaka
 from ipaddress import ip_network, IPv4Address
 import locale, json, os, requests, xmltodict, base64, pymongo, socket
@@ -567,10 +567,11 @@ def showdownloads(lang, show=""):
 ####################
 
 @app.route("/wochenprogramm/<lang>/<kurzname>.ics")
-def showvortragsreiheic(lang="de", kurzname="alle"):
+def showvortragsreiheics(lang="de", kurzname="alle"):
     anfang = datetime.now() + timedelta(days = -720)
     events = news.get_wochenprogramm_for_calendar(anfang, query = {"kurzname" : kurzname, "_public" : True})
-    return render_template("wochenprogramm/reihe.ics", lang = lang, events=events, kurzname=kurzname)
+    return Response("wochenprogramm/reihe.ics", lang=lang, events=events, kurzname=kurzname, mimetype="text/calendar")
+
 
 @app.route("/wochenprogramm/")
 @app.route("/wochenprogramm/<lang>/")
