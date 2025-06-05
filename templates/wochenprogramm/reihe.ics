@@ -1,13 +1,1 @@
-BEGIN:VCALENDAR
-VERSION:2.0
-
-{% for event in events %}
-BEGIN:VEVENT
-SUMMARY:{{ event["title"] }}
-LOCATION:{{ event["extendedProps"]["ort"]}}
-DESCRIPTION:{{ event["extendedProps"]["description2"] }}
-{{ event["extendedProps"]["icsTime"]}}
-END:VEVENT
-
-{% endfor %}
-END:VCALENDAR
+BEGIN:VCALENDAR\nVERSION:2.0\n{% for event in events %}\nBEGIN:VEVENT\nSUMMARY:{{ event["title"] }}\nLOCATION:{{ event["extendedProps"]["ort"]}}\nDESCRIPTION:{{ event["extendedProps"]["description2"].replace('\n', '\\n') }}\n{{ event["extendedProps"]["icsTime"]}}\nEND:VEVENT\n{% endfor %}\nEND:VCALENDAR
