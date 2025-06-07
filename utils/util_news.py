@@ -249,6 +249,10 @@ def get_monat(n, lang="de"):
     monate = monate_de if lang == "de" else monate_en
     return monate[n]
 
+def get_name(kurzname):
+    vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
+    return getwl(vr, "title", lang)
+
 def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle"}, lang="de"):
     data = {}
     tage = tage_lang(lang)

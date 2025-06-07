@@ -569,10 +569,19 @@ def showdownloads(lang, show=""):
 @app.route("/wochenprogramm/<lang>/<kurzname>.ics")
 def showvortragsreiheics(lang="de", kurzname="alle"):
     anfang = datetime.now() + timedelta(days = -720)
-    events = news.get_wochenprogramm_for_calendar(anfang, query = {"kurzname" : kurzname, "_public" : True})
-    ics_content = render_template("wochenprogramm/reihe.ics", lang=lang, events=events, kurzname=kurzname)
+    if kurzname == "semesterplan":
+        name = "Semesterplan"
+        events = faq.get_calendar_data(anfang)
+    else:        
+        try:
+            name = news.get_name(kurzname)
+            print(name)
+            events = news.get_wochenprogramm_for_calendar(anfang, query = {"kurzname" : kurzname, "_public" : True})
+        except:
+            name = kurzname
+            events = []
+    ics_content = render_template("wochenprogramm/calendar.ics", lang=lang, events=events, name=name)
     return Response(ics_content, mimetype="text/calendar")
-
 
 @app.route("/wochenprogramm/")
 @app.route("/wochenprogramm/<lang>/")
