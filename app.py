@@ -572,6 +572,7 @@ def showvortragsreiheics(lang="de", kurzname="alle"):
     if kurzname == "semesterplan":
         name = "Semesterplan"
         events = faq.get_calendar_data(anfang)
+        events = [e for e in events if e["groupId"] == "semesterplan"]
     else:        
         try:
             name = news.get_name(kurzname)
