@@ -113,13 +113,13 @@ data["carouselnews"] == [] %}
                   </div>
                   {% if item['image'] != [] %}
                   <div
-                    class="col-sm-{{ item['image'][0]['widthmonitor']}} text-right bg-white"
+                    class="col-sm-{{ item['image'][0]['widthmonitor']}} text-right"
                   >
                     {% if item['image'] %}
                     <img
                       src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
                       alt="Red dot"
-                      class="float-end"
+                      class="float-end bg-white"
                       alt="..."
                       style="{{ item['image'][0]['stylemonitor'] }}"
                     />
@@ -127,12 +127,12 @@ data["carouselnews"] == [] %}
                   </div>
                   {% endif %} {% else %} {% if item['image'] != [] %}
                   <div
-                    class="col-sm-{{ item['image'][0]['widthmonitor']}} text-left bg-white"
+                    class="col-sm-{{ item['image'][0]['widthmonitor']}} text-left"
                   >
                     <img
                       src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
                       alt="Red dot"
-                      class="float-start"
+                      class="float-start bg-white"
                       style="{{ item['image'][0]['stylemonitor'] }}"
                     />
                   </div>
