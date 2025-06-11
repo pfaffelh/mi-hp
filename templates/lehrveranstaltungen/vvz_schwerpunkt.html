@@ -1,0 +1,197 @@
+{% extends 'base_nlehre.html' %} {% block navbar %} {% include 'navbar_nlehre.html' %} {%
+endblock %} {% block content %}
+<div class="container text-end py-4">
+  <div class="row">
+    <div class="col">
+
+    </div>
+  </div>
+</div>
+
+<div class="container py-4" id="dropdown">
+<h2>{% if lang == "de" %}Lehrveranstaltungen seit Wintersemester 2018{% else %}Courses sind winter semester 2018{% endif %}</h2>
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownPersonenButton" data-bs-toggle="dropdown"
+    aria-expanded="false">
+    {% if id == "" %} {% if lang == "de" %}Bitte Schwerpunktgebiet auswählen{% else %}Please choose a focus area{% endif %}
+    {% elif name == "all" %} 
+    {% if lang == "de" %}Lehrveranstaltungen aller Schwerpunktgebiete{% else %}Courses by all focus areas{% endif %}
+    {% else %} 
+    {% if lang == "de" %}Lehrveranstaltungen im Schwerpunktgebiet {% else %}Courses in the focus area {% endif %}
+    {% for c in codes %} {% if c['name'] == name %}{{ c['beschreibung'] }} {% endif %} {% endfor %}{% endif %}
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    {% for c in codes %}
+    <li><a class="dropdown-item {% if name == c['name'] %}active{% endif %}" href="{{url_for('showlehrveranstaltungencodes', lang=lang, name = c['name'])}}">{{ c['beschreibung'] }}</a></li> 
+    {% endfor %}
+  </ul>
+</div>
+</div>
+
+<div class="container py-4" id="inhalt">
+  {% set modal_index = namespace(value=0) %}
+  {% for d in data %}
+  {% if d["rubrik"] != [] %}
+  <h2>
+    {% if lang == "de" %} Lehrveranstaltungen im
+    {% else %} Course program in {% endif %}
+    {{d['semester']['name']}}
+  </h2>
+  {% endif %}
+  <!-- {% if d['semester']['prefix'] != "" %} {{ d['semester']['prefix'] |
+  markdown }} {% endif %} -->
+
+  <!-- Loop über Rubriken.
+    Bsp.
+        1a. Einführende Pflichtvorlesungen,
+        1b. Weiterführende vierstündige Vorlesungen
+        ...
+   -->
+  {% for rubrik in d["rubrik"] %}
+  {% if rubrik['titel'] != "" %}
+  <h3>{{ rubrik['titel'] }}</h3>
+  {% endif %} 
+  <!-- {% if rubrik['untertitel'] != "" %}
+  <h3>{{ rubrik['untertitel']|markdown }}</h3>
+  {% endif %} --> 
+  <!-- {% if rubrik['prefix'] != "" %}
+  <p>{{ rubrik['prefix']|markdown }}</p>
+  {% endif %} -->
+  <div class="container mt-1">
+    <div class="row button-grid">
+      <!-- Loop über Veranstaltungen -->
+      {% for course in rubrik["veranstaltung"] %}
+      <div class="col-md-12 col-sm-12 d-flex align-items-stretch justify-content-start px-0">
+        <!-- Modal Buttons -->
+        <button type="button" class="btn btn-primary w-100 h-100 lecture-module-button text-start"
+          data-bs-toggle="modal" data-bs-target="#modal-{{modal_index.value}}" style="font-size: 110%">
+          <p style="font-weight: bold">{{ course['titel'] }}</p>
+          {% if course['allepersonen'] != "" %}
+          <p style="margin-bottom: 5px">{{ course['allepersonen']|safe}}</p>
+          {% endif %} {% if course["raumzeit_woechentlich"]|length > 0 %} {% for
+          line in course["raumzeit_woechentlich"] %}
+          <p style="margin-bottom: 5px">{{ line|safe }}</p>
+          {% endfor %}{% endif %}
+        </button>
+      </div>
+
+      <!-- Modals -->
+      <div class="modal fade" id="modal-{{modal_index.value}}" tabindex="-1"
+        aria-labelledby="modalLabel-{{modal_index.value}}" aria-hidden="true" data-bs-backdrop="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+              {% if course['link'] != "" %}
+              <h4 class="modal-title" id="modalLabel-{{modal_index.value}}">
+                <a href="{{ course['link'] | safe}}">
+                  {{ course['titel']|markdown }}
+                </a>
+              </h4>
+
+              <a class="btn btn-outline-primary active bg-white" style="border-color: #004a99"
+                href="{{ course['link'] }}" role="button">
+                <i class="fa-solid fa-link" style="color: #004a99"></i>
+              </a>
+
+              {% else %}
+              <h4 style="color: black">{{ course['titel']|markdown }}</h4>
+              {% endif %}
+              <!--
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button> -->
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+              <div>
+                {% if course["raumzeit_woechentlich_mit_url"]|length > 0 %}
+                <h5 class="h5">
+                  {% if lang == "de" %}Ort und Zeit{% else %}Time and place{%
+                  endif %}
+                </h5>
+                <p>
+                  {% for line in course["raumzeit_woechentlich_mit_url"] %} {{
+                  line|safe }}
+                  <br />
+                  {% endfor %} {% endif %} {% if
+                  course["raumzeit_einmalig_mit_url"]|length > 0 %} {% for line
+                  in course["raumzeit_einmalig_mit_url"] %} {{ line|safe }}
+                  <br />
+                  {% endfor %}
+                </p>
+                {% endif %} {% if course["kommentar"] %}
+                <i>{{ course["kommentar"]|markdown }}</i> {% endif %}
+              </div>
+
+              <div>
+                <span class="h5">
+                  {% if lang == "de" %}Lehre {% else %}Teaching {% endif %}
+                </span>
+                <p>
+                  {% if course['dozent_mit_url'] != "" %} {% if lang == "de"
+                  %}Dozent:in: {% else %}Teacher: {% endif%} {{
+                  course['dozent_mit_url']|safe}} <br />
+                  {% endif %} {% if course["assistent_mit_url"] %} {% if lang ==
+                  "de" %}Assistenz: {% else %}Assistant: {% endif %} {{
+                  course["assistent_mit_url"]|safe }} <br />
+                  {% endif %} {% if course["organisation_mit_url"] %}
+                  Organisation: {{ course["organisation_mit_url"]|safe }} <br />
+                  {% endif %} {% for ck, c in course["code"].items() %} {{ ck
+                  }}: {{ c }} <br />
+                  {% endfor %}
+                </p>
+              </div>
+
+              {% if course['inhalt'] != "" %}
+              <div>
+                <span class="h5">
+                  {% if lang == "de" %}Inhalt{% else %}Content{% endif %}
+                </span>
+                <p>{{ course['inhalt']|markdown }}</p>
+              </div>
+              {% endif %} {% if course['vorkenntnisse'] != '' %}
+              <div>
+                <span class="h5">
+                  {% if lang == "de" %}Vorkenntnisse{% else %}Previous
+                  knowledge{% endif %}
+                </span>
+                <p>{{ course['vorkenntnisse']|markdown }}</p>
+              </div>
+              {% endif %} {% if course['verwendbarkeit'] != '' %}
+              <div>
+                <span class="h5">
+                  {% if lang == "de" %}Verwendbarkeit{% else %}Usability{% endif
+                  %}
+                </span>
+                <p>{{ course['verwendbarkeit']|markdown }}</p>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            {% if lang == 'de' %} Schließen {% elif lang == 'en' %} Close {%
+            endif %}
+          </button>
+        </div>
+      </div>
+      {% set modal_index.value = modal_index.value + 1 %} {% endfor %}
+    </div>
+
+    <!-- Optional: Rubrik - Suffix -->
+    {% if rubrik['suffix'] != "" %}
+    <div class="row">
+      <div class="col-sm-12">{{ rubrik['suffix']|markdown }}</div>
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+  {% endfor %}
+</div>
+
+{% endblock %} {% block js %} {% endblock %}

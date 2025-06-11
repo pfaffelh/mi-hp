@@ -450,6 +450,25 @@ def showlehrveranstaltungenpersonen(lang, id = ""):
     personen = vvz.get_current_personen(lang)
     return render_template("lehrveranstaltungen/vvz_person.html", lang = lang, data = data, personen = personen, id = id)
 
+@app.route("/nlehre/<lang>/lehrveranstaltungen/code/")
+@app.route("/nlehre/<lang>/lehrveranstaltungen/code/<name>/")
+def showlehrveranstaltungencodes(lang, name = ""):
+    otherlang = "de" if lang == "en" else "en"
+    data = vvz.get_data_code(name, lang)
+    print(name)
+    codes_list = ["algebra", "analysis", "numerik", "didaktik", "geometrie", "logik", "stochastik"]
+    codes = []
+    for c in codes_list:
+        co = vvz.vvz_code.find_one({"name" : c})
+        if co:
+            codes.append({
+                "name" : co["name"],
+                "beschreibung" : co[f"beschreibung_{lang}"] if co[f"beschreibung_{lang}"] != "" else co[f"beschreibung_{otherlang}"]
+            }
+        )
+    # print(codes)
+    return render_template("lehrveranstaltungen/vvz_schwerpunkt.html", lang = lang, data = data, codes = codes, name = name)
+
 #####################################
 ## Prüfungsamt und Studienberatung ##
 #####################################

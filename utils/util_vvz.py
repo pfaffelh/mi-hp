@@ -309,8 +309,10 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", veranstal
             veranstaltungen = list(vvz_veranstaltung.find(veranstaltungs_query, sort=[("rang", pymongo.ASCENDING)]))
         else:
             veranstaltungs_query = veranstaltungs_query | {"rubrik": rubrik["_id"], "hp_sichtbar" : True}
+            print(veranstaltungs_query)
             veranstaltungen = list(vvz_veranstaltung.find(veranstaltungs_query, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
+            print(veranstaltung)
             otherlang = "de" if lang == "en" else "en"
             v_dict = {}
             v_dict["code"] = make_codes(sem_id, veranstaltung["_id"], lang)
@@ -344,7 +346,7 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", veranstal
         if r_dict["veranstaltung"] != []:
             data["rubrik"].append(r_dict)
     # print(data["rubrik"])
-    #print(data)
+    # print(data)
     return data
 
 def get_data_stundenplan(sem_shortname, lang="de", vpn = False):
@@ -470,6 +472,27 @@ def get_data_person(id, lang = "de"):
         for s in semester:
             sem_data = get_data(s["kurzname"], lang, "", "", query)
             data.append(sem_data)
+    return data
+
+# Wenn id == "all", werden alle Daten der Semester ausgelesen. Wenn id == "", werden keine Daten zurückgegeben. Andernfalls ist es die id einer Lehrperson im vvz.
+def get_data_code(name, lang = "de"):
+    if name == "":
+        data = []
+    else:
+        # Hier wird das Semester festgelegt, ab wann die Anzeige stattfindet.
+        startsemester = vvz_semester.find_one({"kurzname" : "2018WS", "hp_sichtbar" : True})
+        semester = list(vvz_semester.find({"hp_sichtbar" : True, "rang" : { "$gte" : startsemester["rang"]}}, sort=[("rang", pymongo.DESCENDING)]))
+
+        codes = list(vvz_code.find({"name" : name}))
+        code_ids = [c["_id"] for c in codes]
+
+        query = {"code" : { "$in" : code_ids }}
+
+        data = []
+        for s in semester:
+            sem_data = get_data(s["kurzname"], lang, "", "", query)
+            data.append(sem_data)
+    # print(data)
     return data
 
 def get_data_personenplan(sem_shortname, lang="de", vpn = False):
