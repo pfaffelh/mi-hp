@@ -608,7 +608,7 @@ def showvortragsreiheics(lang="de", kurzname="alle"):
 @app.route("/wochenprogramm/<lang>/vortragsreihe/")
 @app.route("/wochenprogramm/<lang>/vortragsreihe/<kurzname>/")
 @app.route("/wochenprogramm/<lang>/vortragsreihe/<kurzname>/<anfang>/<end>")
-def showvortragsreihe(lang="de", kurzname="alle", anfang = datetime(datetime.now().year, datetime.now().month, 1).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1)).strftime('%Y%m%d')):
+def showvortragsreihe(lang="de", kurzname="alle", anfang = news.get_start_current_semester().strftime('%Y%m%d'), end = news.get_start_next_semester(news.get_start_current_semester()).strftime('%Y%m%d')):
     reihen, events = news.get_events(lang)
     data = news.get_wochenprogramm_full(anfang, end, { "kurzname" : kurzname}, lang)
     return render_template("wochenprogramm/reihe.html", reihen = reihen, events = events, kurzname = kurzname, lang=lang, data = data)
@@ -711,8 +711,8 @@ scheduler.add_job(
     func=news.send_email,
     trigger="cron",
     max_instances=1,
-    day_of_week='sun',
-    hour=12,
-    minute=30
+    day_of_week='mon',
+    hour=13,
+    minute=55
 )
 scheduler.start()
