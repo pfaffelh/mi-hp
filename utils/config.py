@@ -78,6 +78,7 @@ mensaplan_url = mensaplan_host + "apispeiseplan?&type=98&tx_speiseplan_pi1[apiKe
 smtp_user, _, smtp_password = netrc.authenticators("mail.uni-freiburg.de")
 empfaenger_email = "mathkoll@math.uni-freiburg.de" # Empfänger-E-Mail-Adresse für das Wocheprogramm
 #empfaenger_email = "p.p@stochastik.uni-freiburg.de"  
+empfaenger_email_admin = "p.p@stochastik.uni-freiburg.de"  
 mail_template = "../static/mail/wochenprogrammmail.html"
 anfang_date = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) + relativedelta(days=1)
 anfang = anfang_date.strftime('%Y%m%d')
