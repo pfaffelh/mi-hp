@@ -116,7 +116,7 @@ def showfakewp(site, show = "", lang = "de"):
     elif dir[0] == "fdmseminarstatic":
         return render_template("wp/fdmseminarstatic.html")
     elif dir[0] == "fdmseminar":
-        data = news.get_wochenprogramm_full(anfang = datetime(datetime.now().year, datetime.now().month, datetime.now().day).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1000)).strftime('%Y%m%d'), kurzname = "FDMAI", lang = "en")
+        data = news.get_wochenprogramm_full(anfang = datetime(datetime.now().year, datetime.now().month, datetime.now().day).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1000)).strftime('%Y%m%d'), query = {"kurzname" : "FDMAI"}, lang = "en")
 #        data = news.get_wochenprogramm_full(anfang = datetime(2024,1,1).strftime('%Y%m%d'), end = (datetime(datetime.now().year, datetime.now().month, 1) + relativedelta(months=1000)).strftime('%Y%m%d'), kurzname = "FDMAI", lang = "en")
         wp.make_skel(wp.config[site])
         
