@@ -253,7 +253,7 @@ def get_name(kurzname):
     vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
     return getwl(vr, "title", lang)
 
-def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle"}, lang="de"):
+def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle", "_public" : True}, lang="de"):
     data = {}
     tage = tage_lang(lang)
     vr = vortragsreihe.find_one(query)
@@ -539,7 +539,7 @@ def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template
     """
     Versendet E-Mails mit einer Jinja2-Vorlage an mehrere Empfänger.
     """
-    data = get_wochenprogramm_full(anfang, end, kurzname, lang)
+    data = get_wochenprogramm_full(anfang, end)
     if data["events"] != [] or data["vortrag"] != []:
         try:
             with smtplib.SMTP_SSL("mail.uni-freiburg.de", 465) as server:
@@ -565,3 +565,26 @@ def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template
 
         except Exception as e:
             print(f"Fehler beim Senden der E-Mail: {e}")
+            with smtplib.SMTP_SSL("mail.uni-freiburg.de", 465) as server:
+                server.login(absender_email, absender_passwort)
+
+                # E-Mail-Nachricht erstellen (MIMEMultipart für HTML-Inhalt)
+                msg = MIMEMultipart('alternative')
+                msg['Subject'] = betreff
+                msg['From'] = absender_email
+                msg['To'] = empfaenger_email_admin # Individueller Empfänger
+                text = "Beim automatisierten Versand des Wochenprogramms ist ein Fehler aufgetreten."
+                html = """
+                <html>
+                <body>
+                    <p><strong>Fehler:</strong><br>
+                    Beim automatisierten Versand des <em>Wochenprogramms</em> ist ein Fehler aufgetreten.
+                    </p>
+                </body>
+                </html>
+                """
+                # 📎 Inhalte anhängen
+                html_part = MIMEText(html, 'html')
+                msg.attach(html_part)
+                server.send_message(msg)
+                print(f"E-Mail an {empfaenger_email_admin} erfolgreich versendet!")
