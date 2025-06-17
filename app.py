@@ -93,7 +93,7 @@ def showfakewp(site, show = "", lang = "de"):
         end = (datetime.now() + relativedelta(days = 14)).strftime('%Y%m%d')
         reihen, events = news.get_events(lang)
         data = {}
-        data["wochenprogramm"] = news.get_wochenprogramm_full(anfang, end, "alle", lang)
+        data["wochenprogramm"] = news.get_wochenprogramm_full(anfang, end, {"kurzname" : "alle"}, lang)
         data["news"] = news.data_for_base(lang)["news"]
         wp.make_skel(wp.config[site])
     elif dir[0] == "newsstatic":
