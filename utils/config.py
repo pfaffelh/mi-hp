@@ -199,7 +199,7 @@ def formatDateForIcs(start, end, allDay):
         # Ohne Zeitzone (lokal)
         start_str = start.strftime('%Y%m%dT%H%M%S')
         end_str = end.strftime('%Y%m%dT%H%M%S')
-        res = f"DTSTART:{start_str}\nDTEND:{end_str}"
+        res = f"DTSTART;TZID=Europe/Berlin:{start_str}\nDTEND;TZID=Europe/Berlin:{end_str}"
     
     return res
 
