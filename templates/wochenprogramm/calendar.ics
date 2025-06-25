@@ -1,5 +1,7 @@
 BEGIN:VCALENDAR
 VERSION:2.0
+X-WR-CALNAME:{{name}}
+X-WR-TIMEZONE:Europe/Berlin
 PRODID:-//{{name}}//DE
 BEGIN:VTIMEZONE
 TZID:Europe/Berlin
