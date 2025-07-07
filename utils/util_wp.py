@@ -8,9 +8,9 @@ import latexcodec
 config = {
     "personen_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
+        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/personenstatic/",
         "skel_name" : "skel.html",
-        "queries" : [{"class" : "wp-block-group"}],
+        "queries" : [{"string" : "Personen"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
