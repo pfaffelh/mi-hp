@@ -15,7 +15,8 @@
         src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
         alt=""
         class="bl-object-contain bl-w-full bl-inline-block bl-aspect-[3/2]"
-        style='height: 15vw; {{ item["image"][0]["stylehome"] }};'
+        <!-- style='height: 15vw; object-fit: contain{{ item["image"][0]["stylehome"] }};' -->
+        style='height: 15vw; object-fit: contain;'
       />
     </div>
 
