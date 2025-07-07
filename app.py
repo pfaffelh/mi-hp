@@ -90,7 +90,7 @@ def showfakewp(site, show = "", lang = "de"):
     elif dir[0] == "institut":
         # get data from wochenprogramm, news
         anfang = datetime.now().strftime('%Y%m%d')
-        end = (datetime.now() + relativedelta(days = 14)).strftime('%Y%m%d')
+        end = (datetime.now() + relativedelta(days = 7)).strftime('%Y%m%d')
         reihen, events = news.get_events(lang)
         data = {}
         data["wochenprogramm"] = news.get_wochenprogramm_full(anfang, end, {"kurzname" : "alle"}, lang)

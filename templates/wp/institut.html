@@ -3,8 +3,13 @@
 <h4 class="wp-block-heading">News</h4>
 <p>
   {% if data["news"] != [] %}{% for v in data["news"] %}
+  {% if v['link'] != "" %}
   <a href="{{ v['link']}}" data-type="page" data-id="376">{{ v["home"]["title_de"] }}</a
-  ><br />
+  >
+  {% else %}
+  {{v["home"]["title_de"] }}
+  {% endif %}
+  <br />
   {% endfor %}<br>{% endif %}
   <a
     href="/cd2021/news_de/"
