@@ -1,7 +1,6 @@
 {% extends config['skel_name'] %} {% block content0 %}
 
 <h4 class="wp-block-heading">News</h4>
-
 <p>
   {% if data["news"] != [] %}{% for v in data["news"] %}
   <a href="{{ v['link']}}" data-type="page" data-id="376">{{ v["home"]["title_de"] }}</a
@@ -32,4 +31,6 @@ data["wochenprogramm"]["vortrag"] %}
 </p>
 {% endfor %} {% else %}
 <p>Keine Veranstaltungen in den nächsten 14 Tagen.</p>
-{% endif %} {% endblock %}
+{% endif %} 
+<a href="/wochenprogramm/" data-type="page" data-id="786">Und noch mehr&#8230;</a>
+{% endblock %}
