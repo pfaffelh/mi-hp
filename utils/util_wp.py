@@ -82,7 +82,7 @@ config = {
         "titel" : "News",
         "url_skel" : "https://www.math.uni-freiburg.de/cd2021/newsstatic/",
         "skel_name" : "skel_news.html",
-        "queries" : [{"string" : "News II"}],
+        "queries" : [{"string" : "Aktuelle Informationen und Nachrichten"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/news.html"
     },

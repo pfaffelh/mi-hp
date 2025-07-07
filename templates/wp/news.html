@@ -1,75 +1,18 @@
 {% extends config['skel_name'] %} {% block content %}
-<h1>News aus dem Mathematischen Institut</h1>
+<h4>News aus dem Mathematischen Institut</h4>
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<h4 class="wp-block-heading"><strong>Aktuelle Informationen und Nachrichten</strong></h4>
 
-<div
-  class="bl-@container/teaser-news bl-bg-identity-lightblue bl-text-identity-black dark:bl-bg-identity-darkblue dark:bl-text-pure-white bl-block bl-relative bl-self-stretch bl-min-w-full md:bl-min-w-[670px] xl:bl-min-w-[320px] !bl-no-underline hover:!bl-no-underline wp-block-ufr-teaser-news"
->
-  {% for item in data["news"] %}
+{% for item in data["news"] %}
+<h5 class="wp-block-heading"><strong>{{ item['home']['title_de']|markdown }}</strong> </h5>
+<p>{{ item['home']['text_de']|markdown}}
+  {% if item['link'] != "" %} <a href="{{ item['link'] }}">Mehr&#8230;</a>{% endif %}</p>
+<div style="height:5px" aria-hidden="true" class="wp-block-spacer"></div>
+<figure class="wp-block-image alignleft size-full is-resized"><img decoding="async" width="166" height="249"
+    src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}" alt="UB Universität Freiburg"
+    class="wp-image-1370" style="width:95px;height:auto" /></figure>
 
-  <div class="bl-flex bl-flex-col bl-h-full @lg/teaser-news:!bl-flex-row">
-    <div
-      class="bl-w-full @lg/teaser-news:bl-min-w-[50%] @lg/teaser-news:bl-w-[50%] @2xl/teaser-news:bl-max-w-[774px]"
-    >
-      <img
-        decoding="async"
-        src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
-        alt=""
-        class="bl-object-contain bl-w-full bl-inline-block bl-aspect-[3/2]"
-        style='height: 15vw; object-fit: contain;'
-      />
-    </div>
+{% endfor %}
 
-    <div
-      class="bl-flex-grow bl-flex bl-flex-col bl-h-full bl-justify-between bl-px-[25px] bl-py-[20px] md:bl-px-[45px] md:bl-py-[40px] xl:bl-px-[55px] xl:bl-py-[50px] [overflow-wrap:anywhere]"
-    >
-      <div>
-        <div
-          aria-hidden="true"
-          class="bl-float-right rtl:bl-float-left bl-absolute @lg/teaser-news:!bl-static bl-bg-pure-white bl-top-0 @lg/teaser-news:-bl-mt-[50px] bl-w-[35px] bl-h-[40px] bl-right-[20px] xl:bl-right-[35px] @lg/teaser-news:xl:!-bl-me-[15px] md:bl-w-[45px] md:bl-h-[50px] xl:bl-w-[85px] xl:bl-h-[100px] bl-rounded-b-full bl-ms-1.5 bl-mb-1.5 bl-drop-shadow-[4px_4px_10px_rgba(42,_42,_42,_0.60)]"
-        >
-          <svg
-            width="100%"
-            viewBox="0 0 20 19"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-label=""
-            class="bl-text-identity-darkblue bl-w-[20px] xl:bl-w-[45px] bl-mx-auto bl-mt-[7px] md:bl-mt-[11px] xl:bl-mt-[20px]"
-          >
-            <title></title>
-            <path
-              d="M18.75 0.67334C19.4141 0.67334 20 1.25928 20 1.92334V15.6733C20 17.0796 18.8672 18.1733 17.5 18.1733H2.5C1.09375 18.1733 0 17.0796 0 15.6733V4.42334C0 3.75928 0.546875 3.17334 1.25 3.17334H2.5V15.0483C2.5 15.3999 2.77344 15.6733 3.125 15.6733C3.4375 15.6733 3.75 15.3999 3.75 15.0483V1.92334C3.75 1.25928 4.29688 0.67334 5 0.67334H18.75ZM10.625 15.6733C10.9375 15.6733 11.25 15.3999 11.25 15.0483C11.25 14.7358 10.9375 14.4233 10.625 14.4233H6.875C6.52344 14.4233 6.25 14.7358 6.25 15.0483C6.25 15.3999 6.52344 15.6733 6.875 15.6733H10.625ZM10.625 11.9233C10.9375 11.9233 11.25 11.6499 11.25 11.2983C11.25 10.9858 10.9375 10.6733 10.625 10.6733H6.875C6.52344 10.6733 6.25 10.9858 6.25 11.2983C6.25 11.6499 6.52344 11.9233 6.875 11.9233H10.625ZM16.875 15.6733C17.1875 15.6733 17.5 15.3999 17.5 15.0483C17.5 14.7358 17.1875 14.4233 16.875 14.4233H13.125C12.7734 14.4233 12.5 14.7358 12.5 15.0483C12.5 15.3999 12.7734 15.6733 13.125 15.6733H16.875ZM16.875 11.9233C17.1875 11.9233 17.5 11.6499 17.5 11.2983C17.5 10.9858 17.1875 10.6733 16.875 10.6733H13.125C12.7734 10.6733 12.5 10.9858 12.5 11.2983C12.5 11.6499 12.7734 11.9233 13.125 11.9233H16.875ZM17.5 7.54834V3.79834C17.5 3.48584 17.1875 3.17334 16.875 3.17334H6.875C6.52344 3.17334 6.25 3.48584 6.25 3.79834V7.54834C6.25 7.8999 6.52344 8.17334 6.875 8.17334H16.875C17.1875 8.17334 17.5 7.8999 17.5 7.54834Z"
-              fill="currentColor"
-            />
-          </svg>
-        </div>
-        <p
-          class="bl-font-medium bl-text-inherit dark:bl-text-inherit bl-text-[1.125rem] bl-leading-[1.5625rem] md:bl-text-[1.25rem] md:bl-leading-[1.5625rem] xl:bl-text-[1.5625rem] xl:bl-leading-[2.1875rem] bl-m-0 bl-mb-4 xl:bl-mb-5"
-        >
-          <strong>{{ item['home']['title_de']|markdown }}</strong>
-        </p>
-        <p
-          class="bl-font-book bl-text-inherit dark:bl-text-inherit bl-text-[1rem] bl-leading-[1.375rem] md:bl-text-[1.125rem] md:bl-leading-[1.375rem] xl:bl-text-[1.375rem] xl:bl-leading-[2.0625rem] bl-m-0"
-        >
-          {{ item['home']['text_de']|markdown}}
-        </p>
-      </div>
-      {% if item['link'] != "" %}
-      <div class="wp-block-ufr-button">
-        <a
-          href="{{ item['link'] }}"
-          aria-label=""
-          class="bl-text-[1.125rem] bl-leading-[1.5625rem] bl-px-[26px] bl-py-[7px] bl-border-[2px] bl-gap-[8px] !bl-decoration-2 !bl-underline-offset-[5px] focus-visible:bl-outline-offset-[6px] bl-no-underline hover:bl-underline bl-font-medium focus-visible:bl-outline-dotted focus-visible:bl-outline-2 bl-border-identity-black bl-text-identity-black hover:bl-bg-identity-blue-80 hover:bl-border-identity-blue-80 hover:bl-text-pure-white active:bl-bg-identity-blue active:bl-text-pure-white active:bl-border-identity-blue !bl-outline-identity-black dark:bl-text-pure-white dark:!bl-border-pure-white dark:hover:bl-text-identity-black dark:hover:bl-bg-identity-yellow-40 dark:hover:!bl-border-identity-yellow-40 dark:active:bl-text-identity-black dark:active:bl-bg-identity-yellow dark:active:!bl-border-identity-yellow dark:!bl-outline-pure-white bl-inline-flex bl-flex-row bl-items-center motion-safe:bl-transition-colors motion-safe:bl-duration-[400ms] justify-center bl-hyphens-auto"
-        >
-          <span class="bl-inline-block"> Mehr erfahren </span>
-        </a>
-      </div>
-
-      {% endif %}
-
-      <div></div>
-    </div>
-  </div>
-
-  {% endfor %}
 </div>
 {% endblock %}
