@@ -16,6 +16,29 @@
 		/*! This file is auto-generated */
 		!function (i, n) { var o, s, e; function c(e) { try { var t = { supportTests: e, timestamp: (new Date).valueOf() }; sessionStorage.setItem(o, JSON.stringify(t)) } catch (e) { } } function p(e, t, n) { e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0); var t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data), r = (e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0), new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data)); return t.every(function (e, t) { return e === r[t] }) } function u(e, t, n) { switch (t) { case "flag": return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !n(e, "\ud83c\uddfa\ud83c\uddf3", "\ud83c\uddfa\u200b\ud83c\uddf3") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f"); case "emoji": return !n(e, "\ud83d\udc26\u200d\ud83d\udd25", "\ud83d\udc26\u200b\ud83d\udd25") }return !1 } function f(e, t, n) { var r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : i.createElement("canvas"), a = r.getContext("2d", { willReadFrequently: !0 }), o = (a.textBaseline = "top", a.font = "600 32px Arial", {}); return e.forEach(function (e) { o[e] = t(a, e, n) }), o } function t(e) { var t = i.createElement("script"); t.src = e, t.defer = !0, i.head.appendChild(t) } "undefined" != typeof Promise && (o = "wpEmojiSettingsSupports", s = ["flag", "emoji"], n.supports = { everything: !0, everythingExceptFlag: !0 }, e = new Promise(function (e) { i.addEventListener("DOMContentLoaded", e, { once: !0 }) }), new Promise(function (t) { var n = function () { try { var e = JSON.parse(sessionStorage.getItem(o)); if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests) return e.supportTests } catch (e) { } return null }(); if (!n) { if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob) try { var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), p.toString()].join(",") + "));", r = new Blob([e], { type: "text/javascript" }), a = new Worker(URL.createObjectURL(r), { name: "wpTestEmojiSupports" }); return void (a.onmessage = function (e) { c(n = e.data), a.terminate(), t(n) }) } catch (e) { } c(n = f(s, u, p)) } t(n) }).then(function (e) { for (var t in e) n.supports[t] = e[t], n.supports.everything = n.supports.everything && n.supports[t], "flag" !== t && (n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && n.supports[t]); n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && !n.supports.flag, n.DOMReady = !1, n.readyCallback = function () { n.DOMReady = !0 } }).then(function () { return e }).then(function () { var e; n.supports.everything || (n.readyCallback(), (e = n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji))) })) }((window, document), window._wpemojiSettings);
 	</script>
+	<link rel='stylesheet' id='dashicons-css'
+		href='https://uni-freiburg.de/math/wp-includes/css/dashicons.min.css?ver=6.8.1' media='all' />
+	<link rel='stylesheet' id='admin-bar-css'
+		href='https://uni-freiburg.de/math/wp-includes/css/admin-bar.min.css?ver=6.8.1' media='all' />
+	<style id='admin-bar-inline-css'>
+		@media screen {
+			html {
+				margin-top: 32px !important;
+			}
+		}
+
+		@media screen and (max-width: 782px) {
+			html {
+				margin-top: 46px !important;
+			}
+		}
+
+		@media print {
+			#wpadminbar {
+				display: none;
+			}
+		}
+	</style>
 	<style id='wp-emoji-styles-inline-css'>
 		img.wp-smiley,
 		img.emoji {
@@ -1116,6 +1139,27 @@
 		href="https://uni-freiburg.de/math/wp-json/oembed/1.0/embed?url=https%3A%2F%2Funi-freiburg.de%2Fmath%2Fpersonen%2F" />
 	<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"
 		href="https://uni-freiburg.de/math/wp-json/oembed/1.0/embed?url=https%3A%2F%2Funi-freiburg.de%2Fmath%2Fpersonen%2F&#038;format=xml" />
+	<style type="text/css">
+		#wp-admin-bar-password_protected {
+			background-color: transparent !important;
+		}
+
+		#wp-admin-bar-password_protected>.ab-item {
+			color: #fff !important;
+		}
+
+		#wp-admin-bar-password_protected>.ab-item:before {
+			content: "\f528";
+			top: 2px;
+			color: #fff !important;
+			margin-right: 0px;
+		}
+
+		#wp-admin-bar-password_protected:hover>.ab-item {
+			background-color: transparent !important;
+			color: #fff;
+		}
+	</style>
 
 	<link rel="icon" type="image/x-icon"
 		href="https://uni-freiburg.de/math/wp-content/themes/ufr-main-theme/assets/img/favicon/favicon.ico">
@@ -1146,7 +1190,204 @@
 
 </head>
 
-<body class="wp-singular page-template-default page page-id-2442 wp-theme-ufr-main-theme pb-[81px] md:pb-0">
+<body
+	class="wp-singular page-template-default page page-id-2442 logged-in admin-bar no-customize-support wp-theme-ufr-main-theme pb-[81px] md:pb-0">
+	<style>
+		#wpadminbar #wp-admin-bar-wp-logo>.ab-item .ab-icon:before {
+			background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+IDxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c2VyaWY9Imh0dHA6Ly93d3cuc2VyaWYuY29tLyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDY0IDY0IiB2ZXJzaW9uPSIxLjEiIHhtbDpzcGFjZT0icHJlc2VydmUiIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MjsiPiA8ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwxLC02OCwtNjgpIj4gPGcgaWQ9IlVGUl9GYXZpY29uX1ZlcnNpb25fMSI+IDxnIHRyYW5zZm9ybT0ibWF0cml4KDAuMzIsMCwwLDAuMzIsNjgsNjgpIj4gPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIHN0eWxlPSJmaWxsOnJnYig1Miw3NCwxNTQpOyI+PC9yZWN0PiA8L2c+IDxnIHRyYW5zZm9ybT0ibWF0cml4KDAuMzIsMCwwLDAuMzIsNzcuMDg2NCw4Ni4yMDIyKSI+IDxnIGlkPSJVRlItbG9nby1zaG9ydC13aGl0ZS1GRkZGRkYiPiA8ZyBpZD0iR3JvdXAtOCI+IDxnIGlkPSJGaWxsLTEiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsMCwtMi44NzQpIj4gPHBhdGggZD0iTTE2Ljc1MSw3OS4xMTFDMjUuNjY0LDc5LjExMSAzMS43ODQsNzMuNjM0IDM0LjU3Niw2Ni4xMThMMzQuNTc2LDc3LjkyOUw0Ni42LDc3LjkyOUw0Ni42LDI1LjMxNEwzNC4zNiwyNS4zMTRMMzQuMzYsNTEuM0MzNC4zNiw2Mi45IDI4Ljc3Nyw2OC44IDIxLjE1NCw2OC44QzE1LjE0LDY4LjggMTIuMTM0LDY0LjcyMSAxMi4xMzQsNTYuMzQ1TDEyLjEzNCwyNS4zMTRMMCwyNS4zMTRMMCw1OS4zNTRDMCw3MS4zOCA1LjY5MSw3OS4xMTEgMTYuNzUxLDc5LjExMSIgc3R5bGU9ImZpbGw6d2hpdGU7Ij48L3BhdGg+IDwvZz4gPGcgaWQ9IkZpbGwtNCIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwtMTQuMTA1LC0yLjY4MSkiPiA8cGF0aCBkPSJNMTM2LjM3Niw3Ny43MzdMMTM2LjM3Niw1NS40QzEzNi4zNzYsNDEuODcxIDE0My4zNTUsMzYuMDcyIDE1NC4wOTMsMzYuMDcyQzE1NC43MTgsMzYuMDcyIDE1NS4yNjgsMzYuMDcyIDE1NS43OCwzNi4wOThMMTU3LjMxNCwyMy43MjRDMTU2LjM4MSwyMy42NTIgMTU1LjY2NSwyMy42MTcgMTU1LjE2NiwyMy42MThDMTQ1LjYxLDIzLjYxOCAxMzkuMjc0LDI5Ljg0NSAxMzYuMTYxLDM5LjUwOUwxMzYuMTYxLDI1LjEyM0wxMjQuMjQxLDI1LjEyM0wxMjQuMjQxLDc3LjczN0wxMzYuMzc2LDc3LjczN1oiIHN0eWxlPSJmaWxsOndoaXRlOyI+PC9wYXRoPiA8L2c+IDxnIGlkPSJGaWxsLTYiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsLTYuNjQ2LDApIj4gPHBhdGggZD0iTTk4Ljg0Miw3NS4wNTZMOTguODQyLDMxLjY3NkwxMTEuNCwzMS42NzZMMTExLjQsMjIuNDQxTDk4Ljg0MiwyMi40NDFMOTguODQyLDE3LjM5NUM5OC44NDIsMTIuMjQxIDEwMC45ODksOS43NzEgMTA2LjQ2Niw5Ljc3MUMxMDguMDkyLDkuNzYgMTA5LjcxNCw5Ljk0IDExMS4yOTgsMTAuMzA4TDExMS4yOTgsMS4wNzRDMTA4Ljc3NCwwLjQwMSAxMDYuMTc4LDAuMDQxIDEwMy41NjYsMEM5My42ODgsMCA4Ny4wMyw0LjgzMiA4Ny4wMywxNS44OUw4Ny4wMywyMi40NDFMNTguNTQ0LDIyLjQ0MUw1OC41NDQsMzEuNjc2TDg3LjAzLDMxLjY3Nkw4Ny4wMyw3NS4wNTZMOTguODQyLDc1LjA1NloiIHN0eWxlPSJmaWxsOndoaXRlOyI+PC9wYXRoPiA8L2c+IDwvZz4gPC9nPiA8L2c+IDwvZz4gPC9nPiA8L3N2Zz4g');
+			background-size: 24px 24px;
+			background-position: 0 0;
+			color: rgba(0, 0, 0, 0);
+			font-size: 24px !important;
+			top: 0;
+		}
+
+		@media screen and (max-width: 782px) {
+			#wpadminbar #wp-admin-bar-wp-logo>.ab-item .ab-icon:before {
+				background-size: 36px 36px !important;
+				font-size: 36px !important;
+			}
+		}
+
+		#wpadminbar #wp-admin-bar-wp-logo.hover>.ab-item .ab-icon {
+			background-position: 0 0;
+		}
+	</style>
+	<script>
+		(function () {
+			var request, b = document.body, c = 'className', cs = 'customize-support', rcs = new RegExp('(^|\\s+)(no-)?' + cs + '(\\s+|$)');
+
+			request = true;
+
+			b[c] = b[c].replace(rcs, ' ');
+			// The customizer requires postMessage and CORS (if the site is cross domain).
+			b[c] += (window.postMessage && request ? ' ' : ' no-') + cs;
+		}());
+
+	</script>
+	<div id="wpadminbar" class="nojq nojs">
+		<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Werkzeugleiste">
+			<ul role='menu' id='wp-admin-bar-root-default' class="ab-top-menu">
+				<li role='group' id='wp-admin-bar-wp-logo' class="menupop"><a class='ab-item' role="menuitem"
+						aria-expanded="false" href='https://uni-freiburg.de/math/wp-admin/about.php'><span
+							class="ab-icon" aria-hidden="true"></span><span class="screen-reader-text">Über
+							WordPress</span></a>
+					<div class="ab-sub-wrapper">
+						<ul role='menu' aria-label='Über WordPress' id='wp-admin-bar-wp-logo-default'
+							class="ab-submenu">
+							<li role='group' id='wp-admin-bar-ufr-help'><a class='ab-item' role="menuitem"
+									href='https://wpdemo.uni-freiburg.de/'>UFR Website-Relaunch Website</a></li>
+						</ul>
+					</div>
+				</li>
+				<li role='group' id='wp-admin-bar-my-sites' class="menupop"><a class='ab-item' role="menuitem"
+						aria-expanded="false" href='https://uni-freiburg.de/fdmai/wp-admin/my-sites.php'>Meine
+						Websites</a>
+					<div class="ab-sub-wrapper">
+						<ul role='menu' id='wp-admin-bar-my-sites-list' class="ab-submenu">
+							<li role='group' id='wp-admin-bar-blog-14' class="menupop"><a class='ab-item'
+									role="menuitem" aria-expanded="false"
+									href='https://uni-freiburg.de/math/wp-admin/'><span class="wp-admin-bar-arrow"
+										aria-hidden="true"></span>
+									<div class="blavatar"></div>Mathematisches Institut
+								</a>
+								<div class="ab-sub-wrapper">
+									<ul role='menu' id='wp-admin-bar-blog-14-default' class="ab-submenu">
+										<li role='group' id='wp-admin-bar-blog-14-d'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/math/wp-admin/'>Dashboard</a></li>
+										<li role='group' id='wp-admin-bar-blog-14-n'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/math/wp-admin/post-new.php'>Neuer
+												Beitrag</a></li>
+										<li role='group' id='wp-admin-bar-blog-14-c'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/math/wp-admin/edit-comments.php'>Kommentare
+												verwalten</a></li>
+										<li role='group' id='wp-admin-bar-blog-14-v'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/math/'>Zur Website</a></li>
+									</ul>
+								</div>
+							</li>
+							<li role='group' id='wp-admin-bar-blog-53' class="menupop"><a class='ab-item'
+									role="menuitem" aria-expanded="false"
+									href='https://uni-freiburg.de/fdmai/wp-admin/'><span class="wp-admin-bar-arrow"
+										aria-hidden="true"></span>
+									<div class="blavatar"></div>Freiburg Center for Data Analysis, Modeling and AI
+								</a>
+								<div class="ab-sub-wrapper">
+									<ul role='menu' id='wp-admin-bar-blog-53-default' class="ab-submenu">
+										<li role='group' id='wp-admin-bar-blog-53-d'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/fdmai/wp-admin/'>Dashboard</a></li>
+										<li role='group' id='wp-admin-bar-blog-53-n'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/fdmai/wp-admin/post-new.php'>Neuer
+												Beitrag</a></li>
+										<li role='group' id='wp-admin-bar-blog-53-c'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/fdmai/wp-admin/edit-comments.php'>Kommentare
+												verwalten</a></li>
+										<li role='group' id='wp-admin-bar-blog-53-v'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/fdmai/'>Zur Website</a></li>
+									</ul>
+								</div>
+							</li>
+							<li role='group' id='wp-admin-bar-blog-202' class="menupop"><a class='ab-item'
+									role="menuitem" aria-expanded="false"
+									href='https://uni-freiburg.de/stochastik/wp-admin/'><span class="wp-admin-bar-arrow"
+										aria-hidden="true"></span>
+									<div class="blavatar"></div>Mathematische Stochastik
+								</a>
+								<div class="ab-sub-wrapper">
+									<ul role='menu' id='wp-admin-bar-blog-202-default' class="ab-submenu">
+										<li role='group' id='wp-admin-bar-blog-202-d'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/stochastik/wp-admin/'>Dashboard</a></li>
+										<li role='group' id='wp-admin-bar-blog-202-n'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/stochastik/wp-admin/post-new.php'>Neuer
+												Beitrag</a></li>
+										<li role='group' id='wp-admin-bar-blog-202-c'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/stochastik/wp-admin/edit-comments.php'>Kommentare
+												verwalten</a></li>
+										<li role='group' id='wp-admin-bar-blog-202-v'><a class='ab-item' role="menuitem"
+												href='https://uni-freiburg.de/stochastik/'>Zur Website</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li role='group' id='wp-admin-bar-site-name' class="menupop"><a class='ab-item' role="menuitem"
+						aria-expanded="false" href='https://uni-freiburg.de/math/wp-admin/'>Mathematisches Institut</a>
+					<div class="ab-sub-wrapper">
+						<ul role='menu' aria-label='Mathematisches Institut' id='wp-admin-bar-site-name-default'
+							class="ab-submenu">
+							<li role='group' id='wp-admin-bar-dashboard'><a class='ab-item' role="menuitem"
+									href='https://uni-freiburg.de/math/wp-admin/'>Dashboard</a></li>
+						</ul>
+						<ul role='menu' aria-label='Mathematisches Institut' id='wp-admin-bar-appearance'
+							class="ab-submenu">
+							<li role='group' id='wp-admin-bar-menus'><a class='ab-item' role="menuitem"
+									href='https://uni-freiburg.de/math/wp-admin/nav-menus.php'>Menüs</a></li>
+						</ul>
+					</div>
+				</li>
+				<li role='group' id='wp-admin-bar-customize' class="hide-if-no-customize"><a class='ab-item'
+						role="menuitem"
+						href='https://uni-freiburg.de/math/wp-admin/customize.php?url=https%3A%2F%2Funi-freiburg.de%2Fmath%2Fpersonen%2F'>Customizer</a>
+				</li>
+				<li role='group' id='wp-admin-bar-comments'><a class='ab-item' role="menuitem"
+						href='https://uni-freiburg.de/math/wp-admin/edit-comments.php'><span class="ab-icon"
+							aria-hidden="true"></span><span class="ab-label awaiting-mod pending-count count-0"
+							aria-hidden="true">0</span><span class="screen-reader-text comments-in-moderation-text">0
+							Kommentare in Moderation</span></a></li>
+				<li role='group' id='wp-admin-bar-new-content' class="menupop"><a class='ab-item' role="menuitem"
+						aria-expanded="false" href='https://uni-freiburg.de/math/wp-admin/post-new.php'><span
+							class="ab-icon" aria-hidden="true"></span><span class="ab-label">Neu</span></a>
+					<div class="ab-sub-wrapper">
+						<ul role='menu' aria-label='Neu' id='wp-admin-bar-new-content-default' class="ab-submenu">
+							<li role='group' id='wp-admin-bar-new-post'><a class='ab-item' role="menuitem"
+									href='https://uni-freiburg.de/math/wp-admin/post-new.php'>Beitrag</a></li>
+							<li role='group' id='wp-admin-bar-new-media'><a class='ab-item' role="menuitem"
+									href='https://uni-freiburg.de/math/wp-admin/media-new.php'>Medien</a></li>
+							<li role='group' id='wp-admin-bar-new-page'><a class='ab-item' role="menuitem"
+									href='https://uni-freiburg.de/math/wp-admin/post-new.php?post_type=page'>Seite</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li role='group' id='wp-admin-bar-edit'><a class='ab-item' role="menuitem"
+						href='https://uni-freiburg.de/math/wp-admin/post.php?post=2442&#038;action=edit'>Seite
+						bearbeiten</a></li>
+				<li role='group' id='wp-admin-bar-password_protected'>
+					<div class="ab-item ab-empty-item" role="menuitem" title='Passwortschutz ist deaktiviert.'></div>
+				</li>
+			</ul>
+			<ul role='menu' id='wp-admin-bar-top-secondary' class="ab-top-secondary ab-top-menu">
+				<li role='group' id='wp-admin-bar-my-account' class="menupop"><a class='ab-item' role="menuitem"
+						aria-expanded="false" href='https://uni-freiburg.de/math/wp-admin/profile.php'>Willkommen, <span
+							class="display-name">Peter Pfaffelhuber</span></a>
+					<div class="ab-sub-wrapper">
+						<ul role='menu' aria-label='Willkommen, Peter Pfaffelhuber' id='wp-admin-bar-user-actions'
+							class="ab-submenu">
+							<li role='group' id='wp-admin-bar-user-info'><a class='ab-item' role="menuitem"
+									href='https://uni-freiburg.de/math/wp-admin/profile.php'><span
+										class='display-name'>Peter Pfaffelhuber</span><span
+										class='username'>pp131</span><span class='display-name edit-profile'>Profil
+										bearbeiten</span></a></li>
+							<li role='group' id='wp-admin-bar-logout'><a class='ab-item' role="menuitem"
+									href='https://uni-freiburg.de/math/wp-login.php?action=logout&#038;_wpnonce=ae6cc25bfb'>Abmelden</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li role='group' id='wp-admin-bar-search' class="admin-bar-search">
+					<div class="ab-item ab-empty-item" tabindex="-1" role="menuitem">
+						<form action="https://uni-freiburg.de/math/" method="get" id="adminbarsearch"><input
+								class="adminbar-input" name="s" id="adminbar-search" type="text" value=""
+								maxlength="150" /><label for="adminbar-search"
+								class="screen-reader-text">Suchen</label><input type="submit" class="adminbar-button"
+								value="Suchen" /></form>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
 
 	<button data-role="skip-to-content-button" data-skip-to="main#main-content"
 		class="fixed z-[9999] outline-2 focus-visible:outline-dotted outline-offset-4
@@ -1157,7 +1398,7 @@
 		bg-identity-black dark:bg-pure-white
 		hover:bg-identity-blue-80 active:bg-identity-blue
 		dark:hover:bg-identity-yellow-60 dark:active:bg-identity-yellow
-		text-pure-white dark:text-identity-black top-4 start-5 opacity-0 focus-within:opacity-100 pointer-events-none focus-within:pointer-events-auto">
+		text-pure-white dark:text-identity-black top-16 min-[783px]:top-12 start-5 opacity-0 focus-within:opacity-100 pointer-events-none focus-within:pointer-events-auto">
 		Zum Inhalt springen</button>
 	<header class="overflow-x-clip relative bg-pure-white dark:bg-identity-black w-full z-30">
 		<!-- relative header -->
@@ -1247,13 +1488,13 @@
 						aria-label="Siegelement der Uni Freiburg in Form eines Kleeblatts"
 						class="w-[375px] h-[330px] xl:w-[780px] xl:h-[675px] " role="img">
 						<title>Siegelement der Uni Freiburg in Form eines Kleeblatts</title>
-						<linearGradient id="KeWUsNkRaJ" x1="88%" y1="18%" x2="12%" y2="82%">
+						<linearGradient id="Jm1XESftKQ" x1="88%" y1="18%" x2="12%" y2="82%">
 							<stop offset="0%" stop-color="#FFE863" stop-opacity="0.5" />
 							<stop offset="100%" stop-color="#FFE863" stop-opacity="0" />
 						</linearGradient>
 						<path
 							d="M48.5,16.8L48.5,16.8c0,0,0-0.1,0-0.1c0-8.9-7.2-16.1-16-16.1s-16,7.2-16,16.1c0,0,0,0.1,0,0.1l0,0 c-8.8,0-16,7.2-16,16.1S7.7,49,16.5,49l0,0c0,0,0,0.1,0,0.1c0,8.9,7.2,16.1,16,16.1s16-7.2,16-16.1c0,0,0-0.1,0-0.1l0,0 c8.8,0,16-7.2,16-16.1S57.4,16.7,48.5,16.8L48.5,16.8z"
-							stroke-width="2px" vector-effect="non-scaling-stroke" fill="url(#KeWUsNkRaJ)" />
+							stroke-width="2px" vector-effect="non-scaling-stroke" fill="url(#Jm1XESftKQ)" />
 					</svg>
 				</div>
 				<div class="md:absolute right-0 xl:-right-[60px]
@@ -1687,6 +1928,14 @@
 		class="relative has-global-padding is-layout-constrained mt-[25px] md:mt-[35px] xl:mt-[70px] clearfix">
 
 		<h1>Personen</h1>
+
+		<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+			<p>Hier nichts ändern, Inhalt wird dynamisch generiert!</p>
+		</div>
+
+
+
+		<p></p>
 	</main>
 
 
@@ -2887,7 +3136,7 @@
 
 
 		<dialog data-dialog-name="menu" data-dialog-type="dialog"
-			class="isolate inset-0 m-0 p-0 max-w-full  w-full h-[calc(100dvh-80px)] md:h-[100dvh] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
+			class="isolate inset-0 m-0 p-0 max-w-full  w-full !h-[calc(100dvh-80px-46px)] md:!h-[calc(100dvh-32px)] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
 			inert>
 			<div class="absolute z-20
 		w-[min(70vw,350px)] -right-[25vw] -top-[20px]
@@ -2897,12 +3146,12 @@
 					y="0px" viewBox="0 0 283.5 283.5" aria-label="ufr-seal" class="max-h-full w-auto opacity-100"
 					role="img">
 					<title>ufr-seal</title>
-					<linearGradient id="Z9jq60kuB5" x1="15%" y1="85%" x2="85%" y2="15%">
+					<linearGradient id="frnB8w3pxs" x1="15%" y1="85%" x2="85%" y2="15%">
 						<stop offset="0%" stop-color="var(--wp--preset--color--identity-blue-100" stop-opacity="0.4" />
 						<stop offset="100%" stop-color="var(--wp--preset--color--identity-darkblue-100)"
 							stop-opacity="1" />
 					</linearGradient>
-					<path fill="url(#Z9jq60kuB5)" d="M140.6,32.3c0.1-0.2,0.3-0.3,0.5-0.3c0.5,0.2,1.3,0.2,1.8,0c0.2-0.1,0.5,0,0.5,0.3c0.1,0.2,0,0.5-0.3,0.5
+					<path fill="url(#frnB8w3pxs)" d="M140.6,32.3c0.1-0.2,0.3-0.3,0.5-0.3c0.5,0.2,1.3,0.2,1.8,0c0.2-0.1,0.5,0,0.5,0.3c0.1,0.2,0,0.5-0.3,0.5
 	c-0.3,0.1-0.7,0.2-1.2,0.2c-0.4,0-0.8-0.1-1.1-0.2C140.6,32.7,140.5,32.5,140.6,32.3z M141.8,283.5
 	C141.8,283.5,141.8,283.5,141.8,283.5c-0.1,0-0.1,0-0.2,0C63.5,283.4,0,219.9,0,141.7C0,63.6,63.6,0,141.7,0s141.7,63.6,141.7,141.7
 	C283.5,219.9,219.9,283.4,141.8,283.5z M148.9,230.1l0.7-1.4c2.3-4.3,3.7-6.8,4.6-7.9h-12.1v9.3H148.9z M141.3,230.1v-9.3h-12.1
@@ -4027,7 +4276,7 @@
 		</dialog>
 
 		<dialog data-dialog-name="language-switcher" data-dialog-type="dialog"
-			class="isolate inset-0 m-0 p-0 max-w-full  w-full h-[calc(100dvh-80px)] md:h-[100dvh] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
+			class="isolate inset-0 m-0 p-0 max-w-full  w-full !h-[calc(100dvh-80px-46px)] md:!h-[calc(100dvh-32px)] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
 			inert>
 			<div class="absolute z-20
 		w-[min(70vw,350px)] -right-[25vw] -top-[20px]
@@ -4037,12 +4286,12 @@
 					y="0px" viewBox="0 0 283.5 283.5" aria-label="ufr-seal" class="max-h-full w-auto opacity-100"
 					role="img">
 					<title>ufr-seal</title>
-					<linearGradient id="gKpmbsz7uA" x1="15%" y1="85%" x2="85%" y2="15%">
+					<linearGradient id="Zq6ksh5TdP" x1="15%" y1="85%" x2="85%" y2="15%">
 						<stop offset="0%" stop-color="var(--wp--preset--color--identity-blue-100" stop-opacity="0.4" />
 						<stop offset="100%" stop-color="var(--wp--preset--color--identity-darkblue-100)"
 							stop-opacity="1" />
 					</linearGradient>
-					<path fill="url(#gKpmbsz7uA)" d="M140.6,32.3c0.1-0.2,0.3-0.3,0.5-0.3c0.5,0.2,1.3,0.2,1.8,0c0.2-0.1,0.5,0,0.5,0.3c0.1,0.2,0,0.5-0.3,0.5
+					<path fill="url(#Zq6ksh5TdP)" d="M140.6,32.3c0.1-0.2,0.3-0.3,0.5-0.3c0.5,0.2,1.3,0.2,1.8,0c0.2-0.1,0.5,0,0.5,0.3c0.1,0.2,0,0.5-0.3,0.5
 	c-0.3,0.1-0.7,0.2-1.2,0.2c-0.4,0-0.8-0.1-1.1-0.2C140.6,32.7,140.5,32.5,140.6,32.3z M141.8,283.5
 	C141.8,283.5,141.8,283.5,141.8,283.5c-0.1,0-0.1,0-0.2,0C63.5,283.4,0,219.9,0,141.7C0,63.6,63.6,0,141.7,0s141.7,63.6,141.7,141.7
 	C283.5,219.9,219.9,283.4,141.8,283.5z M148.9,230.1l0.7-1.4c2.3-4.3,3.7-6.8,4.6-7.9h-12.1v9.3H148.9z M141.3,230.1v-9.3h-12.1
@@ -5168,7 +5417,7 @@
 		</dialog>
 
 		<dialog data-dialog-name="service" data-dialog-type="dialog"
-			class="isolate inset-0 m-0 p-0 max-w-full  w-full h-[calc(100dvh-80px)] md:h-[100dvh] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
+			class="isolate inset-0 m-0 p-0 max-w-full  w-full !h-[calc(100dvh-80px-46px)] md:!h-[calc(100dvh-32px)] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
 			inert>
 			<div class="absolute z-20
 		w-[min(70vw,350px)] -right-[25vw] -top-[20px]
@@ -5178,12 +5427,12 @@
 					y="0px" viewBox="0 0 283.5 283.5" aria-label="ufr-seal" class="max-h-full w-auto opacity-100"
 					role="img">
 					<title>ufr-seal</title>
-					<linearGradient id="wK7JmMXIj4" x1="15%" y1="85%" x2="85%" y2="15%">
+					<linearGradient id="hMgIYXB0xr" x1="15%" y1="85%" x2="85%" y2="15%">
 						<stop offset="0%" stop-color="var(--wp--preset--color--identity-blue-100" stop-opacity="0.4" />
 						<stop offset="100%" stop-color="var(--wp--preset--color--identity-darkblue-100)"
 							stop-opacity="1" />
 					</linearGradient>
-					<path fill="url(#wK7JmMXIj4)" d="M140.6,32.3c0.1-0.2,0.3-0.3,0.5-0.3c0.5,0.2,1.3,0.2,1.8,0c0.2-0.1,0.5,0,0.5,0.3c0.1,0.2,0,0.5-0.3,0.5
+					<path fill="url(#hMgIYXB0xr)" d="M140.6,32.3c0.1-0.2,0.3-0.3,0.5-0.3c0.5,0.2,1.3,0.2,1.8,0c0.2-0.1,0.5,0,0.5,0.3c0.1,0.2,0,0.5-0.3,0.5
 	c-0.3,0.1-0.7,0.2-1.2,0.2c-0.4,0-0.8-0.1-1.1-0.2C140.6,32.7,140.5,32.5,140.6,32.3z M141.8,283.5
 	C141.8,283.5,141.8,283.5,141.8,283.5c-0.1,0-0.1,0-0.2,0C63.5,283.4,0,219.9,0,141.7C0,63.6,63.6,0,141.7,0s141.7,63.6,141.7,141.7
 	C283.5,219.9,219.9,283.4,141.8,283.5z M148.9,230.1l0.7-1.4c2.3-4.3,3.7-6.8,4.6-7.9h-12.1v9.3H148.9z M141.3,230.1v-9.3h-12.1
@@ -6363,7 +6612,7 @@
 		</dialog>
 
 		<dialog data-dialog-name="linktree" data-dialog-type="dialog"
-			class="isolate inset-0 m-0 p-0 max-w-full  w-full h-[calc(100dvh-80px)] md:h-[100dvh] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
+			class="isolate inset-0 m-0 p-0 max-w-full  w-full !h-[calc(100dvh-80px-46px)] md:!h-[calc(100dvh-32px)] z-[990]	bg-identity-darkblue text-pure-white overflow-hidden"
 			inert>
 			<div class="absolute z-20
 		w-[min(70vw,350px)] -right-[25vw] -top-[20px]
@@ -6373,12 +6622,12 @@
 					y="0px" viewBox="0 0 283.5 283.5" aria-label="ufr-seal" class="max-h-full w-auto opacity-100"
 					role="img">
 					<title>ufr-seal</title>
-					<linearGradient id="iY1ETQZXcC" x1="15%" y1="85%" x2="85%" y2="15%">
+					<linearGradient id="oj0K4dJ7NE" x1="15%" y1="85%" x2="85%" y2="15%">
 						<stop offset="0%" stop-color="var(--wp--preset--color--identity-blue-100" stop-opacity="0.4" />
 						<stop offset="100%" stop-color="var(--wp--preset--color--identity-darkblue-100)"
 							stop-opacity="1" />
 					</linearGradient>
-					<path fill="url(#iY1ETQZXcC)" d="M140.6,32.3c0.1-0.2,0.3-0.3,0.5-0.3c0.5,0.2,1.3,0.2,1.8,0c0.2-0.1,0.5,0,0.5,0.3c0.1,0.2,0,0.5-0.3,0.5
+					<path fill="url(#oj0K4dJ7NE)" d="M140.6,32.3c0.1-0.2,0.3-0.3,0.5-0.3c0.5,0.2,1.3,0.2,1.8,0c0.2-0.1,0.5,0,0.5,0.3c0.1,0.2,0,0.5-0.3,0.5
 	c-0.3,0.1-0.7,0.2-1.2,0.2c-0.4,0-0.8-0.1-1.1-0.2C140.6,32.7,140.5,32.5,140.6,32.3z M141.8,283.5
 	C141.8,283.5,141.8,283.5,141.8,283.5c-0.1,0-0.1,0-0.2,0C63.5,283.4,0,219.9,0,141.7C0,63.6,63.6,0,141.7,0s141.7,63.6,141.7,141.7
 	C283.5,219.9,219.9,283.4,141.8,283.5z M148.9,230.1l0.7-1.4c2.3-4.3,3.7-6.8,4.6-7.9h-12.1v9.3H148.9z M141.3,230.1v-9.3h-12.1
@@ -7785,9 +8034,6 @@ Suchbegriff eingeben" />
 
 		</dialog>
 	</footer>
-	<script type="speculationrules">
-{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/math\/*"},{"not":{"href_matches":["\/math\/wp-*.php","\/math\/wp-admin\/*","\/math\/wp-content\/uploads\/sites\/14\/*","\/math\/wp-content\/*","\/math\/wp-content\/plugins\/*","\/math\/wp-content\/themes\/ufr-main-theme\/*","\/math\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
-</script>
 	<!-- Matomo -->
 	<script>
 		var _paq = window._paq = window._paq || [];
@@ -7804,6 +8050,9 @@ Suchbegriff eingeben" />
 		})();
 	</script>
 	<!-- End Matomo Code -->
+	<script src="https://uni-freiburg.de/math/wp-includes/js/hoverintent-js.min.js?ver=2.2.1"
+		id="hoverintent-js-js"></script>
+	<script src="https://uni-freiburg.de/math/wp-includes/js/admin-bar.min.js?ver=6.8.1" id="admin-bar-js"></script>
 	<script id="ufr-frontend-index-js-extra">
 		var menuApiUriData = { "data": "https:\/\/uni-freiburg.de\/math\/wp-json\/wp\/v2\/menus\/mainmenu\/", "currentPageId": "2442", "home_url": "https:\/\/uni-freiburg.de\/math" };
 	</script>

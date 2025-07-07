@@ -10,7 +10,7 @@ config = {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://www.math.uni-freiburg.de/cd2021/personenstatic/",
         "skel_name" : "skel.html",
-        "queries" : [{"string" : "Personen"}],
+        "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
@@ -114,6 +114,7 @@ def make_skel(site):
             content = doc.find(string = query["string"]).find_parent().find_parent()
         else:
             content = doc.find("div", query)
+            print(query)
         content.string = site["strings"][i]
     html = doc.prettify("utf-8")
     # Write the skelet

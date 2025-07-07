@@ -85,6 +85,8 @@ def showfakewp(site, show = "", lang = "de"):
         else:
             data = person.get_person_data()
         wp.make_skel(wp.config[site])
+    elif dir[0] == "personenstatic":
+        return render_template("wp/personen_static.html")
     elif dir[0] == "institutstatic":
         return render_template("wp/institut_static.html")
     elif dir[0] == "institut":
