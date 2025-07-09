@@ -8,7 +8,7 @@ import latexcodec
 config = {
     "personen_de" : {
         "titel" : "",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/personenstatic/",
+        "url_skel" : "https://www.uni-freiburg.de/math/personen/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
@@ -72,7 +72,7 @@ config = {
     },
     "institut_de" : {
         "titel" : "Veranstaltungen",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/institutstatic/",
+        "url_skel" : "https://www.uni-freiburg.de/math/",
         "skel_name" : "skel_institut.html",
         "queries" : [{"string" : "News"}, {"string" : "Veranstaltungen"}],
         "strings" : ["{% block content0%}Content{% endblock %}", "{% block content1%}Content{% endblock %}"], 
@@ -80,7 +80,7 @@ config = {
     },
     "news_de" : {
         "titel" : "News",
-        "url_skel" : "https://www.math.uni-freiburg.de/cd2021/newsstatic/",
+        "url_skel" : "https://www.uni-freiburg.de/math/news/",
         "skel_name" : "skel_news.html",
         "queries" : [{"string" : "News"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
