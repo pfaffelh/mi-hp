@@ -7,9 +7,10 @@ import latexcodec
 
 config = {
     "personen_de" : {
-        "titel" : "",
-        "url_skel" : "https://www.uni-freiburg.de/math/personen/",
+        "titel" : "Lehrkörper / Mitarbeiter",
+        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
         "skel_name" : "skel.html",
+        "queries" : [{"class" : "wp-block-group"}],
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
