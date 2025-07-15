@@ -113,7 +113,7 @@ def get_calendar_data(anzeige_start):
     # kalender und aufgaben, die nur Termine sind: 
     # aus kalender
     events = []
-    termine_prpa = list(kalender.find({"datum" : { "$gte" : anzeige_start}}))
+    termine_prpa = list(kalender.find({"datum" : { "$gte" : anzeige_start}, "sichtbar" : True}))
     for t in termine_prpa:
         col = next((c["color"] for c in calendars if c["kurzname"] == "semesterplan"), "#FFFFFF")
         allDay = True if t["datum"].time() == datetime.min.time() else False
