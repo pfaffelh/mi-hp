@@ -273,7 +273,8 @@ def showstudiengang(lang, studiengang, anchor=""):
     if studiengang == "msc":
         filenames = ["studiengaenge/msc/index-2014.html"]
     if studiengang == "msc_data":
-        filenames = ["studiengaenge/msc_data/index-2024.html"]
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'mscdata', show=''))
+#        filenames = ["studiengaenge/msc_data/index-2024.html"]
     if studiengang == "2hfb":
         filenames = ["studiengaenge/2hfb/index-2021.html"]
     if studiengang == "med":
