@@ -223,6 +223,15 @@
                     %}FAQ{% endif %}</a
                   >
                 </li>
+                <li>
+                  <a
+                    class="dropdown-item text-black"
+                    href="{{ url_for('showstudiendekanat', unterseite = 'schwerpunktgebiete', lang=lang) }}"
+                  >
+                    {% if lang == "de" %}Schwerpunktgebiete{% else
+                    %}Focus areas{% endif %}</a
+                  >
+                </li>
                 <!--              <li>
                 <a
                   class="dropdown-item text-black"
