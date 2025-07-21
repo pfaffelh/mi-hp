@@ -1,4 +1,5 @@
-{% extends config['skel_name'] %} {% block content %}
+{% extends config['skel_name'] %} 
+{% block content1 %}
 <h2>News</h2>
 
 {% for item in data["news"] %}
@@ -14,5 +15,31 @@
 
 </div>
 
-<div>Hier geht es zum <a href="https://www.math.uni-freiburg.de/wochenprogramm/de/newsarchiv/">Archiv.</a></div>
+<div>Hier geht es zum <a href="https://www.math.uni-freiburg.de/wochenprogramm/de/newsarchiv/">News-Archiv.</a></div>
+{% endblock %}
+
+{% block content2 %}
+<h2>Vorträge</h2>
+
+<h4 class="wp-block-heading">{{ config['titel'] }}</h4>
+{% if data["wochenprogramm"]["vortrag"] != [] %}{% for v in
+data["wochenprogramm"]["vortrag"] %}
+<p>
+  <b>{{ v["sprecher"] }}:</b> {% if v["sprecher_affiliation"] != "" %} ({{
+  v["sprecher_affiliation"] }}) {% endif %} <br />{% if v['url'] != "" %}<b><a
+    href="{{ v['url']}}"
+    >{{ v["title"] }}</a
+  ></b>
+  {% else %}<b>{{ v["title"] }}</b>{% endif %}<br />
+  {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if v["endzeit"] !=
+  v["startzeit"] %}-{{ v["endzeit"]}}{% endif %}, {{ v["ort"] }}<br />{% if
+  v["reihentitle"] != ""%}{{ v["reihentitle"] }} {% endif %}
+  {% if v["abstract"] != "" %}Abstract: {{v["abstract"]}}{% endif %}
+</p>
+{% endfor %} {% else %}
+<p>Keine Veranstaltungen in den nächsten 14 Tagen.</p>
+{% endif %} 
+<p>
+<a href="/wochenprogramm/" data-type="page" data-id="786">Archiv aller Vorträge&#8230;</a>
+</p>
 {% endblock %}

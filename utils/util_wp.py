@@ -80,11 +80,11 @@ config = {
         "template" : "wp/institut.html"
     },
     "news_de" : {
-        "titel" : "News",
+        "titel" : "",
         "url_skel" : "https://www.uni-freiburg.de/math/news/",
         "skel_name" : "skel_news.html",
-        "queries" : [{"string" : "News"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
+        "queries" : [{"string" : "News"}, {"string" : "Vorträge der nächsten Woche"}],
+        "strings" : ["{% block content1%}Content{% endblock %}", "{% block content2%}Content{% endblock %}"], 
         "template" : "wp/news.html"
     },
     "pfaffelhuber_de" : {

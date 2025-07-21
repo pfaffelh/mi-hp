@@ -101,7 +101,13 @@ def showfakewp(site, show = "", lang = "de"):
     elif dir[0] == "newsstatic":
         return render_template("wp/news_static.html")
     elif dir[0] == "news":
-        data = news.data_for_base(lang)
+        anfang = datetime.now().strftime('%Y%m%d')
+        end = (datetime.now() + relativedelta(days = 7)).strftime('%Y%m%d')
+        data = {}
+        data["wochenprogramm"] = news.get_wochenprogramm_full(anfang, end, {"kurzname" : "alle"}, lang)
+        data["news"] = news.data_for_base(lang)["news"]
+        print(data)
+
         wp.make_skel(wp.config[site])
     elif dir[0] == "personenstochastikstatic":
         return render_template("wp/personenstochastik_static.html")
