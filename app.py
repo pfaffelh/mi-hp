@@ -267,8 +267,9 @@ def showweiterbildung(lang, anchor=""):
 @app.route("/nlehre/<lang>/studiengaenge/")
 @app.route("/nlehre/<lang>/studiengaenge/<anchor>")
 def showstudiengaenge(lang = "de", anchor="aktuell"):
-    filenames = ["studiengaenge/index.html"]
-    return render_template("home_nlehre.html", filenames = filenames, lang=lang, anchor=anchor)
+    return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'studiengaenge', show=''))
+#    filenames = ["studiengaenge/index.html"]
+#    return render_template("home_nlehre.html", filenames = filenames, lang=lang, anchor=anchor)
 
 @app.route("/nlehre/<lang>/studiengaenge/<anchor>")
 @app.route("/nlehre/<lang>/studiengaenge/<studiengang>/")
