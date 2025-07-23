@@ -31,7 +31,7 @@
             werden. Die mündlichen Prüfungen in den MSc-Studiengängen müssen im
             <a href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang)}}">Prüfungsamt</a>
             angemeldet werden. Eine genaue Beschreibung finden Sie bei unserer <a
-              href="{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}">Anleitung zur
+              href="https://www.math.uni-freiburg.de/nlehre/de/page/faqstud_copy/anmeldung_leistung_faq">Anleitung zur
               Prüfungsanmeldung</a>.
           </li>
           <li>
@@ -46,20 +46,9 @@
     <div class="row">
       <div class="col">
         <div class="feature-icon bg-gradient text-end">
-          <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='anmeldung')}}"
-            class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
-            Anleitung zur Prüfungsanmeldung</a>
           <a href="{{ url_for('showstufaq', lang=lang)}}" class="btn btn-primary bg-ufr-blue link-dark" role="button"
             aria-disabled="true">
             FAQ</a>
-          <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='pruefungen') }}"
-            class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
-            Prüfungsanmeldung
-          </a>
-          <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='modulplan') }}"
-            class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
-            Modulpläne der Studiengänge
-          </a>
           <a href="https://campus.uni-freiburg.de/" class="btn btn-primary bg-ufr-blue link-dark" role="button"
             aria-disabled="true">
             HISInOne</a>
@@ -69,9 +58,6 @@
   </div>
 
   <br />
-
-
-
 
   <div class="row g-2">
     {% for item in data %}

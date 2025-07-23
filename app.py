@@ -275,27 +275,30 @@ def showstudiengaenge(lang = "de", anchor="aktuell"):
 @app.route("/nlehre/<lang>/studiengaenge/<studiengang>/<anchor>")
 def showstudiengang(lang, studiengang, anchor=""):
     if studiengang == "bsc":
-        filenames = ["studiengaenge/bsc/index-2021.html"]
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'bsc', show=''))
+#        filenames = ["studiengaenge/bsc/index-2021.html"]
     if studiengang == "msc":
-        filenames = ["studiengaenge/msc/index-2014.html"]
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'msc', show=''))
+#        filenames = ["studiengaenge/msc/index-2014.html"]
     if studiengang == "msc_data":
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'mscdata', show=''))
 #        filenames = ["studiengaenge/msc_data/index-2024.html"]
     if studiengang == "2hfb":
-        filenames = ["studiengaenge/2hfb/index-2021.html"]
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = '2hfb', show=''))
+#        filenames = ["studiengaenge/2hfb/index-2021.html"]
     if studiengang == "med":
-        # anchor kann sein:
-        # kurz, zulassung, dokumente, studienverlauf, modulplan
-        filenames = ["studiengaenge/med/index-2018.html"]
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'med', show=''))
+#        filenames = ["studiengaenge/med/index-2018.html"]
     if studiengang == "med_erw":
-        filenames = ["studiengaenge/med_erw/index-2021.html"]
+        return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'mederw', show=''))
+#        filenames = ["studiengaenge/med_erw/index-2021.html"]
     if studiengang == "med_dual":
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'med-dual', show=''))
         # filenames = ["studiengaenge/med_dual/index-2024.html"]
     if studiengang == "promotion":
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'promotion', show=''))
     #   filenames = ["studiengaenge/promotion/index.html"]
-    return render_template("home_nlehre.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
+#    return render_template("home_nlehre.html", filenames=filenames, lang=lang, studiengang=studiengang, anchor=anchor)
 
 #########################
 ## Lehrveranstaltungen ##
