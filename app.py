@@ -469,7 +469,7 @@ def showlehrveranstaltungencodes(lang, name = ""):
     otherlang = "de" if lang == "en" else "en"
     data = vvz.get_data_code(name, lang)
     print(name)
-    codes_list = ["algebra", "analysis", "numerik", "didaktik", "geometrie", "logik", "stochastik"]
+    codes_list = ["algebra", "analysis", "numerik", "didaktik", "geometrie", "logik", "stochastik", "angrenzend"]
     codes = []
     for c in codes_list:
         co = vvz.vvz_code.find_one({"name" : c})
