@@ -30,7 +30,7 @@
           {% if lang == "de" %}Regelmäßig angebotene Vorlesungen
           {% else %}Regularly offered courses {% endif %}
         </a>
-        <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='modulplan') }}"
+        <!-- <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='modulplan') }}"
           class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
           {% if lang == "de" %}Modulpläne der Studiengänge
           {% else %}Module plans of the study programs {% endif %}
@@ -39,11 +39,15 @@
           class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
           {% if lang == "de" %}Warum Mathematik?
           {% else %}Wjy mathematics? {% endif %}
-        </a>
+        </a>-->
         <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='schwerpunktgebiete') }}"
           class="btn btn-primary bg-ufr-blue link-dark" role="button" aria-disabled="true">
           {% if lang == "de" %}Schwerpunktgebiete in Freiburg
           {% else %}Focus areas in Freiburg {% endif %}
+        </a>
+        <a href="mailto:studienberatung@math.uni-freiburg.de" class="btn btn-primary" role="button"
+          aria-disabled="true">
+          {% if lang == "de" %}Studienberatung{% else %}Student counseling {% endif %}
         </a>
       </div>
     </div>

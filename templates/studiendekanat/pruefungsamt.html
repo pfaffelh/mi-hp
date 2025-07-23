@@ -14,6 +14,7 @@
           </li>
           {% endif %}
           {% endfor %}
+          {% if lang == "de" %}
           <li>
             Das Prüfungsamt ist zuständig für die Prüfungsverwaltung der
             Mathematik-Studiengänge. Darunter fallen etwa Angelegenheiten rund
@@ -28,9 +29,9 @@
             Die meisten schriftlichen Prüfungen, sowie die mündlichen Prüfungen
             in Linearer Algebra und Analysis müssen über
             <a href="https://campus.uni-freiburg.de/">HISInOne</a> angemeldet
-            werden. Die mündlichen Prüfungen in den MSc-Studiengängen müssen im
-            <a href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang)}}">Prüfungsamt</a>
-            angemeldet werden. Eine genaue Beschreibung finden Sie bei unserer <a
+            werden. Die mündlichen Prüfungen in den MSc-Studiengängen müssen per <a
+              href="https://www.math.uni-freiburg.de/nlehre/de/page/downloads/downloads-studierende">pdf-Formular</a> im
+            Prüfungsamt angemeldet werden. Eine genaue Beschreibung finden Sie bei unserer <a
               href="https://www.math.uni-freiburg.de/nlehre/de/page/faqstud_copy/anmeldung_leistung_faq">Anleitung zur
               Prüfungsanmeldung</a>.
           </li>
@@ -38,6 +39,32 @@
             Unser <a href="{{ url_for('showstufaq', lang=lang)}}">FAQ</a> beantwortet einige Fragen rund um das
             Prüfungsamt, z.B. bei Abmeldung einer Prüfung oder Vergabe einer Abschlussarbeit.
           </li>
+          {% else %}
+
+          <li>
+            The Examination Office is responsible for the administration of examinations for
+            all mathematics degree programs. This includes matters such as
+            registering for and withdrawing from examinations, recognizing credits,
+            performance overviews, certificates for the BAFöG office, etc.
+            You can contact us by email, phone, or during office hours.
+            We will send you legally binding documents
+            typically by post, or they will be available for collection during opening hours.
+          </li>
+          <li>
+            Most written examinations, as well as the oral examinations
+            in Linear Algebra and Analysis, must be registered in
+            <a href="https://campus.uni-freiburg.de/">HISInOne</a>. Oral exams in the MSc programs must be registered using a <a
+              href=“https://www.math.uni-freiburg.de/nlehre/en/page/downloads/downloads-studierende”>pdf form</a> at the Examination Office. You can find a detailed description in our <a
+              href="https://www.math.uni-freiburg.de/nlehre/de/page/faqstud_copy/anmeldung_leistung_faq">instructions
+              for
+              exam registration</a>.
+
+          </li>
+          <li>
+            Our <a href="{{ url_for(‘showstufaq’, lang=lang)}}">FAQ</a> answers some questions about the
+            Examination Office, e.g., how to withdraw from an exam or assign a thesis.
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -52,6 +79,9 @@
           <a href="https://campus.uni-freiburg.de/" class="btn btn-primary bg-ufr-blue link-dark" role="button"
             aria-disabled="true">
             HISInOne</a>
+          <a href="mailto:pruefungsamt@math.uni-freiburg.de" class="btn btn-primary" role="button" aria-disabled="true">
+            {% if lang == "de" %}Prüfungsamt{% else %}Examination office{% endif %}
+          </a>
         </div>
       </div>
     </div>
