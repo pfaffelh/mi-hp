@@ -269,8 +269,9 @@ def showweiterbildung(lang, anchor=""):
 @app.route("/nlehre/<lang>/studiengaenge/")
 @app.route("/nlehre/<lang>/studiengaenge/<anchor>")
 def showstudiengaenge(lang = "de", anchor="aktuell"):
-    filenames = ["studiengaenge/index.html"]
-    return render_template("home_nlehre.html", filenames = filenames, lang=lang, anchor=anchor)
+    return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'studiengaenge', show=''))
+#    filenames = ["studiengaenge/index.html"]
+#    return render_template("home_nlehre.html", filenames = filenames, lang=lang, anchor=anchor)
 
 @app.route("/nlehre/<lang>/studiengaenge/<anchor>")
 @app.route("/nlehre/<lang>/studiengaenge/<studiengang>/")
@@ -470,7 +471,7 @@ def showlehrveranstaltungencodes(lang, name = ""):
     otherlang = "de" if lang == "en" else "en"
     data = vvz.get_data_code(name, lang)
     print(name)
-    codes_list = ["algebra", "analysis", "numerik", "didaktik", "geometrie", "logik", "stochastik"]
+    codes_list = ["algebra", "analysis", "numerik", "didaktik", "geometrie", "logik", "stochastik", "angrenzend"]
     codes = []
     for c in codes_list:
         co = vvz.vvz_code.find_one({"name" : c})
