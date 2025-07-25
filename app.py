@@ -148,6 +148,8 @@ def shownewswp(show = "", lang = "de"):
 @app.route("/nlehre/<lang>/")
 @app.route("/nlehre/<lang>/<dtstring>")
 def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+    if lang != "de" and lang != "en":
+        lang = "de"
     testorpublic = "_public"
     # print(request.endpoint)
     data = news.data_for_base(lang, dtstring, testorpublic, tags = ["Lehre"])
