@@ -8,7 +8,7 @@ import latexcodec
 config = {
     "personen_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
+        "url_skel" : "https://uni-freiburg.de/math/personen_de/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "queries" : [{"class" : "wp-block-group"}],
@@ -81,7 +81,7 @@ config = {
     },
     "news_de" : {
         "titel" : "",
-        "url_skel" : "https://www.uni-freiburg.de/math/news/",
+        "url_skel" : "https://www.uni-freiburg.de/math/news_de/",
         "skel_name" : "skel_news.html",
         "queries" : [{"string" : "News"}, {"string" : "Vorträge der nächsten Woche"}],
         "strings" : ["{% block content1%}Content{% endblock %}", "{% block content2%}Content{% endblock %}"], 
