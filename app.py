@@ -706,6 +706,16 @@ def get_vortraege(anfang = datetime.now().strftime('%Y%m%d'), ende = (datetime.n
     wochenprogramm_reduced = news.get_api_wochenprogramm(anfang, ende)
     return jsonify(wochenprogramm_reduced)
 
+# Test mit
+# # curl https://www.math.uni-freiburg.de/nlehre/api/person/de/6679cf96c8213a519f33750e/ws2025/ (das ist KBL)
+@app.route("/nlehre/api/person/<lang>/<id>/")
+@app.route("/nlehre/api/person/<lang>/<id>/<semester>/")
+def get_lehre(lang, id, semester = ""):
+    data = vvz.get_data_person(id, lang)
+    if semester != "":
+        data = [d for d in data["veranstaltungen"] if d["semester"] == semester]
+    return jsonify(data)
+
 #######################################
 ## Regelmäßig ausgeführte Funktionen ##
 #######################################
