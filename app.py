@@ -706,15 +706,21 @@ def get_vortraege(anfang = datetime.now().strftime('%Y%m%d'), ende = (datetime.n
     wochenprogramm_reduced = news.get_api_wochenprogramm(anfang, ende)
     return jsonify(wochenprogramm_reduced)
 
+def json_converter(obj):
+    if isinstance(obj, ObjectId):
+        return str(obj)
+    raise TypeError("Type not serializable")
+
 # Test mit
-# # curl https://www.math.uni-freiburg.de/nlehre/api/person/de/6679cf96c8213a519f33750e/ws2025/ (das ist KBL)
+# # curl https://www.math.uni-freiburg.de/nlehre/api/person/de/6679cf96c8213a519f33750e/2025SS/ (das ist KBL)
 @app.route("/nlehre/api/person/<lang>/<id>/")
 @app.route("/nlehre/api/person/<lang>/<id>/<semester>/")
 def get_lehre(lang, id, semester = ""):
     data = vvz.get_data_person(id, lang)
     if semester != "":
-        data = [d for d in data["veranstaltungen"] if d["semester"] == semester]
-    return jsonify(data)
+        data = [d for d in data if d["semester"]["kurzname"] == semester]
+    json_str = json.dumps(data, default=json_converter)
+    return json_str
 
 #######################################
 ## Regelmäßig ausgeführte Funktionen ##

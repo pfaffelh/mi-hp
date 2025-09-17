@@ -479,6 +479,7 @@ def get_data_person(id, lang = "de"):
         for s in semester:
             sem_data = get_data(s["kurzname"], lang, "", "", query)
             data.append(sem_data)
+    print(data)
     return data
 
 # Wenn id == "all", werden alle Daten der Semester ausgelesen. Wenn id == "", werden keine Daten zurückgegeben. Andernfalls ist es die id einer Lehrperson im vvz.
