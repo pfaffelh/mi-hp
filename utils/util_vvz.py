@@ -465,8 +465,10 @@ def get_data_person(id, lang = "de"):
         data = []
     else:
         if id != "all":
-            id = ObjectId(id)
-            query = {"$or" : [{"dozent" : { "$elemMatch" : { "$eq" : id}}}, {"assistent" : { "$elemMatch" : { "$eq" : id }}}]}
+            id = id.split("_")
+            id = [ObjectId(i) for i in id]
+#%            query = {"$or" : [{"dozent" : { "$elemMatch" : { "$eq" : id}}}, {"assistent" : { "$elemMatch" : { "$eq" : id }}}]}
+            query = {"$or" : [{"dozent" : { "$in" : id}}, {"assistent" : { "$in" : id }}]}
         else:
             query = {}
 
