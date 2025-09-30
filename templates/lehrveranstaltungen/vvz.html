@@ -131,10 +131,17 @@ endblock %} {% block content %}
           <p style="font-weight: bold">{{ course['titel'] }}</p>
           {% if course['allepersonen'] != "" %}
           <p style="margin-bottom: 5px">{{ course['allepersonen']|safe}}</p>
-          {% endif %} {% if course["raumzeit_woechentlich"]|length > 0 %} {% for
-          line in course["raumzeit_woechentlich"] %}
+          {% endif %} 
+          {% if course["raumzeit_woechentlich"]|length > 0 %} 
+          {% for line in course["raumzeit_woechentlich"] %}
           <p style="margin-bottom: 5px">{{ line|safe }}</p>
-          {% endfor %}{% endif %}
+          {% endfor %}
+          {% endif %}
+          {% if course["raumzeit_einmalig"]|length > 0 %} 
+          {% for line in course["raumzeit_einmalig"] %}
+          <p style="margin-bottom: 5px">{{ line|safe }}</p>
+          {% endfor %}
+          {% endif %}
         </button>
       </div>
 
@@ -196,9 +203,10 @@ endblock %} {% block content %}
                   {% for line in course["raumzeit_woechentlich_mit_url"] %} {{
                   line|safe }}
                   <br />
-                  {% endfor %} {% endif %} {% if
-                  course["raumzeit_einmalig_mit_url"]|length > 0 %} {% for line
-                  in course["raumzeit_einmalig_mit_url"] %} {{ line|safe }}
+                  {% endfor %} 
+                {% endif %} 
+                {% if course["raumzeit_einmalig_mit_url"]|length > 0 %} 
+                  {% for line in course["raumzeit_einmalig_mit_url"] %} {{ line|safe }}
                   <br />
                   {% endfor %}
                 </p>

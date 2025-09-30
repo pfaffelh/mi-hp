@@ -168,11 +168,11 @@ def repr_semester(s_id, lang):
 # Die Funktion fasst zB Mo, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21 \n 
 # zusammen in
 # Mo, Mi, 8-10, HS Rundbau, Albertstr. 21 \n Mi, 8-10, HS Rundbau, Albertstr. 21
-def make_raumzeit_woechentlich(veranstaltung, lang = "de", url = True):    
+def make_raumzeit_woechentlich(veranstaltung, lang = "de", url = True, only_haupt = False):    
     res = []
     for termin in veranstaltung["woechentlicher_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})
-        if ta["hp_sichtbar"]:
+        if ta["hp_sichtbar"] or only_haupt == False:
             ta = ta[f"name_{lang}"]
             if termin['wochentag'] !="":
                 # key, raum, zeit, person, kommentar
@@ -211,11 +211,11 @@ def make_raumzeit_woechentlich(veranstaltung, lang = "de", url = True):
     res = [f"{x[0]} {(', '.join([z for z in x if z !='' and x.index(z)!=0]))}" for x in res]
     return res
 
-def make_raumzeit_einmalig(veranstaltung, lang = "de", url = True):    
+def make_raumzeit_einmalig(veranstaltung, lang = "de", url = True, only_haupt = False):    
     res = []
     for termin in veranstaltung["einmaliger_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})
-        if ta["hp_sichtbar"]:
+        if ta["hp_sichtbar"] or only_haupt == False:
             ta = ta[f"name_{lang}"]
             # Raum und Gebäude mit Url.
             raeume = list(vvz_raum.find({ "_id": { "$in": termin["raum"]}}))
@@ -335,10 +335,10 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", veranstal
             v_dict["organisation"] = ", ".join([vorname_name(x, False, lang) for x in veranstaltung["organisation"]])
             # raumzeit ist der Text, der unter der Veranstaltung steht.
             # print(v_dict["titel"])
-            v_dict["raumzeit_woechentlich_mit_url"] = make_raumzeit_woechentlich(veranstaltung, lang=lang, url = True)
-            v_dict["raumzeit_woechentlich"] = make_raumzeit_woechentlich(veranstaltung, lang=lang, url = False)
-            v_dict["raumzeit_einmalig_mit_url"] = make_raumzeit_einmalig(veranstaltung, lang=lang, url = True)
-            v_dict["raumzeit_einmalig"] = make_raumzeit_einmalig(veranstaltung, lang=lang, url = False)
+            v_dict["raumzeit_woechentlich_mit_url"] = make_raumzeit_woechentlich(veranstaltung, lang=lang, url = True, only_haupt = False)
+            v_dict["raumzeit_woechentlich"] = make_raumzeit_woechentlich(veranstaltung, lang=lang, url = False, only_haupt = True)
+            v_dict["raumzeit_einmalig_mit_url"] = make_raumzeit_einmalig(veranstaltung, lang=lang, url = True, only_haupt = False)
+            v_dict["raumzeit_einmalig"] = make_raumzeit_einmalig(veranstaltung, lang=lang, url = False, only_haupt = True)
             v_dict["inhalt"] = latex2markdown.LaTeX2Markdown(veranstaltung[f"inhalt_{lang}"]).to_markdown()
             v_dict["vorkenntnisse"] = veranstaltung[f"vorkenntnisse_{lang}"]
             if studiengang == "":
