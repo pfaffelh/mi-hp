@@ -701,8 +701,9 @@ def get_news():
 @app.route("/nlehre/api/monitor/<dtstring>/")
 @app.route("/nlehre/api/monitor/<dtstring>/<testorpublic>")
 def get_monitor_api(dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
-    news = news.get_monitordata(dtstring, testorpublic)
-    return jsonify(news)
+    newsdata = news.get_monitordata(dtstring, testorpublic)
+    print(newsdata)
+    return jsonify(newsdata)
 
 # Test mit
 # # curl https://www.math.uni-freiburg.de/nlehre/api/wochenprogramm/
