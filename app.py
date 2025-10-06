@@ -687,6 +687,14 @@ def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 ## api's ##
 ###########
 
+def json_converter(obj):
+    if isinstance(obj, ObjectId):
+        return str(obj)
+    elif isinstance(obj, datetime):
+        return obj.strftime('%Y%m%d%H%M')
+    print(type(obj))
+    raise TypeError("Type not serializable")
+
 # Test mit
 # # curl https://www.math.uni-freiburg.de/nlehre/api/news/
 @app.route("/nlehre/api/news/")
@@ -703,7 +711,8 @@ def get_news():
 def get_monitor_api(dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
     newsdata = news.get_monitordata(dtstring, testorpublic)
     print(newsdata)
-    return jsonify(newsdata)
+    json_str = json.dumps(newsdata, default=json_converter)
+    return json_str
 
 # Test mit
 # # curl https://www.math.uni-freiburg.de/nlehre/api/wochenprogramm/
@@ -715,11 +724,6 @@ def get_monitor_api(dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpubl
 def get_vortraege(anfang = datetime.now().strftime('%Y%m%d'), ende = (datetime.now() + timedelta(days=14-datetime.now().weekday())).strftime('%Y%m%d')):
     wochenprogramm_reduced = news.get_api_wochenprogramm(anfang, ende)
     return jsonify(wochenprogramm_reduced)
-
-def json_converter(obj):
-    if isinstance(obj, ObjectId):
-        return str(obj)
-    raise TypeError("Type not serializable")
 
 # Test mit
 # # curl https://www.math.uni-freiburg.de/nlehre/api/person/de/6679cf96c8213a519f33750e/2025SS/ (das ist KBL)
