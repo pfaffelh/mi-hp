@@ -696,6 +696,15 @@ def get_news():
     return jsonify(news_reduced)
 
 # Test mit
+# # curl https://www.math.uni-freiburg.de/nlehre/api/monitor/
+@app.route("/nlehre/api/monitor/")
+@app.route("/nlehre/api/monitor/<dtstring>/")
+@app.route("/nlehre/api/monitor/<dtstring>/<testorpublic>")
+def get_monitor_api(dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
+    news = news.get_monitordata(dtstring, testorpublic)
+    return jsonify(news)
+
+# Test mit
 # # curl https://www.math.uni-freiburg.de/nlehre/api/wochenprogramm/
 @app.route("/nlehre/api/wochenprogramm/")
 @app.route("/nlehre/api/wochenprogramm/<anfang>/<ende>/")
