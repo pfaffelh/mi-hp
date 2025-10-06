@@ -424,7 +424,7 @@ def get_event(kurzname, lang = "de"):
         )
         previousdatum = v["start"]
     return data
-    
+
 def get_monitordata(dtstring, testorpublic):
     # the date format for <dtstring>
     date_format_no_space = '%Y%m%d%H%M'
@@ -489,7 +489,6 @@ def get_monitordata(dtstring, testorpublic):
         )
         
     return data
-
 
 def get_api_news(tags = ["Institut"]):    
     dt = datetime.now()
