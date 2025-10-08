@@ -5,7 +5,7 @@ import locale, json, os, requests, xmltodict, base64, pymongo, socket
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 from apscheduler.schedulers.background import BackgroundScheduler
-from bson import ObjectId
+from bson import ObjectId, json_util
 from bs4 import BeautifulSoup
 from pybtex.database.input import bibtex
 
@@ -703,7 +703,8 @@ def get_news():
 def get_monitor_api(dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
     newsdata = news.get_monitordata(dtstring, testorpublic)
     print(newsdata)
-    return jsonify(newsdata)
+    newsdata_json = json_util.dumps(newsdata, ensure_ascii=False)
+    return Response(newsdata_json, mimetype='application/json; charset=utf-8')
 
 # Test mit
 # # curl https://www.math.uni-freiburg.de/nlehre/api/wochenprogramm/
