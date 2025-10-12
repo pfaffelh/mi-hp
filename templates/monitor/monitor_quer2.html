@@ -180,35 +180,53 @@ data["carouselnews"] == [] %}
 <script>
   const container = document.getElementById("message-container");
 
-  // Fisher-Yates Shuffle
-  function shuffleNodes() {
-    const items = Array.from(container.children);
-    let currentIndex = items.length,
-      randomIndex;
+  // Auto-scroll/cycle messages vertically (no shuffle)
+  function cycleMessages() {
+    const first = container.firstElementChild;
+    if (!first) return;
 
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      // Swap in DOM
-      container.appendChild(items[randomIndex]);
-      items.splice(randomIndex, 1);
-    }
+    // compute the height to scroll (including margin)
+    const style = window.getComputedStyle(first);
+    const marginBottom = parseFloat(style.marginBottom) || 0;
+    const scrollAmount = first.offsetHeight + marginBottom;
+
+    // animate container upwards by scrollAmount
+    container.style.transition = 'transform 0.8s ease';
+    container.style.transform = `translateY(-${scrollAmount}px)`;
+
+    // when transition finishes, move the first element to the end and fade it in
+    const onTransitionEnd = () => {
+      container.removeEventListener('transitionend', onTransitionEnd);
+
+      // stop transform animation and reset
+      container.style.transition = 'none';
+      container.style.transform = 'none';
+
+      // move the first element to the end
+      container.appendChild(first);
+
+      // Fade the appended element in smoothly (avoid sudden appearance)
+      first.style.opacity = '0';
+      first.style.transition = 'opacity 0.6s ease';
+      // force reflow
+      void first.offsetWidth;
+      first.style.opacity = '1';
+
+      // cleanup inline styles after fade completes
+      setTimeout(() => {
+        first.style.transition = '';
+        first.style.opacity = '';
+      }, 700);
+    };
+
+    container.addEventListener('transitionend', onTransitionEnd);
   }
 
-  function shuffleMessages() {
-    container.classList.remove("visible");
-
-    setTimeout(() => {
-      shuffleNodes();
-      container.classList.add("visible");
-    }, 1000); // Match fade-out duration
-  }
-
-  // Initial shuffle
-  shuffleMessages();
-
-  // Shuffle every 10 seconds
-  setInterval(shuffleMessages, 10000);
+  // Start periodic cycling every 6s, initial delay matches previous behaviour
+  setTimeout(() => {
+    cycleMessages();
+    setInterval(cycleMessages, 6000);
+  }, 1000);
 </script>
 
 {% endblock %}
