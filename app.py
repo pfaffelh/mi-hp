@@ -712,7 +712,7 @@ def get_monitor_api(dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpubl
     newsdata = news.get_monitordata(dtstring, testorpublic)
     print(newsdata)
     json_str = json.dumps(newsdata, default=json_converter)
-    return json_str
+    return jsonify(json_str)
 
 # Test mit
 # # curl https://www.math.uni-freiburg.de/nlehre/api/wochenprogramm/
