@@ -5,8 +5,8 @@ data["carouselnews"] == [] %}
     src="https://morgenwirdes.de/api/v3/gif6.php?plz=79104&delay=50&type=1&zoomlvl=3&bar=0&map=1&textcol=ffffff&bgcol=8393c9"
     alt="Regenradar"
     style="
-      width: 2000px;
-      height: 360px;
+      width: 2160px;
+      height: 700px;
       object-fit: cover;
       object-position: 100% 75%;
     "
@@ -34,8 +34,8 @@ data["carouselnews"] == [] %}
         src="https://morgenwirdes.de/api/v3/gif6.php?plz=79104&delay=50&type=1&zoomlvl=3&bar=0&map=1&textcol=ffffff&bgcol=8393c9"
         alt="Regenradar"
         style="
-          width: 2000px;
-          height: 360px;
+          width: 2160px;
+          height: 700px;
           object-fit: cover;
           object-position: 100% 75%;
         "
@@ -70,7 +70,7 @@ data["carouselnews"] == [] %}
 </div>
 {% endif %}
 <div><br /></div>
-<div class="container">
+<div class="container" style="width:95%; max-width:95%;">
   <div class="message-list visible" id="message-container">
     {% for item in data["news"] %}
     <div class="message-item">
@@ -86,7 +86,7 @@ data["carouselnews"] == [] %}
                   <div
                     class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
                   >
-                    <h3 class="card-title">
+                    <h3 class="card-title scale-3x">
                       {{ item['monitor']['title'] | markdown }}
                     </h3>
                     <p
@@ -95,18 +95,18 @@ data["carouselnews"] == [] %}
                       {% if item['link']!= '' %}
                       <img
                         src="https://api.qrserver.com/v1/create-qr-code/?data={{
-                        item['link'] }}&amp;size=100x100"
+                        item['link'] }}&amp;size=300x300"
                         class="float-start me-4 my-3"
                         style="display: table-row; vertical-align: bottom"
                         alt=""
                         title="HELLO"
-                        width="100"
-                        height="100"
+                        width="300"
+                        height="300"
                       />
                       {% endif %}
                     </p>
                     <p>
-                      <font size="+2"
+                      <font size="+5"
                         >{{ item['monitor']['text'] | markdown}}</font
                       >
                     </p>
@@ -140,7 +140,7 @@ data["carouselnews"] == [] %}
                   <div
                     class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
                   >
-                    <h3 class="card-title">
+                    <h3 class="card-title scale-3x">
                       {{ item['monitor']['title'] | markdown }}
                     </h3>
                     <p
@@ -149,18 +149,18 @@ data["carouselnews"] == [] %}
                       {% if item['link']!= '' %}
                       <img
                         src="https://api.qrserver.com/v1/create-qr-code/?data={{
-                        item['link'] }}&amp;size=100x100"
+                        item['link'] }}&amp;size=300x300"
                         class="float-end me-4 my-3"
                         style="display: table-row; vertical-align: bottom"
                         alt=""
                         title="HELLO"
-                        width="100"
-                        height="100"
+                        width="300"
+                        height="300"
                       />
                       {% endif %}
                     </p>
                     <p>
-                      <font size="+2"
+                      <font size="+5"
                         >{{ item['monitor']['text'] | markdown}}</font
                       >
                     </p>
@@ -180,35 +180,53 @@ data["carouselnews"] == [] %}
 <script>
   const container = document.getElementById("message-container");
 
-  // Fisher-Yates Shuffle
-  function shuffleNodes() {
-    const items = Array.from(container.children);
-    let currentIndex = items.length,
-      randomIndex;
+  // Auto-scroll/cycle messages vertically (no shuffle)
+  function cycleMessages() {
+    const first = container.firstElementChild;
+    if (!first) return;
 
-    while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      // Swap in DOM
-      container.appendChild(items[randomIndex]);
-      items.splice(randomIndex, 1);
-    }
+    // compute the height to scroll (including margin)
+    const style = window.getComputedStyle(first);
+    const marginBottom = parseFloat(style.marginBottom) || 0;
+    const scrollAmount = first.offsetHeight + marginBottom;
+
+    // animate container upwards by scrollAmount
+    container.style.transition = 'transform 0.8s ease';
+    container.style.transform = `translateY(-${scrollAmount}px)`;
+
+    // when transition finishes, move the first element to the end and fade it in
+    const onTransitionEnd = () => {
+      container.removeEventListener('transitionend', onTransitionEnd);
+
+      // stop transform animation and reset
+      container.style.transition = 'none';
+      container.style.transform = 'none';
+
+      // move the first element to the end
+      container.appendChild(first);
+
+      // Fade the appended element in smoothly (avoid sudden appearance)
+      first.style.opacity = '0';
+      first.style.transition = 'opacity 0.6s ease';
+      // force reflow
+      void first.offsetWidth;
+      first.style.opacity = '1';
+
+      // cleanup inline styles after fade completes
+      setTimeout(() => {
+        first.style.transition = '';
+        first.style.opacity = '';
+      }, 700);
+    };
+
+    container.addEventListener('transitionend', onTransitionEnd);
   }
 
-  function shuffleMessages() {
-    container.classList.remove("visible");
-
-    setTimeout(() => {
-      shuffleNodes();
-      container.classList.add("visible");
-    }, 1000); // Match fade-out duration
-  }
-
-  // Initial shuffle
-  shuffleMessages();
-
-  // Shuffle every 10 seconds
-  setInterval(shuffleMessages, 10000);
+  // Start periodic cycling every 6s, initial delay matches previous behaviour
+  setTimeout(() => {
+    cycleMessages();
+    setInterval(cycleMessages, 6000);
+  }, 1000);
 </script>
 
 {% endblock %}

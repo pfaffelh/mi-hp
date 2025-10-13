@@ -20,6 +20,13 @@
   <script></script>
   <link href="/static/css/ufr-colors.css" type="text/css" media="all" />
   <style>
+    /* small helper to scale specific texts */
+    .scale-3x {
+      /* multiply current font size by 2 */
+      font-size: 3em !important;
+      line-height: 1.2;
+    }
+
     html,
     body {
       margin: 0;
@@ -168,7 +175,7 @@
 
     .carousel-image {
       width: 100%;
-      height: 360px;
+      height: 700px;
       object-fit: cover;
     }
 
@@ -272,19 +279,19 @@
   <header class="bg-ufr-darkblue">
     <nav id="site-navigation" class="navbar navbar-expand-xl" aria-label="Oberes Menü">
       <div class="container-fluid">
-        <div class="d-flex flex-grow-1">
+        <div class="d-flex flex-grow-2">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link text-white me-4" href="#"></a>
             </li>
             <li class="nav-item d-flex align-items-center">
               <a class="navbar-brand" href="#">
-                <img src="/static/images/ufr-logo-white.svg" alt="Albert-Ludwigs-Universität Freiburg" width="239"
-                  height="55" />
+                <img src="/static/images/ufr-logo-white.svg" alt="Albert-Ludwigs-Universität Freiburg" width="720"
+                  height="165" />
               </a>
             </li>
             <li class="nav-item d-none d-xl-block align-self-center">
-              <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2"></i>
+              <i class="fa fa-chevron-right fa-55 text-white ms-2 me-2  scale-3x"></i>
               <!--               </li>
               <li class="nav-item d-none d-xl-block mr-4">
                 <h2>
@@ -305,9 +312,9 @@
 
             <li class="nav-item d-none d-xl-block mr-4">
               <h3>
-                <a href="{{url_for('showbase', lang = lang) }}" class="nav-link text-white" href="#">
-                  {% if lang == "de" %}Mathematisches Institut{% else
-                  %}Teaching{% endif %}</a>
+                  <a href="{{url_for('showbase', lang = lang) }}" class="nav-link text-white scale-3x" href="#">
+                    {% if lang == "de" %}Mathematisches Institut{% else
+                    %}Teaching{% endif %}</a>
               </h3>
             </li>
             <li class="nav-item d-none d-xl-block align-self-center">
