@@ -238,7 +238,7 @@ endblock %} {% block content %}
                 </span>
                 <p>{{ course['verwendbarkeit']|markdown }}</p>
                 {% if course['verwendbarkeit_kommentar'] != "" %}<p>{{ course['verwendbarkeit_kommentar']|markdown }}</p>{% endif %}
-                {% if lang == "de" %}Die Zahl der ECTS-Punkte entnehmen Sie bitte den <a href="https://www.math.uni-freiburg.de/nlehre/de/lehrveranstaltungen/">Ergänzungen zu den Modulhandbüchern</a>.{% else %}Please refer to the <a href="https://www.math.uni-freiburg.de/nlehre/en/lehrveranstaltungen/">Supplements to the Module Handbooks for the number of ECTS credits.{% endif
+                {% if lang == "de" %}Die Zahl der ECTS-Punkte entnehmen Sie bitte den <a href="https://www.math.uni-freiburg.de/nlehre/de/lehrveranstaltungen/">Ergänzungen zu den Modulhandbüchern</a>.{% else %}Please refer to the <a href="https://www.math.uni-freiburg.de/nlehre/en/lehrveranstaltungen/">Supplements to the Module Handbooks for the number of ECTS credits.</a>{% endif
                   %}
               </div>
               {% endif %}
