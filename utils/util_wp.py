@@ -49,7 +49,7 @@ config = {
     "personen_MSt_de" : {
         "titel" : "",
         "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
-        "skel_name" : "skel.html",
+        "skel_name" : "skel_personen_MSt.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen_MSt.html"
@@ -57,7 +57,7 @@ config = {
     "lehre_MSt_de" : {
         "titel" : "",
         "url_skel" : "https://uni-freiburg.de/stochastik/startseite/studium-und-lehre/",
-        "skel_name" : "skel.html",
+        "skel_name" : "skel_lehre_MSt.html",
         "queries" : [{"string" : "Aktuelle Lehrveranstaltungen"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/lehre_MSt.html"
