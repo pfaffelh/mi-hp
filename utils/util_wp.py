@@ -54,6 +54,14 @@ config = {
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen_MSt.html"
     },
+    "lehre_MSt_de" : {
+        "titel" : "",
+        "url_skel" : "https://uni-freiburg.de/stochastik/startseite/studium-und-lehre/",
+        "skel_name" : "skel.html",
+        "queries" : [{"string" : "Aktuelle Lehrveranstaltungen"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
+        "template" : "wp/lehre_MSt.html"
+    },
     "personen_PA_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
@@ -85,14 +93,6 @@ config = {
         "queries" : [{"string" : "News"}, {"string" : "Vorträge der nächsten Woche"}],
         "strings" : ["{% block content1%}Content{% endblock %}", "{% block content2%}Content{% endblock %}"], 
         "template" : "wp/news.html"
-    },
-    "pfaffelhuber_de" : {
-        "titel" : "",
-        "url_skel" : "https://uni-freiburg.de/stochastik/peter-pfaffelhuber/",
-        "skel_name" : "skel_pfaffelhuber.html",
-        "queries" : [{"string" : "Pfaffelhuber, Rohde. xxx"}],
-        "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/pershome.html"
     },
     "fdmseminar_en" : {
         "titel" : "",

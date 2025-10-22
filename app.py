@@ -81,6 +81,24 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 def showfakewp(site, show = "", lang = "de"):
     dir = site.split("_")
     lang = list(reversed(dir))[0]
+    if dir[0] == "lehre":
+        if len(dir) == 3:
+            abteilung = dir[1]
+            co = list(vvz.vvz_code.find({"name" : f"hp_{abteilung}"}))
+            print(co)
+            dat = vvz.get_data(vvz.get_current_semester_kurzname(), lang = lang, studiengang = "", modul = "", veranstaltungs_query = {"code" : { "$in" : [c["_id"] for c in co]}}, vpn = False)
+            # print(dat)
+        else:
+            dat = vvz.get_data(vvz.get_current_semester_kurzname(), lang = lang, studiengang = "", modul = "", veranstaltungs_query = {}, vpn = False)
+        data = {}
+        data["semester"] = dat["semester"]["name"]
+        data["veranstaltungen"] = [r["veranstaltung"] for r in dat["rubrik"]]
+        data["veranstaltungen"] = [item for sublist in data["veranstaltungen"] for item in sublist]
+        data["veranstaltungen"].sort(key=lambda d: d["titel"])
+        print(data)
+        wp.make_skel(wp.config[site])
+    elif dir[0] == "lehrestatic":
+        return render_template("wp/lehre_static.html")
     if dir[0] == "personen":
         if len(dir) == 3:
             abteilung = dir[1]
@@ -114,6 +132,8 @@ def showfakewp(site, show = "", lang = "de"):
         wp.make_skel(wp.config[site])
     elif dir[0] == "personenstochastikstatic":
         return render_template("wp/personenstochastik_static.html")
+
+    # FDMAI
     elif dir[0] == "fdmseminarstatic":
         return render_template("wp/fdmseminarstatic.html")
     elif dir[0] == "fdmseminar":

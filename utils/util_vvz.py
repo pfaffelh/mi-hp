@@ -316,10 +316,8 @@ def get_data(sem_shortname, lang = "de", studiengang = "", modul = "", veranstal
             veranstaltungen = list(vvz_veranstaltung.find(veranstaltungs_query, sort=[("rang", pymongo.ASCENDING)]))
         else:
             veranstaltungs_query = veranstaltungs_query | {"rubrik": rubrik["_id"], "hp_sichtbar" : True}
-            print(veranstaltungs_query)
             veranstaltungen = list(vvz_veranstaltung.find(veranstaltungs_query, sort=[("rang", pymongo.ASCENDING)]))
         for veranstaltung in veranstaltungen:
-            print(veranstaltung)
             otherlang = "de" if lang == "en" else "en"
             v_dict = {}
             v_dict["code"] = make_codes(sem_id, veranstaltung["_id"], lang)

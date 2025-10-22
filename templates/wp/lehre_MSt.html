@@ -1,0 +1,59 @@
+{% extends config['skel_name'] %} {% block content %}
+<h2 class="wp-block-heading" id="Lehre-Stochastik">
+  Aktuelle Lehrveranstaltungen im {{ data["semester"]}}
+</h2>
+
+<p>
+  Alle vom Mathematischen Institut angebotenen Veranstaltungen finden Sie
+  <a
+    href="https://www.math.uni-freiburg.de/nlehre/de/lehrveranstaltungen/"
+    target="_blank"
+    rel="noreferrer noopener"
+    >hier</a
+  >. Unten sind alle Lehrveranstaltungen mit Beteiligung der Abteilung für
+  Stochastik aufgeführt.
+</p>
+
+<figure class="wp-block-table">
+  <table class="has-fixed-layout">
+    <tbody>
+      {% for course in data["veranstaltungen"] %}
+      <tr>
+        <td>
+          {% if course['link'] != "" %}
+          <strong
+            ><a href="{{ course['link'] | safe}}"
+              >{{ course['titel'] | safe}}</a
+            ></strong
+          ><br />
+          {% else %}
+          <strong>{{ course['titel'] | safe}}</strong><br />
+          {% endif %} {% if course['dozent_mit_url'] != "" %} {% if lang == "de"
+          %}Dozent:in: {% else %}Lecturer: {% endif%} {{
+          course['dozent_mit_url']|safe}} <br />
+          {% endif %} {% if course["assistent_mit_url"] %} {% if lang == "de"
+          %}Assistenz: {% else %}Assistant: {% endif %} {{
+          course["assistent_mit_url"]|safe }} <br />
+          {% endif %} {% if course["organisation_mit_url"] %} Organisation: {{
+          course["organisation_mit_url"]|safe }} <br />
+          {% endif %} 
+          {% if course["raumzeit_woechentlich_mit_url"]|length > 0 %} {% for
+          line in course["raumzeit_woechentlich_mit_url"] %} {{ line|safe }}
+          <br />
+          {% endfor %} {% endif %} {% if
+          course["raumzeit_einmalig_mit_url"]|length > 0 %} {% for line in
+          course["raumzeit_einmalig_mit_url"] %} {{ line|safe }}
+          <br />
+          {% endfor %}
+          {% endif %} {% if course["kommentar"] %}
+          <i>{{ course["kommentar"]|markdown }}</i> {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</figure>
+
+<div style="height: 20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+{% endblock %}
