@@ -73,6 +73,9 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 ####################
 
 # Ansatz des Personenverzeichnisses etc unter wp
+# Folgende Links stehen zur Verfügung:
+# https://math.uni-freiburg.de/cd2021/personen_de/
+
 @app.route("/cd2021/<site>/")
 @app.route("/cd2021/<site>/<show>/")
 def showfakewp(site, show = "", lang = "de"):
@@ -111,16 +114,6 @@ def showfakewp(site, show = "", lang = "de"):
         wp.make_skel(wp.config[site])
     elif dir[0] == "personenstochastikstatic":
         return render_template("wp/personenstochastik_static.html")
-    elif dir[0] == "pfaffelhuberstatic":
-        return render_template("wp/pfaffelhuber_static.html")
-    elif dir[0] == "pfaffelhuber":
-        parser = bibtex.Parser()
-        with app.open_resource("static/bibtex/pfaffelhuber.bib") as f:
-            bib_content = f.read().decode("utf-8")  # 🔹 Dateiinhalt als String
-            bib_data = parser.parse_string(bib_content)  # 🔹 Direkt in parse_string()
-    
-        data = wp.get_bibdata(bib_data)
-        wp.make_skel(wp.config[site])
     elif dir[0] == "fdmseminarstatic":
         return render_template("wp/fdmseminarstatic.html")
     elif dir[0] == "fdmseminar":

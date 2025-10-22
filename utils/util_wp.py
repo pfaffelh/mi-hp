@@ -11,13 +11,12 @@ config = {
         "url_skel" : "https://uni-freiburg.de/math/personen_de/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
-        "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
     "personen_AM_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
+        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
@@ -25,7 +24,7 @@ config = {
     },
     "personen_D_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
+        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
@@ -33,7 +32,7 @@ config = {
     },
     "personen_Di_de" : {
         "titel" : "Mitarbeiter der Abteilung für Didaktik der Mathematik",
-        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
+        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
@@ -41,7 +40,7 @@ config = {
     },
     "personen_ML_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
+        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
@@ -49,7 +48,7 @@ config = {
     },
     "personen_MSt_de" : {
         "titel" : "",
-        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
+        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
@@ -57,7 +56,7 @@ config = {
     },
     "personen_PA_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
+        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
@@ -65,7 +64,7 @@ config = {
     },
     "personen_RM_de" : {
         "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen-ii/",
+        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
         "skel_name" : "skel.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
