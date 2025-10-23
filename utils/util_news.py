@@ -455,6 +455,7 @@ def get_monitordata(dtstring, testorpublic):
 
     for item in data['news']:
         item['today'] = True if (item["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
+        item["highlight"] = item["highlight"] or item["today"]
 
     # Add Vorträge der nächsten 7 Tage als eine News, only public
     leer = vortragsreihe.find_one({"kurzname" : "alle"})
@@ -480,6 +481,7 @@ def get_monitordata(dtstring, testorpublic):
             {
                 "link" : "https://www.math.uni-freiburg.de/wochenprogramm/",
                 "showlastday" : False,
+                "highlight" : False,
                 "image" : [],
                 "monitor" : {
                     "title" : "Vorträge der nächsten sieben Tage",
