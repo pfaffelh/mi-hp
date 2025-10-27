@@ -45,8 +45,9 @@
           course["raumzeit_einmalig_mit_url"] %} {{ line|safe }}
           <br />
           {% endfor %}
-          {% endif %} {% if course["kommentar"] %}
-          <i>{{ course["kommentar"]|markdown }}</i> {% endif %}
+          {% endif %} 
+          <!-- {% if course["kommentar"] %}
+          <i>{{ course["kommentar"]|markdown }}</i> {% endif %} -->
         </td>
       </tr>
       {% endfor %}
