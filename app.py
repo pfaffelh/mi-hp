@@ -91,11 +91,11 @@ def showfakewp(site, show = "", lang = "de"):
         else:
             dat = vvz.get_data(vvz.get_current_semester_kurzname(), lang = lang, studiengang = "", modul = "", veranstaltungs_query = {}, vpn = False)
         data = {}
-        data["semester"] = dat["semester"]["name"]
+        loc = dat["semester"]["kurzname"]
+        data["semester"] = loc[4:6] + loc[0:4]
         data["veranstaltungen"] = [r["veranstaltung"] for r in dat["rubrik"]]
         data["veranstaltungen"] = [item for sublist in data["veranstaltungen"] for item in sublist]
         data["veranstaltungen"].sort(key=lambda d: d["titel"])
-        print(data)
         wp.make_skel(wp.config[site])
     elif dir[0] == "lehrestatic":
         return render_template("wp/lehre_static.html")
