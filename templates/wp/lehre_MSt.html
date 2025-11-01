@@ -1,9 +1,13 @@
 {% extends config['skel_name'] %} {% block content %}
 <h2 class="wp-block-heading" id="Lehre-Stochastik">
-  Aktuelle Lehrveranstaltungen im {{ data["semester"]}}
+  {% if lang == "de" %}Aktuelle Lehrveranstaltungen im {% else %}
+  Current courses in 
+  {% endif %}
+  {{ data["semester"]}}
 </h2>
 
 <p>
+  {% if lang == "de" %}
   Alle vom Mathematischen Institut angebotenen Veranstaltungen finden Sie
   <a
     href="https://www.math.uni-freiburg.de/nlehre/de/lehrveranstaltungen/"
@@ -12,6 +16,15 @@
     >hier</a
   >. Unten sind alle Lehrveranstaltungen mit Beteiligung der Abteilung für
   Stochastik aufgeführt.
+  {% else %}
+  All courses offered by the Mathematical Institute can be found 
+  <a
+    href="https://www.math.uni-freiburg.de/nlehre/en/lehrveranstaltungen/"
+    target="_blank"
+    rel="noreferrer noopener"
+    >here</a
+  >. Below you find all courses with lecturers from the Department of Stochastics.
+  {% endif %}
 </p>
 
 <figure class="wp-block-table">

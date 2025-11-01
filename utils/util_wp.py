@@ -54,10 +54,18 @@ config = {
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen_MSt.html"
     },
+    "lehre_MSt_en" : {
+        "titel" : "",
+        "url_skel" : "https://uni-freiburg.de/stochastik-en/startseite/studies-and-teaching/",
+        "skel_name" : "skel_lehre_MSt_en.html",
+        "queries" : [{"string" : "Current Courses"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
+        "template" : "wp/lehre_MSt.html"
+    },
     "lehre_MSt_de" : {
         "titel" : "",
         "url_skel" : "https://uni-freiburg.de/stochastik/startseite/studium-und-lehre/",
-        "skel_name" : "skel_lehre_MSt.html",
+        "skel_name" : "skel_lehre_MSt_de.html",
         "queries" : [{"string" : "Aktuelle Lehrveranstaltungen"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/lehre_MSt.html"
