@@ -49,7 +49,15 @@ config = {
     "personen_MSt_de" : {
         "titel" : "",
         "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
-        "skel_name" : "skel_personen_MSt.html",
+        "skel_name" : "skel_personen_MSt_de.html",
+        "queries" : [{"class" : "wp-block-group"}],
+        "strings" : ["{% block content%}Content{% endblock %}"], 
+        "template" : "wp/personen_MSt.html"
+    },
+    "personen_MSt_en" : {
+        "titel" : "",
+        "url_skel" : "https://uni-freiburg.de/stochastik-en/employees/",
+        "skel_name" : "skel_personen_MSt_en.html",
         "queries" : [{"class" : "wp-block-group"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen_MSt.html"
