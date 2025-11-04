@@ -10,7 +10,7 @@ config = {
         "titel" : "Lehrkörper / Mitarbeiter",
         "url_skel" : "https://uni-freiburg.de/math/personen_de/",
         "skel_name" : "skel.html",
-        "queries" : [{"class" : "wp-block-group"}],
+        "queries" : [{"string" : "xxx Personen"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
@@ -104,9 +104,9 @@ config = {
     },
     "news_de" : {
         "titel" : "",
-        "url_skel" : "https://www.uni-freiburg.de/math/news_de/",
+        "url_skel" : "https://www.uni-freiburg.de/math/news/",
         "skel_name" : "skel_news.html",
-        "queries" : [{"string" : "News"}, {"string" : "Vorträge der nächsten Woche"}],
+        "queries" : [{"string" : "xxx News"}, {"string" : "Vorträge xxx"}],
         "strings" : ["{% block content1%}Content{% endblock %}", "{% block content2%}Content{% endblock %}"], 
         "template" : "wp/news.html"
     },
