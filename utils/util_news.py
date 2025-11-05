@@ -537,10 +537,31 @@ def get_api_news(tags = ["Institut"]):
 def get_api_wochenprogramm(anfang, ende):
     anfang = datetime.strptime(anfang, "%Y%m%d")
     ende = datetime.strptime(ende, "%Y%m%d")
+    vortraege_reduced = []
 
+    # Dann die Events 
+    events = list(vortragsreihe.find({"event" : True, "sichtbar" : True, "_public" : True, "start" : { "$gte" : anfang}, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
+    for v in events:
+        vortraege_reduced.append(
+            {
+                "reihenkurzname" : "",
+                "vortragsreihe" : getwl(v, "title", "de"),
+                "sprecher" : getwl(v, "sprecher", "de"),
+                "sprecher_affiliation" : "",
+                "titel" : getwl(v, "text", "de"),
+                "abstract" : "",
+                "ort" : "",
+                "url" : v["url"],
+                "datum" : v["start"].strftime('%-d.%-m.%y'),
+                "tag" : tage[v["start"].weekday()],
+                "startzeit" : "",
+                "endzeit" : "",
+                "kommentar" : ""
+            }
+        )
+    # Dann die einzelnen Vorträge
     leer = vortragsreihe.find_one({"kurzname" : "alle"})
     vortraege =  list(vortrag.find({"vortragsreihe" : {"$elemMatch" : { "$eq" : leer["_id"]}}, "_public": True, "start" : { "$gte" : anfang }, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
-    vortraege_reduced = []
     for v in vortraege:
         reihe = list(vortragsreihe.find({"_id" : { "$in" : v["vortragsreihe"]}}))
         reihenkurzname = [item["kurzname"] for item in reihe if item != leer]
@@ -563,26 +584,6 @@ def get_api_wochenprogramm(anfang, ende):
                 "endzeit" : v["end"].strftime('%H:%M'),
                 "kommentar" : getwl(v, "kommentar", "de")
             })
-    # Dann die Events 
-    events = list(vortragsreihe.find({"event" : True, "sichtbar" : True, "_public" : True, "start" : { "$gte" : anfang}, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
-    for v in events:
-        vortraege_reduced.append(
-            {
-                "reihenkurzname" : "",
-                "vortragsreihe" : getwl(v, "title", "de"),
-                "sprecher" : getwl(v, "sprecher", "de"),
-                "sprecher_affiliation" : "",
-                "titel" : getwl(v, "text", "de"),
-                "abstract" : "",
-                "ort" : "",
-                "url" : v["url"],
-                "datum" : v["start"].strftime('%-d.%-m.%y'),
-                "tag" : tage[v["start"].weekday()],
-                "startzeit" : "",
-                "endzeit" : "",
-                "kommentar" : ""
-            }
-        )
     
     return vortraege_reduced
 
