@@ -489,22 +489,7 @@ def get_monitordata(dtstring, testorpublic):
                 }
             }
         )
-    # Dann die Events als einzelone News
-    events = list(vortragsreihe.find({"event" : True, "sichtbar" : True, "_public" : True, "start" : { "$gte" : dt}, "end" : { "$lte" : dt + timedelta(days = 30) }}, sort=[("start", pymongo.ASCENDING)]))
-    for event in events:
-        data["news"].append(
-            {
-                "link" : event["url"],
-                "showlastday" : True,
-                "highlight" : False,
-                "image" : [],
-                "monitor" : {
-                    "title" : f"Event",
-                    "text" : f"{getwl(event, 'title', 'de')} am {event['start'].strftime('%-d.%-m.%y')}. {getwl(event, 'text', 'de')}"
-                }
-            }
-        )
-    
+  
     data["news"].append(
             {
                 "link" : "https://www.math.uni-freiburg.de/wochenprogramm/",
@@ -518,7 +503,21 @@ def get_monitordata(dtstring, testorpublic):
             }
         )
     
-
+    # Dann die Events als einzelne News
+    events = list(vortragsreihe.find({"event" : True, "sichtbar" : True, "_public" : True, "start" : { "$gte" : dt}, "end" : { "$lte" : dt + timedelta(days = 30) }}, sort=[("start", pymongo.ASCENDING)]))
+    for event in events:
+        data["news"].append(
+            {
+                "link" : event["url"],
+                "showlastday" : True,
+                "highlight" : False,
+                "image" : [],
+                "monitor" : {
+                    "title" : f"{getwl(event, 'title', 'de')} am {event['start'].strftime('%-d.%-m.%y')}",
+                    "text" : f"{getwl(event, 'text', 'de')}"
+                }
+            }
+        )
 
     return data
 
@@ -564,6 +563,27 @@ def get_api_wochenprogramm(anfang, ende):
                 "endzeit" : v["end"].strftime('%H:%M'),
                 "kommentar" : getwl(v, "kommentar", "de")
             })
+    # Dann die Events 
+    events = list(vortragsreihe.find({"event" : True, "sichtbar" : True, "_public" : True, "start" : { "$gte" : anfang}, "end" : { "$lte" : ende }}, sort=[("start", pymongo.ASCENDING)]))
+    for v in events:
+        vortraege_reduced.append(
+            {
+                "reihenkurzname" : "",
+                "vortragsreihe" : getwl(v, "title", "de"),
+                "sprecher" : getwl(v, "sprecher", "de"),
+                "sprecher_affiliation" : "",
+                "titel" : getwl(v, "text", "de"),
+                "abstract" : "",
+                "ort" : "",
+                "url" : v["url"],
+                "datum" : v["start"].strftime('%-d.%-m.%y'),
+                "tag" : tage[v["start"].weekday()],
+                "startzeit" : "",
+                "endzeit" : "",
+                "kommentar" : ""
+            }
+        )
+    
     return vortraege_reduced
 
 def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template=mail_template, absender_email=smtp_user, absender_passwort=smtp_password):
