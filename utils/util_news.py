@@ -490,19 +490,6 @@ def get_monitordata(dtstring, testorpublic):
             }
         )
   
-    data["news"].append(
-            {
-                "link" : "https://www.math.uni-freiburg.de/wochenprogramm/",
-                "showlastday" : False,
-                "highlight" : False,
-                "image" : [],
-                "monitor" : {
-                    "title" : "Vorträge der nächsten sieben Tage",
-                    "text" : "  \n".join([f"{v['tag']}, {v['datum']}, {v["startzeit"]}, {v['ort']}. {v['reihe']} {v['sprecher']}{v['sprecher_affiliation']}. {v['title']}" for v in vortraege])
-                }
-            }
-        )
-    
     # Dann die Events als einzelne News
     events = list(vortragsreihe.find({"event" : True, "sichtbar" : True, "_public" : True, "start" : { "$gte" : dt}, "end" : { "$lte" : dt + timedelta(days = 30) }}, sort=[("start", pymongo.ASCENDING)]))
     for event in events:
