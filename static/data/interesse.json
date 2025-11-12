@@ -106,11 +106,11 @@
         },
         {
           "show": true,
-          "title_de": "Tag der offenen Tür",
+          "title_de": "Studieninformationstag",
           "title_en": "Open Day",
           "image": "/static/images/S1_mit Sonne-naeher-web.jpg",
           "style": "object-fit: cover",
-          "link": "https://www.studium.uni-freiburg.de/de/beratung",
+          "link": "https://www.math.uni-freiburg.de/tag_der_offenen_tuer.html",
           "popover_title_de": "",
           "popover_title_en": "",
           "popover_text_de": "",
