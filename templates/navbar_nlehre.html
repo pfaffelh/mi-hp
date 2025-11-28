@@ -209,18 +209,18 @@
                 <li>
                   <a
                     class="dropdown-item text-black"
-                    href="{{ url_for('showstudiendekanat', lang=lang) }}"
-                    >{% if lang == "de" %}Studienberatung{% else %}Student
-                    counceling{% endif %}</a
+                    href="{{ url_for('showstufaq', lang=lang) }}"
+                  >
+                    {% if lang == "de" %}FAQ{% else
+                    %}FAQ{% endif %}</a
                   >
                 </li>
                 <li>
                   <a
                     class="dropdown-item text-black"
-                    href="{{ url_for('showstufaq', lang=lang) }}"
-                  >
-                    {% if lang == "de" %}FAQ{% else
-                    %}FAQ{% endif %}</a
+                    href="{{ url_for('showstudiendekanat', lang=lang) }}"
+                    >{% if lang == "de" %}Studienberatung{% else %}Student
+                    counceling{% endif %}</a
                   >
                 </li>
                 <li>
