@@ -253,9 +253,9 @@
                 <li>
                   <a
                     class="dropdown-item text-black"
-                    href="{{ url_for('showstudiendekanat', unterseite='calendar', lang=lang) }}"
-                    >{% if lang == "de" %}Prüfungskalender{% else %}Calendar for
-                    exams{% endif %}</a
+                    href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}"
+                    >{% if lang == "de" %}Prüfungsamt{% else %}Examination
+                    office{% endif %}</a
                   >
                 </li>
                 <li>
@@ -277,9 +277,9 @@
                 <li>
                   <a
                     class="dropdown-item text-black"
-                    href="{{ url_for('showstudiendekanat', unterseite = 'pruefungsamt', lang=lang) }}"
-                    >{% if lang == "de" %}Prüfungsamt{% else %}Examination
-                    office{% endif %}</a
+                    href="{{ url_for('showstudiendekanat', unterseite='calendar', lang=lang) }}"
+                    >{% if lang == "de" %}Prüfungskalender{% else %}Calendar for
+                    exams{% endif %}</a
                   >
                 </li>
 
