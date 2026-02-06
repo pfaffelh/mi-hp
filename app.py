@@ -638,7 +638,7 @@ def showvortragsreiheics(lang="de", kurzname="alle"):
 @app.route("/wochenprogramm/<lang>/vortragsreihe/<kurzname>/<anfang>/<end>")
 def showvortragsreihe(lang="de", kurzname="alle", anfang = news.get_start_current_semester().strftime('%Y%m%d'), end = news.get_start_next_semester(news.get_start_current_semester()).strftime('%Y%m%d')):
     reihen, events = news.get_events(lang)
-    data = news.get_wochenprogramm_full(anfang, end, { "kurzname" : kurzname}, lang)
+    data = news.get_wochenprogramm_full(anfang, end, { "kurzname" : kurzname}, lang, ascending = False)
     return render_template("wochenprogramm/reihe.html", reihen = reihen, events = events, kurzname = kurzname, lang=lang, data = data)
 
 @app.route("/wochenprogramm/<lang>/event/<kurzname>/")

@@ -63,9 +63,10 @@ def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), t
     # print(data)
     return data
 
-def data_for_newsarchiv(anfang, end, lang="de", tags = ["Institut"]):
+def data_for_newsarchiv(anfang, end, lang="de", tags = ["Institut"], ascending = False):
+    order = pymongo.ASCENDING if ascending else pymongo.DESCENDING
     data = {}
-    data["news"] =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.end" : { "$lte" : end, "$gte" : anfang }}, sort=[("home.start", pymongo.DESCENDING)]))
+    data["news"] =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.end" : { "$lte" : end, "$gte" : anfang }}, sort=[("home.start", order)]))
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
@@ -78,10 +79,10 @@ def data_for_newsarchiv(anfang, end, lang="de", tags = ["Institut"]):
     # print(data)
     return data
 
-def data_for_newsarchiv_full(lang, anfang, end):
+def data_for_newsarchiv_full(lang, anfang, end, ascending = False):
     anfangdate = datetime.strptime(anfang, '%Y%m%d')
     enddate = datetime.strptime(end, '%Y%m%d')
-    data = data_for_newsarchiv(anfangdate, enddate, lang)    
+    data = data_for_newsarchiv(anfangdate, enddate, lang, ascending)    
     data["zeitraum"] = f"{get_monat(anfangdate.month, lang)} {anfangdate.year}"
     data["previousanfang"] = get_start_previous_month(anfangdate).strftime('%Y%m%d')
     data["nextend"] = get_end_next_month(anfangdate).strftime('%Y%m%d')
@@ -253,7 +254,8 @@ def get_name(kurzname):
     vr = vortragsreihe.find_one({"kurzname" : kurzname, "_public" : True})
     return getwl(vr, "title", lang)
 
-def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle", "_public" : True}, lang="de"):
+def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle", "_public" : True}, lang="de", ascending = True):
+    order = pymongo.ASCENDING if ascending else pymongo.DESCENDING
     data = {}
     tage = tage_lang(lang)
     vr = vortragsreihe.find_one(query)
@@ -261,7 +263,7 @@ def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle", "_publ
     data["prefix"] = getwl(vr, "text", lang)
     data["events"] = []
     if query["kurzname"] == "alle":
-        ev = list(vortragsreihe.find({"_public" : True, "event" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("start", pymongo.ASCENDING)]))
+        ev = list(vortragsreihe.find({"_public" : True, "event" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("start", order)]))
         for e in ev:
             data["events"].append(
                 {
@@ -279,7 +281,7 @@ def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle", "_publ
                     "kommentar" : getwl(e, "kommentar", lang)
                 }
             )
-    vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("start", pymongo.ASCENDING)]))
+    vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True, "start" : {"$gte" : anfangdate, "$lte" : enddate }}, sort=[("start", order)]))
     data["vortrag"] = []
     previousdatum = ""
     for v in vo:
@@ -359,7 +361,7 @@ def get_wochenprogramm_for_calendar(anfangdate, query = {"kurzname" : "alle", "_
         })
     return all
 
-def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public" : True}, lang="de"):
+def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public" : True}, lang="de", ascending = True):
     anfangdate = datetime.strptime(anfang, '%Y%m%d')
     enddate = datetime.strptime(end, '%Y%m%d')
     diffmonth = abs(enddate.month - anfangdate.month)
@@ -382,7 +384,7 @@ def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public"
     previousanfang = previousanfangdate.strftime('%Y%m%d')
     nextend = nextenddate.strftime('%Y%m%d')
 
-    data = get_wochenprogramm(anfangdate, enddate, query, lang)
+    data = get_wochenprogramm(anfangdate, enddate, query, lang, ascending)
     data["anfang"] = anfang
     data["end"] = end
     data["previousanfang"] = previousanfang
@@ -394,7 +396,8 @@ def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public"
     data["anfangnextmonth"] = get_start_next_month(get_start_current_month()).strftime('%Y%m%d')
     return data
 
-def get_event(kurzname, lang = "de"):
+def get_event(kurzname, lang = "de", ascending = True):
+    order = pymongo.ASCENDING if ascending else pymongo.DESCENDING
     data = {}
     tage = tage_lang(lang)
 
@@ -402,7 +405,7 @@ def get_event(kurzname, lang = "de"):
     data["reihe"] = getwl(vr, "title", lang)
     data["prefix"] = getwl(vr, "text", lang)
     data["url"] = vr["url"]
-    vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True}, sort=[("start", pymongo.ASCENDING)]))
+    vo = list(vortrag.find({ "vortragsreihe": { "$elemMatch" : { "$eq" : vr["_id"] }}, "_public" : True}, sort=[("start", order)]))
     data["vortrag"] = []
     previousdatum = ""
     for v in vo:
