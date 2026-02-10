@@ -64,9 +64,25 @@ def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), t
     return data
 
 def data_for_newsarchiv(anfang, end, lang="de", tags = ["Institut"], ascending = False):
+    print(tags)
+    if tags is None:
+        tags = ["Institut"]
+    elif isinstance(tags, str):
+        tags = [tags]
+    else:
+        tags = list(tags)
     order = pymongo.ASCENDING if ascending else pymongo.DESCENDING
     data = {}
-    data["news"] =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.end" : { "$lte" : end, "$gte" : anfang }}, sort=[("home.start", order)]))
+    data["news"] = list(news.find(
+    {
+        "_public": True,
+        "tags": {"$in": tags},
+        "home.end": {"$lte": end, "$gte": anfang}
+    },
+    sort=[("home.start", order)]
+    ))
+    
+    # data["news"] =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.end" : { "$lte" : end, "$gte" : anfang }}, sort=[("home.start", order)]))
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
@@ -79,10 +95,10 @@ def data_for_newsarchiv(anfang, end, lang="de", tags = ["Institut"], ascending =
     # print(data)
     return data
 
-def data_for_newsarchiv_full(lang, anfang, end, ascending = False):
+def data_for_newsarchiv_full(lang, anfang, end):
     anfangdate = datetime.strptime(anfang, '%Y%m%d')
     enddate = datetime.strptime(end, '%Y%m%d')
-    data = data_for_newsarchiv(anfangdate, enddate, lang, ascending)    
+    data = data_for_newsarchiv(anfangdate, enddate, lang)    
     data["zeitraum"] = f"{get_monat(anfangdate.month, lang)} {anfangdate.year}"
     data["previousanfang"] = get_start_previous_month(anfangdate).strftime('%Y%m%d')
     data["nextend"] = get_end_next_month(anfangdate).strftime('%Y%m%d')
