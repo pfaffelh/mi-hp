@@ -18,6 +18,7 @@ import utils.util_person as person
 import utils.util_vvz as vvz
 import utils.util_news as news
 import utils.util_wp as wp
+import utils.util_ldap as ldap
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
@@ -753,6 +754,8 @@ def get_lehre(lang, id, semester = ""):
 ## Regelmäßig ausgeführte Funktionen ##
 #######################################
 
+# todo: add ldap synchronisation
+
 scheduler = BackgroundScheduler(timezone="Europe/Rome")
 # This function reads the Mensaplan everyday and puts the result into the mongodb
 # Runs from Monday to Sunday at 05:30 
@@ -773,4 +776,14 @@ scheduler.add_job(
     hour=12,
     minute=30
 )
+# LDAP synchronisieren jede Nacht um 3:30
+#scheduler.add_job(
+#    func=ldap.synchronize,
+#    trigger="cron",
+#    max_instances=1,
+#    day_of_week='mon-sun',
+#    hour=3,
+#    minute=30
+#)
+
 scheduler.start()
