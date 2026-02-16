@@ -18,7 +18,8 @@ import utils.util_person as person
 import utils.util_vvz as vvz
 import utils.util_news as news
 import utils.util_wp as wp
-import utils.util_ldap as ldap
+# if ldap is new
+#import utils.util_ldap as ldap
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)

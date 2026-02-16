@@ -66,8 +66,9 @@ calendar_host = "cal.mathematik.privat/davical/caldav.php/"
 cal_username, cal_account, cal_password = netrc.authenticators(calendar_host)
 sondertermine_lehre_calendar_url = "http://cal.mathematik.privat/davical/caldav.php/pruefungsamt/pramt/"
 
-ldap_host = "ldap://localhost:389"
-ldap_username, ldap_account, ldap_password = netrc.authenticators(ldap_host)
+# comment in when ldap is new
+#ldap_host = "ldap://localhost:389"
+#ldap_username, ldap_account, ldap_password = netrc.authenticators(ldap_host)
 
 # Mensaplan für Monitor
 mensaplan_host = "https://www.swfr.de/"
