@@ -78,8 +78,8 @@
       "cards": [
         {
           "show": true,
-          "title_de": "Girls Day am 23.4.2026",
-          "title_en": "Girls Day on 23.4.2026",
+          "title_de": "Girls' Day am 23.4.2026",
+          "title_en": "Girls' Day on 23.4.2026",
           "image": "/static/images/girlsday.png",
           "style": "object-fit: contain",
           "link": "https://www.girls-day.de/Radar?lat=0&lon=0&locality=Freiburg&keywords=Magie+mit+Mathe&sortBy=&sortDesc=false&page=1&pageSize=30&radius=20&gkz=&initiativeId=0&categoryIds=NaN&minimumFreePlaces=-1&maximumFreePlaces=-1&minimumParticipantsAge=0&onlySubscribable=false&onlyAccessible=false&onlyEmbedded=false&onlyVirtual=false&onlyNonvirtual=true&organizerId=0&freePlaces=alle&locationType=vor+Ort&warmStart=true&for=event",
