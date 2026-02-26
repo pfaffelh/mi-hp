@@ -16,14 +16,14 @@
                     class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
                   >
                     <h3 class="card-title">
-                      {% if lang == "de" %}{{ item['home']['title_de'] | markdown }}{% else %}{{ item['home']['title_en'] | markdown }}{% endif %}
+                      {% if lang == "de" or item['home']['title_en'] == "" %}{{ item['home']['title_de'] | markdown }}{% else %}{{ item['home']['title_en'] | markdown }}{% endif %}
                     </h3>
                     <p
                       class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
                     >
                       <font size="+2"
                         >
-                        {% if lang == "de" %}{{ item['home']['text_de'] | markdown }}{% else %}{{ item['home']['text_en'] | markdown }}{% endif %}
+                        {% if lang == "de" or item['home']['text_en'] == ""%}{{ item['home']['text_de'] | markdown }}{% else %}{{ item['home']['text_en'] | markdown }}{% endif %}
                         </font>
                       {% if item['link']!= '' %}
                       <a
@@ -67,13 +67,13 @@
                     class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
                   >
                     <h3 class="card-title">
-                      {{ item['monitor']['title'] | markdown }}
+                      {% if lang == "de" or item['home']['title_en'] == "" %}{{ item['home']['title_de'] | markdown }}{% else %}{{ item['home']['title_en'] | markdown }}{% endif %}
                     </h3>
                     <p
                       class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
                     >
                       <font size="+2"
-                        >{{ item['monitor']['text'] | markdown}}</font
+                        >{% if lang == "de" or item['home']['text_en'] == "" %}{{ item['home']['text_de'] | markdown }}{% else %}{{ item['home']['text_en'] | markdown }}{% endif %}</font
                       >
                       {% if item['link']!= '' %}
                       <a
