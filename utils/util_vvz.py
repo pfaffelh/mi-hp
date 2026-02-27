@@ -654,6 +654,19 @@ def get_calendar_data(anzeige_start, lang = "de"):
 
 def get_person_data(abteilung = ""):
     query = {}
+    query = {"$and": [
+        {
+            "$or": [
+                {"einstiegsdatum": None},
+                {"einstiegsdatum": {"$lt": datetime.now()}}
+            ]
+        },
+        {
+            "$or": [
+                {"ausstiegsdatum": None},
+                {"ausstiegsdatum": {"$gt": datetime.now()}}
+            ]
+        }]}
     query["hp_sichtbar"] = True
     query["code"] = {"$all": []}
     abt_code = None
