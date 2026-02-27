@@ -25,10 +25,14 @@
             <a href="mailto:{{ p['mail'] }}"> ✉</a>
           </td>
           <td>
+            {% if p["tel"] %}
             Tel: {{ p["tel"] }}
+            {% endif %}
           </td>
           <td>
+            {% if p["raum"] %}
             Raum {{ p["raum"] }} 
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
