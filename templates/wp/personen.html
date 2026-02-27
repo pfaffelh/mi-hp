@@ -7,34 +7,35 @@
 <div
   class="[&amp;&gt;*]:bl-relative last:[&amp;&gt;*.bl-absolute]:bl-absolute [&amp;&gt;*]:bl-z-20 last:[&amp;&gt;*]:bl-z-10 bl-relative bl-overflow-x-clip [.wp-block-ufr-section_&amp;]:bl-overflow-x-visible bl-bg-transparent bl-text-inherit dark:bl-bg-transparent dark:bl-text-inherit alignfull wp-block-ufr-section has-global-padding is-layout-constrained wp-block-section-is-layout-constrained"
 >
-  {% for k1 in data %} {% if k1["person"] != [] %}
+  {% for k1 in data %} 
+
+<h3 class="wp-block-heading">{{ k1["gruppe"]|markdown }}</h3>
   <h4
     class="wp-block-heading has-text-align-left"
     id="block-0d8febea-81f3-4fa4-b1cc-8bee832ee085"
   >
-    <strong>{{ k1["name"]|markdown }}</strong>
   </h4>
   <figure class="wp-block-table">
     <table class="has-fixed-layout">
       <tbody>
-        {% for p in k1["person"] %}
+        {% for p in k1["members"] %}
         <tr>
           <td>
-            {% if p['labeledURI'] %}
-            <a href="{{ p['labeledURI'] }}"
-              >{{ p["sn"] }}, {{ p["givenName"] }}</a
-            >
-            {% else %} {{ p["sn"] }}, {{ p["givenName"] }} {% endif %}
+        {{ p["name"] | safe }}
             <a href="mailto:{{ p['mail'] }}"> ✉</a>
           </td>
-          <td>Tel: 0761 / 203 {{ p["telephoneNumber"] }}</td>
-          <td>Raum {{ p["roomNumber"] }} ({{p["street"]}})</td>
+          <td>
+            Tel: {{ p["tel"] }}
+          </td>
+          <td>
+            Raum {{ p["raum"] }} 
+          </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
   </figure>
-  {% endif %} {% endfor %}
+  {% endfor %}
 </div>
 
 {% endblock %}

@@ -31,6 +31,8 @@ try:
     vvz_rubrik = mongo_db_vvz["rubrik"]
     vvz_modul = mongo_db_vvz["modul"]
     vvz_person = mongo_db_vvz["person"]
+    vvz_personencode = mongo_db_vvz["personencode"]
+    vvz_personencodekategorie = mongo_db_vvz["personencodekategorie"]
     vvz_raum = mongo_db_vvz["raum"]
     vvz_semester = mongo_db_vvz["semester"]
     vvz_studiengang = mongo_db_vvz["studiengang"]
@@ -91,6 +93,16 @@ def semester_name_en(kurzname):
     b = kurzname[4:]
     c = f"/{a+1}" if b == "WS" else ""
     return f"{'Winter term' if b == 'WS' else 'Summer term'} {a}{c}"
+
+def get_gebaeude(gebaeude_id, url = True):
+    g = vvz_gebaeude.find_one({ "_id": gebaeude_id})["name_de"]
+    gurl = g["url"]
+    if not url or gurl == "":
+        res = g["name_de"]
+    else:
+        raum = ", ".join([r['name_de'], f"[{g['name_de']}]({gurl})"])
+    res = remove_p(markdown(raum))
+    return res
 
 def get_raum(raum_id, url = True):
     r = vvz_raum.find_one({ "_id": raum_id})
@@ -479,7 +491,6 @@ def get_data_person(id, lang = "de"):
         for s in semester:
             sem_data = get_data(s["kurzname"], lang, "", "", query)
             data.append(sem_data)
-    print(data)
     return data
 
 # Wenn id == "all", werden alle Daten der Semester ausgelesen. Wenn id == "", werden keine Daten zurückgegeben. Andernfalls ist es die id einer Lehrperson im vvz.
@@ -640,3 +651,33 @@ def get_calendar_data(anzeige_start, lang = "de"):
                 })
 
     return all
+
+def get_person_data(abteilung = ""):
+    query = {}
+    query["hp_sichtbar"] = True
+    query["code"] = {"$all": []}
+    abt_code = None
+    if abteilung != "":
+        abt_code = vvz_personencode.find_one({"name" : abteilung})    
+        query["code"]["$all"].append(abt_code["_id"])
+    ck = vvz_personencodekategorie.find_one({"name_de" : "Statusgruppe"})
+
+    data = []
+    for stat_code in list(vvz_personencode.find({"codekategorie" : ck["_id"]}, sort = [("rang", pymongo.ASCENDING)])):
+        if abt_code:
+            query["code"]["$all"] = [abt_code["_id"], stat_code["_id"]] 
+        else:
+            query["code"]["$all"] = [stat_code["_id"]] 
+        per = list(vvz_person.find(query, sort=[("name", pymongo.ASCENDING), ("vorname", pymongo.ASCENDING)]))
+        if per:
+            data.append({ "gruppe" : stat_code["name"],
+                "members" : [
+                    {"name" : name_vorname(p["_id"], url = True, lang = "de"),
+                        "tel" : ", ".join(x for x in [p["tel1"], p["tel2"]] if x),
+                        "mail" : ", ".join(x for x in [p["email1"], p["email2"]] if x),
+                        "raum" : ", ".join(f"{x[0]} ({vvz_gebaeude.find_one({ '_id': x[1]})['name_de']})" for x in zip([p["raum1"], p["raum2"]], [p["gebaeude1"], p["gebaeude2"]]) if x[0]),
+                        "kommentar" : p["kommentar_html"]
+                        }
+                        for p in per]})
+        
+    return data
