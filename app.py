@@ -739,6 +739,13 @@ def get_vortraege(anfang = datetime.now().strftime('%Y%m%d'), ende = (datetime.n
 
 # Test mit
 # # curl https://www.math.uni-freiburg.de/nlehre/api/person/de/6679cf96c8213a519f33750e/2025SS/ (das ist KBL)
+# Bartels: 6679cf96c8213a519f3374f7
+# Dondl: 6679cf96c8213a519f337504
+# Ruzicka: 6679cf96c8213a519f337500
+# Salimova: 6679cf96c8213a519f337533
+#curl https://www.math.uni-freiburg.de/nlehre/api/person/de/6679cf96c8213a519f3374f7_6679cf96c8213a519f337504_6679cf96c8213a519f337500_6679cf96c8213a519f337533/2026SS/
+
+
 @app.route("/nlehre/api/person/<lang>/<id>/")
 @app.route("/nlehre/api/person/<lang>/<id>/<semester>/")
 def get_lehre(lang, id, semester = ""):

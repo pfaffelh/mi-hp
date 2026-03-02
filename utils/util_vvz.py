@@ -184,7 +184,11 @@ def make_raumzeit_woechentlich(veranstaltung, lang = "de", url = True, only_haup
     res = []
     for termin in veranstaltung["woechentlicher_termin"]:
         ta = vvz_terminart.find_one({"_id": termin['key']})
-        if ta["hp_sichtbar"] or only_haupt == False:
+#        if False:
+        print("\n\n\n Hier kommt der Fehler:")
+        print(veranstaltung)
+        print(ta)
+        if ta and (ta["hp_sichtbar"] or only_haupt == False):
             ta = ta[f"name_{lang}"]
             if termin['wochentag'] !="":
                 # key, raum, zeit, person, kommentar
