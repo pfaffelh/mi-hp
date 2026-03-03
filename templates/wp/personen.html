@@ -1,4 +1,19 @@
 {% extends config['skel_name'] %} {% block content %}
+<div style="display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; align-items:center;">
+
+{% for k1 in data %} 
+
+  <a href="#{{k1['gruppe']}}"
+     style="display:inline-flex; align-items:center; justify-content:center;
+            padding:5px 9px; border:2px solid #000; text-decoration:none;">
+    {{ k1["gruppe"]|markdown }}
+  </a>
+{% endfor %}
+</div>
+
+<br>
+<br>
+<br>
 
 <h3 class="wp-block-heading">
   <h1>{{ config['titel'] }}</h1>
@@ -9,7 +24,7 @@
 >
   {% for k1 in data %} 
 
-<h3 class="wp-block-heading">{{ k1["gruppe"]|markdown }}</h3>
+<h3 id = "{{ k1['gruppe']}}"" class="wp-block-heading">{{ k1["gruppe"]|markdown }}</h3>
   <h4
     class="wp-block-heading has-text-align-left"
     id="block-0d8febea-81f3-4fa4-b1cc-8bee832ee085"
