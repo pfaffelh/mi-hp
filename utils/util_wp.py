@@ -7,7 +7,7 @@ import latexcodec
 
 config = {
     "personen_de" : {
-        "titel" : "Lehrkörper / Mitarbeiter",
+        "titel" : "Lehrkörper / Mitarbeiter:innen",
         "url_skel" : "https://uni-freiburg.de/math/personen_de/",
         "skel_name" : "skel.html",
         "queries" : [{"string" : "xxx Personen"}],
