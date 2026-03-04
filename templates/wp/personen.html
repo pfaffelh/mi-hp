@@ -48,11 +48,11 @@
             {% if p["raum"] %}
             Raum {{ p["raum"] }} 
             {% endif %}
-            {% if p["raum"] and p["kommentar_html"]%}
+            {% if p["raum"] and p["kommentar"]%}
             <br>
             {% endif %}
-            {% if p["kommentar_html"] %}
-            Raum {{ p["kommentar_html"] }} 
+            {% if p["kommentar"] %}
+            {{ p["kommentar"] }} 
             {% endif %}
           </td>
         </tr>
