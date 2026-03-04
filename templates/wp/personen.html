@@ -48,6 +48,12 @@
             {% if p["raum"] %}
             Raum {{ p["raum"] }} 
             {% endif %}
+            {% if p["raum"] and p["kommentar_html"]%}
+            <br>
+            {% endif %}
+            {% if p["kommentar_html"] %}
+            Raum {{ p["kommentar_html"] }} 
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
