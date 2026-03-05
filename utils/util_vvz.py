@@ -378,7 +378,7 @@ def get_data_stundenplan(sem_shortname, lang="de", vpn = False):
     sem_id = sem.get("_id", "")
 
     name = f'name_{lang}'
-    ver = vvz_veranstaltung.find({"semester" : sem_id})
+    ver = vvz_veranstaltung.find({"semester" : sem_id, "hp_sichtbar" : True})
     data = []
     for v in ver:
         for t in v["woechentlicher_termin"]:
@@ -524,7 +524,7 @@ def get_data_personenplan(sem_shortname, lang="de", vpn = False):
         query["hp_sichtbar"] = True
     sem = vvz_semester.find_one(query)
     sem_id = sem["_id"] if sem else ""
-    ver = vvz_veranstaltung.find({"semester" : sem_id})
+    ver = vvz_veranstaltung.find({"semester" : sem_id, "hp_sichtbar" : True})
 
     data = []
     for v in ver:
