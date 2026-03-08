@@ -72,8 +72,11 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 ####################
 
 # Ansatz des Personenverzeichnisses etc unter wp
+# config unter util_wp.py
 # Folgende Links stehen zur Verfügung:
-# https://math.uni-freiburg.de/cd2021/personen_de/
+# https://math.uni-freiburg.de/cd2021/personen_de/ Personenverzeichnis aller Personen am MI
+# https://math.uni-freiburg.de/cd2021/lehre_MSt_de/ Personenverzeichnis aller Personen am MI
+
 
 @app.route("/cd2021/<site>/")
 @app.route("/cd2021/<site>/<show>/")
@@ -81,10 +84,15 @@ def showfakewp(site, show = "", lang = "de"):
     dir = site.split("_")
     lang = list(reversed(dir))[0]
     if dir[0] == "lehre":
-        if len(dir) == 3:
+        if len(dir) == 4:
             abteilung = dir[1]
             co = list(vvz.vvz_code.find({"name" : f"hp_{abteilung}"}))
-            print(co)
+            dat = vvz.get_data(dir[2], lang = lang, studiengang = "", modul = "", veranstaltungs_query = {"code" : { "$in" : [c["_id"] for c in co]}}, vpn = False)
+            # print(dat)
+            site = f"{dir[0]}_{dir[1]}_{dir[3]}"
+        elif len(dir) == 3:
+            abteilung = dir[1]
+            co = list(vvz.vvz_code.find({"name" : f"hp_{abteilung}"}))
             dat = vvz.get_data(vvz.get_current_semester_kurzname(), lang = lang, studiengang = "", modul = "", veranstaltungs_query = {"code" : { "$in" : [c["_id"] for c in co]}}, vpn = False)
             # print(dat)
         else:
@@ -141,15 +149,6 @@ def showfakewp(site, show = "", lang = "de"):
         wp.make_skel(wp.config[site])
         
     return render_template(wp.config[site]["template"], data = data, config = wp.config[site], show=show, lang=lang)
-
-# Ansatz der News unter wp
-@app.route("/cd2021/<lang>/news/")
-def shownewswp(show = "", lang = "de"):
-    data = news.data_for_base(lang)
-    person.make_skel("https://uni-freiburg.de/lehre/", 
-              {"class" : "clearfix"})
-    return render_template("wp/news.html", data = data, show=show, lang=lang)
-
 
 ###############
 ## Home page ##
