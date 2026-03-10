@@ -94,22 +94,6 @@ config = {
         "strings" : ["{% block content%}Content{% endblock %}"], 
         "template" : "wp/personen.html"
     },
-    "institut_de" : {
-        "titel" : "Veranstaltungen",
-        "url_skel" : "https://www.uni-freiburg.de/math/",
-        "skel_name" : "skel_institut.html",
-        "queries" : [{"string" : "News"}, {"string" : "Veranstaltungen"}],
-        "strings" : ["{% block content0%}Content{% endblock %}", "{% block content1%}Content{% endblock %}"], 
-        "template" : "wp/institut.html"
-    },
-    "news_de" : {
-        "titel" : "",
-        "url_skel" : "https://www.uni-freiburg.de/math/news/",
-        "skel_name" : "skel_news.html",
-        "queries" : [{"string" : "xxx News"}, {"string" : "Vorträge xxx"}],
-        "strings" : ["{% block content1%}Content{% endblock %}", "{% block content2%}Content{% endblock %}"], 
-        "template" : "wp/news.html"
-    },
     "fdmseminar_en" : {
         "titel" : "",
         "url_skel" : "https://uni-freiburg.de/fdmai/seminar/",

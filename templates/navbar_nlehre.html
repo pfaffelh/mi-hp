@@ -138,11 +138,18 @@
                   <hr class="dropdown-divider" />
                 </li>
                 <li>
+                  {% if lang == "de" %}<a
+                    class="dropdown-item text-black"
+                    href="https://uni-freiburg.de/mathphys/schritt-fuer-schritt-zur-promotion-mathematik/"
+                    >Promotion</a
+                  >
+                  {% else %}
                   <a
                     class="dropdown-item text-black"
-                    href="{{ url_for('showstudiengang', studiengang='promotion', lang = lang) }}"
-                    >{% if lang == "de" %}Promotion{% else %}PhD{% endif %}</a
+                    href="https://uni-freiburg.de/mathphys/schritt-fuer-schritt-zur-promotion-mathematik/"
+                    >PhD</a
                   >
+                  {% endif %}
                 </li>
               </ul>
             </li>

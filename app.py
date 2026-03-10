@@ -260,19 +260,6 @@ def showanfang(lang, anchor=""):
     return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'studienanfang', show=anchor))
 
 ###################
-## Weiterbildung ## 
-###################
-# Soll es diese Seite wirklich geben?
-
-@app.route("/nlehre/<lang>/weiterbildung/")
-@app.route("/nlehre/<lang>/weiterbildung/<anchor>")
-def showweiterbildung(lang, anchor=""):
-    with app.open_resource('static/data/weiterbildung.json') as f:
-        data = json.load(f)
-    filenames = ["interesse/interesse_content.html"]
-    return render_template("home_nlehre.html", filenames=filenames, data = data, anchor=anchor, lang=lang)
-
-###################
 ## Studiengaenge ##
 ###################
 
@@ -543,12 +530,12 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
 
 #        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -365), lang)
 #        return render_template("studiendekanat/calendar_pruefungen.html", events=events, lang=lang, lehrende = False)
-    if unterseite == "anmeldung":
-        filenames = ["studiendekanat/anmeldung.html"]
-    if unterseite == "modulplan":
-        filenames = ["studiendekanat/modulplan.html"]
-    if unterseite == "pruefungen":
-        filenames = ["studiendekanat/pruefungen.html"]
+#    if unterseite == "anmeldung":
+#        filenames = ["studiendekanat/anmeldung.html"]
+#    if unterseite == "modulplan":
+#        filenames = ["studiendekanat/modulplan.html"]
+#    if unterseite == "pruefungen":
+#        filenames = ["studiendekanat/pruefungen.html"]
     if unterseite == "ausland":
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'ausland', show=show))
     return render_template("home_nlehre.html", data=data, filenames = filenames, lang=lang)
@@ -557,7 +544,6 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
 ## Für Lehrende ##
 ##################
 
-# show ist entweder "", oder "all" oder eine id für ein qa-Paar
 @app.route("/nlehre/<lang>/lehrende/")
 @app.route("/nlehre/<lang>/lehrende/faq/")
 @app.route("/nlehre/<lang>/lehrende/faq/<show>")
