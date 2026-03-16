@@ -301,7 +301,7 @@ def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle", "_publ
     data["vortrag"] = []
     previousdatum = ""
     for v in vo:
-        re = list(vortragsreihe.find({"_id" : { "$in": v["vortragsreihe"], "$ne" : vr["_id"]}, "_public" : True}))
+        re = list(vortragsreihe.find({"_id" : { "$in": v["vortragsreihe"], "$ne" : vr["_id"]}, "kurzname" : {"$ne" : "alle"}, "_public" : True}))
         data["vortrag"].append(
             {
                 "uid" : str(v["_id"]),
