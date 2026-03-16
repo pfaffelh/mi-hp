@@ -84,11 +84,11 @@
           <!-- Modal Buttons -->
           <button type="button" class="btn btn-primary w-100 h-100 lecture-module-button text-start"
             data-bs-toggle="modal" data-bs-target="#modal-{{modal_index.value}}" style="font-size: 110%">
-            {% if v["reihe"] != []%}
+            <!-- {% if v["reihe"] != []%}
             <p style="margin-bottom: 2px">
               {% for (title, url) in v["reihe"] %} {{ title }} {% endfor %}
             </p>
-            {% endif %}
+            {% endif %}-->
             <p style="font-weight: bold; margin-bottom: 2px">
               {% if v["sprecher"] != "" %}{{ v["sprecher"] }}{% if
               v["sprecher_affiliation"] != "" %} ({{ v["sprecher_affiliation"]
