@@ -183,17 +183,17 @@
                 <li class="dropdown-submenu">
                   <a
                     class="dropdown-item text-black"
-                    href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
-                    >{% if lang == "de" %}alle Semester{% else %}all semesters{% endif %}</a
+                    href="{{ url_for('showlehrveranstaltungen', lang=lang, semester = kommendes_semester) }}"
+                    >{% if lang == "de" %}kommendes Semester{% else %}upcoming
+                    semester{% endif %}</a
                   >
                 </li>
                 {% endif %}
                 <li class="dropdown-submenu">
                   <a
                     class="dropdown-item text-black"
-                    href="{{ url_for('showlehrveranstaltungen', lang=lang, semester = kommendes_semester) }}"
-                    >{% if lang == "de" %}kommendes Semester{% else %}upcoming
-                    semester{% endif %}</a
+                    href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
+                    >{% if lang == "de" %}alle Semester{% else %}all semesters{% endif %}</a
                   >
                 </li>
               </ul>
