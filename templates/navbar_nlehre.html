@@ -121,7 +121,8 @@
                   <a
                     class="dropdown-item text-black"
                     href="{{ url_for('showstudiengang', studiengang='med_erw', lang = lang) }}"
-                    >Master of Education Erweiterungsfach</a
+                    >Master of Education {% if lang == "de" %}Erweiterungsfach{% else
+                    %}Additional Subject{% endif %}</a
                   >
                 </li>
                 <li>
@@ -131,7 +132,8 @@
                     ><!-- <button type="button" class="btn btn-primary btn-sm">
                     NEU
                   </button>-->
-                    Masterstudiengang Lehramt Gymnasium – dual</a
+                    {% if lang == "de" %}Masterstudiengang Lehramt Gymnasium – dual{% else
+                    %}Master of Education (Gymnasium) with integrated practice{% endif %}</a
                   >
                 </li>
                 <li>
