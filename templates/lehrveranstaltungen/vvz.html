@@ -97,9 +97,9 @@ endblock %} {% block content %}
     {% if lang == "de" %} Lehrveranstaltungen {% if studiengang == "" %} {% else
     %} für {% if modul == "" %} den {% else %} das Modul {{
     data["modul"]["name"] }} im Studiengang {% endif %} {{
-    data['studiengang']['name'] }} {% endif %} im {% else %} Course program {%
+    data['studiengang']['name'] }} {% endif %} im {% else %} Course programme {%
     if studiengang == "" %} {% else %} for the {% if modul == "" %} {% else %}
-    module {{ data["modul"]["name"] }} in the study program {% endif %} {{
+    module {{ data["modul"]["name"] }} in the study programme {% endif %} {{
     data['studiengang']['name'] }} {% endif %} in {% endif %}
     {{data['semester']['name']}}
   </h2>
