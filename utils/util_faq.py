@@ -65,6 +65,7 @@ def get_accordion_data(kurzname, lang, show = ""):
         loc = { field: x[field] for field in fields}
         loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in x["quicklinks"]]
         loc["kinder"] = []
+        loc["url"] = f"/nlehre/{lang}/page/{x['kurzname']}"
         for field_prefix in field_prefixes:
             loc[field_prefix] = get(x, field_prefix, lang)
         data = loc
@@ -75,6 +76,7 @@ def get_accordion_data(kurzname, lang, show = ""):
                 loc = { field: y[field] for field in fields}
                 loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in y["quicklinks"]]
                 loc["kinder"] = []
+                loc["url"] = f"/nlehre/{lang}/page/{x['kurzname']}/{y['kurzname']}"
                 for field_prefix in field_prefixes:
                     loc[field_prefix] = get(y, field_prefix, lang)
                 data["kinder"].append(loc)
@@ -84,6 +86,7 @@ def get_accordion_data(kurzname, lang, show = ""):
                         loc = { field: z[field] for field in fields}
                         loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in z["quicklinks"]]
                         loc["kinder"] = []
+                        loc["url"] = f"/nlehre/{lang}/page/{x['kurzname']}/{z['kurzname']}"
                         for field_prefix in field_prefixes:
                             loc[field_prefix] = get(z, field_prefix, lang)
                         data["kinder"][-1]["kinder"].append(loc)                        
