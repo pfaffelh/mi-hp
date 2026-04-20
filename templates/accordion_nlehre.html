@@ -20,7 +20,7 @@ endblock %} {% block content %}
         role="button"
         aria-disabled="true"
       >
-        {{ q['title']}}
+        {{ q['title']|markdown}}
       </a>
       {% endfor %}
     </div>
