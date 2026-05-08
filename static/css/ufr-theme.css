@@ -71,6 +71,7 @@ a:hover {
   color: var(--ufr-black);
   padding: 12px 24px;
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 @media (min-width: 768px) {
   .ufr-breadcrumb-bar {

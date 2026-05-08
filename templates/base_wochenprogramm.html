@@ -109,6 +109,14 @@
     </header>
 
     <nav class="ufr-breadcrumb-bar" aria-label="breadcrumb">
+      <a href="https://www.uni-freiburg.de">
+        {% if lang == "de" %}Universität Freiburg{% else %}University of Freiburg{% endif %}
+      </a>
+      <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.7em;"></i>
+      <a href="https://uni-freiburg.de/mathphys/">
+        {% if lang == "de" %}Fakultät für Mathematik und Physik{% else %}Faculty of Mathematics and Physics{% endif %}
+      </a>
+      <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.7em;"></i>
       <a href="https://www.math.uni-freiburg.de">
         {% if lang == "de" %}Mathematisches Institut{% else %}Mathematical Institute{% endif %}
       </a>
