@@ -34,16 +34,17 @@ a:hover {
   color: var(--ufr-link-hover);
 }
 
-/* ---- Header ---- */
+/* ---- Header (white background, black logo + icons) ---- */
 .ufr-header {
-  background-color: var(--ufr-blue);
-  color: var(--ufr-white);
-  padding: 18px 16px 14px;
+  background-color: var(--ufr-white);
+  color: var(--ufr-black);
+  padding: 25px 24px 15px;
   position: relative;
+  overflow-x: clip;
 }
 @media (min-width: 768px) {
   .ufr-header {
-    padding: 42px 48px 26px;
+    padding: 42px 48px 20px;
   }
 }
 @media (min-width: 1200px) {
@@ -53,14 +54,14 @@ a:hover {
 }
 .ufr-header a,
 .ufr-header a:visited {
-  color: var(--ufr-white);
+  color: var(--ufr-black);
   text-decoration: none;
 }
 .ufr-header a:hover {
-  color: var(--ufr-yellow-40);
+  color: var(--ufr-blue-80);
 }
 .ufr-header .ufr-page-title {
-  color: var(--ufr-white);
+  color: var(--ufr-black);
   margin: 0;
   font-weight: 600;
 }
@@ -95,10 +96,47 @@ a:hover {
   color: var(--ufr-blue);
 }
 
-/* Header logo sizes */
-.ufr-logo-large {
-  width: 270px;
+/* Decorative yellow shield in the upper right (CI element) */
+.ufr-shield {
+  position: absolute;
+  right: 0;
+  top: -80px;
+  width: 150px;
   height: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+@media (min-width: 768px) {
+  .ufr-shield {
+    width: 275px;
+  }
+}
+@media (min-width: 1200px) {
+  .ufr-shield {
+    width: 595px;
+    right: -100px;
+    top: -125px;
+  }
+}
+.ufr-header > * {
+  position: relative;
+  z-index: 1;
+}
+.ufr-logo-link {
+  display: inline-block;
+  flex: 0 1 auto;
+}
+
+/* Header logo sizes — generous, like uni-freiburg.de */
+.ufr-logo-large {
+  width: 100%;
+  max-width: 290px;
+  height: auto;
+}
+@media (min-width: 1200px) {
+  .ufr-logo-large {
+    max-width: 472px;
+  }
 }
 .ufr-logo-small {
   width: 55px;
@@ -119,7 +157,7 @@ a:hover {
   background: transparent;
   border: 0;
   padding: 4px 8px;
-  color: var(--ufr-white);
+  color: var(--ufr-black);
   font-size: 0.95rem;
   line-height: 1.2;
   font-weight: 500;
@@ -134,10 +172,10 @@ a:hover {
 }
 .ufr-icon-button:hover,
 .ufr-icon-button:focus {
-  color: var(--ufr-yellow-40);
+  color: var(--ufr-blue-80);
 }
 .ufr-icon-button:focus-visible {
-  outline: 2px dotted var(--ufr-white);
+  outline: 2px dotted var(--ufr-black);
   outline-offset: 4px;
 }
 
