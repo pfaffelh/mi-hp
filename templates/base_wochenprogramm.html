@@ -116,16 +116,17 @@
         </div>
       </div>
 
-      <nav class="ufr-breadcrumb mt-4" aria-label="breadcrumb">
-        <a href="https://www.math.uni-freiburg.de">
-          {% if lang == "de" %}Mathematisches Institut{% else %}Mathematical Institute{% endif %}
-        </a>
-        <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.7em;"></i>
-        <a href="{{url_for('showvortragsreihe', lang = lang) }}">
-          {% if lang == "de" %}Wochenprogramm{% else %}Weekly Programme{% endif %}
-        </a>
-      </nav>
     </header>
+
+    <nav class="ufr-breadcrumb-bar" aria-label="breadcrumb">
+      <a href="https://www.math.uni-freiburg.de">
+        {% if lang == "de" %}Mathematisches Institut{% else %}Mathematical Institute{% endif %}
+      </a>
+      <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.7em;"></i>
+      <a href="{{url_for('showvortragsreihe', lang = lang) }}">
+        {% if lang == "de" %}Wochenprogramm{% else %}Weekly Programme{% endif %}
+      </a>
+    </nav>
 
     <div class="offcanvas offcanvas-end ufr-offcanvas" tabindex="-1" id="ufrMenu" aria-labelledby="ufrMenuLabel" style="width: min(90vw, 480px);">
       <div class="offcanvas-header">
@@ -198,11 +199,16 @@
     </ul>
 
     <footer class="ufr-footer">
-      <div class="container">
+      <nav class="ufr-footer-nav" aria-label="Footer">
         <ul class="ufr-footer-links">
           <li>
-            <a href="{{url_for('showbildnachweis', lang=lang)}}">
-              {% if lang == "de" %}Bildnachweis{% else %}Image credits{% endif %}
+            <a href="https://uni-freiburg.de/math/institut/">
+              {% if lang == "de" %}Kontakt{% else %}Contact{% endif %}
+            </a>
+          </li>
+          <li>
+            <a href="https://uni-freiburg.de/barrierefreiheit/">
+              {% if lang == "de" %}Barrierefreiheit{% else %}Accessibility{% endif %}
             </a>
           </li>
           <li>
@@ -215,19 +221,50 @@
               {% if lang == "de" %}Datenschutz{% else %}Privacy{% endif %}
             </a>
           </li>
+          <li>
+            <a href="{{url_for('showbildnachweis', lang=lang)}}">
+              {% if lang == "de" %}Bildnachweis{% else %}Image credits{% endif %}
+            </a>
+          </li>
+          <li>
+            <a href="https://uni-freiburg.de/lageplaene/">
+              {% if lang == "de" %}Lageplan{% else %}Site plan{% endif %}
+            </a>
+          </li>
           {% if vpn %}
           <li>
             <a href="{{url_for('showtools', lang=lang)}}">Tools</a>
           </li>
           {% endif %}
         </ul>
-        <div class="ufr-footer-bottom">
-          © 2025
-          <a href="https://math.uni-freiburg.de/">
-            {% if lang == "de" %}Mathematisches Institut, Universität Freiburg{%
-            else %}Mathematical Institute, University of Freiburg{% endif %}
-          </a>
-        </div>
+      </nav>
+
+      <div class="ufr-footer-institute">
+        <h2>
+          {% if lang == "de" %}Mathematisches Institut{% else %}Mathematical Institute{% endif %}
+        </h2>
+        <p>Ernst-Zermelo-Str. 1, 79104 Freiburg</p>
+      </div>
+
+      <div class="ufr-footer-divider"></div>
+
+      <div class="ufr-footer-university">
+        <a href="https://www.uni-freiburg.de" class="ufr-footer-logo">
+          <img
+            src="{{url_for('static', filename = 'images/ufr-logo-white.svg') }}"
+            alt="Albert-Ludwigs-Universität Freiburg"
+            style="width:100%; height:auto;"
+          />
+        </a>
+        <p>
+          {% if lang == "de" %}
+            Besucheradresse: Friedrichstraße 39, 79098 Freiburg<br />
+            Postanschrift: Postfach, 79085 Freiburg
+          {% else %}
+            Visitor address: Friedrichstraße 39, 79098 Freiburg, Germany<br />
+            Postal address: Postfach, 79085 Freiburg, Germany
+          {% endif %}
+        </p>
       </div>
     </footer>
 
