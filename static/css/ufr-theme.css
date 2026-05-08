@@ -151,6 +151,156 @@ a:hover {
   }
 }
 
+/* ---- UFR-style accordion (vertical) ----
+   Mirrors uni-freiburg.de's wp-block-ufr-accordion for vertical
+   layout: items separated by 3px borders, chevron on the right
+   that rotates on open. Built on Bootstrap's collapse widget. */
+.ufr-accordion {
+  margin-top: 20px;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .ufr-accordion {
+    margin-top: 30px;
+  }
+}
+@media (min-width: 1200px) {
+  .ufr-accordion {
+    margin-top: 35px;
+  }
+}
+.ufr-accordion-item {
+  display: block;
+  position: relative;
+  border-bottom: 3px solid var(--ufr-black);
+  background: var(--ufr-white);
+}
+.ufr-accordion-item:first-child {
+  border-top: 3px solid var(--ufr-black);
+}
+.ufr-accordion-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 16px 0;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: var(--ufr-black);
+}
+@media (min-width: 768px) {
+  .ufr-accordion-header {
+    padding: 20px 0;
+  }
+}
+.ufr-accordion-header:hover {
+  color: var(--ufr-blue);
+}
+.ufr-accordion-header:focus-visible {
+  outline: 2px dotted var(--ufr-black);
+  outline-offset: 6px;
+}
+.ufr-accordion-header-content {
+  flex-grow: 1;
+  min-width: 0;
+  padding-right: 16px;
+}
+.ufr-accordion-header-content .ufr-accordion-title {
+  display: block;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 500;
+  margin: 0;
+  color: inherit;
+}
+@media (min-width: 768px) {
+  .ufr-accordion-header-content .ufr-accordion-title {
+    font-size: 1.25rem;
+  }
+}
+.ufr-accordion-header-content .ufr-accordion-meta {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--ufr-black);
+  margin-top: 4px;
+  opacity: 0.85;
+}
+.ufr-accordion-chevron {
+  flex-shrink: 0;
+  width: 30px;
+  height: 40px;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ufr-black);
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+@media (min-width: 768px) {
+  .ufr-accordion-chevron {
+    width: 35px;
+    height: 50px;
+  }
+}
+@media (min-width: 1200px) {
+  .ufr-accordion-chevron {
+    width: 40px;
+    height: 70px;
+  }
+}
+.ufr-accordion-header[aria-expanded="true"] .ufr-accordion-chevron {
+  transform: rotate(-90deg);
+}
+.ufr-accordion-chevron svg {
+  width: 100%;
+  height: 100%;
+}
+.ufr-accordion-body {
+  padding: 8px 0 28px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.ufr-accordion-body h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 16px 0 6px;
+  color: var(--ufr-black);
+}
+.ufr-accordion-body h5:first-child {
+  margin-top: 0;
+}
+.ufr-accordion-body p {
+  margin: 0 0 12px;
+}
+.ufr-accordion-body a {
+  color: var(--ufr-blue);
+}
+.ufr-accordion-body .ufr-accordion-speaker-line {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.ufr-accordion-body .ufr-accordion-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  border: 2px solid var(--ufr-blue);
+  padding: 4px 12px;
+  background: var(--ufr-white);
+  color: var(--ufr-blue);
+  text-decoration: none;
+}
+.ufr-accordion-body .ufr-accordion-link:hover {
+  background: var(--ufr-blue);
+  color: var(--ufr-white);
+}
+
 /* ---- UFR-style content modal (e.g. talk details) ---- */
 .ufr-modal .modal-content {
   border: 0;

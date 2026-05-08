@@ -5,105 +5,70 @@
   <h2>{% if data["url"] != "" %} <a href = "{{ data['url']}}">{{ data['reihe']}}</a>{% else %}{{ data['reihe']}}{% endif %}</h2>
   {% if data['prefix'] != "" %}
   <p>{{ data['prefix']|markdown }}</p>
-  {% endif %} {% set modal_index = namespace(value=0) %}
-  <div class="container mt-1">
-    <div class="row button-grid">
-      {% for v in data["vortrag"] %}
-      <div
-        class="col-md-2 col-sm-2 d-flex align-items-stretch justify-content-start px-0"
-      >
-        {% if v["tag"] %}{{ v["tag"] }}, {{ v["datum"] }}{% else %}{% endif %}
-      </div>
-      <div
-        class="col-md-10 col-sm-10 d-flex align-items-stretch justify-content-start px-0"
-      >
-        <!-- Modal Buttons -->
-        <button
-          type="button"
-          class="btn btn-primary w-100 h-100 lecture-module-button text-start"
-          data-bs-toggle="modal"
-          data-bs-target="#modal-{{modal_index.value}}"
-          style="font-size: 110%"
-        >
-          {% if v["reihentitle"] != ""%}
-          <p style="margin-bottom: 2px">{{ v["reihentitle"]}}</p>
+  {% endif %}
+
+  {% set item_index = namespace(value=0) %}
+  <div class="ufr-accordion" id="ufrAccEvent">
+    {% for v in data["vortrag"] %}
+    <div class="ufr-accordion-item">
+      <button type="button" class="ufr-accordion-header"
+        data-bs-toggle="collapse"
+        data-bs-target="#ev-item-{{item_index.value}}"
+        aria-expanded="false"
+        aria-controls="ev-item-{{item_index.value}}">
+        <span class="ufr-accordion-header-content">
+          {% if v["reihentitle"] != "" %}
+          <span class="ufr-accordion-meta" style="font-weight:500">{{ v["reihentitle"] }}</span>
           {% endif %}
-          <p style="font-weight: bold; margin-bottom: 2px">
+          <span class="ufr-accordion-title">
             {{ v["sprecher"] }}{% if v["sprecher_affiliation"] != "" %} ({{
             v["sprecher_affiliation"] }}){% endif %}: {{ v['title'] }}
-          </p>
-          <p style="margin-bottom: 2px">
-            {{ v["startzeit"] }}{% if v["endzeit"] != v["startzeit"] %}-{{
+          </span>
+          <span class="ufr-accordion-meta">
+            {% if v["tag"] %}{{ v["tag"] }}, {{ v["datum"] }}, {% endif %}
+            {{ v["startzeit"] }}{% if v["endzeit"] != v["startzeit"] %}–{{
             v["endzeit"]}}{% endif %}, {{ v["ort"] }}
+          </span>
+        </span>
+        <span class="ufr-accordion-chevron" aria-hidden="true">
+          <svg viewBox="0 0 35 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 5 L25.6 25 L5 45" stroke="currentColor" stroke-width="6" />
+          </svg>
+        </span>
+      </button>
+      <div id="ev-item-{{item_index.value}}" class="collapse">
+        <div class="ufr-accordion-body">
+          <p class="ufr-accordion-speaker-line">
+            {% if v['url'] != "" %}
+              <a href="{{ v['url'] | safe }}">{{ v['sprecher'] }}: {{ v['title']|markdown }}</a>
+            {% else %}
+              {{ v['sprecher'] }}: {{ v['title']|markdown }}
+            {% endif %}
           </p>
-        </button>
-      </div>
+          {% if v['url'] != "" %}
+          <a class="ufr-accordion-link" href="{{ v['url'] }}">
+            <i class="fa-solid fa-link" aria-hidden="true"></i>
+            {% if lang == "de" %}Weitere Informationen{% else %}More information{% endif %}
+          </a>
+          {% endif %}
 
-      <!-- Modals -->
-      <div
-        class="modal fade ufr-modal"
-        id="modal-{{modal_index.value}}"
-        tabindex="-1"
-        aria-labelledby="modalLabel-{{modal_index.value}}"
-        aria-hidden="true"
-        data-bs-backdrop="true"
-      >
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <!-- Header -->
-            <div class="modal-header">
-              {% if v['url'] != "" %}
-              <h4 class="modal-title" id="modalLabel-{{modal_index.value}}">
-                <a href="{{ v['url'] | safe}}">
-                  {{ v['sprecher']}}: {{ v['title']|markdown }}
-                </a>
-              </h4>
-              {% else %}
-              <h4 class="modal-title" id="modalLabel-{{modal_index.value}}">
-                {{ v['sprecher']}}: {{ v['title']|markdown }}
-              </h4>
-              {% endif %}
-              <button type="button" class="btn-close" data-bs-dismiss="modal"
-                aria-label="{% if lang == 'de' %}Schließen{% else %}Close{% endif %}"></button>
-            </div>
+          <h5>{% if lang == "de" %}Zeit und Ort{% else %}Time and place{% endif %}</h5>
+          <p>
+            {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if
+            v["endzeit"] != v["startzeit"] %}–{{ v["endzeit"]}}{% endif %}, {{
+            v["ort"] }}
+          </p>
 
-            <!-- Body -->
-            <div class="modal-body">
-              <div>
-                {% if v['url'] != "" %}
-                <a
-                  class="btn btn-outline-primary active bg-white"
-                  style="border-color: #004a99"
-                  href="{{ v['url'] }}"
-                  role="button"
-                >
-                  <i class="fa-solid fa-link" style="color: #004a99"></i>
-                </a>
-                {% endif %}
-                <h5 class="h5">
-                  {% if lang == "de" %}Zeit und Ort{% else %}Time and place{%
-                  endif %}
-                </h5>
-                <p>
-                  {{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if
-                  v["endzeit"] != v["startzeit"] %}-{{ v["endzeit"]}}{% endif
-                  %}, {{ v["ort"] }}
-                </p>
-
-                <h5 class="h5">
-                  {% if lang == "de" %}Zusammenfassung{% else %}Abstract{% endif
-                  %}
-                </h5>
-                <p>{{ v["abstract"] }}</p>
-                {% if v["kommentar"] %}
-                <i>{{ v["kommentar"]|markdown }}</i> {% endif %}
-              </div>
-            </div>
-          </div>
+          <h5>{% if lang == "de" %}Zusammenfassung{% else %}Abstract{% endif %}</h5>
+          <p>{{ v["abstract"] }}</p>
+          {% if v["kommentar"] %}
+          <p><i>{{ v["kommentar"]|markdown }}</i></p>
+          {% endif %}
         </div>
       </div>
-      {% set modal_index.value = modal_index.value + 1 %} {% endfor %}
     </div>
+    {% set item_index.value = item_index.value + 1 %}
+    {% endfor %}
   </div>
 
   {% endblock %} {% block js %} {% endblock %}
