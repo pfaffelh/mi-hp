@@ -72,7 +72,7 @@
     {% endblock %}
   </head>
 
-  <body class="bg-white">
+  <body class="bg-white has-ufr-bottom-bar">
     <header class="ufr-header">
       <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
         <div class="d-flex align-items-center gap-3">
@@ -140,6 +140,29 @@
         ></button>
       </div>
       <div class="offcanvas-body">
+        <ul class="ufr-menu-list d-md-none">
+          <li>
+            <div class="ufr-menu-section-title">
+              {% if lang == "de" %}Sprache{% else %}Language{% endif %}
+            </div>
+            <ul class="ufr-menu-sub">
+              <li>
+                {% if lang == "de" %}
+                <span style="display:block; padding:8px 32px 8px 48px;"><strong>Deutsch</strong></span>
+                {% else %}
+                <a href='{{ url_for_self(lang = "de") }}'>Deutsch</a>
+                {% endif %}
+              </li>
+              <li>
+                {% if lang == "en" %}
+                <span style="display:block; padding:8px 32px 8px 48px;"><strong>English</strong></span>
+                {% else %}
+                <a href='{{ url_for_self(lang = "en") }}'>English</a>
+                {% endif %}
+              </li>
+            </ul>
+          </li>
+        </ul>
         {% block navbar %}{% endblock %}
       </div>
     </div>
@@ -147,6 +170,32 @@
     <main id="main-content">
       {% block content %}{% endblock %}
     </main>
+
+    <ul class="ufr-mobile-bar" aria-label="{% if lang == 'de' %}Schnellzugriff{% else %}Quick access{% endif %}">
+      <li>
+        <button
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#ufrMenu"
+          aria-controls="ufrMenu"
+        >
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          <span>{% if lang == "de" %}Menü{% else %}Menu{% endif %}</span>
+        </button>
+      </li>
+      <li>
+        <a href="{{ url_for('showvortragsreihe', lang = lang) }}">
+          <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+          <span>{% if lang == "de" %}Vorträge{% else %}Talks{% endif %}</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.math.uni-freiburg.de">
+          <i class="fa-solid fa-house" aria-hidden="true"></i>
+          <span>{% if lang == "de" %}Institut{% else %}Institute{% endif %}</span>
+        </a>
+      </li>
+    </ul>
 
     <footer class="ufr-footer">
       <div class="container">
