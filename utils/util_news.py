@@ -262,6 +262,20 @@ def get_start_previous_month(date):
         res = datetime(date.year-1, 12, 1)
     return res
 
+def get_start_current_week():
+    date = datetime.now()
+    monday = date - timedelta(days=date.weekday())
+    return datetime(monday.year, monday.month, monday.day)
+
+def get_start_next_week(date):
+    return date + timedelta(days=7)
+
+def get_end_next_week(date):
+    return date + timedelta(days=14)
+
+def get_start_previous_week(date):
+    return date - timedelta(days=7)
+
 def get_monat(n, lang="de"):
     monate_de = ['', 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
     monate_en = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -382,8 +396,27 @@ def get_wochenprogramm_for_calendar(anfangdate, query = {"kurzname" : "alle", "_
 def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public" : True}, lang="de", ascending = True):
     anfangdate = datetime.strptime(anfang, '%Y%m%d')
     enddate = datetime.strptime(end, '%Y%m%d')
+    diffdays = (enddate - anfangdate).days
     diffmonth = abs(enddate.month - anfangdate.month)
-    if diffmonth == 1 or (anfangdate.month == 12 and enddate.month == 1):
+    if diffdays == 7 and anfangdate.weekday() == 0:
+        if lang == "de":
+            if anfangdate.year == enddate.year:
+                zeitraum = f"{anfangdate.day}.{anfangdate.month}.-{enddate.day}.{enddate.month}.{enddate.year}"
+            else:
+                zeitraum = f"{anfangdate.day}.{anfangdate.month}.{anfangdate.year}-{enddate.day}.{enddate.month}.{enddate.year}"
+        else:
+            a_month = get_monat(anfangdate.month, lang)
+            e_month = get_monat(enddate.month, lang)
+            if anfangdate.year == enddate.year:
+                if anfangdate.month == enddate.month:
+                    zeitraum = f"{a_month} {anfangdate.day}-{enddate.day}, {enddate.year}"
+                else:
+                    zeitraum = f"{a_month} {anfangdate.day} - {e_month} {enddate.day}, {enddate.year}"
+            else:
+                zeitraum = f"{a_month} {anfangdate.day}, {anfangdate.year} - {e_month} {enddate.day}, {enddate.year}"
+        previousanfangdate = get_start_previous_week(anfangdate)
+        nextenddate = get_end_next_week(anfangdate)
+    elif diffmonth == 1 or (anfangdate.month == 12 and enddate.month == 1):
         zeitraum = f"{get_monat(anfangdate.month, lang)} {anfangdate.year}"
         previousanfangdate = get_start_previous_month(anfangdate)
         nextenddate = get_end_next_month(anfangdate)
@@ -412,6 +445,8 @@ def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public"
     data["anfangnextsemester"] = get_start_next_semester(get_start_current_semester()).strftime('%Y%m%d')
     data["anfangcurrentmonth"] = get_start_current_month().strftime('%Y%m%d')
     data["anfangnextmonth"] = get_start_next_month(get_start_current_month()).strftime('%Y%m%d')
+    data["anfangcurrentweek"] = get_start_current_week().strftime('%Y%m%d')
+    data["anfangnextweek"] = get_start_next_week(get_start_current_week()).strftime('%Y%m%d')
     return data
 
 def get_event(kurzname, lang = "de", ascending = True):
