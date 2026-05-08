@@ -1,141 +1,65 @@
 <div class="container" id="inhalt">
-  <br />
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <a
-          href="{{url_for('shownews', lang=lang, anfang = data['previousanfang'], end = data['anfang'])}}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
-          <i class="fas fa-angles-up" style="transform: rotate(270deg)"></i>
-        </a>
-        <a
-          href="{{url_for('shownews', lang=lang, anfang = data['end'], end = data['nextend'])}}"
-          class="btn btn-primary"
-          role="button"
-          aria-disabled="true"
-        >
-          <i class="fas fa-angles-up" style="transform: rotate(90deg)"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <h2>
-      {% if lang == "de" %}News-Archiv des Mathematischen Instituts{% else
-      %}News-archive of the mathematical institute{% endif %}
-    </h2>
+  <div class="container text-end mb-3">
+    <a
+      href="{{url_for('shownews', lang=lang, anfang = data['previousanfang'], end = data['anfang'])}}"
+      class="btn btn-primary"
+      role="button"
+    >
+      <i class="fas fa-angles-up" style="transform: rotate(270deg)"></i>
+    </a>
+    <a
+      href="{{url_for('shownews', lang=lang, anfang = data['end'], end = data['nextend'])}}"
+      class="btn btn-primary"
+      role="button"
+    >
+      <i class="fas fa-angles-up" style="transform: rotate(90deg)"></i>
+    </a>
   </div>
 
-  <div class="container py-1">
-    <h3>{{ data['zeitraum'] }}</h3>
-    <div class="message-list visible" id="message-container">
-      {% for item in data["news"] %}
-      <div class="message-item">
-        <div class="row row-cols-1">
-          <div class="col row-cols-1 g-3">
-            <div
-              class="card h-100 {% if item['today'] and item['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
-            >
-              <div class="g-2">
-                <div class="card-body py-0 px-0">
-                  <div class="row py-0 px-0">
-                    {% if loop.index0 %2 == 0 %}
-                    <div
-                      class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
-                    >
-                      <h3 class="card-title">
-                        {% if lang == "de" %}{{ item['home']['title_de'] |
-                        markdown }}{% else %}{{ item['home']['title_en'] |
-                        markdown }}{% endif %}
-                      </h3>
-                      <p
-                        class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
-                      >
-                        <font size="+2">
-                          {% if lang == "de" %}{{ item['home']['text_de'] |
-                          markdown }}{% else %}{{ item['home']['text_en'] |
-                          markdown }}{% endif %}
-                        </font>
-                        {% if item['link']!= '' %}
-                        <a
-                          class="btn btn-outline-primary active bg-white"
-                          style="border-color: #004a99"
-                          href="{{ item['link'] }}"
-                          role="button"
-                        >
-                          <i
-                            class="fa-solid fa-link"
-                            style="color: #004a99"
-                          ></i>
-                        </a>
-                        {% endif %}
-                      </p>
-                    </div>
-                    {% if item['image'] != [] %}
-                    <div
-                      class="col-sm-{{ item['image'][0]['widthmonitor']}} text-right"
-                    >
-                      {% if item['image'] %}
-                      <img
-                        src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
-                        alt="Red dot"
-                        class="float-end"
-                        alt="..."
-                        style="{{ item['image'][0]['stylemonitor'] }}"
-                      />
-                      {% endif %}
-                    </div>
-                    {% endif %} {% else %} {% if item['image'] != [] %}
-                    <div
-                      class="col-sm-{{ item['image'][0]['widthmonitor']}} text-left"
-                    >
-                      <img
-                        src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
-                        alt="Red dot"
-                        class="float-start"
-                        style="{{ item['image'][0]['stylemonitor'] }}"
-                      />
-                    </div>
-                    {% endif %}
-                    <div
-                      class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
-                    >
-                      <h3 class="card-title">
-                        {{ item['monitor']['title'] | markdown }}
-                      </h3>
-                      <p
-                        class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
-                      >
-                        <font size="+2"
-                          >{{ item['monitor']['text'] | markdown}}</font
-                        >
-                        {% if item['link']!= '' %}
-                        <a
-                          class="btn btn-outline-primary active bg-white"
-                          style="border-color: #004a99"
-                          href="{{ item['link'] }}"
-                          role="button"
-                        >
-                          <i
-                            class="fa-solid fa-link"
-                            style="color: #004a99"
-                          ></i>
-                        </a>
-                        {% endif %}
-                      </p>
-                    </div>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <h2>
+    {% if lang == "de" %}News-Archiv des Mathematischen Instituts{% else
+    %}News archive of the Mathematical Institute{% endif %}
+  </h2>
+
+  <h3>{{ data['zeitraum'] }}</h3>
+
+  <div class="ufr-news-list" id="message-container">
+    {% for item in data["news"] %}
+    <article
+      class="ufr-news-item
+        {% if item['today'] and item['showlastday'] %}is-today{% endif %}
+        {% if loop.index0 % 2 %}is-reversed{% endif %}"
+    >
+      {% if item['image'] != [] %}
+      <div class="ufr-news-image">
+        <img
+          src="data:image/{{ item['mime'] }};base64,{{ item['image'][0]['data'] }}"
+          alt=""
+        />
       </div>
-      {% endfor %}
-    </div>
+      {% endif %}
+
+      <div class="ufr-news-text">
+        {% if loop.index0 % 2 == 0 %}
+        <h3>
+          {% if lang == "de" %}{{ item['home']['title_de']|markdown }}{% else %}{{ item['home']['title_en']|markdown }}{% endif %}
+        </h3>
+        <div>
+          {% if lang == "de" %}{{ item['home']['text_de']|markdown }}{% else %}{{ item['home']['text_en']|markdown }}{% endif %}
+        </div>
+        {% else %}
+        <h3>{{ item['monitor']['title']|markdown }}</h3>
+        <div>{{ item['monitor']['text']|markdown }}</div>
+        {% endif %}
+
+        {% if item['link'] != '' %}
+        <a class="ufr-accordion-link" href="{{ item['link'] }}">
+          <i class="fa-solid fa-link" aria-hidden="true"></i>
+          {% if lang == "de" %}Weitere Informationen{% else %}More information{% endif %}
+        </a>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
   </div>
 </div>
