@@ -90,21 +90,18 @@
           </a>
         </div>
         <div class="ufr-header-actions">
-          <div class="ufr-lang">
-            {% if lang == "de" %}
-              <span class="active">DE</span>
-            {% else %}
-              <a href='{{ url_for_self(lang = "de") }}'>DE</a>
-            {% endif %}
-            <span class="mx-1">|</span>
-            {% if lang == "en" %}
-              <span class="active">EN</span>
-            {% else %}
-              <a href='{{ url_for_self(lang = "en") }}'>EN</a>
-            {% endif %}
-          </div>
           <button
-            class="ufr-menu-toggle"
+            class="ufr-icon-button"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#ufrLangModal"
+            aria-label="{% if lang == 'de' %}Sprache wählen{% else %}Choose language{% endif %}"
+          >
+            <i class="fa-solid fa-globe" aria-hidden="true"></i>
+            <span>{% if lang == "de" %}Sprache{% else %}Language{% endif %}</span>
+          </button>
+          <button
+            class="ufr-icon-button"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#ufrMenu"
@@ -128,7 +125,13 @@
       </a>
     </nav>
 
-    <div class="offcanvas offcanvas-end ufr-offcanvas" tabindex="-1" id="ufrMenu" aria-labelledby="ufrMenuLabel" style="width: min(90vw, 480px);">
+    <div class="offcanvas offcanvas-end ufr-offcanvas" tabindex="-1" id="ufrMenu" aria-labelledby="ufrMenuLabel">
+      <img
+        class="ufr-menu-seal"
+        src="{{url_for('static', filename = 'images/ufr-seal.svg')}}"
+        alt=""
+        aria-hidden="true"
+      />
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="ufrMenuLabel">
           {% if lang == "de" %}Menü{% else %}Menu{% endif %}
@@ -141,30 +144,32 @@
         ></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="ufr-menu-list d-md-none">
-          <li>
-            <div class="ufr-menu-section-title">
-              {% if lang == "de" %}Sprache{% else %}Language{% endif %}
-            </div>
-            <ul class="ufr-menu-sub">
-              <li>
-                {% if lang == "de" %}
-                <span style="display:block; padding:8px 32px 8px 48px;"><strong>Deutsch</strong></span>
-                {% else %}
-                <a href='{{ url_for_self(lang = "de") }}'>Deutsch</a>
-                {% endif %}
-              </li>
-              <li>
-                {% if lang == "en" %}
-                <span style="display:block; padding:8px 32px 8px 48px;"><strong>English</strong></span>
-                {% else %}
-                <a href='{{ url_for_self(lang = "en") }}'>English</a>
-                {% endif %}
-              </li>
-            </ul>
-          </li>
-        </ul>
         {% block navbar %}{% endblock %}
+      </div>
+    </div>
+
+    <div class="modal fade ufr-lang-modal" id="ufrLangModal" tabindex="-1" aria-labelledby="ufrLangModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h2 class="ufr-lang-title" id="ufrLangModalLabel">
+            {% if lang == "de" %}Sprache{% else %}Language{% endif %}
+          </h2>
+          <ul class="ufr-lang-list">
+            <li>
+              <a href='{{ url_for_self(lang = "de") }}' rel="alternate" hreflang="de" {% if lang == "de" %}aria-current="true"{% endif %}>
+                <i class="fa-solid fa-globe me-2" aria-hidden="true"></i>
+                Deutsch
+              </a>
+            </li>
+            <li>
+              <a href='{{ url_for_self(lang = "en") }}' rel="alternate" hreflang="en" {% if lang == "en" %}aria-current="true"{% endif %}>
+                <i class="fa-solid fa-globe me-2" aria-hidden="true"></i>
+                English
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -189,6 +194,17 @@
           <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
           <span>{% if lang == "de" %}Vorträge{% else %}Talks{% endif %}</span>
         </a>
+      </li>
+      <li>
+        <button
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#ufrLangModal"
+          aria-label="{% if lang == 'de' %}Sprache wählen{% else %}Choose language{% endif %}"
+        >
+          <i class="fa-solid fa-globe" aria-hidden="true"></i>
+          <span>{% if lang == "de" %}Sprache{% else %}Language{% endif %}</span>
+        </button>
       </li>
       <li>
         <a href="https://www.math.uni-freiburg.de">
