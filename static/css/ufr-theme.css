@@ -151,6 +151,53 @@ a:hover {
   }
 }
 
+/* ---- UFR-style content modal (e.g. talk details) ---- */
+.ufr-modal .modal-content {
+  border: 0;
+  border-radius: 0;
+  background-color: var(--ufr-white);
+}
+.ufr-modal .modal-header {
+  background-color: var(--ufr-blue);
+  color: var(--ufr-white);
+  border: 0;
+  border-radius: 0;
+  padding: 24px 56px 24px 32px;
+  position: relative;
+}
+.ufr-modal .modal-header .modal-title,
+.ufr-modal .modal-header h4 {
+  color: var(--ufr-white);
+  margin: 0;
+}
+.ufr-modal .modal-header a {
+  color: var(--ufr-white);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.ufr-modal .modal-header a:hover {
+  color: var(--ufr-yellow-40);
+}
+.ufr-modal .modal-body {
+  padding: 28px 32px 32px;
+}
+.ufr-modal .btn-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  filter: invert(1) grayscale(100%) brightness(200%);
+  opacity: 0.9;
+  width: 24px;
+  height: 24px;
+  background-size: 20px 20px;
+}
+.ufr-modal .btn-close:hover,
+.ufr-modal .btn-close:focus {
+  opacity: 1;
+  outline: 2px dotted var(--ufr-white);
+  outline-offset: 4px;
+}
+
 /* ---- Language switcher modal ---- */
 .ufr-lang-modal .modal-content {
   background-color: var(--ufr-blue);

@@ -41,7 +41,7 @@
 
       <!-- Modals -->
       <div
-        class="modal fade"
+        class="modal fade ufr-modal"
         id="modal-{{modal_index.value}}"
         tabindex="-1"
         aria-labelledby="modalLabel-{{modal_index.value}}"
@@ -58,27 +58,30 @@
                   {{ v['sprecher']}}: {{ v['title']|markdown }}
                 </a>
               </h4>
-
-              <a
-                class="btn btn-outline-primary active bg-white"
-                style="border-color: #004a99"
-                href="{{ v['url'] }}"
-                role="button"
-              >
-                <i class="fa-solid fa-link" style="color: #004a99"></i>
-              </a>
               {% else %}
-              <h4 style="color: black">
+              <h4 class="modal-title" id="modalLabel-{{modal_index.value}}">
                 {{ v['sprecher']}}: {{ v['title']|markdown }}
               </h4>
               {% endif %}
+              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="{% if lang == 'de' %}Schließen{% else %}Close{% endif %}"></button>
             </div>
 
             <!-- Body -->
             <div class="modal-body">
               <div>
+                {% if v['url'] != "" %}
+                <a
+                  class="btn btn-outline-primary active bg-white"
+                  style="border-color: #004a99"
+                  href="{{ v['url'] }}"
+                  role="button"
+                >
+                  <i class="fa-solid fa-link" style="color: #004a99"></i>
+                </a>
+                {% endif %}
                 <h5 class="h5">
-                  {% if lang == "de" %}Zeit un Ort{% else %}Time and place{%
+                  {% if lang == "de" %}Zeit und Ort{% else %}Time and place{%
                   endif %}
                 </h5>
                 <p>
@@ -96,15 +99,6 @@
                 <i>{{ v["kommentar"]|markdown }}</i> {% endif %}
               </div>
             </div>
-
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              {% if lang == 'de' %} Schließen {% elif lang == 'en' %} Close {%
-              endif %}
-            </button>
           </div>
         </div>
       </div>
