@@ -96,32 +96,6 @@ a:hover {
   color: var(--ufr-blue);
 }
 
-/* Decorative yellow shield in the upper right (CI element) */
-.ufr-shield {
-  position: absolute;
-  right: 0;
-  top: -80px;
-  width: 150px;
-  height: auto;
-  pointer-events: none;
-  z-index: 0;
-}
-@media (min-width: 768px) {
-  .ufr-shield {
-    width: 275px;
-  }
-}
-@media (min-width: 1200px) {
-  .ufr-shield {
-    width: 595px;
-    right: -100px;
-    top: -125px;
-  }
-}
-.ufr-header > * {
-  position: relative;
-  z-index: 1;
-}
 .ufr-logo-link {
   display: inline-block;
   flex: 0 1 auto;
