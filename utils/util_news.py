@@ -399,21 +399,22 @@ def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public"
     diffdays = (enddate - anfangdate).days
     diffmonth = abs(enddate.month - anfangdate.month)
     if diffdays == 7 and anfangdate.weekday() == 0:
+        sundaydate = enddate - timedelta(days=1)
         if lang == "de":
-            if anfangdate.year == enddate.year:
-                zeitraum = f"{anfangdate.day}.{anfangdate.month}.-{enddate.day}.{enddate.month}.{enddate.year}"
+            if anfangdate.year == sundaydate.year:
+                zeitraum = f"{anfangdate.day}.{anfangdate.month}.-{sundaydate.day}.{sundaydate.month}.{sundaydate.year}"
             else:
-                zeitraum = f"{anfangdate.day}.{anfangdate.month}.{anfangdate.year}-{enddate.day}.{enddate.month}.{enddate.year}"
+                zeitraum = f"{anfangdate.day}.{anfangdate.month}.{anfangdate.year}-{sundaydate.day}.{sundaydate.month}.{sundaydate.year}"
         else:
             a_month = get_monat(anfangdate.month, lang)
-            e_month = get_monat(enddate.month, lang)
-            if anfangdate.year == enddate.year:
-                if anfangdate.month == enddate.month:
-                    zeitraum = f"{a_month} {anfangdate.day}-{enddate.day}, {enddate.year}"
+            s_month = get_monat(sundaydate.month, lang)
+            if anfangdate.year == sundaydate.year:
+                if anfangdate.month == sundaydate.month:
+                    zeitraum = f"{a_month} {anfangdate.day}-{sundaydate.day}, {sundaydate.year}"
                 else:
-                    zeitraum = f"{a_month} {anfangdate.day} - {e_month} {enddate.day}, {enddate.year}"
+                    zeitraum = f"{a_month} {anfangdate.day} - {s_month} {sundaydate.day}, {sundaydate.year}"
             else:
-                zeitraum = f"{a_month} {anfangdate.day}, {anfangdate.year} - {e_month} {enddate.day}, {enddate.year}"
+                zeitraum = f"{a_month} {anfangdate.day}, {anfangdate.year} - {s_month} {sundaydate.day}, {sundaydate.year}"
         previousanfangdate = get_start_previous_week(anfangdate)
         nextenddate = get_end_next_week(anfangdate)
     elif diffmonth == 1 or (anfangdate.month == 12 and enddate.month == 1):
