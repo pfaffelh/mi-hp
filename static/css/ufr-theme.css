@@ -301,6 +301,31 @@ a:hover {
   color: var(--ufr-white);
 }
 
+/* Nested accordion (smaller, thinner borders) */
+.ufr-accordion--nested {
+  margin-top: 16px;
+}
+.ufr-accordion--nested .ufr-accordion-item {
+  border-bottom: 1px solid var(--ufr-blue-40);
+}
+.ufr-accordion--nested .ufr-accordion-item:first-child {
+  border-top: 1px solid var(--ufr-blue-40);
+}
+.ufr-accordion--nested .ufr-accordion-header {
+  padding: 12px 0;
+}
+.ufr-accordion--nested .ufr-accordion-header-content .ufr-accordion-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+.ufr-accordion--nested .ufr-accordion-chevron {
+  width: 22px;
+  height: 30px;
+}
+.ufr-accordion--nested .ufr-accordion-body {
+  padding: 4px 0 20px;
+}
+
 /* ---- UFR-style content modal (e.g. talk details) ---- */
 .ufr-modal .modal-content {
   border: 0;
