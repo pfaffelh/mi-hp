@@ -74,57 +74,62 @@
 
   <body class="bg-white has-ufr-bottom-bar">
     <header class="ufr-header">
-      <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
-        <a href="https://www.uni-freiburg.de" title="Albert-Ludwigs-Universität Freiburg" class="ufr-logo-link">
-          <img
-            class="ufr-logo-large"
-            src="{{url_for('static', filename = 'images/ufr-logo-black.svg') }}"
-            alt="Albert-Ludwigs-Universität Freiburg"
-          />
-        </a>
-        <div class="ufr-header-actions">
-          <button
-            class="ufr-icon-button"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#ufrLangModal"
-            aria-label="{% if lang == 'de' %}Sprache wählen{% else %}Choose language{% endif %}"
-          >
-            <i class="fa-solid fa-globe" aria-hidden="true"></i>
-            <span>{% if lang == "de" %}Sprache{% else %}Language{% endif %}</span>
-          </button>
-          <button
-            class="ufr-icon-button"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#ufrMenu"
-            aria-controls="ufrMenu"
-          >
-            <i class="fa-solid fa-bars" aria-hidden="true"></i>
-            <span>{% if lang == "de" %}Menü{% else %}Menu{% endif %}</span>
-          </button>
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+          <a href="https://www.uni-freiburg.de" title="Albert-Ludwigs-Universität Freiburg" class="ufr-logo-link">
+            <img
+              class="ufr-logo-large"
+              src="{{url_for('static', filename = 'images/ufr-logo-black.svg') }}"
+              alt="Albert-Ludwigs-Universität Freiburg"
+            />
+          </a>
+          <div class="ufr-header-actions">
+            <button
+              class="ufr-icon-button"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#ufrLangModal"
+              aria-label="{% if lang == 'de' %}Sprache wählen{% else %}Choose language{% endif %}"
+            >
+              <i class="fa-solid fa-globe" aria-hidden="true"></i>
+              <span>{% if lang == "de" %}Sprache{% else %}Language{% endif %}</span>
+            </button>
+            <button
+              class="ufr-icon-button"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#ufrMenu"
+              aria-controls="ufrMenu"
+            >
+              <i class="fa-solid fa-bars" aria-hidden="true"></i>
+              <span>{% if lang == "de" %}Menü{% else %}Menu{% endif %}</span>
+            </button>
+          </div>
         </div>
       </div>
-
     </header>
 
-    <nav class="ufr-breadcrumb-bar" aria-label="breadcrumb">
-      <a href="https://www.uni-freiburg.de">
-        {% if lang == "de" %}Universität Freiburg{% else %}University of Freiburg{% endif %}
-      </a>
-      <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.7em;"></i>
-      <a href="https://uni-freiburg.de/mathphys/">
-        {% if lang == "de" %}Fakultät für Mathematik und Physik{% else %}Faculty of Mathematics and Physics{% endif %}
-      </a>
-      <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.7em;"></i>
-      <a href="https://www.math.uni-freiburg.de">
-        {% if lang == "de" %}Mathematisches Institut{% else %}Mathematical Institute{% endif %}
-      </a>
-      <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.7em;"></i>
-      <a href="{{url_for('showvortragsreihe', lang = lang) }}">
-        {% if lang == "de" %}Wochenprogramm{% else %}Weekly Programme{% endif %}
-      </a>
-    </nav>
+    <div class="ufr-breadcrumb-bar">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <a href="https://www.uni-freiburg.de">
+            {% if lang == "de" %}Universität Freiburg{% else %}University of Freiburg{% endif %}
+          </a>
+          <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.7em;"></i>
+          <a href="https://uni-freiburg.de/mathphys/">
+            {% if lang == "de" %}Fakultät für Mathematik und Physik{% else %}Faculty of Mathematics and Physics{% endif %}
+          </a>
+          <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.7em;"></i>
+          <a href="https://www.math.uni-freiburg.de">
+            {% if lang == "de" %}Mathematisches Institut{% else %}Mathematical Institute{% endif %}
+          </a>
+          <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.7em;"></i>
+          <a href="{{url_for('showvortragsreihe', lang = lang) }}">
+            {% if lang == "de" %}Wochenprogramm{% else %}Weekly Programme{% endif %}
+          </a>
+        </nav>
+      </div>
+    </div>
 
     <div class="offcanvas offcanvas-end ufr-offcanvas" tabindex="-1" id="ufrMenu" aria-labelledby="ufrMenuLabel">
       <img

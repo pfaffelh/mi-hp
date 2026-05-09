@@ -34,22 +34,22 @@ a:hover {
   color: var(--ufr-link-hover);
 }
 
-/* ---- Header (white background, black logo + icons) ---- */
+/* ---- Header (white bg, black logo + icons; horizontal alignment via .container inside) ---- */
 .ufr-header {
   background-color: var(--ufr-white);
   color: var(--ufr-black);
-  padding: 25px 24px 15px;
+  padding: 25px 0 15px;
   position: relative;
   overflow-x: clip;
 }
 @media (min-width: 768px) {
   .ufr-header {
-    padding: 42px 48px 20px;
+    padding: 42px 0 20px;
   }
 }
 @media (min-width: 1200px) {
   .ufr-header {
-    padding: 70px 139px 35px;
+    padding: 70px 0 35px;
   }
 }
 .ufr-header a,
@@ -65,22 +65,22 @@ a:hover {
   margin: 0;
   font-weight: 600;
 }
-/* Breadcrumb bar (white bg, below the blue header) */
+/* Breadcrumb bar (white bg, full width; inner .container aligns with main content) */
 .ufr-breadcrumb-bar {
   background-color: var(--ufr-white);
   color: var(--ufr-black);
-  padding: 12px 24px;
+  padding: 12px 0;
   font-size: 0.95rem;
   line-height: 1.6;
 }
 @media (min-width: 768px) {
   .ufr-breadcrumb-bar {
-    padding: 14px 48px;
+    padding: 14px 0;
   }
 }
 @media (min-width: 1200px) {
   .ufr-breadcrumb-bar {
-    padding: 16px 139px;
+    padding: 16px 0;
   }
 }
 .ufr-breadcrumb-bar a {
