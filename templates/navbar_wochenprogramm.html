@@ -1,53 +1,67 @@
-<header class="navbar navbar-expand-xxl bg-ufr-blue">
-  <nav class="navbar container navbar-dark flex">
-    <div class="d-flex flex-grow-1">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
-        aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <ul class="navbar-nav me-auto mb-2 mb-xl-0">
-          <li class="nav-item dropdown px-4 text-white ms-0">
-            {% if lang == "de" %}Vortragsreihen{% else %}Lecture series{% endif
-            %}
-            <ul class="dropdown-menu" data-bs-theme="light">
-              {% for reihe in reihen %}
-              <li>
-                <a class="dropdown-item text-black"
-                  href="{{ url_for('showvortragsreihe', kurzname = reihe['kurzname'], lang = lang) }}">{{ reihe["title"]
-                  }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </li>
-          <li class="nav-item dropdown px-4 text-white ms-0">
-            {% if lang == "de" %}Events{% else %}Events{% endif %}
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              {% if events != [] %}
-              {% for event in events %}
-              <li class="dropdown-submenu">
-                <a class="dropdown-item text-black"
-                  href="{{ url_for('showevent', lang=lang, kurzname = event['kurzname']) }}">
-                  {{ event['title'] }}</a>
-              </li>
-              {% endfor %}
-              {% else %}
-              <li class="dropdown-submenu">
-                {% if lang == "de" %}Keine Events geplant{% else %}No events planned{% endif %}
-              </li>
-              {% endif %}
-            </ul>
-          </li>
-          <li>
-            <a class="dropdown-item text-white px-4" href="{{ url_for('shownews', lang=lang) }}">
-              News-Archiv</a>
-          </li>
-          <li>
-            <a class="dropdown-item text-white px-4" href="{{ url_for('showwoprofaq', lang=lang) }}">
-              FAQ</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
+<ul class="ufr-menu-list">
+  <li>
+    <a class="ufr-menu-item" href="{{ url_for('showvortragsreihe', lang = lang) }}">
+      {% if lang == "de" %}Alle Vorträge{% else %}All talks{% endif %}
+    </a>
+  </li>
+  {% if reihen %}
+  <li>
+    <span class="ufr-menu-section-title">
+      {% if lang == "de" %}Vortragsreihen{% else %}Lecture series{% endif %}
+    </span>
+    <ul class="ufr-menu-sub">
+      {% for reihe in reihen %}
+      <li>
+        <a href="{{ url_for('showvortragsreihe', kurzname = reihe['kurzname'], lang = lang) }}">
+          {{ reihe["title"] }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endif %}
+  <li>
+    <span class="ufr-menu-section-title">Events</span>
+    <ul class="ufr-menu-sub">
+      {% if events != [] %}
+        {% for event in events %}
+        <li>
+          <a href="{{ url_for('showevent', lang=lang, kurzname = event['kurzname']) }}">
+            {{ event['title'] }}
+          </a>
+        </li>
+        {% endfor %}
+      {% else %}
+        <li style="opacity:0.7;">
+          {% if lang == "de" %}Keine Events geplant{% else %}No events planned{% endif %}
+        </li>
+      {% endif %}
+    </ul>
+  </li>
+  <li>
+    <a class="ufr-menu-item" href="{{ url_for('shownews', lang=lang) }}">
+      {% if lang == "de" %}News-Archiv{% else %}News archive{% endif %}
+    </a>
+  </li>
+  <li>
+    <a class="ufr-menu-item" href="{{ url_for('showwoprofaq', lang=lang) }}">FAQ</a>
+  </li>
+</ul>
+
+<ul class="ufr-menu-footer">
+  <li>
+    <a href="{{url_for('showimpressum', lang=lang)}}">
+      {% if lang == "de" %}Impressum{% else %}Imprint{% endif %}
+    </a>
+  </li>
+  <li>
+    <a href="{{url_for('showdatenschutz', lang=lang)}}">
+      {% if lang == "de" %}Datenschutz{% else %}Privacy{% endif %}
+    </a>
+  </li>
+  <li>
+    <a href="https://uni-freiburg.de/barrierefreiheit/">
+      {% if lang == "de" %}Barrierefreiheit{% else %}Accessibility{% endif %}
+    </a>
+  </li>
+</ul>

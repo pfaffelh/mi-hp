@@ -29,10 +29,19 @@ except:
     pass
     # logger.warning("No connection to Database 1")
 
+_FALLBACK_EN = {
+    "Veranstaltungen und Vorträge": "Events and Talks",
+}
+
 def getwl(x, field, lang):
     otherlang = "en" if lang == "de" else "de"
     loc = x.get(f"{field}_{lang}", "")
-    return loc if loc != "" else x.get(f"{field}_{otherlang}", "")
+    if loc:
+        return loc
+    fallback = x.get(f"{field}_{otherlang}", "")
+    if lang == "en" and fallback in _FALLBACK_EN:
+        return _FALLBACK_EN[fallback]
+    return fallback
 
 def get_events(lang = "de"):
     reihen = []
