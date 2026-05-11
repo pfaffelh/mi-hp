@@ -59,8 +59,10 @@
             v["ort"] }}
           </p>
 
+          {% if v["abstract"] %}
           <h5>{% if lang == "de" %}Zusammenfassung{% else %}Abstract{% endif %}</h5>
           <p>{{ v["abstract"] }}</p>
+          {% endif %}
           {% if v["kommentar"] %}
           <p><i>{{ v["kommentar"]|markdown }}</i></p>
           {% endif %}
