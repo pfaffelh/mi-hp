@@ -1,100 +1,40 @@
 <div class="container">
-  <h1> News für Studierende</h1>
-  <div class="message-list visible" id="message-container">
+  <h1>
+    {% if lang == "de" %}News für Studierende{% else %}News for students{% endif %}
+  </h1>
+
+  <div class="ufr-news-list" id="message-container">
     {% for item in data["news"] %}
-    <div class="message-item">
-      <div class="row row-cols-1">
-        <div class="col row-cols-1 g-3">
-          <div
-            class="card h-100 {% if item['today'] and item['showlastday'] %} bg-ufr-yellow {% else %} bg-ufr-blue-20{% endif %}"
-          >
-            <div class="g-2">
-              <div class="card-body py-0 px-0">
-                <div class="row py-0 px-0">
-                  {% if loop.index0 %2 == 0 %}
-                  <div
-                    class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
-                  >
-                    <h3 class="card-title">
-                      {% if lang == "de" or item['home']['title_en'] == "" %}{{ item['home']['title_de'] | markdown }}{% else %}{{ item['home']['title_en'] | markdown }}{% endif %}
-                    </h3>
-                    <p
-                      class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
-                    >
-                      <font size="+2"
-                        >
-                        {% if lang == "de" or item['home']['text_en'] == ""%}{{ item['home']['text_de'] | markdown }}{% else %}{{ item['home']['text_en'] | markdown }}{% endif %}
-                        </font>
-                      {% if item['link']!= '' %}
-                      <a
-                        class="btn btn-outline-primary active bg-white"
-                        style="border-color: #004a99"
-                        href="{{ item['link'] }}"
-                        role="button"
-                      >
-                        <i class="fa-solid fa-link" style="color: #004a99"></i>
-                      </a>
-                      {% endif %}
-                    </p>
-                  </div>
-                  {% if item['image'] != [] %}
-                  <div
-                    class="col-sm-{{ item['image'][0]['widthmonitor']}} text-right"
-                  >
-                    {% if item['image'] %}
-                    <img
-                      src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
-                      alt="Red dot"
-                      class="float-end"
-                      alt="..."
-                      style="{{ item['image'][0]['stylemonitor'] }}"
-                    />
-                    {% endif %}
-                  </div>
-                  {% endif %} {% else %} {% if item['image'] != [] %}
-                  <div
-                    class="col-sm-{{ item['image'][0]['widthmonitor']}} text-left"
-                  >
-                    <img
-                      src="data:image/{{ item['mime'] }};base64, {{ item['image'][0]['data'] }}"
-                      alt="Red dot"
-                      class="float-start"
-                      style="{{ item['image'][0]['stylemonitor'] }}"
-                    />
-                  </div>
-                  {% endif %}
-                  <div
-                    class="col-sm-{% if item['image'] == [] %}12{% else %}{{ 12 - item['image'][0]['widthmonitor'] }}{% endif %} px-4"
-                  >
-                    <h3 class="card-title">
-                      {% if lang == "de" or item['home']['title_en'] == "" %}{{ item['home']['title_de'] | markdown }}{% else %}{{ item['home']['title_en'] | markdown }}{% endif %}
-                    </h3>
-                    <p
-                      class="card-text {% if item['today'] and item['showlastday'] %} watermark-today {% endif %}"
-                    >
-                      <font size="+2"
-                        >{% if lang == "de" or item['home']['text_en'] == "" %}{{ item['home']['text_de'] | markdown }}{% else %}{{ item['home']['text_en'] | markdown }}{% endif %}</font
-                      >
-                      {% if item['link']!= '' %}
-                      <a
-                        class="btn btn-outline-primary active bg-white"
-                        style="border-color: #004a99"
-                        href="{{ item['link'] }}"
-                        role="button"
-                      >
-                        <i class="fa-solid fa-link" style="color: #004a99"></i>
-                      </a>
-                      {% endif %}
-                    </p>
-                  </div>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <article
+      class="ufr-news-item
+        {% if item['today'] and item['showlastday'] %}is-today{% endif %}
+        {% if loop.index0 % 2 %}is-reversed{% endif %}"
+    >
+      {% if item['image'] != [] %}
+      <div class="ufr-news-image">
+        <img
+          src="data:image/{{ item['mime'] }};base64,{{ item['image'][0]['data'] }}"
+          alt=""
+        />
       </div>
-    </div>
+      {% endif %}
+
+      <div class="ufr-news-text">
+        <h3>
+          {% if lang == "de" or item['home']['title_en'] == "" %}{{ item['home']['title_de']|markdown }}{% else %}{{ item['home']['title_en']|markdown }}{% endif %}
+        </h3>
+        <div>
+          {% if lang == "de" or item['home']['text_en'] == "" %}{{ item['home']['text_de']|markdown }}{% else %}{{ item['home']['text_en']|markdown }}{% endif %}
+        </div>
+
+        {% if item['link'] != '' %}
+        <a class="ufr-accordion-link" href="{{ item['link'] }}">
+          <i class="fa-solid fa-link" aria-hidden="true"></i>
+          {% if lang == "de" %}Weitere Informationen{% else %}More information{% endif %}
+        </a>
+        {% endif %}
+      </div>
+    </article>
     {% endfor %}
   </div>
 </div>

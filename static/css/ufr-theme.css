@@ -60,11 +60,7 @@ a:hover {
 .ufr-header a:hover {
   color: var(--ufr-blue-80);
 }
-.ufr-header .ufr-page-title {
-  color: var(--ufr-black);
-  margin: 0;
-  font-weight: 600;
-}
+
 /* Breadcrumb bar (white bg, full width; inner .container aligns with main content) */
 .ufr-breadcrumb-bar {
   background-color: var(--ufr-white);
@@ -131,10 +127,6 @@ a:hover {
   .ufr-logo-large {
     max-width: 215px;
   }
-}
-.ufr-logo-small {
-  width: 55px;
-  height: auto;
 }
 
 /* Sub-site title ("Mathematisches Institut") */
@@ -361,6 +353,43 @@ a:hover {
   color: var(--ufr-white);
 }
 
+/* ---- Personen-Kontaktdaten (im Akkordeon-Body bei Studienberatung, Prüfungsamt, …) ---- */
+.ufr-person-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin: 0 0 12px;
+  list-style: none;
+  padding: 0;
+}
+.ufr-person-contact li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+.ufr-person-contact i {
+  color: var(--ufr-blue);
+  width: 16px;
+  text-align: center;
+}
+
+/* Gelb hinterlegter Hinweis-Block für News/Achtung */
+.ufr-alert {
+  background-color: var(--ufr-yellow-40);
+  padding: 12px 16px;
+  margin: 16px 0;
+  border-left: 4px solid var(--ufr-yellow);
+}
+.ufr-alert > :last-child {
+  margin-bottom: 0;
+}
+.ufr-alert .ufr-alert-title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
 /* ---- News-Archiv: einheitliche Karten, keine Floats ---- */
 .ufr-news-list {
   display: flex;
@@ -459,53 +488,6 @@ a:hover {
 }
 .ufr-accordion--nested .ufr-accordion-body {
   padding: 4px 0 20px;
-}
-
-/* ---- UFR-style content modal (e.g. talk details) ---- */
-.ufr-modal .modal-content {
-  border: 0;
-  border-radius: 0;
-  background-color: var(--ufr-white);
-}
-.ufr-modal .modal-header {
-  background-color: var(--ufr-blue);
-  color: var(--ufr-white);
-  border: 0;
-  border-radius: 0;
-  padding: 24px 56px 24px 32px;
-  position: relative;
-}
-.ufr-modal .modal-header .modal-title,
-.ufr-modal .modal-header h4 {
-  color: var(--ufr-white);
-  margin: 0;
-}
-.ufr-modal .modal-header a {
-  color: var(--ufr-white);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.ufr-modal .modal-header a:hover {
-  color: var(--ufr-yellow-40);
-}
-.ufr-modal .modal-body {
-  padding: 28px 32px 32px;
-}
-.ufr-modal .btn-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  filter: invert(1) grayscale(100%) brightness(200%);
-  opacity: 0.9;
-  width: 24px;
-  height: 24px;
-  background-size: 20px 20px;
-}
-.ufr-modal .btn-close:hover,
-.ufr-modal .btn-close:focus {
-  opacity: 1;
-  outline: 2px dotted var(--ufr-white);
-  outline-offset: 4px;
 }
 
 /* ---- Language switcher modal ---- */
@@ -695,8 +677,25 @@ a:hover {
   padding: 14px 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
-.ufr-offcanvas .ufr-menu-list > li:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+/* Wrapper für zwei vertikale Spalten (links/rechts) ab xl. */
+.ufr-menu-cols {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 1200px) {
+  .ufr-offcanvas {
+    width: min(90vw, 880px) !important;
+  }
+  .ufr-menu-cols {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .ufr-menu-cols > .ufr-menu-list {
+    flex: 1 1 50%;
+    min-width: 0;
+  }
 }
 .ufr-offcanvas .ufr-menu-item {
   display: inline-block;
@@ -775,65 +774,8 @@ a:hover {
   border-bottom-color: var(--ufr-yellow-40);
 }
 
-/* ---- UFR-style buttons (white BG, black border, hover underline) ---- */
-.ufr-btn,
-.btn.ufr-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background-color: var(--ufr-white);
-  color: var(--ufr-black);
-  border: 3px solid var(--ufr-black);
-  border-radius: 0;
-  padding: 9px 32px;
-  font-size: 1.125rem;
-  line-height: 1.5;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  transition: none;
-}
-.ufr-btn:hover,
-.btn.ufr-btn:hover {
-  background-color: var(--ufr-white);
-  color: var(--ufr-black);
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 6px;
-}
-.ufr-btn:focus-visible {
-  outline: 2px dotted var(--ufr-black);
-  outline-offset: 7px;
-}
-
-.ufr-btn-primary,
-.btn.ufr-btn-primary {
-  background-color: var(--ufr-blue);
-  color: var(--ufr-white);
-  border-color: var(--ufr-blue);
-}
-.ufr-btn-primary:hover,
-.btn.ufr-btn-primary:hover {
-  background-color: var(--ufr-blue-80);
-  color: var(--ufr-white);
-  border-color: var(--ufr-blue-80);
-}
-
-.ufr-btn-yellow,
-.btn.ufr-btn-yellow {
-  background-color: var(--ufr-yellow);
-  color: var(--ufr-black);
-  border-color: var(--ufr-black);
-}
-.ufr-btn-yellow:hover,
-.btn.ufr-btn-yellow:hover {
-  background-color: var(--ufr-yellow-80);
-  color: var(--ufr-black);
-}
-
 /* Override default Bootstrap btn-primary so existing `btn btn-primary` */
-/* picks up the new look without changing every template at once. */
+/* picks up the new UFR look without changing every template. */
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:active,
@@ -1009,33 +951,6 @@ button.lecture-module-button:hover,
     width: 841px;
   }
 }
-.ufr-footer-social {
-  text-align: center;
-  margin-top: 32px;
-}
-.ufr-footer-social-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: 7px 26px;
-  border: 2px solid var(--ufr-white);
-  background-color: var(--ufr-white);
-  color: var(--ufr-black);
-  font-size: 1.125rem;
-  line-height: 1.5625rem;
-  font-weight: 500;
-  text-decoration: none;
-  border-radius: 0;
-}
-.ufr-footer-social-btn:hover {
-  background-color: var(--ufr-yellow-40);
-  border-color: var(--ufr-yellow-40);
-  color: var(--ufr-black);
-  text-decoration: underline;
-  text-underline-offset: 5px;
-}
-
 /* ---- Content area ---- */
 main#main-content {
   padding-top: 32px;

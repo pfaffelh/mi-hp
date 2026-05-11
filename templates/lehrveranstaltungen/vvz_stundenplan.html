@@ -1,38 +1,22 @@
-{% extends 'base_nlehre.html' %} {% block navbar %} {% include 'navbar_nlehre.html' %} {%
-endblock %} {% block content %}
+{% extends 'base_nlehre.html' %}
+{% block navbar %}{% include 'navbar_nlehre.html' %}{% endblock %}
+
+{% block content %}
 <div class="container text-end">
   <div class="row">
     <div class="col">
-      <a
-        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
-        {% else %} href="{{url_for('showlehrveranstaltungen', semester = semester, lang=lang)}}"
-        {% endif %} 
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
-        {% if lang == "de" %} Zurück zur Lehrveranstaltungsliste {% else %} Back
-        to the list of all courses {% endif %}
+      <a {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungen', semester = semester, lang=lang)}}" {% endif %}
+        class="btn btn-primary" role="button">
+        {% if lang == "de" %}Zurück zur Lehrveranstaltungsliste{% else %}Back to the list of all courses{% endif %}
       </a>
-      <a
-        {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterpersonenplan', lang=lang)}}"
-        {% else %} href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}"
-        {% endif %} 
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
-        {% if lang == "de" %} Zum Personenplan {% else %} Courses of all
-        persons {% endif %}
+      <a {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterpersonenplan', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}" {% endif %}
+        class="btn btn-primary" role="button">
+        {% if lang == "de" %}Zum Personenplan{% else %}Courses of all persons{% endif %}
       </a>
-      <a
-        href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
-        {% if lang == "de" %} Übersicht aller Semester {% else %} Overview of
-        all semesters {% endif %}
+      <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}" class="btn btn-primary" role="button">
+        {% if lang == "de" %}Übersicht aller Semester{% else %}Overview of all semesters{% endif %}
       </a>
     </div>
   </div>
@@ -41,40 +25,28 @@ endblock %} {% block content %}
 {% if vpn_nextsemester %}
 <div class="container">
   <h3>
-    <span style="color: red"
-      >{% if lang == "de" %}Diese Seite beinhaltet die Planung für das nächste Semester; die
-      Informationen hier sind vorläufig und haben noch keine Gültigkeit!
-      {% else %}
-      This page contains the plan for the next semester; the 
-      information here is preliminary and not yet valid!
-      {% endif %}
-      </span
-    >
+    <span style="color: red">
+      {% if lang == "de" %}Diese Seite beinhaltet die Planung für das nächste Semester; die Informationen hier sind vorläufig und haben noch keine Gültigkeit!
+      {% else %}This page contains the plan for the next semester; the information here is preliminary and not yet valid!{% endif %}
+    </span>
   </h3>
 </div>
 {% endif %}
 
 <div class="container" id="inhalt">
-  <h2>Lehrveranstaltungen im {{semester_lang}}</h2>
+  <h2>Lehrveranstaltungen im {{ semester_lang }}</h2>
   {% for t in data.keys() %}
   <div class="container">
     <h3>{{ t }}</h3>
     {% for item in data[t] %}
-        <div class="row">
-        <div class="col-sm-1 text-end">
-        {{ item["zeit"] }}
-      </div>
-      <div class="col-sm-4">
-        {{ item["veranstaltung_mit_link"]|markdown }}
-      </div>
-      <div class="col-sm-3">
-        {{ item["dozent"] | markdown}}
-      </div>
-      <div class="col-sm-4">
-        {{ item["raum"]|markdown}}
-      </div>
+    <div class="row">
+      <div class="col-sm-1 text-end">{{ item["zeit"] }}</div>
+      <div class="col-sm-4">{{ item["veranstaltung_mit_link"]|markdown }}</div>
+      <div class="col-sm-3">{{ item["dozent"]|markdown }}</div>
+      <div class="col-sm-4">{{ item["raum"]|markdown }}</div>
     </div>
     {% endfor %}
   </div>
-  {% endfor %} {% endblock %}
+  {% endfor %}
 </div>
+{% endblock %}

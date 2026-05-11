@@ -1,96 +1,56 @@
-{% extends 'base_nlehre.html' %} {% block navbar %} {% include 'navbar_nlehre.html' %} {%
-endblock %} {% block content %} {% if showdeputate == True %} {% for key, value
-in semester_dict.items() %}
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <a
-        href="{{url_for('showlehrveranstaltungendeputate', semester = key, lang=lang)}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
-        {{value["name"]}}
-      </a>
-    </div>
-    {% endfor %}
-  </div>
-</div>
+{% extends 'base_nlehre.html' %}
+{% block navbar %}{% include 'navbar_nlehre.html' %}{% endblock %}
 
+{% block content %}
+{% if showdeputate == True %}
+  {% for key, value in semester_dict.items() %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <a href="{{url_for('showlehrveranstaltungendeputate', semester = key, lang=lang)}}"
+          class="btn btn-primary" role="button">
+          {{ value["name"] }}
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 {% else %}
 
 <div class="container text-end">
   <div class="row">
     <div class="col">
-      <a
-        {%
-        if
-        vpn_nextsemester
-        %}
-        href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
-        {%
-        else
-        %}
-        href="{{url_for('showlehrveranstaltungen', semester = semester, lang=lang)}}"
-        {%
-        endif
-        %}
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
-        {% if lang == "de" %} Zurück zur Lehrveranstaltungsliste {% else %} Back
-        to the list of all courses {% endif %}
+      <a {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemester', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungen', semester = semester, lang=lang)}}" {% endif %}
+        class="btn btn-primary" role="button">
+        {% if lang == "de" %}Zurück zur Lehrveranstaltungsliste{% else %}Back to the list of all courses{% endif %}
       </a>
-      <a
-        {%
-        if
-        vpn_nextsemester
-        %}
-        href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
-        {%
-        else
-        %}
-        href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}"
-        {%
-        endif
-        %}
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
-        {% if lang == "de" %} Zum Stundenplan {% else %} Timetable for all
-        courses {% endif %}
+      <a {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}"
+        {% else %} href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}" {% endif %}
+        class="btn btn-primary" role="button">
+        {% if lang == "de" %}Zum Stundenplan{% else %}Timetable for all courses{% endif %}
       </a>
-      <a
-        href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}"
-        class="btn btn-primary bg-ufr-blue link-dark"
-        role="button"
-        aria-disabled="true"
-      >
-        {% if lang == "de" %} Übersicht aller Semester {% else %} Overview of
-        all semesters {% endif %}
+      <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}" class="btn btn-primary" role="button">
+        {% if lang == "de" %}Übersicht aller Semester{% else %}Overview of all semesters{% endif %}
       </a>
     </div>
-    {% endif %}
   </div>
 </div>
+{% endif %}
 
 {% if vpn_nextsemester %}
 <div class="container">
   <h3>
-    <span style="color: red"
-      >{% if lang == "de" %}Diese Seite beinhaltet die Planung für das nächste
-      Semester; die Informationen hier sind vorläufig und haben noch keine
-      Gültigkeit! {% else %} This page contains the plan for the next semester;
-      the information here is preliminary and not yet valid! {% endif %}
+    <span style="color: red">
+      {% if lang == "de" %}Diese Seite beinhaltet die Planung für das nächste Semester; die Informationen hier sind vorläufig und haben noch keine Gültigkeit!
+      {% else %}This page contains the plan for the next semester; the information here is preliminary and not yet valid!{% endif %}
     </span>
   </h3>
 </div>
 {% endif %}
 
 <div class="container" id="inhalt">
-  <h2>Lehrveranstaltungen im {{semester_lang}}</h2>
+  <h2>Lehrveranstaltungen im {{ semester_lang }}</h2>
   {% if showdeputate %}
   <div class="row">
     <div class="col-sm-2 text-end"><h5>Name</h5></div>
@@ -99,7 +59,8 @@ in semester_dict.items() %}
     <div class="col-sm-1"><h5>Deputat</h5></div>
     <div class="col-sm-2"><h5>Kommentar</h5></div>
   </div>
-  {% endif %} {% for item in data %}
+  {% endif %}
+  {% for item in data %}
   <div class="row">
     <div class="col-sm-2 text-end">
       <strong>{{ item["person_mit_url"] | markdown }}</strong>
@@ -107,13 +68,12 @@ in semester_dict.items() %}
     <div class="col-sm-{% if showdeputate %}5{% else %}7{% endif %}">{{ item["veranstaltung"]|safe }}</div>
     <div class="col-sm-2">{{ item["rolle"] }}</div>
     <div class="col-sm-1">
-      {% if showdeputate %}{{ item["sws"] }}{% else %} {% endif %}
+      {% if showdeputate %}{{ item["sws"] }}{% endif %}
     </div>
     {% if showdeputate %}
     <div class="col-sm-2">{{ item["kommentar"] }}</div>
-    {% else %} {% endif %}
+    {% endif %}
   </div>
   {% endfor %}
 </div>
-
 {% endblock %}

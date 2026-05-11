@@ -126,37 +126,18 @@ def data_for_bildnachweis(lang="de", tags = ["Institut", "Monitor"]):
                           "mime": b["mime"], 
                           "bildnachweis" : b["bildnachweis"]
                           })
-    dnews = list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "$or" : [{"monitor.start" : { "$lte" : datetime.now() }, "monitor.end" : { "$gte" : datetime.now() }}, {"home.start" : { "$lte" : datetime.now() }, "home.end" : { "$gte" : datetime.now() }}]}))        
+    dnews = list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "$or" : [{"monitor.start" : { "$lte" : datetime.now() }, "monitor.end" : { "$gte" : datetime.now() }}, {"home.start" : { "$lte" : datetime.now() }, "home.end" : { "$gte" : datetime.now() }}]}))
     for item in dnews:
         if item["image"] != []:
             b = bild.find_one({ "_id": item["image"][0]["_id"]})
-            data_news.append({"bild" : base64.b64encode(b["thumbnail"]).decode(), 
-                            "mime": b["mime"], 
+            data_news.append({"bild" : base64.b64encode(b["thumbnail"]).decode(),
+                            "mime": b["mime"],
                             "bildnachweis" : b["bildnachweis"]
                             })
-    # Bilder von "Studieninteressierte"
-    # Das ist die Liste von Dateinamen der Bilder
-    interesse_filenames = []
-    with app.open_resource('../static/data/interesse.json') as f:
-        data_interesse = json.load(f)
-    for c in data_interesse["content"]:
-        interesse_filenames = interesse_filenames + [a["image"].split("/")[-1] for a in c["cards"] if a["image"] != ""]
-    data_interesse = []
-    for filename in interesse_filenames:
-        b = bild.find_one({ "filename": filename}) 
-        if b:
-            data_interesse.append({"bild" : base64.b64encode(b["thumbnail"]).decode(), 
-                                   "mime": b["mime"], 
-                                   "bildnachweis" : b["bildnachweis"]
-                                   })
 
     data = [{ "titel" : "News und Monitor" if lang == "de" else "News and monitor",
               "data" : data_news
-                            },
-            { "titel" : "Für Studieninteressierte" if lang == "de" else "Study with us",
-              "data" : data_interesse
-            }
-    ]
+            }]
     return data
 
 def get_mensaplan_text(url, date):
