@@ -407,7 +407,13 @@ def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public"
     enddate = datetime.strptime(end, '%Y%m%d')
     diffdays = (enddate - anfangdate).days
     diffmonth = abs(enddate.month - anfangdate.month)
-    if diffdays == 7 and anfangdate.weekday() == 0:
+    today_midnight = datetime(datetime.now().year, datetime.now().month, datetime.now().day)
+    is_upcoming = anfangdate == today_midnight and diffdays > 365
+    if is_upcoming:
+        zeitraum = "Anstehende Vorträge" if lang == "de" else "Upcoming talks"
+        previousanfangdate = anfangdate
+        nextenddate = enddate
+    elif diffdays == 7 and anfangdate.weekday() == 0:
         sundaydate = enddate - timedelta(days=1)
         if lang == "de":
             if anfangdate.year == sundaydate.year:
@@ -457,6 +463,9 @@ def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public"
     data["anfangnextmonth"] = get_start_next_month(get_start_current_month()).strftime('%Y%m%d')
     data["anfangcurrentweek"] = get_start_current_week().strftime('%Y%m%d')
     data["anfangnextweek"] = get_start_next_week(get_start_current_week()).strftime('%Y%m%d')
+    data["anfangtoday"] = today_midnight.strftime('%Y%m%d')
+    data["enddistant"] = (today_midnight + timedelta(days=3650)).strftime('%Y%m%d')
+    data["is_upcoming"] = is_upcoming
     return data
 
 def get_event(kurzname, lang = "de", ascending = True):

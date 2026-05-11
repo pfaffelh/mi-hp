@@ -5,6 +5,7 @@
   <div class="container text-end">
     <div class="row">
       <div class="col">
+        {% if not data['is_upcoming'] %}
         <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['previousanfang'], end = data['anfang'])}}"
           class="btn btn-primary" role="button" aria-disabled="true">
           <i class="fas fa-angles-up" style="transform: rotate(270deg)"></i>
@@ -13,22 +14,18 @@
           class="btn btn-primary" role="button" aria-disabled="true">
           <i class="fas fa-angles-up" style="transform: rotate(90deg)"></i>
         </a>
+        {% endif %}
+        <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangtoday'], end = data['enddistant'])}}"
+          class="btn btn-primary" role="button" aria-disabled="true">
+          {% if lang == "de" %}Anstehende Vorträge{% else %}Upcoming talks{% endif %}
+        </a>
         <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentsemester'], end = data['anfangnextsemester'])}}"
           class="btn btn-primary" role="button" aria-disabled="true">
-          {% if lang == "de" %}Semesteransicht{% else %}Semesterly view{% endif
-          %}
-        </a>
-        <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentmonth'], end = data['anfangnextmonth'])}}"
-          class="btn btn-primary" role="button" aria-disabled="true">
-          {% if lang == "de" %}Monatsansicht{% else %}Monthly view{% endif %}
+          {% if lang == "de" %}Semesteransicht{% else %}Semesterly view{% endif %}
         </a>
         <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentweek'], end = data['anfangnextweek'])}}"
           class="btn btn-primary" role="button" aria-disabled="true">
           {% if lang == "de" %}Wochenansicht{% else %}Weekly view{% endif %}
-        </a>
-        <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = 'alle', anfang = data['anfang'], end = data['end'])}}"
-          class="btn btn-primary" role="button" aria-disabled="true">
-          {% if lang == "de" %}Alle Vorträge{% else %}All talks{% endif %}
         </a>
       </div>
     </div>
