@@ -44,17 +44,34 @@ def fortivpn(network = '10.23.0.0/16'):
 def handle_context():
     cur = vvz.get_current_semester_kurzname()
     showanmeldung = {
-        "bsc": vvz.get_showanmeldung("bsc"), 
+        "bsc": vvz.get_showanmeldung("bsc"),
         "msc": vvz.get_showanmeldung("msc"),
         "mscdata": vvz.get_showanmeldung("mscdata")
         }
     vpn = forti_bool_or_localhost()
-    return dict(datetime =datetime, timedelta=timedelta, vpn=vpn, os=os, 
-                showanmeldung = showanmeldung, 
+
+    def modulhandbuch_url(semester_kurzname, lang):
+        """Return /static URL for the 'Ergänzungen zu den Modulhandbüchern'
+        PDF of the given semester, preferring the language-specific file.
+        Returns '' if neither file exists."""
+        if not semester_kurzname:
+            return ""
+        for fname in (f"{semester_kurzname}mh_{lang}.pdf",
+                      f"{semester_kurzname}mh.pdf"):
+            try:
+                app.open_resource(f"static/pdf/lehrveranstaltungen/{fname}")
+                return url_for("static", filename=f"pdf/lehrveranstaltungen/{fname}")
+            except (FileNotFoundError, IOError):
+                continue
+        return ""
+
+    return dict(datetime =datetime, timedelta=timedelta, vpn=vpn, os=os,
+                showanmeldung = showanmeldung,
                 laufendes_semester = cur,
                 kommendes_semester = vvz.next_semester_kurzname(cur),
-                show_laufendes_semester = vvz.get_showsemester(cur), 
-                show_kommendes_semester = vvz.get_showsemester(vvz.next_semester_kurzname(cur)))
+                show_laufendes_semester = vvz.get_showsemester(cur),
+                show_kommendes_semester = vvz.get_showsemester(vvz.next_semester_kurzname(cur)),
+                modulhandbuch_url = modulhandbuch_url)
 
 # This function is important for changing languages; see base_???.html. Within a template, we can use its own endpoint, i.e. all parameters it was given. 
 # For changing languages, we are then able to only change the lang-parameter.

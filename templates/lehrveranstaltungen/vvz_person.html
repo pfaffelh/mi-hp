@@ -119,6 +119,13 @@
             {% if course['verwendbarkeit'] != '' %}
             <h5>{% if lang == "de" %}Verwendbarkeit{% else %}Usability{% endif %}</h5>
             <p>{{ course['verwendbarkeit']|markdown }}</p>
+            {% set mh_url = modulhandbuch_url(d['semester']['kurzname'], lang) %}
+            {% if mh_url %}
+            <p>
+              {% if lang == "de" %}Die Zahl der ECTS-Punkte entnehmen Sie bitte den <a href="{{ mh_url }}">Ergänzungen zu den Modulhandbüchern</a>.
+              {% else %}Please refer to the <a href="{{ mh_url }}">Supplements to the Module Handbooks</a> for the number of ECTS credits.{% endif %}
+            </p>
+            {% endif %}
             {% endif %}
           </div>
         </div>
