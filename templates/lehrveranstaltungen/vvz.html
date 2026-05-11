@@ -128,17 +128,10 @@
         </button>
         <div id="course-{{item_index.value}}" class="collapse">
           <div class="ufr-accordion-body">
-            <p class="ufr-accordion-speaker-line">
-              {% if course['link'] != "" %}
-                <a href="{{ course['link'] | safe }}">{{ course['titel']|markdown }}</a>
-              {% else %}
-                {{ course['titel']|markdown }}
-              {% endif %}
-            </p>
             {% if course['link'] != "" %}
             <a class="ufr-accordion-link" href="{{ course['link'] }}">
               <i class="fa-solid fa-link" aria-hidden="true"></i>
-              {% if lang == "de" %}Weitere Informationen{% else %}More information{% endif %}
+              {% if lang == "de" %}Mehr erfahren{% else %}Read more{% endif %}
             </a>
             {% endif %}
 

@@ -79,13 +79,13 @@
             {% if ev["url"] %}
             <a class="ufr-accordion-link" href="{{ ev['url'] }}">
               <i class="fa-solid fa-link" aria-hidden="true"></i>
-              {% if lang == "de" %}Weitere Informationen{% else %}More information{% endif %}
+              {% if lang == "de" %}Mehr erfahren{% else %}Read more{% endif %}
             </a>
             {% else %}
             <a class="ufr-accordion-link"
               href="{{ url_for('showevent', lang=lang, kurzname=ev['kurzname']) }}">
               <i class="fa-solid fa-link" aria-hidden="true"></i>
-              {% if lang == "de" %}Zur Event-Seite{% else %}Event page{% endif %}
+              {% if lang == "de" %}Mehr erfahren{% else %}Read more{% endif %}
             </a>
             {% endif %}
           </div>
@@ -131,24 +131,10 @@
         </button>
         <div id="acc-item-{{item_index.value}}" class="collapse">
           <div class="ufr-accordion-body">
-            {% if v["reihe"] != [] %}
-            <p class="ufr-accordion-meta">
-              {% for (title, url) in v["reihe"] %}
-                {% if url != "" %}<a href="{{url}}">{{ title }}</a>{% else %}{{ title }}{% endif %}
-              {% endfor %}
-            </p>
-            {% endif %}
-            <p class="ufr-accordion-speaker-line">
-              {% if v['url'] != "" %}
-                <a href="{{ v['url'] | safe }}">{{ v['sprecher'] }}: {{ v['title']|markdown }}</a>
-              {% else %}
-                {{ v['sprecher'] }}: {{ v['title']|markdown }}
-              {% endif %}
-            </p>
             {% if v['url'] != "" %}
             <a class="ufr-accordion-link" href="{{ v['url'] }}">
               <i class="fa-solid fa-link" aria-hidden="true"></i>
-              {% if lang == "de" %}Weitere Informationen{% else %}More information{% endif %}
+              {% if lang == "de" %}Mehr erfahren{% else %}Read more{% endif %}
             </a>
             {% endif %}
 

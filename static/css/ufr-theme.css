@@ -332,11 +332,6 @@ a:hover {
 .ufr-accordion-body a {
   color: var(--ufr-blue);
 }
-.ufr-accordion-body .ufr-accordion-speaker-line {
-  font-size: 1.125rem;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
 .ufr-accordion-body .ufr-accordion-link {
   display: inline-flex;
   align-items: center;
