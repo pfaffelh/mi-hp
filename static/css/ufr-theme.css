@@ -695,8 +695,25 @@ a:hover {
   padding: 14px 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
-.ufr-offcanvas .ufr-menu-list > li:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+/* Wrapper für zwei vertikale Spalten (links/rechts) ab xl. */
+.ufr-menu-cols {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 1200px) {
+  .ufr-offcanvas {
+    width: min(90vw, 880px) !important;
+  }
+  .ufr-menu-cols {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .ufr-menu-cols > .ufr-menu-list {
+    flex: 1 1 50%;
+    min-width: 0;
+  }
 }
 .ufr-offcanvas .ufr-menu-item {
   display: inline-block;
