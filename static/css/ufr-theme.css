@@ -102,20 +102,67 @@ a:hover {
   flex: 0 1 auto;
 }
 
-/* Header logo sizes — generous, like uni-freiburg.de */
+/* Brand column: small UFR logo on top, big sub-site title below */
+.ufr-header-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+@media (min-width: 1200px) {
+  .ufr-header-brand {
+    gap: 15px;
+  }
+}
+
+/* Header logo sizes — kompakt */
 .ufr-logo-large {
   width: 100%;
-  max-width: 290px;
+  max-width: 120px;
   height: auto;
+}
+@media (min-width: 768px) {
+  .ufr-logo-large {
+    max-width: 145px;
+  }
 }
 @media (min-width: 1200px) {
   .ufr-logo-large {
-    max-width: 472px;
+    max-width: 215px;
   }
 }
 .ufr-logo-small {
   width: 55px;
   height: auto;
+}
+
+/* Sub-site title ("Mathematisches Institut") */
+.ufr-subsite-title {
+  display: block;
+  color: var(--ufr-black);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  max-width: 500px;
+}
+@media (min-width: 768px) {
+  .ufr-subsite-title {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+  }
+}
+@media (min-width: 1200px) {
+  .ufr-subsite-title {
+    font-size: 1.875rem;
+    line-height: 2.75rem;
+    max-width: 578px;
+  }
+}
+.ufr-subsite-title:hover {
+  color: var(--ufr-blue-80);
+  text-decoration: none;
 }
 
 /* Menu / language buttons in header — stacked icon + label, no border */
