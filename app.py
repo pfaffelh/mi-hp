@@ -621,12 +621,14 @@ def showvortragsreiheics(lang="de", kurzname="alle"):
 @app.route("/wochenprogramm/<lang>/vortragsreihe/<kurzname>/")
 @app.route("/wochenprogramm/<lang>/vortragsreihe/<kurzname>/<anfang>/<end>")
 def showvortragsreihe(lang="de", kurzname="alle", anfang=None, end=None):
+    today = datetime(datetime.now().year, datetime.now().month, datetime.now().day)
     if anfang is None or end is None:
-        today = datetime(datetime.now().year, datetime.now().month, datetime.now().day)
         anfang = today.strftime('%Y%m%d')
         end = (today + timedelta(days=3650)).strftime('%Y%m%d')
+    is_upcoming = (anfang == today.strftime('%Y%m%d')
+                   and (datetime.strptime(end, '%Y%m%d') - today).days > 365)
     reihen, events = news.get_events(lang)
-    data = news.get_wochenprogramm_full(anfang, end, { "kurzname" : kurzname}, lang, ascending = False)
+    data = news.get_wochenprogramm_full(anfang, end, { "kurzname" : kurzname}, lang, ascending = is_upcoming)
     return render_template("wochenprogramm/reihe.html", reihen = reihen, events = events, kurzname = kurzname, lang=lang, data = data)
 
 @app.route("/wochenprogramm/<lang>/event/<kurzname>/")
