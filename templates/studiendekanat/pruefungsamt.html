@@ -1,154 +1,147 @@
-<br />
 <div class="container" id="inhalt">
-  <div>
-    <h2>{% if lang == "de" %}Prüfungsamt Mathematik{% else %}Examination Office{% endif %}</h2>
-  </div>
-  <div class="container g-3">
-    <div class="row">
-      <div class="col-lg-9 col-md-7 row-cols-sm-1">
-        <ul>
-          {% for item in data %}
-          {% if item['shownews'] and item['news'] !='' %}
-          <li class="text-danger h5 py-4">
-            <strong>{{ item['name']|safe }}: {{ item['news'] | safe }}</strong>
-          </li>
-          {% endif %}
-          {% endfor %}
-          {% if lang == "de" %}
-          <li>
-            Das Prüfungsamt ist zuständig für die Prüfungsverwaltung der
-            Mathematik-Studiengänge. Darunter fallen etwa Angelegenheiten rund
-            um die Prügungsan- und -abmeldung, Anerkennungen von Leistungen,
-            Leistungsübersichten, Bescheinigungen für das BAFöG-Amt etc. Sie
-            können uns per E-Mail, telefonisch oder während der Sprechzeiten
-            erreichen. Rechtlich verbindliche Dokumente schicken wir Ihnen
-            typischerweise per Post zu, oder sie liegen zu den Öffnungszeiten
-            zur Abholung bereit.
-          </li>
-          <li>
-            Die meisten schriftlichen Prüfungen, sowie die mündlichen Prüfungen
-            in Linearer Algebra und Analysis müssen über
-            <a href="https://campus.uni-freiburg.de/">HISInOne</a> angemeldet
-            werden. Die mündlichen Prüfungen in den MSc-Studiengängen müssen per <a
-              href="https://www.math.uni-freiburg.de/nlehre/de/page/downloads/downloads-studierende">pdf-Formular</a> im
-            Prüfungsamt angemeldet werden. Eine genaue Beschreibung finden Sie bei unserer <a
-              href="https://www.math.uni-freiburg.de/nlehre/de/page/pruefungen-begriffe-regeln/pruefungen-anmeldung-abmeldung">Anleitung zur
-              Prüfungsanmeldung</a>.
-          </li>
-          <li>
-            Unser <a href="{{ url_for('showstufaq', lang=lang)}}">FAQ</a> beantwortet einige Fragen rund um das
-            Prüfungsamt, z.B. bei Abmeldung einer Prüfung oder Vergabe einer Abschlussarbeit.
-          </li>
-          {% else %}
+  <h2>{% if lang == "de" %}Prüfungsamt Mathematik{% else %}Examination Office{% endif %}</h2>
 
-          <li>
-            The Examination Office is responsible for the administration of examinations for
-            all mathematics degree programs. This includes matters such as
-            registering for and withdrawing from examinations, recognizing credits,
-            performance overviews, certificates for the BAFöG office, etc.
-            You can contact us by email, phone, or during office hours.
-            We will send you legally binding documents
-            typically by post, or they will be available for collection during opening hours.
-          </li>
-          <li>
-            Most written examinations, as well as the oral examinations
-            in Linear Algebra and Analysis, must be registered in
-            <a href="https://campus.uni-freiburg.de/">HISInOne</a>. Oral exams in the MSc programs must be registered using a <a
-              href=“https://www.math.uni-freiburg.de/nlehre/en/page/downloads/downloads-studierende”>pdf form</a> at the Examination Office. You can find a detailed description in our <a
-              href="https://www.math.uni-freiburg.de/nlehre/en/page/pruefungen-begriffe-regeln/pruefungen-anmeldung-abmeldung">instructions
-              for
-              exam registration</a>.
-
-          </li>
-          <li>
-            Our <a href="{{ url_for('showstufaq', lang=lang)}}">FAQ</a> answers some questions about the
-            Examination Office, e.g., how to withdraw from an exam or assign a thesis.
-          </li>
-          {% endif %}
-        </ul>
-      </div>
+  {# News-Hinweise oben auf der Seite #}
+  {% for item in data %}
+    {% if item['shownews'] and item['news'] != '' %}
+    <div class="ufr-alert">
+      <span class="ufr-alert-title">{{ item['name']|safe }}</span>
+      {{ item['news']|safe }}
     </div>
-  </div>
-  <div class="container text-end">
-    <div class="row">
-      <div class="col">
-        <div class="feature-icon bg-gradient text-end">
-          <a href="{{ url_for('showstufaq', lang=lang)}}" class="btn btn-primary bg-ufr-blue link-dark" role="button"
-            aria-disabled="true">
-            FAQ</a>
-          <a href="https://campus.uni-freiburg.de/" class="btn btn-primary bg-ufr-blue link-dark" role="button"
-            aria-disabled="true">
-            HISInOne</a>
-          <a href="mailto:pruefungsamt@math.uni-freiburg.de" class="btn btn-primary" role="button" aria-disabled="true">
-            {% if lang == "de" %}Prüfungsamt{% else %}Examination office{% endif %}
-          </a>
-        </div>
-      </div>
-    </div>
+    {% endif %}
+  {% endfor %}
+
+  <div class="my-3">
+    {% if lang == "de" %}
+    <p>
+      Das Prüfungsamt ist zuständig für die Prüfungsverwaltung der
+      Mathematik-Studiengänge. Darunter fallen etwa Angelegenheiten rund
+      um die Prügungsan- und -abmeldung, Anerkennungen von Leistungen,
+      Leistungsübersichten, Bescheinigungen für das BAFöG-Amt etc. Sie
+      können uns per E-Mail, telefonisch oder während der Sprechzeiten
+      erreichen. Rechtlich verbindliche Dokumente schicken wir Ihnen
+      typischerweise per Post zu, oder sie liegen zu den Öffnungszeiten
+      zur Abholung bereit.
+    </p>
+    <p>
+      Die meisten schriftlichen Prüfungen, sowie die mündlichen Prüfungen
+      in Linearer Algebra und Analysis müssen über
+      <a href="https://campus.uni-freiburg.de/">HISInOne</a> angemeldet
+      werden. Die mündlichen Prüfungen in den MSc-Studiengängen müssen per
+      <a href="https://www.math.uni-freiburg.de/nlehre/de/page/downloads/downloads-studierende">pdf-Formular</a>
+      im Prüfungsamt angemeldet werden. Eine genaue Beschreibung finden Sie bei unserer
+      <a href="https://www.math.uni-freiburg.de/nlehre/de/page/pruefungen-begriffe-regeln/pruefungen-anmeldung-abmeldung">Anleitung zur Prüfungsanmeldung</a>.
+    </p>
+    <p>
+      Unser <a href="{{ url_for('showstufaq', lang=lang) }}">FAQ</a> beantwortet einige Fragen rund um das
+      Prüfungsamt, z. B. bei Abmeldung einer Prüfung oder Vergabe einer Abschlussarbeit.
+    </p>
+    {% else %}
+    <p>
+      The Examination Office is responsible for the administration of examinations for
+      all mathematics degree programs. This includes matters such as
+      registering for and withdrawing from examinations, recognizing credits,
+      performance overviews, certificates for the BAFöG office, etc.
+      You can contact us by email, phone, or during office hours.
+      We will send you legally binding documents
+      typically by post, or they will be available for collection during opening hours.
+    </p>
+    <p>
+      Most written examinations, as well as the oral examinations
+      in Linear Algebra and Analysis, must be registered in
+      <a href="https://campus.uni-freiburg.de/">HISInOne</a>. Oral exams in the MSc programs must be registered using a
+      <a href="https://www.math.uni-freiburg.de/nlehre/en/page/downloads/downloads-studierende">pdf form</a> at the Examination Office. You can find a detailed description in our
+      <a href="https://www.math.uni-freiburg.de/nlehre/en/page/pruefungen-begriffe-regeln/pruefungen-anmeldung-abmeldung">instructions for exam registration</a>.
+    </p>
+    <p>
+      Our <a href="{{ url_for('showstufaq', lang=lang) }}">FAQ</a> answers some questions about the
+      Examination Office, e.g., how to withdraw from an exam or assign a thesis.
+    </p>
+    {% endif %}
   </div>
 
-  <br />
+  <div class="text-end my-4">
+    <a href="{{ url_for('showstufaq', lang=lang) }}" class="btn btn-primary" role="button">FAQ</a>
+    <a href="https://campus.uni-freiburg.de/" class="btn btn-primary" role="button">HISInOne</a>
+    <a href="mailto:pruefungsamt@math.uni-freiburg.de" class="btn btn-primary" role="button">
+      {% if lang == "de" %}Prüfungsamt schreiben{% else %}Contact examination office{% endif %}
+    </a>
+  </div>
 
-  <div class="row g-2">
+  {% set item_index = namespace(value=0) %}
+  <div class="ufr-accordion">
     {% for item in data %}
-    <div class="col-md-4">
-      <div class="card h-100">
-        <a class="btn bg-ufr-yellow-60 link-dark no-hover-effect" {% if item['link']!='' %} href="{{ item['link'] }}" {%
-          endif %} type="button" style="width: 100%; border-radius: 12px">
-          <center>
-            <h4>
-              <i class="fa fa-circle-right fa-4" aria-hidden="true"></i>
-              {{ item['name']|safe }}
-            </h4>
-          </center>
-        </a>
-        <div class="card-body">
-          <div class="card-text">
-            <h4>
-              {% if item['rolle'] != "" %}
-              {{item['rolle']|safe}} {% endif %}
-            </h4>
-            {% if item['mail']!= '' %} {% set mail = item['mail'] %}
-            Mail: <a href='mailto:{{mail|safe }}'>{{mail}}</a>
+    <div class="ufr-accordion-item">
+      <button type="button" class="ufr-accordion-header"
+        data-bs-toggle="collapse"
+        data-bs-target="#person-pa-{{item_index.value}}"
+        aria-expanded="false"
+        aria-controls="person-pa-{{item_index.value}}">
+        <span class="ufr-accordion-header-content">
+          <span class="ufr-accordion-title">{{ item['name']|safe }}</span>
+          {% if item['rolle'] != '' %}
+          <span class="ufr-accordion-meta">{{ item['rolle']|safe }}</span>
+          {% endif %}
+        </span>
+        <span class="ufr-accordion-chevron" aria-hidden="true">
+          <svg viewBox="0 0 35 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 5 L25.6 25 L5 45" stroke="currentColor" stroke-width="6" />
+          </svg>
+        </span>
+      </button>
+      <div id="person-pa-{{item_index.value}}" class="collapse">
+        <div class="ufr-accordion-body">
+          {% if item['link'] != '' %}
+          <a class="ufr-accordion-link" href="{{ item['link'] }}">
+            <i class="fa-solid fa-link" aria-hidden="true"></i>
+            {% if lang == "de" %}Persönliche Seite{% else %}Personal page{% endif %}
+          </a>
+          {% endif %}
+
+          {% if item['mail'] != '' or item['raum'] != '' or item['tel'] != '' or item['sprechstunde'] != '' %}
+          <ul class="ufr-person-contact">
+            {% if item['mail'] != '' %}
+            <li>
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:{{ item['mail']|safe }}">{{ item['mail'] }}</a>
+            </li>
             {% endif %}
-            <br>
-            {% if item['raum'] !='' %} {% if lang == "de" %}Raum{% else %}Office{% endif %}: {{ item['raum'] | safe }}
-            {%
-            endif %} <br>
-            {% if item['tel'] !='' %} Tel.: {{ item['tel'] | safe }} {% endif %}<br>
-            {% if item['sprechstunde'] !='' %}{% if lang == "de" %} Sprechstunde{% else %}Office hour{% endif %}: {{
-            item['sprechstunde'] | safe }} {% endif %}<br>
-            {% if item['shownews'] and item['news'] !='' %} <strong>{% if lang == "de" %}Achtung{% else %}Note{% endif
-              %}:</strong> {{ item['news'] | safe }} {%
-            endif %}<br>
-            {% if item['text'] != '' %}
-            <hr>
-            {% if lang == "de" %}Aufgaben{% else %}Tasks{% endif %}:
-            {{ item['text'] | markdown}}
+            {% if item['raum'] != '' %}
+            <li>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              {% if lang == 'de' %}Raum{% else %}Office{% endif %} {{ item['raum']|safe }}
+            </li>
             {% endif %}
-            <!-- {% if item['text'] != '' %}
-            <p align="right">
-              <button type="button" class="btn btn-outline-primary active bg-white" data-bs-toggle="popover"
-                data-bs-html="true" style="color: #004a99" title="{{ item['name'] | safe }}"
-                data-bs-content="{{ item['text_de'] | markdown}}">
-                <i class="fa-solid fa-info" style="color: #004a99"></i>
-              </button>
-              {% endif %}-->
-            <!-- {% if item['link']!= '' %}
-              <a
-                class="btn btn-outline-primary active bg-white"
-                style="border-color: #004a99"
-                href="{{ item['link'] }}"
-                role="button"
-              >
-                <i class="fa-solid fa-link" style="color: #004a99"></i>
-              </a>
-              {% endif %} -->
-            </p>
+            {% if item['tel'] != '' %}
+            <li>
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              {{ item['tel']|safe }}
+            </li>
+            {% endif %}
+            {% if item['sprechstunde'] != '' %}
+            <li>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              {% if lang == 'de' %}Sprechstunde:{% else %}Office hour:{% endif %} {{ item['sprechstunde']|safe }}
+            </li>
+            {% endif %}
+          </ul>
+          {% endif %}
+
+          {% if item['shownews'] and item['news'] != '' %}
+          <div class="ufr-alert">
+            <span class="ufr-alert-title">{% if lang == "de" %}Achtung{% else %}Note{% endif %}</span>
+            {{ item['news']|safe }}
           </div>
+          {% endif %}
+
+          {% if item['text'] != '' %}
+          <h5>{% if lang == "de" %}Aufgaben{% else %}Tasks{% endif %}</h5>
+          {{ item['text']|markdown }}
+          {% endif %}
         </div>
       </div>
     </div>
+    {% set item_index.value = item_index.value + 1 %}
     {% endfor %}
   </div>
 </div>
