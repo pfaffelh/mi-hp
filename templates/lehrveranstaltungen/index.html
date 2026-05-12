@@ -145,29 +145,26 @@
       </table>
       <br />
 
-      <div class="accordion accordion-flush" id="accordionExample">
-        <div class="accordion-item">
-          <h4 class="accordion-header">
-            <button
-              aria-controls="kurzContent"
-              aria-expanded="{% if anchor == 'kurz' %}true{% else %}false{% endif %}"
-              class="accordion-button {% if anchor != 'kurz' %}collapsed{% endif %}"
-              data-bs-target="#kurzContent"
-              data-bs-toggle="collapse"
-              type="button"
-            >
-              <h3 class="h5">
+      <div class="ufr-accordion" id="accordionExample">
+        <div class="ufr-accordion-item">
+          <button type="button" class="ufr-accordion-header"
+            data-bs-toggle="collapse"
+            data-bs-target="#kurzContent"
+            aria-expanded="{% if anchor == 'kurz' %}true{% else %}false{% endif %}"
+            aria-controls="kurzContent">
+            <span class="ufr-accordion-header-content">
+              <span class="ufr-accordion-title">
                 {% if lang == 'de' %}Ältere Semester{% else %}Previous semesters{% endif %}
-              </h3>
-            </button>
-          </h4>
-          <div
-            aria-labelledby="kurzContent"
-            class="accordion-collapse collapse {% if anchor == 'kurz' %}show{% endif %}"
-            data-bs-parent="#accordionExample"
-            id="kurzContent"
-          >
-            <div class="accordion-body" id="kurz">
+              </span>
+            </span>
+            <span class="ufr-accordion-chevron" aria-hidden="true">
+              <svg viewBox="0 0 35 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 5 L25.6 25 L5 45" stroke="currentColor" stroke-width="6" />
+              </svg>
+            </span>
+          </button>
+          <div id="kurzContent" class="collapse {% if anchor == 'kurz' %}show{% endif %}">
+            <div class="ufr-accordion-body" id="kurz">
               {% for key, value in semester_dict_old.items() %}
               <a
                 href="{{url_for('showlehrveranstaltungen', lang=lang, semester=key)}}"

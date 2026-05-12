@@ -973,7 +973,7 @@ main h1 {
   margin-bottom: 16px;
 }
 
-/* Accordion tweaks (used in accordion_wochenprogramm.html) */
+/* Bootstrap accordion tweaks (studiendekanat, lehrende, downloads, anfang, …) */
 .accordion-button:not(.collapsed) {
   background-color: var(--ufr-yellow-20);
   color: var(--ufr-black);
