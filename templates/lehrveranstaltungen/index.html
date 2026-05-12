@@ -112,15 +112,23 @@
                 {% if value["mh_lang_exists"] %}
                 <a
                   href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')}}"
+                  ><i class="fa-solid fa-link"></i
                 ></a>
                 {% elif value["mh_exists"] %}
                 <a
                   href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
+                  ><i class="fa-solid fa-link"></i
                 ></a>
                 {% elif value["komm_lang_exists"] %}
-                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')}}"></a>
+                <a
+                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + '_' + lang + '.pdf')}}"
+                  ><i class="fa-solid fa-link"></i
+                ></a>
                 {% elif value["komm_exists"] %}
-                <a href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"></a>
+                <a
+                  href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"
+                  ><i class="fa-solid fa-link"></i
+                ></a>
                 {% endif %}
               </center>
             </td>
