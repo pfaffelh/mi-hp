@@ -21,6 +21,10 @@
 
   <div class="text-end my-4">
     <a href="{{ url_for('showstufaq', lang=lang) }}" class="btn btn-primary" role="button">FAQ</a>
+    <a href="{{ url_for('showanfang', lang=lang, unterseite='studienanfang') }}"
+      class="btn btn-primary" role="button">
+      {% if lang == "de" %}Wegweiser für den Studieanfang{% else %}Starting Guide for Studying Maths{% endif %}
+    </a>
     <a href="{{ url_for('static', filename='pdf/studienberatung/uebersicht-vorlesungen.pdf') }}"
       class="btn btn-primary" role="button">
       {% if lang == "de" %}Regelmäßig angebotene Vorlesungen{% else %}Regularly offered courses{% endif %}
