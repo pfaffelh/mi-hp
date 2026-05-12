@@ -972,14 +972,3 @@ main h1 {
   margin-top: 24px;
   margin-bottom: 16px;
 }
-
-/* Bootstrap accordion tweaks (studiendekanat, lehrende, downloads, anfang, …) */
-.accordion-button:not(.collapsed) {
-  background-color: var(--ufr-yellow-20);
-  color: var(--ufr-black);
-  box-shadow: none;
-}
-.accordion-button:focus {
-  border-color: var(--ufr-blue);
-  box-shadow: 0 0 0 0.15rem var(--ufr-blue-40);
-}

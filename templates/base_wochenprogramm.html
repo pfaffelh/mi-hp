@@ -43,12 +43,6 @@
         line-height: 1.7;
         hyphens: auto;
       }
-      .accordion-button::after {
-        background-image: url("{{url_for('static', filename =  'images/plus-svgrepo-com.svg') }}");
-      }
-      .accordion-button:not(.collapsed)::after {
-        background-image: url("{{url_for('static', filename =  'images/cross-svgrepo-com.svg') }}");
-      }
       @media (max-width: 576px) {
         .modal-dialog {
           margin: 0;

@@ -39,6 +39,21 @@ def fortivpn(network = '10.23.0.0/16'):
         return wrapper
     return decorator
 
+def modulhandbuch_url(semester_kurzname, lang):
+    """Return /static URL for the 'Ergänzungen zu den Modulhandbüchern'
+    PDF of the given semester, preferring the language-specific file.
+    Returns '' if neither file exists."""
+    if not semester_kurzname:
+        return ""
+    for fname in (f"{semester_kurzname}mh_{lang}.pdf",
+                  f"{semester_kurzname}mh.pdf"):
+        try:
+            app.open_resource(f"static/pdf/lehrveranstaltungen/{fname}")
+            return url_for("static", filename=f"pdf/lehrveranstaltungen/{fname}")
+        except (FileNotFoundError, IOError):
+            continue
+    return ""
+
 # This is such that we can use os-commands in jinja2-templates.
 @app.context_processor
 def handle_context():
@@ -49,22 +64,6 @@ def handle_context():
         "mscdata": vvz.get_showanmeldung("mscdata")
         }
     vpn = forti_bool_or_localhost()
-
-    def modulhandbuch_url(semester_kurzname, lang):
-        """Return /static URL for the 'Ergänzungen zu den Modulhandbüchern'
-        PDF of the given semester, preferring the language-specific file.
-        Returns '' if neither file exists."""
-        if not semester_kurzname:
-            return ""
-        for fname in (f"{semester_kurzname}mh_{lang}.pdf",
-                      f"{semester_kurzname}mh.pdf"):
-            try:
-                app.open_resource(f"static/pdf/lehrveranstaltungen/{fname}")
-                return url_for("static", filename=f"pdf/lehrveranstaltungen/{fname}")
-            except (FileNotFoundError, IOError):
-                continue
-        return ""
-
     return dict(datetime =datetime, timedelta=timedelta, vpn=vpn, os=os,
                 showanmeldung = showanmeldung,
                 laufendes_semester = cur,
@@ -534,25 +533,14 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'schwerpunktgebiete', show=show))
     if unterseite == "warum_mathematik":
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'warum-mathematik', show=show))
-        # filenames = ["studiendekanat/warum_mathematik.html"]
     if unterseite == "termine":
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'pruefungstermine', show=show))
-        # filenames = ["studiendekanat/termine.html"]
     if unterseite == "calendar":
         anfang = datetime.now() + timedelta(days = -720)
         events = faq.get_calendar_data(anfang) + vvz.get_calendar_data(anfang) + news.get_wochenprogramm_for_calendar(anfang)
         all_calendars = [calendars[3]]
         selected_calendars = ["pruefungen"]
         return render_template("studiendekanat/calendar_plan.html", all_calendars = all_calendars, selected_calendars = selected_calendars, lang = lang, events=events)
-
-#        events = vvz.get_calendar_data(datetime.now() + timedelta(days = -365), lang)
-#        return render_template("studiendekanat/calendar_pruefungen.html", events=events, lang=lang, lehrende = False)
-#    if unterseite == "anmeldung":
-#        filenames = ["studiendekanat/anmeldung.html"]
-#    if unterseite == "modulplan":
-#        filenames = ["studiendekanat/modulplan.html"]
-#    if unterseite == "pruefungen":
-#        filenames = ["studiendekanat/pruefungen.html"]
     if unterseite == "ausland":
         return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'ausland', show=show))
     return render_template("home_nlehre.html", data=data, filenames = filenames, lang=lang)
