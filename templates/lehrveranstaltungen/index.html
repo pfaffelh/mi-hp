@@ -12,6 +12,10 @@
           {% if lang == "de" %} Übersicht aller Lehrpersonen {% else %} Overview
           of staff {% endif %}
         </a>
+    <a href="{{ url_for('static', filename='pdf/studienberatung/uebersicht-vorlesungen.pdf') }}"
+      class="btn btn-primary" role="button">
+      {% if lang == "de" %}Regelmäßig angebotene Vorlesungen{% else %}Regularly offered courses{% endif %}
+    </a>
       </div>
     </div>
   </div>
