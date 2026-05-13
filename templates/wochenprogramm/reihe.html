@@ -16,15 +16,15 @@
         </a>
         {% endif %}
         <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangtoday'], end = data['enddistant'])}}"
-          class="btn btn-primary" role="button" aria-disabled="true">
+          class="btn btn-primary{% if data['view_type'] == 'upcoming' %} is-active{% endif %}" role="button" aria-disabled="true">
           {% if lang == "de" %}Anstehende Vorträge{% else %}Upcoming talks{% endif %}
         </a>
         <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentsemester'], end = data['anfangnextsemester'])}}"
-          class="btn btn-primary" role="button" aria-disabled="true">
+          class="btn btn-primary{% if data['view_type'] == 'semester' %} is-active{% endif %}" role="button" aria-disabled="true">
           {% if lang == "de" %}Semesteransicht{% else %}Semesterly view{% endif %}
         </a>
         <a href="{{url_for('showvortragsreihe', lang=lang, kurzname = kurzname, anfang = data['anfangcurrentweek'], end = data['anfangnextweek'])}}"
-          class="btn btn-primary" role="button" aria-disabled="true">
+          class="btn btn-primary{% if data['view_type'] == 'week' %} is-active{% endif %}" role="button" aria-disabled="true">
           {% if lang == "de" %}Wochenansicht{% else %}Weekly view{% endif %}
         </a>
       </div>

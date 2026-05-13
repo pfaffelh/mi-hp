@@ -788,6 +788,11 @@ a:hover {
   text-decoration-thickness: 3px !important;
   text-underline-offset: 6px !important;
 }
+.btn-primary.is-active,
+.btn-primary.is-active:hover,
+.btn-primary.is-active:focus {
+  background-color: var(--ufr-yellow) !important;
+}
 
 /* Lecture-module-button (used in reihe.html) */
 button.lecture-module-button,

@@ -391,10 +391,12 @@ def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public"
     today_midnight = datetime(datetime.now().year, datetime.now().month, datetime.now().day)
     is_upcoming = anfangdate == today_midnight and diffdays > 365
     if is_upcoming:
+        view_type = "upcoming"
         zeitraum = "Anstehende Vorträge" if lang == "de" else "Upcoming talks"
         previousanfangdate = anfangdate
         nextenddate = enddate
     elif diffdays == 7 and anfangdate.weekday() == 0:
+        view_type = "week"
         sundaydate = enddate - timedelta(days=1)
         if lang == "de":
             if anfangdate.year == sundaydate.year:
@@ -414,10 +416,12 @@ def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public"
         previousanfangdate = get_start_previous_week(anfangdate)
         nextenddate = get_end_next_week(anfangdate)
     elif diffmonth == 1 or (anfangdate.month == 12 and enddate.month == 1):
+        view_type = "month"
         zeitraum = f"{get_monat(anfangdate.month, lang)} {anfangdate.year}"
         previousanfangdate = get_start_previous_month(anfangdate)
         nextenddate = get_end_next_month(anfangdate)
     elif diffmonth == 6:
+        view_type = "semester"
         sem_de = "Sommersemester" if anfangdate.month == 4 else "Wintersemester"
         sem_en = "Summer term" if anfangdate.month == 4 else "Winter term"
         sem = sem_de if lang == "de" else sem_en
@@ -425,6 +429,7 @@ def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public"
         previousanfangdate = get_start_previous_semester(anfangdate)
         nextenddate = get_end_next_semester(anfangdate)
     else:
+        view_type = ""
         zeitraum = ""
         previousanfangdate = anfangdate
         nextenddate = enddate
@@ -447,6 +452,7 @@ def get_wochenprogramm_full(anfang, end, query = {"kurzname" : "alle", "_public"
     data["anfangtoday"] = today_midnight.strftime('%Y%m%d')
     data["enddistant"] = (today_midnight + timedelta(days=3650)).strftime('%Y%m%d')
     data["is_upcoming"] = is_upcoming
+    data["view_type"] = view_type
     return data
 
 def get_event(kurzname, lang = "de", ascending = True):
