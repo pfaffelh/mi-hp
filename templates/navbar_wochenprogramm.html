@@ -20,24 +20,20 @@
     </ul>
   </li>
   {% endif %}
+  {% if events != [] %}
   <li>
     <span class="ufr-menu-section-title">Events</span>
     <ul class="ufr-menu-sub">
-      {% if events != [] %}
-        {% for event in events %}
+      {% for event in events %}
         <li>
           <a href="{{ url_for('showevent', lang=lang, kurzname = event['kurzname']) }}">
             {{ event['title'] }}
           </a>
         </li>
-        {% endfor %}
-      {% else %}
-        <li style="opacity:0.7;">
-          {% if lang == "de" %}Keine Events geplant{% else %}No events planned{% endif %}
-        </li>
-      {% endif %}
+      {% endfor %}
     </ul>
   </li>
+  {% endif %}
   <li>
     <a class="ufr-menu-item" href="{{ url_for('shownews', lang=lang) }}">
       {% if lang == "de" %}News-Archiv{% else %}News archive{% endif %}

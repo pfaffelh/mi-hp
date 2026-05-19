@@ -73,6 +73,9 @@
         </button>
         <div id="acc-item-{{item_index.value}}" class="collapse">
           <div class="ufr-accordion-body">
+            {% if ev["text"] %}
+            <p>{{ ev["text"]|markdown }}</p>
+            {% endif %}
             {% if ev["kommentar"] %}
             <p>{{ ev["kommentar"] }}</p>
             {% endif %}

@@ -49,7 +49,8 @@ def get_events(lang = "de"):
     for vr in list(vortragsreihe.find({"event": False, "sichtbar" : True, "_public" : True, "kurzname" : { "$ne" : ""}}, sort = [("rang", pymongo.ASCENDING)])):
         reihen.append({"kurzname" : vr["kurzname"], "title" : getwl(vr, "title", lang)})
 
-    for vr in list(vortragsreihe.find({"event": True, "sichtbar" : True, "_public" : True, "kurzname" : { "$ne" : ""}}, sort = [("end", pymongo.ASCENDING)])):
+    heute = datetime(datetime.now().year, datetime.now().month, datetime.now().day)
+    for vr in list(vortragsreihe.find({"event": True, "sichtbar" : True, "_public" : True, "kurzname" : { "$ne" : ""}, "end" : { "$gte" : heute }}, sort = [("end", pymongo.ASCENDING)])):
         events.append({"kurzname" : vr["kurzname"], "title" : f"{getwl(vr, 'title', lang)} ({vr['start'].strftime('%-d.%-m')}-{vr['end'].strftime('%-d.%-m.%y')})"})
     return reihen, events
 
@@ -300,6 +301,7 @@ def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle", "_publ
                     "endtag" : tage[e["end"].weekday()],
                     "enddatum" : e["end"].strftime('%-d.%-m.%y'),
                     "endzeit" : e["end"].strftime('%H:%M'),
+                    "text" : getwl(e, "text", lang),
                     "kommentar" : getwl(e, "kommentar", lang)
                 }
             )
