@@ -77,8 +77,13 @@ def handle_context():
 def url_for_self(**args):
     return url_for(request.endpoint, **dict(request.view_args, **args))
 
-# This is for using the last function within a jinja2 template. 
+# This is for using the last function within a jinja2 template.
 app.jinja_env.globals['url_for_self'] = url_for_self
+
+# RFC5545 3.3.11: Sonderzeichen in ICS-TEXT-Werten maskieren (Backslash zuerst).
+@app.template_filter('icsescape')
+def icsescape(text):
+    return (str(text) if text is not None else "").replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
 
 # Deutsche Namen für Tage und Monate
 locale.setlocale(locale.LC_ALL, "de_DE.UTF8") 
@@ -631,8 +636,11 @@ def showvortragsreiheics(lang="de", kurzname="alle"):
         except:
             name = kurzname
             events = []
-    ics_content = render_template("wochenprogramm/calendar.ics", lang=lang, events=events, name=name)
-    return Response(ics_content, mimetype="text/calendar")
+    ics_content = render_template("wochenprogramm/calendar.ics", lang=lang, events=events, name=name,
+                                  dtstamp=datetime.utcnow().strftime('%Y%m%dT%H%M%SZ'))
+    # Leerzeilen (aus dem {% for %}) entfernen und RFC-konform auf CRLF normalisieren.
+    ics_content = "\r\n".join(line for line in ics_content.splitlines() if line.strip()) + "\r\n"
+    return Response(ics_content, mimetype="text/calendar; charset=utf-8")
 
 @app.route("/wochenprogramm/")
 @app.route("/wochenprogramm/<lang>/")

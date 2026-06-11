@@ -1,8 +1,10 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-X-WR-CALNAME:{{name}}
+PRODID:-//Mathematisches Institut Freiburg//{{ name }}//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:{{ name }}
 X-WR-TIMEZONE:Europe/Berlin
-PRODID:-//{{name}}//DE
 BEGIN:VTIMEZONE
 TZID:Europe/Berlin
 X-LIC-LOCATION:Europe/Berlin
@@ -21,15 +23,14 @@ DTSTART:19701025T030000
 RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
-CALSCALE:GREGORIAN
-PRODID:-//{{name}}//DE
 {% for event in events %}
 BEGIN:VEVENT
-UID:{{event["uid"]}}
-SUMMARY:{{ event["title"] }}
-LOCATION:{{ event["extendedProps"]["ort"]}}
-DESCRIPTION:{{ event["extendedProps"]["description2"].replace('\n', '\\n') }}
-{{ event["extendedProps"]["icsTime"]}}
+UID:{{ event["uid"] }}
+DTSTAMP:{{ dtstamp }}
+SUMMARY:{{ event["title"] | icsescape }}
+LOCATION:{{ event["extendedProps"]["ort"] | icsescape }}
+DESCRIPTION:{{ event["extendedProps"]["description2"] | icsescape }}
+{{ event["extendedProps"]["icsTime"] }}
 END:VEVENT
 {% endfor %}
 END:VCALENDAR
