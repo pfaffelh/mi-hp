@@ -225,10 +225,31 @@ def get_planer_ics(rz):
         "PRODID:-//Mathematisches Institut Freiburg//Planer//DE",
         "CALSCALE:GREGORIAN",
         "METHOD:PUBLISH",
-        f"X-WR-CALNAME:Planer – {full_name}",
-        f"NAME:Planer – {full_name}",
+        f"X-WR-CALNAME:Planer – {_ics_escape(full_name)}",
+        f"NAME:Planer – {_ics_escape(full_name)}",
+        "X-WR-TIMEZONE:Europe/Berlin",
         "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
         "X-PUBLISHED-TTL:PT12H",
+        # VTIMEZONE-Definition für die von formatDateForIcs referenzierte TZID
+        # (RFC5545: nicht-globale TZID muss im Kalender definiert sein).
+        "BEGIN:VTIMEZONE",
+        "TZID:Europe/Berlin",
+        "X-LIC-LOCATION:Europe/Berlin",
+        "BEGIN:DAYLIGHT",
+        "TZOFFSETFROM:+0100",
+        "TZOFFSETTO:+0200",
+        "TZNAME:CEST",
+        "DTSTART:19700329T020000",
+        "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU",
+        "END:DAYLIGHT",
+        "BEGIN:STANDARD",
+        "TZOFFSETFROM:+0200",
+        "TZOFFSETTO:+0100",
+        "TZNAME:CET",
+        "DTSTART:19701025T030000",
+        "RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU",
+        "END:STANDARD",
+        "END:VTIMEZONE",
     ]
     for t in auf:
         ka = _kal(t.get("ankerdatum"))
