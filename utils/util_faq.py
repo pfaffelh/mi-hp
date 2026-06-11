@@ -121,6 +121,7 @@ def get_calendar_data(anzeige_start):
         col = next((c["color"] for c in calendars if c["kurzname"] == "semesterplan"), "#FFFFFF")
         allDay = True if t["datum"].time() == datetime.min.time() else False
         events.append({
+            "uid": f"{t['_id']}@math.uni-freiburg.de",
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
             "start": t["datum"].strftime('%Y-%m-%d') if allDay else t["datum"].isoformat(),
@@ -147,6 +148,7 @@ def get_calendar_data(anzeige_start):
         allDay = True if anfang.time() == datetime.min.time() else False
 
         events.append({
+            "uid": f"{t['_id']}@math.uni-freiburg.de",
             "color" : col,
             "textcolor" : get_contrasting_text_color(col),
             "start": anfang.strftime('%Y-%m-%d') if allDay else anfang.isoformat(),
