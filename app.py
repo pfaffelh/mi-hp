@@ -225,6 +225,20 @@ def showlexikon(lang):
     filenames = ["footer/lexikon.html"]
     return render_template("home_nlehre.html", filenames = filenames, data = data, lang = lang)
 
+############
+## Planer ##
+############
+
+# Abonnierbarer ICS-Feed: alle Aufgaben, für die <rz> verantwortlich ist.
+# In einem Kalender-Client als Abo-URL (webcal://.../nlehre/planer/<rz>.ics) hinterlegbar.
+@app.route("/nlehre/planer/<rz>.ics")
+def show_planer_ics(rz):
+    ics = faq.get_planer_ics(rz)
+    if ics is None:
+        abort(404)
+    return Response(ics, mimetype="text/calendar; charset=utf-8",
+                    headers={"Content-Disposition": f'inline; filename="planer-{rz}.ics"'})
+
 
 
 ############

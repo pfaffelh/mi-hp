@@ -164,3 +164,105 @@ def get_calendar_data(anzeige_start):
         })
 
     return events
+
+# ----------------------------------------------------------------------------
+# ICS-Abo-Feed pro Verantwortlicher
+# ----------------------------------------------------------------------------
+# Liefert einen abonnierbaren Kalender (text/calendar) mit allen Aufgaben, für
+# die die übergebene RZ-Kennung verantwortlich ist. Datums- und allDay-Logik
+# spiegeln get_calendar_data(); formatDateForIcs() kommt aus utils.config.
+
+def _ics_escape(text):
+    # RFC5545 3.3.11: Sonderzeichen in TEXT-Werten maskieren.
+    return (text or "").replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
+
+def _ics_fold(line):
+    # RFC5545 3.1: Zeilen > 75 Oktette werden mit CRLF + Space gefaltet.
+    encoded = line.encode("utf-8")
+    if len(encoded) <= 75:
+        return line
+    parts = []
+    while len(encoded) > 75:
+        cut = 75
+        while (encoded[cut] & 0xC0) == 0x80:  # nicht mitten in einem Mehrbyte-Zeichen schneiden
+            cut -= 1
+        parts.append(encoded[:cut].decode("utf-8"))
+        encoded = encoded[cut:]
+    parts.append(encoded.decode("utf-8"))
+    return "\r\n ".join(parts)
+
+def get_planer_ics(rz):
+    """ICS-String aller Aufgaben, für die `rz` verantwortlich ist.
+    Gibt None zurück, wenn die RZ-Kennung keinem User entspricht."""
+    user = users.find_one({"rz": rz})
+    if user is None:
+        return None
+    full_name = f"{user.get('vorname', '')} {user.get('name', '')}".strip() or rz
+
+    auf = list(aufgabe.find({"verantwortlicher": rz}))
+
+    # kleine Lookup-Caches gegen N+1 (Anker-Kalender, Prozess, Semester)
+    kal_cache, proz_cache, sem_cache = {}, {}, {}
+    def _kal(_id):
+        if _id not in kal_cache:
+            kal_cache[_id] = kalender.find_one({"_id": _id})
+        return kal_cache[_id]
+    def _proz(_id):
+        if _id not in proz_cache:
+            proz_cache[_id] = prozess.find_one({"_id": _id})
+        return proz_cache[_id]
+    def _sem(_id):
+        if _id not in sem_cache:
+            sem_cache[_id] = mongo_db_faq["semester"].find_one({"_id": _id})
+        return sem_cache[_id]
+
+    dtstamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+    lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Mathematisches Institut Freiburg//Planer//DE",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        f"X-WR-CALNAME:Planer – {full_name}",
+        f"NAME:Planer – {full_name}",
+        "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
+        "X-PUBLISHED-TTL:PT12H",
+    ]
+    for t in auf:
+        ka = _kal(t.get("ankerdatum"))
+        if ka is None:
+            continue
+        anfang = ka["datum"] + relativedelta(days=t["start"])
+        ende = ka["datum"] + relativedelta(days=t["ende"])
+        allDay = anfang.time() == datetime.min.time()
+
+        pr = _proz(t.get("parent"))
+        sem = _sem(pr["parent"]) if pr else None
+        kontext = " · ".join(x for x in [sem["name"] if sem else "", pr["name"] if pr else ""] if x)
+        status_bits = []
+        if t.get("bestätigt"):
+            status_bits.append("bestätigt")
+        if t.get("angefangen"):
+            status_bits.append("begonnen")
+        if t.get("erledigt"):
+            status_bits.append("erledigt")
+        desc_parts = [kontext, t.get("kommentar", "")]
+        if status_bits:
+            desc_parts.append("Status: " + ", ".join(status_bits))
+        description = "\\n".join(_ics_escape(p) for p in desc_parts if p)
+
+        event = [
+            "BEGIN:VEVENT",
+            f"UID:{t['_id']}@math.uni-freiburg.de",
+            f"DTSTAMP:{dtstamp}",
+        ]
+        event += formatDateForIcs(anfang, ende, allDay).split("\n")
+        event.append(f"SUMMARY:{_ics_escape(t.get('name', ''))}")
+        if description:
+            event.append(f"DESCRIPTION:{description}")
+        event.append("STATUS:" + ("CONFIRMED" if t.get("bestätigt") else "TENTATIVE"))
+        event.append("END:VEVENT")
+        lines += event
+
+    lines.append("END:VCALENDAR")
+    return "\r\n".join(_ics_fold(l) for l in lines) + "\r\n"
