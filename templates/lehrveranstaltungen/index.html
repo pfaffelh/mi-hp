@@ -153,6 +153,42 @@
         <div class="ufr-accordion-item">
           <button type="button" class="ufr-accordion-header"
             data-bs-toggle="collapse"
+            data-bs-target="#regelmContent"
+            aria-expanded="false"
+            aria-controls="regelmContent">
+            <span class="ufr-accordion-header-content">
+              <span class="ufr-accordion-title">
+                {% if lang == 'de' %}Regelmäßig angebotene Vorlesungen{% else %}Regularly offered courses{% endif %}
+              </span>
+            </span>
+            <span class="ufr-accordion-chevron" aria-hidden="true">
+              <svg viewBox="0 0 35 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 5 L25.6 25 L5 45" stroke="currentColor" stroke-width="6" />
+              </svg>
+            </span>
+          </button>
+          <div id="regelmContent" class="collapse">
+            <div class="ufr-accordion-body" id="regelm">
+              {% if lang == 'de' %}
+              <p>
+                Hier finden Sie in Kürze eine Übersicht der Vorlesungen, die
+                regelmäßig im Studienverlauf angeboten werden. (Platzhaltertext –
+                Inhalt folgt.)
+              </p>
+              {% else %}
+              <p>
+                An overview of the courses that are offered regularly during the
+                course of studies will be available here shortly. (Placeholder
+                text – content to follow.)
+              </p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="ufr-accordion-item">
+          <button type="button" class="ufr-accordion-header"
+            data-bs-toggle="collapse"
             data-bs-target="#kurzContent"
             aria-expanded="{% if anchor == 'kurz' %}true{% else %}false{% endif %}"
             aria-controls="kurzContent">
