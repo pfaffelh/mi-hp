@@ -61,6 +61,8 @@
 
   <div class="text-end my-4">
     <a href="{{ url_for('showstufaq', lang=lang) }}" class="btn btn-primary" role="button">FAQ</a>
+    <a href="https://www.math.uni-freiburg.de/nlehre/de/page/downloads/" class="btn btn-primary" role="button"
+    {% if lang == "de" %}Formulare{% else %}Forms{% endif %}</a>
     <a href="https://campus.uni-freiburg.de/" class="btn btn-primary" role="button">HISInOne</a>
     <a href="mailto:pruefungsamt@math.uni-freiburg.de" class="btn btn-primary" role="button">
       {% if lang == "de" %}Mail ans Prüfungsamt{% else %}Contact examination office{% endif %}
