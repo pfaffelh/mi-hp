@@ -272,6 +272,45 @@ def showtools(lang = "de"):
     filenames = ["footer/tools.html"]
     return render_template("home_nlehre.html", filenames = filenames, lang=lang)
 
+###############
+## instagram ##
+###############
+
+# Pflichtdokumente für den Instagram-Auftritt @math_uni_freiburg. Die Universität
+# verlangt, dass Nutzungskonzept, Datenschutzerklärung, DSFA, Netiquette und
+# Disclaimer sichtbar im Profil verlinkt sind; /nlehre/<lang>/instagram/ ist die
+# Sammelseite, auf die der Link in der Instagram-Bio zeigt.
+
+@app.route("/nlehre/<lang>/instagram/")
+def showinstagram(lang):
+    filenames = ["instagram/index.html"]
+    return render_template("home_nlehre.html", filenames = filenames, lang=lang)
+
+@app.route("/nlehre/<lang>/instagram/nutzungskonzept/")
+def showinstagramnutzungskonzept(lang):
+    filenames = ["instagram/nutzungskonzept.html"]
+    return render_template("home_nlehre.html", filenames = filenames, lang=lang)
+
+@app.route("/nlehre/<lang>/instagram/datenschutz/")
+def showinstagramdatenschutz(lang):
+    filenames = ["instagram/datenschutzerklaerung.html"]
+    return render_template("home_nlehre.html", filenames = filenames, lang=lang)
+
+@app.route("/nlehre/<lang>/instagram/dsfa/")
+def showinstagramdsfa(lang):
+    filenames = ["instagram/dsfa.html"]
+    return render_template("home_nlehre.html", filenames = filenames, lang=lang)
+
+@app.route("/nlehre/<lang>/instagram/netiquette/")
+def showinstagramnetiquette(lang):
+    filenames = ["instagram/netiquette.html"]
+    return render_template("home_nlehre.html", filenames = filenames, lang=lang)
+
+@app.route("/nlehre/<lang>/instagram/disclaimer/")
+def showinstagramdisclaimer(lang):
+    filenames = ["instagram/disclaimer.html"]
+    return render_template("home_nlehre.html", filenames = filenames, lang=lang)
+
 ##########################
 ## Studieninteressierte ## 
 ##########################
