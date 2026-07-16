@@ -6,6 +6,9 @@
   <div class="row">
     <div class="col">
       {% if studiengang == "" %}
+      <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}" class="btn btn-primary" role="button">
+        {% if lang == "de" %}Übersicht aller Semester{% else %}Overview of all semesters{% endif %}
+      </a>
       <a {% if vpn_nextsemester %} href="{{url_for('showlehrveranstaltungennextsemesterstundenplan', lang=lang)}}" {%
         else %} href="{{url_for('showlehrveranstaltungenstundenplan', lang=lang, semester = semester)}}" {% endif %}
         class="btn btn-primary" role="button">
@@ -15,9 +18,6 @@
         else %} href="{{url_for('showlehrveranstaltungenpersonenplan', lang=lang, semester = semester)}}" {% endif %}
         class="btn btn-primary" role="button">
         {% if lang == "de" %}Personenplan{% else %}Courses of all persons{% endif %}
-      </a>
-      <a href="{{url_for('showlehrveranstaltungenbase', lang=lang)}}" class="btn btn-primary" role="button">
-        {% if lang == "de" %}Übersicht aller Semester{% else %}Overview of all semesters{% endif %}
       </a>
       <a href="{{url_for('showlehrveranstaltungenpersonen', lang=lang, id = '')}}"
         class="btn btn-primary" role="button">
