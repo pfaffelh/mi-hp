@@ -17,6 +17,7 @@ import utils.util_faq as faq
 import utils.util_vvz as vvz
 import utils.util_news as news
 import utils.util_wp as wp
+import utils.util_instagram as insta
 
 app = Flask(__name__)
 Misaka(app, autolink=True, tables=True, math= True, math_explicit = True)
@@ -311,8 +312,23 @@ def showinstagramdisclaimer(lang):
     filenames = ["instagram/disclaimer.html"]
     return render_template("home_nlehre.html", filenames = filenames, lang=lang)
 
+# Oeffentliche Auslieferung eines gerenderten Instagram-Bildes. Die Editor-App
+# (mi-news, hinter VPN) legt das Bild unter einem unratbaren Token in Mongo ab;
+# Meta laedt es von dieser URL herunter (die Graph-API kennt keinen Upload).
+# Token ist alphanumerisch begrenzt; unbekannte Token liefern 404. Nicht
+# cachen -- der Eintrag ist transient und wird nach dem Posten geloescht.
+@app.route("/nlehre/insta/<token>.jpg")
+def show_insta_bild(token):
+    if not token.isalnum() or not (16 <= len(token) <= 128):
+        abort(404)
+    data = insta.get_insta_bild(token)
+    if data is None:
+        abort(404)
+    return Response(bytes(data), mimetype="image/jpeg",
+                    headers={"Cache-Control": "no-store"})
+
 ##########################
-## Studieninteressierte ## 
+## Studieninteressierte ##
 ##########################
 
 @app.route("/nlehre/studieninformation.html")
