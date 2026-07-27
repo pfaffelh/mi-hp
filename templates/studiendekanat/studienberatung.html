@@ -20,7 +20,7 @@
   {% endfor %}
 
   <div class="text-end my-4">
-    <a href="{{ url_for('showstufaq', lang=lang) }}" class="btn btn-primary" role="button">FAQ</a>
+    <a href="{{ url_for('showstufaq', lang=lang) }}" class="btn btn-primary" role="button">{% if lang == "de" %}FAQ für Studierende{% else %}FAQ for students{% endif %}</a>
     <a href="{{ url_for('showanfang', lang=lang, unterseite='studienanfang') }}"
       class="btn btn-primary" role="button">
       {% if lang == "de" %}Wegweiser für den Studienanfang{% else %}Starting Guide for Studying Maths{% endif %}
