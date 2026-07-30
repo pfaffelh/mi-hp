@@ -165,6 +165,7 @@
           </button>
           <div id="regelmContent" class="collapse">
             <div class="ufr-accordion-body" id="regelm">
+  <div class="container text-end py-4">
     <div class="row">
       <div class="col"> 
     <a href="{{ url_for('static', filename='pdf/studienberatung/uebersicht-vorlesungen.pdf') }}"
@@ -172,6 +173,7 @@
       {% if lang == "de" %}Übersicht regelmäßig angebotener Vorlesungen mit Voraussetzungen
       {% else %}Overview of regularly offered courses with prerequisites{% endif %}
     </a>
+    </div>
     </div>
   </div>
               {% if lang == 'de' %}
