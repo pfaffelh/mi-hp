@@ -165,12 +165,15 @@
           </button>
           <div id="regelmContent" class="collapse">
             <div class="ufr-accordion-body" id="regelm">
-              <p>
+    <div class="row">
+      <div class="col"> 
     <a href="{{ url_for('static', filename='pdf/studienberatung/uebersicht-vorlesungen.pdf') }}"
       class="btn btn-primary" role="button">
       {% if lang == "de" %}Übersicht regelmäßig angebotener Vorlesungen mit Voraussetzungen
       {% else %}Overview of regularly offered courses with prerequisites{% endif %}
-    </a></p>
+    </a>
+    </div>
+  </div>
               {% if lang == 'de' %}
               <p>
 <h4>  <b>Jedes Semester</b> werden angeboten:</h4>
@@ -286,13 +289,13 @@
               <a
                 href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'.pdf')}}"
                 >(Kommentare)</a
-              > &ndash; 
-              {% if value["mh_lang_exists"] %}
+              > 
+              {% if value["mh_lang_exists"] %} &ndash; 
               <a
                 href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')}}"
                 >Ergänzungen zu den Modulhandbüchern</a
               >
-              {% elif value["mh_exists"] %}
+              {% elif value["mh_exists"] %} &ndash; 
               <a
                 href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
                 >Ergänzungen zu den Modulhandbüchern</a
