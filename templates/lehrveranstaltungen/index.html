@@ -288,12 +288,12 @@
               {% if value["mh_lang_exists"] %} &ndash; 
               <a
                 href="{{url_for('static', filename='pdf/lehrveranstaltungen/' + key + 'mh_' + lang + '.pdf')}}"
-                >Ergänzungen zu den Modulhandbüchern</a
+                >Ergänzungen der Modulhandbücher</a
               >
               {% elif value["mh_exists"] %} &ndash; 
               <a
                 href="{{url_for('static', filename='pdf/lehrveranstaltungen/'+key+'mh.pdf')}}"
-                >Ergänzungen zu den Modulhandbüchern</a
+                >Ergänzungen der Modulhandbücher</a
               >
               {% endif %}
               <br />
