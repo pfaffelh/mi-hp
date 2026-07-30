@@ -144,38 +144,34 @@
         </tbody>
       </table>
       <br />
-
-      <div class="ufr-accordion" id="accordionExample">
-        <div class="ufr-accordion-item">
-          <button type="button" class="ufr-accordion-header"
-            data-bs-toggle="collapse"
-            data-bs-target="#regelmContent"
-            aria-expanded="false"
-            aria-controls="regelmContent">
-            <span class="ufr-accordion-header-content">
-              <span class="ufr-accordion-title">
-                {% if lang == 'de' %}Regelmäßig angebotene Veranstaltungen{% else %}Regularly offered courses{% endif %}
-              </span>
-            </span>
-            <span class="ufr-accordion-chevron" aria-hidden="true">
-              <svg viewBox="0 0 35 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 5 L25.6 25 L5 45" stroke="currentColor" stroke-width="6" />
-              </svg>
-            </span>
-          </button>
-          <div id="regelmContent" class="collapse">
-            <div class="ufr-accordion-body" id="regelm">
-  <div class="container text-end py-4">
-    <div class="row">
-      <div class="col"> 
-    <a href="{{ url_for('static', filename='pdf/studienberatung/uebersicht-vorlesungen.pdf') }}"
-      class="btn btn-primary" role="button">
-      {% if lang == "de" %}Übersicht regelmäßig angebotener Vorlesungen mit Voraussetzungen
-      {% else %}Overview of regularly offered courses with prerequisites{% endif %}
-    </a>
-    </div>
-    </div>
-  </div>
+<div class="ufr-accordion" id="accordionExample">
+  <div class="ufr-accordion-item">
+    <button type="button" class="ufr-accordion-header" data-bs-toggle="collapse" data-bs-target="#regelmContent"
+      aria-expanded="false" aria-controls="regelmContent">
+      <span class="ufr-accordion-header-content">
+        <span class="ufr-accordion-title">
+          {% if lang == 'de' %}Regelmäßig angebotene Veranstaltungen{% else %}Regularly offered courses{% endif %}
+        </span>
+      </span>
+      <span class="ufr-accordion-chevron" aria-hidden="true">
+        <svg viewBox="0 0 35 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 5 L25.6 25 L5 45" stroke="currentColor" stroke-width="6" />
+        </svg>
+      </span>
+    </button>
+    <div id="regelmContent" class="collapse">
+      <div class="ufr-accordion-body" id="regelm">
+        <div class="container text-end py-4">
+          <div class="row">
+            <div class="col">
+              <a href="{{ url_for('static', filename='pdf/studienberatung/uebersicht-vorlesungen.pdf') }}"
+                class="btn btn-primary" role="button">
+                {% if lang == "de" %}Übersicht regelmäßig angebotener Vorlesungen mit Voraussetzungen
+                {% else %}Overview of regularly offered courses with prerequisites{% endif %}
+              </a>
+            </div>
+          </div>
+        </div>
               {% if lang == 'de' %}
               <p>
 <h4>  <b>Jedes Semester</b> werden angeboten:</h4>
