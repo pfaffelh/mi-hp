@@ -165,12 +165,12 @@
           </button>
           <div id="regelmContent" class="collapse">
             <div class="ufr-accordion-body" id="regelm">
-              {% if lang == 'de' %}
 
     <a href="{{ url_for('static', filename='pdf/studienberatung/uebersicht-vorlesungen.pdf') }}"
       class="btn btn-primary" role="button">
       {% if lang == "de" %}Übersicht regelmäßig angebotener Vorlesungen{% else %}Regularly offered courses{% endif %}
     </a>
+              {% if lang == 'de' %}
               <p>
 <h4>  <b>Jedes Semester</b> werden angeboten:</h4>
     <ul>
