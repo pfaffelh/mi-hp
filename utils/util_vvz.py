@@ -68,13 +68,17 @@ def get_showsemester(shortname, hp_sichtbar = True):
     b = vvz_semester.find_one({"kurzname": shortname, "hp_sichtbar": hp_sichtbar })
     return (b != None)
 
-def get_current_semester_kurzname():
-    if datetime.now().month < 4:
-        res = f"{datetime.now().year-1}WS"
-    elif 3 < datetime.now().month and datetime.now().month < 10:
-        res = f"{datetime.now().year}SS"
+# early = True zeigt das jeweils naechste Semester frueher an: ab Maerz das SS,
+# ab August das WS. Default bleibt der regulaere Wechsel (April bzw. Oktober).
+def get_current_semester_kurzname(early = False):
+    ss_start, ws_start = (3, 8) if early else (4, 10)
+    now = datetime.now()
+    if now.month < ss_start:
+        res = f"{now.year-1}WS"
+    elif now.month < ws_start:
+        res = f"{now.year}SS"
     else:
-        res = f"{datetime.now().year}WS"
+        res = f"{now.year}WS"
     return res
 
 def next_semester_kurzname(kurzname):

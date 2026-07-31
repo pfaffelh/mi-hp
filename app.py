@@ -115,10 +115,10 @@ def showfakewp(site, show = "", lang = "de"):
         elif len(dir) == 3:
             abteilung = dir[1]
             co = list(vvz.vvz_code.find({"name" : f"hp_{abteilung}"}))
-            dat = vvz.get_data(vvz.get_current_semester_kurzname(), lang = lang, studiengang = "", modul = "", veranstaltungs_query = {"code" : { "$in" : [c["_id"] for c in co]}}, vpn = False)
+            dat = vvz.get_data(vvz.get_current_semester_kurzname(early = True), lang = lang, studiengang = "", modul = "", veranstaltungs_query = {"code" : { "$in" : [c["_id"] for c in co]}}, vpn = False)
             # print(dat)
         else:
-            dat = vvz.get_data(vvz.get_current_semester_kurzname(), lang = lang, studiengang = "", modul = "", veranstaltungs_query = {}, vpn = False)
+            dat = vvz.get_data(vvz.get_current_semester_kurzname(early = True), lang = lang, studiengang = "", modul = "", veranstaltungs_query = {}, vpn = False)
         data = {}
         loc = dat["semester"]["kurzname"]
         data["semester"] = loc[4:6] + loc[0:4]
