@@ -1,6 +1,83 @@
 {% extends 'base_nlehre.html' %}
 {% block navbar %}{% include 'navbar_nlehre.html' %}{% endblock %}
 
+{# Verantwortliche Personen eines Knotens (in mi-faq gepflegt, Quelle: studiendekanat).
+   Steht jeweils direkt vor dem Suffix. Rendert nichts, wenn die Liste leer ist.
+   Markup bewusst identisch zu studiendekanat/studienberatung.html, damit eine Person
+   auf der ganzen Seite gleich aussieht — in der kleineren --nested-Variante, weil der
+   Block immer innerhalb anderer Inhalte sitzt.
+   praefix macht die collapse-ids eindeutig; er kommt aus den Schleifenindizes und nicht
+   aus kurzname, der laut DB nicht eindeutig ist. #}
+{% macro verantwortliche(v, praefix) %}
+{% if v %}
+<div class="mt-4 mb-4">
+  <div class="fw-bold mb-1">{% if lang == "en" %}Responsible{% else %}Verantwortlich{% endif %}</div>
+  <div class="ufr-accordion ufr-accordion--nested">
+    {% for item in v %}
+    <div class="ufr-accordion-item">
+      <button type="button" class="ufr-accordion-header"
+        data-bs-toggle="collapse"
+        data-bs-target="#person-{{ praefix }}-{{ loop.index }}"
+        aria-expanded="false"
+        aria-controls="person-{{ praefix }}-{{ loop.index }}">
+        <span class="ufr-accordion-header-content">
+          <span class="ufr-accordion-title">{{ item['name']|safe }}</span>
+          {% if item['rolle'] != '' %}
+          <span class="ufr-accordion-meta">{{ item['rolle']|safe }}</span>
+          {% endif %}
+        </span>
+        <span class="ufr-accordion-chevron" aria-hidden="true">
+          <svg viewBox="0 0 35 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 5 L25.6 25 L5 45" stroke="currentColor" stroke-width="6" />
+          </svg>
+        </span>
+      </button>
+      <div id="person-{{ praefix }}-{{ loop.index }}" class="collapse">
+        <div class="ufr-accordion-body">
+          {% if item['link'] != '' %}
+          <a class="ufr-accordion-link" href="{{ item['link'] }}">
+            <i class="fa-solid fa-link" aria-hidden="true"></i>
+            {% if lang == "de" %}Webseite{% else %}Webpage{% endif %}
+          </a>
+          {% endif %}
+
+          {% if item['mail'] != '' or item['raum'] != '' or item['tel'] != '' or item['sprechstunde'] != '' %}
+          <ul class="ufr-person-contact">
+            {% if item['mail'] != '' %}
+            <li>
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:{{ item['mail']|safe }}">{{ item['mail'] }}</a>
+            </li>
+            {% endif %}
+            {% if item['raum'] != '' %}
+            <li>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              {% if lang == 'de' %}Raum{% else %}Office{% endif %} {{ item['raum']|safe }}
+            </li>
+            {% endif %}
+            {% if item['tel'] != '' %}
+            <li>
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              {{ item['tel']|safe }}
+            </li>
+            {% endif %}
+            {% if item['sprechstunde'] != '' %}
+            <li>
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              {% if lang == 'de' %}Sprechstunde:{% else %}Office hour:{% endif %} {{ item['sprechstunde']|safe }}
+            </li>
+            {% endif %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endmacro %}
+
 {% block content %}
 <div class="container" id="inhalt">
   <h1>
@@ -48,6 +125,7 @@
 <div class="container">
   <div class="ufr-accordion" id="accordionFAQtags">
     {% for k1 in data["kinder"] %}
+    {% set k1i = loop.index %}
     {% set k1open = (showcat == 'all' or showcat == k1['kurzname']) %}
     <div class="ufr-accordion-item">
       <button type="button" class="ufr-accordion-header"
@@ -131,6 +209,7 @@
                   </div>
                   {% endif %}
 
+                  {{ verantwortliche(k2["verantwortliche"], "k1-" ~ k1i ~ "-k2-" ~ loop.index) }}
                   {% if k2["suffix_html"] %}{{ k2["suffix"]|safe }}{% else %}{{ k2["suffix"]|markdown }}{% endif %}
                 </div>
               </div>
@@ -139,6 +218,7 @@
           </div>
           {% endif %}
 
+          {{ verantwortliche(k1["verantwortliche"], "k1-" ~ k1i) }}
           {% if k1["suffix_html"] %}{{ k1["suffix"]|safe }}{% else %}{{ k1["suffix"]|markdown }}{% endif %}
         </div>
       </div>
@@ -146,6 +226,7 @@
     {% endfor %}
   </div>
 
+  {{ verantwortliche(data["verantwortliche"], "top") }}
   {% if data["suffix_html"] %}{{ data["suffix"]|safe }}{% else %}{{ data["suffix"]|markdown }}{% endif %}
 </div>
 {% endblock %}

@@ -50,7 +50,30 @@ def get(x, field_prefix, lang, alt = ""):
         res = x[f"{field_prefix}_{lang}"] if x[f"{field_prefix}_{lang}"] != "" else x[f"{field_prefix}_{otherlang}"]
     return res
 
-# get_accordion_data returns 
+# knoten.verantwortliche ist eine Liste von studiendekanat-ObjectIds, gepflegt in mi-faq.
+# studiendekanat hat rund ein Dutzend Einträge — einmal pro Seitenaufruf laden und für alle
+# Knoten der Seite wiederverwenden, statt pro Knoten zu queryen.
+def get_verantwortliche(x, lang, personen):
+    res = []
+    for pid in x.get("verantwortliche", []):
+        p = personen.get(pid)
+        # Person zwischenzeitlich gelöscht: still überspringen statt die ganze Seite zu kippen
+        if p is None:
+            continue
+        # Dieselben Felder, die studienberatung.html/pruefungsamt.html anzeigen, damit der
+        # Personen-Block auf den Akkordeon-Seiten identisch gerendert werden kann.
+        res.append({
+            "name": get(p, "name", lang),
+            "rolle": get(p, "rolle", lang),
+            "raum": get(p, "raum", lang),
+            "tel": get(p, "tel", lang),
+            "sprechstunde": get(p, "sprechstunde", lang),
+            "mail": p.get("mail", ""),
+            "link": p.get("link", ""),
+        })
+    return res
+
+# get_accordion_data returns
 # a list of category shortnames (cats_kurzname), 
 # a dictionary how to translate them into full names (names_dict), 
 # a dict with the shortnames as keys, where each value is a list of triples (id, q, a), which contains the information for each question in each category (qa_pairs). 
@@ -61,9 +84,11 @@ def get_accordion_data(kurzname, lang, show = ""):
     quicklink_prefixes = ["title", "url"] # there are title_de and title_en, and url_de and url_en
 
     try:
+        personen = {p["_id"]: p for p in studiendekanat.find({})}
         x = knoten.find_one({"kurzname" : kurzname, "sichtbar" : True})
         loc = { field: x[field] for field in fields}
         loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in x["quicklinks"]]
+        loc["verantwortliche"] = get_verantwortliche(x, lang, personen)
         loc["kinder"] = []
         loc["url"] = f"/nlehre/{lang}/page/{x['kurzname']}"
         for field_prefix in field_prefixes:
@@ -75,6 +100,7 @@ def get_accordion_data(kurzname, lang, show = ""):
             if y["sichtbar"]:
                 loc = { field: y[field] for field in fields}
                 loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in y["quicklinks"]]
+                loc["verantwortliche"] = get_verantwortliche(y, lang, personen)
                 loc["kinder"] = []
                 loc["url"] = f"/nlehre/{lang}/page/{x['kurzname']}/{y['kurzname']}"
                 for field_prefix in field_prefixes:
@@ -85,6 +111,7 @@ def get_accordion_data(kurzname, lang, show = ""):
                     if z["sichtbar"]:
                         loc = { field: z[field] for field in fields}
                         loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in z["quicklinks"]]
+                        loc["verantwortliche"] = get_verantwortliche(z, lang, personen)
                         loc["kinder"] = []
                         loc["url"] = f"/nlehre/{lang}/page/{x['kurzname']}/{z['kurzname']}"
                         for field_prefix in field_prefixes:
@@ -93,7 +120,7 @@ def get_accordion_data(kurzname, lang, show = ""):
                         
     except:
         logger.warning("No connection to database")
-        data = { "kurzname" : kurzname, "sichtbar" : True, "titel" : "", "titel_html" : False, "prefix" : "", "prefix_html" : False, "quicklinks" : [], "suffix" : "", "suffix_html" : False, "bearbeitet" : "", "kinder" : []}
+        data = { "kurzname" : kurzname, "sichtbar" : True, "titel" : "", "titel_html" : False, "prefix" : "", "prefix_html" : False, "quicklinks" : [], "suffix" : "", "suffix_html" : False, "verantwortliche" : [], "bearbeitet" : "", "kinder" : []}
     if show == "":
         showcat = ""
     elif show == "all":

@@ -120,6 +120,38 @@ Vorbild: <https://uni-freiburg.de/math/> und
   egal welche DB-Metadaten in einem 240×220-Rahmen.
   `widthmonitor` und `stylemonitor` aus der DB werden ignoriert
 
+## Verantwortliche Personen auf Akkordeon-Seiten
+
+Ein `knoten` kann das Feld `verantwortliche` haben: eine Liste von
+ObjectIds aus `studiendekanat`, gepflegt im Editor mi-faq
+(`pages/01_knoten.py`). `get_verantwortliche()` in
+`utils/util_faq.py` löst sie sprachabhängig auf (Name, Rolle, Mail,
+Link); `get_accordion_data()` hängt das Ergebnis an alle drei Ebenen.
+Gerendert wird es vom Jinja-Makro `verantwortliche()` in
+`templates/accordion_nlehre.html`, jeweils direkt **vor** dem Suffix.
+Leere Liste → kein Markup.
+
+Das Markup ist absichtlich dasselbe wie in
+`studiendekanat/studienberatung.html`: pro Person ein
+`ufr-accordion-item` mit Name plus `ufr-accordion-meta` für die Rolle
+im Header, im Body der `ufr-accordion-link` zur Webseite und die
+`ufr-person-contact`-Liste mit Mail, Raum, Telefon und Sprechstunde.
+Genommen wird die kleinere `--nested`-Variante, weil der Block immer
+innerhalb anderer Inhalte steht. News und der Aufgaben-Text aus
+`studiendekanat` werden hier **nicht** angezeigt.
+
+Der `praefix`-Parameter macht die collapse-ids eindeutig und kommt aus
+den Schleifenindizes (`k1i`, `loop.index`), nicht aus `kurzname` — der
+ist in der DB mehrfach vergeben.
+
+Die 12 `studiendekanat`-Dokumente werden einmal pro Seitenaufruf
+geladen und an alle Knoten durchgereicht, nicht pro Knoten gequeryt.
+Gelöschte Personen werden still übersprungen.
+
+`templates/accordion_wochenprogramm.html` benutzt dieselbe
+`get_accordion_data()`, rendert den Block aber **nicht** — dort
+gesetzte Verantwortliche wären unsichtbar.
+
 ## Plan: Lehre-Seiten (`/nlehre/...`) als nächster Schritt
 
 Was ist betroffen? Alles was `base_nlehre.html` extendet:
