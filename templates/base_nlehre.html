@@ -270,6 +270,20 @@
           {% if lang == "de" %}Mathematisches Institut{% else %}Mathematical Institute{% endif %}
         </h2>
         <p>Ernst-Zermelo-Str. 1, 79104 Freiburg</p>
+        {# Der eigene Kanal gehoert unter die eigene Ueberschrift, nicht zu den
+           zentralen Konten der Universitaet. So haelt es das Uni-CMS auch: Die
+           Rechtswissenschaftliche Fakultaet fuehrt im Fussbereich
+           "Instagram @jura_uni_freiburg" unter ihrem Fakultaetsnamen und
+           darunter, unter "Universitaet Freiburg", die zentralen Konten.
+           Beschriftung im selben Format ("Instagram @name"). Das Symbol ist
+           dekorativ und per aria-hidden von Screenreadern ausgenommen -- die
+           Bedeutung traegt der Text. #}
+        <p class="ufr-footer-social">
+          <a href="https://www.instagram.com/math_uni_freiburg/">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            <span>Instagram @math_uni_freiburg</span>
+          </a>
+        </p>
       </div>
 
       <div class="ufr-footer-divider"></div>
@@ -291,6 +305,44 @@
             Postal address: Postfach, 79085 Freiburg, Germany
           {% endif %}
         </p>
+        {# Die zentralen Konten der Universitaet, unter ihrem Logo -- getrennt vom
+           Institutskanal weiter oben. Alle vier URLs woertlich aus der
+           Uni-Fusszeile uebernommen, samt Instagram ohne Schraegstrich am Ende
+           und Umlaut in der YouTube-Adresse.
+
+           Anders als der Institutskanal stehen sie als Symbolreihe: Vier
+           Textzeilen wuerden den Fussbereich beschweren und vom eigenen Kanal
+           ablenken -- zumal "LinkedIn albert-ludwigs-universitaet-freiburg",
+           wie die Uni es ausschreibt, allein eine ganze Zeile fuellt. Die
+           Symbole sind per aria-hidden ausgenommen; die Bedeutung traegt das
+           aria-label des Links, damit Screenreader "Universitaet Freiburg auf
+           Facebook" lesen und nicht "Link". #}
+        <ul class="ufr-footer-social-list">
+          <li>
+            <a href="https://www.facebook.com/unifreiburg"
+               aria-label="{% if lang == "de" %}Universität Freiburg auf Facebook{% else %}University of Freiburg on Facebook{% endif %}">
+              <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/unifreiburg"
+               aria-label="{% if lang == "de" %}Universität Freiburg auf Instagram{% else %}University of Freiburg on Instagram{% endif %}">
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/c/UniversitätFreiburg"
+               aria-label="{% if lang == "de" %}Universität Freiburg auf YouTube{% else %}University of Freiburg on YouTube{% endif %}">
+              <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/school/albert-ludwigs-universitaet-freiburg"
+               aria-label="{% if lang == "de" %}Universität Freiburg auf LinkedIn{% else %}University of Freiburg on LinkedIn{% endif %}">
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
 
