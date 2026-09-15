@@ -225,7 +225,12 @@
       <nav class="ufr-footer-nav" aria-label="Footer">
         <ul class="ufr-footer-links">
           <li>
-            <a href="https://uni-freiburg.de/math/institut/">
+            {# Ziel ist die Geschaeftsstelle, nicht /math/institut/: Dieser Pfad
+               liefert 404. Er stand so auch in der Navigation der Institutsseite
+               der Universitaet, von dort kam er hierher. Gemeldet am 15.09.2026
+               ueber den Instagram-Kanal -- ein Besucher kam ueber den Bio-Link
+               und lief in den toten Link. #}
+            <a href="https://uni-freiburg.de/math/geschaeftsstelle/">
               {% if lang == "de" %}Kontakt{% else %}Contact{% endif %}
             </a>
           </li>
