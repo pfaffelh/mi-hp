@@ -3,31 +3,13 @@
 {% for k1 in data %}
 
 <h2 class="wp-block-heading">{{ k1["gruppe"] }}</h2>
-{% for p in k1["members"] %}
-<p style = "margin:-10px 0;">
 
-  <strong>
-    {{ p["name"] | safe }}
-  </strong
-  ><br />mail:
-  <strong><a href="mailto:{{ p['mail'] }}">{{ p['mail'] | safe }}</a></strong
-  >
-  {% if p["tel"] != "" %}
-  <br />tel: 
-  <strong>
-    0761 / 203 {{ p["tel"] | safe }}
-  </strong> 
-  {% endif %}
-  {% if p["raum"] != "" %}  
-  <br />Raum
-  {{ p["raum"] | safe  }}
-  {% endif %}
-  {% if p["kommentar"] != "" %}  
-  <br />
-  {{ p["kommentar"] | safe  }}
-  {% endif %}
-</p>
-<div style="height: 30px" aria-hidden="true" class="wp-block-spacer"></div>
+<figure class="wp-block-table is-style-regular"><table class="has-fixed-layout"><tbody>
+{% for p in k1["members"] %}
+<tr><td>{{ p["name_titel"] | safe }}<br>E-Mail: {% for m in p["mails"] %}<a href="mailto:{{ m }}">{{ m }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% if p["kommentar"] != "" %}<br>{{ p["kommentar"] | safe }}{% endif %}</td><td class="has-text-align-center" data-align="center">{% for t in p["tels"] %}Tel: 0761 / 203 {{ t }}{% if not loop.last %}<br>{% endif %}{% endfor %}</td><td class="has-text-align-left" data-align="left">{% for r in p["raeume"] %}Raum: {{ r }}{% if not loop.last %}<br>{% endif %}{% endfor %}</td></tr>
 {% endfor %}
+</tbody></table></figure>
 {% endfor %}
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
 {% endblock %}

@@ -697,8 +697,28 @@ def get_person_data(abteilung = ""):
                         "tel" : ", ".join(x for x in [p["tel1"], p["tel2"]] if x),
                         "mail" : ", ".join(x for x in [p["email1"], p["email2"]] if x),
                         "raum" : ", ".join(f"{x[0]} ({vvz_gebaeude.find_one({ '_id': x[1]})['name_de']})" for x in zip([p["raum1"], p["raum2"]], [p["gebaeude1"], p["gebaeude2"]]) if x[0]),
-                        "kommentar" : p["kommentar_html"]
+                        "kommentar" : p["kommentar_html"],
+                        # Felder im Stil von uni-freiburg.de/reinemathematik/
+                        "name_titel" : titel_vorname_name(p),
+                        "mails" : [x for x in [p["email1"], p["email2"]] if x],
+                        "tels" : [x for x in [p["tel1"], p["tel2"]] if x],
+                        "raeume" : [f"{r} ({gebaeude_kurz(g)})" for r, g in zip([p["raum1"], p["raum2"]], [p["gebaeude1"], p["gebaeude2"]]) if r]
                         }
                         for p in per]})
         
     return data
+
+def titel_vorname_name(p):
+    res = " ".join(x.strip() for x in [p.get("titel", ""), p["vorname"], p["name"]] if x.strip())
+    if p["url"] != "":
+        res = f'<a href="{p["url"]}">{res}</a>'
+    return res
+
+# "EZ1" -> "EZ 1"; ohne Kurzname der volle Gebäudename
+def gebaeude_kurz(gebaeude_id):
+    g = vvz_gebaeude.find_one({"_id": gebaeude_id})
+    if not g:
+        return ""
+    if g["kurzname"]:
+        return re.sub(r"([A-Za-z])(\d)", r"\1 \2", g["kurzname"])
+    return g["name_de"]
