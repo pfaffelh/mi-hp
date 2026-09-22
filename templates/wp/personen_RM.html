@@ -1,0 +1,33 @@
+{% extends config['skel_name'] %} {% block content %}
+<h1>{{ config['titel'] }}</h1>
+{% for k1 in data %}
+
+<h2 class="wp-block-heading">{{ k1["gruppe"] }}</h2>
+{% for p in k1["members"] %}
+<p style = "margin:-10px 0;">
+
+  <strong>
+    {{ p["name"] | safe }}
+  </strong
+  ><br />mail:
+  <strong><a href="mailto:{{ p['mail'] }}">{{ p['mail'] | safe }}</a></strong
+  >
+  {% if p["tel"] != "" %}
+  <br />tel: 
+  <strong>
+    0761 / 203 {{ p["tel"] | safe }}
+  </strong> 
+  {% endif %}
+  {% if p["raum"] != "" %}  
+  <br />Raum
+  {{ p["raum"] | safe  }}
+  {% endif %}
+  {% if p["kommentar"] != "" %}  
+  <br />
+  {{ p["kommentar"] | safe  }}
+  {% endif %}
+</p>
+<div style="height: 30px" aria-hidden="true" class="wp-block-spacer"></div>
+{% endfor %}
+{% endfor %}
+{% endblock %}

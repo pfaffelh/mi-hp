@@ -98,6 +98,7 @@ locale.setlocale(locale.LC_ALL, "de_DE.UTF8")
 # Folgende Links stehen zur Verfügung:
 # https://math.uni-freiburg.de/cd2021/personen_de/ Personenverzeichnis aller Personen am MI
 # https://math.uni-freiburg.de/cd2021/lehre_MSt_de/ Personenverzeichnis aller Personen am MI
+# https://math.uni-freiburg.de/cd2021/personen_RM_de/ Personen der Abteilung Reine Mathematik
 
 
 @app.route("/cd2021/<site>/")

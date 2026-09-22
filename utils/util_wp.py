@@ -87,12 +87,12 @@ config = {
         "template" : "wp/personen.html"
     },
     "personen_RM_de" : {
-        "titel" : "Lehrkörper / Mitarbeiter",
-        "url_skel" : "https://uni-freiburg.de/stochastik/mitarbeiterinnen/",
-        "skel_name" : "skel.html",
-        "queries" : [{"class" : "wp-block-group"}],
+        "titel" : "Mitarbeiter:innen",
+        "url_skel" : "https://uni-freiburg.de/reinemathematik/wissenschaftlicher-dienst/",
+        "skel_name" : "skel_personen_RM_de.html",
+        "queries" : [{"string" : "Wissenschaftlicher Dienst"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
-        "template" : "wp/personen.html"
+        "template" : "wp/personen_RM.html"
     },
     "fdmseminar_en" : {
         "titel" : "",
