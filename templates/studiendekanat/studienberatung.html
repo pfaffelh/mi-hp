@@ -20,19 +20,19 @@
   {% endfor %}
 
   <div class="text-end my-4">
-    <a href="{{ url_for('showstufaq', lang=lang) }}" class="btn btn-primary" role="button">{% if lang == "de" %}FAQ für Studierende{% else %}FAQ for students{% endif %}</a>
+    <a href="mailto:studienberatung@math.uni-freiburg.de" class="btn btn-primary" role="button">
+      {% if lang == "de" %}Mail an Studienberatung{% else %}Contact student counseling{% endif %}
+    </a>
     <a href="{{ url_for('showanfang', lang=lang, unterseite='studienanfang') }}"
       class="btn btn-primary" role="button">
-      {% if lang == "de" %}Wegweiser für den Studienanfang{% else %}Starting Guide for Studying Maths{% endif %}
+      {% if lang == "de" %}Wegweiser Studienanfang{% else %}Starting Guide for Studying Maths{% endif %}
     </a>
+    <a href="{{ url_for('showstufaq', lang=lang) }}" class="btn btn-primary" role="button">{% if lang == "de" %}FAQ für Studierende{% else %}FAQ for students{% endif %}</a>
     <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='schwerpunktgebiete') }}"
       class="btn btn-primary" role="button">
       {% if lang == "de" %}Schwerpunktgebiete in Freiburg{% else %}Focus areas in Freiburg{% endif %}
     </a>
-    <a href="mailto:studienberatung@math.uni-freiburg.de" class="btn btn-primary" role="button">
-      {% if lang == "de" %}Mail an Studienberatung{% else %}Contact student counseling{% endif %}
-    </a>
-  </div>
+   </div>
 
   {% set item_index = namespace(value=0) %}
   <div class="ufr-accordion">
