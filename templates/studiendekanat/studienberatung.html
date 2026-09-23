@@ -10,11 +10,14 @@
   </p>
 <p> 
   {% if lang == "de" %}Mail an{% else %}Contact{% endif %}
-  <ul>
-    <li><a href="mailto:studienberatung@math.uni-freiburg.de">{% if lang == "de" %}Studienberatung Mathematik{% else %}Maths student counseling{% endif %}</a></li>
-    <l><a href="mscdata@math.uni-freiburg.de">{% if lang == "de" %}Studiengangkoordination{% else %}{% endif %}"Mathematics in Data and Technology"</a></li>
-    <l><a href="lehramt-dual@zv.uni-freiburg.de">{% if lang == "de" %}Studiengangkoordination{% else %}Programme coordinator{% endif %} "Lehramt – dual"</a></li>
-  </ul>
+  <a href="mailto:studienberatung@math.uni-freiburg.de">{% if lang == "de" %}Studienberatung Mathematik
+    {% else %}Maths student counseling{% endif %}</a><br>
+  {% if lang == "de" %}Mail an{% else %}Contact{% endif %} 
+  <a href="mscdata@math.uni-freiburg.de">{% if lang == "de" %}Studiengangkoordination
+    {% else %}{% endif %}"Mathematics in Data and Technology"</a><br>
+  {% if lang == "de" %}Mail an{% else %}Contact{% endif %} 
+  <a href="lehramt-dual@zv.uni-freiburg.de">{% if lang == "de" %}Studiengangkoordination
+    {% else %}Programme coordinator{% endif %} "Lehramt – dual"</a>
 </p>
 
   {# News-Hinweise oben auf der Seite #}
@@ -28,9 +31,6 @@
   {% endfor %}
 
   <div class="text-end my-4">
-    <a href="mailto:studienberatung@math.uni-freiburg.de" class="btn btn-primary" role="button">
-      {% if lang == "de" %}Mail an Studienberatung{% else %}Contact student counseling{% endif %}
-    </a>
     <a href="{{ url_for('showanfang', lang=lang, unterseite='studienanfang') }}"
       class="btn btn-primary" role="button">
       {% if lang == "de" %}Wegweiser Studienanfang{% else %}Starting Guide for Studying Maths{% endif %}
