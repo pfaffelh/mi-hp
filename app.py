@@ -236,6 +236,18 @@ def showlexikon(lang):
 ## Planer ##
 ############
 
+# Abonnierbarer ICS-Feed des Studiendekanats-Kalenders (orange auf der Kalenderseite).
+# Statische Route hat in Flask Vorrang vor /nlehre/planer/<rz>.ics.
+@app.route("/nlehre/planer/studiendekanat.ics")
+def show_planer_studiendekanat_ics():
+    anfang = datetime.now() + timedelta(days = -720)
+    events = [e for e in faq.get_calendar_data(anfang) if e["groupId"] == "studiendekanat"]
+    ics_content = render_template("wochenprogramm/calendar.ics", events=events, name="Studiendekanat",
+                                  dtstamp=datetime.utcnow().strftime('%Y%m%dT%H%M%SZ'))
+    ics_content = "\r\n".join(line for line in ics_content.splitlines() if line.strip()) + "\r\n"
+    return Response(ics_content, mimetype="text/calendar; charset=utf-8",
+                    headers={"Content-Disposition": 'inline; filename="studiendekanat.ics"'})
+
 # Abonnierbarer ICS-Feed: alle Aufgaben, für die <rz> verantwortlich ist.
 # In einem Kalender-Client als Abo-URL (webcal://.../nlehre/planer/<rz>.ics) hinterlegbar.
 @app.route("/nlehre/planer/<rz>.ics")
