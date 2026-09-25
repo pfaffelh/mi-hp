@@ -78,7 +78,23 @@ def get_verantwortliche(x, lang, personen):
 # a dictionary how to translate them into full names (names_dict), 
 # a dict with the shortnames as keys, where each value is a list of triples (id, q, a), which contains the information for each question in each category (qa_pairs). 
 # recall that category and qa come with a variable rang: int, which serves to order the categories and qa-pairs. 
-def get_accordion_data(kurzname, lang, show = ""):
+# Diese Seiten (samt allen Unterseiten) werden nur unter /nlehre/vpn/ ausgeliefert;
+# der Webserver lässt /nlehre/vpn/ nur aus dem VPN bzw. von Institutsrechnern zu.
+VPN_KNOTEN = ["faqmit"]
+
+def nur_vpn(kurzname):
+    """Liegt der Knoten kurzname in einem der VPN_KNOTEN (oder ist er selbst einer)?"""
+    k = knoten.find_one({"kurzname" : kurzname})
+    gesehen = set()
+    while k and k["_id"] not in gesehen:
+        if k["kurzname"] in VPN_KNOTEN:
+            return True
+        gesehen.add(k["_id"])
+        k = knoten.find_one({"kinder" : k["_id"]})
+    return False
+
+def get_accordion_data(kurzname, lang, show = "", vpn = False):
+    basis = f"/nlehre/vpn/{lang}/page" if vpn else f"/nlehre/{lang}/page"
     fields = ["kurzname", "sichtbar", "prefix_html", "suffix_html"] # no language in these fields
     field_prefixes = ["titel", "prefix", "suffix", "bearbeitet"] # these fields exists with _de and _en
     quicklink_prefixes = ["title", "url"] # there are title_de and title_en, and url_de and url_en
@@ -90,7 +106,7 @@ def get_accordion_data(kurzname, lang, show = ""):
         loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in x["quicklinks"]]
         loc["verantwortliche"] = get_verantwortliche(x, lang, personen)
         loc["kinder"] = []
-        loc["url"] = f"/nlehre/{lang}/page/{x['kurzname']}"
+        loc["url"] = f"{basis}/{x['kurzname']}"
         for field_prefix in field_prefixes:
             loc[field_prefix] = get(x, field_prefix, lang)
         data = loc
@@ -102,7 +118,7 @@ def get_accordion_data(kurzname, lang, show = ""):
                 loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in y["quicklinks"]]
                 loc["verantwortliche"] = get_verantwortliche(y, lang, personen)
                 loc["kinder"] = []
-                loc["url"] = f"/nlehre/{lang}/page/{x['kurzname']}/{y['kurzname']}"
+                loc["url"] = f"{basis}/{x['kurzname']}/{y['kurzname']}"
                 for field_prefix in field_prefixes:
                     loc[field_prefix] = get(y, field_prefix, lang)
                 data["kinder"].append(loc)
@@ -113,7 +129,7 @@ def get_accordion_data(kurzname, lang, show = ""):
                         loc["quicklinks"] = [{quicklink_prefix : get(q, quicklink_prefix, lang) for quicklink_prefix in quicklink_prefixes} for q in z["quicklinks"]]
                         loc["verantwortliche"] = get_verantwortliche(z, lang, personen)
                         loc["kinder"] = []
-                        loc["url"] = f"/nlehre/{lang}/page/{x['kurzname']}/{z['kurzname']}"
+                        loc["url"] = f"{basis}/{x['kurzname']}/{z['kurzname']}"
                         for field_prefix in field_prefixes:
                             loc[field_prefix] = get(z, field_prefix, lang)
                         data["kinder"][-1]["kinder"].append(loc)                        
@@ -127,8 +143,11 @@ def get_accordion_data(kurzname, lang, show = ""):
         showcat = "all"
     else:
         k = knoten.find_one({"kurzname" : show, "sichtbar" : True})
-        p = knoten.find_one({"kinder" : { "$elemMatch" : { "$eq": k["_id"]}}})
-        if p == knoten.find_one({"kurzname" : kurzname}):
+        p = knoten.find_one({"kinder" : { "$elemMatch" : { "$eq": k["_id"]}}}) if k else None
+        if p is None:
+            # Unbekanntes Ziel (z.B. alter qa_...-Link): Seite ohne aufgeklappten Eintrag
+            showcat = ""
+        elif p == knoten.find_one({"kurzname" : kurzname}):
             showcat = show
         else:
             showcat = p["kurzname"]

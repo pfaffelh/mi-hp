@@ -210,6 +210,9 @@ def showbasetest(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 @app.route("/nlehre/<lang>/page/<kurzname>/")
 @app.route("/nlehre/<lang>/page/<kurzname>/<show>")
 def showaccordion_nlehre(lang, kurzname, show =""):
+    # Seiten wie die Mitarbeiter-FAQ nur hinter dem VPN
+    if faq.nur_vpn(kurzname):
+        return redirect(url_for('showvpnaccordion_nlehre', lang=lang, kurzname=kurzname, show=show))
     vpn = False
     data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
     return render_template("accordion_nlehre.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
@@ -219,7 +222,7 @@ def showaccordion_nlehre(lang, kurzname, show =""):
 @app.route("/nlehre/vpn/<lang>/page/<kurzname>/<show>")
 def showvpnaccordion_nlehre(lang, kurzname, show =""):
     vpn = True
-    data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show)
+    data, show, showcat = faq.get_accordion_data(kurzname, lang, show = show, vpn = True)
     return render_template("accordion_nlehre.html", lang=lang, vpn = vpn, data = data, showcat = showcat, show=show)
 
 #############
@@ -640,7 +643,8 @@ def showstudiendekanat(lang, unterseite = "", show = ""):
 @app.route("/nlehre/<lang>/lehrende/faq/")
 @app.route("/nlehre/<lang>/lehrende/faq/<show>")
 def showmitfaq(lang, show =""):
-    return redirect(url_for('showaccordion_nlehre', lang=lang, kurzname = 'faqmit', show=show))
+    # Die Mitarbeiter-FAQ liegt hinter dem VPN
+    return redirect(url_for('showvpnaccordion_nlehre', lang=lang, kurzname = 'faqmit', show=show))
 
 @app.route("/nlehre/<lang>/lehrende/<unterseite>")
 @app.route("/nlehre/<lang>/lehrende/<unterseite>/")
