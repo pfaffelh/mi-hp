@@ -1,10 +1,10 @@
 {% extends config['skel_name'] %} {% block content %}
+{# Statusgruppen, die eine eigene Spalte für den Namenszusatz bekommen. #}
+{% set gruppen_mit_namenszusatz = ["Administration", "Infrastruktur und Technik"] %}
 <style>
-  /* Die Spalten einer Person oben bündig statt vertikal zentriert: links
-     stehen Name und Namenszusatz, rechts oft Raum und Kommentar. */
+  /* Die Spalten einer Person oben bündig statt vertikal zentriert: rechts
+     stehen oft Raum und Kommentar untereinander. */
   .mi-personen td { vertical-align: top; }
-  /* Namenszusatz wenig eingerückt unter dem Namen. */
-  .mi-personen .mi-namenszusatz { padding-left: 1.2em; }
   /* Mobil steht alles untereinander; Zellen ohne Telefon bzw. ohne Raum und
      Kommentar fallen dabei ganz weg. */
   @media (max-width: 600px) {
@@ -56,10 +56,8 @@
           <td>
         {{ p["name"] | safe }}
             {% for m in p["mails"] %}<a href="mailto:{{ m }}" title="{{ m }}"> ✉</a>{% endfor %}
-            {% if p["namenszusatz"] %}
-            <div class="mi-namenszusatz">{{ p["namenszusatz"] }}</div>
-            {% endif %}
           </td>
+          {% if k1["gruppe"] in gruppen_mit_namenszusatz %}<td>{{ p["namenszusatz"] }}</td>{% endif %}
           <td>{% if p["tel"] %}Tel: {{ p["tel"] }}{% endif %}</td>
           <td>{% if p["raum"] %}Raum {{ p["raum"] }}{% endif %}{% if p["raum"] and p["kommentar"] %}<br>{% endif %}{% if p["kommentar"] %}{{ p["kommentar"] }}{% endif %}</td>
         </tr>
