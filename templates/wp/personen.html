@@ -5,6 +5,22 @@
   /* Die Spalten einer Person oben bündig statt vertikal zentriert: rechts
      stehen oft Raum und Kommentar untereinander. */
   .mi-personen td { vertical-align: top; }
+  /* Die Klasse has-fixed-layout kommt aus WordPress, ist auf diesen Seiten
+     aber nirgends definiert (das wp-block-library-CSS wird nicht geladen).
+     Die Tabelle lief daher auf table-layout:auto und war nur so breit wie
+     ihr Inhalt -- Spaltenbreiten vom Browser geraten, Umbrüche beliebig.
+     Also setzen wir Breite und Spalten selbst. */
+  @media (min-width: 601px) {
+    .mi-personen table { width: 100%; table-layout: fixed; }
+    .mi-personen td:nth-child(1) { width: 38%; }  /* Name und Mail-Symbole */
+    .mi-personen td:nth-child(2) { width: 14%; }  /* Telefon */
+    .mi-personen td:nth-child(3) { width: 48%; }  /* Raum und Kommentar */
+    /* Mit Namenszusatz-Spalte: Name | Namenszusatz | Telefon | Raum */
+    .mi-personen.mi-mit-zusatz td:nth-child(1) { width: 28%; }
+    .mi-personen.mi-mit-zusatz td:nth-child(2) { width: 24%; }
+    .mi-personen.mi-mit-zusatz td:nth-child(3) { width: 12%; }
+    .mi-personen.mi-mit-zusatz td:nth-child(4) { width: 36%; }
+  }
   /* Mobil steht alles untereinander; Zellen ohne Telefon bzw. ohne Raum und
      Kommentar fallen dabei ganz weg. */
   @media (max-width: 600px) {
@@ -48,7 +64,7 @@
     id="block-0d8febea-81f3-4fa4-b1cc-8bee832ee085"
   >
   </h4>
-  <figure class="wp-block-table mi-personen">
+  <figure class="wp-block-table mi-personen{% if k1['gruppe'] in gruppen_mit_namenszusatz %} mi-mit-zusatz{% endif %}">
     <table class="has-fixed-layout">
       <tbody>
         {% for p in k1["members"] %}
