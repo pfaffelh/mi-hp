@@ -1,4 +1,22 @@
 {% extends config['skel_name'] %} {% block content %}
+<style>
+  /* Die Spalten einer Person oben bündig statt vertikal zentriert: links
+     stehen Name und Namenszusatz, rechts oft Raum und Kommentar. */
+  .mi-personen td { vertical-align: top; }
+  /* Namenszusatz wenig eingerückt unter dem Namen. */
+  .mi-personen .mi-namenszusatz { padding-left: 1.2em; }
+  /* Mobil steht alles untereinander; Zellen ohne Telefon bzw. ohne Raum und
+     Kommentar fallen dabei ganz weg. */
+  @media (max-width: 600px) {
+    .mi-personen table,
+    .mi-personen tbody,
+    .mi-personen tr,
+    .mi-personen td { display: block; width: 100%; }
+    .mi-personen td { border: none; padding: 0; }
+    .mi-personen td:empty { display: none; }
+    .mi-personen tr { padding: 0.6em 0; border-bottom: 1px solid #ddd; }
+  }
+</style>
 <div style="display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; align-items:center;">
 
 {% for k1 in data %} 
@@ -30,7 +48,7 @@
     id="block-0d8febea-81f3-4fa4-b1cc-8bee832ee085"
   >
   </h4>
-  <figure class="wp-block-table">
+  <figure class="wp-block-table mi-personen">
     <table class="has-fixed-layout">
       <tbody>
         {% for p in k1["members"] %}
@@ -38,23 +56,12 @@
           <td>
         {{ p["name"] | safe }}
             <a href="mailto:{{ p['mail'] }}"> ✉</a>
-          </td>
-          <td>
-            {% if p["tel"] %}
-            Tel: {{ p["tel"] }}
+            {% if p["namenszusatz"] %}
+            <div class="mi-namenszusatz">{{ p["namenszusatz"] }}</div>
             {% endif %}
           </td>
-          <td>
-            {% if p["raum"] %}
-            Raum {{ p["raum"] }} 
-            {% endif %}
-            {% if p["raum"] and p["kommentar"]%}
-            <br>
-            {% endif %}
-            {% if p["kommentar"] %}
-            {{ p["kommentar"] }} 
-            {% endif %}
-          </td>
+          <td>{% if p["tel"] %}Tel: {{ p["tel"] }}{% endif %}</td>
+          <td>{% if p["raum"] %}Raum {{ p["raum"] }}{% endif %}{% if p["raum"] and p["kommentar"] %}<br>{% endif %}{% if p["kommentar"] %}{{ p["kommentar"] }}{% endif %}</td>
         </tr>
         {% endfor %}
       </tbody>

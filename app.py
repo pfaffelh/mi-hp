@@ -132,9 +132,9 @@ def showfakewp(site, show = "", lang = "de"):
     if dir[0] == "personen":
         if len(dir) == 3:
             abteilung = dir[1]
-            data = vvz.get_person_data(abteilung = abteilung)
+            data = vvz.get_person_data(abteilung = abteilung, lang = lang)
         else:
-            data = vvz.get_person_data()
+            data = vvz.get_person_data(lang = lang)
         wp.make_skel(wp.config[site])
     elif dir[0] == "personenstatic":
         return render_template("wp/personen_static.html")

@@ -140,6 +140,13 @@ def name_vorname(person_id, url = True, lang = "de"):
         res = f"[{res}]({p['url']})"    
     return remove_p(markdown(res))
 
+# Namenszusatz ("von", "van der", ...). Fehlt die englische Variante,
+# wird die deutsche verwendet -- wie bei name_en in name_vorname().
+def namenszusatz(p, lang = "de"):
+    if lang == "en" and p.get("namenszusatz_en", "").strip() != "":
+        return p["namenszusatz_en"]
+    return p.get("namenszusatz_de", "")
+
 def name_terminart(terminart_id, lang):
     name = f"name_{lang}"
     ta = vvz_terminart.find_one({"_id": terminart_id})
@@ -660,7 +667,7 @@ def get_calendar_data(anzeige_start, lang = "de"):
 
     return all
 
-def get_person_data(abteilung = ""):
+def get_person_data(abteilung = "", lang = "de"):
     query = {}
     query = {"$and": [
         {
@@ -693,7 +700,8 @@ def get_person_data(abteilung = ""):
         if per:
             data.append({ "gruppe" : stat_code["name"],
                 "members" : [
-                    {"name" : name_vorname(p["_id"], url = True, lang = "de"),
+                    {"name" : name_vorname(p["_id"], url = True, lang = lang),
+                        "namenszusatz" : namenszusatz(p, lang),
                         "tel" : ", ".join(x for x in [p["tel1"], p["tel2"]] if x),
                         "mail" : ", ".join(x for x in [p["email1"], p["email2"]] if x),
                         "raum" : ", ".join(f"{x[0]} ({vvz_gebaeude.find_one({ '_id': x[1]})['name_de']})" for x in zip([p["raum1"], p["raum2"]], [p["gebaeude1"], p["gebaeude2"]]) if x[0]),
