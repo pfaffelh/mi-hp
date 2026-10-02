@@ -55,7 +55,7 @@
         <tr>
           <td>
         {{ p["name"] | safe }}
-            <a href="mailto:{{ p['mail'] }}"> ✉</a>
+            {% for m in p["mails"] %}<a href="mailto:{{ m }}" title="{{ m }}"> ✉</a>{% endfor %}
             {% if p["namenszusatz"] %}
             <div class="mi-namenszusatz">{{ p["namenszusatz"] }}</div>
             {% endif %}
