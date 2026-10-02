@@ -73,7 +73,7 @@
         {{ p["name"] | safe }}
             {% for m in p["mails"] %}<a href="mailto:{{ m }}" title="{{ m }}"> ✉</a>{% endfor %}
           </td>
-          {% if k1["gruppe"] in gruppen_mit_namenszusatz %}<td>{{ p["namenszusatz"] }}</td>{% endif %}
+          {% if k1["gruppe"] in gruppen_mit_namenszusatz %}<td>{{ p["namenszusatz"] | safe }}</td>{% endif %}
           <td>{% if p["tel"] %}Tel: {{ p["tel"] }}{% endif %}</td>
           <td>{% if p["raum"] %}Raum {{ p["raum"] }}{% endif %}{% if p["raum"] and p["kommentar"] %}<br>{% endif %}{% if p["kommentar"] %}{{ p["kommentar"] }}{% endif %}</td>
         </tr>

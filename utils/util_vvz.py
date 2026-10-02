@@ -140,12 +140,16 @@ def name_vorname(person_id, url = True, lang = "de"):
         res = f"[{res}]({p['url']})"    
     return remove_p(markdown(res))
 
-# Namenszusatz ("von", "van der", ...). Fehlt die englische Variante,
-# wird die deutsche verwendet -- wie bei name_en in name_vorname().
+# Namenszusatz. Fehlt die englische Variante, wird die deutsche verwendet --
+# wie bei name_en in name_vorname(). Markdown (insbesondere Links) wird
+# gerendert; das umschliessende <p> muss weg, der Zusatz steht in einer
+# Tabellenzelle. Leer bleibt leer, damit die Zelle mobil ausgeblendet wird.
 def namenszusatz(p, lang = "de"):
     if lang == "en" and p.get("namenszusatz_en", "").strip() != "":
-        return p["namenszusatz_en"]
-    return p.get("namenszusatz_de", "")
+        res = p["namenszusatz_en"]
+    else:
+        res = p.get("namenszusatz_de", "")
+    return remove_p(markdown(res)) if res.strip() else ""
 
 def name_terminart(terminart_id, lang):
     name = f"name_{lang}"
