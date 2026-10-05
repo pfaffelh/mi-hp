@@ -72,6 +72,7 @@ def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), t
 
     for item in data['news']:
         item['today'] = True if (item["showlastday"] and dt.date() == item['home']['end'].date()) else False
+        item["highlight"] = item.get("highlight", False) or item["today"]
     # print(data)
     return data
 

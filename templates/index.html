@@ -7,7 +7,7 @@
     {% for item in data["news"] %}
     <article
       class="ufr-news-item
-        {% if item['today'] and item['showlastday'] %}is-today{% endif %}
+        {% if item['highlight'] %}is-today{% endif %}
         {% if loop.index0 % 2 %}is-reversed{% endif %}"
     >
       {% if item['image'] != [] %}
