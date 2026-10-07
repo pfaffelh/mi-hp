@@ -640,7 +640,7 @@ def get_api_wochenprogramm(anfang, ende):
     
     return vortraege_reduced
 
-def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template=mail_template, absender_email=smtp_user, absender_passwort=smtp_password):
+def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template=mail_template, mail_template_text=mail_template_text, absender_email=smtp_user, absender_passwort=smtp_password):
     """
     Versendet E-Mails mit einer Jinja2-Vorlage an mehrere Empfänger.
     """
@@ -653,18 +653,23 @@ def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template
 
                 with app.open_resource(mail_template, 'r') as f:
                     vorlage = Template(f.read())
+                with app.open_resource(mail_template_text, 'r') as f:
+                    vorlage_text = Template(f.read())
                 # E-Mail-Nachricht erstellen (MIMEMultipart für HTML-Inhalt)
                 msg = MIMEMultipart('alternative')
                 msg['Subject'] = betreff
                 msg['From'] = absender_email
                 msg['To'] = empfaenger_email  # Individueller Empfänger
 
-                # Vorlage mit Daten füllen
+                # Vorlagen mit Daten füllen
+                text_inhalt = vorlage_text.render(lang = "de", **data)
                 html_inhalt = vorlage.render(lang = "de", **data)
 
-                # HTML-Inhalt hinzufügen
-                html_part = MIMEText(html_inhalt, 'html')
-                msg.attach(html_part)
+                # Text- und HTML-Inhalt hinzufügen. In multipart/alternative gilt der
+                # zuletzt angehängte Teil als der bevorzugte, deshalb Text zuerst:
+                # Mailprogramme, die kein HTML anzeigen, finden so den Text.
+                msg.attach(MIMEText(text_inhalt, 'plain'))
+                msg.attach(MIMEText(html_inhalt, 'html'))
                 server.send_message(msg)
                 print(f"E-Mail an {empfaenger_email} erfolgreich versendet!")
 
@@ -689,7 +694,7 @@ def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template
                 </html>
                 """
                 # 📎 Inhalte anhängen
-                html_part = MIMEText(html, 'html')
-                msg.attach(html_part)
+                msg.attach(MIMEText(text, 'plain'))
+                msg.attach(MIMEText(html, 'html'))
                 server.send_message(msg)
                 print(f"E-Mail an {empfaenger_email_admin} erfolgreich versendet!")

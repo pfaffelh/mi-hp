@@ -1,0 +1,49 @@
+{% if lang == "de" %}VORTRÄGE AM MATHEMATISCHEN INSTITUT{% else %}TALKS AT THE MATHEMATICAL INSTITUTE{% endif %}
+===================================
+{% if prefix != "" %}
+{{ prefix|striptags }}
+{% endif %}
+{%- if events != [] %}
+
+{% if lang == "de" %}EVENTS{% else %}EVENTS{% endif %}
+------
+{% for ev in events %}
+{{ ev["starttag"] }}, {{ ev["startdatum"] }}{% if ev["startzeit"] != "00:00" %}, {{ ev["startzeit"] }}{% endif %}{% if ev["enddatum"] != ev["startdatum"] %} - {{ ev["endtag"] }}, {{ ev["enddatum"] }}{% if ev["endzeit"] != "00:00" %}, {{ ev["endzeit"] }}{% endif %}{% endif %}
+{{ ev["title"]|striptags }}
+{%- if ev["url"] != "" %}
+{{ ev["url"] }}
+{%- endif %}
+{%- if ev["kommentar"] %}
+{{ ev["kommentar"]|striptags }}
+{%- endif %}
+{% endfor %}
+{%- endif %}
+{%- if vortrag != [] %}
+
+{% if lang == "de" %}VORTRÄGE{% else %}TALKS{% endif %}
+--------
+{% for v in vortrag %}
+{{ v["tag"] }}, {{ v["datum"] }}, {{ v["startzeit"] }}{% if v["endzeit"] != v["startzeit"] %}-{{ v["endzeit"] }}{% endif %}{% if v["ort"] != "" %}, {{ v["ort"] }}{% endif %}
+{%- if v["reihe"] != [] %}
+{% for (title, url) in v["reihe"] %}{{ title|striptags }}{% if not loop.last %}, {% endif %}{% endfor %}
+{%- endif %}
+{{ v["sprecher"]|striptags }}: {{ v["title"]|striptags }}
+{%- if v["url"] != "" %}
+{{ v["url"] }}
+{%- endif %}
+{%- if v["abstract"] != "" %}
+{% if lang == "de" %}Zusammenfassung{% else %}Abstract{% endif %}: {{ v["abstract"]|striptags }}
+{%- endif %}
+{%- if v["kommentar"] %}
+{{ v["kommentar"]|striptags }}
+{%- endif %}
+{% endfor %}
+{%- endif %}
+
+--
+{% if lang == "de" %}Sie erhalten diese Mail, weil Sie die Wochenprogramm-Mailing-Liste abonniert
+haben. Um sie abzubestellen, schreiben Sie eine Mail an
+mathkoll-off@math.uni-freiburg.de. Um sie wieder zu abonnieren, schreiben Sie
+eine Mail an mathkoll-on@math.uni-freiburg.de.{% else %}You receive this mail because you subscribed to the Wochenprogramm mailing
+list. To unsubscribe, send a mail to mathkoll-off@math.uni-freiburg.de. To
+subscribe again, send a mail to mathkoll-on@math.uni-freiburg.de.{% endif %}
