@@ -120,6 +120,19 @@ Vorbild: <https://uni-freiburg.de/math/> und
   egal welche DB-Metadaten in einem 240×220-Rahmen.
   `widthmonitor` und `stylemonitor` aus der DB werden ignoriert
 
+## Reihenfolge der News
+
+`data_for_base()` in `utils/util_news.py` (Lehre-Startseite `/nlehre/`
+und Institutsnews unter `/cd2021/...`) sortiert nach `home.start`
+absteigend, `rang` nur als zweites Kriterium. Hintergrund: mi-news vergibt
+`rang` nur beim Anlegen/Kopieren; eine bearbeitete und wiederverwendete
+News behielt ihren alten Rang und landete unten. `get_monitordata()`
+sortiert weiterhin nur nach `rang`. Die Übersicht in mi-news
+(`pages/00_New.py`) sortiert genauso wie die Homepage.
+
+Keine `datetime.now()`-Defaults in Funktionssignaturen: sie werden nur
+beim Import ausgewertet. Default `None` und in der Funktion setzen.
+
 ## Verantwortliche Personen auf Akkordeon-Seiten
 
 Ein `knoten` kann das Feld `verantwortliche` haben: eine Liste von
