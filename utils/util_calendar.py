@@ -78,7 +78,9 @@ def get_caldav_calendar_events(cal, yearsinthepast=1):
     return all
 
 # This is to determine the current semester for the navbar
-def get_semester(date = datetime.now()):
+def get_semester(date = None):
+    if date is None:
+        date = datetime.now()
     # In 2024, the next line gives 24
     y = int((str(date.year))[2:4])
     m = date.month

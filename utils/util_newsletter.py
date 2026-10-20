@@ -37,7 +37,9 @@ def get_events(lang = "de"):
         events.append({"kurzname" : vr["kurzname"], "title" : vr[f"title_{lang}"]})
     return reihen, events
 
-def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
+def data_for_base(lang="de", dtstring = None, testorpublic = "_public"):
+    if dtstring is None:
+        dtstring = datetime.now().strftime('%Y%m%d%H%M')
     date_format_no_space = '%Y%m%d%H%M'
 
     dt = datetime.strptime(dtstring, date_format_no_space)

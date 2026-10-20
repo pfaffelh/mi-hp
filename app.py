@@ -181,7 +181,9 @@ def showfakewp(site, show = "", lang = "de"):
 @app.route("/nlehre/")
 @app.route("/nlehre/<lang>/")
 @app.route("/nlehre/<lang>/<dtstring>")
-def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+def showbase(lang="de", dtstring = None):
+    if dtstring is None:
+        dtstring = datetime.now().strftime('%Y%m%d%H%M')
     if lang != "de" and lang != "en":
         lang = "de"
     testorpublic = "_public"
@@ -194,7 +196,9 @@ def showbase(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
 @app.route("/nlehre/test/")
 @app.route("/nlehre/test/<lang>/")
 @app.route("/nlehre/test/<lang>/<dtstring>")
-def showbasetest(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+def showbasetest(lang="de", dtstring = None):
+    if dtstring is None:
+        dtstring = datetime.now().strftime('%Y%m%d%H%M')
     testorpublic = "test" 
     # print(request.endpoint)
     data = news.data_for_base(lang, dtstring, testorpublic, tags = ["Lehre"])
@@ -779,7 +783,9 @@ def showvpnaccordion_wochenprogramm(lang, kurzname, show =""):
 @app.route("/nlehre/monitortest/<dtstring>")
 @app.route("/nlehre/monitor/")
 @app.route("/nlehre/monitor/<dtstring>")
-def showmonitor(dtstring = datetime.now().strftime('%Y%m%d%H%M')):
+def showmonitor(dtstring = None):
+    if dtstring is None:
+        dtstring = datetime.now().strftime('%Y%m%d%H%M')
     # determine if only shown on test
     testorpublic = "test" if "monitortest" in request.path.split("/") else "_public" 
     data = news.get_monitordata(dtstring, testorpublic)
@@ -810,7 +816,9 @@ def get_news():
 @app.route("/nlehre/api/monitor/")
 @app.route("/nlehre/api/monitor/<dtstring>/")
 @app.route("/nlehre/api/monitor/<dtstring>/<testorpublic>")
-def get_monitor_api(dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public"):
+def get_monitor_api(dtstring = None, testorpublic = "_public"):
+    if dtstring is None:
+        dtstring = datetime.now().strftime('%Y%m%d%H%M')
     newsdata = news.get_monitordata(dtstring, testorpublic)
     print(newsdata)
     newsdata_json = json_util.dumps(newsdata, ensure_ascii=False)
@@ -823,7 +831,12 @@ def get_monitor_api(dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpubl
 @app.route("/wochenprogramm/api/veranstaltungen/")
 @app.route("/wochenprogramm/api/veranstaltungen/<anfang>/<ende>/")
 # Default ist: anfang ist jetzt, ende ist Ende nächster Woche
-def get_vortraege(anfang = datetime.now().strftime('%Y%m%d'), ende = (datetime.now() + timedelta(days=14-datetime.now().weekday())).strftime('%Y%m%d')):
+def get_vortraege(anfang = None, ende = None):
+    now = datetime.now()
+    if anfang is None:
+        anfang = now.strftime('%Y%m%d')
+    if ende is None:
+        ende = (now + timedelta(days=14-now.weekday())).strftime('%Y%m%d')
     wochenprogramm_reduced = news.get_api_wochenprogramm(anfang, ende)
     return jsonify(wochenprogramm_reduced)
 

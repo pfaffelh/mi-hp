@@ -54,16 +54,19 @@ def get_events(lang = "de"):
         events.append({"kurzname" : vr["kurzname"], "title" : f"{getwl(vr, 'title', lang)} ({vr['start'].strftime('%-d.%-m')}-{vr['end'].strftime('%-d.%-m.%y')})"})
     return reihen, events
 
-def data_for_base(lang="de", dtstring = datetime.now().strftime('%Y%m%d%H%M'), testorpublic = "_public", tags = ["Institut"]):
+def data_for_base(lang="de", dtstring = None, testorpublic = "_public", tags = ["Institut"]):
+    if dtstring is None:
+        dtstring = datetime.now().strftime('%Y%m%d%H%M')
     date_format_no_space = '%Y%m%d%H%M'
 
     dt = datetime.strptime(dtstring, date_format_no_space)
 
+    # Neueste zuerst (nach Startdatum); rang entscheidet nur bei gleichem Start.
     data = {}
     if testorpublic == "test":
-        data["news"] =  list(news.find({"tags": { "$elemMatch" : { "$in" : tags }}, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))
+        data["news"] =  list(news.find({"tags": { "$elemMatch" : { "$in" : tags }}, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("home.start", pymongo.DESCENDING), ("rang", pymongo.ASCENDING)]))
     else:
-        data["news"] =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))  
+        data["news"] =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("home.start", pymongo.DESCENDING), ("rang", pymongo.ASCENDING)]))  
     for item in data["news"]:
         if item["image"] != []:
             b = bild.find_one({ "_id": item["image"][0]["_id"]})
