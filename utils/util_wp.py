@@ -92,6 +92,8 @@ config = {
         "skel_name" : "skel_personen_RM_de.html",
         "queries" : [{"string" : "Wissenschaftlicher Dienst"}],
         "strings" : ["{% block content%}Content{% endblock %}"], 
+        # Breadcrumb und <title> der WP-Seite umbenennen
+        "replace" : {"Wissenschaftlicher Dienst" : "Personen"},
         "template" : "wp/personen_RM.html"
     },
     "fdmseminar_en" : {
@@ -116,6 +118,9 @@ def make_skel(site):
             content = doc.find("div", query)
             print(query)
         content.string = site["strings"][i]
+    for old, new in site.get("replace", {}).items():
+        for s in doc.find_all(string = lambda t: t and old in t):
+            s.replace_with(s.replace(old, new))
     html = doc.prettify("utf-8")
     # Write the skelet
     if (ip_address == "127.0.1.1"):
