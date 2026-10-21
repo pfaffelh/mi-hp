@@ -820,7 +820,14 @@ def get_monitor_api(dtstring = None, testorpublic = "_public"):
     if dtstring is None:
         dtstring = datetime.now().strftime('%Y%m%d%H%M')
     newsdata = news.get_monitordata(dtstring, testorpublic)
-    print(newsdata)
+    # Nur die Felder, die die News-App nutzt; highlight enthält schon today
+    newsdata = {"news" : [
+        {
+            "monitor" : {"title" : item["monitor"]["title"], "text" : item["monitor"]["text"]},
+            "link" : item.get("link", ""),
+            "image" : [{"data" : item["image"][0]["data"]}] if item["image"] != [] else [],
+            "highlight" : item["highlight"]
+        } for item in newsdata["news"]]}
     newsdata_json = json_util.dumps(newsdata, ensure_ascii=False)
     return Response(newsdata_json, mimetype='application/json; charset=utf-8')
 
