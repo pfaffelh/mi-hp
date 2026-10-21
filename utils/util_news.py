@@ -238,9 +238,9 @@ def get_wochenprogramm(anfangdate, enddate, query = {"kurzname" : "alle", "_publ
         data["vortrag"].append(
             {
                 "uid" : str(v["_id"]),
-                "sprecher" : getwl(v, "sprecher", lang),
-                "sprecher_affiliation" : getwl(v, "sprecher_affiliation", lang),
-                "ort" : getwl(v, "ort", lang),
+                "sprecher" : v["sprecher"],
+                "sprecher_affiliation" : v["sprecher_affiliation"],
+                "ort" : v["ort"],
                 "title" : getwl(v, "title", lang),
                 "reihe" : list(zip([getwl(x, "title", lang) for x in re], [x["url"] for x in re])),
                 "url" : v["url"],
@@ -397,9 +397,9 @@ def get_event(kurzname, lang = "de", ascending = True):
     for v in vo:
         data["vortrag"].append(
             {
-                "sprecher" : getwl(v, "sprecher", lang),
-                "sprecher_affiliation" : getwl(v, "sprecher_affiliation", lang),
-                "ort" : getwl(v, "ort", lang),
+                "sprecher" : v["sprecher"],
+                "sprecher_affiliation" : v["sprecher_affiliation"],
+                "ort" : v["ort"],
                 "title" : getwl(v, "title", lang),
                 "url" : v["url"],
                 "lang" : v["lang"],
@@ -446,10 +446,7 @@ def get_monitordata(dtstring):
     print(vortraege)
     if vortraege != []:
         for v in vortraege:
-            v["sprecher"] = getwl(v, "sprecher", lang)
-            v["sprecher_affiliation"] = getwl(v, "sprecher_affiliation", lang)
             v["sprecher_affiliation"] = " (" + v["sprecher_affiliation"] + ")" if v["sprecher_affiliation"] != "" else ""
-            v["ort"] = getwl(v, "ort", lang)
             v["title"] = getwl(v, "title", lang)
             v["title"] = v["title"] + "." if v["title"] != "" else ""
             re = vortragsreihe.find_one({"_id" : { "$in" : v["vortragsreihe"]}, "kurzname" : { "$ne" : "alle"}})
@@ -515,7 +512,7 @@ def get_api_wochenprogramm(anfang, ende):
             {
                 "reihenkurzname" : "",
                 "vortragsreihe" : getwl(v, "title", "de"),
-                "sprecher" : getwl(v, "sprecher", "de"),
+                "sprecher" : "",
                 "sprecher_affiliation" : "",
                 "titel" : getwl(v, "text", "de"),
                 "abstract" : "",
@@ -541,11 +538,11 @@ def get_api_wochenprogramm(anfang, ende):
             {
                 "reihenkurzname" : reihenkurzname,
                 "vortragsreihe" : reihe,
-                "sprecher" : getwl(v, "sprecher", "de"),
-                "sprecher_affiliation" : getwl(v, "sprecher_affiliation", "de"),
+                "sprecher" : v["sprecher"],
+                "sprecher_affiliation" : v["sprecher_affiliation"],
                 "titel" : getwl(v, "title", "de"),
                 "abstract" : getwl(v, "text", "de"),
-                "ort" : getwl(v, "ort", "de"),
+                "ort" : v["ort"],
                 "url" : v["url"],
                 "datum" : v["start"].strftime('%-d.%-m.%y'),
                 "tag" : tage[v["start"].weekday()],
@@ -556,11 +553,18 @@ def get_api_wochenprogramm(anfang, ende):
     
     return vortraege_reduced
 
-def send_email(empfaenger_email=empfaenger_email, betreff=betreff, mail_template=mail_template, mail_template_text=mail_template_text, absender_email=smtp_user, absender_passwort=smtp_password):
+def send_email(empfaenger_email=empfaenger_email, betreff=None, mail_template=mail_template, mail_template_text=mail_template_text, absender_email=smtp_user, absender_passwort=smtp_password):
     """
     Versendet E-Mails mit einer Jinja2-Vorlage an mehrere Empfänger.
     """
-    data = get_wochenprogramm_full(anfang, end)
+    # Zeitraum erst beim Versand bestimmen (morgen bis in 7 Tagen), nicht beim
+    # Start der App: sonst ginge jeden Sonntag dieselbe alte Woche raus.
+    heute = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    anfang_date = heute + timedelta(days=1)
+    end_date = heute + timedelta(days=7)
+    if betreff is None:
+        betreff = f"Wochenprogramm {anfang_date.strftime('%-d.%-m')} bis {end_date.strftime('%-d.%-m')}"
+    data = get_wochenprogramm_full(anfang_date.strftime('%Y%m%d'), end_date.strftime('%Y%m%d'))
     if data["events"] != [] or data["vortrag"] != []:
         try:
             with smtplib.SMTP_SSL("mail.uni-freiburg.de", 465) as server:

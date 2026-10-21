@@ -145,6 +145,14 @@ Mensaplan-Abruf bei swfr sind weg. Der Monitor ist die News-App unter
 das pro News nur `monitor.title`, `monitor.text`, `link`,
 `image[0].data` und `highlight` (inkl. `today`) ausliefert.
 
+## Vorträge: Raum, Sprecher, Affiliation (seit 21.10.2026)
+
+Schema in mi-news `mongo/schema20261021b.py`. `vortrag` hat `ort`,
+`sprecher` und `sprecher_affiliation` nur noch einmal (nicht mehr
+`_de`/`_en`), `vortragsreihe` hat `ort_default`. In `utils/util_news.py`
+also `v["ort"]` statt `getwl(v, "ort", lang)`. Titel, Abstract und
+Kommentare bleiben zweisprachig und laufen weiter über `getwl()`.
+
 Keine `datetime.now()`-Defaults in Funktionssignaturen: sie werden nur
 beim Import ausgewertet. Default `None` und in der Funktion setzen.
 
