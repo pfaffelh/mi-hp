@@ -122,13 +122,28 @@ Vorbild: <https://uni-freiburg.de/math/> und
 
 ## Reihenfolge der News
 
-`data_for_base()` in `utils/util_news.py` (Lehre-Startseite `/nlehre/`
-und Institutsnews unter `/cd2021/...`) sortiert nach `home.start`
-absteigend, `rang` nur als zweites Kriterium. Hintergrund: mi-news vergibt
-`rang` nur beim Anlegen/Kopieren; eine bearbeitete und wiederverwendete
-News behielt ihren alten Rang und landete unten. `get_monitordata()`
-sortiert weiterhin nur nach `rang`. Die Übersicht in mi-news
-(`pages/00_New.py`) sortiert genauso wie die Homepage.
+Alle Abfragen in `utils/util_news.py` sortieren nach `start` absteigend:
+`data_for_base()` (Lehre-Startseite `/nlehre/` und Institutsnews unter
+`/cd2021/...`), `get_monitordata()` und `get_api_news()`. Die Übersicht in
+mi-news (`pages/00_New.py`) sortiert genauso.
+
+## Format der News (seit 21.10.2026)
+
+Schema in mi-news `mongo/schema20261021.py`. Eine News hat einen
+gemeinsamen Zeitraum `start`/`end` und einen gemeinsamen Text
+`title_de`/`text_de` (plus `title_en`/`text_en` für die englische
+Homepage, leer = deutsch). `title_monitor`/`text_monitor` sind nur
+gesetzt, wenn der Monitor etwas anderes zeigen soll; `get_monitordata()`
+baut daraus `item["monitor"]`. Es gibt kein `_public`, `archiv`, `rang`
+und keine Popover- oder Bild-Style-Felder mehr; `image` ist eine Liste von
+`{"_id": …}`.
+
+Der alte HTML-Monitor (`/nlehre/monitor/`), die Testansichten
+(`/nlehre/test/…`, `/nlehre/monitortest/…`), `carouselnews` und der
+Mensaplan-Abruf bei swfr sind weg. Der Monitor ist die News-App unter
+<http://mfs1.mathematik.privat:3000/>; sie liest `/nlehre/api/monitor/`,
+das pro News nur `monitor.title`, `monitor.text`, `link`,
+`image[0].data` und `highlight` (inkl. `today`) ausliefert.
 
 Keine `datetime.now()`-Defaults in Funktionssignaturen: sie werden nur
 beim Import ausgewertet. Default `None` und in der Funktion setzen.

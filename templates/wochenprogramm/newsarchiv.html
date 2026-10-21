@@ -40,17 +40,12 @@
       {% endif %}
 
       <div class="ufr-news-text">
-        {% if loop.index0 % 2 == 0 %}
         <h3>
-          {% if lang == "de" %}{{ item['home']['title_de']|markdown }}{% else %}{{ item['home']['title_en']|markdown }}{% endif %}
+          {% if lang == "de" or item['title_en'] == "" %}{{ item['title_de']|markdown }}{% else %}{{ item['title_en']|markdown }}{% endif %}
         </h3>
         <div>
-          {% if lang == "de" %}{{ item['home']['text_de']|markdown }}{% else %}{{ item['home']['text_en']|markdown }}{% endif %}
+          {% if lang == "de" or item['text_en'] == "" %}{{ item['text_de']|markdown }}{% else %}{{ item['text_en']|markdown }}{% endif %}
         </div>
-        {% else %}
-        <h3>{{ item['monitor']['title']|markdown }}</h3>
-        <div>{{ item['monitor']['text']|markdown }}</div>
-        {% endif %}
 
         {% if item['link'] != '' %}
         <a class="ufr-accordion-link" href="{{ item['link'] }}">

@@ -141,12 +141,10 @@ Folgende Inhalte greifen auf eine Datenbank zu, so dass sie nicht innerhalb dies
 * <lang> ist de oder en
 * <semester> wird in der Form 2024WS eingegeben. (Andere Formate, etwa ss23, kommen auch vor, aber dann werden die angezeigten Daten nicht aus dem mi-vvz generiert.)
 Es geht um folgende Apps bzw Unterseiten:
-* Die News der Startseite, sowie die des Monitors, also die Seiten:
+* Die News der Startseite, sowie die des Monitors, also:
   * `/nlehre/<lang>/`
-  * `/nlehre/test/<lang>`
-  * `monitor/`
-  * `monitortest/`
-  Diese Seiten werden von der App *mi-news* aus befüllt; siehe [hier](http://mi-news1.mathematik.privat/).
+  * `/nlehre/api/monitor/` (JSON für die News-App auf dem Monitor)
+  Diese Daten werden von der App *mi-news* aus befüllt; siehe [hier](http://mi-news1.mathematik.privat/).
 * Alle Details zu Veranstaltungen, also die Seiten
   * `<lang>/lehrveranstaltungen/<semester>/` (das übliche Vorlesungsverzeichnis)
   * `<lang>/lehrveranstaltungen/<semester>/stundenplan/` (dasselbe, aber sortiert nach Zeiten)
@@ -180,12 +178,12 @@ In einer Flask-App kann man interne Links auf zwei verschiedene Arten und Weisen
 
 ### Verbindung zu einer Datenbank
 
-Die im Footer unter _TOOLS_ verlinkten Apps [mi-faq](http://mi-faq1.mathematik.privat/) (für die Seiten [Studierenden-FAQ](http://www.math.uni-freiburg.de/nlehre/de/studiendekanat/faq/) und [Mitarbeiter*innen-FAQ](http://www.math.uni-freiburg.de/nlehre/de/lehrende/faq/), aber auch [hier](http://www.math.uni-freiburg.de/nlehre/studiendekanat/pruefungsamt/) und [hier](http://www.math.uni-freiburg.de/nlehre/de/studiendekanat/studienberatung/)), [mi-vvz](http://mi-vvz1.mathematik.privat/) (für die [Veranstaltungsplanung](http://www.math.uni-freiburg.de/nlehre/de/lehrveranstaltungen/)) und [mi-news](http://mi-news1.mathematik.privat/) (für die News [hier](http://www.math.uni-freiburg.de/nlehre/) und [hier](http://www.math.uni-freiburg.de/nlehre/monitor/)) geben die Möglichkeit, Daten in einer Datenbank zu verändern, die dann hier wieder ausgelesen werden.
+Die im Footer unter _TOOLS_ verlinkten Apps [mi-faq](http://mi-faq1.mathematik.privat/) (für die Seiten [Studierenden-FAQ](http://www.math.uni-freiburg.de/nlehre/de/studiendekanat/faq/) und [Mitarbeiter*innen-FAQ](http://www.math.uni-freiburg.de/nlehre/de/lehrende/faq/), aber auch [hier](http://www.math.uni-freiburg.de/nlehre/studiendekanat/pruefungsamt/) und [hier](http://www.math.uni-freiburg.de/nlehre/de/studiendekanat/studienberatung/)), [mi-vvz](http://mi-vvz1.mathematik.privat/) (für die [Veranstaltungsplanung](http://www.math.uni-freiburg.de/nlehre/de/lehrveranstaltungen/)) und [mi-news](http://mi-news1.mathematik.privat/) (für die News [hier](http://www.math.uni-freiburg.de/nlehre/) und auf dem Monitor) geben die Möglichkeit, Daten in einer Datenbank zu verändern, die dann hier wieder ausgelesen werden.
 
 
 ### monitor und news auf /nlehre/
 
-Der Monitor im EG der EZ1 stellt [diese Seite](http://www.math.uni-freiburg.de/nlehre/monitor/) dar. Er enthält News, genau wie die [Startseite](http://www.math.uni-freiburg.de/nlehre/). Beide Seiten gibt es auch in Testversionen, nämlich [hier für die deutsche Startseite](http://www.math.uni-freiburg.de/nlehre/de/test), [hier für die englische Startseite](http://www.math.uni-freiburg.de/nlehre/de/test),und [hier für den Monitor]([hier für die deutsche Startseite](http://www.math.uni-freiburg.de/lehre/monitortest). Weiter kann man sich den Stand der News zu einem bestimmten Zeitpunkt (zB der 1.7.2024 um 10 Uhr) anseehen, siehe [hier](http://www.math.uni-freiburg.de/nlehre/de/202407011000) bzw. [hier](http://www.math.uni-freiburg.de/nlehre/monitor/202407011000).
+Der Monitor im EG der EZ1 zeigt die News-App unter <http://mfs1.mathematik.privat:3000/> (nur im Institutsnetz). Sie holt die News als JSON von `/nlehre/api/monitor/`. Die News stehen auch auf der [Startseite](http://www.math.uni-freiburg.de/nlehre/). Den Stand zu einem bestimmten Zeitpunkt (zB der 1.7.2024 um 10 Uhr) sieht man [hier](http://www.math.uni-freiburg.de/nlehre/de/202407011000) bzw. unter <http://mfs1.mathematik.privat:3000/202407011000>.
 
 Es folgen Beschreibungen der Apps _mi-vvz, _mi-faq_, und _mi-news_. 
 

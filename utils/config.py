@@ -70,14 +70,6 @@ sondertermine_lehre_calendar_url = "http://cal.mathematik.privat/davical/caldav.
 #ldap_host = "ldap://localhost:389"
 #ldap_username, ldap_account, ldap_password = netrc.authenticators(ldap_host)
 
-# Mensaplan für Monitor
-mensaplan_host = "https://www.swfr.de/"
-try:
-    mensa_username, mensa_account, mensa_password = netrc.authenticators(mensaplan_host)
-except:
-    mensa_password = ""
-mensaplan_url = mensaplan_host + "apispeiseplan?&type=98&tx_speiseplan_pi1[apiKey]=" + mensa_password + "&&tx_speiseplan_pi1[ort]=620"
-
 # Mailversand
 smtp_user, _, smtp_password = netrc.authenticators("mail.uni-freiburg.de")
 empfaenger_email = "mathkoll@math.uni-freiburg.de" # Empfänger-E-Mail-Adresse für das Wocheprogramm

@@ -186,22 +186,8 @@ def showbase(lang="de", dtstring = None):
         dtstring = datetime.now().strftime('%Y%m%d%H%M')
     if lang != "de" and lang != "en":
         lang = "de"
-    testorpublic = "_public"
     # print(request.endpoint)
-    data = news.data_for_base(lang, dtstring, testorpublic, tags = ["Lehre"])
-    filenames = ["index.html"]
-    return render_template("home_nlehre.html", filenames=filenames, data = data, lang=lang)
-
-# test
-@app.route("/nlehre/test/")
-@app.route("/nlehre/test/<lang>/")
-@app.route("/nlehre/test/<lang>/<dtstring>")
-def showbasetest(lang="de", dtstring = None):
-    if dtstring is None:
-        dtstring = datetime.now().strftime('%Y%m%d%H%M')
-    testorpublic = "test" 
-    # print(request.endpoint)
-    data = news.data_for_base(lang, dtstring, testorpublic, tags = ["Lehre"])
+    data = news.data_for_base(lang, dtstring, tags = ["Lehre"])
     filenames = ["index.html"]
     return render_template("home_nlehre.html", filenames=filenames, data = data, lang=lang)
 
@@ -775,22 +761,6 @@ def showvpnaccordion_wochenprogramm(lang, kurzname, show =""):
     return render_template("accordion_wochenprogramm.html", lang=lang, vpn = vpn, reihen=reihen, events=events, data = data, showcat = showcat, show=show)
 
 
-#################
-## Monitor EG  ##
-#################
-
-@app.route("/nlehre/monitortest/")
-@app.route("/nlehre/monitortest/<dtstring>")
-@app.route("/nlehre/monitor/")
-@app.route("/nlehre/monitor/<dtstring>")
-def showmonitor(dtstring = None):
-    if dtstring is None:
-        dtstring = datetime.now().strftime('%Y%m%d%H%M')
-    # determine if only shown on test
-    testorpublic = "test" if "monitortest" in request.path.split("/") else "_public" 
-    data = news.get_monitordata(dtstring, testorpublic)
-    return render_template("monitor/monitor_quer2.html", data=data, lang="de")
-
 ###########
 ## api's ##
 ###########
@@ -815,11 +785,10 @@ def get_news():
 # # curl https://www.math.uni-freiburg.de/nlehre/api/monitor/
 @app.route("/nlehre/api/monitor/")
 @app.route("/nlehre/api/monitor/<dtstring>/")
-@app.route("/nlehre/api/monitor/<dtstring>/<testorpublic>")
-def get_monitor_api(dtstring = None, testorpublic = "_public"):
+def get_monitor_api(dtstring = None):
     if dtstring is None:
         dtstring = datetime.now().strftime('%Y%m%d%H%M')
-    newsdata = news.get_monitordata(dtstring, testorpublic)
+    newsdata = news.get_monitordata(dtstring)
     # Nur die Felder, die die News-App nutzt; highlight enthält schon today
     newsdata = {"news" : [
         {
@@ -870,16 +839,6 @@ def get_lehre(lang, id, semester = ""):
 #######################################
 
 scheduler = BackgroundScheduler(timezone="Europe/Rome")
-# This function reads the Mensaplan everyday and puts the result into the mongodb
-# Runs from Monday to Sunday at 05:30 
-scheduler.add_job(
-    func=news.writetonews_mensaplan_text,
-    trigger="cron",
-    max_instances=1,
-    day_of_week='mon-sun',
-    hour=5,
-    minute=30
-)
 # Wochenprogramm-Email-Versand jeden Sonntag um 12:30
 scheduler.add_job(
     func=news.send_email,

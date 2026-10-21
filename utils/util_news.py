@@ -1,7 +1,5 @@
 from flask import Flask
 import pymongo
-import requests
-import xmltodict
 from datetime import datetime, timedelta
 from .config import *
 import base64, json
@@ -19,9 +17,7 @@ app = Flask(__name__)
 try:
     cluster = pymongo.MongoClient("mongodb://127.0.0.1:27017")
     mongo_db_news = cluster["news"]
-    mensaplan = mongo_db_news["mensaplan"]
     bild = mongo_db_news["bild"]
-    carouselnews = mongo_db_news["carouselnews"]
     news = mongo_db_news["news"]
     vortrag = mongo_db_news["vortrag"]
     vortragsreihe = mongo_db_news["vortragsreihe"]
@@ -54,19 +50,16 @@ def get_events(lang = "de"):
         events.append({"kurzname" : vr["kurzname"], "title" : f"{getwl(vr, 'title', lang)} ({vr['start'].strftime('%-d.%-m')}-{vr['end'].strftime('%-d.%-m.%y')})"})
     return reihen, events
 
-def data_for_base(lang="de", dtstring = None, testorpublic = "_public", tags = ["Institut"]):
+def data_for_base(lang="de", dtstring = None, tags = ["Institut"]):
     if dtstring is None:
         dtstring = datetime.now().strftime('%Y%m%d%H%M')
     date_format_no_space = '%Y%m%d%H%M'
 
     dt = datetime.strptime(dtstring, date_format_no_space)
 
-    # Neueste zuerst (nach Startdatum); rang entscheidet nur bei gleichem Start.
+    # Neueste zuerst (nach Startdatum).
     data = {}
-    if testorpublic == "test":
-        data["news"] =  list(news.find({"tags": { "$elemMatch" : { "$in" : tags }}, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("home.start", pymongo.DESCENDING), ("rang", pymongo.ASCENDING)]))
-    else:
-        data["news"] =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("home.start", pymongo.DESCENDING), ("rang", pymongo.ASCENDING)]))  
+    data["news"] =  list(news.find({"tags": { "$elemMatch" : { "$in" : tags }}, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }}, sort=[("start", pymongo.DESCENDING)]))
     for item in data["news"]:
         if item["image"] != []:
             b = bild.find_one({ "_id": item["image"][0]["_id"]})
@@ -74,7 +67,7 @@ def data_for_base(lang="de", dtstring = None, testorpublic = "_public", tags = [
             item["mime"] = b["mime"]
 
     for item in data['news']:
-        item['today'] = True if (item["showlastday"] and dt.date() == item['home']['end'].date()) else False
+        item['today'] = True if (item["showlastday"] and dt.date() == item['end'].date()) else False
         item["highlight"] = item.get("highlight", False) or item["today"]
     # print(data)
     return data
@@ -91,21 +84,17 @@ def data_for_newsarchiv(anfang, end, lang="de", tags = ["Institut"], ascending =
     data = {}
     data["news"] = list(news.find(
     {
-        "_public": True,
         "tags": {"$in": tags},
-        "home.end": {"$lte": end, "$gte": anfang}
+        "end": {"$lte": end, "$gte": anfang}
     },
-    sort=[("home.start", order)]
+    sort=[("start", order)]
     ))
     
-    # data["news"] =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.end" : { "$lte" : end, "$gte" : anfang }}, sort=[("home.start", order)]))
     for item in data["news"]:
         if item["image"] != []:
-            item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()#.toBase64()#.encode('base64')
-            item['home']["title"] = getwl(item['home'], "title", lang)
-            item['home']["text"] = getwl(item['home'], "text", lang)
-            item['home']["popover_title"] = getwl(item['home'], "popover_title", lang)
-            item['home']["popover_text"] = getwl(item['home'], "popover_text", lang)
+            b = bild.find_one({ "_id": item["image"][0]["_id"]})
+            item["image"][0]["data"] = base64.b64encode(b["data"]).decode()
+            item["mime"] = b["mime"]
     for item in data['news']:
         item['today'] = False
     # print(data)
@@ -124,14 +113,7 @@ def data_for_newsarchiv_full(lang, anfang, end):
 
 def data_for_bildnachweis(lang="de", tags = ["Institut", "Monitor"]):
     data_news = []
-    dcarouselnews = list(carouselnews.find({"_public" :True, "start" : { "$lte" : datetime.now() }, "end" : { "$gte" : datetime.now() }}))        
-    for item in dcarouselnews:
-        b = bild.find_one({ "_id": item["image_id"]})
-        data_news.append({"bild" : base64.b64encode(b["thumbnail"]).decode(), 
-                          "mime": b["mime"], 
-                          "bildnachweis" : b["bildnachweis"]
-                          })
-    dnews = list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "$or" : [{"monitor.start" : { "$lte" : datetime.now() }, "monitor.end" : { "$gte" : datetime.now() }}, {"home.start" : { "$lte" : datetime.now() }, "home.end" : { "$gte" : datetime.now() }}]}))
+    dnews = list(news.find({ "tags": { "$elemMatch" : { "$in" : tags }}, "start" : { "$lte" : datetime.now() }, "end" : { "$gte" : datetime.now() }}))
     for item in dnews:
         if item["image"] != []:
             b = bild.find_one({ "_id": item["image"][0]["_id"]})
@@ -144,67 +126,6 @@ def data_for_bildnachweis(lang="de", tags = ["Institut", "Monitor"]):
               "data" : data_news
             }]
     return data
-
-def get_mensaplan_text(url, date):
-    response = requests.get(url)
-    if response.status_code == 200:
-        mensaplan_xml = response.text
-        mensaplan = xmltodict.parse(mensaplan_xml)
-        date_format = '%d.%m.%Y'
-        tagesplan = mensaplan["plan"]["ort"]["tagesplan"]
-        tagesplan = [t["menue"] for t in tagesplan if t["@datum"] == datetime.now().strftime('%d.%m.%Y')]
-         #print(tagesplan)
-        if tagesplan != []:
-            tagesplan = tagesplan[0]
-            ausgabe = f"<h2>Mensaplan am {date.strftime('%d.%m.')}</h2>"
-            # Abendessen wird nicht ausgegeben
-            for t in [t for t in tagesplan if t["@art"][0:10] != "Abendessen"]: 
-                art = t["@art"]
-                name = t["name"]
-                if len(t["name"]) > 50:
-                    name = name[0:49] + "..."
-                ausgabe = ausgabe + f"<h4>{art}: {name}</h4>"
-        else:
-            ausgabe = "<h2>Heute ist die Mensa zu!</h2>"
-    else: 
-        ausgabe = ""
-    return ausgabe
-
-def writetonews_mensaplan_text(url = mensaplan_url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        mensaplan_xml = response.text
-        mensaplan = xmltodict.parse(mensaplan_xml)
-        date_format = '%d.%m.%Y'
-        tagesplan = mensaplan["plan"]["ort"]["tagesplan"]
-        # print(tagesplan)
-        
-        for t in tagesplan:
-            if carouselnews.find_one({"kommentar" : "Mensaplan", "start" : datetime.strptime(t["@datum"], date_format) }):
-                pass
-            else:
-                menue = t["menue"]
-                ausgabe = f"<h2>Mensaplan am {t['@datum']}</h2>"    
-                for m in [m for m in menue if m["@art"][0:10] != "Abendessen"]: 
-                    art = m["@art"]
-                    name = m["name"]
-                    if len(m["name"]) > 60:
-                        name = name[0:59] + "..."
-                    ausgabe = ausgabe + f"<h4>{art}: {name}</h4>"
-                carouselnews.insert_one({
-                    "_public" : True,
-                    "start" : datetime.strptime(t["@datum"], date_format),
-                    "end" : datetime.strptime(t["@datum"], date_format) + timedelta(hours=14),
-                    "interval" : 4000, 
-                    "left" : 15,
-                    "right" : 15,
-                    "bottom" : 2,
-                    "text" : ausgabe,
-                    "bearbeitet" : f"Automatisch generiert am {datetime.now().strftime('%d.%m.%Y um %H:%M:%S.')}",
-                    "kommentar" : "Mensaplan",
-                    "rang": max([x["rang"] for x in list(carouselnews.find())])+1,
-                    "image_id" : bild.find_one({"titel" : "Mensa Rempartstraße"})["_id"]
-                })                                     
 
 ####################
 ## Wochenprogramm ##
@@ -493,36 +414,28 @@ def get_event(kurzname, lang = "de", ascending = True):
         previousdatum = v["start"]
     return data
 
-def get_monitordata(dtstring, testorpublic):
+def get_monitordata(dtstring):
     # the date format for <dtstring>
     date_format_no_space = '%Y%m%d%H%M'
     dt = datetime.strptime(dtstring, date_format_no_space)
     dt_seven_days = dt + timedelta(days = 7)
 
     data = {}
-    # Daten für das Carousel
-    if testorpublic == "test":
-        data["carouselnews"] = list(carouselnews.find({"start" : { "$lte" : dt }, "end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))
-    else:
-        data["carouselnews"] = list(carouselnews.find({"_public" :True, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }},sort=[("rang", pymongo.ASCENDING)]))  
-
-    for item in data["carouselnews"]:
-        item["image"] = base64.b64encode(bild.find_one({ "_id": item["image_id"]})["data"]).decode()#.encode('base64')
-
     query = { "tags": { "$elemMatch" : { "$eq" : "Monitor" }}, 
-             "monitor.start" : { "$lte" : dt }, 
-             "monitor.end" : { "$gte" : dt }}
-    if testorpublic == "test":
-        data["news"] = list(news.find(query ,sort=[("rang", pymongo.ASCENDING)]))
-    else:
-        query["_public"] = True
-        data["news"] = list(news.find(query, sort=[("rang", pymongo.ASCENDING)]))  
+             "start" : { "$lte" : dt }, 
+             "end" : { "$gte" : dt }}
+    data["news"] = list(news.find(query, sort=[("start", pymongo.DESCENDING)]))
     for item in data["news"]:
         if item["image"] != []:
             item["image"][0]["data"] = base64.b64encode(bild.find_one({ "_id": item["image"][0]["_id"]})["data"]).decode()
+        # Der Monitor zeigt den deutschen Text, außer es gibt einen eigenen.
+        item["monitor"] = {
+            "title" : item["title_monitor"] if item["title_monitor"] != "" else item["title_de"],
+            "text" : item["text_monitor"] if item["text_monitor"] != "" else item["text_de"]
+        }
 
     for item in data['news']:
-        item['today'] = True if (item["showlastday"] and dt.date() == item['monitor']['end'].date()) else False
+        item['today'] = True if (item["showlastday"] and dt.date() == item['end'].date()) else False
         item["highlight"] = item["highlight"] or item["today"]
 
     # Add Vorträge der nächsten 7 Tage als eine News, only public
@@ -578,13 +491,13 @@ def get_monitordata(dtstring, testorpublic):
 
 def get_api_news(tags = ["Institut"]):    
     dt = datetime.now()
-    new =  list(news.find({ "_public": True, "tags": { "$elemMatch" : { "$in" : tags }}, "home.start" : { "$lte" : dt }, "home.end" : { "$gte" : dt }}, sort=[("rang", pymongo.ASCENDING)]))  
+    new =  list(news.find({ "tags": { "$elemMatch" : { "$in" : tags }}, "start" : { "$lte" : dt }, "end" : { "$gte" : dt }}, sort=[("start", pymongo.DESCENDING)]))  
     news_reduced = []
     for n in new:
-        news_reduced.append({"title_de" : n["home"]["title_de"],
-                             "title_en" : n["home"]["title_en"],
-                             "text_de" : n["home"]["text_de"],
-                             "text_en" : n["home"]["text_en"],
+        news_reduced.append({"title_de" : n["title_de"],
+                             "title_en" : n["title_en"],
+                             "text_de" : n["text_de"],
+                             "text_en" : n["text_en"],
                              "link" : n["link"]
                              })
     return news_reduced

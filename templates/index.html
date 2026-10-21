@@ -21,10 +21,10 @@
 
       <div class="ufr-news-text">
         <h3>
-          {% if lang == "de" or item['home']['title_en'] == "" %}{{ item['home']['title_de']|markdown }}{% else %}{{ item['home']['title_en']|markdown }}{% endif %}
+          {% if lang == "de" or item['title_en'] == "" %}{{ item['title_de']|markdown }}{% else %}{{ item['title_en']|markdown }}{% endif %}
         </h3>
         <div>
-          {% if lang == "de" or item['home']['text_en'] == "" %}{{ item['home']['text_de']|markdown }}{% else %}{{ item['home']['text_en']|markdown }}{% endif %}
+          {% if lang == "de" or item['text_en'] == "" %}{{ item['text_de']|markdown }}{% else %}{{ item['text_en']|markdown }}{% endif %}
         </div>
 
         {% if item['link'] != '' %}
