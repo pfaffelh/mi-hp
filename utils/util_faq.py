@@ -26,6 +26,10 @@ try:
 except:
     logger.warning("No connection to Database!")
 
+# Im Mail-Feld (mi-faq, Studiendekanat) dürfen mehrere Adressen durch Komma getrennt stehen.
+def split_mails(mail):
+    return [m.strip() for m in mail.split(",") if m.strip() != ""]
+
 def get_studiendekenat_data(query, lang = "de"):
     otherlang = "en" if lang == "de" else "de"
     data = list(studiendekanat.find(query, sort=[("rang", pymongo.ASCENDING)]))
@@ -39,6 +43,7 @@ def get_studiendekenat_data(query, lang = "de"):
         item["text"] = item[f"text_{lang}"] if item[f"text_{lang}"] != "" else item[f"text_{otherlang}"]
         item["news"] = item[f"news_{lang}"] if item[f"news_{lang}"] != "" else item[f"news_{otherlang}"]        
         item["shownews"] = (datetime.now() < item["news_ende"])
+        item["mails"] = split_mails(item["mail"])
     return data
 
 # Here, x is a dict with fields x[f"{field_prefix}_de"] and x[f"{field_prefix}_en"]. The goal is to read x[f"{field_prefix}_{lang}"] if this data is available, otherwise use the other language.
@@ -68,7 +73,7 @@ def get_verantwortliche(x, lang, personen):
             "raum": get(p, "raum", lang),
             "tel": get(p, "tel", lang),
             "sprechstunde": get(p, "sprechstunde", lang),
-            "mail": p.get("mail", ""),
+            "mails": split_mails(p.get("mail", "")),
             "link": p.get("link", ""),
         })
     return res

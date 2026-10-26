@@ -70,14 +70,14 @@
           </a>
           {% endif %}
 
-          {% if item['mail'] != '' or item['raum'] != '' or item['tel'] != '' or item['sprechstunde'] != '' %}
+          {% if item['mails'] or item['raum'] != '' or item['tel'] != '' or item['sprechstunde'] != '' %}
           <ul class="ufr-person-contact">
-            {% if item['mail'] != '' %}
+            {% for mail in item['mails'] %}
             <li>
               <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-              <a href="mailto:{{ item['mail']|safe }}">{{ item['mail'] }}</a>
+              <a href="mailto:{{ mail|safe }}">{{ mail }}</a>
             </li>
-            {% endif %}
+            {% endfor %}
             {% if item['raum'] != '' %}
             <li>
               <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
