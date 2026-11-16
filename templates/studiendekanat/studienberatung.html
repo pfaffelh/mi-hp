@@ -30,12 +30,12 @@
 
   <div class="text-end my-4">
     <a href="{{ url_for('showanfang', lang=lang, unterseite='studienanfang') }}" class="btn btn-primary" role="button">
-      {% if lang == "de" %}Wegweiser Studienanfang{% else %}Starting Guide for Studying Maths{% endif %}
+      {% if lang == "de" %}Wegweiser Studienanfang{% else %}Starting Guide{% endif %}
     </a>
     <a href="{{ url_for('showstufaq', lang=lang) }}" class="btn btn-primary" role="button">{% if lang == "de" %}FAQ 
       für Studierende{% else %}FAQ for students{% endif %}</a>
     <a href="{{ url_for('showstudiendekanat', lang=lang, unterseite='schwerpunktgebiete') }}" class="btn btn-primary" role="button">
-      {% if lang == "de" %}Schwerpunktgebiete in Freiburg{% else %}Focus areas in Freiburg{% endif %}
+      {% if lang == "de" %}Schwerpunktgebiete{% else %}Focus areas{% endif %}
     </a>
       <a href="https://www.math.uni-freiburg.de/nlehre/de/page/ausland/" class="btn btn-primary" role="button">Austauschprogramme</a>
       <a href="https://www.math.uni-freiburg.de/nlehre/de/page/internationalincomings/" class="btn btn-primary" role="button">International Incomings</a>
