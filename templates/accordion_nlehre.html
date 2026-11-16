@@ -7,8 +7,10 @@
    auf der ganzen Seite gleich aussieht — in der kleineren --nested-Variante, weil der
    Block immer innerhalb anderer Inhalte sitzt.
    praefix macht die collapse-ids eindeutig; er kommt aus den Schleifenindizes und nicht
-   aus kurzname, der laut DB nicht eindeutig ist. #}
+   aus kurzname, der laut DB nicht eindeutig ist.
+   Bei "Alles ausklappen" (show == 'all') sind auch die Personen offen. #}
 {% macro verantwortliche(v, praefix) %}
+{% set offen = (show == 'all') %}
 {% if v %}
 <div class="mt-4 mb-4">
   <div class="fw-bold mb-1">{% if lang == "en" %}Responsible{% else %}Verantwortlich{% endif %}</div>
@@ -18,7 +20,7 @@
       <button type="button" class="ufr-accordion-header"
         data-bs-toggle="collapse"
         data-bs-target="#person-{{ praefix }}-{{ loop.index }}"
-        aria-expanded="false"
+        aria-expanded="{{ 'true' if offen else 'false' }}"
         aria-controls="person-{{ praefix }}-{{ loop.index }}">
         <span class="ufr-accordion-header-content">
           <span class="ufr-accordion-title">{{ item['name']|safe }}</span>
@@ -32,7 +34,7 @@
           </svg>
         </span>
       </button>
-      <div id="person-{{ praefix }}-{{ loop.index }}" class="collapse">
+      <div id="person-{{ praefix }}-{{ loop.index }}" class="collapse {% if offen %}show{% endif %}">
         <div class="ufr-accordion-body">
           {% if item['link'] != '' %}
           <a class="ufr-accordion-link" href="{{ item['link'] }}">
