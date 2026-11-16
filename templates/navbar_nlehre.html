@@ -12,7 +12,7 @@
     </li>
     <li>
       <a class="ufr-menu-item" href="{{ url_for('internationalincomings', lang = lang) }}">
-        International Incomings
+        {% if lang == "de" %}International Incomings{% else %}International Incomings{% endif %}
       </a>
     </li>
 
