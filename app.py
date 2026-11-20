@@ -491,8 +491,18 @@ def showlehrveranstaltungen(lang, semester, studiengang = "", modul = ""):
         filenames = [f"lehrveranstaltungen/{semester}.html"]
         return render_template("home_nlehre.html", filenames = filenames, lang=lang, semester=semester)
     else:
+        # Kurznamen der Studiengänge wurden am 9.11.2026 in mi-vvz geändert;
+        # alte Links (Lesezeichen, Mails) leiten weiter.
+        if studiengang in STUDIENGANG_ALT:
+            return redirect(url_for('showlehrveranstaltungen', lang = lang, semester = semester, studiengang = STUDIENGANG_ALT[studiengang], modul = modul or None), code = 301)
+        if studiengang != "" and not vvz.vvz_studiengang.find_one({"kurzname": studiengang}):
+            abort(404)
+        if modul != "" and not vvz.vvz_modul.find_one({"kurzname": modul}):
+            abort(404)
         data = vvz.get_data(semester, lang, studiengang, modul)
         return render_template("lehrveranstaltungen/vvz.html", lang=lang, data = data, semester=semester, studiengang = studiengang, modul = modul, vpn_nextsemester = False)
+
+STUDIENGANG_ALT = {"2HfB21": "2HfB", "BSc21": "BSc", "MEd18": "MEd", "MSc14": "MScMath", "MScData24": "MScData"}
 
 @app.route("/nlehre/<lang>/lehrveranstaltungen/<semester>/stundenplan/")
 def showlehrveranstaltungenstundenplan(lang, semester):

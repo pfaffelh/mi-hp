@@ -35,23 +35,23 @@
   <div class="row">
     <div class="col">
       {% if studiengang == "" and not vpn_nextsemester %}
-      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = '2HfB21')}}"
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = '2HfB')}}"
         class="btn btn-primary" role="button">
         {% if lang == "de" %}Veranstaltungen für ... 2-HF-Bachelor{% else %}Courses for ... 2 Major Bachelor{% endif %}
       </a>
-      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'BSc21')}}"
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'BSc')}}"
         class="btn btn-primary" role="button">
         {% if lang == "de" %}... B.Sc. Mathe{% else %}... B.Sc. Maths{% endif %}
       </a>
-      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MEd18')}}"
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MEd')}}"
         class="btn btn-primary" role="button">
         {% if lang == "de" %}... M.Ed. Mathe{% else %}... M.Ed. Maths{% endif %}
       </a>
-      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MSc14')}}"
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MScMath')}}"
         class="btn btn-primary" role="button">
         {% if lang == "de" %}... M.Sc. Mathe{% else %}... M.Sc. Mathematics{% endif %}
       </a>
-      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MScData24')}}"
+      <a href="{{url_for('showlehrveranstaltungen', lang=lang, semester = semester, studiengang = 'MScData')}}"
         class="btn btn-primary" role="button">
         {% if lang == "de" %}... M.Sc. Maths in Data and Technology{% else %}... M.Sc. Maths in Data and Technology{% endif %}
       </a>
